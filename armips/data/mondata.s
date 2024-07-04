@@ -1706,7 +1706,7 @@ mondata SPECIES_SLOWBRO, "Slowbro"
     basefriendship 50
     growthrate GROWTH_MEDIUM_FAST
     egggroups EGG_GROUP_MONSTER, EGG_GROUP_WATER_1
-    abilities ABILITY_SHELL, ABILITY_OWN_TEMPO
+    abilities ABILITY_SHELL_ARMOR, ABILITY_OWN_TEMPO
     runchance 0
     colorflip BODY_COLOR_PINK, 0
     mondexentry SPECIES_SLOWBRO, "If the tail-biting SHELLDER is thrown\noff in a harsh battle, it reverts to\nbeing an ordinary SLOWPOKE."
