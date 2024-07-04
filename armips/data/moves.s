@@ -5,7 +5,9 @@
 .include "armips/include/constants.s"
 .include "armips/include/config.s"
 .include "armips/include/movemacros.s"
-.include "armips/include/movenums.s"
+
+.include "asm/include/moves.inc"
+.include "asm/include/move_effects.inc"
 
 movedata MOVE_NONE, "-"
     battleeffect 0

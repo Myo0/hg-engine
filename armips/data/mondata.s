@@ -2,11 +2,13 @@
 .thumb
 
 .include "armips/include/macros.s"
-.include "armips/include/monnums.s"
-.include "armips/include/itemnums.s"
 .include "armips/include/constants.s"
-.include "armips/include/abilities.s"
 .include "armips/include/config.s"
+
+.include "asm/include/abilities.inc"
+.include "asm/include/items.inc"
+.include "asm/include/species.inc"
+
 
 // all the mon personal data.  tm learnsets are specifically in tmlearnset.txt
 // basestats and evyields fields are formatted as such:  hp atk def speed spatk spdef
@@ -27284,7 +27286,7 @@ mondata SPECIES_REVAVROOM_RUCHBAH, "-----"
     colorflip BODY_COLOR_GRAY, 0
 
 
-mondata SPECIES_REVAVROOM_CAPH , "-----"
+mondata SPECIES_REVAVROOM_CAPH, "-----"
     basestats 80, 119, 90, 90, 54, 67
     types TYPE_STEEL, TYPE_POISON
     catchrate 75
