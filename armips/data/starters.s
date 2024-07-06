@@ -11,7 +11,7 @@
 .macro STARTER_CHOICES
     .word SPECIES_ROWLET
     .word SPECIES_CHIMCHAR
-    .word SPECIES_TOTODILE
+    .word SPECIES_FROAKIE
 .endmacro
 
 .open "base/arm9.bin", 0x02000000
