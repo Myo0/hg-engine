@@ -1477,7 +1477,7 @@ levelup SPECIES_DODRIO
     learnset MOVE_PLUCK, 21
     learnset MOVE_DOUBLE_KICK, 25
     learnset MOVE_BODY_SLAM, 28
-    learnset MOVE_THROAT_CHOP. 32
+    learnset MOVE_THROAT_CHOP, 32
     learnset MOVE_LUNGE, 36
     learnset MOVE_DRILL_PECK, 40
     learnset MOVE_JUMP_KICK, 45
@@ -7088,7 +7088,7 @@ levelup SPECIES_SHINX
     learnset MOVE_QUICK_ATTACK, 31
     learnset MOVE_WILD_CHARGE, 34
     learnset MOVE_DOUBLE_EDGE, 37
-    learnste MOVE_PSYCHIC_FANGS, 40
+    learnset MOVE_PSYCHIC_FANGS, 40
     terminatelearnset
 
 
@@ -8687,7 +8687,7 @@ levelup SPECIES_SHAYMIN
 levelup SPECIES_ARCEUS
     learnset MOVE_SEISMIC_TOSS, 1
     learnset MOVE_COSMIC_POWER, 1
-    learnset MOVE_ANCIENT_POWER
+    learnset MOVE_ANCIENT_POWER, 1
     learnset MOVE_GRAVITY, 10
     learnset MOVE_EARTH_POWER, 20
     learnset MOVE_HYPER_VOICE, 30
@@ -12126,7 +12126,8 @@ levelup SPECIES_FLETCHINDER
     learnset MOVE_EMBER, 10
     learnset MOVE_WING_ATTACK, 13
     learnset MOVE_FLAIL, 17
-    learnset MOVE_RAZOR_WIND, 21
+    learnset MOVE_FLAME_BURST, 21
+    learnset MOVE_RAZOR_WIND, 23
     learnset MOVE_AERIAL_ACE, 26
     learnset MOVE_ROOST, 29
     learnset MOVE_FLAME_CHARGE, 31

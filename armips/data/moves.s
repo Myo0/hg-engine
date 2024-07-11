@@ -5324,7 +5324,7 @@ movedata MOVE_BULLET_SEED, "Bullet Seed"
 movedata MOVE_AERIAL_ACE, "Aerial Ace"
     battleeffect 17
     pss SPLIT_PHYSICAL
-    basepower 70
+    basepower 60
     type TYPE_FLYING
     accuracy 0
     pp 20
