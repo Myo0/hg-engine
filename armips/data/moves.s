@@ -5498,10 +5498,10 @@ movedata MOVE_POISON_TAIL, "Poison Tail"
     movedescription MOVE_POISON_TAIL, "An attack with a\nhigh critical-hit\nratio. This tail \nattack may also \npoison the foe."
 
 movedata MOVE_COVET, "Covet"
-    battleeffect 105
+    battleeffect 0
     pss SPLIT_PHYSICAL
     basepower 60
-    type TYPE_NORMAL
+    type TYPE_FAIRY
     accuracy 100
     pp 25
     effectchance 0
@@ -5511,7 +5511,7 @@ movedata MOVE_COVET, "Covet"
     appeal 0x0C
     contesttype CONTEST_CUTE
     terminatedata
-    movedescription MOVE_COVET, "The user endearingly\napproaches the foe,\nthen steals the item\nthe foe is holding.\n"
+    movedescription MOVE_COVET, "The user endearingly\napproaches the foe,\nthen cutely attacks the\nthe foe.\n"
 
 movedata MOVE_VOLT_TACKLE, "Volt Tackle"
     battleeffect 262
