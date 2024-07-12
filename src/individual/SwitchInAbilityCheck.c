@@ -144,28 +144,28 @@ int UNUSED SwitchInAbilityCheck(void *bw, struct BattleStruct *sp)
                                 case ABILITY_DRIZZLE:
                                     sp->battlemon[client_no].appear_check_flag = 1;
                                     if ((sp->field_condition & WEATHER_RAIN_ANY) == 0) {
-                                        scriptnum = SUB_SEQ_DRIZZLE;
+                                        scriptnum = SUB_SEQ_OVERWORLD_RAIN; // changed to permanent weather
                                         ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
                                     }
                                     break;
                                 case ABILITY_SAND_STREAM:
                                     sp->battlemon[client_no].appear_check_flag = 1;
                                     if ((sp->field_condition & WEATHER_SANDSTORM_ANY) == 0) {
-                                        scriptnum = SUB_SEQ_SAND_STREAM;
+                                        scriptnum = SUB_SEQ_OVERWORLD_SANDSTORM; // changed to permanent weather
                                         ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
                                     }
                                     break;
                                 case ABILITY_DROUGHT:
                                     sp->battlemon[client_no].appear_check_flag = 1;
                                     if ((sp->field_condition & WEATHER_SUNNY_ANY) == 0) {
-                                        scriptnum = SUB_SEQ_DROUGHT;
+                                        scriptnum = SUB_SEQ_OVERWORLD_SUN; // changed to permanent weather
                                         ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
                                     }
                                     break;
                                 case ABILITY_SNOW_WARNING:
                                     sp->battlemon[client_no].appear_check_flag = 1;
                                     if ((sp->field_condition & WEATHER_HAIL_ANY) == 0) {
-                                        scriptnum = SUB_SEQ_SNOW_WARNING;
+                                        scriptnum = SUB_SEQ_SNOW_WARNING; // changed to permanent weather
                                         ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
                                     }
                                     break;
