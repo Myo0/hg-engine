@@ -1,4 +1,11 @@
 # credits
+
+Cyw - created Infinite Candy
+
+TixoRebel - Reusable repel <3
+
+Drayano60 - Referenced their use of porta pc for proper implementation of mine, as I had trouble with it without a reference.
+
 [AdAstra](https://github.com/AdAstra-LD/) - `debugsyscall` implementation
 
 Adcroc1 - helping significantly with sprite formatting
