@@ -11,7 +11,7 @@
 
 trainerdata 0, "-"
     trainermontype TRAINER_DATA_TYPE_NOTHING
-    trainerclass CLASS_PKMN_TRAINER_0
+    trainerclass CLASS_JASPER
      
     nummons 0
     item ITEM_NONE

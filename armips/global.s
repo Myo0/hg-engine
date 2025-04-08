@@ -34,12 +34,12 @@
 .include "armips/asm/custom/ev_cap.s"
 .include "armips/asm/custom/encounter_rates.s"
 
-.if REUSABLE_TMS == 1
+
+.include "armips/asm/tm_palettes.s" // allows editing of pallete table for TMs 
+.include "armips/asm/hidden_items.s" // allows editing of hidden items for Dowsing Machine 
 
 .include "armips/asm/tm.s" // make tms infinite
 .include "armips/asm/forget_hm.s" // allows hm to be forgotten
-
-.endif
 
 .if FAIRY_TYPE_IMPLEMENTED == 1
 
