@@ -1031,7 +1031,13 @@ levelup SPECIES_GROWLITHE
 levelup SPECIES_ARCANINE 
     learnset MOVE_REVERSAL, 1
     learnset MOVE_FLARE_BLITZ, 1
-    learnset MOVE_BITE, 1
+    learnset MOVE_EMBER, 1
+    learnset MOVE_LEER, 1
+    learnset MOVE_ROAR, 4
+    learnset MOVE_BITE, 5
+    learnset MOVE_FLAME_WHEEL, 10
+    learnset MOVE_QUICK_ATTACK, 19
+    learnset MOVE_FIRE_FANG, 26
     learnset MOVE_BODY_SLAM, 35
     learnset MOVE_FLAMETHROWER, 38
     learnset MOVE_WILD_CHARGE, 40
@@ -1515,9 +1521,10 @@ levelup SPECIES_DEWGONG
     learnset MOVE_AURORA_BEAM, 28
     learnset MOVE_SMART_STRIKE, 32
     learnset MOVE_BODY_SLAM, 36
-    learnset MOVE_AQUA_TAIL, 40
+    learnset MOVE_ICE_BEAM, 40
     learnset MOVE_DRILL_RUN, 43
-    learnset MOVE_ICE_BEAM, 48
+    learnset MOVE_SCALD, 46
+    learnset MOVE_BLIZZARD, 54
     terminatelearnset
 
 
@@ -1586,7 +1593,7 @@ levelup SPECIES_CLOYSTER
     learnset MOVE_RAZOR_SHELL, 26
     learnset MOVE_SELF_DESTRUCT, 35
     learnset MOVE_ICICLE_CRASH, 42
-    learnset MOVE_DRILL_RUN, 46
+    learnset MOVE_LIQUIDATION, 46
     learnset MOVE_HYDRO_PUMP, 50
     terminatelearnset
 
@@ -2240,7 +2247,6 @@ levelup SPECIES_MAGMAR
 
 
 levelup SPECIES_PINSIR
-    learnset MOVE_DOUBLE_EDGE, 1
     learnset MOVE_STONE_EDGE, 1
     learnset MOVE_VICE_GRIP, 1
     learnset MOVE_FURY_CUTTER, 1
@@ -2255,6 +2261,7 @@ levelup SPECIES_PINSIR
     learnset MOVE_X_SCISSOR, 40
     learnset MOVE_SUPERPOWER, 45
     learnset MOVE_EARTHQUAKE, 49
+    learnset MOVE_DOUBLE_EDGE, 55
     terminatelearnset
 
 
@@ -15732,6 +15739,7 @@ levelup SPECIES_PERRSERKER
     learnset MOVE_X_SCISSOR, 37
     learnset MOVE_PLAY_ROUGH, 40
     learnset MOVE_CLOSE_COMBAT, 44
+    learnset MOVE_BULLET_PUNCH, 50
     terminatelearnset
 
 
@@ -23061,8 +23069,13 @@ levelup SPECIES_ARCANINE_HISUIAN
     learnset MOVE_ROCK_SLIDE, 0
     learnset MOVE_HEAD_SMASH, 1
     learnset MOVE_REVERSAL, 1
-    learnset MOVE_FLARE_BLITZ, 1
-    learnset MOVE_BITE, 1
+    learnset MOVE_EMBER, 1
+    learnset MOVE_LEER, 1
+    learnset MOVE_ROAR, 4
+    learnset MOVE_BITE, 5
+    learnset MOVE_FLAME_WHEEL, 10
+    learnset MOVE_QUICK_ATTACK, 19
+    learnset MOVE_FIRE_FANG, 26
     learnset MOVE_BODY_SLAM, 35
     learnset MOVE_FLAMETHROWER, 38
     learnset MOVE_WILD_CHARGE, 40
@@ -23070,6 +23083,7 @@ levelup SPECIES_ARCANINE_HISUIAN
     learnset MOVE_EXTREME_SPEED, 46
     learnset MOVE_HEAT_WAVE, 49
     learnset MOVE_CLOSE_COMBAT, 52
+    learnset MOVE_FLARE_BLITZ, 57
     terminatelearnset
 
 
