@@ -6,9 +6,8 @@ def filter_and_write_check_messages(input_file, output_file):
 
     with open(output_file, 'w', encoding='utf-8') as outfile:
         for message in check_messages:
-            outfile.write(message + "\n\n")  # Add an extra newline for spacing
+            outfile.write(message + "\n")
 
-# Example usage
 input_filename = 'encounterable mons.txt'
 output_filename = 'isolated encounterable mons.txt'
 
