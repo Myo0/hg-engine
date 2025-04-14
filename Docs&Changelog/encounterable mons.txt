@@ -8,7 +8,7 @@ Charmander ✓
 Charmeleon ✓	
 Charizard ✓	
 Mega Charizard X ✓
-Mega Charizard Y X
+Mega Charizard Y ✓
 Squirtle ✓	
 Wartortle ✓	
 Blastoise ✓	
@@ -203,1014 +203,1013 @@ Mewtwo X
 Mega Mewtwo X X
 Mega Mewtwo Y X
 Mew X 	
-Chikorita	
-Bayleef	
-Meganium	
-Cyndaquil	
-Quilava	
-Typhlosion	
-Typhlosion	Hisuian Typhlosion
-Totodile	
-Croconaw	
-Feraligatr	
-Sentret	
-Furret	
-Hoothoot	
-Noctowl	
-Ledyba	
-Ledian	
-Spinarak	
-Ariados	
-Crobat	
-Chinchou	
-Lanturn	
-Pichu	
-Cleffa	
-Igglybuff	
-Togepi	
-Togetic	
-Natu	
-Xatu	
-Mareep	
-Flaaffy	
-Ampharos	
-Ampharos	Mega Ampharos
-Bellossom	
-Marill	
-Azumarill	
-Sudowoodo	
-Politoed	
-Hoppip	
-Skiploom	
-Jumpluff	
-Aipom	
-Sunkern	
-Sunflora	
-Yanma	
-Wooper	
-Wooper	Paldean Wooper
-Quagsire	
-Espeon	
-Umbreon	
-Murkrow	
-Slowking	
-Slowking	Galarian Slowking
-Misdreavus	
-Unown	
-Wobbuffet	
-Girafarig	
-Pineco	
-Forretress	
-Dunsparce	
-Gligar	
-Steelix	
-Steelix	Mega Steelix
-Snubbull	
-Granbull	
-Qwilfish	
-Qwilfish	Hisuian Qwilfish
-Scizor	
-Scizor	Mega Scizor
-Shuckle	
-Heracross	
-Heracross	Mega Heracross
-Sneasel	
-Sneasel	Hisuian Sneasel
-Teddiursa	
-Ursaring	
-Slugma	
-Magcargo	
-Swinub	
-Piloswine	
-Corsola	
-Corsola	Galarian Corsola
-Remoraid	
-Octillery	
-Delibird	
-Mantine	
-Skarmory	
-Houndour	
-Houndoom	
-Houndoom	Mega Houndoom
-Kingdra	
-Phanpy	
-Donphan	
-Porygon2	
-Stantler	
-Smeargle	
-Tyrogue	
-Hitmontop	
-Smoochum	
-Elekid	
-Magby	
-Miltank	
-Blissey	
-Raikou	
-Entei	
-Suicune	
-Larvitar	
-Pupitar	
-Tyranitar	
-Tyranitar	Mega Tyranitar
-Lugia	
-Ho-oh	
-Celebi	
-Treecko	
-Grovyle	
-Sceptile	
-Sceptile	Mega Sceptile
-Torchic	
-Combusken	
-Blaziken	
-Blaziken	Mega Blaziken
-Mudkip	
-Marshtomp	
-Swampert	
-Swampert	Mega Swampert
-Poochyena	
-Mightyena	
-Zigzagoon	
-Zigzagoon	Galarian Zigzagoon
-Linoone	
-Linoone	Galarian Linoone
-Wurmple	
-Silcoon	
-Beautifly	
-Cascoon	
-Dustox	
-Lotad	
-Lombre	
-Ludicolo	
-Seedot	
-Nuzleaf	
-Shiftry	
-Taillow	
-Swellow	
-Wingull	
-Pelipper	
-Ralts	
-Kirlia	
-Gardevoir	
-Gardevoir	Mega Gardevoir
-Surskit	
-Masquerain	
-Shroomish	
-Breloom	
-Slakoth	
-Vigoroth	
-Slaking	
-Nincada	
-Ninjask	
-Shedinja	
-Whismur	
-Loudred	
-Exploud	
-Makuhita	
-Hariyama	
-Azurill	
-Nosepass	
-Skitty	
-Delcatty	
-Sableye	
-Sableye	Mega Sableye
-Mawile	
-Mawile	Mega Mawile
-Aron	
-Lairon	
-Aggron	
-Aggron	Mega Aggron
-Meditite	
-Medicham	
-Medicham	Mega Medicham
-Electrike	
-Manectric	
-Manectric	Mega Manectric
-Plusle	
-Minun	
-Volbeat	
-Illumise	
-Roselia	
-Gulpin	
-Swalot	
-Carvanha	
-Sharpedo	
-Sharpedo	Mega Sharpedo
-Wailmer	
-Wailord	
-Numel	
-Camerupt	
-Camerupt	Mega Camerupt
-Torkoal	
-Spoink	
-Grumpig	
-Spinda	
-Trapinch	
-Vibrava	
-Flygon	
-Cacnea	
-Cacturne	
-Swablu	
-Altaria	
-Altaria	Mega Altaria
-Zangoose	
-Seviper	
-Lunatone	
-Solrock	
-Barboach	
-Whiscash	
-Corphish	
-Crawdaunt	
-Baltoy	
-Claydol	
-Lileep	
-Cradily	
-Anorith	
-Armaldo	
-Feebas	
-Milotic	
-Castform	
-Castform	Sunny Form
-Castform	Rainy Form
-Castform	Snowy Form
-Kecleon	
-Shuppet	
-Banette	
-Banette	Mega Banette
-Duskull	
-Dusclops	
-Tropius	
-Chimecho	
-Absol	
-Absol	Mega Absol
-Wynaut	
-Snorunt	
-Glalie	
-Glalie	Mega Glalie
-Spheal	
-Sealeo	
-Walrein	
-Clamperl	
-Huntail	
-Gorebyss	
-Relicanth	
-Luvdisc	
-Bagon	
-Shelgon	
-Salamence	
-Salamence	Mega Salamence
-Beldum	
-Metang	
-Metagross	
-Metagross	Mega Metagross
-Regirock	
-Regice	
-Registeel	
-Latias	
-Latias	Mega Latias
-Latios	
-Latios	Mega Latios
-Kyogre	
-Kyogre	Primal Kyogre
-Groudon	
-Groudon	Primal Groudon
-Rayquaza	
-Rayquaza	Mega Rayquaza
-Jirachi	
-Deoxys	Normal Forme
-Deoxys	Attack Forme
-Deoxys	Defense Forme
-Deoxys	Speed Forme
-Turtwig	
-Grotle	
-Torterra	
-Chimchar	
-Monferno	
-Infernape	
-Piplup	
-Prinplup	
-Empoleon	
-Starly	
-Staravia	
-Staraptor	
-Bidoof	
-Bibarel	
-Kricketot	
-Kricketune	
-Shinx	
-Luxio	
-Luxray	
-Budew	
-Roserade	
-Cranidos	
-Rampardos	
-Shieldon	
-Bastiodon	
-Burmy	Plant Cloak
-Burmy	Sandy Cloak
-Burmy	Trash Cloak
-Wormadam	Plant Cloak
-Wormadam	Sandy Cloak
-Wormadam	Trash Cloak
-Mothim	
-Combee	
-Vespiquen	
-Pachirisu	
-Buizel	
-Floatzel	
-Cherubi	
-Cherrim	
-Shellos	
-Gastrodon	
-Ambipom	
-Drifloon	
-Drifblim	
-Buneary	
-Lopunny	
-Lopunny	Mega Lopunny
-Mismagius	
-Honchkrow	
-Glameow	
-Purugly	
-Chingling	
-Stunky	
-Skuntank	
-Bronzor	
-Bronzong	
-Bonsly	
-Mime Jr.	
-Happiny	
-Chatot	
-Spiritomb	
-Gible	
-Gabite	
-Garchomp	
-Garchomp	Mega Garchomp
-Munchlax	
-Riolu	
-Lucario	
-Lucario	Mega Lucario
-Hippopotas	
-Hippowdon	
-Skorupi	
-Drapion	
-Croagunk	
-Toxicroak	
-Carnivine	
-Finneon	
-Lumineon	
-Mantyke	
-Snover	
-Abomasnow	
-Abomasnow	Mega Abomasnow
-Weavile	
-Magnezone	
-Lickilicky	
-Rhyperior	
-Tangrowth	
-Electivire	
-Magmortar	
-Togekiss	
-Yanmega	
-Leafeon	
-Glaceon	
-Gliscor	
-Mamoswine	
-Porygon-Z	
-Gallade	
-Gallade	Mega Gallade
-Probopass	
-Dusknoir	
-Froslass	
-Rotom	
-Rotom	Heat Rotom
-Rotom	Wash Rotom
-Rotom	Frost Rotom
-Rotom	Fan Rotom
-Rotom	Mow Rotom
-Uxie	
-Mesprit	
-Azelf	
-Dialga	
-Dialga	Origin Forme
-Palkia	
-Palkia	Origin Forme
-Heatran	
-Regigigas	
-Giratina	Altered Forme
-Giratina	Origin Forme
-Cresselia	
-Phione	
-Manaphy	
-Darkrai	
-Shaymin	Land Forme
-Shaymin	Sky Forme
-Arceus	
-Victini	
-Snivy	
-Servine	
-Serperior	
-Tepig	
-Pignite	
-Emboar	
-Oshawott	
-Dewott	
-Samurott	
-Samurott	Hisuian Samurott
-Patrat	
-Watchog	
-Lillipup	
-Herdier	
-Stoutland	
-Purrloin	
-Liepard	
-Pansage	
-Simisage	
-Pansear	
-Simisear	
-Panpour	
-Simipour	
-Munna	
-Musharna	
-Pidove	
-Tranquill	
-Unfezant	
-Blitzle	
-Zebstrika	
-Roggenrola	
-Boldore	
-Gigalith	
-Woobat	
-Swoobat	
-Drilbur	
-Excadrill	
-Audino	
-Audino	Mega Audino
-Timburr	
-Gurdurr	
-Conkeldurr	
-Tympole	
-Palpitoad	
-Seismitoad	
-Throh	
-Sawk	
-Sewaddle	
-Swadloon	
-Leavanny	
-Venipede	
-Whirlipede	
-Scolipede	
-Cottonee	
-Whimsicott	
-Petilil	
-Lilligant	
-Lilligant	Hisuian Lilligant
-Basculin	Red-Striped Form
-Basculin	Blue-Striped Form
-Basculin	White-Striped Form
-Sandile	
-Krokorok	
-Krookodile	
-Darumaka	
-Darumaka	Galarian Darumaka
-Darmanitan	Standard Mode
-Darmanitan	Zen Mode
-Darmanitan	Galarian Standard Mode
-Darmanitan	Galarian Zen Mode
-Maractus	
-Dwebble	
-Crustle	
-Scraggy	
-Scrafty	
-Sigilyph	
-Yamask	
-Yamask	Galarian Yamask
-Cofagrigus	
-Tirtouga	
-Carracosta	
-Archen	
-Archeops	
-Trubbish	
-Garbodor	
-Zorua	
-Zorua	Hisuian Zorua
-Zoroark	
-Zoroark	Hisuian Zoroark
-Minccino	
-Cinccino	
-Gothita	
-Gothorita	
-Gothitelle	
-Solosis	
-Duosion	
-Reuniclus	
-Ducklett	
-Swanna	
-Vanillite	
-Vanillish	
-Vanilluxe	
-Deerling	
-Sawsbuck	
-Emolga	
-Karrablast	
-Escavalier	
-Foongus	
-Amoonguss	
-Frillish	
-Jellicent	
-Alomomola	
-Joltik	
-Galvantula	
-Ferroseed	
-Ferrothorn	
-Klink	
-Klang	
-Klinklang	
-Tynamo	
-Eelektrik	
-Eelektross	
-Elgyem	
-Beheeyem	
-Litwick	
-Lampent	
-Chandelure	
-Axew	
-Fraxure	
-Haxorus	
-Cubchoo	
-Beartic	
-Cryogonal	
-Shelmet	
-Accelgor	
-Stunfisk	
-Stunfisk	Galarian Stunfisk
-Mienfoo	
-Mienshao	
-Druddigon	
-Golett	
-Golurk	
-Pawniard	
-Bisharp	
-Bouffalant	
-Rufflet	
-Braviary	
-Braviary	Hisuian Braviary
-Vullaby	
-Mandibuzz	
-Heatmor	
-Durant	
-Deino	
-Zweilous	
-Hydreigon	
-Larvesta	
-Volcarona	
-Cobalion	
-Terrakion	
-Virizion	
-Tornadus	Incarnate Forme
-Tornadus	Therian Forme
-Thundurus	Incarnate Forme
-Thundurus	Therian Forme
-Reshiram	
-Zekrom	
-Landorus	Incarnate Forme
-Landorus	Therian Forme
-Kyurem	
-Kyurem	White Kyurem
-Kyurem	Black Kyurem
-Keldeo	Ordinary Form
-Keldeo	Resolute Form
-Meloetta	Aria Forme
-Meloetta	Pirouette Forme
-Genesect	
-Chespin	
-Quilladin	
-Chesnaught	
-Fennekin	
-Braixen	
-Delphox	
-Froakie	
-Frogadier	
-Greninja	
-Greninja	Ash-Greninja
-Bunnelby	
-Diggersby	
-Fletchling	
-Fletchinder	
-Talonflame	
-Scatterbug	
-Spewpa	
-Vivillon	
-Litleo	
-Pyroar	
-Flabébé	
-Floette	
-Florges	
-Skiddo	
-Gogoat	
-Pancham	
-Pangoro	
-Furfrou	
-Espurr	
-Meowstic	Male
-Meowstic	Female
-Honedge	
-Doublade	
-Aegislash	Shield Forme
-Aegislash	Blade Forme
-Spritzee	
-Aromatisse	
-Swirlix	
-Slurpuff	
-Inkay	
-Malamar	
-Binacle	
-Barbaracle	
-Skrelp	
-Dragalge	
-Clauncher	
-Clawitzer	
-Helioptile	
-Heliolisk	
-Tyrunt	
-Tyrantrum	
-Amaura	
-Aurorus	
-Sylveon	
-Hawlucha	
-Dedenne	
-Carbink	
-Goomy	
-Sliggoo	
-Sliggoo	Hisuian Sliggoo
-Goodra	
-Goodra	Hisuian Goodra
-Klefki	
-Phantump	
-Trevenant	
-Pumpkaboo	Average Size
-Pumpkaboo	Small Size
-Pumpkaboo	Large Size
-Pumpkaboo	Super Size
-Gourgeist	Average Size
-Gourgeist	Small Size
-Gourgeist	Large Size
-Gourgeist	Super Size
-Bergmite	
-Avalugg	
-Avalugg	Hisuian Avalugg
-Noibat	
-Noivern	
-Xerneas	
-Yveltal	
-Zygarde	50% Forme
-Zygarde	10% Forme
-Zygarde	Complete Forme
-Diancie	
-Diancie	Mega Diancie
-Hoopa	Hoopa Confined
-Hoopa	Hoopa Unbound
-Volcanion	
-Rowlet	
-Dartrix	
-Decidueye	
-Decidueye	Hisuian Decidueye
-Litten	
-Torracat	
-Incineroar	
-Popplio	
-Brionne	
-Primarina	
-Pikipek	
-Trumbeak	
-Toucannon	
-Yungoos	
-Gumshoos	
-Grubbin	
-Charjabug	
-Vikavolt	
-Crabrawler	
-Crabominable	
-Oricorio	Baile Style
-Oricorio	Pom-Pom Style
-Oricorio	Pa'u Style
-Oricorio	Sensu Style
-Cutiefly	
-Ribombee	
-Rockruff	
-Rockruff	Own Tempo Rockruff
-Lycanroc	Midday Form
-Lycanroc	Midnight Form
-Lycanroc	Dusk Form
-Wishiwashi	Solo Form
-Wishiwashi	School Form
-Mareanie	
-Toxapex	
-Mudbray	
-Mudsdale	
-Dewpider	
-Araquanid	
-Fomantis	
-Lurantis	
-Morelull	
-Shiinotic	
-Salandit	
-Salazzle	
-Stufful	
-Bewear	
-Bounsweet	
-Steenee	
-Tsareena	
-Comfey	
-Oranguru	
-Passimian	
-Wimpod	
-Golisopod	
-Sandygast	
-Palossand	
-Pyukumuku	
-Type: Null	
-Silvally	
-Minior	Meteor Form
-Minior	Core Form
-Komala	
-Turtonator	
-Togedemaru	
-Mimikyu	
-Bruxish	
-Drampa	
-Dhelmise	
-Jangmo-o	
-Hakamo-o	
-Kommo-o	
-Tapu Koko	
-Tapu Lele	
-Tapu Bulu	
-Tapu Fini	
-Cosmog	
-Cosmoem	
-Solgaleo	
-Lunala	
-Nihilego	
-Buzzwole	
-Pheromosa	
-Xurkitree	
-Celesteela	
-Kartana	
-Guzzlord	
-Necrozma	
-Necrozma	Dusk Mane Necrozma
-Necrozma	Dawn Wings Necrozma
-Necrozma	Ultra Necrozma
-Magearna	
-Marshadow	
-Poipole	
-Naganadel	
-Stakataka	
-Blacephalon	
-Zeraora	
-Meltan	
-Melmetal	
-Grookey	
-Thwackey	
-Rillaboom	
-Scorbunny	
-Raboot	
-Cinderace	
-Sobble	
-Drizzile	
-Inteleon	
-Skwovet	
-Greedent	
-Rookidee	
-Corvisquire	
-Corviknight	
-Blipbug	
-Dottler	
-Orbeetle	
-Nickit	
-Thievul	
-Gossifleur	
-Eldegoss	
-Wooloo	
-Dubwool	
-Chewtle	
-Drednaw	
-Yamper	
-Boltund	
-Rolycoly	
-Carkol	
-Coalossal	
-Applin	
-Flapple	
-Appletun	
-Silicobra	
-Sandaconda	
-Cramorant	
-Arrokuda	
-Barraskewda	
-Toxel	
-Toxtricity	Amped Form
-Toxtricity	Low Key Form
-Sizzlipede	
-Centiskorch	
-Clobbopus	
-Grapploct	
-Sinistea	
-Polteageist	
-Hatenna	
-Hattrem	
-Hatterene	
-Impidimp	
-Morgrem	
-Grimmsnarl	
-Obstagoon	
-Perrserker	
-Cursola	
-Sirfetch'd	
-Mr. Rime	
-Runerigus	
-Milcery	
-Alcremie	
-Falinks	
-Pincurchin	
-Snom	
-Frosmoth	
-Stonjourner	
-Eiscue	Ice Face
-Eiscue	Noice Face
-Indeedee	Male
-Indeedee	Female
-Morpeko	Full Belly Mode
-Morpeko	Hangry Mode
-Cufant	
-Copperajah	
-Dracozolt	
-Arctozolt	
-Dracovish	
-Arctovish	
-Duraludon	
-Dreepy	
-Drakloak	
-Dragapult	
-Zacian	Hero of Many Battles
-Zacian	Crowned Sword
-Zamazenta	Hero of Many Battles
-Zamazenta	Crowned Shield
-Eternatus	
-Eternatus	Eternamax
-Kubfu	
-Urshifu	Single Strike Style
-Urshifu	Rapid Strike Style
-Zarude	
-Regieleki	
-Regidrago	
-Glastrier	
-Spectrier	
-Calyrex	
-Calyrex	Ice Rider
-Calyrex	Shadow Rider
-Wyrdeer	
-Kleavor	
-Ursaluna	
-Ursaluna	Bloodmoon
-Basculegion	Male
-Basculegion	Female
-Sneasler	
-Overqwil	
-Enamorus	Incarnate Forme
-Enamorus	Therian Forme
-Sprigatito	
-Floragato	
-Meowscarada	
-Fuecoco	
-Crocalor	
-Skeledirge	
-Quaxly	
-Quaxwell	
-Quaquaval	
-Lechonk	
-Oinkologne	Male
-Oinkologne	Female
-Tarountula	
-Spidops	
-Nymble	
-Lokix	
-Pawmi	
-Pawmo	
-Pawmot	
-Tandemaus	
-Maushold	Family of Four
-Maushold	Family of Three
-Fidough	
-Dachsbun	
-Smoliv	
-Dolliv	
-Arboliva	
-Squawkabilly	Green Plumage
-Squawkabilly	Blue Plumage
-Squawkabilly	Yellow Plumage
-Squawkabilly	White Plumage
-Nacli	
-Naclstack	
-Garganacl	
-Charcadet	
-Armarouge	
-Ceruledge	
-Tadbulb	
-Bellibolt	
-Wattrel	
-Kilowattrel	
-Maschiff	
-Mabosstiff	
-Shroodle	
-Grafaiai	
-Bramblin	
-Brambleghast	
-Toedscool	
-Toedscruel	
-Klawf	
-Capsakid	
-Scovillain	
-Rellor	
-Rabsca	
-Flittle	
-Espathra	
-Tinkatink	
-Tinkatuff	
-Tinkaton	
-Wiglett	
-Wugtrio	
-Bombirdier	
-Finizen	
-Palafin	Zero Form
-Palafin	Hero Form
-Varoom	
-Revavroom	
-Cyclizar	
-Orthworm	
-Glimmet	
-Glimmora	
-Greavard	
-Houndstone	
-Flamigo	
-Cetoddle	
-Cetitan	
-Veluza	
-Dondozo	
-Tatsugiri	Curly Form
-Tatsugiri	Droopy Form
-Tatsugiri	Stretchy Form
-Annihilape	
-Clodsire	
-Farigiraf	
-Dudunsparce	Two-Segment Form
-Dudunsparce	Three-Segment Form
-Kingambit	
-Great Tusk	
-Scream Tail	
-Brute Bonnet	
-Flutter Mane	
-Slither Wing	
-Sandy Shocks	
-Iron Treads	
-Iron Bundle	
-Iron Hands	
-Iron Jugulis	
-Iron Moth	
-Iron Thorns	
-Frigibax	
-Arctibax	
-Baxcalibur	
-Gimmighoul	Chest Form
-Gimmighoul	Roaming Form
-Gholdengo	
-Wo-Chien	
-Chien-Pao	
-Ting-Lu	
-Chi-Yu	
-Roaring Moon	
-Iron Valiant	
-Koraidon	
-Miraidon	
-Walking Wake	
-Iron Leaves	
-Dipplin	
-Poltchageist	
-Sinistcha	
-Okidogi	
-Munkidori	
-Fezandipiti	
-Ogerpon	Teal Mask
-Ogerpon	Wellspring Mask
-Ogerpon	Hearthflame Mask
-Ogerpon	Cornerstone Mask
-Archaludon	
-Hydrapple	
-Gouging Fire	
-Raging Bolt	
-Iron Boulder	
-Iron Crown	
-Terapagos	Normal Form
-Terapagos	Terastal Form
-Terapagos	Stellar Form
-Pecharunt	
+Chikorita ✓	
+Bayleef ✓	 
+Meganium ✓	
+Cyndaquil ✓	
+Quilava ✓	
+Typhlosion ✓	
+Hisuian Typhlosion X
+Totodile ✓	
+Croconaw ✓	
+Feraligatr ✓	
+Sentret X	
+Furret X	
+Hoothoot X	
+Noctowl X	
+Ledyba ✓	
+Ledian ✓	
+Spinarak X	
+Ariados X	
+Crobat ✓	
+Chinchou ✓	
+Lanturn ✓	
+Pichu ✓	
+Cleffa ✓	
+Igglybuff X	
+Togepi ✓	
+Togetic ✓	
+Natu ✓	
+Xatu ✓	
+Mareep ✓	
+Flaaffy ✓	
+Ampharos ✓	
+Mega Ampharos ✓
+Bellossom X	
+Marill ✓	 
+Azumarill ✓	
+Sudowoodo X	
+Politoed X	
+Hoppip X	
+Skiploom X	
+Jumpluff X	
+Aipom ✓	
+Sunkern	X
+Sunflora X	
+Yanma ✓	
+Wooper X	
+Paldean Wooper ✓
+Quagsire X	
+Espeon X	
+Umbreon	X
+Murkrow ✓	
+Slowking ✓	
+Galarian Slowking X
+Misdreavus X	
+Unown X	
+Wobbuffet X	
+Girafarig ✓	
+Pineco ✓	
+Forretress ✓	
+Dunsparce ✓	
+Gligar ✓	
+Steelix ✓	
+Mega Steelix ✓
+Snubbull ✓	
+Granbull ✓	
+Qwilfish X	
+Hisuian Qwilfish ✓
+Scizor ✓	
+Mega Scizor ✓
+Shuckle X	
+Heracross ✓	
+Mega Heracross ✓
+Sneasel ✓	
+Hisuian Sneasel ✓
+Teddiursa ✓	
+Ursaring ✓	
+Slugma ✓	
+Magcargo ✓	
+Swinub ✓	
+Piloswine ✓	
+Corsola X	
+Galarian Corsola ✓
+Remoraid ✓	
+Octillery ✓	
+Delibird X	
+Mantine X	
+Skarmory ✓	
+Houndour ✓	
+Houndoom ✓	
+Mega Houndoom ✓
+Kingdra	✓ 
+Phanpy ✓	
+Donphan ✓	
+Porygon2 ✓	
+Stantler ✓	
+Smeargle X	
+Tyrogue ✓	
+Hitmontop ✓	
+Smoochum X	
+Elekid ✓	
+Magby ✓	
+Miltank ✓	
+Blissey	X
+Raikou X
+Entei X	
+Suicune X	
+Larvitar ✓	
+Pupitar ✓	
+Tyranitar ✓	
+Mega Tyranitar ✓
+Lugia X	
+Ho-oh X	
+Celebi ✓ (Game Corner Post Elite 4)	
+Treecko ✓	
+Grovyle ✓	
+Sceptile ✓	
+Mega Sceptile ✓
+Torchic ✓	
+Combusken ✓	
+Blaziken ✓	
+Mega Blaziken ✓
+Mudkip ✓	
+Marshtomp ✓	
+Swampert ✓	
+Mega Swampert ✓
+Poochyena ✓	
+Mightyena ✓	
+Zigzagoon X	
+Galarian Zigzagoon ✓	
+Galarian Linoone ✓
+Wurmple X	
+Silcoon	X
+Beautifly X	
+Cascoon X	
+Dustox X	
+Lotad ✓	
+Lombre ✓	
+Ludicolo ✓	
+Seedot ✓	
+Nuzleaf ✓	
+Shiftry ✓	
+Taillow	✓
+Swellow	✓
+Wingull X	
+Pelipper X	
+Ralts ✓	
+Kirlia ✓	
+Gardevoir ✓	
+Mega Gardevoir ✓
+Surskit ✓	
+Masquerain ✓	
+Shroomish ✓	
+Breloom ✓	
+Slakoth X	
+Vigoroth X	
+Slaking X
+Nincada ✓	
+Ninjask ✓	
+Shedinja X	
+Whismur X	
+Loudred	X
+Exploud X	
+Makuhita ✓	
+Hariyama ✓	
+Azurill ✓	
+Nosepass X	
+Skitty X 	
+Delcatty X	
+Sableye ✓	
+Mega Sableye ✓
+Mawile ✓	
+Mega Mawile ✓
+Aron ✓	
+Lairon ✓	
+Aggron ✓	
+Mega Aggron ✓
+Meditite ✓	
+Medicham ✓	
+Mega Medicham ✓
+Electrike ✓	
+Manectric ✓	
+Mega Manectric ✓
+Plusle X	
+Minun X	
+Volbeat X	
+Illumise X	
+Roselia ✓	
+Gulpin X	
+Swalot X	
+Carvanha ✓	
+Sharpedo ✓	
+Mega Sharpedo ✓
+Wailmer ✓
+Wailord	✓
+Numel ✓	
+Camerupt ✓	
+Mega Camerupt ✓
+Torkoal	✓
+Spoink X	
+Grumpig	X
+Spinda X
+Trapinch ✓	
+Vibrava ✓	
+Flygon ✓	
+Cacnea ✓	
+Cacturne ✓	
+Swablu ✓	
+Altaria	✓
+Mega Altaria ✓
+Zangoose X	
+Seviper	X
+Lunatone X	
+Solrock X
+Barboach ✓	
+Whiscash ✓	
+Corphish ✓	
+Crawdaunt ✓	
+Baltoy ✓	
+Claydol ✓	
+Lileep ✓	
+Cradily ✓	
+Anorith ✓	
+Armaldo ✓	
+Feebas ✓	
+Milotic ✓	
+Castform X	
+Castform Sunny Form X
+Castform Rainy Form X
+Castform Snowy Form X
+Kecleon ✓
+Shuppet ✓
+Banette ✓	
+Mega Banette ✓
+Duskull ✓	
+Dusclops ✓	
+Tropius X	
+Chimecho X	
+Absol ✓	
+Mega Absol ✓
+Wynaut X	
+Snorunt ✓	
+Glalie ✓	
+Mega Glalie ✓
+Spheal ✓	
+Sealeo ✓	
+Walrein ✓	
+Clamperl ✓	
+Huntail ✓	
+Gorebyss ✓	
+Relicanth ✓	
+Luvdisc X	
+Bagon ✓	
+Shelgon ✓	
+Salamence ✓	
+Mega Salamence ✓
+Beldum ✓	
+Metang ✓	
+Metagross ✓	
+Mega Metagross ✓
+Regirock X	
+Regice X	
+Registeel X	
+Latias ✓ (Roamer)	
+Mega Latias X
+Latios ✓ (Roamer)	
+Mega Latios X
+Kyogre X	
+Primal Kyogre X
+Groudon	X
+Primal Groudon X
+Rayquaza X	
+Mega Rayquaza X
+Jirachi ✓ (Game Corner)	
+Deoxys X
+Deoxys Attack Forme X
+Deoxys Defense Forme X
+Deoxys Speed Forme X
+Turtwig	✓
+Grotle ✓	
+Torterra ✓	
+Chimchar ✓	
+Monferno ✓	
+Infernape ✓	
+Piplup ✓	
+Prinplup ✓	
+Empoleon ✓	
+Starly ✓	
+Staravia ✓	
+Staraptor ✓	
+Bidoof X	
+Bibarel X	
+Kricketot X	
+Kricketune X	
+Shinx ✓	
+Luxio ✓	
+Luxray ✓	
+Budew ✓ 
+Roserade ✓	
+Cranidos ✓	
+Rampardos ✓	
+Shieldon ✓	
+Bastiodon ✓	
+Burmy	Plant Cloak X
+Burmy	Sandy Cloak X
+Burmy	Trash Cloak X
+Wormadam	Plant Cloak X
+Wormadam	Sandy Cloak X
+Wormadam	Trash Cloak X
+Mothim X	
+Combee ✓	
+Vespiquen ✓	
+Pachirisu X	
+Buizel ✓	
+Floatzel ✓	
+Cherubi X	
+Cherrim	X
+Shellos ✓	
+Gastrodon ✓	
+Ambipom ✓	
+Drifloon ✓	
+Drifblim ✓	
+Buneary ✓
+Lopunny ✓	
+Mega Lopunny ✓
+Mismagius X	
+Honchkrow ✓	
+Glameow X	
+Purugly X	
+Chingling X	
+Stunky ✓	
+Skuntank ✓	
+Bronzor X	
+Bronzong X	 
+Bonsly X	
+Mime Jr. X	
+Happiny X	
+Chatot X	
+Spiritomb ✓	
+Gible ✓	
+Gabite ✓	
+Garchomp ✓	
+Mega Garchomp ✓
+Munchlax ✓	
+Riolu ✓	
+Lucario	✓
+Mega Lucario ✓
+Hippopotas ✓	
+Hippowdon ✓	
+Skorupi ✓	
+Drapion ✓	
+Croagunk ✓	
+Toxicroak ✓	
+Carnivine ✓	
+Finneon X	
+Lumineon X	
+Mantyke X	
+Snover ✓	
+Abomasnow ✓	
+Mega Abomasnow ✓
+Weavile	✓
+Magnezone ✓	
+Lickilicky X	
+Rhyperior ✓	
+Tangrowth X	
+Electivire ✓	
+Magmortar ✓	
+Togekiss ✓	
+Yanmega ✓	
+Leafeon X	
+Glaceon X	
+Gliscor	✓
+Mamoswine ✓	
+Porygon-Z ✓	
+Gallade ✓	
+Mega Gallade ✓
+Probopass X	
+Dusknoir ✓	
+Froslass ✓	
+Rotom X	
+Rotom	Heat Rotom X
+Rotom	Wash Rotom X
+Rotom	Frost Rotom X
+Rotom	Fan Rotom X
+Rotom	Mow Rotom X
+Uxie X	
+Mesprit X	
+Azelf X	
+Dialga X	
+Dialga Origin Forme X
+Palkia X
+Palkia Origin Forme X
+Heatran X	
+Regigigas X	
+Giratina Altered Forme X
+Giratina Origin Forme X
+Cresselia ✓ (Roamer)	
+Phione X	
+Manaphy	X
+Darkrai	✓ (Roamer)
+Shaymin	Land Forme X
+Shaymin	Sky Forme X
+Arceus X	
+Victini	✓ (Game Corner)
+Snivy ✓	
+Servine ✓
+Serperior ✓	
+Tepig ✓	
+Pignite ✓	
+Emboar ✓	
+Oshawott ✓	
+Dewott ✓	
+Samurott ✓	
+Hisuian Samurott ✓
+Patrat X	
+Watchog X	
+Lillipup ✓	
+Herdier ✓	
+Stoutland ✓	
+Purrloin X	
+Liepard X	
+Pansage X	
+Simisage X	
+Pansear X
+Simisear X	
+Panpour X	
+Simipour X	
+Munna ✓	
+Musharna ✓	
+Pidove X	
+Tranquill X	
+Unfezant X	
+Blitzle	X
+Zebstrika X	
+Roggenrola ✓	
+Boldore	✓
+Gigalith ✓	
+Woobat X	
+Swoobat X
+Drilbur	✓
+Excadrill ✓	
+Audino ✓	
+Mega Audino ✓
+Timburr ✓	
+Gurdurr ✓	
+Conkeldurr ✓	
+Tympole	✓
+Palpitoad ✓	
+Seismitoad ✓	
+Throh X	
+Sawk X	
+Sewaddle X	
+Swadloon X	
+Leavanny X
+Venipede ✓	
+Whirlipede ✓	
+Scolipede ✓	
+Cottonee X	
+Whimsicott X	
+Petilil ✓
+Lilligant ✓	
+Hisuian Lilligant ✓
+Basculin Red-Striped Form ✓
+Basculin Blue-Striped Form ✓
+Basculin White-Striped Form X 
+Sandile ✓	 
+Krokorok ✓	
+Krookodile ✓	
+Darumaka ✓	
+Galarian Darumaka ✓
+Darmanitan ✓
+Darmanitan Zen Mode X
+Galarian Darmanitan ✓
+Galarian Darmanitan Zen Mode X
+Maractus ✓	
+Dwebble ✓	
+Crustle ✓	
+Scraggy X	
+Scrafty	X
+Sigilyph ✓	
+Yamask ✓	
+Galarian Yamask ✓
+Cofagrigus ✓	
+Tirtouga ✓ 	
+Carracosta ✓	
+Archen ✓	
+Archeops ✓	
+Trubbish X	
+Garbodor X	
+Zorua ✓	
+Hisuian Zorua ✓
+Zoroark ✓	
+Hisuian Zoroark ✓
+Minccino X	
+Cinccino X	
+Gothita	X
+Gothorita X	
+Gothitelle X	
+Solosis	✓
+Duosion	✓ 
+Reuniclus ✓	
+Ducklett X	
+Swanna X	
+Vanillite ✓	
+Vanillish ✓	
+Vanilluxe ✓	
+Deerling ✓	
+Sawsbuck ✓	
+Emolga X	
+Karrablast ✓	
+Escavalier ✓	
+Foongus X	 
+Amoonguss X	 
+Frillish ✓	
+Jellicent ✓	
+Alomomola X	
+Joltik ✓	
+Galvantula ✓	
+Ferroseed ✓	
+Ferrothorn ✓	
+Klink X	
+Klang X	
+Klinklang X	
+Tynamo ✓	
+Eelektrik ✓	
+Eelektross ✓	 
+Elgyem X	
+Beheeyem X	
+Litwick ✓	
+Lampent ✓	
+Chandelure ✓	
+Axew ✓	
+Fraxure ✓	
+Haxorus	✓
+Cubchoo X	
+Beartic	X
+Cryogonal X	
+Shelmet	✓
+Accelgor ✓	
+Stunfisk X	
+Galarian Stunfisk X
+Mienfoo ✓	
+Mienshao ✓	
+Druddigon X	
+Golett ✓	
+Golurk ✓	
+Pawniard ✓	
+Bisharp ✓	
+Bouffalant X	
+Rufflet	✓
+Braviary ✓	
+Hisuian Braviary ✓
+Vullaby X	
+Mandibuzz X	
+Heatmor	X
+Durant X	
+Deino ✓	
+Zweilous ✓	
+Hydreigon ✓	
+Larvesta ✓	
+Volcarona ✓	
+Cobalion X	
+Terrakion X	
+Virizion X	
+Tornadus Incarnate Forme ✓ (Roamer)
+Tornadus Therian Forme X
+Thundurus Incarnate Forme ✓ (Roamer)
+Thundurus Therian Forme X
+Reshiram X	
+Zekrom X
+Landorus Incarnate Forme ✓ (Roamer)
+Landorus Therian Forme X
+Kyurem X
+Kyurem	White Kyurem X
+Kyurem	Black Kyurem X
+Keldeo	Ordinary Form X
+Keldeo	Resolute Form X
+Meloetta	Aria Forme X
+Meloetta	Pirouette Forme X
+Genesect X	
+Chespin ✓	
+Quilladin ✓	
+Chesnaught ✓	
+Fennekin ✓	
+Braixen ✓	 
+Delphox ✓	
+Froakie ✓	
+Frogadier ✓	
+Greninja ✓	
+Ash-Greninja X
+Bunnelby X	
+Diggersby X	
+Fletchling ✓	
+Fletchinder ✓	
+Talonflame ✓	
+Scatterbug ✓	
+Spewpa ✓	
+Vivillon ✓	
+Litleo X	
+Pyroar X	 
+Flabébé ✓	 
+Floette ✓	
+Florges ✓	
+Skiddo ✓	
+Gogoat ✓	
+Pancham ✓	
+Pangoro ✓	
+Furfrou X	
+Espurr ✓	
+Meowstic Male ✓
+Meowstic Female ✓
+Honedge ✓	
+Doublade ✓	
+Aegislash Shield Forme ✓
+Aegislash Blade Forme ✓
+Spritzee X	
+Aromatisse X	
+Swirlix	X
+Slurpuff X	
+Inkay X	
+Malamar X	
+Binacle ✓	
+Barbaracle ✓	
+Skrelp ✓	
+Dragalge ✓	
+Clauncher ✓	
+Clawitzer ✓	
+Helioptile ✓	
+Heliolisk ✓	
+Tyrunt ✓	
+Tyrantrum ✓	
+Amaura ✓	
+Aurorus ✓	
+Sylveon X	
+Hawlucha✓	
+Dedenne X	
+Carbink X	
+Goomy ✓	
+Sliggoo ✓	
+Hisuian Sliggoo ✓
+Goodra ✓	
+Hisuian Goodra ✓
+Klefki X	
+Phantump X	
+Trevenant X	
+Pumpkaboo	Average Size X
+Pumpkaboo	Small Size X
+Pumpkaboo	Large Size X
+Pumpkaboo	Super Size X
+Gourgeist	Average Size X
+Gourgeist	Small Size X
+Gourgeist	Large Size X
+Gourgeist	Super Size X
+Bergmite ✓	
+Avalugg ✓	
+Hisuian Avalugg ✓
+Noibat ✓	
+Noivern ✓	
+Xerneas X	
+Yveltal	X
+Zygarde	50% Forme X
+Zygarde	10% Forme X
+Zygarde	Complete Forme X
+Diancie X	
+Diancie	Mega Diancie X
+Hoopa	Hoopa Confined X
+Hoopa	Hoopa Unbound X
+Volcanion X	
+Rowlet ✓	
+Dartrix	✓ 
+Decidueye ✓	
+Hisuian Decidueye X
+Litten ✓	
+Torracat ✓	
+Incineroar ✓	
+Popplio ✓	
+Brionne ✓	
+Primarina ✓	
+Pikipek X	
+Trumbeak X	
+Toucannon X	
+Yungoos	X
+Gumshoos X	
+Grubbin ✓	
+Charjabug ✓	
+Vikavolt ✓	
+Crabrawler X	
+Crabominable X	
+Oricorio	Baile Style X
+Oricorio	Pom-Pom Style X
+Oricorio	Pa'u Style X
+Oricorio	Sensu Style X
+Cutiefly ✓	
+Ribombee ✓	
+Rockruff ✓	
+Rockruff	Own Tempo Rockruff X
+Lycanroc	Midday Form ✓
+Lycanroc	Midnight Form ✓
+Lycanroc	Dusk Form ✓
+Wishiwashi	Solo Form X
+Wishiwashi	School Form X
+Mareanie X	
+Toxapex	X
+Mudbray	✓
+Mudsdale ✓	
+Dewpider ✓	
+Araquanid ✓	
+Fomantis X	
+Lurantis X	
+Morelull X	
+Shiinotic X 	
+Salandit ✓	
+Salazzle ✓	
+Stufful	✓ 
+Bewear ✓	
+Bounsweet ✓	
+Steenee ✓	
+Tsareena ✓	
+Comfey X	
+Oranguru X	
+Passimian X	
+Wimpod ✓	
+Golisopod ✓	
+Sandygast X	
+Palossand X	
+Pyukumuku X	
+Type: Null X	
+Silvally X	
+Minior	Meteor Form X
+Minior	Core Form X
+Komala X	
+Turtonator ✓	
+Togedemaru ✓	
+Mimikyu ✓	
+Bruxish X	
+Drampa X 	
+Dhelmise ✓	
+Jangmo-o ✓	
+Hakamo-o ✓	
+Kommo-o	✓
+Tapu Koko X	
+Tapu Lele X	
+Tapu Bulu X	
+Tapu Fini X	
+Cosmog X	
+Cosmoem	X
+Solgaleo X	
+Lunala X	
+Nihilego X	
+Buzzwole X	
+Pheromosa X	
+Xurkitree X	
+Celesteela X	
+Kartana	 X
+Guzzlord X	
+Necrozma X	
+Necrozma	Dusk Mane Necrozma X
+Necrozma	Dawn Wings Necrozma X
+Necrozma	Ultra Necrozma X
+Magearna X	
+Marshadow ✓ (Game Corner)	
+Poipole	X
+Naganadel X	
+Stakataka X	
+Blacephalon X	
+Zeraora ✓ (Game Corner)	
+Meltan ✓ (Game Corner)
+Melmetal ✓ (Game Corner)
+Grookey	✓
+Thwackey ✓	
+Rillaboom ✓	
+Scorbunny ✓	
+Raboot ✓	
+Cinderace ✓	
+Sobble ✓	
+Drizzile ✓	
+Inteleon ✓	
+Skwovet	X
+Greedent X	
+Rookidee ✓	
+Corvisquire ✓	
+Corviknight ✓	
+Blipbug	X
+Dottler	X
+Orbeetle X	
+Nickit X	
+Thievul	X
+Gossifleur ✓	
+Eldegoss ✓	
+Wooloo X	
+Dubwool	X
+Chewtle ✓	
+Drednaw	✓
+Yamper ✓	
+Boltund	✓
+Rolycoly X	
+Carkol X	
+Coalossal X	
+Applin  X	
+Flapple	 X
+Appletun X	
+Silicobra X	
+Sandaconda X	
+Cramorant X	
+Arrokuda ✓	
+Barraskewda ✓	
+Toxel ✓	
+Toxtricity	Amped Form ✓
+Toxtricity	Low Key Form ✓
+Sizzlipede ✓	
+Centiskorch ✓	
+Clobbopus X	
+Grapploct X	
+Sinistea X	
+Polteageist X	
+Hatenna ✓	
+Hattrem	✓
+Hatterene ✓	
+Impidimp ✓	
+Morgrem	✓
+Grimmsnarl ✓	
+Obstagoon ✓	
+Perrserker ✓	
+Cursola ✓	
+Sirfetch'd ✓	
+Mr. Rime ✓	
+Runerigus ✓	
+Milcery	X
+Alcremie X	
+Falinks ✓	
+Pincurchin X	
+Snom X	
+Frosmoth X	
+Stonjourner X	
+Eiscue	Ice Face X
+Eiscue	Noice Face X
+Indeedee	Male X
+Indeedee	Female X
+Morpeko	Full Belly Mode X
+Morpeko	Hangry Mode X
+Cufant X	
+Copperajah X	
+Dracozolt X	
+Arctozolt X	
+Dracovish X	
+Arctovish X	
+Duraludon ✓	
+Dreepy ✓	
+Drakloak ✓	
+Dragapult ✓	
+Zacian	Hero of Many Battles X
+Zacian	Crowned Sword X
+Zamazenta	Hero of Many Battles X
+Zamazenta	Crowned Shield X
+Eternatus X	
+Eternatus	Eternamax X
+Kubfu ✓	
+Urshifu	Single Strike Style ✓
+Urshifu	Rapid Strike Style ✓
+Zarude ✓ (Game Corner)	
+Regieleki X	
+Regidrago X	
+Glastrier X	
+Spectrier X	
+Calyrex	X
+Calyrex	Ice Rider X
+Calyrex	Shadow Rider X
+Wyrdeer ✓	
+Kleavor ✓	
+Ursaluna ✓	
+Ursaluna Bloodmoon X
+Basculegion	Male ✓
+Basculegion	Female X
+Sneasler ✓	
+Overqwil ✓	
+Enamorus	Incarnate Forme ✓ (Roamer)
+Enamorus	Therian Forme X
+Sprigatito ✓	
+Floragato ✓	
+Meowscarada ✓	
+Fuecoco	✓
+Crocalor ✓	
+Skeledirge ✓ 	
+Quaxly ✓	
+Quaxwell ✓	 
+Quaquaval ✓	
+Lechonk	 X
+Oinkologne	Male X
+Oinkologne	Female X
+Tarountula X	
+Spidops X	
+Nymble X	
+Lokix X	
+Pawmi X	
+Pawmo X	
+Pawmot X	
+Tandemaus X	
+Maushold	Family of Four X
+Maushold	Family of Three X
+Fidough X	
+Dachsbun X	
+Smoliv ✓	
+Dolliv ✓	
+Arboliva ✓	
+Squawkabilly	Green Plumage X
+Squawkabilly	Blue Plumage X
+Squawkabilly	Yellow Plumage X
+Squawkabilly	White Plumage X
+Nacli ✓	
+Naclstack ✓	
+Garganacl ✓	
+Charcadet ✓	
+Armarouge ✓	
+Ceruledge ✓	
+Tadbulb	X
+Bellibolt X	
+Wattrel X	
+Kilowattrel X	
+Maschiff ✓	
+Mabosstiff ✓	 
+Shroodle X	
+Grafaiai X	
+Bramblin X	
+Brambleghast X	
+Toedscool ✓	
+Toedscruel ✓	
+Klawf ✓	
+Capsakid ✓	
+Scovillain ✓	
+Rellor X	
+Rabsca X	
+Flittle	X
+Espathra X	
+Tinkatink ✓	
+Tinkatuff ✓	
+Tinkaton ✓	
+Wiglett	✓
+Wugtrio	✓
+Bombirdier X	
+Finizen	X
+Palafin	Zero Form X
+Palafin	Hero Form X
+Varoom ✓ 	
+Revavroom ✓	
+Cyclizar ✓	
+Orthworm X	
+Glimmet	✓
+Glimmora ✓	
+Greavard ✓	
+Houndstone ✓	
+Flamigo ✓	
+Cetoddle ✓	
+Cetitan ✓	
+Veluza ✓	
+Dondozo	✓
+Tatsugiri	Curly Form X
+Tatsugiri	Droopy Form X
+Tatsugiri	Stretchy Form X
+Annihilape ✓	
+Clodsire ✓	
+Farigiraf ✓	
+Dudunsparce	Two-Segment Form ✓
+Dudunsparce	Three-Segment Form ✓
+Kingambit ✓	
+Great Tusk ✓ (ALL PARADOX MONS ARE IN LATE-GAME KANTO)	
+Scream Tail ✓	
+Brute Bonnet ✓	
+Flutter Mane ✓	
+Slither Wing ✓	
+Sandy Shocks ✓	
+Iron Treads ✓	
+Iron Bundle ✓	
+Iron Hands ✓	
+Iron Jugulis ✓	
+Iron Moth ✓	
+Iron Thorns ✓	
+Frigibax ✓	
+Arctibax ✓	
+Baxcalibur ✓	
+Gimmighoul	Chest Form X
+Gimmighoul	Roaming Form X
+Gholdengo X
+Wo-Chien X	
+Chien-Pao X	
+Ting-Lu	X
+Chi-Yu X	
+Roaring Moon ✓	
+Iron Valiant ✓	
+Koraidon X	
+Miraidon X	
+Walking Wake X	
+Iron Leaves X	
+Dipplin X	
+Poltchageist ✓	
+Sinistcha ✓	
+Okidogi	X
+Munkidori X	
+Fezandipiti X	
+Ogerpon	Teal Mask X
+Ogerpon	Wellspring Mask X
+Ogerpon	Hearthflame Mask X
+Ogerpon	Cornerstone Mask X
+Archaludon ✓	
+Hydrapple X	
+Gouging Fire X	
+Raging Bolt X	
+Iron Boulder X	
+Iron Crown X	
+Terapagos	Normal Form X
+Terapagos	Terastal Form X
+Terapagos	Stellar Form X
+Pecharunt X	

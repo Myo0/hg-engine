@@ -46,6 +46,10 @@ Lv.55: Giga Drain
 Ability: Overgrow
 Hidden Ability: Chlorophyll
 
+Mega Venusaur
+
+Ability: Thick Fat
+
 Lv.1: Giga Drain
 Lv.1: Ancient Power
 Lv.1: Tackle
@@ -112,6 +116,12 @@ Lv.55: Flare Blitz
 Ability: Blaze
 Hidden Ability: Solar Power
 
+Mega Charizard X
+Ability: Tough Claws
+
+Mega Charizard Y
+Ability: Solar Power (Player) / Drought (AI)
+
 Lv.1: Shadow Claw
 Lv.1: Hurricane
 Lv.1: Dragon Rush
@@ -126,11 +136,13 @@ Lv.16: Metal Claw
 Lv.20: Slash
 Lv.25: Flame Burst
 Lv.28: Dig
-Lv.33: Dragon Claw
+Lv.33: Dual Chop
 Lv.36: Air Slash
 Lv.41: Crunch
-Lv.47: Brick Break
+Lv.47: Dragon Claw
 Lv.52: Heat Wave
+Lv.57: Dual Wingbeat
+Lv.62: Flare Blitz
 
 
 7 - Squirtle
@@ -178,7 +190,12 @@ Lv.57: Water Spout
 Ability: Torrent
 Hidden Ability: Rain Dish
 
+Mega Blastoise
+Ability: Mega Launcher
+
 Lv.1: Water Spout
+Lv.1: Water Pulse
+Lv.1: Aura Sphere
 Lv.1: Mirror Coat
 Lv.1: Fake Out
 Lv.1: Muddy Water
@@ -262,7 +279,10 @@ Lv.7: Harden
 Ability: Swarm
 Hidden Ability: Sniper
 
-Lv.1: Fell Stinger
+Mega Beedrill
+Ability: Adaptability
+
+Lv.1: U-turn
 Lv.1: Knock Off
 Lv.1: Twineedle
 Lv.1: Fury Attack
@@ -319,6 +339,9 @@ Lv.45: Brave Bird
 18 - Pidgeot
 Abilities: Keen Eye(1)/Tangled Feet(2)
 Hidden Ability: Big Pecks
+
+Mega Pidgeot
+Ability: No Guard
 
 Lv.1: Roost
 Lv.1: Tackle
@@ -1630,6 +1653,9 @@ Lv.58: Dazzling Gleam
 Abilities: Synchronize(1) / Inner Focus(2)
 Hidden Ability: Magic Guard
 
+Mega Alakazam
+Ability: Trace
+
 Lv.1: Focus Blast
 Lv.1: Teleport
 Lv.16: Confusion
@@ -2028,6 +2054,9 @@ Lv.43: Ice Beam
 80.1 - Slowbro
 Abilities: Shell Armor(1) / Own Tempo(2)
 Hidden Ability: Regenerator
+
+Mega Slowbro
+Ability: Shell Armor
 
 Lv.1: Earthquake
 Lv.1: Tackle
@@ -2498,6 +2527,9 @@ Lv.49: Sludge Bomb
 94 - Gengar [Spell Tag 5%]
 Abilities: Cursed Body(1) / Levitate(2)
 
+Mega Gengar
+Ability: Shadow Tag
+
 Lv.1: Lick
 Lv.1: Confuse Ray
 Lv.1: Hypnosis
@@ -2540,6 +2572,9 @@ Lv.52: Head Smash
 208 - Steelix
 Abilities: Rock Head(1) / Sturdy(2)
 Hidden Ability: Sheer Force
+
+Mega Steelix
+Ability: Sheer Force
 
 Lv.1: Head Smash
 Lv.1: Tackle
@@ -2933,7 +2968,7 @@ Lv.59: Earthquake
 
 
 109 - Koffing [Smoke Ball 5%]
-Abilities: Levitate(1) / Neutralizing Gas(2)
+Ability: Levitate
 Hidden Ability: Stench
 Evolves at level 28.
 
@@ -2953,7 +2988,7 @@ Lv.46: Gunk Shot
 
 
 110 - Weezing [Smoke Ball 5%]
-Abilities: Levitate(1) / Neutralizing Gas(2)
+Ability: Levitate
 Hidden Ability: Stench
 
 Lv.1: Poison Gas
@@ -2974,7 +3009,7 @@ Lv.55: Gunk Shot
 
 
 110.1 - Galarian Weezing [Misty Seed 5%]
-Abilities: Levitate(1) / Neutralizing Gas(2)
+Ability: Levitate
 
 Lv.1: Poison Gas
 Lv.1: Tackle
@@ -3164,6 +3199,9 @@ Lv.57: Power Whip
 115 - Kangaskhan
 Abilities: Inner Focus(1) / Scrappy(2)
 Hidden Ability: Early Bird
+
+Mega Kangaskhan
+Ability: Parental Bond
 
 Lv.1: Reversal
 Lv.1: Pound
@@ -3435,6 +3473,9 @@ Lv.54: Acrobatics
 Abilities: Swarm(1) / Technician(2)
 Hidden Ability: Light Metal
 
+Mega Scizor
+Ability: Technician
+
 Lv.1: U-turn
 Lv.1: Quick Attack
 Lv.1: Fury Cutter
@@ -3641,6 +3682,9 @@ Lv.75: Fire Blast
 Abilities: Hyper Cutter(1) / Intimidate(2)
 Hidden Ability: Moxie
 
+Mega Pinsir
+Ability: Aerilate
+
 Lv.1: Stone Edge
 Lv.1: Vice Grip
 Lv.1: Fury Cutter
@@ -3690,6 +3734,9 @@ Lv.15: Flail
 130 - Gyarados
 Ability: Intimidate
 Hidden Ability: Moxie
+
+Mega Gyarados
+Ability: Mold Breaker
 
 Lv.1: Outrage
 Lv.1: Wave Crash
@@ -4072,6 +4119,9 @@ Lv.61: Stone Edge
 
 142 - Aerodactyl
 Abilities: Rock Head(1) / Unnerve(2)
+
+Mega Aerodactyl
+Ability: Tough Claws
 
 Lv.1: Roost
 Lv.1: Head Smash
@@ -4884,6 +4934,9 @@ Lv.44: Thunderbolt
 181 - Ampharos
 Abilities: Static(1) / Plus(2)
 
+Mega Ampharos
+Ability: Mold Breaker
+
 Lv.1: Fire Punch
 Lv.1: Volt Switch
 Lv.1: Thunder
@@ -5074,8 +5127,7 @@ Lv.41: Bounce
 
 
 424 - Ambipom
-Abilities: Technician(1) / Pickup(2)
-Hidden Ability: Skill Link
+Abilities: Technician(1) / Skill Link(2)
 
 Lv.1: Hammer Arm
 Lv.1: Acrobatics
@@ -5681,6 +5733,11 @@ Lv.50: Reversal
 Abilities: Swarm(1) / Guts(2)
 Hidden Ability: Moxie
 
+Mega Heracross
+Ability: Skill Link
+
+Lv.1: Bullet Seed
+Lv.1: Rock Blast
 Lv.1: Stone Edge
 Lv.1: Earthquake
 Lv.1: Counter
@@ -5720,7 +5777,7 @@ Lv.45: Icicle Crash
 
 
 461 - Weavile
-Abilities: Pressure(1) / Technician(2)
+Abilities: Inner Focus(1) / Technician(2)
 
 Lv.1: Shadow Claw
 Lv.1: Scratch
@@ -5762,7 +5819,7 @@ Lv.45: Close Combat
 
 
 903 - Sneasler
-Abilities: Poison Touch(1) / Unburden(2)
+Abilities: Inner Focus(1) / Poison Touch(2)
 Hidden Ability: Inner Focus
 
 Lv.1: Rock Slide
@@ -6147,6 +6204,9 @@ Lv.48: Flamethrower
 Abilities: Intimidate(1) / Flame Body(2)
 Hidden Ability: Unnerve
 
+Mega Houndoom
+Ability: Solar Power
+
 Lv.1: Overheat
 Lv.1: Solar Beam
 Lv.1: Ember
@@ -6382,6 +6442,9 @@ Lv.68: Stone Edge
 Ability: Intimidate
 Hidden Ability: Unnerve
 
+Mega Tyranitar
+Ability: Intimidate
+
 Lv.1: Outrage
 Lv.1: Body Press
 Lv.1: Tackle
@@ -6500,6 +6563,9 @@ Lv.49: Leaf Blade
 Ability: Overgrow
 Hidden Ability: Unburden
 
+Mega Sceptile
+Ability: Overgrow (Player) / Lightning Rod (AI)
+
 Lv.1: Leaf Storm
 Lv.1: Rock Slide
 Lv.1: Dragon Pulse
@@ -6567,6 +6633,9 @@ Lv.46: Sky Uppercut
 Ability: Blaze
 Hidden Ability: Speed Boost
 
+Mega Blaziken
+Ability: Blaze (Player) / Speed Boost (AI)
+
 Lv.1: Superpower
 Lv.1: Flare Blitz
 Lv.1: Scratch
@@ -6630,6 +6699,9 @@ Lv.48: Endeavor
 260 - Swampert
 Abilities: Torrent(1) / Swift Swim(2)
 Hidden Ability: Damp
+
+Mega Swampert
+Ability: Swift Swim
 
 Lv.1: Stone Edge
 Lv.1: Sludge Wave
@@ -7075,6 +7147,9 @@ Lv.41: Shadow Ball
 Abilities: Synchronize(1) / Trace(2)
 Hidden Ability: Telepathy
 
+Mega Gardevoir
+Ability: Pixilate
+
 Lv.1: Energy Ball
 Lv.1: Focus Blast
 Lv.1: Growl
@@ -7098,6 +7173,9 @@ Lv.60: Teleport
 475 - Gallade
 Abilities: Synchronize(1) / Sharpness(2)
 Hidden Ability: Justified
+
+Mega Gallade
+Ability: Inner Focus
 
 Lv.1: Shadow Sneak
 Lv.1: Stone Edge
@@ -7493,6 +7571,9 @@ Lv.43: Play Rough
 302 - Sableye
 Abilities: Prankster(1) / Analytic(2)
 
+Mega Sableye
+Ability: Magic Bounce
+
 Lv.1: Phantom Force
 Lv.1: Scratch
 Lv.4: Foresight
@@ -7514,6 +7595,9 @@ Lv.42: Foul Play
 
 303 - Mawile
 Abilities: Sheer Force(1) / Intimidate(2)
+
+Mega Mawile
+Ability: Huge Power
 
 Lv.1: Ice Punch
 Lv.1: Thunder Punch
@@ -7570,6 +7654,9 @@ Lv.57: Head Smash
 Abilities: Sturdy(1) / Rock Head(2)
 Hidden Ability: Heavy Metal
 
+Mega Aggron
+Ability: Filter
+
 Lv.1: Earthquake
 Lv.1: Outrage
 Lv.1: Metal Burst
@@ -7612,6 +7699,9 @@ Lv.55: Reversal
 308 - Medicham
 Ability: Pure Power
 Hidden Ability: Telepathy
+
+Mega Medicham
+Ability: Pure Power
 
 Lv.1: Reversal
 Lv.1: Axe Kick
@@ -7656,6 +7746,9 @@ Lv.41: Thunderbolt
 310 - Manectric
 Abilities: Static(1) / Intimidate(2)
 Hidden Ability: Minus
+
+Mega Manectric
+Ability: Intimidate
 
 Lv.1: Volt Switch
 Lv.1: Light Screen
@@ -7793,8 +7886,7 @@ Lv.45: Giga Drain
 
 
 407 - Roserade [Poison Barb 5%]
-Abilities: Natural Cure(1) / Poison Point(2)
-Hidden Ability: Technician
+Abilities: Natural Cure(1) / Technician(2)
 
 Lv.1: Weather Ball
 Lv.1: Shadow Ball
@@ -7874,6 +7966,9 @@ Lv.40: Liquidation
 Ability: Rough Skin
 Hidden Ability: Speed Boost
 
+Mega Sharpedo
+Ability: Strong Jaw
+
 Lv.1: Flip Turn
 Lv.1: Double-Edge
 Lv.1: Water Gun
@@ -7952,6 +8047,9 @@ Lv.45: Flamethrower
 Abilities: Oblivious(1) / Solid Rock(2)
 Hidden Ability: Anger Point
 
+Mega Camerupt
+Ability: Sheer Force
+
 Lv.1: Heavy Slam
 Lv.1: Stone Edge
 Lv.1: Tackle
@@ -7970,7 +8068,7 @@ Lv.66: Eruption
 
 
 324 - Torkoal [Charcoal 5%]
-Abilities: White Smoke(1) / Shell Armor(2)
+Ability: Shell Armor
 
 Lv.1: Sludge Bomb
 Lv.1: Eruption
@@ -8182,6 +8280,9 @@ Lv.44: Moonblast
 334 - Altaria
 Ability: Natural Cure
 Hidden Ability: Cloud Nine
+
+Mega Altaria
+Ability: Pixilate
 
 Lv.1: Hurricane
 Lv.1: Heat Wave
@@ -8505,7 +8606,7 @@ Lv.25: Bounce
 
 
 350 - Milotic
-Abilities: Swift Swim(1) / Marvel Scale(2)
+Ability: Marvel Scale
 Hidden Ability: Competitive
 
 Lv.1: Weather Ball
@@ -8544,8 +8645,7 @@ Lv.50: Hurricane
 
 
 352 - Kecleon [Persim Berry 5%]
-Ability: Color Change
-Hidden Ability: Protean
+Ability: Protean
 
 Lv.1: Rock Slide
 Lv.1: Recover
@@ -8589,6 +8689,9 @@ Lv.43: Double-Edge
 Abilities: Insomnia(1) / Rattled(2)
 Hidden Ability: Cursed Body
 
+Mega Banette
+Ability: Prankster
+
 Lv.1: Gunk Shot
 Lv.1: Will-O-Wisp
 Lv.1: Knock Off
@@ -8623,7 +8726,7 @@ Lv.42: Shadow Ball
 Lv.46: Phantom Force
 
 
-356 - Dusclops (+15 HP)
+356 - Dusclops
 Ability: Pressure
 Hidden Ability: Iron Fist
 Evolves at level 48.
@@ -8720,6 +8823,9 @@ Lv.37: Psychic
 Abilities: Pressure(1) / Super Luck(2)
 Hidden Ability: Justified
 
+Mega Absol
+Ability: Magic Bounce
+
 Lv.1: Play Rough
 Lv.1: Quick Attack
 Lv.7: Bite
@@ -8772,6 +8878,7 @@ Lv.42: Self Destruct
 Lv.49: Crunch
 Lv.53: Ice Beam
 Lv.55: Weather Ball
+Lv.59: Hyper Voice
 
 
 478 - Froslass
@@ -8978,6 +9085,9 @@ Lv.61: Flamethrower
 Ability: Intimidate
 Hidden Ability: Moxie
 
+Mega Salamence
+Ability: Aerilate
+
 Lv.1: Draco Meteor
 Lv.1: Outrage
 Lv.1: Ember
@@ -9027,6 +9137,9 @@ Lv.53: Double-Edge
 376 - Metagross
 Ability: Clear Body
 Hidden Ability: Light Metal
+
+Mega Metagross
+Ability: Tough Claws
 
 Lv.1: Explosion
 Lv.1: Stone Edge
@@ -9114,6 +9227,9 @@ Lv.78: Explosion
 380 - Latias
 Ability: Levitate
 
+Mega Latias
+Ability: Levitate
+
 Lv.1: Draco Meteor
 Lv.1: Earthquake
 Lv.1: Weather Ball
@@ -9132,6 +9248,9 @@ Lv.56: Thunderbolt
 
 
 381 - Latios
+Ability: Levitate
+
+Mega Latios
 Ability: Levitate
 
 Lv.1: Draco Meteor
@@ -9154,6 +9273,9 @@ Lv.56: Liquidation
 382 - Kyogre
 Ability: Drizzle
 
+Primal Kyogre
+Ability: Primordial Sea
+
 Lv.1: Water Pulse
 Lv.1: Ancient Power
 Lv.11: Aqua Tail
@@ -9170,6 +9292,9 @@ Lv.90: Water Spout
 383 - Groudon
 Ability: Drought
 
+Primal Groudon
+Ability: Desolate Land
+
 Lv.1: Mud Shot
 Lv.1: Ancient Power
 Lv.11: Earth Power
@@ -9185,6 +9310,9 @@ Lv.90: Eruption
 
 384 - Rayquaza
 Ability: Air Lock
+
+Mega Rayquaza
+Ability: Delta Stream
 
 Lv.1: Dragon Breath
 Lv.1: Ancient Power
@@ -9971,6 +10099,9 @@ Lv.43: Double-Edge
 Abilities: Cute Charm(1) / Limber(2)
 Hidden Ability: Scrappy
 
+Mega Lopunny
+Ability: Scrappy
+
 Lv.1: Close Combat
 Lv.1: Pound
 Lv.6: Quick Attack
@@ -10165,8 +10296,7 @@ Lv.46: Will-O-Wisp
 
 
 443 - Gible
-Ability: Sand Veil
-Hidden Ability: Rough Skin
+Ability: Rough Skin
 
 Lv.1: Sand Tomb
 Lv.1: Tackle
@@ -10184,8 +10314,7 @@ Lv.60: Dragon Rush
 
 
 444 - Gabite
-Ability: Sand Veil
-Hidden Ability: Rough Skin
+Ability: Rough Skin
 
 Lv.1: Sand Tomb
 Lv.1: Tackle
@@ -10205,8 +10334,10 @@ Lv.74: Dragon Rush
 
 
 445 - Garchomp
-Ability: Sand Veil
-Hidden Ability: Rough Skin
+Ability: Rough Skin
+
+Mega Garchomp
+Ability: Sand Force
 
 Lv.1: Earthquake
 Lv.1: Fire Fang
@@ -10250,6 +10381,9 @@ Lv.41: Cross Chop
 448 - Lucario
 Abilities: Steadfast(1) / Inner Focus(2)
 Hidden Ability: Justified
+
+Mega Lucario
+Ability: Inner Focus (Player) / Adaptability (AI)
 
 Lv.1: Drain Punch
 Lv.1: Earthquake
@@ -10483,6 +10617,9 @@ Lv.45: Ice Beam
 460 - Abomasnow
 Ability: Ice Body
 Hidden Ability: Thick Fat
+
+Mega Abomasnow
+Ability: Thick Fat
 
 Lv.1: Weather Ball
 Lv.1: Focus Blast
@@ -11575,6 +11712,9 @@ Lv.59: Earthquake
 Abilities: Healer(1) / Regenerator(2)
 Hidden Ability: Natural Cure
 
+Mega Audino
+Ability: Healer
+
 Lv.1: Follow Me
 Lv.1: Pound
 Lv.1: Growl
@@ -11594,8 +11734,7 @@ Lv.47: Encore
 
 
 532 - Timburr
-Abilities: Iron Fist(1) / Sheer Force(2)
-Hidden Ability: Guts
+Abilities: Iron Fist(1) / Guts(2)
 
 Lv.1: Pound
 Lv.3: Low Kick
@@ -11614,8 +11753,7 @@ Lv.58: Stone Edge
 
 
 533 - Gurdurr
-Abilities: Iron Fist(1) / Sheer Force(2)
-Hidden Ability: Guts
+Abilities: Iron Fist(1) / Guts(2)
 Evolves at level 42.
 
 Lv.1: Pound
@@ -11635,8 +11773,8 @@ Lv.64: Stone Edge
 
 
 534 - Conkeldurr
-Abilities: Iron Fist(1) / Sheer Force(2)
-Hidden Ability: Guts
+Abilities: Iron Fist(1) / Guts(2)
+
 
 Lv.1: Knock Off
 Lv.1: Pound
@@ -11942,7 +12080,6 @@ Lv.40: Leaf Storm
 Abilities: Chlorophyll(1) / Own Tempo(2)
 Hidden Ability: Leaf Guard
 
-Lv.1: Leaf Storm
 Lv.1: Helping Hand
 Lv.13: Stun Spore
 Lv.14: Sleep Powder
@@ -11953,6 +12090,7 @@ Lv.30: Teeter Dance
 Lv.34: Energy Ball
 Lv.38: Petal Dance
 Lv.43: Solar Beam
+Lv.47: Leaf Storm
 
 
 862 - Hisuian Lilligant
@@ -12182,7 +12320,6 @@ Abilities: Water Absorb(1) / Chlorophyll(2)
 
 Lv.1: Leaf Storm
 Lv.1: Solar Beam
-Lv.1: Spiky Shield
 Lv.1: Peck
 Lv.1: Absorb
 Lv.10: Mega Drain
@@ -12191,12 +12328,13 @@ Lv.18: Ingrain
 Lv.21: Spike Cannon
 Lv.26: Needle Arm
 Lv.30: Giga Drain
-Lv.33: Synthesis
-Lv.35: Sucker Punch
-Lv.37: Spikes
-Lv.39: Poison Jab
-Lv.43: Petal Dance
-Lv.47: Throat Chop
+Lv.32: Spiky Shield
+Lv.34: Synthesis
+Lv.36: Sucker Punch
+Lv.39: Spikes
+Lv.41: Poison Jab
+Lv.45: Petal Dance
+Lv.48: Throat Chop
 Lv.51: Wood Hammer
 
 
@@ -12316,7 +12454,7 @@ Lv.9: Disable
 Lv.10: Night Shade
 Lv.15: Will-O-Wisp
 Lv.20: Hex
-Lv.25: Trick
+Lv.25: Imprison
 Lv.31: Shadow Ball
 Lv.34: Dark Pulse
 Lv.37: Psychic
@@ -12334,7 +12472,7 @@ Lv.13: Disable
 Lv.16: Night Shade
 Lv.20: Will-O-Wisp
 Lv.25: Hex
-Lv.30: Trick
+Lv.30: Imprison
 Lv.34: Body Press
 Lv.38: Shadow Ball
 Lv.41: Dark Pulse
@@ -12354,7 +12492,7 @@ Lv.10: Night Shade
 Lv.15: Will-O-Wisp
 Lv.20: Hex
 Lv.24: Mud Shot
-Lv.27: Trick
+Lv.27: Imprison
 Lv.31: Shadow Ball
 Lv.34: Dark Pulse
 Lv.38: Earthquake
@@ -12374,7 +12512,7 @@ Lv.10: Night Shade
 Lv.15: Will-O-Wisp
 Lv.20: Hex
 Lv.24: Mud Shot
-Lv.27: Trick
+Lv.27: Imprison
 Lv.34: Shadow Punch
 Lv.39: Dark Pulse
 Lv.42: Phantom Force
@@ -12698,7 +12836,7 @@ Lv.29: Reflect
 Lv.32: Psyshock
 Lv.35: Ally Switch
 Lv.39: Psychic
-Lv.41: Teleport
+Lv.41: Future Sight
 
 
 578 - Duosion [Persim Berry 50%]
@@ -12718,7 +12856,7 @@ Lv.32: Reflect
 Lv.36: Psyshock
 Lv.39: Ally Switch
 Lv.43: Psychic
-Lv.46: Teleport
+Lv.46: Future Sight
 
 
 579 - Reuniclus [Persim Berry 50%]
@@ -12739,7 +12877,7 @@ Lv.36: Reflect
 Lv.40: Psyshock
 Lv.46: Ally Switch
 Lv.50: Psychic
-Lv.56: Teleport
+Lv.56: Future Sight
 
 
 580 - Ducklett
@@ -19335,7 +19473,7 @@ Lv.41: Hyper Voice
 Lv.45: Will-O-Wisp
 Lv.48: Heat Wave
 Lv.52: Shadow Ball
-Lv.70: Torch Song
+Lv.85: Torch Song
 
 
 912 - Quaxly
@@ -19377,7 +19515,6 @@ Lv.46: Feather Dance
 914 - Quaquaval
 Ability: Torrent
 
-Lv.1: Aqua Step
 Lv.1: Counter
 Lv.1: Double Hit
 Lv.1: Growl
@@ -19397,6 +19534,7 @@ Lv.47: Roost
 Lv.50: Feather Dance
 Lv.55: Close Combat
 Lv.61: Wave Crash
+Lv.85: Aqua Step
 
 
 915 - Lechonk
@@ -20106,7 +20244,7 @@ Lv.54: Power Whip
 
 
 950 - Klawf
-Abilities: Anger Shell(1) / Shell Armor(2)
+Ability: Shell Armor
 Hidden Ability: Regenerator
 
 Lv.1: Reversal
