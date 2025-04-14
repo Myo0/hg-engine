@@ -4213,7 +4213,7 @@ Lv.100: Sheer Cold
 
 
 144.1 - Galarian Articuno
-Ability: Competitive
+Ability: Trace
 
 Lv.1: Gust
 Lv.5: Confusion
@@ -4251,7 +4251,7 @@ Lv.100: Zap Cannon
 
 
 145.1 - Galarian Zapdos
-Ability: Defiant
+Ability: Inner Focus
 
 Lv.1: Peck
 Lv.5: Rock Smash
@@ -4290,7 +4290,7 @@ Lv.100: Overheat
 
 
 146.1 - Galarian Moltres
-Ability: Berserk
+Ability: Intimidate
 
 Lv.1: Peck
 Lv.5: Payback

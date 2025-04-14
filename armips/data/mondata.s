@@ -23864,7 +23864,7 @@ mondata SPECIES_ARTICUNO_GALARIAN, "Articuno"
     basefriendship 35
     growthrate GROWTH_SLOW
     egggroups EGG_GROUP_UNDISCOVERED, EGG_GROUP_UNDISCOVERED
-    abilities ABILITY_COMPETITIVE, ABILITY_NONE
+    abilities ABILITY_TRACE, ABILITY_NONE
     runchance 0
     colorflip BODY_COLOR_PURPLE, 0
 
@@ -23881,7 +23881,7 @@ mondata SPECIES_ZAPDOS_GALARIAN, "Zapdos"
     basefriendship 35
     growthrate GROWTH_SLOW
     egggroups EGG_GROUP_UNDISCOVERED, EGG_GROUP_UNDISCOVERED
-    abilities ABILITY_DEFIANT, ABILITY_NONE
+    abilities ABILITY_INNER_FOCUS, ABILITY_NONE
     runchance 0
     colorflip BODY_COLOR_YELLOW, 0
 
@@ -23898,7 +23898,7 @@ mondata SPECIES_MOLTRES_GALARIAN, "Moltres"
     basefriendship 35
     growthrate GROWTH_SLOW
     egggroups EGG_GROUP_UNDISCOVERED, EGG_GROUP_UNDISCOVERED
-    abilities ABILITY_BERSERK, ABILITY_NONE
+    abilities ABILITY_INTIMIDATE, ABILITY_NONE
     runchance 0
     colorflip BODY_COLOR_RED, 0
 
