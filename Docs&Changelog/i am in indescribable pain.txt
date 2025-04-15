@@ -1,0 +1,23 @@
+I have never had so much fucking trouble trying to do anything.
+
+I fucking hate GitHub.
+
+These are the script changes necessary for infinite repel within the portable PC. Commonscript 3 is overwritten by hg-e on compile time.
+
+Must implement these changes into the commonscript post build.
+
+Function 16:
+	TextPlayerName 0
+	Message 34
+	MultiTouchStandardText 1 1 0 1 0x8006
+	CheckFlag 2422
+	CallIf LESS Function#65
+	CheckFlag 2422
+	CallIf EQUAL Function#66
+	CreateMultiTouchBox 63 255 1
+	CreateMultiTouchBox 477 255 2
+	CheckFlag 2404
+	JumpIf EQUAL Function#67
+	CheckFlag 2404
+	JumpIf LESS Function#68
+Jump Function#68
