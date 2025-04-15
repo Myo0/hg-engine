@@ -60,11 +60,11 @@ void AITypeCalc(struct BattleStruct *sp, u32 move, u32 type, int atkAbility, int
     else
     {
         i = 0;
-        while (TypeEffectivenessTable[i][0] != 0xff)
+        while (TypeEffectivenessTable[i][0] != TYPE_ENDTABLE)
         {
-            if (TypeEffectivenessTable[i][0] == 0xfe)
+            if (TypeEffectivenessTable[i][0] == TYPE_FORESIGHT)
             {
-                if (atkAbility == ABILITY_SCRAPPY)
+                if (atkAbility == ABILITY_SCRAPPY || atkAbility == ABILITY_MINDS_EYE)
                 {
                     break;
                 }
@@ -74,6 +74,7 @@ void AITypeCalc(struct BattleStruct *sp, u32 move, u32 type, int atkAbility, int
                     continue;
                 }
             }
+            // TODO: Handle Primal Weathers so that the AI knows about them
             if (TypeEffectivenessTable[i][0] == typeLocal)
             {
                 if (TypeEffectivenessTable[i][1] == type1)

@@ -305,13 +305,8 @@ ldr r1, [sp,#(4+8*4)] // pushed 8 registers, sp+4 originally
 bl ClearBattleMonFlags
 pop {r0-r7}
 
-add r1, r7, r6
-strb r2, [r1, r0]
-add r0, #1
-strb r2, [r1, r0]
-
-ldr r3, =0x0224E9A0 | 1
-bx r3
+ldr r0, =0x0224E70E | 1
+bx r0
 
 .pool
 
@@ -591,3 +586,37 @@ ldr r0, =0x02220424 | 1
 bx r0
 
 .pool
+
+
+.global StruggleCheck_hook
+StruggleCheck_hook:
+ldr r5, =StruggleCheck_return_address
+mov r6, lr
+str r6, [r5]
+pop {r5-r6}
+bl StruggleCheck
+ldr r1, =StruggleCheck_return_address
+ldr r1, [r1]
+mov pc, r1
+
+.pool
+
+StruggleCheck_return_address:
+.word 0
+
+
+.global ov12_02251A28_hook
+ov12_02251A28_hook:
+ldr r5, =ov12_02251A28_return_address
+mov r6, lr
+str r6, [r5]
+pop {r5-r6}
+bl ov12_02251A28
+ldr r1, =ov12_02251A28_return_address
+ldr r1, [r1]
+mov pc, r1
+
+.pool
+
+ov12_02251A28_return_address:
+.word 0

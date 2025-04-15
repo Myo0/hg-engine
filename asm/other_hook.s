@@ -574,6 +574,7 @@ bx      r2
 
 .pool
 
+
 .global AllocFail_hook
 AllocFail_hook:
 // spC is always the place that called the AllocMemory function, sp10 now
@@ -583,9 +584,131 @@ bl AllocFail
 pop {pc}
 
 
+.global form_evo_hook_1
+form_evo_hook_1:
+// r0 is already pointer to party mon.  need to set species and form
+// r4+0x62 is target species
+add r2, r2, #0x62
+mov r1, r2
+mov r2, #0
+bl SetPartyPokemonParamsForEvoCutscene
+ldr r0, =0x0207722C | 1
+bx r0
+
+.pool
+
+
+.global form_evo_hook_2
+form_evo_hook_2:
+ldr r0, [r4, #0x28]
+add r2, r2, #0x62
+mov r1, r2
+mov r2, #1
+bl SetPartyPokemonParamsForEvoCutscene
+ldr r0, =0x02076426 | 1
+bx r0
+
+.pool
+
+
+.global BagApp_GetRepelStepCountAddr
+BagApp_GetRepelStepCountAddr:
+    push {r4, lr}
+    add r4, r1, #0
+    ldr r3, =0x021F992C | 1 // BagApp_GetSaveRoamers
+    bl bx_r3
+    ldr r3, =0x0202DB04 | 1 // SaveData_GetRepelPtr
+    bl bx_r3
+    strb r4, [r0]
+    bl Repel_SetCurrentType
+    pop {r4, pc}
+
+.pool
+
+
+.global CreateHeapInternal_hook
+CreateHeapInternal_hook:
+push {r0-r3}
+bl CreateHeapInternal
+pop {r0-r3}
+mov r4, r0
+mov r5, r1
+str r2, [sp]
+mov r7, r3
+ldr r0, =0x0201A934 | 1
+bx r0
+
+.pool
+
+
+.global DestroyHeap_hook
+DestroyHeap_hook:
+push {r0-r3}
+mov r0, r4
+bl DestroyHeap
+pop {r0-r3}
+ldr r3, [r1, #8]
+ldrb r2, [r2, r4]
+lsl r2, #2
+str r0, [r3, r2]
+ldr r2, =0x0201AA2C | 1
+bx r2
+
+.pool
+
+.global FreeToHeap_hook
+FreeToHeap_hook:
+bl FreeToHeap
+sub r0, r6, #4
+ldr r0, [r0]
+lsl r0, #0x18
+lsr r4, r0, #0x18
+ldr r0, =0x0201AB18|1
+bx r0
+
+.pool
+
+
+.global FreeToHeapExplicit_hook
+FreeToHeapExplicit_hook:
+push {r0-r3}
+mov r0, r4
+bl FreeToHeapExplicit
+pop {r0-r3}
+lsl r4, r5, #1
+ldr r0, [r0, #0xC]
+ldrh r0, [r0, r4]
+// skip GF_ASSERT fucking Whatever
+ldr r1, =0x0201ABD6|1
+bx r1
+
+.pool
+
+
+// when we get here, sp+0xC is the typical return address that called sys_AllocMemory{Lo}
+// r5 and r6 are on the stack now--so it's now sp+0x14
+.global AllocFromHeapInternal_hook
+AllocFromHeapInternal_hook:
+ldr r5, =AllocFromHeapInternal_return_address
+mov r6, lr
+str r6, [r5]
+pop {r5-r6}
+bl AllocFromHeapInternal
+ldr r1, =AllocFromHeapInternal_return_address
+ldr r1, [r1]
+mov pc, r1
+
+.pool
+
+.global AllocFromHeapInternal_return_address
+AllocFromHeapInternal_return_address:
+.word 0
+
+
 .data
 
 .align 2
+
 .global space_for_setmondata
 space_for_setmondata:
 .word 0
