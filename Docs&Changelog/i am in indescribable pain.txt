@@ -1,7 +1,3 @@
-I have never had so much fucking trouble trying to do anything.
-
-I fucking hate GitHub.
-
 These are the script changes necessary for infinite repel within the portable PC. Commonscript 3 is overwritten by hg-e on compile time.
 
 Must implement these changes into the commonscript post build.
