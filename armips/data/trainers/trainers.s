@@ -8782,8 +8782,8 @@ trainerdata 265, "Silver"
         // mon 0
         ivs 0
         abilityslot 0
-        level 5
-        pokemon SPECIES_CHIKORITA
+        level 7
+        pokemon SPECIES_ROWLET
         ballseal 0
     endparty
 
@@ -16704,8 +16704,8 @@ trainerdata 495, "Boy"
         // mon 0
         ivs 0
         abilityslot 0
-        level 5
-        pokemon SPECIES_CHIKORITA
+        level 7
+        pokemon SPECIES_ROWLET
         ballseal 0
     endparty
 
