@@ -685,7 +685,7 @@ trainerdata 11, "Heather"
         ivs 200
         abilityslot 0
         level 9
-        monwithform SPECIES_VULPIX_ALOLAN, 1
+        monwithform SPECIES_VULPIX, 1
         item ITEM_ORAN_BERRY
         move MOVE_POWDER_SNOW
         move MOVE_ICE_SHARD

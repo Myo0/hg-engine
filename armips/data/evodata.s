@@ -313,7 +313,7 @@ evodata SPECIES_ARBOK
 
 evodata SPECIES_PIKACHU
     evolution EVO_STONE, ITEM_THUNDER_STONE, SPECIES_RAICHU
-    evolution EVO_STONE, ITEM_DAWN_STONE, SPECIES_RAICHU_ALOLAN
+    evolutionwithform EVO_STONE, ITEM_DAWN_STONE, SPECIES_RAICHU, 1
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
@@ -11312,7 +11312,7 @@ terminateevodata
 evodata SPECIES_KUBFU
     //evolution EVO_LEVEL, 0, SPECIES_URSHIFU // implemented using the gracidea function
     evolution EVO_LEVEL_PID_HI, 50, SPECIES_URSHIFU
-    evolution EVO_LEVEL_PID_LO, 50, SPECIES_URSHIFU_RAPID_STRIKE
+    evolutionwithform EVO_LEVEL_PID_LO, 50, SPECIES_URSHIFU, 1
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
@@ -11708,7 +11708,7 @@ terminateevodata
 
 evodata SPECIES_TANDEMAUS
     evolution EVO_LEVEL_PID_HI, 25, SPECIES_MAUSHOLD
-    evolution EVO_LEVEL_PID_LO, 25, SPECIES_MAUSHOLD_FAMILY_OF_THREE
+    evolutionwithform EVO_LEVEL_PID_LO, 25, SPECIES_MAUSHOLD, 1
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE

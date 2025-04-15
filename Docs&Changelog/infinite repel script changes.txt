@@ -21,3 +21,33 @@ Function 16:
 	CheckFlag 2404
 	JumpIf LESS Function#68
 Jump Function#68
+
+
+Function 68:
+	CreateMultiTouchBox 66 255 3
+	CloseMultiTouch 
+	SetVarFromVariable 0x8008 0x8006
+	CompareVarValue 0x8008 0
+	JumpIf EQUAL Function#95
+	CompareVarValue 0x8008 1
+	JumpIf EQUAL Function#96
+	CompareVarValue 0x8008 2
+	JumpIf EQUAL Function#99
+Jump Function#98
+
+
+Function 99:
+	CompareVarValue 0x401F 0
+	JumpIf EQUAL Function#126
+	AdrsValueSet 0x202DB10 0
+	AdrsValueSet 0x202DB14 0
+	SetVar 0x401F 0
+	Message 120
+Jump Function#16
+
+Function 126:
+	AdrsValueSet 0x202DB10 1
+	AdrsValueSet 0x202DB14 1
+	SetVar 0x401F 1
+	Message 121
+Jump Function#16
