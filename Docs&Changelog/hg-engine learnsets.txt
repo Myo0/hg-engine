@@ -6727,6 +6727,7 @@ Lv.58: Earthquake
 261 - Poochyena
 Abilities: Rattled(1) / Quick Feet(2)
 Hidden Ability: Rattled
+Evolves at level 17.
 
 Lv.1: Tackle
 Lv.5: Sand Attack
@@ -16447,8 +16448,9 @@ Lv.40: Sticky Web
 744 - Rockruff
 Abilities: Keen Eye(1) / Vital Spirit(2); A rare form only has Own Tempo.
 Hidden Ability: Steadfast
-Evolves into Midday Form/Midnight form at level 25 if it's day/night respectively.
-Own Tempo form evolves into Dusk form at level 25 if it's at Dusk.
+Sun Stone -> Lycanroc
+Moon Stone -> Lycanroc-Midnight
+Dusk Stone -> Lycanroc-Dusk
 
 Lv.1: Tackle
 Lv.1: Leer

@@ -7,17 +7,17 @@ Charmeleon ✓
 Charizard ✓
 Mega Charizard X ✓
 Mega Charizard Y ✓
-Squirtle ✓
+Squirtle ✓ (Cherrygrove)
 Wartortle ✓
 Blastoise ✓
 Mega Blastoise ✓
-Weedle ✓
+Weedle ✓ (Cherrygrove)
 Kakuna ✓
 Beedrill ✓
 Mega Beedrill ✓
-Pidgey ✓
+Pidgey ✓ (Route 29, Route 30)
 Pidgeotto ✓
-Pidgeot ✓
+Pidgeot ✓ (Cherrygrove)
 Mega Pidgeot ✓
 Ekans ✓
 Arbok ✓
@@ -49,7 +49,7 @@ Psyduck	✓
 Golduck	✓
 Mankey ✓
 Primeape ✓
-Growlithe ✓
+Growlithe ✓ (Route 46)
 Hisuian Growlithe ✓
 Arcanine ✓
 Hisuian Arcanine ✓
@@ -62,6 +62,9 @@ Weepinbell ✓
 Victreebel ✓
 Tentacool ✓
 Tentacruel ✓
+Geodude ✓ (Route 46)
+Graveler ✓
+Golem ✓
 Alolan Geodude ✓
 Alolan Graveler ✓
 Alolan Golem ✓
@@ -77,7 +80,7 @@ Magneton ✓
 Galarian Farfetch'd ✓
 Alolan Grimer ✓
 Alolan Muk ✓
-Shellder ✓
+Shellder ✓ (New Bark)
 Cloyster ✓
 Gastly ✓
 Haunter ✓
@@ -85,10 +88,10 @@ Gengar ✓
 Mega Gengar ✓
 Onix ✓
 Krabby ✓
-Kingler ✓
+Kingler ✓ (New Bark)
 Hisuian Voltorb ✓
 Hisuian Electrode ✓
-Exeggcute ✓
+Exeggcute ✓ [New Bark, Route 29]
 Exeggutor ✓
 Alolan Exeggutor ✓
 Hitmonlee ✓
@@ -101,9 +104,9 @@ Rhydon ✓
 Kangaskhan ✓
 Mega Kangaskhan ✓
 Horsea ✓
-Seadra ✓
+Seadra ✓ (Cherrygrove)
 Staryu ✓
-Starmie ✓
+Starmie ✓ (New Bark)
 Galarian Mr. Mime ✓
 Scyther ✓
 Electabuzz ✓
@@ -111,10 +114,10 @@ Magmar ✓
 Pinsir ✓
 Mega Pinsir ✓
 Tauros ✓
-Magikarp ✓
+Magikarp ✓ (Cherrygrove)
 Gyarados ✓
 Mega Gyarados ✓
-Lapras ✓
+Lapras ✓ (New Bark)
 Porygon ✓
 Omanyte ✓
 Omastar	✓
@@ -138,30 +141,30 @@ Typhlosion ✓
 Totodile ✓
 Croconaw ✓
 Feraligatr ✓
-Ledyba ✓
+Ledyba ✓ (Cherrygrove)
 Ledian ✓
 Crobat ✓
-Chinchou ✓
-Lanturn ✓
+Chinchou ✓ (Cherrygrove)
+Lanturn ✓ (New Bark)
 Pichu ✓
 Cleffa ✓
 Togepi ✓
 Togetic ✓
-Natu ✓
+Natu ✓ (Route 46)
 Xatu ✓
-Mareep ✓
+Mareep ✓ (Route 29)
 Flaaffy ✓
 Ampharos ✓
 Mega Ampharos ✓
 Marill ✓
 Azumarill ✓
-Aipom ✓
+Aipom ✓ (Route 29)
 Yanma ✓
 Paldean Wooper ✓
 Murkrow ✓
 Slowking ✓
 Girafarig ✓
-Pineco ✓
+Pineco ✓ (Route 29)
 Forretress ✓
 Dunsparce ✓
 Gligar ✓
@@ -186,7 +189,7 @@ Galarian Corsola ✓
 Remoraid ✓
 Octillery ✓
 Skarmory ✓
-Houndour ✓
+Houndour ✓ (Route 46)
 Houndoom ✓
 Mega Houndoom ✓
 Kingdra	✓
@@ -216,9 +219,9 @@ Mudkip ✓
 Marshtomp ✓
 Swampert ✓
 Mega Swampert ✓
-Poochyena ✓
+Poochyena ✓ (Route 29, Route 46)
 Mightyena ✓
-Galarian Zigzagoon ✓
+Galarian Zigzagoon ✓ (Route 29)
 Galarian Linoone ✓
 Lotad ✓
 Lombre ✓
@@ -226,9 +229,9 @@ Ludicolo ✓
 Seedot ✓
 Nuzleaf ✓
 Shiftry ✓
-Taillow	✓
+Taillow	✓ (Route 29)
 Swellow	✓
-Ralts ✓
+Ralts ✓ (Route 29)
 Kirlia ✓
 Gardevoir ✓
 Mega Gardevoir ✓
@@ -240,7 +243,7 @@ Nincada ✓
 Ninjask ✓
 Makuhita ✓
 Hariyama ✓
-Azurill ✓
+Azurill ✓ (New Bark)
 Sableye ✓
 Mega Sableye ✓
 Mawile ✓
@@ -257,7 +260,7 @@ Manectric ✓
 Mega Manectric ✓
 Roselia ✓
 Carvanha ✓
-Sharpedo ✓
+Sharpedo ✓ (Cherrygrove)
 Mega Sharpedo ✓
 Wailmer ✓
 Wailord	✓
@@ -297,9 +300,9 @@ Snorunt ✓
 Glalie ✓
 Mega Glalie ✓
 Spheal ✓
-Sealeo ✓
+Sealeo ✓ (Cherrygrove)
 Walrein ✓
-Clamperl ✓
+Clamperl ✓ (New Bark)
 Huntail ✓
 Gorebyss ✓
 Relicanth ✓
@@ -320,10 +323,10 @@ Torterra ✓
 Chimchar ✓
 Monferno ✓
 Infernape ✓
-Piplup ✓
+Piplup ✓ (New Bark)
 Prinplup ✓
 Empoleon ✓
-Starly ✓
+Starly ✓ (Route 29)
 Staravia ✓
 Staraptor ✓
 Shinx ✓
@@ -356,7 +359,7 @@ Gabite ✓
 Garchomp ✓
 Mega Garchomp ✓
 Munchlax ✓
-Riolu ✓
+Riolu ✓ (Route 29)
 Lucario	✓
 Mega Lucario ✓
 Hippopotas ✓
@@ -396,12 +399,12 @@ Oshawott ✓
 Dewott ✓
 Samurott ✓
 Hisuian Samurott ✓
-Lillipup ✓
+Lillipup ✓ (Route 46)
 Herdier ✓
 Stoutland ✓
 Munna ✓
 Musharna ✓
-Roggenrola ✓
+Roggenrola ✓ (Route 46)
 Boldore	✓
 Gigalith ✓
 Drilbur	✓
@@ -411,13 +414,13 @@ Mega Audino ✓
 Timburr ✓
 Gurdurr ✓
 Conkeldurr ✓
-Tympole	✓
+Tympole	✓ (Cherrygrove)
 Palpitoad ✓
 Seismitoad ✓
 Venipede ✓
 Whirlipede ✓
 Scolipede ✓
-Petilil ✓
+Petilil ✓ (Route 46)
 Lilligant ✓
 Hisuian Lilligant ✓
 Basculin Red-Striped Form ✓
@@ -436,7 +439,7 @@ Sigilyph ✓
 Yamask ✓
 Galarian Yamask ✓
 Cofagrigus ✓
-Tirtouga ✓
+Tirtouga ✓ (New Bark)
 Carracosta ✓
 Archen ✓
 Archeops ✓
@@ -450,13 +453,13 @@ Reuniclus ✓
 Vanillite ✓
 Vanillish ✓
 Vanilluxe ✓
-Deerling ✓
+Deerling ✓ (Route 46)
 Sawsbuck ✓
 Karrablast ✓
 Escavalier ✓
 Frillish ✓
 Jellicent ✓
-Joltik ✓
+Joltik ✓ [New Bark, Cherrygrove]
 Galvantula ✓
 Ferroseed ✓
 Ferrothorn ✓
@@ -497,11 +500,11 @@ Delphox ✓
 Froakie ✓
 Frogadier ✓
 Greninja ✓
-Fletchling ✓
+Fletchling ✓ (Route 29, Route 46)
 Fletchinder ✓
 Talonflame ✓
-Scatterbug ✓
-Spewpa ✓
+Scatterbug ✓ (Route 30)
+Spewpa ✓ (Route 29, Route 46)
 Vivillon ✓
 Flabébé ✓
 Floette ✓
@@ -554,7 +557,7 @@ Charjabug ✓
 Vikavolt ✓
 Cutiefly ✓
 Ribombee ✓
-Rockruff ✓
+Rockruff ✓ (Route 29)
 Lycanroc	Midday Form ✓
 Lycanroc	Midnight Form ✓
 Lycanroc	Dusk Form ✓
@@ -591,7 +594,7 @@ Cinderace ✓
 Sobble ✓
 Drizzile ✓
 Inteleon ✓
-Rookidee ✓
+Rookidee ✓ (New Bark)
 Corvisquire ✓
 Corviknight ✓
 Gossifleur ✓
@@ -664,7 +667,7 @@ Tinkatink ✓
 Tinkatuff ✓
 Tinkaton ✓
 Wiglett	✓
-Wugtrio	✓
+Wugtrio	✓ (New Bark)
 Varoom ✓
 Revavroom ✓
 Cyclizar ✓

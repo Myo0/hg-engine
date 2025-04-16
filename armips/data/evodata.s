@@ -3144,7 +3144,7 @@ evodata SPECIES_SWAMPERT
     terminateevodata
 
 evodata SPECIES_POOCHYENA
-    evolution EVO_LEVEL, 18, SPECIES_MIGHTYENA
+    evolution EVO_LEVEL, 17, SPECIES_MIGHTYENA
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
@@ -9544,9 +9544,9 @@ evodata SPECIES_RIBOMBEE
 terminateevodata
 
 evodata SPECIES_ROCKRUFF
-    evolutionwithform EVO_LEVEL_DAY, 25, SPECIES_LYCANROC, 3
-    evolutionwithform EVO_LEVEL_NIGHT, 25, SPECIES_LYCANROC, 1
-    //evolutionwithform EVO_LEVEL_DUSK, 25, SPECIES_LYCANROC, 2 // only for own tempo rockruff
+    evolutionwithform EVO_STONE, ITEM_SUN_STONE, SPECIES_LYCANROC, 3
+    evolutionwithform EVO_STONE, ITEM_MOON_STONE, SPECIES_LYCANROC, 1
+    evolutionwithform EVO_STONE, ITEM_DUSK_STONE, SPECIES_LYCANROC, 2
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
