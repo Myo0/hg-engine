@@ -14276,11 +14276,11 @@ levelup SPECIES_TOGEDEMARU
     learnset MOVE_ROLLOUT, 9
     learnset MOVE_SPARK, 15
     learnset MOVE_FAKE_OUT, 19
-    learnset MOVE_BOUNCE, 24
+    learnset MOVE_EERIE_IMPULSE, 24
     learnset MOVE_SMART_STRIKE, 27
     learnset MOVE_IRON_HEAD, 30
     learnset MOVE_ZING_ZAP, 36
-    learnset MOVE_PIN_MISSILE, 38
+    learnset MOVE_SUPER_FANG, 38
     learnset MOVE_SPIKY_SHIELD, 42
     learnset MOVE_VOLT_TACKLE, 47
     terminatelearnset

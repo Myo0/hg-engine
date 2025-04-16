@@ -1797,18 +1797,18 @@ headbuttheader  72,   0,   0   // Cherrygrove City House
 
 headbuttheader  73,  27,   0   // Violet City
     // normal slots; probabilities: 50, 15, 15, 10, 5, 5
-    headbuttencounter SPECIES_HOOTHOOT, 2, 3
-    headbuttencounter SPECIES_PINECO, 10, 10
-    headbuttencounter SPECIES_PINECO, 10, 10
-    headbuttencounter SPECIES_EXEGGCUTE, 10, 10
-    headbuttencounter SPECIES_EXEGGCUTE, 10, 10
-    headbuttencounter SPECIES_EXEGGCUTE, 10, 10
-    headbuttencounter SPECIES_HOOTHOOT, 4, 5
-    headbuttencounter SPECIES_HOOTHOOT, 10, 10
-    headbuttencounter SPECIES_HOOTHOOT, 10, 10
-    headbuttencounter SPECIES_EXEGGCUTE, 10, 10
-    headbuttencounter SPECIES_EXEGGCUTE, 10, 10
-    headbuttencounter SPECIES_EXEGGCUTE, 10, 10
+    headbuttencounter SPECIES_ROOKIDEE, 9, 9
+    headbuttencounter SPECIES_JOLTIK, 9, 9
+    headbuttencounter SPECIES_JOLTIK, 9, 9
+    headbuttencounter SPECIES_EXEGGCUTE, 8, 8
+    headbuttencounter SPECIES_EXEGGCUTE, 8, 8
+    headbuttencounter SPECIES_PINSIR, 10, 10
+    headbuttencounter SPECIES_ROOKIDEE, 9, 9
+    headbuttencounter SPECIES_JOLTIK, 9, 9
+    headbuttencounter SPECIES_JOLTIK, 9, 9
+    headbuttencounter SPECIES_EXEGGCUTE, 8, 8
+    headbuttencounter SPECIES_EXEGGCUTE, 8, 8
+    headbuttencounter SPECIES_PINSIR, 10, 10
     // special slots
     headbuttencounter SPECIES_NONE, 0, 0
     headbuttencounter SPECIES_NONE, 0, 0

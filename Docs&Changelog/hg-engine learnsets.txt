@@ -17165,11 +17165,11 @@ Lv.5: Defense Curl
 Lv.9: Rollout
 Lv.15: Spark
 Lv.19: Fake Out
-Lv.24: Bounce
+Lv.24: Eerie Impulse
 Lv.27: Smart Strike
 Lv.30: Iron Head
 Lv.36: Zing Zap
-Lv.38: Pin Missile
+Lv.38: Super Fang
 Lv.42: Spiky Shield
 Lv.47: Volt Tackle
 
