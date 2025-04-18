@@ -15,6 +15,11 @@ encounterdata   0   // New Bark Town
 // replace "pokemon SPECIES_*" with "monwithform SPECIES_*, formid" to get the specific form of a pokemon.  if i want a galarian darumaka, i'd put "monwithform SPECIES_DARUMAKA, 1"
 // probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 
+// ENCOUNTER PERCENTS:
+// walklevels specifies the levels of each slot.  each slot gets its own individual level without a range, which is different compared to the encounter format of later entries.
+// replace "pokemon SPECIES_*" with "monwithform SPECIES_*, formid" to get the specific form of a pokemon.  if i want a galarian darumaka, i'd put "monwithform SPECIES_DARUMAKA, 1"
+// probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
+
 walkrate 0
 surfrate 15
 rocksmashrate 0
@@ -853,49 +858,49 @@ rocksmashrate 0
 oldrodrate 25
 goodrodrate 50
 superrodrate 75
-walklevels 6, 4, 6, 4, 6, 6, 6, 6, 6, 4, 6, 4
+walklevels 8, 8, 9, 7, 7, 7, 8, 8, 8, 8, 8, 8
 
 // morning encounter slots
-pokemon SPECIES_BELLSPROUT
-pokemon SPECIES_RATTATA
-pokemon SPECIES_BELLSPROUT
-pokemon SPECIES_RATTATA
 pokemon SPECIES_MAREEP
-pokemon SPECIES_MAREEP
-pokemon SPECIES_HOPPIP
-pokemon SPECIES_HOPPIP
-pokemon SPECIES_RATTATA
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_RATTATA
-pokemon SPECIES_ZUBAT
+pokemon SPECIES_LILLIPUP
+monwithform SPECIES_WOOPER, 1
+pokemon SPECIES_STARLY
+pokemon SPECIES_SEEDOT
+pokemon SPECIES_TOGEDEMARU
+pokemon SPECIES_CROAGUNK
+pokemon SPECIES_CROAGUNK
+pokemon SPECIES_MACHOP
+pokemon SPECIES_MACHOP 
+pokemon SPECIES_EXEGGCUTE
+pokemon SPECIES_EXEGGCUTE
 
 // day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
-pokemon SPECIES_BELLSPROUT
-pokemon SPECIES_RATTATA
-pokemon SPECIES_BELLSPROUT
-pokemon SPECIES_RATTATA
 pokemon SPECIES_MAREEP
-pokemon SPECIES_MAREEP
-pokemon SPECIES_HOPPIP
-pokemon SPECIES_HOPPIP
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
+pokemon SPECIES_LILLIPUP
+monwithform SPECIES_WOOPER, 1
+pokemon SPECIES_STARLY
+pokemon SPECIES_SEEDOT
+pokemon SPECIES_TOGEDEMARU
+pokemon SPECIES_CROAGUNK
+pokemon SPECIES_CROAGUNK
+pokemon SPECIES_MACHOP
+pokemon SPECIES_MACHOP 
+pokemon SPECIES_EXEGGCUTE
+pokemon SPECIES_EXEGGCUTE
 
 // night encounter slots
-pokemon SPECIES_WOOPER
-pokemon SPECIES_RATTATA
-pokemon SPECIES_WOOPER
-pokemon SPECIES_RATTATA
-pokemon SPECIES_BELLSPROUT
-pokemon SPECIES_BELLSPROUT
 pokemon SPECIES_MAREEP
-pokemon SPECIES_MAREEP
-pokemon SPECIES_WOOPER
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_WOOPER
-pokemon SPECIES_ZUBAT
+pokemon SPECIES_LILLIPUP
+monwithform SPECIES_WOOPER, 1
+pokemon SPECIES_STARLY
+pokemon SPECIES_SEEDOT
+pokemon SPECIES_TOGEDEMARU
+pokemon SPECIES_CROAGUNK
+pokemon SPECIES_CROAGUNK
+pokemon SPECIES_MACHOP
+pokemon SPECIES_MACHOP 
+pokemon SPECIES_EXEGGCUTE
+pokemon SPECIES_EXEGGCUTE
 
 // hoenn encounter slots
 pokemon SPECIES_WHISMUR

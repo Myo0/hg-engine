@@ -70,13 +70,53 @@ int UNUSED SwitchInAbilityCheck(void *bw, struct BattleStruct *sp)
                             scriptnum = SUB_SEQ_OVERWORLD_FOG;
                             ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
                             break;
-                        case WEATHER_SYS_HIGH_SUN:
+                        case 25:
                             scriptnum = SUB_SEQ_OVERWORLD_SUN;
                             ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
                             break;
-                        case WEATHER_SYS_TRICK_ROOM:
+                        case 24:
                             scriptnum = SUB_SEQ_OVERWORLD_TRICK_ROOM;
                             ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                            break;
+                        case 16:
+                            sp->current_move_index = MOVE_GRASSY_TERRAIN; // simulate grassy terrain move
+                            ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                            scriptnum = SUB_SEQ_CREATE_TERRAIN_OVERLAY;
+                            break;
+                        case 17:
+                            sp->current_move_index = MOVE_ELECTRIC_TERRAIN; // simulate electric terrain move
+                            ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                            scriptnum = SUB_SEQ_CREATE_TERRAIN_OVERLAY;
+                            break;
+                        case 18:
+                            sp->current_move_index = MOVE_PSYCHIC_TERRAIN; // simulate psychic terrain move
+                            ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                            scriptnum = SUB_SEQ_CREATE_TERRAIN_OVERLAY;
+                            break;
+                        case 19:
+                            sp->current_move_index = MOVE_MISTY_TERRAIN; // simulate misty terrain move
+                            ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                            scriptnum = SUB_SEQ_CREATE_TERRAIN_OVERLAY;
+                            break;
+                        case 20:
+                            sp->tailwindCount[1] = 255;
+                            scriptnum = SUB_SEQ_OVERWORLD_TAILWIND;
+                            ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                            break;
+                        case 21:
+                            sp->current_move_index = MOVE_ELECTRIC_TERRAIN;
+                            ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                            scriptnum = SUB_SEQ_OVERWORLD_RAIN_TERRAIN;
+                            break;
+                        case 22:
+                            sp->current_move_index = MOVE_PSYCHIC_TERRAIN;
+                            ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                            scriptnum = SUB_SEQ_OVERWORLD_SNOW_TERRAIN;
+                            break;
+                        case 23:
+                            sp->current_move_index = MOVE_GRASSY_TERRAIN;
+                            ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                            scriptnum = SUB_SEQ_OVERWORLD_SUN_TERRAIN;
                             break;
                     }
                     if (ret == SWITCH_IN_CHECK_MOVE_SCRIPT) {

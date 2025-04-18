@@ -143,7 +143,7 @@ void ServerFieldConditionCheck(void *bw, struct BattleStruct *sp) {
                 #endif
 
                 if (sp->field_condition & WEATHER_RAIN) {
-                    if (--sp->fcc.weather_count == 0) {
+                    if (--sp->fcc.weather_count == 50) {
                         LoadBattleSubSeqScript(sp, ARC_BATTLE_SUB_SEQ, SUB_SEQ_RAIN_END);
                         sp->next_server_seq_no = sp->server_seq_no;
                         sp->server_seq_no = 22;
@@ -153,7 +153,7 @@ void ServerFieldConditionCheck(void *bw, struct BattleStruct *sp) {
                 }
 
                 if (sp->field_condition & WEATHER_SANDSTORM) {
-                    if (--sp->fcc.weather_count == 0) {
+                    if (--sp->fcc.weather_count == 50) {
                         LoadBattleSubSeqScript(sp, ARC_BATTLE_SUB_SEQ, SUB_SEQ_SANDSTORM_END);
                         sp->next_server_seq_no = sp->server_seq_no;
                         sp->server_seq_no = 22;
@@ -163,7 +163,7 @@ void ServerFieldConditionCheck(void *bw, struct BattleStruct *sp) {
                 }
 
                 if (sp->field_condition & WEATHER_SUNNY) {
-                    if (--sp->fcc.weather_count == 0) {
+                    if (--sp->fcc.weather_count == 50) {
                         LoadBattleSubSeqScript(sp, ARC_BATTLE_SUB_SEQ, SUB_SEQ_SUN_END);
                         sp->next_server_seq_no = sp->server_seq_no;
                         sp->server_seq_no = 22;
@@ -173,7 +173,7 @@ void ServerFieldConditionCheck(void *bw, struct BattleStruct *sp) {
                 }
 
                 if (sp->field_condition & WEATHER_HAIL) {
-                    if (--sp->fcc.weather_count == 0) {
+                    if (--sp->fcc.weather_count == 50) {
                         LoadBattleSubSeqScript(sp, ARC_BATTLE_SUB_SEQ, SUB_SEQ_HAIL_END);
                         sp->next_server_seq_no = sp->server_seq_no;
                         sp->server_seq_no = 22;
@@ -183,7 +183,7 @@ void ServerFieldConditionCheck(void *bw, struct BattleStruct *sp) {
                 }
 
                 if (sp->field_condition & WEATHER_SNOW) {
-                    if (--sp->fcc.weather_count == 0) {
+                    if (--sp->fcc.weather_count == 50) {
                         LoadBattleSubSeqScript(sp, ARC_BATTLE_SUB_SEQ, SUB_SEQ_SNOW_END);
                         sp->next_server_seq_no = sp->server_seq_no;
                         sp->server_seq_no = 22;

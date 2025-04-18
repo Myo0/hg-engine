@@ -1111,11 +1111,11 @@ trainerdata 20, "Falkner"
 
     party 20
         // mon 0
-        ivs 200
+                ivs 200
         abilityslot 0
-        level 15
+        level 16
         pokemon SPECIES_CHATOT
-        item ITEM_LUM_BERRY
+        item ITEM_WISE_GLASSES
         move MOVE_AIR_CUTTER
         move MOVE_ROOST
         move MOVE_SING
@@ -1128,7 +1128,6 @@ trainerdata 20, "Falkner"
         shinylock 0
         ballseal 0
 
-        // mon 1
         ivs 200
         abilityslot 0
         level 16
@@ -1139,58 +1138,58 @@ trainerdata 20, "Falkner"
         move MOVE_MEAN_LOOK
         move MOVE_THUNDER_WAVE
         ability ABILITY_PRANKSTER
-        ball ITEM_MOON_BALL
+        ball ITEM_POKE_BALL
         setivs 31, 31, 31, 31, 31, 31
         setevs 0, 0, 0, 0, 0, 0
         nature NATURE_JOLLY
         shinylock 0
         ballseal 0
 
-        ivs 200
-        abilityslot 0
-        level 15
-        pokemon SPECIES_CORVISQUIRE
-        item ITEM_EXPERT_BELT
-        move MOVE_PLUCK
-        move MOVE_SAND_ATTACK
-        move MOVE_TAKE_DOWN
-        move MOVE_REVERSAL
-        ability ABILITY_UNNERVE
-        ball ITEM_HEAVY_BALL
-        setivs 31, 31, 31, 31, 31, 31
-        setevs 0, 0, 0, 0, 0, 0
-        nature NATURE_JOLLY
-        shinylock 0
-        ballseal 0
-    
         ivs 200
         abilityslot 0
         level 16
-        pokemon SPECIES_FARFETCHD
-        item ITEM_LEEK
-        move MOVE_PLUCK
-        move MOVE_STEEL_WING
-        move MOVE_BRUTAL_SWING
-        move MOVE_SWORDS_DANCE
-        ability ABILITY_DEFIANT
+        pokemon SPECIES_GLIGAR
+        item ITEM_SOFT_SAND
+        move MOVE_BULLDOZE
+        move MOVE_AERIAL_ACE
+        move MOVE_BRICK_BREAK
+        move MOVE_QUICK_ATTACK
+        ability ABILITY_HYPER_CUTTER
         ball ITEM_ULTRA_BALL
         setivs 31, 31, 31, 31, 31, 31
         setevs 0, 0, 0, 0, 0, 0
-        nature NATURE_JOLLY
+        nature NATURE_ADAMANT
         shinylock 0
         ballseal 0
 
         ivs 200
         abilityslot 0
-        level 15
+        level 16
+        pokemon SPECIES_TROPIUS
+        item ITEM_SALAC_BERRY
+        move MOVE_MAGICAL_LEAF
+        move MOVE_AERIAL_ACE
+        move MOVE_HEADBUTT
+        move MOVE_SYNTHESIS
+        ability ABILITY_HARVEST
+        ball ITEM_SAFARI_BALL
+        setivs 31, 31, 31, 31, 31, 31
+        setevs 0, 0, 0, 0, 0, 0
+        nature NATURE_NAIVE
+        shinylock 0
+        ballseal 0
+
+        ivs 200
+        abilityslot 0
+        level 16
         pokemon SPECIES_EMOLGA
-        item ITEM_LUM_BERRY
+        item ITEM_ROCKY_HELMET
         move MOVE_SHOCK_WAVE
         move MOVE_AIR_CUTTER
-        move MOVE_ENCORE
+        move MOVE_U_TURN
         move MOVE_THUNDER_WAVE
         ability ABILITY_STATIC
-        ball ITEM_PARK_BALL
+        ball ITEM_ULTRA_BALL
         setivs 31, 31, 31, 31, 31, 31
         setevs 0, 0, 0, 0, 0, 0
         nature NATURE_MODEST
@@ -12953,7 +12952,7 @@ trainerdata 290, "Li"
         // mon 1
         ivs 200
         abilityslot 0
-        level 11
+        level 12
         monwithform SPECIES_GROWLITHE, 1
         item ITEM_PASSHO_BERRY
         move MOVE_FLAME_WHEEL
@@ -19577,8 +19576,8 @@ trainerdata 486, "Proton"
         pokemon SPECIES_COMBUSKEN
         item ITEM_SITRUS_BERRY
         move MOVE_BRICK_BREAK
-        move MOVE_FLAME_WHEEL
-        move MOVE_AERIAL_ACE
+        move MOVE_FIRE_PUNCH
+        move MOVE_THUNDER_PUNCH
         move MOVE_BULK_UP
         ability ABILITY_SPEED_BOOST
         ball ITEM_SPORT_BALL
@@ -19592,7 +19591,7 @@ trainerdata 486, "Proton"
         level 25
         pokemon SPECIES_WEEZING
         item ITEM_LUM_BERRY
-        move MOVE_SLUDGE
+        move MOVE_SLUDGE_BOMB
         move MOVE_ASSURANCE
         move MOVE_WILL_O_WISP
         move MOVE_GYRO_BALL
@@ -19600,7 +19599,7 @@ trainerdata 486, "Proton"
         ball ITEM_SPORT_BALL
         setivs 31, 31, 31, 31, 31, 31
         setevs 0, 0, 0, 0, 0, 0
-        nature NATURE_BASHFUL
+        nature NATURE_MILD
         ballseal 0
     endparty
 

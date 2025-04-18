@@ -2539,7 +2539,7 @@ BOOL btl_scr_cmd_EC_updateterrainoverlay(void *bw UNUSED, struct BattleStruct *s
         if (sp->terrainOverlay.type != TERRAIN_NONE) {
             item = GetBattleMonItem(sp, sp->attack_client);
             itemPower = BattleItemDataGet(sp, item, 2);
-            sp->terrainOverlay.numberOfTurnsLeft = 100;
+            sp->terrainOverlay.numberOfTurnsLeft = 99;
             if (item == ITEM_TERRAIN_EXTENDER) {
                 sp->terrainOverlay.numberOfTurnsLeft += itemPower;
             }
