@@ -1,0 +1,711 @@
+Bulbasaur ✓
+Ivysaur ✓
+Venusaur ✓
+Mega Venusaur ✓
+Charmander ✓
+Charmeleon ✓
+Charizard ✓
+Mega Charizard X ✓
+Mega Charizard Y ✓
+Squirtle ✓ (Cherrygrove)
+Wartortle ✓
+Blastoise ✓
+Mega Blastoise ✓
+Weedle ✓ (Cherrygrove)
+Kakuna ✓
+Beedrill ✓
+Mega Beedrill ✓
+Pidgey ✓ (Route 29, Route 30)
+Pidgeotto ✓
+Pidgeot ✓ (Cherrygrove)
+Mega Pidgeot ✓
+Ekans ✓
+Arbok ✓
+Pikachu	✓
+Raichu ✓
+Alolan Raichu ✓
+Alolan Sandshrew ✓
+Alolan Sandslash ✓
+Nidoran♀ ✓
+Nidorina ✓
+Nidoqueen ✓
+Nidoran♂ ✓
+Nidorino ✓
+Nidoking ✓
+Clefairy ✓
+Clefable ✓
+Vulpix ✓
+Alolan Vulpix ✓
+Ninetales ✓
+Alolan Ninetales ✓
+Zubat ✓ (Route 30)
+Golbat ✓
+Paras ✓
+Parasect ✓
+Alolan Diglett ✓
+Alolan Dugtrio ✓
+Galarian Meowth ✓
+Psyduck	✓ (Route 31)
+Golduck	✓
+Mankey ✓
+Primeape ✓
+Growlithe ✓ (Route 46)
+Hisuian Growlithe ✓
+Arcanine ✓
+Hisuian Arcanine ✓
+Abra ✓ (Route 31)
+Kadabra ✓
+Alakazam ✓
+Mega Alakazam ✓
+Machop ✓
+Machoke ✓
+Machamp ✓
+Bellsprout ✓ (Route 31)
+Weepinbell ✓
+Victreebel ✓
+Tentacool ✓
+Tentacruel ✓
+Geodude ✓ (Route 46, Route 31)
+Graveler ✓
+Golem ✓
+Alolan Geodude ✓
+Alolan Graveler ✓
+Alolan Golem ✓
+Ponyta ✓
+Galarian Ponyta ✓
+Rapidash ✓
+Galarian Rapidash ✓
+Slowpoke ✓
+Slowbro	✓
+Mega Slowbro ✓
+Magnemite ✓
+Magneton ✓
+Galarian Farfetch'd ✓
+Alolan Grimer ✓
+Alolan Muk ✓
+Shellder ✓ (New Bark)
+Cloyster ✓
+Gastly ✓
+Haunter ✓
+Gengar ✓
+Mega Gengar ✓
+Onix ✓
+Krabby ✓ (Route 30)
+Kingler ✓ (New Bark)
+Hisuian Voltorb ✓
+Hisuian Electrode ✓
+Exeggcute ✓ [New Bark, Route 29]
+Exeggutor ✓
+Alolan Exeggutor ✓
+Hitmonlee ✓
+Hitmonchan ✓
+Koffing ✓
+Weezing ✓
+Galarian Weezing ✓
+Rhyhorn ✓
+Rhydon ✓
+Kangaskhan ✓
+Mega Kangaskhan ✓
+Horsea ✓
+Seadra ✓ (Cherrygrove)
+Staryu ✓
+Starmie ✓ (New Bark)
+Galarian Mr. Mime ✓
+Scyther ✓
+Electabuzz ✓
+Magmar ✓
+Pinsir ✓
+Mega Pinsir ✓
+Tauros ✓
+Magikarp ✓ (Cherrygrove)
+Gyarados ✓
+Mega Gyarados ✓
+Lapras ✓ (New Bark)
+Porygon ✓
+Omanyte ✓
+Omastar	✓
+Kabuto ✓
+Kabutops ✓
+Aerodactyl ✓
+Mega Aerodactyl ✓
+Snorlax	✓
+Galarian Articuno ✓
+Galarian Zapdos ✓
+Galarian Moltres ✓
+Dratini ✓
+Dragonair ✓
+Dragonite ✓
+Chikorita ✓ (Route 30)
+Bayleef ✓
+Meganium ✓
+Cyndaquil ✓
+Quilava ✓
+Typhlosion ✓
+Totodile ✓
+Croconaw ✓
+Feraligatr ✓
+Ledyba ✓ (Cherrygrove)
+Ledian ✓
+Crobat ✓
+Chinchou ✓ (Cherrygrove, Route 31)
+Lanturn ✓ (New Bark)
+Pichu ✓
+Cleffa ✓
+Togepi ✓
+Togetic ✓
+Natu ✓ (Route 46)
+Xatu ✓
+Mareep ✓ (Route 29)
+Flaaffy ✓
+Ampharos ✓
+Mega Ampharos ✓
+Marill ✓
+Azumarill ✓
+Aipom ✓ (Route 29)
+Yanma ✓ (Route 30)
+Paldean Wooper ✓
+Murkrow ✓
+Slowking ✓
+Girafarig ✓
+Pineco ✓ (Route 29)
+Forretress ✓
+Dunsparce ✓
+Gligar ✓
+Steelix ✓
+Mega Steelix ✓
+Snubbull ✓
+Granbull ✓
+Hisuian Qwilfish ✓
+Scizor ✓
+Mega Scizor ✓
+Heracross ✓
+Mega Heracross ✓
+Sneasel ✓
+Hisuian Sneasel ✓
+Teddiursa ✓
+Ursaring ✓
+Slugma ✓
+Magcargo ✓
+Swinub ✓
+Piloswine ✓
+Galarian Corsola ✓
+Remoraid ✓
+Octillery ✓
+Skarmory ✓
+Houndour ✓ (Route 46)
+Houndoom ✓
+Mega Houndoom ✓
+Kingdra	✓
+Phanpy ✓
+Donphan ✓
+Porygon2 ✓
+Stantler ✓
+Tyrogue ✓
+Hitmontop ✓
+Elekid ✓
+Magby ✓
+Miltank ✓
+Larvitar ✓
+Pupitar ✓
+Tyranitar ✓
+Mega Tyranitar ✓
+Celebi ✓ (Game Corner Post Elite 4)
+Treecko ✓
+Grovyle ✓
+Sceptile ✓
+Mega Sceptile ✓
+Torchic ✓
+Combusken ✓
+Blaziken ✓
+Mega Blaziken ✓
+Mudkip ✓
+Marshtomp ✓
+Swampert ✓
+Mega Swampert ✓
+Poochyena ✓ (Route 29, Route 46, Route 31)
+Mightyena ✓
+Galarian Zigzagoon ✓ (Route 29)
+Galarian Linoone ✓
+Lotad ✓ (Route 31)
+Lombre ✓
+Ludicolo ✓
+Seedot ✓
+Nuzleaf ✓
+Shiftry ✓
+Taillow	✓ (Route 29)
+Swellow	✓
+Ralts ✓ (Route 29)
+Kirlia ✓
+Gardevoir ✓
+Mega Gardevoir ✓
+Surskit ✓ (Route 30)
+Masquerain ✓
+Shroomish ✓ (Route 31)
+Breloom ✓
+Nincada ✓
+Ninjask ✓
+Makuhita ✓
+Hariyama ✓
+Azurill ✓ (New Bark)
+Sableye ✓
+Mega Sableye ✓
+Mawile ✓
+Mega Mawile ✓
+Aron ✓ (Route 31)
+Lairon ✓
+Aggron ✓
+Mega Aggron ✓
+Meditite ✓
+Medicham ✓
+Mega Medicham ✓
+Electrike ✓
+Manectric ✓
+Mega Manectric ✓
+Roselia ✓
+Carvanha ✓ (Route 30)
+Sharpedo ✓ (Cherrygrove, Route 30)
+Mega Sharpedo ✓
+Wailmer ✓
+Wailord	✓
+Numel ✓
+Camerupt ✓
+Mega Camerupt ✓
+Torkoal	✓
+Trapinch ✓
+Vibrava ✓
+Flygon ✓
+Cacnea ✓
+Cacturne ✓
+Swablu ✓
+Altaria	✓
+Mega Altaria ✓
+Barboach ✓ (Route 30)
+Whiscash ✓
+Corphish ✓
+Crawdaunt ✓
+Baltoy ✓
+Claydol ✓
+Lileep ✓
+Cradily ✓
+Anorith ✓
+Armaldo ✓
+Feebas ✓
+Milotic ✓
+Kecleon ✓
+Shuppet ✓
+Banette ✓
+Mega Banette ✓
+Duskull ✓
+Dusclops ✓
+Absol ✓
+Mega Absol ✓
+Snorunt ✓
+Glalie ✓
+Mega Glalie ✓
+Spheal ✓
+Sealeo ✓ (Cherrygrove)
+Walrein ✓
+Clamperl ✓ (New Bark, Route 31)
+Huntail ✓
+Gorebyss ✓
+Relicanth ✓
+Bagon ✓
+Shelgon ✓
+Salamence ✓
+Mega Salamence ✓
+Beldum ✓
+Metang ✓
+Metagross ✓
+Mega Metagross ✓
+Latias ✓ (Roamer)
+Latios ✓ (Roamer)
+Jirachi ✓ (Game Corner)
+Turtwig	✓
+Grotle ✓
+Torterra ✓
+Chimchar ✓
+Monferno ✓
+Infernape ✓
+Piplup ✓ (New Bark)
+Prinplup ✓
+Empoleon ✓
+Starly ✓ (Route 29)
+Staravia ✓
+Staraptor ✓
+Shinx ✓ (Route 31)
+Luxio ✓
+Luxray ✓
+Budew ✓ (Route 30)
+Roserade ✓
+Cranidos ✓
+Rampardos ✓
+Shieldon ✓
+Bastiodon ✓
+Combee ✓
+Vespiquen ✓
+Buizel ✓
+Floatzel ✓
+Shellos ✓
+Gastrodon ✓
+Ambipom ✓
+Drifloon ✓
+Drifblim ✓
+Buneary ✓
+Lopunny ✓
+Mega Lopunny ✓
+Honchkrow ✓
+Stunky ✓
+Skuntank ✓
+Spiritomb ✓
+Gible ✓
+Gabite ✓
+Garchomp ✓
+Mega Garchomp ✓
+Munchlax ✓
+Riolu ✓ (Route 29)
+Lucario	✓
+Mega Lucario ✓
+Hippopotas ✓
+Hippowdon ✓
+Skorupi ✓
+Drapion ✓
+Croagunk ✓
+Toxicroak ✓
+Carnivine ✓
+Snover ✓
+Abomasnow ✓
+Mega Abomasnow ✓
+Weavile	✓
+Magnezone ✓
+Rhyperior ✓
+Electivire ✓
+Magmortar ✓
+Togekiss ✓
+Yanmega ✓
+Gliscor	✓
+Mamoswine ✓
+Porygon-Z ✓
+Gallade ✓
+Mega Gallade ✓
+Dusknoir ✓
+Froslass ✓
+Cresselia ✓ (Roamer)
+Darkrai	✓ (Roamer)
+Victini	✓ (Game Corner)
+Snivy ✓
+Servine ✓
+Serperior ✓
+Tepig ✓
+Pignite ✓
+Emboar ✓
+Oshawott ✓
+Dewott ✓
+Samurott ✓
+Hisuian Samurott ✓
+Lillipup ✓ (Route 46)
+Herdier ✓
+Stoutland ✓
+Munna ✓
+Musharna ✓
+Roggenrola ✓ (Route 46)
+Boldore	✓
+Gigalith ✓
+Drilbur	✓
+Excadrill ✓
+Audino ✓
+Mega Audino ✓
+Timburr ✓
+Gurdurr ✓
+Conkeldurr ✓
+Tympole	✓ (Cherrygrove)
+Palpitoad ✓ (Route 30)
+Seismitoad ✓
+Venipede ✓
+Whirlipede ✓
+Scolipede ✓
+Petilil ✓ (Route 46)
+Lilligant ✓
+Hisuian Lilligant ✓
+Basculin Red-Striped Form ✓
+Basculin Blue-Striped Form ✓
+Sandile ✓
+Krokorok ✓
+Krookodile ✓
+Darumaka ✓
+Galarian Darumaka ✓
+Darmanitan ✓
+Galarian Darmanitan ✓
+Maractus ✓
+Dwebble ✓
+Crustle ✓
+Sigilyph ✓
+Yamask ✓
+Galarian Yamask ✓
+Cofagrigus ✓
+Tirtouga ✓ (New Bark)
+Carracosta ✓
+Archen ✓
+Archeops ✓
+Zorua ✓
+Hisuian Zorua ✓
+Zoroark ✓
+Hisuian Zoroark ✓
+Solosis	✓
+Duosion	✓
+Reuniclus ✓
+Vanillite ✓
+Vanillish ✓
+Vanilluxe ✓
+Deerling ✓ (Route 46)
+Sawsbuck ✓
+Karrablast ✓
+Escavalier ✓
+Frillish ✓
+Jellicent ✓
+Joltik ✓ [New Bark, Cherrygrove]
+Galvantula ✓
+Ferroseed ✓
+Ferrothorn ✓
+Tynamo ✓
+Eelektrik ✓
+Eelektross ✓
+Litwick ✓
+Lampent ✓
+Chandelure ✓
+Axew ✓
+Fraxure ✓
+Haxorus	✓
+Shelmet	✓
+Accelgor ✓
+Mienfoo ✓
+Mienshao ✓
+Golett ✓
+Golurk ✓
+Pawniard ✓
+Bisharp ✓
+Rufflet	✓
+Braviary ✓
+Hisuian Braviary ✓
+Deino ✓
+Zweilous ✓
+Hydreigon ✓
+Larvesta ✓
+Volcarona ✓
+Tornadus Incarnate Forme ✓ (Roamer)
+Thundurus Incarnate Forme ✓ (Roamer)
+Landorus Incarnate Forme ✓ (Roamer)
+Chespin ✓
+Quilladin ✓
+Chesnaught ✓
+Fennekin ✓
+Braixen ✓
+Delphox ✓
+Froakie ✓
+Frogadier ✓
+Greninja ✓
+Fletchling ✓ (Route 29, Route 46)
+Fletchinder ✓
+Talonflame ✓
+Scatterbug ✓ (Route 30)
+Spewpa ✓ (Route 29, Route 46)
+Vivillon ✓
+Flabébé ✓
+Floette ✓
+Florges ✓
+Skiddo ✓
+Gogoat ✓
+Pancham ✓
+Pangoro ✓
+Espurr ✓
+Meowstic Male ✓
+Meowstic Female ✓
+Honedge ✓
+Doublade ✓
+Aegislash Shield Forme ✓
+Aegislash Blade Forme ✓
+Binacle ✓
+Barbaracle ✓
+Skrelp ✓
+Dragalge ✓
+Clauncher ✓
+Clawitzer ✓
+Helioptile ✓
+Heliolisk ✓
+Tyrunt ✓
+Tyrantrum ✓
+Amaura ✓
+Aurorus ✓
+Hawlucha✓
+Goomy ✓
+Sliggoo ✓
+Hisuian Sliggoo ✓
+Goodra ✓
+Hisuian Goodra ✓
+Bergmite ✓
+Avalugg ✓
+Hisuian Avalugg ✓
+Noibat ✓
+Noivern ✓
+Rowlet ✓
+Dartrix	✓
+Decidueye ✓
+Litten ✓
+Torracat ✓
+Incineroar ✓
+Popplio ✓
+Brionne ✓
+Primarina ✓
+Grubbin ✓ (Route 30)
+Charjabug ✓
+Vikavolt ✓
+Cutiefly ✓
+Ribombee ✓
+Rockruff ✓ (Route 29)
+Lycanroc	Midday Form ✓
+Lycanroc	Midnight Form ✓
+Lycanroc	Dusk Form ✓
+Mudbray	✓
+Mudsdale ✓
+Dewpider ✓
+Araquanid ✓
+Salandit ✓
+Salazzle ✓
+Stufful	✓
+Bewear ✓
+Bounsweet ✓ (Route 31)
+Steenee ✓
+Tsareena ✓
+Wimpod ✓
+Golisopod ✓
+Turtonator ✓
+Togedemaru ✓
+Mimikyu ✓
+Dhelmise ✓
+Jangmo-o ✓
+Hakamo-o ✓
+Kommo-o	✓
+Marshadow ✓ (Game Corner)
+Zeraora ✓ (Game Corner)
+Meltan ✓ (Game Corner)
+Melmetal ✓ (Game Corner)
+Grookey	✓
+Thwackey ✓
+Rillaboom ✓
+Scorbunny ✓
+Raboot ✓
+Cinderace ✓
+Sobble ✓
+Drizzile ✓
+Inteleon ✓
+Rookidee ✓ (New Bark)
+Corvisquire ✓
+Corviknight ✓ (Route 30)
+Gossifleur ✓
+Eldegoss ✓
+Chewtle ✓
+Drednaw	✓
+Yamper ✓ (Route 30)
+Boltund	✓
+Arrokuda ✓
+Barraskewda ✓
+Toxel ✓
+Toxtricity	Amped Form ✓
+Toxtricity	Low Key Form ✓
+Sizzlipede ✓
+Centiskorch ✓
+Hatenna ✓
+Hattrem	✓
+Hatterene ✓
+Impidimp ✓
+Morgrem	✓
+Grimmsnarl ✓
+Obstagoon ✓
+Perrserker ✓
+Cursola ✓
+Sirfetch'd ✓
+Mr. Rime ✓
+Runerigus ✓
+Falinks ✓
+Duraludon ✓
+Dreepy ✓
+Drakloak ✓
+Dragapult ✓
+Kubfu ✓
+Urshifu	Single Strike Style ✓
+Urshifu	Rapid Strike Style ✓
+Zarude ✓ (Game Corner)
+Wyrdeer ✓
+Kleavor ✓
+Ursaluna ✓
+Basculegion	Male ✓
+Sneasler ✓
+Overqwil ✓
+Enamorus	Incarnate Forme ✓ (Roamer)
+Sprigatito ✓
+Floragato ✓
+Meowscarada ✓
+Fuecoco	✓
+Crocalor ✓
+Skeledirge ✓
+Quaxly ✓
+Quaxwell ✓
+Quaquaval ✓
+Smoliv ✓ (Route 31)
+Dolliv ✓
+Arboliva ✓
+Nacli ✓
+Naclstack ✓
+Garganacl ✓
+Charcadet ✓
+Armarouge ✓
+Ceruledge ✓
+Maschiff ✓
+Mabosstiff ✓
+Toedscool ✓
+Toedscruel ✓
+Klawf ✓
+Capsakid ✓
+Scovillain ✓
+Tinkatink ✓
+Tinkatuff ✓
+Tinkaton ✓
+Wiglett	✓
+Wugtrio	✓ (New Bark)
+Varoom ✓
+Revavroom ✓
+Cyclizar ✓
+Glimmet	✓
+Glimmora ✓
+Greavard ✓
+Houndstone ✓
+Flamigo ✓
+Cetoddle ✓
+Cetitan ✓
+Veluza ✓
+Dondozo	✓
+Annihilape ✓
+Clodsire ✓
+Farigiraf ✓
+Dudunsparce	Two-Segment Form ✓
+Dudunsparce	Three-Segment Form ✓
+Kingambit ✓
+Great Tusk ✓ (ALL PARADOX MONS ARE IN LATE-GAME KANTO)
+Scream Tail ✓
+Brute Bonnet ✓
+Flutter Mane ✓
+Slither Wing ✓
+Sandy Shocks ✓
+Iron Treads ✓
+Iron Bundle ✓
+Iron Hands ✓
+Iron Jugulis ✓
+Iron Moth ✓
+Iron Thorns ✓
+Frigibax ✓
+Arctibax ✓
+Baxcalibur ✓
+Roaring Moon ✓
+Iron Valiant ✓
+Poltchageist ✓
+Sinistcha ✓
+Archaludon ✓

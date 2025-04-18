@@ -460,7 +460,12 @@
 // define your custom subscripts below like this
 // #define MOVE_SUBSCRIPT_PTR_CUSTOM_1 (MAX_BASE_SUBSCRIPT_NUM + 1)
 
-
+#define SUB_SEQ_OVERWORLD_GRAVITY         (MAX_BASE_SUBSCRIPT_NUM + 1)
+#define SUB_SEQ_OVERWORLD_TAILWIND                    (MAX_BASE_SUBSCRIPT_NUM + 2)
+#define SUB_SEQ_OVERWORLD_TRICK_ROOM_TERRAIN         (MAX_BASE_SUBSCRIPT_NUM + 3)
+#define SUB_SEQ_OVERWORLD_RAIN_TERRAIN                 (MAX_BASE_SUBSCRIPT_NUM + 4)
+#define SUB_SEQ_OVERWORLD_SUN_TERRAIN                (MAX_BASE_SUBSCRIPT_NUM + 5)
+#define SUB_SEQ_OVERWORLD_SNOW_TERRAIN           (MAX_BASE_SUBSCRIPT_NUM + 6)
 
 // add status effect constants--used in battle effect scripts to queue up a subscript through the table in src/moves.c
 

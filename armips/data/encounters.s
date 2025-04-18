@@ -10,6 +10,11 @@
 
 encounterdata   0   // New Bark Town
 
+// ENCOUNTER PERCENTS:
+// walklevels specifies the levels of each slot.  each slot gets its own individual level without a range, which is different compared to the encounter format of later entries.
+// replace "pokemon SPECIES_*" with "monwithform SPECIES_*, formid" to get the specific form of a pokemon.  if i want a galarian darumaka, i'd put "monwithform SPECIES_DARUMAKA, 1"
+// probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
+
 walkrate 0
 surfrate 15
 rocksmashrate 0
@@ -32,7 +37,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -68,14 +73,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
-encounter SPECIES_TENTACOOL, 15, 25
-encounter SPECIES_TENTACOOL, 10, 20
-encounter SPECIES_TENTACRUEL, 15, 25
-encounter SPECIES_TENTACRUEL, 15, 25
-encounter SPECIES_TENTACRUEL, 15, 25
+// surf encounters; probabilities:  60, 30, 5, 4, 1
+encounter SPECIES_LANTURN, 32, 38
+encounter SPECIES_KINGLER, 32, 38
+encounter SPECIES_STARMIE, 32, 38
+encounter SPECIES_WUGTRIO, 32, 38
+encounter SPECIES_LAPRAS, 32, 38
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -93,12 +98,12 @@ encounter SPECIES_CHINCHOU, 20, 20
 encounter SPECIES_SHELLDER, 20, 20
 encounter SPECIES_CHINCHOU, 20, 20
 
-// super rod encounters
-encounter SPECIES_CHINCHOU, 40, 40
-encounter SPECIES_SHELLDER, 40, 40
-encounter SPECIES_TENTACRUEL, 40, 40
-encounter SPECIES_LANTURN, 40, 40
-encounter SPECIES_TENTACRUEL, 40, 40
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
+encounter SPECIES_CLAMPERL, 3, 6
+encounter SPECIES_TIRTOUGA, 2, 4
+encounter SPECIES_SHELLDER, 5, 6
+encounter SPECIES_AZURILL, 6, 6
+encounter SPECIES_PIPLUP, 5, 5
 
 // swarm grass
 pokemon SPECIES_NONE
@@ -120,49 +125,49 @@ rocksmashrate 0
 oldrodrate 0
 goodrodrate 0
 superrodrate 0
-walklevels 2, 3, 2, 3, 3, 3, 2, 2, 4, 4, 4, 4
+walklevels 3, 4, 3, 3, 5, 4, 4, 4, 5, 5, 5, 3
 
 // morning encounter slots
 pokemon SPECIES_PIDGEY
-pokemon SPECIES_SENTRET
-pokemon SPECIES_PIDGEY
-pokemon SPECIES_SENTRET
-pokemon SPECIES_PIDGEY
-pokemon SPECIES_PIDGEY
-pokemon SPECIES_SENTRET
-pokemon SPECIES_SENTRET
-pokemon SPECIES_RATTATA
-pokemon SPECIES_PIDGEY
-pokemon SPECIES_RATTATA
-pokemon SPECIES_PIDGEY
+pokemon SPECIES_FLETCHLING
+pokemon SPECIES_STARLY
+pokemon SPECIES_ROCKRUFF
+pokemon SPECIES_MAREEP
+pokemon SPECIES_POOCHYENA
+monwithform SPECIES_ZIGZAGOON, 1
+pokemon SPECIES_STARLY
+pokemon SPECIES_AIPOM
+pokemon SPECIES_TAILLOW
+pokemon SPECIES_RIOLU
+pokemon SPECIES_RALTS
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_PIDGEY
-pokemon SPECIES_SENTRET
-pokemon SPECIES_PIDGEY
-pokemon SPECIES_SENTRET
-pokemon SPECIES_PIDGEY
-pokemon SPECIES_PIDGEY
-pokemon SPECIES_SENTRET
-pokemon SPECIES_SENTRET
-pokemon SPECIES_RATTATA
-pokemon SPECIES_PIDGEY
-pokemon SPECIES_RATTATA
-pokemon SPECIES_PIDGEY
+pokemon SPECIES_FLETCHLING
+pokemon SPECIES_STARLY
+pokemon SPECIES_ROCKRUFF
+pokemon SPECIES_MAREEP
+pokemon SPECIES_POOCHYENA
+monwithform SPECIES_ZIGZAGOON, 1
+pokemon SPECIES_STARLY
+pokemon SPECIES_AIPOM
+pokemon SPECIES_TAILLOW
+pokemon SPECIES_RIOLU
+pokemon SPECIES_RALTS
 
 // night encounter slots
-pokemon SPECIES_HOOTHOOT
-pokemon SPECIES_HOOTHOOT
-pokemon SPECIES_HOOTHOOT
-pokemon SPECIES_HOOTHOOT
-pokemon SPECIES_HOOTHOOT
-pokemon SPECIES_HOOTHOOT
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_HOOTHOOT
-pokemon SPECIES_RATTATA
-pokemon SPECIES_HOOTHOOT
+pokemon SPECIES_PIDGEY
+pokemon SPECIES_FLETCHLING
+pokemon SPECIES_STARLY
+pokemon SPECIES_ROCKRUFF
+pokemon SPECIES_MAREEP
+pokemon SPECIES_POOCHYENA
+monwithform SPECIES_ZIGZAGOON, 1
+pokemon SPECIES_STARLY
+pokemon SPECIES_AIPOM
+pokemon SPECIES_TAILLOW
+pokemon SPECIES_RIOLU
+pokemon SPECIES_RALTS
 
 // hoenn encounter slots
 pokemon SPECIES_PLUSLE
@@ -172,14 +177,14 @@ pokemon SPECIES_MINUN
 pokemon SPECIES_SHINX
 pokemon SPECIES_SHINX
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -197,7 +202,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -240,7 +245,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -276,14 +281,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
-encounter SPECIES_TENTACOOL, 15, 25
-encounter SPECIES_TENTACOOL, 10, 20
-encounter SPECIES_TENTACRUEL, 15, 25
-encounter SPECIES_TENTACRUEL, 15, 25
-encounter SPECIES_TENTACRUEL, 15, 25
+// surf encounters; probabilities:  60, 30, 5, 4, 1
+encounter SPECIES_SEADRA, 33, 34
+encounter SPECIES_SHARPEDO, 35, 37
+encounter SPECIES_PIDGEOT, 34, 37
+encounter SPECIES_SEALEO, 33, 35
+encounter SPECIES_SEALEO, 37, 37
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -301,12 +306,12 @@ encounter SPECIES_KRABBY, 20, 20
 encounter SPECIES_CORSOLA, 20, 20
 encounter SPECIES_KRABBY, 20, 20
 
-// super rod encounters
-encounter SPECIES_KRABBY, 40, 40
-encounter SPECIES_CORSOLA, 40, 40
-encounter SPECIES_KRABBY, 40, 40
-encounter SPECIES_KINGLER, 40, 40
-encounter SPECIES_KRABBY, 40, 40
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
+encounter SPECIES_CHINCHOU, 3, 6
+encounter SPECIES_TYMPOLE, 4, 6
+encounter SPECIES_SQUIRTLE, 5, 6
+encounter SPECIES_MAGIKARP, 6, 6
+encounter SPECIES_MAGIKARP, 4, 6
 
 // swarm grass
 pokemon SPECIES_NONE
@@ -328,49 +333,49 @@ rocksmashrate 0
 oldrodrate 25
 goodrodrate 50
 superrodrate 75
-walklevels 2, 3, 2, 3, 4, 4, 4, 4, 4, 4, 4, 4
+walklevels 5, 5, 6, 6, 7, 7, 7, 6, 6, 6, 5, 5
 
 // morning encounter slots
 pokemon SPECIES_PIDGEY
-pokemon SPECIES_CATERPIE
 pokemon SPECIES_PIDGEY
-pokemon SPECIES_CATERPIE
-pokemon SPECIES_CATERPIE
-pokemon SPECIES_CATERPIE
-pokemon SPECIES_METAPOD
-pokemon SPECIES_METAPOD
-pokemon SPECIES_PIDGEY
-pokemon SPECIES_PIDGEY
-pokemon SPECIES_PIDGEY
-pokemon SPECIES_PIDGEY
+pokemon SPECIES_SCATTERBUG
+pokemon SPECIES_SCATTERBUG
+pokemon SPECIES_YAMPER
+pokemon SPECIES_YAMPER
+pokemon SPECIES_ZUBAT
+pokemon SPECIES_ZUBAT
+pokemon SPECIES_BUDEW
+pokemon SPECIES_BUDEW
+pokemon SPECIES_CHIKORITA
+pokemon SPECIES_CHIKORITA
 
-// day encounter slots
-pokemon SPECIES_PIDGEY
-pokemon SPECIES_CATERPIE
-pokemon SPECIES_PIDGEY
-pokemon SPECIES_CATERPIE
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_PIDGEY
 pokemon SPECIES_PIDGEY
-pokemon SPECIES_METAPOD
-pokemon SPECIES_METAPOD
-pokemon SPECIES_CATERPIE
-pokemon SPECIES_METAPOD
-pokemon SPECIES_CATERPIE
-pokemon SPECIES_METAPOD
+pokemon SPECIES_SCATTERBUG
+pokemon SPECIES_SCATTERBUG
+pokemon SPECIES_YAMPER
+pokemon SPECIES_YAMPER
+pokemon SPECIES_ZUBAT
+pokemon SPECIES_ZUBAT
+pokemon SPECIES_BUDEW
+pokemon SPECIES_BUDEW
+pokemon SPECIES_CHIKORITA
+pokemon SPECIES_CHIKORITA
 
 // night encounter slots
-pokemon SPECIES_SPINARAK
-pokemon SPECIES_RATTATA
-pokemon SPECIES_SPINARAK
-pokemon SPECIES_RATTATA
-pokemon SPECIES_HOOTHOOT
-pokemon SPECIES_HOOTHOOT
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_HOOTHOOT
-pokemon SPECIES_HOOTHOOT
-pokemon SPECIES_HOOTHOOT
-pokemon SPECIES_HOOTHOOT
+pokemon SPECIES_PIDGEY
+pokemon SPECIES_PIDGEY
+pokemon SPECIES_SCATTERBUG
+pokemon SPECIES_SCATTERBUG
+pokemon SPECIES_YAMPER
+pokemon SPECIES_YAMPER
+pokemon SPECIES_ZUBAT
+pokemon SPECIES_ZUBAT
+pokemon SPECIES_BUDEW
+pokemon SPECIES_BUDEW
+pokemon SPECIES_CHIKORITA
+pokemon SPECIES_CHIKORITA
 
 // hoenn encounter slots
 pokemon SPECIES_WHISMUR
@@ -380,14 +385,14 @@ pokemon SPECIES_LINOONE
 pokemon SPECIES_BUIZEL
 pokemon SPECIES_BIDOOF
 
-// surf encounters
-encounter SPECIES_POLIWAG, 15, 25
-encounter SPECIES_POLIWAG, 10, 20
-encounter SPECIES_POLIWHIRL, 15, 25
-encounter SPECIES_POLIWHIRL, 15, 25
-encounter SPECIES_POLIWHIRL, 32, 32
+// surf encounters; probabilities:  60, 30, 5, 4, 1
+encounter SPECIES_SHARPEDO, 35, 35
+encounter SPECIES_CORVIKNIGHT, 35, 35
+encounter SPECIES_PALPITOAD, 35, 35
+encounter SPECIES_PALPITOAD, 35, 35
+encounter SPECIES_PALPITOAD, 35, 35
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -405,12 +410,12 @@ encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 
-// super rod encounters
-encounter SPECIES_POLIWAG, 40, 40
-encounter SPECIES_POLIWAG, 40, 40
-encounter SPECIES_MAGIKARP, 40, 40
-encounter SPECIES_POLIWAG, 40, 40
-encounter SPECIES_MAGIKARP, 40, 40
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
+encounter SPECIES_BARBOACH, 6, 7
+encounter SPECIES_KRABBY, 7, 7
+encounter SPECIES_CARVANHA, 7, 7
+encounter SPECIES_CARVANHA, 7, 7
+encounter SPECIES_CARVANHA, 7, 7
 
 // swarm grass
 pokemon SPECIES_PIDGEY
@@ -432,49 +437,49 @@ rocksmashrate 0
 oldrodrate 25
 goodrodrate 50
 superrodrate 75
-walklevels 3, 4, 3, 4, 3, 3, 5, 5, 5, 5, 5, 5
+walklevels 7, 6, 6, 6, 8, 7, 8, 8, 8, 8, 7, 7
 
 // morning encounter slots
-pokemon SPECIES_PIDGEY
-pokemon SPECIES_CATERPIE
-pokemon SPECIES_PIDGEY
-pokemon SPECIES_CATERPIE
-pokemon SPECIES_BELLSPROUT
-pokemon SPECIES_BELLSPROUT
-pokemon SPECIES_METAPOD
-pokemon SPECIES_METAPOD
-pokemon SPECIES_CATERPIE
-pokemon SPECIES_METAPOD
-pokemon SPECIES_CATERPIE
-pokemon SPECIES_METAPOD
+pokemon SPECIES_SHINX
+pokemon SPECIES_BOUNSWEET
+pokemon SPECIES_SMOLIV
+pokemon SPECIES_SMOLIV
+pokemon SPECIES_ABRA
+pokemon SPECIES_SHROOMISH
+pokemon SPECIES_POOCHYENA
+pokemon SPECIES_POOCHYENA
+pokemon SPECIES_GEODUDE
+pokemon SPECIES_GEODUDE
+pokemon SPECIES_ARON
+pokemon SPECIES_ARON
 
-// day encounter slots
-pokemon SPECIES_PIDGEY
-pokemon SPECIES_CATERPIE
-pokemon SPECIES_PIDGEY
-pokemon SPECIES_CATERPIE
-pokemon SPECIES_BELLSPROUT
-pokemon SPECIES_BELLSPROUT
-pokemon SPECIES_METAPOD
-pokemon SPECIES_METAPOD
-pokemon SPECIES_CATERPIE
-pokemon SPECIES_METAPOD
-pokemon SPECIES_CATERPIE
-pokemon SPECIES_METAPOD
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
+pokemon SPECIES_SHINX
+pokemon SPECIES_BOUNSWEET
+pokemon SPECIES_SMOLIV
+pokemon SPECIES_SMOLIV
+pokemon SPECIES_ABRA
+pokemon SPECIES_SHROOMISH
+pokemon SPECIES_POOCHYENA
+pokemon SPECIES_POOCHYENA
+pokemon SPECIES_GEODUDE
+pokemon SPECIES_GEODUDE
+pokemon SPECIES_ARON
+pokemon SPECIES_ARON
 
 // night encounter slots
-pokemon SPECIES_SPINARAK
-pokemon SPECIES_RATTATA
-pokemon SPECIES_SPINARAK
-pokemon SPECIES_RATTATA
-pokemon SPECIES_BELLSPROUT
-pokemon SPECIES_BELLSPROUT
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_HOOTHOOT
-pokemon SPECIES_HOOTHOOT
-pokemon SPECIES_HOOTHOOT
-pokemon SPECIES_HOOTHOOT
+pokemon SPECIES_SHINX
+pokemon SPECIES_BOUNSWEET
+pokemon SPECIES_SMOLIV
+pokemon SPECIES_SMOLIV
+pokemon SPECIES_ABRA
+pokemon SPECIES_SHROOMISH
+pokemon SPECIES_POOCHYENA
+pokemon SPECIES_POOCHYENA
+pokemon SPECIES_GEODUDE
+pokemon SPECIES_GEODUDE
+pokemon SPECIES_ARON
+pokemon SPECIES_ARON
 
 // hoenn encounter slots
 pokemon SPECIES_WHISMUR
@@ -484,14 +489,14 @@ pokemon SPECIES_LINOONE
 pokemon SPECIES_BUIZEL
 pokemon SPECIES_BIDOOF
 
-// surf encounters
-encounter SPECIES_POLIWAG, 15, 25
-encounter SPECIES_POLIWAG, 10, 20
-encounter SPECIES_POLIWHIRL, 15, 25
-encounter SPECIES_POLIWHIRL, 15, 25
-encounter SPECIES_POLIWHIRL, 32, 32
+// surf encounters; probabilities:  60, 30, 5, 4, 1
+encounter SPECIES_DREDNAW, 36, 36
+encounter SPECIES_LANTURN, 36, 36
+encounter SPECIES_LANTURN, 36, 36
+encounter SPECIES_LANTURN, 36, 36
+encounter SPECIES_LANTURN, 36, 36
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -509,12 +514,12 @@ encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 
-// super rod encounters
-encounter SPECIES_POLIWAG, 40, 40
-encounter SPECIES_POLIWAG, 40, 40
-encounter SPECIES_MAGIKARP, 40, 40
-encounter SPECIES_POLIWAG, 40, 40
-encounter SPECIES_MAGIKARP, 40, 40
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
+encounter SPECIES_PSYDUCK, 8, 8
+encounter SPECIES_CLAMPERL, 8, 8
+encounter SPECIES_CHINCHOU, 8, 8
+encounter SPECIES_CHINCHOU, 8, 8
+encounter SPECIES_CHINCHOU, 8, 8
 
 // swarm grass
 pokemon SPECIES_PIDGEY
@@ -530,55 +535,55 @@ pokemon SPECIES_MAGIKARP
 
 encounterdata   5   // Violet City
 
-walkrate 0
+walkrate 25
 surfrate 15
 rocksmashrate 0
 oldrodrate 25
 goodrodrate 50
 superrodrate 75
-walklevels 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+walklevels 8, 7, 9, 9, 7, 7, 5, 5, 9, 8, 8, 8
 
 // morning encounter slots
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
+pokemon SPECIES_PONYTA
+pokemon SPECIES_SLUGMA
+pokemon SPECIES_MAGBY
+pokemon SPECIES_MAGBY
+pokemon SPECIES_GROWLITHE
+pokemon SPECIES_GROWLITHE
+pokemon SPECIES_CYNDAQUIL
+pokemon SPECIES_TEPIG
+monwithform SPECIES_GROWLITHE, 1
+pokemon SPECIES_SIZZLIPEDE
+pokemon SPECIES_SIZZLIPEDE
+pokemon SPECIES_SIZZLIPEDE
 
-// day encounter slots
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
+pokemon SPECIES_PONYTA
+pokemon SPECIES_SLUGMA
+pokemon SPECIES_MAGBY
+pokemon SPECIES_MAGBY
+pokemon SPECIES_GROWLITHE
+pokemon SPECIES_GROWLITHE
+pokemon SPECIES_CYNDAQUIL
+pokemon SPECIES_TEPIG
+monwithform SPECIES_GROWLITHE, 1
+pokemon SPECIES_SIZZLIPEDE
+pokemon SPECIES_SIZZLIPEDE
+pokemon SPECIES_SIZZLIPEDE
 
 // night encounter slots
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
-pokemon SPECIES_NONE
+pokemon SPECIES_PONYTA
+pokemon SPECIES_SLUGMA
+pokemon SPECIES_MAGBY
+pokemon SPECIES_MAGBY
+pokemon SPECIES_GROWLITHE
+pokemon SPECIES_GROWLITHE
+pokemon SPECIES_CYNDAQUIL
+pokemon SPECIES_TEPIG
+monwithform SPECIES_GROWLITHE, 1
+pokemon SPECIES_SIZZLIPEDE
+pokemon SPECIES_SIZZLIPEDE
+pokemon SPECIES_SIZZLIPEDE
 
 // hoenn encounter slots
 pokemon SPECIES_NONE
@@ -588,16 +593,16 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
-encounter SPECIES_POLIWAG, 15, 25
-encounter SPECIES_POLIWAG, 10, 20
-encounter SPECIES_POLIWHIRL, 15, 25
-encounter SPECIES_POLIWHIRL, 15, 25
-encounter SPECIES_POLIWHIRL, 15, 25
+// surf encounters; probabilities:  60, 30, 5, 4, 1
+encounter SPECIES_OCTILLERY, 36, 38
+encounter SPECIES_OCTILLERY, 36, 38
+encounter SPECIES_STARAPTOR, 39, 39
+encounter SPECIES_STARAPTOR, 39, 39
+encounter SPECIES_STARAPTOR, 39, 39
 
-// rock smash encounters
-encounter SPECIES_NONE, 0, 0
-encounter SPECIES_NONE, 0, 0
+// rock smash encounters; probabilities:  90, 10
+encounter SPECIES_GEODUDE, 15, 15
+encounter SPECIES_GEODUDE, 15, 15
 
 // old rod encounters
 encounter SPECIES_MAGIKARP, 10, 10
@@ -613,12 +618,12 @@ encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 
-// super rod encounters
-encounter SPECIES_POLIWAG, 40, 40
-encounter SPECIES_POLIWAG, 40, 40
-encounter SPECIES_MAGIKARP, 40, 40
-encounter SPECIES_POLIWAG, 40, 40
-encounter SPECIES_MAGIKARP, 40, 40
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
+encounter SPECIES_CHEWTLE, 7, 9
+encounter SPECIES_REMORAID, 8, 8
+encounter SPECIES_HORSEA, 8, 9
+encounter SPECIES_HORSEA, 8, 9
+encounter SPECIES_HORSEA, 8, 9
 
 // swarm grass
 pokemon SPECIES_NONE
@@ -640,49 +645,49 @@ rocksmashrate 0
 oldrodrate 0
 goodrodrate 0
 superrodrate 0
-walklevels 3, 4, 3, 4, 5, 5, 3, 3, 6, 5, 6, 5
+walklevels 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8
 
 // morning encounter slots
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
+pokemon SPECIES_MAKUHITA
+pokemon SPECIES_BELLSPROUT
+pokemon SPECIES_MANKEY
+monwithform SPECIES_ZIGZAGOON, 1
+pokemon SPECIES_MEDITITE
+pokemon SPECIES_MIENFOO
+pokemon SPECIES_KOFFING
+pokemon SPECIES_TYROGUE
+pokemon SPECIES_NIDORAN_M
+pokemon SPECIES_NIDORAN_F
+pokemon SPECIES_EKANS
+pokemon SPECIES_EKANS
 
-// day encounter slots
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
+pokemon SPECIES_MAKUHITA
+pokemon SPECIES_BELLSPROUT
+pokemon SPECIES_MANKEY
+monwithform SPECIES_ZIGZAGOON, 1
+pokemon SPECIES_MEDITITE
+pokemon SPECIES_MIENFOO
+pokemon SPECIES_KOFFING
+pokemon SPECIES_TYROGUE
+pokemon SPECIES_NIDORAN_M
+pokemon SPECIES_NIDORAN_F
+pokemon SPECIES_EKANS
+pokemon SPECIES_EKANS
 
 // night encounter slots
-pokemon SPECIES_GASTLY
-pokemon SPECIES_GASTLY
-pokemon SPECIES_GASTLY
-pokemon SPECIES_GASTLY
-pokemon SPECIES_GASTLY
-pokemon SPECIES_GASTLY
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_GASTLY
-pokemon SPECIES_RATTATA
-pokemon SPECIES_GASTLY
-pokemon SPECIES_RATTATA
+pokemon SPECIES_MAKUHITA
+pokemon SPECIES_BELLSPROUT
+pokemon SPECIES_MANKEY
+monwithform SPECIES_ZIGZAGOON, 1
+pokemon SPECIES_MEDITITE
+pokemon SPECIES_MIENFOO
+pokemon SPECIES_KOFFING
+pokemon SPECIES_TYROGUE
+pokemon SPECIES_NIDORAN_M
+pokemon SPECIES_NIDORAN_F
+pokemon SPECIES_EKANS
+pokemon SPECIES_EKANS
 
 // hoenn encounter slots
 pokemon SPECIES_ZIGZAGOON
@@ -692,14 +697,14 @@ pokemon SPECIES_SPINDA
 pokemon SPECIES_CHATOT
 pokemon SPECIES_MEDITITE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -717,7 +722,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -747,46 +752,46 @@ superrodrate 0
 walklevels 3, 4, 3, 4, 5, 5, 3, 3, 6, 5, 6, 5
 
 // morning encounter slots
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
+pokemon SPECIES_BELLSPROUT
+pokemon SPECIES_BELLSPROUT
+pokemon SPECIES_MANKEY
+pokemon SPECIES_MASCHIFF
+pokemon SPECIES_MEDITITE
+pokemon SPECIES_VENIPEDE
+pokemon SPECIES_KOFFING
+pokemon SPECIES_TYROGUE
+pokemon SPECIES_NIDORAN_M
+pokemon SPECIES_NIDORAN_F
+pokemon SPECIES_KAKUNA
+pokemon SPECIES_KAKUNA
 
-// day encounter slots
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
+pokemon SPECIES_BELLSPROUT
+pokemon SPECIES_BELLSPROUT
+pokemon SPECIES_MANKEY
+pokemon SPECIES_MASCHIFF
+pokemon SPECIES_MEDITITE
+pokemon SPECIES_VENIPEDE
+pokemon SPECIES_KOFFING
+pokemon SPECIES_TYROGUE
+pokemon SPECIES_NIDORAN_M
+pokemon SPECIES_NIDORAN_F
+pokemon SPECIES_KAKUNA
+pokemon SPECIES_KAKUNA
 
 // night encounter slots
-pokemon SPECIES_GASTLY
-pokemon SPECIES_GASTLY
-pokemon SPECIES_GASTLY
-pokemon SPECIES_GASTLY
-pokemon SPECIES_GASTLY
-pokemon SPECIES_GASTLY
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_GASTLY
-pokemon SPECIES_RATTATA
-pokemon SPECIES_GASTLY
-pokemon SPECIES_RATTATA
+pokemon SPECIES_BELLSPROUT
+pokemon SPECIES_BELLSPROUT
+pokemon SPECIES_MANKEY
+pokemon SPECIES_MASCHIFF
+pokemon SPECIES_MEDITITE
+pokemon SPECIES_VENIPEDE
+pokemon SPECIES_KOFFING
+pokemon SPECIES_TYROGUE
+pokemon SPECIES_NIDORAN_M
+pokemon SPECIES_NIDORAN_F
+pokemon SPECIES_KAKUNA
+pokemon SPECIES_KAKUNA
 
 // hoenn encounter slots
 pokemon SPECIES_ZIGZAGOON
@@ -796,14 +801,14 @@ pokemon SPECIES_SPINDA
 pokemon SPECIES_CHATOT
 pokemon SPECIES_MEDITITE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -821,7 +826,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -848,49 +853,49 @@ rocksmashrate 0
 oldrodrate 25
 goodrodrate 50
 superrodrate 75
-walklevels 6, 4, 6, 4, 6, 6, 6, 6, 6, 4, 6, 4
+walklevels 8, 8, 9, 7, 7, 7, 8, 8, 8, 8, 8, 8
 
 // morning encounter slots
-pokemon SPECIES_BELLSPROUT
-pokemon SPECIES_RATTATA
-pokemon SPECIES_BELLSPROUT
-pokemon SPECIES_RATTATA
 pokemon SPECIES_MAREEP
-pokemon SPECIES_MAREEP
-pokemon SPECIES_HOPPIP
-pokemon SPECIES_HOPPIP
-pokemon SPECIES_RATTATA
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_RATTATA
-pokemon SPECIES_ZUBAT
+pokemon SPECIES_LILLIPUP
+monwithform SPECIES_WOOPER, 1
+pokemon SPECIES_STARLY
+pokemon SPECIES_SEEDOT
+pokemon SPECIES_TOGEDEMARU
+pokemon SPECIES_CROAGUNK
+pokemon SPECIES_CROAGUNK
+pokemon SPECIES_MACHOP
+pokemon SPECIES_MACHOP 
+pokemon SPECIES_EXEGGCUTE
+pokemon SPECIES_EXEGGCUTE
 
-// day encounter slots
-pokemon SPECIES_BELLSPROUT
-pokemon SPECIES_RATTATA
-pokemon SPECIES_BELLSPROUT
-pokemon SPECIES_RATTATA
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_MAREEP
-pokemon SPECIES_MAREEP
-pokemon SPECIES_HOPPIP
-pokemon SPECIES_HOPPIP
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
+pokemon SPECIES_LILLIPUP
+monwithform SPECIES_WOOPER, 1
+pokemon SPECIES_STARLY
+pokemon SPECIES_SEEDOT
+pokemon SPECIES_TOGEDEMARU
+pokemon SPECIES_CROAGUNK
+pokemon SPECIES_CROAGUNK
+pokemon SPECIES_MACHOP
+pokemon SPECIES_MACHOP 
+pokemon SPECIES_EXEGGCUTE
+pokemon SPECIES_EXEGGCUTE
 
 // night encounter slots
-pokemon SPECIES_WOOPER
-pokemon SPECIES_RATTATA
-pokemon SPECIES_WOOPER
-pokemon SPECIES_RATTATA
-pokemon SPECIES_BELLSPROUT
-pokemon SPECIES_BELLSPROUT
 pokemon SPECIES_MAREEP
-pokemon SPECIES_MAREEP
-pokemon SPECIES_WOOPER
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_WOOPER
-pokemon SPECIES_ZUBAT
+pokemon SPECIES_LILLIPUP
+monwithform SPECIES_WOOPER, 1
+pokemon SPECIES_STARLY
+pokemon SPECIES_SEEDOT
+pokemon SPECIES_TOGEDEMARU
+pokemon SPECIES_CROAGUNK
+pokemon SPECIES_CROAGUNK
+pokemon SPECIES_MACHOP
+pokemon SPECIES_MACHOP 
+pokemon SPECIES_EXEGGCUTE
+pokemon SPECIES_EXEGGCUTE
 
 // hoenn encounter slots
 pokemon SPECIES_WHISMUR
@@ -900,14 +905,14 @@ pokemon SPECIES_LINOONE
 pokemon SPECIES_BUIZEL
 pokemon SPECIES_BIDOOF
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_TENTACOOL, 10, 20
 encounter SPECIES_QUAGSIRE, 15, 25
 encounter SPECIES_TENTACRUEL, 15, 25
 encounter SPECIES_TENTACRUEL, 15, 25
 encounter SPECIES_TENTACRUEL, 36, 36
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -925,7 +930,7 @@ encounter SPECIES_TENTACOOL, 20, 20
 encounter SPECIES_TENTACOOL, 20, 20
 encounter SPECIES_QWILFISH, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_TENTACOOL, 40, 40
 encounter SPECIES_TENTACOOL, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -952,49 +957,49 @@ rocksmashrate 20
 oldrodrate 25
 goodrodrate 50
 superrodrate 75
-walklevels 20, 22, 20, 22, 18, 18, 24, 24, 20, 22, 20, 22
+walklevels 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38
 
 // morning encounter slots
-pokemon SPECIES_NATU
-pokemon SPECIES_NATU
-pokemon SPECIES_NATU
-pokemon SPECIES_NATU
-pokemon SPECIES_NATU
-pokemon SPECIES_NATU
-pokemon SPECIES_NATU
-pokemon SPECIES_NATU
-pokemon SPECIES_SMEARGLE
-pokemon SPECIES_SMEARGLE
-pokemon SPECIES_SMEARGLE
-pokemon SPECIES_SMEARGLE
+pokemon SPECIES_XATU
+pokemon SPECIES_XATU
+pokemon SPECIES_FLETCHINDER
+pokemon SPECIES_FLETCHINDER
+pokemon SPECIES_SALAZZLE
+pokemon SPECIES_STOUTLAND
+pokemon SPECIES_ROSELIA
+pokemon SPECIES_KROKOROK
+pokemon SPECIES_SAWSBUCK
+pokemon SPECIES_GARDEVOIR
+pokemon SPECIES_GOLETT
+pokemon SPECIES_GOLETT
 
-// day encounter slots
-pokemon SPECIES_NATU
-pokemon SPECIES_NATU
-pokemon SPECIES_NATU
-pokemon SPECIES_NATU
-pokemon SPECIES_NATU
-pokemon SPECIES_NATU
-pokemon SPECIES_NATU
-pokemon SPECIES_NATU
-pokemon SPECIES_SMEARGLE
-pokemon SPECIES_SMEARGLE
-pokemon SPECIES_SMEARGLE
-pokemon SPECIES_SMEARGLE
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
+pokemon SPECIES_XATU
+pokemon SPECIES_XATU
+pokemon SPECIES_FLETCHINDER
+pokemon SPECIES_FLETCHINDER
+pokemon SPECIES_SALAZZLE
+pokemon SPECIES_STOUTLAND
+pokemon SPECIES_ROSELIA
+pokemon SPECIES_KROKOROK
+pokemon SPECIES_SAWSBUCK
+pokemon SPECIES_GARDEVOIR
+pokemon SPECIES_GOLETT
+pokemon SPECIES_GOLETT
 
 // night encounter slots
-pokemon SPECIES_NATU
-pokemon SPECIES_NATU
-pokemon SPECIES_NATU
-pokemon SPECIES_NATU
-pokemon SPECIES_NATU
-pokemon SPECIES_NATU
-pokemon SPECIES_NATU
-pokemon SPECIES_NATU
-pokemon SPECIES_SMEARGLE
-pokemon SPECIES_SMEARGLE
-pokemon SPECIES_SMEARGLE
-pokemon SPECIES_SMEARGLE
+pokemon SPECIES_XATU
+pokemon SPECIES_XATU
+pokemon SPECIES_FLETCHINDER
+pokemon SPECIES_FLETCHINDER
+pokemon SPECIES_SALAZZLE
+pokemon SPECIES_STOUTLAND
+pokemon SPECIES_ROSELIA
+pokemon SPECIES_KROKOROK
+pokemon SPECIES_SAWSBUCK
+pokemon SPECIES_GARDEVOIR
+pokemon SPECIES_GOLETT
+pokemon SPECIES_GOLETT
 
 // hoenn encounter slots
 pokemon SPECIES_WHISMUR
@@ -1004,14 +1009,14 @@ pokemon SPECIES_LINOONE
 pokemon SPECIES_BUIZEL
 pokemon SPECIES_BIDOOF
 
-// surf encounters
-encounter SPECIES_WOOPER, 10, 20
-encounter SPECIES_QUAGSIRE, 15, 25
-encounter SPECIES_QUAGSIRE, 10, 20
-encounter SPECIES_QUAGSIRE, 10, 20
-encounter SPECIES_QUAGSIRE, 10, 20
+// surf encounters; probabilities:  60, 30, 5, 4, 1
+encounter SPECIES_GYARADOS, 38, 38
+encounter SPECIES_GASTRODON, 37, 37
+encounter SPECIES_CARRACOSTA, 38, 38
+encounter SPECIES_MARSHTOMP, 34, 34
+encounter SPECIES_MARSHTOMP, 34, 34
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_GEODUDE, 8, 14
 encounter SPECIES_GEODUDE, 3, 6
 
@@ -1029,12 +1034,12 @@ encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 
-// super rod encounters
-encounter SPECIES_POLIWAG, 40, 40
-encounter SPECIES_POLIWAG, 40, 40
-encounter SPECIES_MAGIKARP, 40, 40
-encounter SPECIES_POLIWAG, 40, 40
-encounter SPECIES_MAGIKARP, 40, 40
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
+encounter SPECIES_MAGIKARP, 9, 9
+encounter SPECIES_BUIZEL, 9, 9
+encounter SPECIES_SHELLOS, 9, 9
+encounterwithform SPECIES_SHELLOS, 1, 9, 9
+encounterwithform SPECIES_SHELLOS, 1, 9, 9
 
 // swarm grass
 pokemon SPECIES_NATU
@@ -1072,7 +1077,7 @@ pokemon SPECIES_UNOWN
 pokemon SPECIES_UNOWN
 pokemon SPECIES_UNOWN
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_UNOWN
 pokemon SPECIES_UNOWN
 pokemon SPECIES_UNOWN
@@ -1108,14 +1113,14 @@ pokemon SPECIES_UNOWN
 pokemon SPECIES_UNOWN
 pokemon SPECIES_UNOWN
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -1133,7 +1138,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -1176,7 +1181,7 @@ pokemon SPECIES_UNOWN
 pokemon SPECIES_UNOWN
 pokemon SPECIES_UNOWN
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_UNOWN
 pokemon SPECIES_UNOWN
 pokemon SPECIES_UNOWN
@@ -1212,14 +1217,14 @@ pokemon SPECIES_UNOWN
 pokemon SPECIES_UNOWN
 pokemon SPECIES_UNOWN
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -1237,7 +1242,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -1280,7 +1285,7 @@ pokemon SPECIES_UNOWN
 pokemon SPECIES_UNOWN
 pokemon SPECIES_UNOWN
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_UNOWN
 pokemon SPECIES_UNOWN
 pokemon SPECIES_UNOWN
@@ -1316,14 +1321,14 @@ pokemon SPECIES_UNOWN
 pokemon SPECIES_UNOWN
 pokemon SPECIES_UNOWN
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -1341,7 +1346,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -1384,7 +1389,7 @@ pokemon SPECIES_UNOWN
 pokemon SPECIES_UNOWN
 pokemon SPECIES_UNOWN
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_UNOWN
 pokemon SPECIES_UNOWN
 pokemon SPECIES_UNOWN
@@ -1420,14 +1425,14 @@ pokemon SPECIES_UNOWN
 pokemon SPECIES_UNOWN
 pokemon SPECIES_UNOWN
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -1445,7 +1450,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -1488,7 +1493,7 @@ pokemon SPECIES_ONIX
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_ONIX
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_GEODUDE
 pokemon SPECIES_SANDSHREW
 pokemon SPECIES_GEODUDE
@@ -1524,14 +1529,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_WOOPER, 10, 20
 encounter SPECIES_QUAGSIRE, 15, 25
 encounter SPECIES_QUAGSIRE, 10, 20
 encounter SPECIES_QUAGSIRE, 10, 20
 encounter SPECIES_QUAGSIRE, 10, 20
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -1549,7 +1554,7 @@ encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -1592,7 +1597,7 @@ pokemon SPECIES_RATTATA
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_RATTATA
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_GEODUDE
 pokemon SPECIES_SANDSHREW
 pokemon SPECIES_GEODUDE
@@ -1628,14 +1633,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_WOOPER, 10, 20
 encounter SPECIES_QUAGSIRE, 15, 25
 encounter SPECIES_QUAGSIRE, 10, 20
 encounter SPECIES_QUAGSIRE, 10, 20
 encounter SPECIES_QUAGSIRE, 10, 20
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -1653,7 +1658,7 @@ encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -1696,7 +1701,7 @@ pokemon SPECIES_ONIX
 pokemon SPECIES_RATTATA
 pokemon SPECIES_ONIX
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_RATICATE
 pokemon SPECIES_ZUBAT
@@ -1732,14 +1737,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_TENTACOOL, 10, 20
 encounter SPECIES_QUAGSIRE, 15, 25
 encounter SPECIES_TENTACRUEL, 15, 25
 encounter SPECIES_TENTACRUEL, 15, 25
 encounter SPECIES_TENTACRUEL, 15, 25
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -1757,7 +1762,7 @@ encounter SPECIES_KRABBY, 20, 20
 encounter SPECIES_CORSOLA, 20, 20
 encounter SPECIES_KRABBY, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_KRABBY, 40, 40
 encounter SPECIES_CORSOLA, 40, 40
 encounter SPECIES_KRABBY, 40, 40
@@ -1800,7 +1805,7 @@ pokemon SPECIES_ZUBAT
 pokemon SPECIES_HOPPIP
 pokemon SPECIES_ZUBAT
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_HOPPIP
 pokemon SPECIES_RATTATA
 pokemon SPECIES_HOPPIP
@@ -1836,14 +1841,14 @@ pokemon SPECIES_MINUN
 pokemon SPECIES_SHINX
 pokemon SPECIES_SHINX
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -1861,7 +1866,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -1904,7 +1909,7 @@ pokemon SPECIES_SLOWPOKE
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_SLOWPOKE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_ZUBAT
@@ -1940,14 +1945,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_SLOWPOKE, 10, 20
 encounter SPECIES_SLOWPOKE, 15, 25
 encounter SPECIES_SLOWPOKE, 5, 15
 encounter SPECIES_SLOWPOKE, 5, 15
 encounter SPECIES_SLOWPOKE, 5, 15
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -1965,7 +1970,7 @@ encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -2008,7 +2013,7 @@ pokemon SPECIES_SLOWPOKE
 pokemon SPECIES_GOLBAT
 pokemon SPECIES_SLOWPOKE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_ZUBAT
@@ -2044,14 +2049,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_SLOWPOKE, 10, 20
 encounter SPECIES_SLOWPOKE, 15, 25
 encounter SPECIES_SLOWBRO, 15, 25
 encounter SPECIES_SLOWBRO, 15, 25
 encounter SPECIES_SLOWBRO, 30, 30
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -2069,7 +2074,7 @@ encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -2112,7 +2117,7 @@ pokemon SPECIES_PARAS
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_PARAS
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_CATERPIE
 pokemon SPECIES_CATERPIE
 pokemon SPECIES_CATERPIE
@@ -2148,14 +2153,14 @@ pokemon SPECIES_NUMEL
 pokemon SPECIES_BUDEW
 pokemon SPECIES_CARNIVINE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_PSYDUCK, 10, 20
 encounter SPECIES_PSYDUCK, 5, 15
 encounter SPECIES_GOLDUCK, 10, 20
 encounter SPECIES_GOLDUCK, 10, 20
 encounter SPECIES_GOLDUCK, 10, 20
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -2173,7 +2178,7 @@ encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -2216,7 +2221,7 @@ pokemon SPECIES_DITTO
 pokemon SPECIES_RATTATA
 pokemon SPECIES_DITTO
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_DROWZEE
 pokemon SPECIES_RATTATA
 pokemon SPECIES_DROWZEE
@@ -2252,14 +2257,14 @@ pokemon SPECIES_LINOONE
 pokemon SPECIES_BUIZEL
 pokemon SPECIES_BIDOOF
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_TENTACOOL, 15, 25
 encounter SPECIES_TENTACOOL, 10, 20
 encounter SPECIES_TENTACRUEL, 15, 25
 encounter SPECIES_TENTACRUEL, 15, 25
 encounter SPECIES_TENTACRUEL, 29, 29
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -2277,7 +2282,7 @@ encounter SPECIES_KRABBY, 20, 20
 encounter SPECIES_CORSOLA, 20, 20
 encounter SPECIES_KRABBY, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_KRABBY, 40, 40
 encounter SPECIES_CORSOLA, 40, 40
 encounter SPECIES_KRABBY, 40, 40
@@ -2320,7 +2325,7 @@ pokemon SPECIES_DITTO
 pokemon SPECIES_PIDGEY
 pokemon SPECIES_YANMA
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NIDORAN_M
 pokemon SPECIES_NIDORAN_F
 pokemon SPECIES_NIDORAN_M
@@ -2356,14 +2361,14 @@ pokemon SPECIES_LINOONE
 pokemon SPECIES_BUIZEL
 pokemon SPECIES_BIDOOF
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_PSYDUCK, 15, 25
 encounter SPECIES_PSYDUCK, 10, 20
 encounter SPECIES_GOLDUCK, 15, 25
 encounter SPECIES_GOLDUCK, 15, 25
 encounter SPECIES_GOLDUCK, 31, 31
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -2381,7 +2386,7 @@ encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -2424,7 +2429,7 @@ pokemon SPECIES_PIDGEY
 pokemon SPECIES_PIDGEY
 pokemon SPECIES_PIDGEY
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_CATERPIE
 pokemon SPECIES_METAPOD
 pokemon SPECIES_CATERPIE
@@ -2460,14 +2465,14 @@ pokemon SPECIES_MINUN
 pokemon SPECIES_SHINX
 pokemon SPECIES_SHINX
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -2485,7 +2490,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -2528,7 +2533,7 @@ pokemon SPECIES_CATERPIE
 pokemon SPECIES_CATERPIE
 pokemon SPECIES_CATERPIE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_CATERPIE
 pokemon SPECIES_CATERPIE
 pokemon SPECIES_CATERPIE
@@ -2564,14 +2569,14 @@ pokemon SPECIES_CATERPIE
 pokemon SPECIES_CATERPIE
 pokemon SPECIES_CATERPIE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -2589,7 +2594,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -2632,7 +2637,7 @@ pokemon SPECIES_PIDGEY
 pokemon SPECIES_STANTLER
 pokemon SPECIES_PIDGEY
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NIDORAN_M
 pokemon SPECIES_NIDORAN_F
 pokemon SPECIES_NIDORAN_M
@@ -2668,14 +2673,14 @@ pokemon SPECIES_MINUN
 pokemon SPECIES_SHINX
 pokemon SPECIES_SHINX
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -2693,7 +2698,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -2736,7 +2741,7 @@ pokemon SPECIES_PIDGEY
 pokemon SPECIES_PIDGEY
 pokemon SPECIES_PIDGEY
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_PIDGEY
 pokemon SPECIES_STANTLER
 pokemon SPECIES_PIDGEY
@@ -2772,14 +2777,14 @@ pokemon SPECIES_MINUN
 pokemon SPECIES_SHINX
 pokemon SPECIES_SHINX
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -2797,7 +2802,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -2840,7 +2845,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -2876,14 +2881,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_POLIWAG, 15, 25
 encounter SPECIES_POLIWAG, 10, 20
 encounter SPECIES_POLIWHIRL, 15, 25
 encounter SPECIES_POLIWHIRL, 15, 25
 encounter SPECIES_POLIWHIRL, 15, 25
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -2901,7 +2906,7 @@ encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -2944,7 +2949,7 @@ pokemon SPECIES_RATICATE
 pokemon SPECIES_KOFFING
 pokemon SPECIES_RATICATE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_RATTATA
 pokemon SPECIES_KOFFING
 pokemon SPECIES_RATTATA
@@ -2980,14 +2985,14 @@ pokemon SPECIES_SPINDA
 pokemon SPECIES_CHATOT
 pokemon SPECIES_MEDITITE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -3005,7 +3010,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -3048,7 +3053,7 @@ pokemon SPECIES_MAGMAR
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_MAGMAR
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_RATTATA
 pokemon SPECIES_KOFFING
 pokemon SPECIES_RATTATA
@@ -3084,14 +3089,14 @@ pokemon SPECIES_SPINDA
 pokemon SPECIES_CHATOT
 pokemon SPECIES_MEDITITE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -3109,7 +3114,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -3152,7 +3157,7 @@ pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
@@ -3188,14 +3193,14 @@ pokemon SPECIES_SPINDA
 pokemon SPECIES_CHATOT
 pokemon SPECIES_MEDITITE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -3213,7 +3218,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -3256,7 +3261,7 @@ pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
@@ -3292,14 +3297,14 @@ pokemon SPECIES_SPINDA
 pokemon SPECIES_CHATOT
 pokemon SPECIES_MEDITITE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -3317,7 +3322,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -3360,7 +3365,7 @@ pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
@@ -3396,14 +3401,14 @@ pokemon SPECIES_SPINDA
 pokemon SPECIES_CHATOT
 pokemon SPECIES_MEDITITE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -3421,7 +3426,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -3464,7 +3469,7 @@ pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
@@ -3500,14 +3505,14 @@ pokemon SPECIES_SPINDA
 pokemon SPECIES_CHATOT
 pokemon SPECIES_MEDITITE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -3525,7 +3530,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -3568,7 +3573,7 @@ pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
@@ -3604,14 +3609,14 @@ pokemon SPECIES_SPINDA
 pokemon SPECIES_CHATOT
 pokemon SPECIES_MEDITITE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -3629,7 +3634,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -3672,7 +3677,7 @@ pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
@@ -3708,14 +3713,14 @@ pokemon SPECIES_SPINDA
 pokemon SPECIES_CHATOT
 pokemon SPECIES_MEDITITE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -3733,7 +3738,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -3776,7 +3781,7 @@ pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
@@ -3812,14 +3817,14 @@ pokemon SPECIES_SPINDA
 pokemon SPECIES_CHATOT
 pokemon SPECIES_MEDITITE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -3837,7 +3842,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -3880,7 +3885,7 @@ pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
@@ -3916,14 +3921,14 @@ pokemon SPECIES_SPINDA
 pokemon SPECIES_CHATOT
 pokemon SPECIES_MEDITITE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -3941,7 +3946,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -3984,7 +3989,7 @@ pokemon SPECIES_TAUROS
 pokemon SPECIES_MILTANK
 pokemon SPECIES_SNUBBULL
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATICATE
 pokemon SPECIES_RATTATA
@@ -4020,14 +4025,14 @@ pokemon SPECIES_MINUN
 pokemon SPECIES_SHINX
 pokemon SPECIES_SHINX
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -4045,7 +4050,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -4088,7 +4093,7 @@ pokemon SPECIES_TAUROS
 pokemon SPECIES_MILTANK
 pokemon SPECIES_TAUROS
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATICATE
 pokemon SPECIES_RATTATA
@@ -4124,14 +4129,14 @@ pokemon SPECIES_MINUN
 pokemon SPECIES_SHINX
 pokemon SPECIES_SHINX
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -4149,7 +4154,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -4192,7 +4197,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -4228,14 +4233,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_TENTACOOL, 15, 25
 encounter SPECIES_TENTACOOL, 10, 20
 encounter SPECIES_TENTACRUEL, 15, 25
 encounter SPECIES_TENTACRUEL, 15, 25
 encounter SPECIES_TENTACRUEL, 15, 25
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -4253,7 +4258,7 @@ encounter SPECIES_KRABBY, 20, 20
 encounter SPECIES_CORSOLA, 20, 20
 encounter SPECIES_KRABBY, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_KRABBY, 40, 40
 encounter SPECIES_CORSOLA, 40, 40
 encounter SPECIES_KRABBY, 40, 40
@@ -4296,7 +4301,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -4332,14 +4337,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_TENTACOOL, 15, 25
 encounter SPECIES_TENTACOOL, 10, 20
 encounter SPECIES_TENTACRUEL, 15, 25
 encounter SPECIES_TENTACRUEL, 15, 25
 encounter SPECIES_TENTACRUEL, 15, 25
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -4357,7 +4362,7 @@ encounter SPECIES_KRABBY, 20, 20
 encounter SPECIES_CORSOLA, 20, 20
 encounter SPECIES_KRABBY, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_KRABBY, 40, 40
 encounter SPECIES_CORSOLA, 40, 40
 encounter SPECIES_KRABBY, 40, 40
@@ -4400,7 +4405,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -4436,14 +4441,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_TENTACOOL, 15, 25
 encounter SPECIES_TENTACRUEL, 15, 25
 encounter SPECIES_MANTINE, 15, 25
 encounter SPECIES_MANTINE, 15, 25
 encounter SPECIES_MANTINE, 15, 25
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -4461,7 +4466,7 @@ encounter SPECIES_CHINCHOU, 20, 20
 encounter SPECIES_SHELLDER, 20, 20
 encounter SPECIES_CHINCHOU, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_CHINCHOU, 40, 40
 encounter SPECIES_SHELLDER, 40, 40
 encounter SPECIES_TENTACRUEL, 40, 40
@@ -4504,7 +4509,7 @@ pokemon SPECIES_SEEL
 pokemon SPECIES_GOLBAT
 pokemon SPECIES_SEEL
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_KRABBY
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_KRABBY
@@ -4540,14 +4545,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_TENTACOOL, 15, 25
 encounter SPECIES_HORSEA, 10, 20
 encounter SPECIES_TENTACRUEL, 15, 25
 encounter SPECIES_TENTACRUEL, 15, 25
 encounter SPECIES_TENTACRUEL, 15, 25
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -4565,7 +4570,7 @@ encounter SPECIES_KRABBY, 20, 20
 encounter SPECIES_HORSEA, 20, 20
 encounter SPECIES_KRABBY, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_KRABBY, 40, 40
 encounter SPECIES_HORSEA, 40, 40
 encounter SPECIES_KINGLER, 40, 40
@@ -4608,7 +4613,7 @@ pokemon SPECIES_SEEL
 pokemon SPECIES_GOLBAT
 pokemon SPECIES_SEEL
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_KRABBY
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_KRABBY
@@ -4644,14 +4649,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -4669,7 +4674,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -4712,7 +4717,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -4748,14 +4753,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -4773,7 +4778,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -4816,7 +4821,7 @@ pokemon SPECIES_SEEL
 pokemon SPECIES_GOLBAT
 pokemon SPECIES_SEEL
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_KRABBY
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_KRABBY
@@ -4852,14 +4857,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_HORSEA, 15, 25
 encounter SPECIES_TENTACRUEL, 15, 25
 encounter SPECIES_SEADRA, 15, 25
 encounter SPECIES_SEADRA, 15, 25
 encounter SPECIES_SEADRA, 30, 30
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -4877,7 +4882,7 @@ encounter SPECIES_KRABBY, 20, 20
 encounter SPECIES_HORSEA, 20, 20
 encounter SPECIES_KRABBY, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_KRABBY, 40, 40
 encounter SPECIES_HORSEA, 40, 40
 encounter SPECIES_KINGLER, 40, 40
@@ -4920,7 +4925,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -4956,14 +4961,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -4981,7 +4986,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -5024,7 +5029,7 @@ pokemon SPECIES_SEEL
 pokemon SPECIES_GOLBAT
 pokemon SPECIES_SEEL
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_KRABBY
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_KRABBY
@@ -5060,14 +5065,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -5085,7 +5090,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -5128,7 +5133,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -5164,14 +5169,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -5189,7 +5194,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -5232,7 +5237,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -5268,14 +5273,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -5293,7 +5298,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -5336,7 +5341,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -5372,14 +5377,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_TENTACOOL, 15, 25
 encounter SPECIES_TENTACOOL, 10, 20
 encounter SPECIES_TENTACRUEL, 15, 25
 encounter SPECIES_TENTACRUEL, 15, 25
 encounter SPECIES_TENTACRUEL, 15, 25
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_KRABBY, 15, 24
 encounter SPECIES_SHUCKLE, 23, 28
 
@@ -5397,7 +5402,7 @@ encounter SPECIES_KRABBY, 20, 20
 encounter SPECIES_CORSOLA, 20, 20
 encounter SPECIES_KRABBY, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_KRABBY, 40, 40
 encounter SPECIES_CORSOLA, 40, 40
 encounter SPECIES_KRABBY, 40, 40
@@ -5440,7 +5445,7 @@ pokemon SPECIES_FLAAFFY
 pokemon SPECIES_FLAAFFY
 pokemon SPECIES_FLAAFFY
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_MANKEY
 pokemon SPECIES_MAREEP
 pokemon SPECIES_MANKEY
@@ -5476,14 +5481,14 @@ pokemon SPECIES_LINOONE
 pokemon SPECIES_BUIZEL
 pokemon SPECIES_BIDOOF
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_GOLDEEN, 15, 25
 encounter SPECIES_GOLDEEN, 10, 20
 encounter SPECIES_SEAKING, 15, 25
 encounter SPECIES_SEAKING, 15, 25
 encounter SPECIES_SEAKING, 15, 25
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -5501,7 +5506,7 @@ encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -5544,7 +5549,7 @@ pokemon SPECIES_RATTATA
 pokemon SPECIES_GEODUDE
 pokemon SPECIES_MARILL
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_ZUBAT
@@ -5580,14 +5585,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_GOLDEEN, 15, 25
 encounter SPECIES_GOLDEEN, 10, 20
 encounter SPECIES_SEAKING, 15, 25
 encounter SPECIES_SEAKING, 15, 25
 encounter SPECIES_SEAKING, 15, 25
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -5605,7 +5610,7 @@ encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -5648,7 +5653,7 @@ pokemon SPECIES_ZUBAT
 pokemon SPECIES_MACHOP
 pokemon SPECIES_ZUBAT
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_GEODUDE
 pokemon SPECIES_MACHOP
 pokemon SPECIES_GEODUDE
@@ -5684,14 +5689,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -5709,7 +5714,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -5752,7 +5757,7 @@ pokemon SPECIES_GOLBAT
 pokemon SPECIES_MACHOP
 pokemon SPECIES_GOLBAT
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_GRAVELER
 pokemon SPECIES_MACHOKE
 pokemon SPECIES_GRAVELER
@@ -5788,14 +5793,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_GOLDEEN, 15, 25
 encounter SPECIES_GOLDEEN, 20, 30
 encounter SPECIES_SEAKING, 20, 30
 encounter SPECIES_SEAKING, 20, 30
 encounter SPECIES_SEAKING, 20, 30
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -5813,7 +5818,7 @@ encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -5856,7 +5861,7 @@ pokemon SPECIES_RATICATE
 pokemon SPECIES_GEODUDE
 pokemon SPECIES_RATICATE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_ZUBAT
@@ -5892,14 +5897,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_GOLDEEN, 15, 25
 encounter SPECIES_GOLDEEN, 10, 20
 encounter SPECIES_SEAKING, 15, 25
 encounter SPECIES_SEAKING, 15, 25
 encounter SPECIES_SEAKING, 15, 25
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -5917,7 +5922,7 @@ encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -5960,7 +5965,7 @@ pokemon SPECIES_PIDGEOTTO
 pokemon SPECIES_VENONAT
 pokemon SPECIES_PIDGEOTTO
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_FLAAFFY
 pokemon SPECIES_GIRAFARIG
 pokemon SPECIES_FLAAFFY
@@ -5996,14 +6001,14 @@ pokemon SPECIES_LINOONE
 pokemon SPECIES_BUIZEL
 pokemon SPECIES_BIDOOF
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_MAGIKARP, 15, 25
 encounter SPECIES_MAGIKARP, 10, 20
 encounter SPECIES_MAGIKARP, 5, 15
 encounter SPECIES_MAGIKARP, 5, 15
 encounter SPECIES_MAGIKARP, 50, 50
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -6021,7 +6026,7 @@ encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -6064,7 +6069,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -6100,14 +6105,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_MAGIKARP, 10, 20
 encounter SPECIES_MAGIKARP, 5, 15
 encounter SPECIES_GYARADOS, 10, 20
 encounter SPECIES_GYARADOS, 10, 20
 encounter SPECIES_GYARADOS, 10, 20
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -6125,7 +6130,7 @@ encounter SPECIES_MAGIKARP, 20, 20
 encounter SPECIES_GYARADOS, 20, 20
 encounter SPECIES_MAGIKARP, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_MAGIKARP, 40, 40
 encounter SPECIES_GYARADOS, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -6168,7 +6173,7 @@ pokemon SPECIES_LICKITUNG
 pokemon SPECIES_WEEPINBELL
 pokemon SPECIES_LICKITUNG
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_TANGELA
 pokemon SPECIES_WEEPINBELL
 pokemon SPECIES_TANGELA
@@ -6204,14 +6209,14 @@ pokemon SPECIES_LINOONE
 pokemon SPECIES_BUIZEL
 pokemon SPECIES_BIDOOF
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_POLIWAG, 20, 30
 encounter SPECIES_POLIWAG, 15, 25
 encounter SPECIES_POLIWHIRL, 20, 30
 encounter SPECIES_POLIWHIRL, 20, 30
 encounter SPECIES_POLIWHIRL, 20, 30
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -6229,7 +6234,7 @@ encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_REMORAID, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -6272,7 +6277,7 @@ pokemon SPECIES_JYNX
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_JYNX
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_SWINUB
 pokemon SPECIES_GOLBAT
 pokemon SPECIES_SWINUB
@@ -6308,14 +6313,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -6333,7 +6338,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -6376,7 +6381,7 @@ pokemon SPECIES_JYNX
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_JYNX
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_SWINUB
 pokemon SPECIES_GOLBAT
 pokemon SPECIES_SWINUB
@@ -6412,14 +6417,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -6437,7 +6442,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -6480,7 +6485,7 @@ pokemon SPECIES_JYNX
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_JYNX
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_SWINUB
 pokemon SPECIES_GOLBAT
 pokemon SPECIES_SWINUB
@@ -6516,14 +6521,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -6541,7 +6546,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -6584,7 +6589,7 @@ pokemon SPECIES_JYNX
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_JYNX
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_SWINUB
 pokemon SPECIES_GOLBAT
 pokemon SPECIES_SWINUB
@@ -6620,14 +6625,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -6645,7 +6650,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -6688,7 +6693,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -6724,14 +6729,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -6749,7 +6754,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -6792,7 +6797,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -6828,14 +6833,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_MAGIKARP, 10, 20
 encounter SPECIES_MAGIKARP, 5, 15
 encounter SPECIES_MAGIKARP, 2, 10
 encounter SPECIES_MAGIKARP, 2, 10
 encounter SPECIES_MAGIKARP, 2, 10
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -6853,7 +6858,7 @@ encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -6896,7 +6901,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -6932,14 +6937,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_MAGIKARP, 10, 20
 encounter SPECIES_MAGIKARP, 5, 15
 encounter SPECIES_DRATINI, 5, 15
 encounter SPECIES_DRATINI, 5, 15
 encounter SPECIES_DRATINI, 5, 15
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -6957,7 +6962,7 @@ encounter SPECIES_MAGIKARP, 20, 20
 encounter SPECIES_DRATINI, 20, 20
 encounter SPECIES_MAGIKARP, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_MAGIKARP, 40, 40
 encounter SPECIES_DRATINI, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -7000,7 +7005,7 @@ pokemon SPECIES_GRAVELER
 pokemon SPECIES_GRAVELER
 pokemon SPECIES_GRAVELER
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_GEODUDE
 pokemon SPECIES_GRAVELER
 pokemon SPECIES_GEODUDE
@@ -7036,14 +7041,14 @@ pokemon SPECIES_LINOONE
 pokemon SPECIES_BUIZEL
 pokemon SPECIES_BIDOOF
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_MAGIKARP, 15, 25
 encounter SPECIES_MAGIKARP, 10, 20
 encounter SPECIES_MAGIKARP, 2, 10
 encounter SPECIES_MAGIKARP, 2, 10
 encounter SPECIES_MAGIKARP, 2, 10
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -7061,7 +7066,7 @@ encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -7088,49 +7093,49 @@ rocksmashrate 0
 oldrodrate 0
 goodrodrate 0
 superrodrate 0
-walklevels 3, 2, 3, 2, 2, 2, 2, 2, 3, 4, 3, 4
+walklevels 5, 5, 6, 6, 4, 5, 7, 7, 5, 5, 5, 5
 
 // morning encounter slots
 pokemon SPECIES_GEODUDE
-pokemon SPECIES_SPEAROW
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_SPEAROW
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_SPEAROW
-pokemon SPECIES_RATTATA
-pokemon SPECIES_SPEAROW
-pokemon SPECIES_RATTATA
+pokemon SPECIES_ROGGENROLA
+pokemon SPECIES_POOCHYENA
+pokemon SPECIES_POOCHYENA
+pokemon SPECIES_LILLIPUP
+pokemon SPECIES_NATU
+pokemon SPECIES_HOUNDOUR
+pokemon SPECIES_HOUNDOUR
+pokemon SPECIES_GROWLITHE
+pokemon SPECIES_GROWLITHE
+pokemon SPECIES_DEERLING
+pokemon SPECIES_DEERLING
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_GEODUDE
-pokemon SPECIES_SPEAROW
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_SPEAROW
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_SPEAROW
-pokemon SPECIES_RATTATA
-pokemon SPECIES_SPEAROW
-pokemon SPECIES_RATTATA
+pokemon SPECIES_ROGGENROLA
+pokemon SPECIES_POOCHYENA
+pokemon SPECIES_POOCHYENA
+pokemon SPECIES_LILLIPUP
+pokemon SPECIES_NATU
+pokemon SPECIES_HOUNDOUR
+pokemon SPECIES_HOUNDOUR
+pokemon SPECIES_GROWLITHE
+pokemon SPECIES_GROWLITHE
+pokemon SPECIES_DEERLING
+pokemon SPECIES_DEERLING
 
 // night encounter slots
 pokemon SPECIES_GEODUDE
-pokemon SPECIES_RATTATA
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_RATTATA
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_RATTATA
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_RATTATA
+pokemon SPECIES_ROGGENROLA
+pokemon SPECIES_POOCHYENA
+pokemon SPECIES_POOCHYENA
+pokemon SPECIES_LILLIPUP
+pokemon SPECIES_NATU
+pokemon SPECIES_HOUNDOUR
+pokemon SPECIES_HOUNDOUR
+pokemon SPECIES_GROWLITHE
+pokemon SPECIES_GROWLITHE
+pokemon SPECIES_DEERLING
+pokemon SPECIES_DEERLING
 
 // hoenn encounter slots
 pokemon SPECIES_PLUSLE
@@ -7140,14 +7145,14 @@ pokemon SPECIES_MINUN
 pokemon SPECIES_SHINX
 pokemon SPECIES_SHINX
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -7165,7 +7170,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -7192,49 +7197,49 @@ rocksmashrate 50
 oldrodrate 25
 goodrodrate 50
 superrodrate 75
-walklevels 3, 2, 3, 2, 2, 2, 4, 4, 3, 4, 3, 4
+walklevels 8, 8, 7, 7, 9, 9, 7, 7, 7, 7, 8, 9
 
 // morning encounter slots
 pokemon SPECIES_GEODUDE
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_GEODUDE
+monwithform SPECIES_GEODUDE, 1
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_ZUBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_DUNSPARCE
+pokemon SPECIES_MURKROW
+pokemon SPECIES_SWINUB
+pokemon SPECIES_HIPPOPOTAS
+pokemon SPECIES_PANCHAM
+pokemon SPECIES_MURKROW
+pokemon SPECIES_MURKROW
+pokemon SPECIES_MAWILE
+pokemon SPECIES_MAWILE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_GEODUDE
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_GEODUDE
+monwithform SPECIES_GEODUDE, 1
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_ZUBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_DUNSPARCE
+pokemon SPECIES_MURKROW
+pokemon SPECIES_SWINUB
+pokemon SPECIES_HIPPOPOTAS
+pokemon SPECIES_PANCHAM
+pokemon SPECIES_MURKROW
+pokemon SPECIES_MURKROW
+pokemon SPECIES_MAWILE
+pokemon SPECIES_MAWILE
 
 // night encounter slots
 pokemon SPECIES_GEODUDE
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_GEODUDE
+monwithform SPECIES_GEODUDE, 1
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_ZUBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_DUNSPARCE
+pokemon SPECIES_MURKROW
+pokemon SPECIES_SWINUB
+pokemon SPECIES_HIPPOPOTAS
+pokemon SPECIES_PANCHAM
+pokemon SPECIES_MURKROW
+pokemon SPECIES_MURKROW
+pokemon SPECIES_MAWILE
+pokemon SPECIES_MAWILE
 
 // hoenn encounter slots
 pokemon SPECIES_ABSOL
@@ -7244,16 +7249,16 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
-encounter SPECIES_MAGIKARP, 10, 20
-encounter SPECIES_MAGIKARP, 5, 15
-encounter SPECIES_MAGIKARP, 2, 10
-encounter SPECIES_MAGIKARP, 2, 10
-encounter SPECIES_MAGIKARP, 2, 10
+// surf encounters; probabilities:  60, 30, 5, 4, 1
+encounter SPECIES_GOLBAT, 35, 39
+encounter SPECIES_HIPPOPOTAS, 36, 36
+encounter SPECIES_HONCHKROW, 37, 39
+encounter SPECIES_HONCHKROW, 37, 39
+encounter SPECIES_HONCHKROW, 37, 39
 
-// rock smash encounters
-encounter SPECIES_DUNSPARCE, 4, 8
-encounter SPECIES_GEODUDE, 8, 14
+// rock smash encounters; probabilities:  90, 10
+encounter SPECIES_GEODUDE, 15, 18
+encounterwithform SPECIES_DIGLETT, 1, 15, 18
 
 // old rod encounters
 encounter SPECIES_MAGIKARP, 10, 10
@@ -7269,12 +7274,12 @@ encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 
-// super rod encounters
-encounter SPECIES_GOLDEEN, 40, 40
-encounter SPECIES_GOLDEEN, 40, 40
-encounter SPECIES_MAGIKARP, 40, 40
-encounter SPECIES_SEAKING, 40, 40
-encounter SPECIES_MAGIKARP, 40, 40
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
+encounter SPECIES_TIRTOUGA, 6, 9
+encounter SPECIES_TIRTOUGA, 6, 9
+encounter SPECIES_WIGLETT, 8, 8
+encounter SPECIES_NOIBAT, 6, 6
+encounter SPECIES_NOIBAT, 6, 6
 
 // swarm grass
 pokemon SPECIES_DUNSPARCE
@@ -7312,7 +7317,7 @@ pokemon SPECIES_GOLBAT
 pokemon SPECIES_WOBBUFFET
 pokemon SPECIES_GOLBAT
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_GEODUDE
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_GEODUDE
@@ -7348,14 +7353,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_MAGIKARP, 10, 20
 encounter SPECIES_MAGIKARP, 5, 15
 encounter SPECIES_MAGIKARP, 2, 10
 encounter SPECIES_MAGIKARP, 2, 10
 encounter SPECIES_MAGIKARP, 2, 10
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -7373,7 +7378,7 @@ encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -7416,7 +7421,7 @@ pokemon SPECIES_RATICATE
 pokemon SPECIES_RATICATE
 pokemon SPECIES_DITTO
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_FARFETCHD
 pokemon SPECIES_MILTANK
 pokemon SPECIES_DITTO
@@ -7452,14 +7457,14 @@ pokemon SPECIES_LINOONE
 pokemon SPECIES_BUIZEL
 pokemon SPECIES_BIDOOF
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_TENTACOOL, 15, 25
 encounter SPECIES_SEEL, 10, 20
 encounter SPECIES_STARYU, 15, 25
 encounter SPECIES_STARYU, 15, 25
 encounter SPECIES_STARYU, 15, 25
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -7477,7 +7482,7 @@ encounter SPECIES_CHINCHOU, 20, 20
 encounter SPECIES_SHELLDER, 20, 20
 encounter SPECIES_CHINCHOU, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_CHINCHOU, 40, 40
 encounter SPECIES_SHELLDER, 40, 40
 encounter SPECIES_TENTACRUEL, 40, 40
@@ -7520,7 +7525,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -7556,14 +7561,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_POLIWAG, 35, 35
 encounter SPECIES_MAGIKARP, 30, 30
 encounter SPECIES_MAGIKARP, 35, 35
 encounter SPECIES_MAGIKARP, 35, 35
 encounter SPECIES_MAGIKARP, 35, 35
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -7581,7 +7586,7 @@ encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_POLIWAG, 40, 40
@@ -7624,7 +7629,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -7660,14 +7665,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_POLIWAG, 35, 35
 encounter SPECIES_POLIWAG, 30, 30
 encounter SPECIES_POLIWAG, 35, 35
 encounter SPECIES_POLIWAG, 35, 35
 encounter SPECIES_POLIWAG, 35, 35
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -7685,7 +7690,7 @@ encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_MAGIKARP, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_POLIWAG, 40, 40
@@ -7728,7 +7733,7 @@ pokemon SPECIES_PSYDUCK
 pokemon SPECIES_PSYDUCK
 pokemon SPECIES_PSYDUCK
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_GOLBAT
 pokemon SPECIES_PSYDUCK
@@ -7764,14 +7769,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -7789,7 +7794,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -7832,7 +7837,7 @@ pokemon SPECIES_PSYDUCK
 pokemon SPECIES_PSYDUCK
 pokemon SPECIES_PSYDUCK
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_SEEL
 pokemon SPECIES_GOLBAT
 pokemon SPECIES_PSYDUCK
@@ -7868,14 +7873,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -7893,7 +7898,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -7936,7 +7941,7 @@ pokemon SPECIES_PSYDUCK
 pokemon SPECIES_PSYDUCK
 pokemon SPECIES_PSYDUCK
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_SEEL
 pokemon SPECIES_GOLBAT
 pokemon SPECIES_PSYDUCK
@@ -7972,14 +7977,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -7997,7 +8002,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -8040,7 +8045,7 @@ pokemon SPECIES_DEWGONG
 pokemon SPECIES_PSYDUCK
 pokemon SPECIES_PSYDUCK
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_DEWGONG
 pokemon SPECIES_GOLBAT
 pokemon SPECIES_PSYDUCK
@@ -8076,14 +8081,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -8101,7 +8106,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -8144,7 +8149,7 @@ pokemon SPECIES_DEWGONG
 pokemon SPECIES_JYNX
 pokemon SPECIES_JYNX
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_DEWGONG
 pokemon SPECIES_GOLBAT
 pokemon SPECIES_PSYDUCK
@@ -8180,14 +8185,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_SEEL, 30, 40
 encounter SPECIES_HORSEA, 30, 40
 encounter SPECIES_SLOWBRO, 35, 45
 encounter SPECIES_SLOWBRO, 50, 50
 encounter SPECIES_SLOWBRO, 35, 45
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -8205,7 +8210,7 @@ encounter SPECIES_KRABBY, 20, 20
 encounter SPECIES_HORSEA, 20, 20
 encounter SPECIES_KRABBY, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_GYARADOS, 40, 40
 encounter SPECIES_HORSEA, 40, 40
 encounter SPECIES_KINGLER, 40, 40
@@ -8248,7 +8253,7 @@ pokemon SPECIES_LARVITAR
 pokemon SPECIES_GOLBAT
 pokemon SPECIES_LARVITAR
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_QUAGSIRE
 pokemon SPECIES_STEELIX
 pokemon SPECIES_QUAGSIRE
@@ -8284,14 +8289,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_SEAKING, 30, 40
 encounter SPECIES_SEAKING, 35, 45
 encounter SPECIES_GOLDEEN, 30, 40
 encounter SPECIES_GOLDEEN, 30, 40
 encounter SPECIES_GOLDEEN, 30, 40
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -8309,7 +8314,7 @@ encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -8352,7 +8357,7 @@ pokemon SPECIES_LARVITAR
 pokemon SPECIES_GOLBAT
 pokemon SPECIES_LARVITAR
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_QUAGSIRE
 pokemon SPECIES_SNEASEL
 pokemon SPECIES_PHANPY
@@ -8388,14 +8393,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_SEAKING, 30, 40
 encounter SPECIES_SEAKING, 35, 45
 encounter SPECIES_GOLDEEN, 30, 40
 encounter SPECIES_GOLDEEN, 30, 40
 encounter SPECIES_GOLDEEN, 30, 40
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -8413,7 +8418,7 @@ encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -8456,7 +8461,7 @@ pokemon SPECIES_LARVITAR
 pokemon SPECIES_GOLBAT
 pokemon SPECIES_LARVITAR
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_SNEASEL
 pokemon SPECIES_GOLDUCK
 pokemon SPECIES_QUAGSIRE
@@ -8492,14 +8497,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_SEAKING, 30, 40
 encounter SPECIES_SEAKING, 35, 45
 encounter SPECIES_GOLDEEN, 30, 40
 encounter SPECIES_GOLDEEN, 30, 40
 encounter SPECIES_GOLDEEN, 30, 40
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -8517,7 +8522,7 @@ encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -8560,7 +8565,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -8596,14 +8601,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_WOOPER, 20, 30
 encounter SPECIES_WOOPER, 20, 30
 encounter SPECIES_QUAGSIRE, 30, 40
 encounter SPECIES_QUAGSIRE, 30, 40
 encounter SPECIES_QUAGSIRE, 30, 40
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -8621,7 +8626,7 @@ encounter SPECIES_MAGIKARP, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_MAGIKARP, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
 encounter SPECIES_POLIWAG, 40, 40
@@ -8664,7 +8669,7 @@ pokemon SPECIES_MACHOKE
 pokemon SPECIES_STEELIX
 pokemon SPECIES_STEELIX
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_GOLBAT
 pokemon SPECIES_GEODUDE
 pokemon SPECIES_KRABBY
@@ -8700,14 +8705,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_KRABBY, 20, 26
 encounter SPECIES_KINGLER, 28, 31
 
@@ -8725,7 +8730,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -8768,7 +8773,7 @@ pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
@@ -8804,14 +8809,14 @@ pokemon SPECIES_SPINDA
 pokemon SPECIES_CHATOT
 pokemon SPECIES_MEDITITE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -8829,7 +8834,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -8872,7 +8877,7 @@ pokemon SPECIES_DODRIO
 pokemon SPECIES_DODUO
 pokemon SPECIES_DODRIO
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_TANGELA
 pokemon SPECIES_PONYTA
 pokemon SPECIES_TANGELA
@@ -8908,14 +8913,14 @@ pokemon SPECIES_LINOONE
 pokemon SPECIES_BUIZEL
 pokemon SPECIES_BIDOOF
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_POLIWHIRL, 30, 40
 encounter SPECIES_POLIWHIRL, 35, 45
 encounter SPECIES_POLIWAG, 30, 40
 encounter SPECIES_POLIWAG, 30, 40
 encounter SPECIES_POLIWHIRL, 48, 48
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -8933,7 +8938,7 @@ encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -8976,7 +8981,7 @@ pokemon SPECIES_LARVITAR
 pokemon SPECIES_GOLBAT
 pokemon SPECIES_LARVITAR
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_ONIX
 pokemon SPECIES_DONPHAN
 pokemon SPECIES_ONIX
@@ -9012,14 +9017,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_SEAKING, 30, 40
 encounter SPECIES_SEAKING, 35, 45
 encounter SPECIES_GOLDEEN, 30, 40
 encounter SPECIES_GOLDEEN, 30, 40
 encounter SPECIES_SEAKING, 50, 50
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -9037,7 +9042,7 @@ encounter SPECIES_SEAKING, 20, 20
 encounter SPECIES_MAGIKARP, 20, 20
 encounter SPECIES_SEAKING, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_GYARADOS, 40, 40
 encounter SPECIES_SEAKING, 40, 40
 encounter SPECIES_SEAKING, 40, 40
@@ -9080,7 +9085,7 @@ pokemon SPECIES_LARVITAR
 pokemon SPECIES_GOLDUCK
 pokemon SPECIES_LARVITAR
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_GOLBAT
 pokemon SPECIES_ONIX
 pokemon SPECIES_GOLBAT
@@ -9116,14 +9121,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -9141,7 +9146,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -9184,7 +9189,7 @@ pokemon SPECIES_LARVITAR
 pokemon SPECIES_GOLBAT
 pokemon SPECIES_LARVITAR
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_QUAGSIRE
 pokemon SPECIES_GOLDUCK
 pokemon SPECIES_QUAGSIRE
@@ -9220,14 +9225,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -9245,7 +9250,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -9288,7 +9293,7 @@ pokemon SPECIES_LARVITAR
 pokemon SPECIES_GOLBAT
 pokemon SPECIES_LARVITAR
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_SNEASEL
 pokemon SPECIES_GOLDUCK
 pokemon SPECIES_QUAGSIRE
@@ -9324,14 +9329,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_SEAKING, 30, 40
 encounter SPECIES_SEAKING, 35, 45
 encounter SPECIES_GOLDEEN, 30, 40
 encounter SPECIES_GOLDEEN, 30, 40
 encounter SPECIES_GOLDEEN, 30, 40
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -9349,7 +9354,7 @@ encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -9392,7 +9397,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -9428,14 +9433,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -9453,7 +9458,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -9496,7 +9501,7 @@ pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
@@ -9532,14 +9537,14 @@ pokemon SPECIES_ZIGZAGOON
 pokemon SPECIES_BIDOOF
 pokemon SPECIES_BIDOOF
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_MAGIKARP, 10, 20
 encounter SPECIES_MAGIKARP, 10, 20
 encounter SPECIES_MAGIKARP, 10, 20
 encounter SPECIES_MAGIKARP, 10, 20
 encounter SPECIES_MAGIKARP, 10, 20
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -9557,7 +9562,7 @@ encounter SPECIES_GOLDEEN, 10, 20
 encounter SPECIES_GOLDEEN, 10, 20
 encounter SPECIES_GOLDEEN, 10, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_GOLDEEN, 10, 20
 encounter SPECIES_GOLDEEN, 10, 20
 encounter SPECIES_GOLDEEN, 10, 20
@@ -9600,7 +9605,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -9636,14 +9641,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_TENTACOOL, 25, 25
 encounter SPECIES_QUAGSIRE, 25, 25
 encounter SPECIES_TENTACRUEL, 25, 25
 encounter SPECIES_TENTACRUEL, 25, 25
 encounter SPECIES_TENTACRUEL, 25, 25
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -9661,7 +9666,7 @@ encounter SPECIES_TENTACOOL, 20, 20
 encounter SPECIES_TENTACOOL, 20, 20
 encounter SPECIES_TENTACOOL, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_TENTACOOL, 40, 40
 encounter SPECIES_TENTACOOL, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -9704,7 +9709,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -9740,14 +9745,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_TENTACOOL, 35, 35
 encounter SPECIES_TENTACOOL, 30, 30
 encounter SPECIES_TENTACRUEL, 35, 35
 encounter SPECIES_TENTACRUEL, 35, 35
 encounter SPECIES_TENTACRUEL, 35, 35
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_KINGLER, 28, 31
 encounter SPECIES_KRABBY, 24, 27
 
@@ -9765,7 +9770,7 @@ encounter SPECIES_KRABBY, 20, 20
 encounter SPECIES_CORSOLA, 20, 20
 encounter SPECIES_KRABBY, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_KRABBY, 40, 40
 encounter SPECIES_CORSOLA, 40, 40
 encounter SPECIES_KRABBY, 40, 40
@@ -9808,7 +9813,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -9844,14 +9849,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_TENTACOOL, 35, 35
 encounter SPECIES_TENTACOOL, 30, 30
 encounter SPECIES_TENTACRUEL, 35, 35
 encounter SPECIES_TENTACRUEL, 35, 35
 encounter SPECIES_TENTACRUEL, 35, 35
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -9869,7 +9874,7 @@ encounter SPECIES_CHINCHOU, 20, 20
 encounter SPECIES_SHELLDER, 20, 20
 encounter SPECIES_CHINCHOU, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_CHINCHOU, 40, 40
 encounter SPECIES_SHELLDER, 40, 40
 encounter SPECIES_TENTACRUEL, 40, 40
@@ -9912,7 +9917,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -9948,14 +9953,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_TENTACOOL, 35, 35
 encounter SPECIES_TENTACOOL, 30, 30
 encounter SPECIES_TENTACRUEL, 35, 35
 encounter SPECIES_TENTACRUEL, 35, 35
 encounter SPECIES_TENTACRUEL, 35, 35
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -9973,7 +9978,7 @@ encounter SPECIES_CHINCHOU, 20, 20
 encounter SPECIES_SHELLDER, 20, 20
 encounter SPECIES_CHINCHOU, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_CHINCHOU, 40, 40
 encounter SPECIES_SHELLDER, 40, 40
 encounter SPECIES_TENTACRUEL, 40, 40
@@ -10016,7 +10021,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -10052,14 +10057,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_POLIWAG, 10, 10
 encounter SPECIES_POLIWAG, 5, 5
 encounter SPECIES_POLIWHIRL, 10, 10
 encounter SPECIES_POLIWHIRL, 10, 10
 encounter SPECIES_POLIWHIRL, 10, 10
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -10077,7 +10082,7 @@ encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -10120,7 +10125,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -10156,14 +10161,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_GOLDEEN, 10, 10
 encounter SPECIES_GOLDEEN, 5, 5
 encounter SPECIES_SEAKING, 10, 10
 encounter SPECIES_SEAKING, 10, 10
 encounter SPECIES_SEAKING, 10, 10
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -10181,7 +10186,7 @@ encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -10224,7 +10229,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -10260,14 +10265,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_TENTACOOL, 35, 35
 encounter SPECIES_TENTACOOL, 30, 30
 encounter SPECIES_TENTACRUEL, 35, 35
 encounter SPECIES_TENTACRUEL, 35, 35
 encounter SPECIES_TENTACRUEL, 35, 35
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_DIGLETT, 24, 37
 encounter SPECIES_SHUCKLE, 32, 35
 
@@ -10285,7 +10290,7 @@ encounter SPECIES_CHINCHOU, 20, 20
 encounter SPECIES_SHELLDER, 20, 20
 encounter SPECIES_CHINCHOU, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_CHINCHOU, 40, 40
 encounter SPECIES_SHELLDER, 40, 40
 encounter SPECIES_TENTACRUEL, 40, 40
@@ -10328,7 +10333,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -10364,14 +10369,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_GRIMER, 20, 20
 encounter SPECIES_GRIMER, 15, 15
 encounter SPECIES_MUK, 15, 15
 encounter SPECIES_MUK, 15, 15
 encounter SPECIES_MUK, 15, 15
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -10389,7 +10394,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -10432,7 +10437,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -10468,14 +10473,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_MAGIKARP, 20, 20
 encounter SPECIES_MAGIKARP, 15, 15
 encounter SPECIES_MAGIKARP, 10, 10
 encounter SPECIES_MAGIKARP, 10, 10
 encounter SPECIES_MAGIKARP, 10, 10
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -10493,7 +10498,7 @@ encounter SPECIES_MAGIKARP, 20, 20
 encounter SPECIES_GYARADOS, 20, 20
 encounter SPECIES_MAGIKARP, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_MAGIKARP, 40, 40
 encounter SPECIES_GYARADOS, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -10536,7 +10541,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -10572,14 +10577,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_TENTACOOL, 35, 35
 encounter SPECIES_TENTACOOL, 30, 30
 encounter SPECIES_TENTACRUEL, 35, 35
 encounter SPECIES_TENTACRUEL, 35, 35
 encounter SPECIES_TENTACRUEL, 35, 35
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -10597,7 +10602,7 @@ encounter SPECIES_CHINCHOU, 20, 20
 encounter SPECIES_SHELLDER, 20, 20
 encounter SPECIES_CHINCHOU, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_CHINCHOU, 40, 40
 encounter SPECIES_SHELLDER, 40, 40
 encounter SPECIES_TENTACRUEL, 40, 40
@@ -10640,7 +10645,7 @@ pokemon SPECIES_GROWLITHE
 pokemon SPECIES_HOPPIP
 pokemon SPECIES_TAUROS
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_FARFETCHD
 pokemon SPECIES_TAUROS
 pokemon SPECIES_HOPPIP
@@ -10676,14 +10681,14 @@ pokemon SPECIES_MINUN
 pokemon SPECIES_SHINX
 pokemon SPECIES_SHINX
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -10701,7 +10706,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -10744,7 +10749,7 @@ pokemon SPECIES_DODRIO
 pokemon SPECIES_RATICATE
 pokemon SPECIES_DODRIO
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_DODUO
 pokemon SPECIES_SANDSLASH
 pokemon SPECIES_DODUO
@@ -10780,14 +10785,14 @@ pokemon SPECIES_LINOONE
 pokemon SPECIES_BUIZEL
 pokemon SPECIES_BIDOOF
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_TENTACOOL, 30, 30
 encounter SPECIES_TENTACOOL, 25, 25
 encounter SPECIES_TENTACRUEL, 30, 30
 encounter SPECIES_TENTACRUEL, 30, 30
 encounter SPECIES_TENTACRUEL, 30, 30
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -10805,7 +10810,7 @@ encounter SPECIES_CHINCHOU, 20, 20
 encounter SPECIES_SHELLDER, 20, 20
 encounter SPECIES_CHINCHOU, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_CHINCHOU, 40, 40
 encounter SPECIES_SHELLDER, 40, 40
 encounter SPECIES_TENTACRUEL, 40, 40
@@ -10848,7 +10853,7 @@ pokemon SPECIES_SANDSLASH
 pokemon SPECIES_PONYTA
 pokemon SPECIES_SANDSLASH
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_DODUO
 pokemon SPECIES_RATICATE
 pokemon SPECIES_DODUO
@@ -10884,14 +10889,14 @@ pokemon SPECIES_LINOONE
 pokemon SPECIES_BUIZEL
 pokemon SPECIES_BIDOOF
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_TENTACOOL, 20, 20
 encounter SPECIES_TENTACOOL, 15, 15
 encounter SPECIES_TENTACRUEL, 20, 20
 encounter SPECIES_TENTACRUEL, 20, 20
 encounter SPECIES_TENTACRUEL, 20, 20
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -10909,7 +10914,7 @@ encounter SPECIES_CHINCHOU, 20, 20
 encounter SPECIES_SHELLDER, 20, 20
 encounter SPECIES_CHINCHOU, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_CHINCHOU, 40, 40
 encounter SPECIES_SHELLDER, 40, 40
 encounter SPECIES_TENTACRUEL, 40, 40
@@ -10952,7 +10957,7 @@ pokemon SPECIES_DODRIO
 pokemon SPECIES_DODUO
 pokemon SPECIES_DODRIO
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_TANGELA
 pokemon SPECIES_PONYTA
 pokemon SPECIES_TANGELA
@@ -10988,14 +10993,14 @@ pokemon SPECIES_LINOONE
 pokemon SPECIES_BUIZEL
 pokemon SPECIES_BIDOOF
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_POLIWAG, 35, 35
 encounter SPECIES_POLIWHIRL, 40, 40
 encounter SPECIES_POLIWHIRL, 40, 40
 encounter SPECIES_POLIWHIRL, 40, 40
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -11013,7 +11018,7 @@ encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -11056,7 +11061,7 @@ pokemon SPECIES_CLEFAIRY
 pokemon SPECIES_SANDSLASH
 pokemon SPECIES_CLEFAIRY
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_GEODUDE
 pokemon SPECIES_ZUBAT
@@ -11092,14 +11097,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -11117,7 +11122,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -11160,7 +11165,7 @@ pokemon SPECIES_CLEFAIRY
 pokemon SPECIES_SANDSLASH
 pokemon SPECIES_CLEFAIRY
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_GEODUDE
 pokemon SPECIES_ZUBAT
@@ -11196,14 +11201,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -11221,7 +11226,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -11264,7 +11269,7 @@ pokemon SPECIES_CUBONE
 pokemon SPECIES_MACHOKE
 pokemon SPECIES_CUBONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_CUBONE
 pokemon SPECIES_GEODUDE
 pokemon SPECIES_CUBONE
@@ -11300,14 +11305,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -11325,7 +11330,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -11368,7 +11373,7 @@ pokemon SPECIES_KANGASKHAN
 pokemon SPECIES_MAROWAK
 pokemon SPECIES_KANGASKHAN
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_CUBONE
 pokemon SPECIES_GEODUDE
 pokemon SPECIES_CUBONE
@@ -11404,14 +11409,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_GEODUDE, 12, 16
 encounter SPECIES_GEODUDE, 17, 21
 
@@ -11429,7 +11434,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -11472,7 +11477,7 @@ pokemon SPECIES_RHYHORN
 pokemon SPECIES_ONIX
 pokemon SPECIES_RHYHORN
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_GRAVELER
 pokemon SPECIES_GOLBAT
 pokemon SPECIES_GRAVELER
@@ -11508,14 +11513,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -11533,7 +11538,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -11576,7 +11581,7 @@ pokemon SPECIES_PIDGEY
 pokemon SPECIES_FURRET
 pokemon SPECIES_PIDGEY
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_PIDGEY
 pokemon SPECIES_RATTATA
 pokemon SPECIES_PIDGEY
@@ -11612,14 +11617,14 @@ pokemon SPECIES_MINUN
 pokemon SPECIES_SHINX
 pokemon SPECIES_SHINX
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -11637,7 +11642,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -11680,7 +11685,7 @@ pokemon SPECIES_SPINARAK
 pokemon SPECIES_PIDGEOTTO
 pokemon SPECIES_CATERPIE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_CATERPIE
 pokemon SPECIES_PIDGEY
 pokemon SPECIES_CATERPIE
@@ -11716,14 +11721,14 @@ pokemon SPECIES_MINUN
 pokemon SPECIES_SHINX
 pokemon SPECIES_SHINX
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -11741,7 +11746,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -11784,7 +11789,7 @@ pokemon SPECIES_SPEAROW
 pokemon SPECIES_RATTATA
 pokemon SPECIES_SPEAROW
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_SPEAROW
 pokemon SPECIES_RATTATA
 pokemon SPECIES_SPEAROW
@@ -11820,14 +11825,14 @@ pokemon SPECIES_MINUN
 pokemon SPECIES_SHINX
 pokemon SPECIES_SHINX
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -11845,7 +11850,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -11888,7 +11893,7 @@ pokemon SPECIES_SPEAROW
 pokemon SPECIES_RATTATA
 pokemon SPECIES_SPEAROW
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_SPEAROW
 pokemon SPECIES_RATTATA
 pokemon SPECIES_SPEAROW
@@ -11924,14 +11929,14 @@ pokemon SPECIES_LINOONE
 pokemon SPECIES_BUIZEL
 pokemon SPECIES_BIDOOF
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_GOLDEEN, 10, 10
 encounter SPECIES_GOLDEEN, 5, 5
 encounter SPECIES_SEAKING, 10, 10
 encounter SPECIES_SEAKING, 10, 10
 encounter SPECIES_SEAKING, 10, 10
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -11949,7 +11954,7 @@ encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -11992,7 +11997,7 @@ pokemon SPECIES_ABRA
 pokemon SPECIES_ABRA
 pokemon SPECIES_ABRA
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_PIDGEY
 pokemon SPECIES_BELLSPROUT
 pokemon SPECIES_PIDGEY
@@ -12028,14 +12033,14 @@ pokemon SPECIES_MINUN
 pokemon SPECIES_SHINX
 pokemon SPECIES_SHINX
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -12053,7 +12058,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -12096,7 +12101,7 @@ pokemon SPECIES_ABRA
 pokemon SPECIES_ABRA
 pokemon SPECIES_ABRA
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_PIDGEY
 pokemon SPECIES_BELLSPROUT
 pokemon SPECIES_PIDGEY
@@ -12132,14 +12137,14 @@ pokemon SPECIES_LINOONE
 pokemon SPECIES_BUIZEL
 pokemon SPECIES_BIDOOF
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_PSYDUCK, 10, 10
 encounter SPECIES_PSYDUCK, 5, 5
 encounter SPECIES_GOLDUCK, 10, 10
 encounter SPECIES_GOLDUCK, 10, 10
 encounter SPECIES_GOLDUCK, 10, 10
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -12157,7 +12162,7 @@ encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -12200,7 +12205,7 @@ pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 pokemon SPECIES_RATTATA
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_RATTATA
 pokemon SPECIES_SPEAROW
 pokemon SPECIES_RATTATA
@@ -12236,14 +12241,14 @@ pokemon SPECIES_MINUN
 pokemon SPECIES_SHINX
 pokemon SPECIES_SHINX
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -12261,7 +12266,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -12304,7 +12309,7 @@ pokemon SPECIES_KADABRA
 pokemon SPECIES_PIDGEOTTO
 pokemon SPECIES_KADABRA
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_PIDGEOTTO
 pokemon SPECIES_PIDGEOTTO
 pokemon SPECIES_PIDGEOTTO
@@ -12340,14 +12345,14 @@ pokemon SPECIES_MINUN
 pokemon SPECIES_SHINX
 pokemon SPECIES_SHINX
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -12365,7 +12370,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -12408,7 +12413,7 @@ pokemon SPECIES_PRIMEAPE
 pokemon SPECIES_FEAROW
 pokemon SPECIES_PRIMEAPE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_MANKEY
 pokemon SPECIES_RATTATA
 pokemon SPECIES_MANKEY
@@ -12444,14 +12449,14 @@ pokemon SPECIES_LINOONE
 pokemon SPECIES_BUIZEL
 pokemon SPECIES_BIDOOF
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_GOLDEEN, 15, 15
 encounter SPECIES_GOLDEEN, 10, 10
 encounter SPECIES_SEAKING, 15, 15
 encounter SPECIES_SEAKING, 15, 15
 encounter SPECIES_SEAKING, 15, 15
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -12469,7 +12474,7 @@ encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -12512,7 +12517,7 @@ pokemon SPECIES_ELECTABUZZ
 pokemon SPECIES_RATICATE
 pokemon SPECIES_ELECTABUZZ
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_SPEAROW
 pokemon SPECIES_VOLTORB
 pokemon SPECIES_SPEAROW
@@ -12548,14 +12553,14 @@ pokemon SPECIES_LINOONE
 pokemon SPECIES_BUIZEL
 pokemon SPECIES_BIDOOF
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_GOLDEEN, 15, 15
 encounter SPECIES_GOLDEEN, 10, 10
 encounter SPECIES_SEAKING, 15, 15
 encounter SPECIES_SEAKING, 15, 15
 encounter SPECIES_SEAKING, 15, 15
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -12573,7 +12578,7 @@ encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -12616,7 +12621,7 @@ pokemon SPECIES_HYPNO
 pokemon SPECIES_HYPNO
 pokemon SPECIES_HYPNO
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_DROWZEE
 pokemon SPECIES_RATTATA
 pokemon SPECIES_DROWZEE
@@ -12652,14 +12657,14 @@ pokemon SPECIES_MINUN
 pokemon SPECIES_SHINX
 pokemon SPECIES_SHINX
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -12677,7 +12682,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -12720,7 +12725,7 @@ pokemon SPECIES_HOPPIP
 pokemon SPECIES_HOPPIP
 pokemon SPECIES_CHANSEY
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NIDORINA
 pokemon SPECIES_NIDORINO
 pokemon SPECIES_NIDORINA
@@ -12756,14 +12761,14 @@ pokemon SPECIES_LINOONE
 pokemon SPECIES_BUIZEL
 pokemon SPECIES_BIDOOF
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_TENTACOOL, 25, 25
 encounter SPECIES_QUAGSIRE, 25, 25
 encounter SPECIES_TENTACRUEL, 25, 25
 encounter SPECIES_TENTACRUEL, 25, 25
 encounter SPECIES_TENTACRUEL, 25, 25
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -12781,7 +12786,7 @@ encounter SPECIES_TENTACOOL, 20, 20
 encounter SPECIES_TENTACOOL, 20, 20
 encounter SPECIES_TENTACOOL, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_TENTACOOL, 40, 40
 encounter SPECIES_TENTACOOL, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -12824,7 +12829,7 @@ pokemon SPECIES_SKIPLOOM
 pokemon SPECIES_SKIPLOOM
 pokemon SPECIES_CHANSEY
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NIDORINA
 pokemon SPECIES_NIDORINO
 pokemon SPECIES_NIDORINA
@@ -12860,14 +12865,14 @@ pokemon SPECIES_MINUN
 pokemon SPECIES_SHINX
 pokemon SPECIES_SHINX
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -12885,7 +12890,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -12928,7 +12933,7 @@ pokemon SPECIES_HOPPIP
 pokemon SPECIES_HOPPIP
 pokemon SPECIES_CHANSEY
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NIDORINA
 pokemon SPECIES_NIDORINO
 pokemon SPECIES_NIDORINA
@@ -12964,14 +12969,14 @@ pokemon SPECIES_MINUN
 pokemon SPECIES_SHINX
 pokemon SPECIES_SHINX
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -12989,7 +12994,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -13032,7 +13037,7 @@ pokemon SPECIES_MUK
 pokemon SPECIES_SLUGMA
 pokemon SPECIES_MUK
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_GRIMER
 pokemon SPECIES_FEAROW
 pokemon SPECIES_GRIMER
@@ -13068,14 +13073,14 @@ pokemon SPECIES_MINUN
 pokemon SPECIES_SHINX
 pokemon SPECIES_SHINX
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -13093,7 +13098,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -13136,7 +13141,7 @@ pokemon SPECIES_MUK
 pokemon SPECIES_SLUGMA
 pokemon SPECIES_MUK
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_FEAROW
 pokemon SPECIES_SLUGMA
 pokemon SPECIES_FEAROW
@@ -13172,14 +13177,14 @@ pokemon SPECIES_MINUN
 pokemon SPECIES_SHINX
 pokemon SPECIES_SHINX
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -13197,7 +13202,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -13240,7 +13245,7 @@ pokemon SPECIES_MUK
 pokemon SPECIES_SLUGMA
 pokemon SPECIES_MUK
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_GRIMER
 pokemon SPECIES_FEAROW
 pokemon SPECIES_GRIMER
@@ -13276,14 +13281,14 @@ pokemon SPECIES_MINUN
 pokemon SPECIES_SHINX
 pokemon SPECIES_SHINX
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -13301,7 +13306,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -13344,7 +13349,7 @@ pokemon SPECIES_MR_MIME
 pokemon SPECIES_TANGELA
 pokemon SPECIES_MR_MIME
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_TANGELA
 pokemon SPECIES_TANGELA
 pokemon SPECIES_TANGELA
@@ -13380,14 +13385,14 @@ pokemon SPECIES_LINOONE
 pokemon SPECIES_BUIZEL
 pokemon SPECIES_BIDOOF
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_TENTACOOL, 35, 35
 encounter SPECIES_TENTACOOL, 30, 30
 encounter SPECIES_TENTACRUEL, 35, 35
 encounter SPECIES_TENTACRUEL, 35, 35
 encounter SPECIES_TENTACRUEL, 35, 35
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -13405,7 +13410,7 @@ encounter SPECIES_CHINCHOU, 20, 20
 encounter SPECIES_SHELLDER, 20, 20
 encounter SPECIES_CHINCHOU, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_CHINCHOU, 40, 40
 encounter SPECIES_SHELLDER, 40, 40
 encounter SPECIES_TENTACRUEL, 40, 40
@@ -13448,7 +13453,7 @@ pokemon SPECIES_FEAROW
 pokemon SPECIES_PONYTA
 pokemon SPECIES_FEAROW
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_RATTATA
 pokemon SPECIES_SPEAROW
 pokemon SPECIES_RATTATA
@@ -13484,14 +13489,14 @@ pokemon SPECIES_LINOONE
 pokemon SPECIES_BUIZEL
 pokemon SPECIES_BIDOOF
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_POLIWAG, 10, 10
 encounter SPECIES_POLIWAG, 5, 5
 encounter SPECIES_POLIWHIRL, 10, 10
 encounter SPECIES_POLIWHIRL, 10, 10
 encounter SPECIES_POLIWHIRL, 10, 10
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -13509,7 +13514,7 @@ encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -13552,7 +13557,7 @@ pokemon SPECIES_WEEPINBELL
 pokemon SPECIES_VENONAT
 pokemon SPECIES_WEEPINBELL
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_BELLSPROUT
 pokemon SPECIES_SUNKERN
 pokemon SPECIES_BELLSPROUT
@@ -13588,14 +13593,14 @@ pokemon SPECIES_LINOONE
 pokemon SPECIES_BUIZEL
 pokemon SPECIES_BIDOOF
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_GOLDEEN, 10, 10
 encounter SPECIES_GOLDEEN, 5, 5
 encounter SPECIES_SEAKING, 10, 10
 encounter SPECIES_SEAKING, 10, 10
 encounter SPECIES_SEAKING, 10, 10
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -13613,7 +13618,7 @@ encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -13656,7 +13661,7 @@ pokemon SPECIES_WEEPINBELL
 pokemon SPECIES_PIDGEOTTO
 pokemon SPECIES_WEEPINBELL
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_PIDGEY
 pokemon SPECIES_BELLSPROUT
 pokemon SPECIES_PIDGEY
@@ -13692,14 +13697,14 @@ pokemon SPECIES_LINOONE
 pokemon SPECIES_BUIZEL
 pokemon SPECIES_BIDOOF
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_GOLDEEN, 10, 10
 encounter SPECIES_GOLDEEN, 5, 5
 encounter SPECIES_SEAKING, 10, 10
 encounter SPECIES_SEAKING, 10, 10
 encounter SPECIES_SEAKING, 10, 10
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -13717,7 +13722,7 @@ encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -13760,7 +13765,7 @@ pokemon SPECIES_SLOWPOKE
 pokemon SPECIES_RATTATA
 pokemon SPECIES_SLOWPOKE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_RATICATE
 pokemon SPECIES_ZUBAT
@@ -13796,14 +13801,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_SLOWPOKE, 20, 20
 encounter SPECIES_SEAKING, 20, 20
 encounter SPECIES_SEAKING, 20, 20
 encounter SPECIES_SEAKING, 20, 20
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -13821,7 +13826,7 @@ encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_GOLDEEN, 40, 40
 encounter SPECIES_MAGIKARP, 40, 40
@@ -13864,7 +13869,7 @@ pokemon SPECIES_DUGTRIO
 pokemon SPECIES_DUGTRIO
 pokemon SPECIES_DUGTRIO
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_DIGLETT
 pokemon SPECIES_DIGLETT
 pokemon SPECIES_DIGLETT
@@ -13900,14 +13905,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -13925,7 +13930,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -13968,7 +13973,7 @@ pokemon SPECIES_RHYHORN
 pokemon SPECIES_ONIX
 pokemon SPECIES_RHYHORN
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_GRAVELER
 pokemon SPECIES_GOLBAT
 pokemon SPECIES_GRAVELER
@@ -14004,14 +14009,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -14029,7 +14034,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -14072,7 +14077,7 @@ pokemon SPECIES_RHYHORN
 pokemon SPECIES_ONIX
 pokemon SPECIES_RHYHORN
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_GRAVELER
 pokemon SPECIES_GOLBAT
 pokemon SPECIES_GRAVELER
@@ -14108,14 +14113,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_GEODUDE, 24, 32
 encounter SPECIES_GRAVELER, 30, 33
 
@@ -14133,7 +14138,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -14176,7 +14181,7 @@ pokemon SPECIES_SPINARAK
 pokemon SPECIES_PIDGEOTTO
 pokemon SPECIES_CATERPIE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_CATERPIE
 pokemon SPECIES_PIDGEY
 pokemon SPECIES_CATERPIE
@@ -14212,14 +14217,14 @@ pokemon SPECIES_MINUN
 pokemon SPECIES_SHINX
 pokemon SPECIES_SHINX
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -14237,7 +14242,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -14280,7 +14285,7 @@ pokemon SPECIES_PIKACHU
 pokemon SPECIES_PIKACHU
 pokemon SPECIES_PIKACHU
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_CATERPIE
 pokemon SPECIES_CATERPIE
 pokemon SPECIES_METAPOD
@@ -14316,14 +14321,14 @@ pokemon SPECIES_NUMEL
 pokemon SPECIES_BUDEW
 pokemon SPECIES_CARNIVINE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -14341,7 +14346,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -14384,7 +14389,7 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
@@ -14420,14 +14425,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -14445,7 +14450,7 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
@@ -14488,7 +14493,7 @@ pokemon SPECIES_MACHOKE
 pokemon SPECIES_MAGNETON
 pokemon SPECIES_DITTO
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_MACHOKE
 pokemon SPECIES_PARASECT
 pokemon SPECIES_GOLBAT
@@ -14524,14 +14529,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_PSYDUCK, 40, 40
 encounter SPECIES_PSYDUCK, 35, 35
 encounter SPECIES_GOLDUCK, 40, 40
 encounter SPECIES_GOLDUCK, 40, 40
 encounter SPECIES_GOLDUCK, 40, 40
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_GEODUDE, 22, 24
 encounter SPECIES_GRAVELER, 26, 30
 
@@ -14549,7 +14554,7 @@ encounter SPECIES_MAGIKARP, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_POLIWHIRL, 40, 40
 encounter SPECIES_GYARADOS, 40, 40
@@ -14592,7 +14597,7 @@ pokemon SPECIES_MACHOKE
 pokemon SPECIES_MACHOKE
 pokemon SPECIES_MACHOKE
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_KADABRA
 pokemon SPECIES_PARASECT
 pokemon SPECIES_GOLBAT
@@ -14628,14 +14633,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_PSYDUCK, 40, 40
 encounter SPECIES_PSYDUCK, 35, 35
 encounter SPECIES_GOLDUCK, 40, 40
 encounter SPECIES_GOLDUCK, 40, 40
 encounter SPECIES_GOLDUCK, 40, 40
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
@@ -14653,7 +14658,7 @@ encounter SPECIES_MAGIKARP, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_POLIWHIRL, 40, 40
 encounter SPECIES_GYARADOS, 40, 40
@@ -14696,7 +14701,7 @@ pokemon SPECIES_WOBBUFFET
 pokemon SPECIES_PARASECT
 pokemon SPECIES_WOBBUFFET
 
-// day encounter slots
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_KADABRA
 pokemon SPECIES_PARASECT
 pokemon SPECIES_GOLBAT
@@ -14732,14 +14737,14 @@ pokemon SPECIES_MAKUHITA
 pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
-// surf encounters
+// surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_PSYDUCK, 40, 40
 encounter SPECIES_PSYDUCK, 35, 35
 encounter SPECIES_GOLDUCK, 40, 40
 encounter SPECIES_GOLDUCK, 40, 40
 encounter SPECIES_GOLDUCK, 40, 40
 
-// rock smash encounters
+// rock smash encounters; probabilities:  90, 10
 encounter SPECIES_GEODUDE, 22, 24
 encounter SPECIES_GRAVELER, 26, 30
 
@@ -14757,7 +14762,7 @@ encounter SPECIES_MAGIKARP, 20, 20
 encounter SPECIES_GOLDEEN, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 
-// super rod encounters
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_POLIWAG, 40, 40
 encounter SPECIES_POLIWHIRL, 40, 40
 encounter SPECIES_GYARADOS, 40, 40
