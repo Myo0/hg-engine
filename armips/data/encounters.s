@@ -15,11 +15,6 @@ encounterdata   0   // New Bark Town
 // replace "pokemon SPECIES_*" with "monwithform SPECIES_*, formid" to get the specific form of a pokemon.  if i want a galarian darumaka, i'd put "monwithform SPECIES_DARUMAKA, 1"
 // probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 
-// ENCOUNTER PERCENTS:
-// walklevels specifies the levels of each slot.  each slot gets its own individual level without a range, which is different compared to the encounter format of later entries.
-// replace "pokemon SPECIES_*" with "monwithform SPECIES_*, formid" to get the specific form of a pokemon.  if i want a galarian darumaka, i'd put "monwithform SPECIES_DARUMAKA, 1"
-// probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
-
 walkrate 0
 surfrate 15
 rocksmashrate 0
@@ -233,7 +228,7 @@ surfrate 15
 rocksmashrate 0
 oldrodrate 25
 goodrodrate 50
-superrodrate 75
+superrodrate 100
 walklevels 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 
 // morning encounter slots
@@ -321,11 +316,11 @@ encounter SPECIES_MAGIKARP, 4, 6
 // swarm grass
 pokemon SPECIES_NONE
 // swarm surf
-pokemon SPECIES_TENTACOOL
+pokemon SPECIES_NONE
 // swarm good rod
-pokemon SPECIES_STARYU
+pokemon SPECIES_NONE
 // swarm super rod
-pokemon SPECIES_MAGIKARP
+pokemon SPECIES_NONE
 
 .close
 

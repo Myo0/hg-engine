@@ -49,7 +49,7 @@
 
 // IMPLEMENT_TRANSPARENT_TEXTBOXES should be used if you want to implement transparent textboxes
 // uncommenting this line out will enable transparent textboxes
-#define IMPLEMENT_TRANSPARENT_TEXTBOXES
+//#define IMPLEMENT_TRANSPARENT_TEXTBOXES
 
 // IMPLEMENT_WILD_DOUBLE_BATTLES defines whether or not grass tiles will have a 10% chance of starting a wild double battle
 // commenting this line out disables wild double battles entirely
@@ -147,5 +147,11 @@
 
 // STATIC_HP_BAR updates the HP bar to increase/decrease at a fixed rate like later generations
 #define STATIC_HP_BAR
+
+// Manipulate Pokemon IVs via script 
+#define GOLD_CAP_MAX_IVS
+
+// Manipulate Pokemon Nature via script
+#define SET_POKEMON_NATURE
 
 #endif

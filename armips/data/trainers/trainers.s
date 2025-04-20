@@ -1111,7 +1111,7 @@ trainerdata 20, "Falkner"
 
     party 20
         // mon 0
-                ivs 200
+        ivs 200
         abilityslot 0
         level 16
         pokemon SPECIES_CHATOT
@@ -1150,7 +1150,7 @@ trainerdata 20, "Falkner"
         level 16
         pokemon SPECIES_GLIGAR
         item ITEM_SOFT_SAND
-        move MOVE_BULLDOZE
+        move MOVE_STOMPING_TANTRUM
         move MOVE_AERIAL_ACE
         move MOVE_BRICK_BREAK
         move MOVE_QUICK_ATTACK
@@ -1201,7 +1201,7 @@ trainerdata 20, "Falkner"
         level 17
         pokemon SPECIES_PIDGEOTTO
         item ITEM_FLYING_GEM
-        move MOVE_AERIAL_ACE
+        move MOVE_DRILL_PECK
         move MOVE_STEEL_WING
         move MOVE_PURSUIT
         move MOVE_QUICK_ATTACK
@@ -20118,7 +20118,7 @@ trainerdata 495, "Boy"
         // mon 0
         ivs 255
         abilityslot 2
-        level 7
+        level 5
         pokemon SPECIES_ROWLET
         ballseal 0
     endparty
@@ -20139,7 +20139,7 @@ trainerdata 496, "Boy"
         // mon 0
         ivs 255
         abilityslot 2
-        level 7
+        level 5
         pokemon SPECIES_CHIMCHAR
         ballseal 0
     endparty
@@ -20160,7 +20160,7 @@ trainerdata 497, "Boy"
         // mon 0
         ivs 255
         abilityslot 0
-        level 7
+        level 5
         pokemon SPECIES_FROAKIE
         ballseal 0
     endparty

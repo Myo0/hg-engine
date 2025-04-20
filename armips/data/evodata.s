@@ -3588,7 +3588,7 @@ evodata SPECIES_HARIYAMA
     terminateevodata
 
 evodata SPECIES_AZURILL
-    evolution EVO_FRIENDSHIP, 0, SPECIES_MARILL
+    evolution EVO_LEVEL, 7, SPECIES_MARILL
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
@@ -5208,7 +5208,7 @@ evodata SPECIES_PURUGLY
     terminateevodata
 
 evodata SPECIES_CHINGLING
-    evolution EVO_FRIENDSHIP_NIGHT, 0, SPECIES_CHIMECHO
+    evolution EVO_LEVEL, 1, SPECIES_CHIMECHO
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
