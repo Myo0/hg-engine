@@ -16,7 +16,7 @@
 
 // function declarations
 int CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond,
-                   u32 field_cond, u16 pow, u8 type, u8 attacker, u8 defender, u8 critical);
+                   u32 field_cond, u16 pow, u8 type, u8 attacker, u8 defender, u8 critical, BOOL usePPForAttacker, BOOL usePPForDefender,struct PartyPokemon *pp);
 //u16 GetBattleMonItem(struct BattleStruct *sp, int client_no);
 void CalcDamageOverall(void *bw, struct BattleStruct *sp);
 int AdjustDamageForRoll(void *bw, struct BattleStruct *sp, int damage);
@@ -43,19 +43,19 @@ const u8 StatBoostModifiers[][2] = {
 };
 
 int CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond,
-                   u32 field_cond, u16 pow, u8 type UNUSED, u8 attacker, u8 defender, u8 critical)
+                   u32 field_cond, u16 pow, u8 type UNUSED, u8 attacker, u8 defender, u8 critical,  BOOL usePPForAttacker, BOOL usePPForDefender,struct PartyPokemon *pp)
 {
     u32 ovyId, offset;
     int ret;
     int (*internalFunc)(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond,
-                         u32 field_cond, u16 pow, u8 type UNUSED, u8 attacker, u8 defender, u8 critical);
+                         u32 field_cond, u16 pow, u8 type UNUSED, u8 attacker, u8 defender, u8 critical,   BOOL usePPForAttacker, BOOL usePPForDefender,struct PartyPokemon *pp);
 
     ovyId = OVERLAY_CALCBASEDAMAGE;
     offset = 0x023C0400 | 1;
     HandleLoadOverlay(ovyId, 2);
     internalFunc = (int (*)(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond,
-                            u32 field_cond, u16 pow, u8 type UNUSED, u8 attacker, u8 defender, u8 critical))(offset);
-    ret = internalFunc(bw, sp, moveno, side_cond, field_cond, pow, type, attacker, defender, critical);
+                            u32 field_cond, u16 pow, u8 type UNUSED, u8 attacker, u8 defender, u8 critical,  BOOL usePPForAttacker, BOOL usePPForDefender, struct PartyPokemon *pp))(offset);
+    ret = internalFunc(bw, sp, moveno, side_cond, field_cond, pow, type, attacker, defender, critical, 0, 0 , NULL);
     UnloadOverlayByID(ovyId);
 
     return ret;
@@ -110,7 +110,7 @@ void CalcDamageOverall(void *bw, struct BattleStruct *sp)
                                 sp->field_condition,
                                 sp->damage_power,
                                 type,
-                                sp->attack_client, sp->defence_client, sp->critical);
+                                sp->attack_client, sp->defence_client, sp->critical, 0, 0, NULL);
 
     //sp->damage *= sp->critical;
     if (sp->critical > 1) // update critical hit mechanics

@@ -118,6 +118,7 @@ sys_AllocMemory = 0x0201AA8C | 1;
 sys_FreeMemoryEz = 0x0201AB0C | 1;
 sys_AllocMemoryLo = 0x0201AACC | 1;
 
+
 /*TextBox*/
 TalkWinGraphicSet = 0x0200E644 |1;
 CONFIG_GetWindowType = 0x0202ADCC |1;

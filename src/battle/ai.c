@@ -11,11 +11,18 @@
 #include "../../include/constants/moves.h"
 #include "../../include/constants/species.h"
 #include "../../include/constants/file.h"
+#include "../../include/overlay.h"
 
 
 
 // function declarations
 void AITypeCalc(struct BattleStruct *sp, u32 move, u32 type, int atkAbility, int defAbility, int held_effect, int type1, int type2, u32 *flag);
+int LONG_CALL BattleAI_PostKOSwitchIn(struct BattleSystem *battleSys, int battler);
+
+int LONG_CALL AI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond,
+    u32 field_cond, u16 pow, u8 type UNUSED, u8 attacker, u8 defender, u8 critical, BOOL usePPForAttacker, BOOL usePPForDefender,struct PartyPokemon *pp);
+u8 LONG_CALL AI_CalcSpeed(void *bw, struct BattleStruct *sp, int client1, int client2, int flag, int client2IsPP, struct PartyPokemon *pp);
+int LONG_CALL AI_ServerDoTypeCalcMod(void *bw UNUSED, struct BattleStruct *sp, int move_no, int move_type, int attack_client, int defence_client, int damage, u32 *flag, BOOL usePPForAttacker, BOOL usePPForDefender, struct PartyPokemon *pp);
 
 
 
@@ -26,7 +33,7 @@ void AITypeCalc(struct BattleStruct *sp, u32 move, u32 type, int atkAbility, int
  *  @param move index of the move being used
  *  @param atkAbility ability of the attacker
  *  @param defAbility ability of the defender
- *  @param held_effect held item effect of the attacker
+ *  @param held_effect held item effect of the DEFENDER (this was erroneously labeled before)
  *  @param type1 primary type of defender
  *  @param type2 secondary type of defender
  *  @param flag flags to modify so that the AI knows what decision to make
@@ -107,16 +114,3 @@ void AITypeCalc(struct BattleStruct *sp, u32 move, u32 type, int atkAbility, int
     return;
 }
 
-/**
- *  @brief see if bind should restrain switching for AI
- *
- *  @param bw battle work structure
- *  @param sp global battle structure
- *  @param battler battler whose bind counter to check
- *  @return TRUE if the switch should not be able to happen, FALSE otherwise
- */
-BOOL SeeIfBindShouldRestrainSwitch(struct BattleSystem *bw UNUSED, struct BattleStruct *sp, u32 battler)
-{
-    //debug_printf("Battler %d can%s switch out.\n", battler, (sp->binding_turns[battler] != 0) ? "'t" : "");
-    return (sp->binding_turns[battler] != 0);
-}

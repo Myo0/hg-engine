@@ -2407,6 +2407,31 @@ BOOL LONG_CALL IsClientGrounded(struct BattleStruct *sp, u32 client_no) {
     return FALSE;
 }
 
+
+/**
+ *  @brief function to check whether a party pokemon is grounded or not
+ *  @param sp global battle structure
+ *  @param pp party pokemon
+ *  @return `TRUE` if grounded, `FALSE` otherwise
+ */
+BOOL LONG_CALL IsPartyPokemonGrounded(struct BattleStruct *sp, struct PartyPokemon *pp){
+    u16 item = GetMonData(pp, MON_DATA_HELD_ITEM, 0);
+
+    u8 holdeffect = BattleItemDataGet(sp, item, 1);
+
+    if ((GetMonData(pp, MON_DATA_ABILITY, 0) != ABILITY_LEVITATE && holdeffect != HOLD_EFFECT_UNGROUND_DESTROYED_ON_HIT  // not holding Air Balloon
+        && !(GetMonData(pp, MON_DATA_TYPE_1,0) == TYPE_FLYING) && !(GetMonData(pp, MON_DATA_TYPE_2,0) == TYPE_FLYING)) ||
+       (holdeffect == HOLD_EFFECT_SPEED_DOWN_GROUNDED                             // holding Iron Ball
+        || (sp->field_condition & FIELD_STATUS_GRAVITY))) {
+        return TRUE;
+   }
+
+   return FALSE;
+
+
+
+}
+
 /**
  *  @brief function to check whether a mon is grounded or not
  *  @param sp global battle structure
@@ -3096,7 +3121,7 @@ BOOL btl_scr_cmd_FE_calcconfusiondamage(void *bsys, struct BattleStruct *ctx) {
     ctx->moveOutCheck[attacker].stoppedFromConfusion = TRUE;
     ctx->defence_client = attacker;
     ctx->battlerIdTemp = attacker;
-    ctx->hp_calc_work = CalcBaseDamage(bsys, ctx, MOVE_STRUGGLE, 0, 0, 40, 0, attacker, attacker, 1);
+    ctx->hp_calc_work = CalcBaseDamage(bsys, ctx, MOVE_STRUGGLE, 0, 0, 40, 0, attacker, attacker, 1, 0, 0, NULL);
     ctx->hp_calc_work = AdjustDamageForRoll(bsys, ctx, ctx->hp_calc_work);
     ctx->hp_calc_work *= -1;
 
@@ -3507,7 +3532,7 @@ BOOL BtlCmd_TryFutureSight(struct BattleSystem *bsys, struct BattleStruct *ctx) 
         ctx->fcc.future_prediction_count[ctx->defence_client] = 3;
         ctx->fcc.future_prediction_wazano[ctx->defence_client] = ctx->current_move_index;
         ctx->fcc.future_prediction_client_no[ctx->defence_client] = ctx->attack_client;
-        int damage = CalcBaseDamage(bsys, ctx, ctx->current_move_index, ctx->side_condition[side], ctx->field_condition, 0, 0, ctx->attack_client, ctx->defence_client, 1) * -1;
+        int damage = CalcBaseDamage(bsys, ctx, ctx->current_move_index, ctx->side_condition[side], ctx->field_condition, 0, 0, ctx->attack_client, ctx->defence_client, 1, 0, 0, NULL) * -1;
         ctx->fcc.future_prediction_damage[ctx->defence_client] = AdjustDamageForRoll(bsys, ctx, damage);
         if (ctx->oneTurnFlag[ctx->attack_client].helping_hand_flag) {
             ctx->fcc.future_prediction_damage[ctx->defence_client] = ctx->fcc.future_prediction_damage[ctx->defence_client]*15/10;

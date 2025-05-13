@@ -1277,7 +1277,7 @@ struct PACKED BattleStruct {
     /*0x218C*/ u32 condition2_off_req[CLIENT_MAX];
     /*0x219C*/ u8 sel_mons_no[CLIENT_MAX];  // selectedMonIndex
     /*0x21A0*/ u8 reshuffle_sel_mons_no[CLIENT_MAX];
-    /*0x21A4*/ u8 ai_reshuffle_sel_mons_no[CLIENT_MAX];
+    /*0x21A4*/ u8 aiSwitchedPartySlot[CLIENT_MAX];
     /*0x21A8*/ u32 playerActions[4][4]; // client_act_work
     /*0x21E8*/ u8 executionOrder[4]; // client_agi_work -- accounts for running, items, etc used in battler slots
     /*0x21EC*/ u8 turnOrder[4]; // turn_order -- by pokemon speed, accounting for trick room
@@ -2902,6 +2902,15 @@ void LONG_CALL PushAndLoadBattleScript(struct BattleStruct *sp, int kind, int in
  */
 BOOL LONG_CALL IsClientGrounded(struct BattleStruct *sp, u32 client_no);
 
+
+/**
+ *  @brief function to check whether a party pokemon is grounded or not
+ *  @param sp global battle structure
+ *  @param pp party pokemon
+ *  @return `TRUE` if grounded, `FALSE` otherwise
+ */
+ BOOL LONG_CALL IsPartyPokemonGrounded(struct BattleStruct *sp, struct PartyPokemon *pp);
+
 /**
  *  @brief function to check whether a mon is grounded or not
  *  @param sp global battle structure
@@ -3023,6 +3032,17 @@ u32 TurnEndAbilityCheck(void *bw, struct BattleStruct *sp, int client_no);
  *  @return the highest raw stat the the client has (excluding HP)
  */
 u8 BeastBoostGreatestStatHelper(struct BattleStruct *sp, u32 client);
+
+
+//ai version of CalcSpeed, takes in a party pokemon struct.
+u8 LONG_CALL AI_CalcSpeed(void *bw, struct BattleStruct *sp, int client1, int client2, int flag, int client2IsPP, struct PartyPokemon *pp);
+//ai version of type chart adjustments for damage calc, uses party pokemon
+int LONG_CALL AI_ServerDoTypeCalcMod(void *bw UNUSED, struct BattleStruct *sp, int move_no, int move_type, int attack_client, int defence_client, int damage, u32 *flag, BOOL usePPForAttacker, BOOL usePPForDefender, struct PartyPokemon *pp);
+//ai version of calc damage ahead of time for switch-ins. Uses party pokemon
+int LONG_CALL AI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond, u32 field_cond, u16 pow, u8 type UNUSED, u8 attacker, u8 defender, u8 critical, BOOL usePPForAttacker, BOOL usePPForDefender,struct PartyPokemon *pp);
+//instructions on how to swap
+int LONG_CALL BattleAI_PostKOSwitchIn(struct BattleSystem *battleSys, int battler);
+
 
 
 // defined in other_battle_calculators.c
@@ -3388,8 +3408,8 @@ BOOL LONG_CALL BattleContext_CheckMoveHealBlocked(struct BattleSystem *bsys, str
 //Buffer messages related to being unable to select moves?
 BOOL LONG_CALL ov12_02251A28(struct BattleSystem *bsys, struct BattleStruct *ctx, int battlerId, int movePos, MESSAGE_PARAM *msg);
 
-int CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond,
-                   u32 field_cond, u16 pow, u8 type, u8 attacker, u8 defender, u8 critical);
+int LONG_CALL CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond,
+                   u32 field_cond, u16 pow, u8 type, u8 attacker, u8 defender, u8 critical, BOOL usePPForAttacker, BOOL usePPForDefender, struct PartyPokemon *pp);
 
 int AdjustDamageForRoll(void *bw, struct BattleStruct *sp, int damage);
 
