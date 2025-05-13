@@ -341,7 +341,7 @@ _025C: // Trainer 69
     trainertextentry  69, TEXT_DEFEATED_IN_OVERWORLD, "If you move the web with the switch,\nyou’ll be able to figure out where\fthe lift is going.\n"
 
 _0268: // Trainer 22
-    trainertextentry  22, TEXT_NOTICE_IN_OVERWORLD, "You shouldn’t let your guard down just\n’cause I don’t look tough!\r"
+    trainertextentry  22, TEXT_NOTICE_IN_OVERWORLD, "My name is Olivia.\nI love olives! Go Smoliv!\r"
     trainertextentry  22, TEXT_DEFEATED_IN_BATTLE, "Gosh...\nI thought you were weak...\n"
     trainertextentry  22, TEXT_DEFEATED_IN_OVERWORLD, "Who do you think are stronger--\nboys or girls?\n"
 
@@ -1367,9 +1367,9 @@ _0BB4: // Trainer 395
     trainertextentry 395, TEXT_DEFEATED_IN_OVERWORLD, "If you read your opponent’s mind, then\nyou can attack more efficiently!\n"
 
 _0BC0: // Trainer 24
-    trainertextentry  24, TEXT_NOTICE_IN_OVERWORLD, "I can properly prepare for any\nPokémon adversary!\r"
-    trainertextentry  24, TEXT_DEFEATED_IN_BATTLE, "Huh...?\nWas my prediction incorrect?\n"
-    trainertextentry  24, TEXT_DEFEATED_IN_OVERWORLD, "Sniffle... I study for five hours\nstraight every day...\rIf you only read the textbook, I guess\nyou miss out on a lot.\n"
+    trainertextentry  24, TEXT_NOTICE_IN_OVERWORLD, "Heh, normal types go!\r"
+    trainertextentry  24, TEXT_DEFEATED_IN_BATTLE, "Wooloo, no!\n"
+    trainertextentry  24, TEXT_DEFEATED_IN_OVERWORLD, "You're mean. My poor Wooloo.\n"
     trainertextentry  24, TEXT_REMATCH_IN_OVERWORLD, "I’ve prepared perfectly, waiting\nfor you!\r"
 
 _0BD0: // Trainer 386
@@ -1999,9 +1999,14 @@ _1188: // Trainer 390
     trainertextentry 390, TEXT_DEFEATED_IN_OVERWORLD, "It’s my Pokémon’s fire that lights up\nthis cave.\n"
 
 _1194: // Trainer 23
-    trainertextentry  23, TEXT_NOTICE_IN_OVERWORLD, "I roam far and wide in search of\nPokémon.\rAre you looking for Pokémon, too?\nThen you’re my collecting rival!\r"
-    trainertextentry  23, TEXT_DEFEATED_IN_BATTLE, "Ugh. My poor Pokémon...\n"
-    trainertextentry  23, TEXT_DEFEATED_IN_OVERWORLD, "Every Friday, you can hear Pokémon\nroars from deep inside the cave.\n"
+    trainertextentry 23, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_1, "Bug trouble, but make it double!\r"
+    trainertextentry 23, TEXT_DOUBLE_DEFEATED_IN_BATTLE_1, "My bugs!"
+    trainertextentry 23, TEXT_DOUBLE_DEFEATED_IN_OVERWORLD_1, "I need to train my Wurmple, too."
+    trainertextentry 23, TEXT_DOUBLE_ONLY_1_POKEMON_1, "Come back with 2 or more Pokemon."
+    trainertextentry 23, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_2, "Spinarak: RAKK!\r"
+    trainertextentry 23, TEXT_DOUBLE_DEFEATED_IN_BATTLE_2, " \n"
+    trainertextentry 23, TEXT_DOUBLE_DEFEATED_IN_OVERWORLD_2, "Spinarak: raak...\n"
+    trainertextentry 23, TEXT_DOUBLE_ONLY_1_POKEMON_2, "Spinarak: RAKK!\n"
 
 _11A0: // Trainer 25
     trainertextentry 25, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_1, "Haha! You're no match for Rhyperior!\r"

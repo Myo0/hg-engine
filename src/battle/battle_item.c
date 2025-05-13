@@ -59,7 +59,7 @@ u32 LONG_CALL MoveHitUTurnHeldItemEffectCheck(void *bw, struct BattleStruct *sp,
      && !(GetBattlerAbility(sp, sp->attack_client) == ABILITY_SHEER_FORCE && sp->battlemon[sp->attack_client].sheer_force_flag == 1)) // sheer force prevents shell bell from activating
     {
         sp->hp_calc_work = BattleDamageDivide(sp->oneSelfFlag[sp->attack_client].shell_bell_damage * -1, atk_item_param);
-        sp->client_work = sp->attack_client;
+        sp->battlerIdTemp = sp->attack_client;
         seq_no[0] = SUB_SEQ_ITEM_HP_GRADUAL;
         ret = TRUE;
     }
@@ -72,7 +72,7 @@ u32 LONG_CALL MoveHitUTurnHeldItemEffectCheck(void *bw, struct BattleStruct *sp,
      && !(GetBattlerAbility(sp, sp->attack_client) == ABILITY_SHEER_FORCE && sp->battlemon[sp->attack_client].sheer_force_flag == 1)) // sheer force prevents life orb from activating
     {
         sp->hp_calc_work = BattleDamageDivide(sp->battlemon[sp->attack_client].maxhp * -1, 10);
-        sp->client_work = sp->attack_client;
+        sp->battlerIdTemp = sp->attack_client;
         seq_no[0] = SUB_SEQ_ITEM_HP_LOSS;
         ret = TRUE;
     }
@@ -122,7 +122,7 @@ u32 LONG_CALL MoveHitUTurnHeldItemEffectCheck(void *bw, struct BattleStruct *sp,
         && (atk_item_param == move_type)
         && (sp->server_status_flag & SERVER_STATUS_FLAG_MOVE_HIT)
         && (GetMoveSplit(sp, sp->current_move_index) != SPLIT_STATUS)
-        && (sp->multi_hit_count <= 1)
+        && (sp->multiHitCount <= 1)
     )
     {
         seq_no[0] = SUB_SEQ_REMOVE_ATTACKER_ITEM;
@@ -197,7 +197,7 @@ u32 LONG_CALL ServerWazaHitAfterCheckAct(void *bw, struct BattleStruct *sp)
                  && (sp->battlemon[sp->attack_client].hp))
                 {
                     sp->hp_calc_work = BattleDamageDivide(sp->oneSelfFlag[sp->attack_client].shell_bell_damage * -1, hold_effect_param);
-                    sp->client_work=sp->attack_client;
+                    sp->battlerIdTemp=sp->attack_client;
                     LoadBattleSubSeqScript(sp, ARC_BATTLE_SUB_SEQ, SUB_SEQ_ITEM_HP_GRADUAL);
                     sp->next_server_seq_no = sp->server_seq_no;
                     sp->server_seq_no = 22;
@@ -215,7 +215,7 @@ u32 LONG_CALL ServerWazaHitAfterCheckAct(void *bw, struct BattleStruct *sp)
              && (sp->battlemon[sp->attack_client].hp))
             {
                 sp->hp_calc_work = BattleDamageDivide(sp->battlemon[sp->attack_client].maxhp * -1, 10);
-                sp->client_work = sp->attack_client;
+                sp->battlerIdTemp = sp->attack_client;
                 LoadBattleSubSeqScript(sp, ARC_BATTLE_SUB_SEQ, SUB_SEQ_ITEM_HP_LOSS);
                 sp->next_server_seq_no = sp->server_seq_no;
                 sp->server_seq_no = 22;
@@ -232,7 +232,7 @@ u32 LONG_CALL ServerWazaHitAfterCheckAct(void *bw, struct BattleStruct *sp)
                 && ((sp->server_status_flag2 & SERVER_STATUS_FLAG2_U_TURN) == 0)
                 && (sp->server_status_flag & SERVER_STATUS_FLAG_MOVE_HIT)
                 && (GetMoveSplit(sp, sp->current_move_index) != SPLIT_STATUS)
-                && (sp->multi_hit_count <= 1)
+                && (sp->multiHitCount <= 1)
             )
             {
                 LoadBattleSubSeqScript(sp, ARC_BATTLE_SUB_SEQ, SUB_SEQ_REMOVE_ATTACKER_ITEM);

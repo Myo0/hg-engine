@@ -1452,6 +1452,51 @@
 #define SEQ_N_CASTLE                        2459
 #define SEQ_BRINE_CAVE                      2460    
 #define SEQ_XENOBLADE_YWKON                 2461
+#define SEQ_ROUTE_19_BW                     2462
+#define SEQ_ASPERTIA_CITY_BW                2463
+#define SEQ_FLOCESSY_TOWN_BW                2464
+#define SEQ_FLOCESSY_RANCH_BW               2465
+#define SEQ_PRIMAL_DIALGA_BATTLE            2466
+#define SEQ_SNOW_ROUTE_PT                   2467
+#define SEQ_SNOW_ROUTE_PT_NIGHT             2468
+#define SEQ_SNOWPOINT_CITY_PT               2469
+#define SEQ_SNOWPOINT_CITY_PT_NIGHT         2470
+#define SEQ_ROUTE_23_BW                     2471
+#define SEQ_COLRESS_BATTLE_BW               2472
+#define SEQ_PRE_COLRESS_BATTLE_BW           2473
+#define SEQ_RIVAL_BATTLE_BW                 2474
+#define SEQ_N_BATTLE_1_BW                   2475
+#define SEQ_N_BATTLE_2_BW                   2476
+#define SEQ_N_BATTLE_3_BW                   2477
+#define SEQ_PRE_N_BATTLE_BW                 2478  
+#define SEQ_ROUTE_1_BW                      2479
+#define SEQ_ROUTE_22_BW                     2480
+#define SEQ_LENTIMAS_TOWN_BW                2481
+#define SEQ_VIRBANK_CITY                    2482
+#define SEQ_ROUTE_10_BW                     2483
+#define SEQ_ROUTE_11_BW                     2484
+#define SEQ_ROUTE_6_BW                      2485
+#define SEQ_ROUTE_4_BW                      2486
+#define SEQ_ROUTE_2_BW                      2487
+#define SEQ_WHITE_FOREST_HD                 2488
+#define SEQ_OPELUCID_WHITE                  2489
+#define SEQ_OPELUCID_FULL                   2490
+#define SEQ_STRIATION_CITY                  2491
+#define SEQ_ICIRRUS_CITY_HD                 2492
+#define SEQ_MISTRALTON_CITY                 2493
+#define SEQ_NIMBASA_CITY                    2494
+#define SEQ_CASTELIA_CITY                   2495
+#define SEQ_NACRENE_CITY                    2496
+#define SEQ_NACRENE_FULL                    2497
+#define SEQ_ACCUMULA_TOWN                   2498
+#define SEQ_VS_REGIS                        2499
+#define SEQ_VS_JOHTO_CHAMP_BW               2500
+#define SEQ_WILD_BATTLE_BW                  2501
+#define SEQ_CASTELIA_SEWERS                 2502
+#define SEQ_VS_DIALGA_DPPT                  2503
+#define SEQ_NUVEMA_TOWN_HD                  2504
+#define SEQ_VS_DEOXYS                       2505
+
 
 //Sounds marked BANK, WAVE, PLAYER, GROUP not ported over from pokeheartgold/include/constants/sndseq.h
 
@@ -1501,6 +1546,7 @@ enum {
     ANIM_MUSIC_COMBO_JOHTO_WILD_THEME,
     ANIM_MUSIC_COMBO_TRAINER_N,
     ANIM_MUSIC_COMBO_RED,
+    ANIM_MUSIC_COMBO_MINIBOSS,
 };
 
 #endif //POKEHEARTGOLD_CONSTANTS_SNDSEQ_H
