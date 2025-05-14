@@ -512,11 +512,7 @@ int LONG_CALL CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 
         attack = attack * 150 / 100;
     }
 
-<<<<<<< HEAD
     // Handle Assault Vest
-=======
-    // handle assault vest
->>>>>>> f2fae4a9cbdb46148a6b1a62b059f3425253c28a
     if (DefendingMon.item_held_effect == HOLD_EFFECT_SPDEF_BOOST_NO_STATUS_MOVES) {
         sp_defense = sp_defense * 150 / 100;
     }
@@ -741,7 +737,6 @@ int LONG_CALL CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 
     }
 
     // handle grass pelt
-<<<<<<< HEAD
     
 
 //from drayano:
@@ -764,16 +759,17 @@ int LONG_CALL CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 
     }
 
     // handle grass pelt
+    /*
     if ((MoldBreakerAbilityCheck(sp, attacker, defender, ABILITY_GRASS_PELT) == TRUE) && (sp->terrainOverlay.type == GRASSY_TERRAIN && sp->terrainOverlay.numberOfTurnsLeft > 0))
     {
         defense = defense * 150 / 100;
-=======
+    }
+    */
     if(usePPForAttacker){
         if (!(GetMonData(pp, MON_DATA_ABILITY,0) == ABILITY_MOLD_BREAKER) && sp->battlemon[defender].ability == ABILITY_GRASS_PELT && (sp->terrainOverlay.type == GRASSY_TERRAIN && sp->terrainOverlay.numberOfTurnsLeft > 0))
         {
             defense = defense * 150 / 100;
         }
->>>>>>> f2fae4a9cbdb46148a6b1a62b059f3425253c28a
     }
     else if(usePPForDefender){
         if ((GetMonData(pp, MON_DATA_ABILITY,0) == ABILITY_GRASS_PELT) && sp->battlemon[attacker].ability != ABILITY_MOLD_BREAKER && (sp->terrainOverlay.type == GRASSY_TERRAIN && sp->terrainOverlay.numberOfTurnsLeft > 0))
