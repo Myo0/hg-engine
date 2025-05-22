@@ -211,6 +211,10 @@ int LONG_CALL CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 
                 attack = BattlePokemonParamGet(sp, attacker, BATTLE_MON_DATA_DEF, NULL);
                 atkstate = BattlePokemonParamGet(sp, attacker, BATTLE_MON_DATA_STATE_DEF, NULL) - 6;
                 break;
+            case MOVE_FOUL_PLAY:
+                attack = BattlePokemonParamGet(sp, defender, BATTLE_MON_DATA_DEF, NULL);
+                atkstate = BattlePokemonParamGet(sp, defender, BATTLE_MON_DATA_STATE_DEF, NULL) - 6;
+                break;
     
             default:
                 attack = BattlePokemonParamGet(sp, attacker, BATTLE_MON_DATA_ATK, NULL);

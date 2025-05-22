@@ -3288,7 +3288,7 @@ evodata SPECIES_LUDICOLO
     terminateevodata
 
 evodata SPECIES_SEEDOT
-    evolution EVO_LEVEL, 14, SPECIES_NUZLEAF
+    evolution EVO_LEVEL, 13, SPECIES_NUZLEAF
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
@@ -3372,7 +3372,7 @@ evodata SPECIES_PELIPPER
     terminateevodata
 
 evodata SPECIES_RALTS
-    evolution EVO_LEVEL, 20, SPECIES_KIRLIA
+    evolution EVO_LEVEL, 13, SPECIES_KIRLIA
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
@@ -3588,7 +3588,7 @@ evodata SPECIES_HARIYAMA
     terminateevodata
 
 evodata SPECIES_AZURILL
-    evolution EVO_FRIENDSHIP, 0, SPECIES_MARILL
+    evolution EVO_LEVEL, 9, SPECIES_MARILL
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
@@ -4884,7 +4884,7 @@ evodata SPECIES_LUXRAY
     terminateevodata
 
 evodata SPECIES_BUDEW
-    evolution EVO_FRIENDSHIP_DAY, 0, SPECIES_ROSELIA
+    evolution EVO_LEVEL, 13, SPECIES_ROSELIA
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
@@ -9448,7 +9448,7 @@ evodata SPECIES_GUMSHOOS
 terminateevodata
 
 evodata SPECIES_GRUBBIN
-    evolution EVO_LEVEL, 20, SPECIES_CHARJABUG
+    evolution EVO_LEVEL, 9, SPECIES_CHARJABUG
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
@@ -10505,7 +10505,7 @@ evodata SPECIES_CORVIKNIGHT
 terminateevodata
 
 evodata SPECIES_BLIPBUG
-    evolution EVO_LEVEL, 10, SPECIES_DOTTLER
+    evolution EVO_LEVEL, 9, SPECIES_DOTTLER
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
@@ -11082,7 +11082,7 @@ evodata SPECIES_PINCURCHIN
 terminateevodata
 
 evodata SPECIES_SNOM
-    evolution EVO_FRIENDSHIP_NIGHT, 0, SPECIES_FROSMOTH
+    evolution EVO_LEVEL, 28, SPECIES_FROSMOTH
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE

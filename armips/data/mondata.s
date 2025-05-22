@@ -18779,7 +18779,7 @@ mondata SPECIES_SILICOBRA, "Silicobra"
     basefriendship 50
     growthrate GROWTH_MEDIUM_FAST
     egggroups EGG_GROUP_FIELD, EGG_GROUP_DRAGON
-    abilities ABILITY_SAND_SPIT, ABILITY_SHED_SKIN
+    abilities ABILITY_SHED_SKIN, ABILITY_SHED_SKIN
     runchance 0
     colorflip BODY_COLOR_GREEN, 0
     mondexentry SPECIES_SILICOBRA, "It spews sand from its nostrils. While\nthe enemy is blinded, it burrows into\nthe ground to hide."
@@ -21425,7 +21425,7 @@ mondata SPECIES_GLIMMET, "Glimmet"
     basefriendship 50
     growthrate GROWTH_MEDIUM_SLOW
     egggroups EGG_GROUP_MINERAL, EGG_GROUP_MINERAL
-    abilities ABILITY_TOXIC_DEBRIS, ABILITY_NONE
+    abilities ABILITY_POISON_POINT, ABILITY_NONE
     runchance 0
     colorflip BODY_COLOR_BLUE, 0
     mondexentry SPECIES_GLIMMET, "It absorbs nutrients from cave walls.\nThe petals it wears are made of\ncrystallized poison."

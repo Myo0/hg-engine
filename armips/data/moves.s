@@ -186,7 +186,7 @@ movedata MOVE_SCRATCH, "Scratch"
     terminatedata
     movedescription MOVE_SCRATCH, "Hard, pointed, and\nsharp claws rake the\nfoe to inflict damage.\n\n"
 
-movedata MOVE_VICE_GRIP, "Vise Grip"
+movedata MOVE_VICE_GRIP, "Vice Grip"
     battleeffect MOVE_EFFECT_HIT
     pss SPLIT_PHYSICAL
     basepower 55
@@ -351,7 +351,7 @@ movedata MOVE_SLAM, "Slam"
     pss SPLIT_PHYSICAL
     basepower 85
     type TYPE_NORMAL
-    accuracy 100
+    accuracy 95
     pp 10
     effectchance 0
     target RANGE_SINGLE_TARGET
@@ -494,7 +494,7 @@ movedata MOVE_HORN_ATTACK, "Horn Attack"
     battleeffect MOVE_EFFECT_HIT
     pss SPLIT_PHYSICAL
     basepower 65
-    type TYPE_GROUND
+    type TYPE_NORMAL
     accuracy 100
     pp 10
     effectchance 0
@@ -510,8 +510,8 @@ movedata MOVE_FURY_ATTACK, "Fury Attack"
     battleeffect MOVE_EFFECT_MULTI_HIT
     pss SPLIT_PHYSICAL
     basepower 20
-    type TYPE_FLYING
-    accuracy 85
+    type TYPE_NORMAL
+    accuracy 100
     pp 10
     effectchance 0
     target RANGE_SINGLE_TARGET
@@ -590,7 +590,7 @@ movedata MOVE_TAKE_DOWN, "Take Down"
     battleeffect MOVE_EFFECT_RECOIL_QUARTER
     pss SPLIT_PHYSICAL
     basepower 90
-    type TYPE_FIGHTING
+    type TYPE_NORMAL
     accuracy 85
     pp 10
     effectchance 0
@@ -833,7 +833,7 @@ movedata MOVE_ACID, "Acid"
     type TYPE_POISON
     accuracy 100
     pp 10
-    effectchance 10
+    effectchance 30
     target RANGE_ADJACENT_OPPONENTS
     priority 0
     flags FLAG_MIRROR_MOVE | FLAG_PROTECT
@@ -1149,7 +1149,7 @@ movedata MOVE_STRENGTH, "Strength"
 movedata MOVE_ABSORB, "Absorb"
     battleeffect MOVE_EFFECT_RECOVER_HALF_DAMAGE_DEALT
     pss SPLIT_SPECIAL
-    basepower 30
+    basepower 35
     type TYPE_GRASS
     accuracy 100
     pp 10
@@ -2527,7 +2527,7 @@ movedata MOVE_ROCK_SLIDE, "Rock Slide"
     pss SPLIT_PHYSICAL
     basepower 75
     type TYPE_ROCK
-    accuracy 90
+    accuracy 100
     pp 10
     effectchance 30
     target RANGE_ADJACENT_OPPONENTS
@@ -3709,9 +3709,9 @@ movedata MOVE_SWEET_SCENT, "Sweet Scent"
 movedata MOVE_IRON_TAIL, "Iron Tail"
     battleeffect MOVE_EFFECT_LOWER_DEFENSE_HIT
     pss SPLIT_PHYSICAL
-    basepower 95
+    basepower 100
     type TYPE_STEEL
-    accuracy 95
+    accuracy 90
     pp 10
     effectchance 30
     target RANGE_SINGLE_TARGET
@@ -5499,7 +5499,7 @@ movedata MOVE_POISON_TAIL, "Poison Tail"
     movedescription MOVE_POISON_TAIL, "An attack with a\nhigh critical-hit\nratio. This tail \nattack may also \npoison the foe."
 
 movedata MOVE_COVET, "Covet"
-    battleeffect MOVE_EFFECT_STEAL_HELD_ITEM
+    battleeffect MOVE_EFFECT_HIT
     pss SPLIT_PHYSICAL
     basepower 60
     type TYPE_NORMAL
@@ -5512,7 +5512,7 @@ movedata MOVE_COVET, "Covet"
     appeal 0x0C
     contesttype CONTEST_CUTE
     terminatedata
-    movedescription MOVE_COVET, "The user endearingly\napproaches the foe,\nthen steals the item\nthe foe is holding.\n"
+    movedescription MOVE_COVET, "The user endearingly\napproaches the foe,\nthen punches them\nin the mouth.\n"
 
 movedata MOVE_VOLT_TACKLE, "Volt Tackle"
     battleeffect MOVE_EFFECT_RECOIL_PARALYZE_HIT
@@ -8012,9 +8012,9 @@ movedata MOVE_ROUND, "Round"
     movedescription MOVE_ROUND, "The user attacks\nwith a song. Others\ncan join in, doing\nmore damage."
 
 movedata MOVE_ECHOED_VOICE, "Echoed Voice"
-    battleeffect MOVE_EFFECT_HIT
+    battleeffect MOVE_EFFECT_DOUBLE_POWER_EACH_TURN
     pss SPLIT_SPECIAL
-    basepower 40
+    basepower 35
     type TYPE_NORMAL
     accuracy 100
     pp 10
@@ -8720,7 +8720,7 @@ movedata MOVE_TAIL_SLAP, "Tail Slap"
     pss SPLIT_PHYSICAL
     basepower 25
     type TYPE_NORMAL
-    accuracy 85
+    accuracy 95
     pp 10
     effectchance 0
     target RANGE_SINGLE_TARGET

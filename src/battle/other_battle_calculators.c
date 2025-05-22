@@ -4265,6 +4265,10 @@ int LONG_CALL AI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u
                 attack = GetMonData(pp, MON_DATA_DEFENSE, 0);
                 atkstate = 0; //Pokemon in the party have no stat changes
                 break;
+            case MOVE_FOUL_PLAY:
+                attack = BattlePokemonParamGet(sp, defender, BATTLE_MON_DATA_DEF, NULL);
+                atkstate = BattlePokemonParamGet(sp, defender, BATTLE_MON_DATA_STATE_DEF, NULL) - 6;
+                break;
                 
     
             default:
@@ -4307,6 +4311,10 @@ int LONG_CALL AI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u
             case MOVE_BODY_PRESS:
                 attack = BattlePokemonParamGet(sp, attacker, BATTLE_MON_DATA_DEF, NULL);
                 atkstate = BattlePokemonParamGet(sp, attacker, BATTLE_MON_DATA_STATE_DEF, NULL) - 6;
+                break;
+            case MOVE_FOUL_PLAY:
+                attack = GetMonData(pp, MON_DATA_ATTACK, 0);
+                atkstate = 0;
                 break;
     
             default:
