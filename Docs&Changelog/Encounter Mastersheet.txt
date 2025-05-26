@@ -1,0 +1,63 @@
+------------- .
+New Bark Town |
+------------- '
+
+Fishing [Lv.2-6]: Clamperl 40%, Tirtouga 40%, Shellder 15%, Azurill 4%, Piplup 1%
+
+Surfing [Lv.32-38]: Lanturn 60%, Kingler 30%, Starmie, 5%, Wugtrio, 4%, Lapras 1%
+
+Headbutt [Lv.3-5]: Rookidee 50%, Joltik 30%, Exeggcute 20%
+
+-------- .
+Route 29 |
+-------- '
+
+Grass [Lv.3-5]: Pidgey 20%, Fletchling 20%, Starly 15%, Rockruff 10%, Mareep 10%, Poochyena 10%, Zigzagoon-G 5%, Aipom 4%, Taillow 4%, Riolu 1%, Ralts 1%
+
+Headbutt [Lv.7]: Spewpa 50%, Pineco 30%, Exeggcute 20%
+
+-------- .
+Route 46 |
+-------- '
+
+Grass [Lv.4-7]: Geodude 20%, Roggenrola 20%, Poochyena 20%, Lilipup 10%, Natu 10%, Houndour 10%, Growlithe 8%, Deerling 2%
+
+Headbutt [Lv.4-7]: Spewpa 50%, Fletchling 30%, Petilil 20%
+
+---------------- .
+Cherrygrove City |
+---------------- '
+
+Fishing [Lv.3-6]: Chinchou 40%, Tympole 40%, Squirtle 15%, Magikarp 5%
+
+Surfing [Lv.33-37]: Seadra 60%, Sharpedo 30%, Pidgeot 5%, Sealeo 5% 
+
+Headbutt [Lv.3-7]: Ledyba 50%, Joltik 30%, Weedle 20%
+
+-------- .
+Route 30 |
+-------- '
+
+Grass [Lv.5-7]: Pidgey 40%, Scatterbug 20%, Yamper 20%, Zubat 10%, Budew 8%, Chikorita 2% 
+
+Fishing [Lv.6-7]: Barboach 40%, Krabby 40%, Carvanha 20%
+
+Surfing [Lv.35]: Sharpedo 60%, Corviknight 30%, Palpitoad 10%
+
+Headbutt [Lv.7]: Grubbin 50%, Surskit 30%, Yanma 20%
+
+
+-------- .
+Route 31 |
+-------- '
+
+Grass [Lv.6-8]: Shinx 20%, Bounsweet 20%, Smoliv 20%, Abra 10%, Shroomish 10%, Poochyena 10%, Geodude 8%, Aron 2%
+
+Fishing [Lv.8]: Psyduck 40%, Clamperl 40%, Chinchou 20%
+
+Surfing [Lv.36]: Drednaw 60%, Lanturn 40%
+
+Headbutt [Lv.8]: Bellsprout 50%, Lotad 50%
+
+
+

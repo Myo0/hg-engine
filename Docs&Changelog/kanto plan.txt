@@ -1,0 +1,62 @@
+Surge Gym -> Rain + Electric Terrain
+Brock Gym -> Sandstorm + Gravity
+Misty Gym -> Rain + Misty Terrain
+Erika Gym -> Sun + Grassy Terrain
+Janine Gym -> Aurora Veil (Foggy overworld)
+Sabrina Gym -> Psychic Terrain + Variance of weather per battle
+Blaine Gym -> Extremely Harsh Sunlight
+Blue Gym -> Redo gym with mandatory warps to 2 different rooms; Room 1: Snow + Psychic Terrain, Room 2: Sandstorm + Psychic Terrain, Main Room (Blue only): Tailwind
+
+Mt. Silver will have no special overworld weather. 
+
+Gym Leader order:
+
+Surge
+Sabrina
+Misty
+Erika
+Janine
+Brock
+Blaine
+Blue
+
+Kanto routing ->
+
+Vermillion; unchanged
+Route 6 (North of vermillion); block path to saffron via map editing.
+Route 11 (east of vermillion); make more linear for trainers sake
+Diglett Cave; block off saffron exit until after the player enters saffron for the first time from route 8, block off pewter exit until brock is beaten
+Route 12; block off southern path (prob with NPCs) until player enters fuchsia for the first time from route 18
+Lavender; unchanged
+Route 10; block rock tunnel with worker NPC until player beats Sabrina in saffron
+Route 8; probably unchanged
+Route 7; block off until player beats misty
+Saffron; unchanged
+Route 5 (north of saffron); block off the way to cerulean via map editing to force rock tunnel.
+Rock Tunnel; mapping probably unchanged, will revisit when i get there. Add a few trainers, no more than 4.
+Route 9; change the mapping to spend more time on route.
+Cerulean; unchanged
+Cerulean Cave; lock until after 16th badge
+Celadon; unchanged
+Route 24; make nugget bridge a gauntlet enforced by NPCs instead of mapping ledges.
+Route 25; probably unchanged.
+Route 4; Block off Mt. Moon until after Janine
+Route 16; unchanged
+Route 17; unchanged
+Route 18; unchanged
+Fuchsia; unchanged
+Route 19; block until player enters cinnabar island for the first time, all trainers are optional.
+Route 3; unchanged
+Route 2; block until brock is defeated, remove cut tree path that avoids viridian forest
+Viridian Forest; make minor changes to remove multiple paths for trainers (might not have to do it)
+Route 22; block reception exit until player enters viridian for the first time.
+Route 1; unchanged
+Pallet Town; allow access to second roamer, located in Oak's lab, unlocked by Oak.
+Route 21; change the route almost entirely to make all trainers mandatory.
+Route 20; only route that will have optionals, likely map unchanged.
+Seafoam Islands; dunno will see when I get there, at the very least a few more trainers will be added prior to the gym.
+Route 28; remap route to accommodate trainers/gauntlets
+Mt. Silver; same with mt. silver
+Mt. Silver Cave; no idea what to do here, will tackle this monster later lol, at least adding trainers.
+
+

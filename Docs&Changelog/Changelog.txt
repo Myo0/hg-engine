@@ -1,0 +1,7 @@
+-----07/05/2024-----
+
+Created this file.
+
+- Changed the starters from Chikorita, Cyndaquil, and Totodile to Rowlet, Chimchar, and Totodile.
+- Added Porta PC functionality, still working on making it toggleable via scripting flags.
+- Edited config.h/config.s and chose different things.

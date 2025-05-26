@@ -1,0 +1,277 @@
+These are the script changes necessary for infinite repel within the portable PC. Commonscript 3 is overwritten by hg-e on compile time.
+
+APPLY USING DSPRE 1.11.1 TO AVOID BREAKING MARTS
+
+Script 3
+Text File 40 and 191
+
+Must implement these changes into the commonscript post build.
+
+------------------------------------------------------------------
+INFINITE REPEL
+
+Text Changes:
+
+append line "Infinite Repel" in bank 191 @ 477
+append 2 lines "Infinite Repel Enabled" in bank 40 @ 120
+and "Infinite Repel Disabled" in bank 40 @ 121
+
+
+Script file 3
+
+Function 16:
+	TextPlayerName 0
+	Message 34
+	MultiTouchStandardText 1 1 0 1 0x8006
+	CheckFlag 2422
+	CallIf LESS Function#66
+	CheckFlag 2422
+	CallIf EQUAL Function#67
+	CreateMultiTouchBox 63 255 1
+    CreateMultiTouchBox 477 255 2
+	CheckFlag 2404
+	JumpIf EQUAL Function#68
+	CheckFlag 2404
+	JumpIf LESS Function#69
+Jump Function#69
+
+
+Function 69:
+	CreateMultiTouchBox 66 255 3
+	CloseMultiTouch 
+	SetVarFromVariable 0x8008 0x8006
+	CompareVarValue 0x8008 0
+	JumpIf EQUAL Function#96
+	CompareVarValue 0x8008 1
+	JumpIf EQUAL Function#97
+	CompareVarValue 0x8008 2
+	JumpIf EQUAL Function#161
+Jump Function#99
+
+
+Function 161:
+	CompareVarValue 0x401F 0
+	JumpIf EQUAL Function#162
+	AdrsValueSet 0x202DB10 0
+	AdrsValueSet 0x202DB14 0
+	SetVar 0x401F 0
+	Message 120
+Jump Function#16
+
+Function 162:
+	AdrsValueSet 0x202DB10 1
+	AdrsValueSet 0x202DB14 1
+	SetVar 0x401F 1
+	Message 121
+Jump Function#16
+
+------------------------------------------------------------------
+HEAL PARTY
+
+Append text line "Heal Party" @ 478 in bank 191
+Append text line "Your party has been healed." @ 122 in bank 40
+
+Function 119:
+	MultiTouchStandardText 1 1 0 1 0x800C
+	CreateMultiTouchBox 67 76 0
+	CreateMultiTouchBox 68 77 1
+	CreateMultiTouchBox 69 78 2
+	CreateMultiTouchBox 70 79 3
+    CreateMultiTouchBox 478 255 5
+	CreateMultiTouchBox 72 81 6
+Return 
+
+Function 120:
+	CloseMultiTouch 
+	SetVarFromVariable 0x8008 0x800C
+	CompareVarValue 0x8008 0
+	JumpIf EQUAL Function#139
+	CompareVarValue 0x8008 1
+	JumpIf EQUAL Function#140
+	CompareVarValue 0x8008 2
+	JumpIf EQUAL Function#141
+	CompareVarValue 0x8008 3
+	JumpIf EQUAL Function#142
+	CompareVarValue 0x8008 4
+	JumpIf EQUAL Function#143
+    CompareVarValue 0x8008 5
+    JumpIf EQUAL Function#163
+Jump Function#16
+
+Function 163:
+	FadeScreen 6 1 0 0
+	WaitFadeScreen 
+	CloseMessage 
+	PlaySound 1183
+	WaitSound 
+	HealPokemon 
+	FadeScreen 6 1 1 0
+	WaitFadeScreen 
+	LockFollowingPoke 0
+	Message 122
+	CloseMessage
+    ReturnScreen
+Jump Function#16 
+
+--------------------------------------------------------------------
+APPLY STATUS
+
+Append lines "What Pokémon will get the effect?\r", "What status effect do you want?\r", "The status has been applied.\r"
+@ 123, 124, 125 in Bank 40.
+
+Append Lines
+"Apply Status"
+"Sleep"
+"Poison"
+"Burn"
+"Freeze"
+"Paralysis"
+"Toxic Poison"
+"Exit"
+
+@ 126-132 in bank 40.
+
+Function 119:
+	MultiTouchStandardText 1 1 0 1 0x800C
+	CreateMultiTouchBox 67 76 0
+	CreateMultiTouchBox 68 77 1
+	CreateMultiTouchBox 69 78 2
+	CreateMultiTouchBox 70 79 3
+    CreateMultiTouchBox 478 255 5
+    CreateMultiTouchBox 479 255 6
+	CreateMultiTouchBox 72 81 7
+Return 
+
+Function 120:
+	CloseMultiTouch 
+	SetVarFromVariable 0x8008 0x800C
+	CompareVarValue 0x8008 0
+	JumpIf EQUAL Function#139
+	CompareVarValue 0x8008 1
+	JumpIf EQUAL Function#140
+	CompareVarValue 0x8008 2
+	JumpIf EQUAL Function#141
+	CompareVarValue 0x8008 3
+	JumpIf EQUAL Function#142
+	CompareVarValue 0x8008 4
+	JumpIf EQUAL Function#143
+    CompareVarValue 0x8008 5
+    JumpIf EQUAL Function#163
+    CompareVarValue 0x8008 6
+    JumpIf EQUAL Function#164
+Jump Function#16
+
+Function 164:
+	Message 123
+	WaitButton 
+	CloseMessage 
+	FadeScreen 6 1 0 0
+	WaitFadeScreen 
+	CMD_349 
+	GetSelectedPartySlot 0x8008
+	ReturnScreen 
+	FadeScreen 6 1 1 0
+	WaitFadeScreen
+    Message 124
+    CloseMessage    
+Jump Function#165
+
+Function 165:
+    MultiLocalText 1 1 0 1 0x800C
+	AddMultiOption 126 0
+	AddMultiOption 127 1
+	AddMultiOption 128 2
+	AddMultiOption 129 3
+	AddMultiOption 130 4
+	AddMultiOption 131 5
+    AddMultiOption 132 6
+    ShowMulti
+    CompareVarValue 0x800C 0
+    CallIf EQUAL Function#166
+    CompareVarValue 0x800C 1
+    CallIf EQUAL Function#167
+    CompareVarValue 0x800C 2
+    CallIf EQUAL Function#168
+    CompareVarValue 0x800C 3
+    CallIf EQUAL Function#169
+    CompareVarValue 0x800C 4
+    CallIf EQUAL Function#170
+    CompareVarValue 0x800C 5
+    CallIf EQUAL Function#171
+    CompareVarValue 0x800C 6
+    JumpIf EQUAL Function#96
+    DummyTextTrap 6 0
+    Message 125
+    CloseMessage
+Jump Function#16
+
+Function 166:
+    GetRandom 0x8003 3
+    CompareVarValue 0x8003 0
+    CallIf EQUAL Function#172
+    CompareVarValue 0x8003 1
+    CallIf EQUAL Function#173
+    CompareVarValue 0x8003 2
+    CallIf EQUAL Function#174
+Return
+
+Function 167:
+    SetVar 0x8009 0x8
+Return
+
+Function 168:
+    SetVar 0x8009 0x10
+Return
+
+Function 169:
+    SetVar 0x8009 0x20
+Return
+
+Function 170:
+    SetVar 0x8009 0x40
+Return
+
+Function 171:
+    SetVar 0x8009 0x80
+Return
+
+Function 172:
+    SetVar 0x8009 0x1
+Return
+
+Function 173:
+    SetVar 0x8009 0x2
+Return
+
+Function 174:
+    SetVar 0x8009 0x4
+Return
+
+----------------------------------
+DISABLE PORTA PC DURING GAUNTLETS
+
+Append: "You are in a Gauntlet...\nYou may not use the Box Link.\rIt will enable upon gauntlet completion.\r" to line 133 in Bank 40.
+
+Script 74:
+    LockAll
+    PlayFanfare 1549
+    Message 133
+    CloseMessage
+    ReleaseAll
+End
+
+Function 6:
+	CheckItem 423 1 0x800C
+	CompareVarValue 0x800C 0
+	JumpIf EQUAL Function#30
+	CheckBadge 2 0x800C
+	CompareVarValue 0x800C 0
+	JumpIf EQUAL Function#30
+	Message 7
+	OpenTouchScreen 
+	YesNoTouchScreen 0x800C
+	CloseTouchScreen 
+	CompareVarValue 0x800C 0
+	JumpIf EQUAL Function#31
+	CloseMessage 
+Jump Function#5 

@@ -1,0 +1,51 @@
+Basic trainer info: (Will update after AI changes)
+
+    trainermontype TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_BALL | TRAINER_DATA_TYPE_IV_EV_SET | TRAINER_DATA_TYPE_NATURE_SET | 0
+
+    aiflags F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | 0
+
+Trainers that can be repurposed:
+
+Hiker Phillip (used on ???)
+Hiker Leonard (used on Route 47)
+Poke Maniac Andrew (Used on Route 48; Parasol Lady Yamato)
+Poke Maniac Calvin (Used on Route 48; Teacher Roxanne)
+Ace Trainer Nick (Used on Route 47)
+Ace Trainer Gwen (Used on Route 48)
+Ace Trainer Emma (Used in Cliff Cave)
+PokeManiac Donald (Used on Route 47)
+PokeManiac Isaac (Used in Cliff Cave; Waitress Tessia)
+Super Nerd Teru (Used on Route 47)
+Super Nerd Eric (Used on Route 48; Jogger Eric)
+
+Ace Trainer Alton
+Fisherman Andre
+Fisherman Raymond
+Ace Trainer Lois
+
+
+
+Use Black Belt Kiyo for a Lopunny mega stone battle that becomes available as soon as the player defeats Pryce. (His overworld flag in Mt.Mortar is 2624)
+
+I can tell that you’re a Trainer\nwith considerable skill.\rIf you don’t mind, could you help me\ninvestigate? \v0200\x0001\x0000
+
+100 -> 1329
+109 -> 110
+74 -> 1139
+
+0x415B -> Dahlia
+0x415C -> Route 38 check
+0x415D -> Route 42 check
+404A -> Variable for big room in HQ to count grunts beaten.
+404B -> Variable that is looked at to make sure player cannot leave area if party is larger than 3 before Ariana
+404C -> variable for the ambush in goldenrod radio tower 
+404D -> variable that disables switches before all trainers are done
+
+2570 -> Scientist Ross Flag
+2571 -> Grunt #6
+2572 -> Scientist Mitch
+2573 -> Grunt #7
+2574 -> Flag for grunt blocking stairway until the 4 trainers are beaten
+2575 -> flag for grunt blocking stairway during radio tower 2f gauntlet
+
+186 trainer for rocket grunt

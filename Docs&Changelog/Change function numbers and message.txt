@@ -1,0 +1,341 @@
+Change function numbers and message numbers accordingly
+
+Introduction script
+
+Script 7:
+    PlayFanfare 1500
+	LockAll 
+	FacePlayer
+    Message 6
+Jump Function#3
+
+Pokémon Manipulator Main Menu Script:
+
+Function 3:
+	SetVar 0x416C 0
+	MultiLocalText 19 1 0 1 0x800C
+	AddMultiOption 7 0
+	AddMultiOption 18 1
+	AddMultiOption 20 2
+	AddMultiOption 22 3
+	ShowMulti 
+	SetVarFromVariable 0x8009 0x800C
+	CompareVarValue 0x8009 0
+	JumpIf EQUAL Function#4
+	CompareVarValue 0x8009 1
+	JumpIf EQUAL Function#5
+	CompareVarValue 0x8009 2
+	JumpIf EQUAL Function#6
+	CompareVarValue 0x8009 3
+	JumpIf EQUAL Function#7
+	Message 8
+	CloseMessage 
+	ReleaseAll 
+End
+
+Pokémon Manipulator Max an IV Scripts
+
+Function 4:
+    Message 54
+    CloseMessage
+    CheckItem 93 1 0x800C
+    CompareVarValue 0x800C 0
+    JumpIf EQUAL Function#14
+    MultiLocalText 19 1 0 1 0x800C
+    AddMultiOption 9 0
+    AddMultiOption 10 1
+    AddMultiOption 11 2
+    AddMultiOption 12 3
+    AddMultiOption 13 4
+    AddMultiOption 14 5
+    AddMultiOption 15 6
+    ShowMulti
+    SetVarFromVariable 0x8009 0x800C
+    CompareVarValue 0x8009 0
+    JumpIf EQUAL Function#5
+    CompareVarValue 0x8009 1
+    JumpIf EQUAL Function#5
+    CompareVarValue 0x8009 2
+    JumpIf EQUAL Function#5
+    CompareVarValue 0x8009 3
+    JumpIf EQUAL Function#5
+    CompareVarValue 0x8009 4
+    JumpIf EQUAL Function#5
+    CompareVarValue 0x8009 5
+    JumpIf EQUAL Function#5
+    CompareVarValue 0x8009 6
+    JumpIf EQUAL Function#6
+Jump Function#6
+
+Function 5:
+    FadeScreen 6 1 0 0
+    WaitFadeScreen
+    CMD_349
+    GetSelectedPartySlot 0x8008
+    ReturnScreen
+    FadeScreen 6 1 1 0
+    WaitFadeScreen
+    CompareVarValue 0x8008 255
+    JumpIf EQUAL Function#6
+    GetPartyPokemonID 0x8008 0x8001
+    CompareVarValue 0x8001 0
+    JumpIf EQUAL Function#7
+    DummyTextTrap 1 0
+    Message 16
+    CloseMessage
+    TakeItem 93 1 0x800C
+    TextPlayerName 3
+    Message 61
+    CloseMessage
+    ReleaseAll
+End
+
+Pokémon Manipulator End Interaction Script
+
+Function 6:
+    Message 8
+    CloseMessage
+    ReleaseAll
+End
+
+Pokémon Manipulator Egg Chosen During IV Script
+
+Function 7:
+   Message 17
+   WaitButton
+   CloseMessage
+   ReleaseAll
+End
+
+Pokémon Manipulator Change Nature Scripts
+
+Function 8:
+    Message 56
+    CheckItem 93 3 0x800C
+    CompareVarValue 0x800C 0
+    JumpIf EQUAL Function#14
+    ListStandardText 10 1 0 1 0x800C
+    AddListOption 224 20 0
+    AddListOption 225 20 1
+    AddListOption 226 20 2
+    AddListOption 227 20 3
+    AddListOption 228 20 4
+    AddListOption 229 20 5
+    AddListOption 230 20 6
+    AddListOption 231 20 7
+    AddListOption 232 20 8
+    AddListOption 233 20 9
+    AddListOption 234 20 10
+    AddListOption 235 20 11
+    AddListOption 236 20 12
+    AddListOption 237 20 13
+    AddListOption 238 20 14
+    AddListOption 239 20 15
+    AddListOption 240 20 16
+    AddListOption 241 20 17
+    AddListOption 242 20 18
+    AddListOption 243 20 19
+    AddListOption 244 20 20
+    AddListOption 245 20 21
+    AddListOption 246 20 22
+    AddListOption 247 20 23
+    AddListOption 248 20 24
+    AddListOption 249 20 25
+    ShowList
+    SetVarFromVariable 0x8009 0x800C
+    CompareVarValue 0x8009 0
+    JumpIf EQUAL Function#9
+    CompareVarValue 0x8009 1
+    JumpIf EQUAL Function#9
+    CompareVarValue 0x8009 2
+    JumpIf EQUAL Function#9
+    CompareVarValue 0x8009 3
+    JumpIf EQUAL Function#9
+    CompareVarValue 0x8009 4
+    JumpIf EQUAL Function#9
+    CompareVarValue 0x8009 5
+    JumpIf EQUAL Function#9
+    CompareVarValue 0x8009 6
+    JumpIf EQUAL Function#9
+    CompareVarValue 0x8009 7
+    JumpIf EQUAL Function#9
+    CompareVarValue 0x8009 8
+    JumpIf EQUAL Function#9
+    CompareVarValue 0x8009 9
+    JumpIf EQUAL Function#9
+    CompareVarValue 0x8009 10
+    JumpIf EQUAL Function#9
+    CompareVarValue 0x8009 11
+    JumpIf EQUAL Function#9
+    CompareVarValue 0x8009 12
+    JumpIf EQUAL Function#9
+    CompareVarValue 0x8009 13
+    JumpIf EQUAL Function#9
+    CompareVarValue 0x8009 14
+    JumpIf EQUAL Function#9
+    CompareVarValue 0x8009 15
+    JumpIf EQUAL Function#9
+    CompareVarValue 0x8009 16
+    JumpIf EQUAL Function#9
+    CompareVarValue 0x8009 17
+    JumpIf EQUAL Function#9
+    CompareVarValue 0x8009 18
+    JumpIf EQUAL Function#9
+    CompareVarValue 0x8009 19
+    JumpIf EQUAL Function#9
+    CompareVarValue 0x8009 20
+    JumpIf EQUAL Function#9
+    CompareVarValue 0x8009 21
+    JumpIf EQUAL Function#9
+    CompareVarValue 0x8009 22
+    JumpIf EQUAL Function#9
+    CompareVarValue 0x8009 23
+    JumpIf EQUAL Function#9
+    CompareVarValue 0x8009 24
+    JumpIf EQUAL Function#9
+    CompareVarValue 0x8009 25
+    JumpIf EQUAL Function#6
+Jump Function#6
+
+Function 9:
+    FadeScreen 6 1 0 0
+    WaitFadeScreen
+    CMD_349
+    GetSelectedPartySlot 0x8008
+    ReturnScreen
+    FadeScreen 6 1 1 0
+    WaitFadeScreen
+    CompareVarValue 0x8008 255
+    JumpIf EQUAL Function#6
+    GetPartyPokemonID 0x8008 0x8001
+    CompareVarValue 0x8001 0
+    JumpIf EQUAL Function#7
+    DummyTextTrap 2 0
+    Message 19
+    CloseMessage
+    TakeItem 93 3 0x800C
+    TextPlayerName 3
+    Message 62
+    CloseMessage
+    ReleaseAll
+End
+
+
+Pokémon Manipulator Move Deleter Scripts
+
+Function 10:
+    Message 21
+    WaitButton
+    CloseMessage
+    FadeScreen 6 1 0 0
+    WaitFadeScreen 
+    CMD_349 
+    GetSelectedPartySlot 0x8002
+    ReturnScreen 
+    FadeScreen 6 1 1 0
+    WaitFadeScreen 
+    CompareVarValue 0x8002 255
+    JumpIf EQUAL Function#6
+    GetPartyPokemonID 0x8002 0x8001
+    CompareVarValue 0x8001 0
+    JumpIf EQUAL Function#7
+    GetMoveCount 0x800C 0x8002
+    CompareVarValue 0x800C 1
+    JumpIf EQUAL Function#11
+    Message 51
+    WaitButton
+    CloseMessage
+    FadeScreen 6 1 0 0
+    WaitFadeScreen 
+    CMD_394 0x8002
+    CMD_395 0x8001
+    ReturnScreen 
+    FadeScreen 6 1 1 0
+    WaitFadeScreen 
+    CompareVarValue 0x8001 255
+    JumpIf EQUAL Function#6
+    TextPartyPokemonMove 0 0x8002 0x8001
+    Message 52
+    OpenTouchScreen 
+    YesNoTouchScreen 0x800C
+    CloseTouchScreen
+    CompareVarValue 0x800C 0
+    JumpIf EQUAL Function#12
+    CompareVarValue 0x800C 1
+    JumpIf EQUAL Function#11 
+End
+
+Move Deleter change pokemon choice
+
+Function 11:
+    Message 50
+    CloseMessage
+Jump Function#10
+
+Move Deleter pokemon & move chosen
+
+Function 12:
+	DeleteMove 0x8002 0x8001
+	PlaySound 1192
+	WaitSound 
+	Message 53
+	WaitButton 
+	CloseMessage 
+	ReleaseAll 
+End 
+
+Move Reminder main script
+
+Function 13:
+    Message 57
+	CheckItem 93 1 0x800C
+	CompareVarValue 0x800C 0
+	JumpIf EQUAL Function#14
+    Message 58
+    CloseMessage
+    FadeScreen 6 1 0 0
+	WaitFadeScreen 
+	CMD_349 
+	GetSelectedPartySlot 0x8005
+	ReturnScreen 
+	FadeScreen 6 1 1 0
+	WaitFadeScreen 
+	CompareVarValue 0x8005 255
+	JumpIf EQUAL Function#6
+	GetPartyPokemonID 0x8005 0x800C
+	CompareVarValue 0x800C 0
+	JumpIf EQUAL Function#7
+    CMD_466 0x800C 0x8005
+	CompareVarValue 0x800C 0
+	JumpIf EQUAL Function#15
+    Message 60
+    CloseMessage
+    FadeScreen 6 1 0 0
+	WaitFadeScreen 
+	CMD_467 0x8005
+	CMD_469 0x800C
+	ReturnScreen 
+	FadeScreen 6 1 1 0
+	WaitFadeScreen 
+	CompareVarValue 0x800C 255
+	JumpIf EQUAL Function#6
+    TakeItem 93 1 0x800C
+    TextPlayerName 3
+    Message 61
+End
+
+Pokémon Manipulator Player does not have required # of heart scales script
+
+Function 14:
+    Message 55
+    CloseMessage
+    ReleaseAll
+End 
+
+Move Reminder no available moves
+
+Function 15:
+    Message 59
+    CloseMessage
+    ReleaseAll
+End
