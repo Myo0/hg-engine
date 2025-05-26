@@ -1781,7 +1781,7 @@ trainerdata 28, "Iris"
 		move MOVE_ROCK_THROW
 		move MOVE_TWISTER
 		move MOVE_ROCK_SMASH
-		ability ABILITY_MOLD_BREAKER
+		ability ABILITY_RIVALRY
 		setivs 31, 31, 31, 31, 31, 31 // hp, atk, def, spe, spatk, spdef
 		setevs 0, 0, 0, 0, 0, 0
 		nature NATURE_HARDY
@@ -21563,7 +21563,7 @@ trainerdata 495, "Iris"
 		move MOVE_LEER
 		move MOVE_NONE
 		move MOVE_NONE
-		ability ABILITY_MOLD_BREAKER
+		ability ABILITY_RIVALRY
 		setivs 31, 31, 31, 31, 31, 31 // hp, atk, def, spe, spatk, spdef
 		setevs 0, 0, 0, 0, 0, 0
 		nature NATURE_HARDY
