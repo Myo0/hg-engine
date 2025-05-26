@@ -26,6 +26,15 @@
 .include "armips/asm/tm.s" // make tms infinite
 .include "armips/asm/forget_hm.s" // allows hm to be forgotten
 
+// Electrum Custom Changes; most credit goes to Drayano the GOAT
+
+.include "armips/asm/custom/mart_items.s"
+.include "armips/asm/custom/hp_bar_speed.s"
+.include "armips/asm/custom/hidden_power.s"
+.include "armips/asm/custom/smashable_rock_items.s"
+.include "armips/asm/custom/remove_obedience_check.s"
+.include "armips/asm/custom/double_battle_music.s"
+
 .if FAIRY_TYPE_IMPLEMENTED == 1
 
 .include "armips/asm/fairy.s" // repoints all the move table defines within the structure

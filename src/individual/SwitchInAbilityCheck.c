@@ -50,10 +50,17 @@ int UNUSED SwitchInAbilityCheck(void *bw, struct BattleStruct *sp)
                 if (sp->weather_check_flag == 0) {
                     switch (BattleWorkWeatherGet(bw)) {
                         case WEATHER_SYS_RAIN:
-                        case WEATHER_SYS_HEAVY_RAIN:
-                        case WEATHER_SYS_THUNDER:
                             scriptnum = SUB_SEQ_OVERWORLD_RAIN;
                             ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                            break;
+                        case WEATHER_SYS_HEAVY_RAIN:
+                            scriptnum = SUB_SEQ_OVERWORLD_RAIN;
+                            ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                            break;
+                        case WEATHER_SYS_THUNDER: // Thunderstorm; Electric Terrain + Rain: Case 3
+                            sp->current_move_index = MOVE_ELECTRIC_TERRAIN;
+                            ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                            scriptnum = SUB_SEQ_OVERWORLD_SUN_TERRAIN;
                             break;
                         case WEATHER_SYS_SNOW:
                         case WEATHER_SYS_SNOWSTORM:
@@ -103,7 +110,7 @@ int UNUSED SwitchInAbilityCheck(void *bw, struct BattleStruct *sp)
                             scriptnum = SUB_SEQ_OVERWORLD_TAILWIND;
                             ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
                             break;
-                        case 21:
+                        case 21: // Electric Terrain + Sun ????
                             sp->current_move_index = MOVE_ELECTRIC_TERRAIN;
                             ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
                             scriptnum = SUB_SEQ_OVERWORLD_RAIN_TERRAIN;
@@ -113,7 +120,7 @@ int UNUSED SwitchInAbilityCheck(void *bw, struct BattleStruct *sp)
                             ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
                             scriptnum = SUB_SEQ_OVERWORLD_SNOW_TERRAIN;
                             break;
-                        case 23:
+                        case 23: // Grassy Terrain + Rain ?
                             sp->current_move_index = MOVE_GRASSY_TERRAIN;
                             ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
                             scriptnum = SUB_SEQ_OVERWORLD_SUN_TERRAIN;
@@ -262,14 +269,14 @@ int UNUSED SwitchInAbilityCheck(void *bw, struct BattleStruct *sp)
                                 case ABILITY_DRIZZLE:
                                     sp->battlemon[client_no].ability_activated_flag = 1;
                                     if ((sp->field_condition & WEATHER_RAIN_ANY) == 0) {
-                                        scriptnum = SUB_SEQ_DRIZZLE;
+                                        scriptnum = SUB_SEQ_OVERWORLD_RAIN;
                                         ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
                                     }
                                     break;
                                 case ABILITY_SAND_STREAM:
                                     sp->battlemon[client_no].ability_activated_flag = 1;
                                     if ((sp->field_condition & WEATHER_SANDSTORM_ANY) == 0) {
-                                        scriptnum = SUB_SEQ_SAND_STREAM;
+                                        scriptnum = SUB_SEQ_OVERWORLD_SANDSTORM;
                                         ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
                                     }
                                     break;

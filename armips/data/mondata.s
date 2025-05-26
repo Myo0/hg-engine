@@ -4016,7 +4016,7 @@ mondata SPECIES_AIPOM, "Aipom"
     basefriendship 70
     growthrate GROWTH_FAST
     egggroups EGG_GROUP_FIELD, EGG_GROUP_FIELD
-    abilities ABILITY_RUN_AWAY, ABILITY_SKILL_LINK
+    abilities ABILITY_TECHNICIAN, ABILITY_SKILL_LINK
     runchance 0
     colorflip BODY_COLOR_PURPLE, 0
     mondexentry SPECIES_AIPOM, "Its tail is so powerful that it can\nuse it to grab a tree branch and\nhold itself up in the air."
@@ -4048,7 +4048,7 @@ mondata SPECIES_SUNKERN, "Sunkern"
 
 mondata SPECIES_SUNFLORA, "Sunflora"
     basestats 65, 75, 55, 40, 105, 85
-    types TYPE_GRASS, TYPE_FIRE
+    types TYPE_GRASS, TYPE_GRASS
     catchrate 120
     baseexp 0 // defined in baseexp.s
     evyields 0, 0, 0, 0, 0, 0
@@ -5528,7 +5528,7 @@ mondata SPECIES_MIGHTYENA, "Mightyena"
     basefriendship 70
     growthrate GROWTH_MEDIUM_FAST
     egggroups EGG_GROUP_FIELD, EGG_GROUP_FIELD
-    abilities ABILITY_INTIMIDATE, ABILITY_QUICK_FEET
+    abilities ABILITY_INTIMIDATE, ABILITY_TOUGH_CLAWS
     runchance 0
     colorflip BODY_COLOR_GRAY, 0
     mondexentry SPECIES_MIGHTYENA, "It chases down prey in a pack of\naround ten. They defeat foes with\nperfectly coordinated teamwork."
@@ -8489,7 +8489,7 @@ mondata SPECIES_SHINX, "Shinx"
     basefriendship 50
     growthrate GROWTH_MEDIUM_SLOW
     egggroups EGG_GROUP_FIELD, EGG_GROUP_FIELD
-    abilities ABILITY_RIVALRY, ABILITY_INTIMIDATE
+    abilities ABILITY_INTIMIDATE, ABILITY_GUTS
     runchance 0
     colorflip BODY_COLOR_BLUE, 0
     mondexentry SPECIES_SHINX, "The extension and contraction of\nits muscles generates electricity.\nIts fur glows when it’s in trouble."
@@ -8510,7 +8510,7 @@ mondata SPECIES_LUXIO, "Luxio"
     basefriendship 100
     growthrate GROWTH_MEDIUM_SLOW
     egggroups EGG_GROUP_FIELD, EGG_GROUP_FIELD
-    abilities ABILITY_RIVALRY, ABILITY_INTIMIDATE
+    abilities ABILITY_INTIMIDATE, ABILITY_GUTS
     runchance 0
     colorflip BODY_COLOR_BLUE, 0
     mondexentry SPECIES_LUXIO, "By gathering their tails together,\nthey collectively generate powerful\nelectricity from their claws."
@@ -8531,7 +8531,7 @@ mondata SPECIES_LUXRAY, "Luxray"
     basefriendship 50
     growthrate GROWTH_MEDIUM_SLOW
     egggroups EGG_GROUP_FIELD, EGG_GROUP_FIELD
-    abilities ABILITY_RIVALRY, ABILITY_INTIMIDATE
+    abilities ABILITY_INTIMIDATE, ABILITY_GUTS
     runchance 0
     colorflip BODY_COLOR_BLUE, 0
     mondexentry SPECIES_LUXRAY, "LUXRAY’s ability to see through\nobjects comes in handy when it’s\nscouting for danger."
@@ -8741,7 +8741,7 @@ mondata SPECIES_COMBEE, "Combee"
     basefriendship 50
     growthrate GROWTH_MEDIUM_SLOW
     egggroups EGG_GROUP_BUG, EGG_GROUP_BUG
-    abilities ABILITY_HONEY_GATHER, ABILITY_NONE
+    abilities ABILITY_HUSTLE, ABILITY_NONE
     runchance 0
     colorflip BODY_COLOR_YELLOW, 0
     mondexentry SPECIES_COMBEE, "At night, COMBEE sleep in a group of\nabout a thousand, packed closely\ntogether in a lump."
@@ -9392,7 +9392,7 @@ mondata SPECIES_MUNCHLAX, "Munchlax"
     basefriendship 50
     growthrate GROWTH_SLOW
     egggroups EGG_GROUP_UNDISCOVERED, EGG_GROUP_UNDISCOVERED
-    abilities ABILITY_PICKUP, ABILITY_THICK_FAT
+    abilities ABILITY_IMMUNITY, ABILITY_THICK_FAT
     runchance 0
     colorflip BODY_COLOR_BLACK, 0
     mondexentry SPECIES_MUNCHLAX, "It conceals food under the long fur on\nits body. It carts around this food\nstash and swallows it without chewing."
@@ -10430,7 +10430,7 @@ mondata SPECIES_BAD_EGG, "Bad Egg"
     mondexweight SPECIES_BAD_EGG, "????.? lbs."
 
 
-mondata SPECIES_DEOXYS_ATTACK, "-----"
+mondata SPECIES_DEOXYS_ATTACK, "Deoxys"
     basestats 50, 180, 20, 150, 180, 20
     types TYPE_PSYCHIC, TYPE_PSYCHIC
     catchrate 3
@@ -10451,7 +10451,7 @@ mondata SPECIES_DEOXYS_ATTACK, "-----"
     mondexweight SPECIES_DEOXYS_ATTACK, "????.? lbs."
 
 
-mondata SPECIES_DEOXYS_DEFENSE, "-----"
+mondata SPECIES_DEOXYS_DEFENSE, "Deoxys"
     basestats 50, 70, 160, 90, 70, 160
     types TYPE_PSYCHIC, TYPE_PSYCHIC
     catchrate 3
@@ -10472,7 +10472,7 @@ mondata SPECIES_DEOXYS_DEFENSE, "-----"
     mondexweight SPECIES_DEOXYS_DEFENSE, "????.? lbs."
 
 
-mondata SPECIES_DEOXYS_SPEED, "-----"
+mondata SPECIES_DEOXYS_SPEED, "Deoxys"
     basestats 50, 95, 90, 180, 95, 90
     types TYPE_PSYCHIC, TYPE_PSYCHIC
     catchrate 3
@@ -10493,7 +10493,7 @@ mondata SPECIES_DEOXYS_SPEED, "-----"
     mondexweight SPECIES_DEOXYS_SPEED, "????.? lbs."
 
 
-mondata SPECIES_WORMADAM_SANDY, "-----"
+mondata SPECIES_WORMADAM_SANDY, "Wormadam"
     basestats 60, 79, 105, 36, 59, 85
     types TYPE_BUG, TYPE_GROUND
     catchrate 45
@@ -10514,7 +10514,7 @@ mondata SPECIES_WORMADAM_SANDY, "-----"
     mondexweight SPECIES_WORMADAM_SANDY, "????.? lbs."
 
 
-mondata SPECIES_WORMADAM_TRASHY, "-----"
+mondata SPECIES_WORMADAM_TRASHY, "Wormadam"
     basestats 60, 69, 95, 36, 69, 95
     types TYPE_BUG, TYPE_STEEL
     catchrate 45
@@ -10535,7 +10535,7 @@ mondata SPECIES_WORMADAM_TRASHY, "-----"
     mondexweight SPECIES_WORMADAM_TRASHY, "????.? lbs."
 
 
-mondata SPECIES_GIRATINA_ORIGIN, "-----"
+mondata SPECIES_GIRATINA_ORIGIN, "Giratina"
     basestats 150, 120, 100, 90, 120, 100
     types TYPE_GHOST, TYPE_DRAGON
     catchrate 3
@@ -10556,7 +10556,7 @@ mondata SPECIES_GIRATINA_ORIGIN, "-----"
     mondexweight SPECIES_GIRATINA_ORIGIN, "????.? lbs."
 
 
-mondata SPECIES_SHAYMIN_SKY, "-----"
+mondata SPECIES_SHAYMIN_SKY, "Shaymin"
     basestats 100, 103, 75, 127, 120, 75
     types TYPE_GRASS, TYPE_FLYING
     catchrate 45
@@ -10577,7 +10577,7 @@ mondata SPECIES_SHAYMIN_SKY, "-----"
     mondexweight SPECIES_SHAYMIN_SKY, "????.? lbs."
 
 
-mondata SPECIES_ROTOM_HEAT, "-----"
+mondata SPECIES_ROTOM_HEAT, "Rotom"
     basestats 50, 65, 107, 86, 105, 107
     types TYPE_ELECTRIC, TYPE_FIRE
     catchrate 45
@@ -10598,7 +10598,7 @@ mondata SPECIES_ROTOM_HEAT, "-----"
     mondexweight SPECIES_ROTOM_HEAT, "????.? lbs."
 
 
-mondata SPECIES_ROTOM_WASH, "-----"
+mondata SPECIES_ROTOM_WASH, "Rotom"
     basestats 50, 65, 107, 86, 105, 107
     types TYPE_ELECTRIC, TYPE_WATER
     catchrate 45
@@ -10619,7 +10619,7 @@ mondata SPECIES_ROTOM_WASH, "-----"
     mondexweight SPECIES_ROTOM_WASH, "????.? lbs."
 
 
-mondata SPECIES_ROTOM_FROST, "-----"
+mondata SPECIES_ROTOM_FROST, "Rotom"
     basestats 50, 65, 107, 86, 105, 107
     types TYPE_ELECTRIC, TYPE_ICE
     catchrate 45
@@ -10640,7 +10640,7 @@ mondata SPECIES_ROTOM_FROST, "-----"
     mondexweight SPECIES_ROTOM_FROST, "????.? lbs."
 
 
-mondata SPECIES_ROTOM_FAN, "-----"
+mondata SPECIES_ROTOM_FAN, "Rotom"
     basestats 50, 65, 107, 86, 105, 107
     types TYPE_ELECTRIC, TYPE_FLYING
     catchrate 45
@@ -10661,7 +10661,7 @@ mondata SPECIES_ROTOM_FAN, "-----"
     mondexweight SPECIES_ROTOM_FAN, "????.? lbs."
 
 
-mondata SPECIES_ROTOM_MOW, "-----"
+mondata SPECIES_ROTOM_MOW, "Rotom"
     basestats 50, 65, 107, 86, 105, 107
     types TYPE_ELECTRIC, TYPE_GRASS
     catchrate 45
@@ -11702,7 +11702,7 @@ mondata SPECIES_LILLIPUP, "Lillipup"
     basefriendship 50
     growthrate GROWTH_MEDIUM_SLOW
     egggroups EGG_GROUP_FIELD, EGG_GROUP_FIELD
-    abilities ABILITY_VITAL_SPIRIT, ABILITY_PICKUP
+    abilities ABILITY_VITAL_SPIRIT, ABILITY_SAND_RUSH
     runchance 0
     colorflip BODY_COLOR_BROWN, 0
     mondexentry SPECIES_LILLIPUP, "Though it is a very brave Pokémon,\nit's also smart enough to check\nits foe's strength and avoid battle."
@@ -12458,7 +12458,7 @@ mondata SPECIES_LEAVANNY, "Leavanny"
     basefriendship 70
     growthrate GROWTH_MEDIUM_SLOW
     egggroups EGG_GROUP_BUG, EGG_GROUP_BUG
-    abilities ABILITY_SWARM, ABILITY_CHLOROPHYLL
+    abilities ABILITY_SHARPNESS, ABILITY_CHLOROPHYLL
     runchance 0
     colorflip BODY_COLOR_YELLOW, 0
     mondexentry SPECIES_LEAVANNY, "Upon finding a small Pokémon, it weaves\nclothing for it from leaves by using\nthe sticky silk secreted from its mouth."
@@ -12605,7 +12605,7 @@ mondata SPECIES_LILLIGANT, "Lilligant"
     basefriendship 50
     growthrate GROWTH_MEDIUM_FAST
     egggroups EGG_GROUP_GRASS, EGG_GROUP_GRASS
-    abilities ABILITY_CHLOROPHYLL, ABILITY_OWN_TEMPO
+    abilities ABILITY_CHLOROPHYLL, ABILITY_CHLOROPHYLL
     runchance 0
     colorflip BODY_COLOR_GREEN, 0
     mondexentry SPECIES_LILLIGANT, "The fragrance of the garland\non its head has a relaxing effect,\nbut taking care of it is very difficult."
@@ -16070,7 +16070,7 @@ mondata SPECIES_NOIBAT, "Noibat"
     basefriendship 50
     growthrate GROWTH_MEDIUM_FAST
     egggroups EGG_GROUP_FLYING, EGG_GROUP_DRAGON
-    abilities ABILITY_FRISK, ABILITY_INFILTRATOR
+    abilities ABILITY_INFILTRATOR, ABILITY_INFILTRATOR
     runchance 0
     colorflip BODY_COLOR_PURPLE, 0
     mondexentry SPECIES_NOIBAT, "They live in pitch black caves. Their\nenormous ears can emit ultrasonic waves\nof 200,000 hertz."
@@ -16091,7 +16091,7 @@ mondata SPECIES_NOIVERN, "Noivern"
     basefriendship 50
     growthrate GROWTH_MEDIUM_FAST
     egggroups EGG_GROUP_FLYING, EGG_GROUP_DRAGON
-    abilities ABILITY_FRISK, ABILITY_INFILTRATOR
+    abilities ABILITY_INFILTRATOR, ABILITY_INFILTRATOR
     runchance 0
     colorflip BODY_COLOR_PURPLE, 0
     mondexentry SPECIES_NOIVERN, "This hot-blooded Pokémon attacks\nanything it sees with ultrasonic waves\nthat can crush boulders."
@@ -16553,7 +16553,7 @@ mondata SPECIES_CHARJABUG, "Charjabug"
     basefriendship 50
     growthrate GROWTH_MEDIUM_FAST
     egggroups EGG_GROUP_BUG, EGG_GROUP_BUG
-    abilities ABILITY_BATTERY, ABILITY_NONE
+    abilities ABILITY_SWARM, ABILITY_NONE
     runchance 0
     colorflip BODY_COLOR_GREEN, 0
     mondexentry SPECIES_CHARJABUG, "From the food it digests, it generates\nelectricity, and it stores this energy\nin its electric sac."
@@ -18611,7 +18611,7 @@ mondata SPECIES_YAMPER, "Yamper"
     basefriendship 50
     growthrate GROWTH_FAST
     egggroups EGG_GROUP_FIELD, EGG_GROUP_FIELD
-    abilities ABILITY_BALL_FETCH, ABILITY_NONE
+    abilities ABILITY_STATIC, ABILITY_NONE
     runchance 0
     colorflip BODY_COLOR_YELLOW, 0
     mondexentry SPECIES_YAMPER, "This greedy Pokémon only helps people\nwith their work because it wants treats.\nAs it runs, it crackles with electricity."
@@ -19052,7 +19052,7 @@ mondata SPECIES_HATENNA, "Hatenna"
     basefriendship 50
     growthrate GROWTH_SLOW
     egggroups EGG_GROUP_FAIRY, EGG_GROUP_FAIRY
-    abilities ABILITY_HEALER, ABILITY_RUN_AWAY
+    abilities ABILITY_SYNCHRONIZE, ABILITY_NONE
     runchance 0
     colorflip BODY_COLOR_PINK, 0
     mondexentry SPECIES_HATENNA, "Via the protrusion on its head, it\nsenses other creatures’ emotions.\nIt prefers areas without people."
@@ -19073,7 +19073,7 @@ mondata SPECIES_HATTREM, "Hattrem"
     basefriendship 50
     growthrate GROWTH_SLOW
     egggroups EGG_GROUP_FAIRY, EGG_GROUP_FAIRY
-    abilities ABILITY_HEALER, ABILITY_HUGE_POWER
+    abilities ABILITY_SYNCHRONIZE, ABILITY_NONE
     runchance 0
     colorflip BODY_COLOR_PINK, 0
     mondexentry SPECIES_HATTREM, "No matter who you are, if you bring\nstrong emotions near this Pokémon,\nit will silence you violently."
@@ -19094,7 +19094,7 @@ mondata SPECIES_HATTERENE, "Hatterene"
     basefriendship 50
     growthrate GROWTH_SLOW
     egggroups EGG_GROUP_FAIRY, EGG_GROUP_FAIRY
-    abilities ABILITY_HEALER, ABILITY_TOUGH_CLAWS
+    abilities ABILITY_SYNCHRONIZE, ABILITY_NONE
     runchance 0
     colorflip BODY_COLOR_PINK, 0
     mondexentry SPECIES_HATTERENE, "Known as the Forest Witch, if you are\ntoo loud around it, you risk being torn\napart by the claws on its tentacle."
@@ -20648,7 +20648,7 @@ mondata SPECIES_NACLI, "Nacli"
     basefriendship 50
     growthrate GROWTH_MEDIUM_SLOW
     egggroups EGG_GROUP_MINERAL, EGG_GROUP_MINERAL
-    abilities ABILITY_PURIFYING_SALT, ABILITY_STURDY
+    abilities ABILITY_CLEAR_BODY, ABILITY_STURDY
     runchance 0
     colorflip BODY_COLOR_BROWN, 0
     mondexentry SPECIES_NACLI, "The ground scrapes its body as it travels, causing it to leave salt behind. Salt is constantly being created and replenished inside Nacli’s body."
@@ -20669,7 +20669,7 @@ mondata SPECIES_NACLSTACK, "Naclstack"
     basefriendship 50
     growthrate GROWTH_MEDIUM_SLOW
     egggroups EGG_GROUP_MINERAL, EGG_GROUP_MINERAL
-    abilities ABILITY_PURIFYING_SALT, ABILITY_STURDY
+    abilities ABILITY_CLEAR_BODY, ABILITY_STURDY
     runchance 0
     colorflip BODY_COLOR_BROWN, 0
     mondexentry SPECIES_NACLSTACK, "It compresses rock salt inside its body and shoots out hardened salt pellets with enough force to perforate an iron sheet."
@@ -20690,7 +20690,7 @@ mondata SPECIES_GARGANACL, "Garganacl"
     basefriendship 50
     growthrate GROWTH_MEDIUM_SLOW
     egggroups EGG_GROUP_MINERAL, EGG_GROUP_MINERAL
-    abilities ABILITY_PURIFYING_SALT, ABILITY_STURDY
+    abilities ABILITY_CLEAR_BODY, ABILITY_STURDY
     runchance 0
     colorflip BODY_COLOR_BROWN, 0
     mondexentry SPECIES_GARGANACL, "Garganacl will rub its fingertips together\nand sprinkle injured Pokémon with salt. Even\nsevere wounds will promptly heal afterward."
@@ -20795,7 +20795,7 @@ mondata SPECIES_BELLIBOLT, "Bellibolt"
     basefriendship 50
     growthrate GROWTH_MEDIUM_FAST
     egggroups EGG_GROUP_WATER_1, EGG_GROUP_WATER_1
-    abilities ABILITY_ELECTROMORPHOSIS, ABILITY_STATIC
+    abilities ABILITY_THICK_FAT, ABILITY_STATIC
     runchance 0
     colorflip BODY_COLOR_GREEN, 0
     mondexentry SPECIES_BELLIBOLT, "What appear to be eyeballs are actually\norgans for discharging the electricity\ngenerated by Bellibolt's belly-button dynamo."
@@ -20858,7 +20858,7 @@ mondata SPECIES_MASCHIFF, "Maschiff"
     basefriendship 50
     growthrate GROWTH_MEDIUM_SLOW
     egggroups EGG_GROUP_FIELD, EGG_GROUP_FIELD
-    abilities ABILITY_INTIMIDATE, ABILITY_RUN_AWAY
+    abilities ABILITY_INTIMIDATE, ABILITY_GUARD_DOG
     runchance 0
     colorflip BODY_COLOR_BROWN, 0
     mondexentry SPECIES_MASCHIFF, "Its well-developed jaw and fangs are strong\nenough to crunch through boulders, and its\nthick fat makes for an excellent defense."
@@ -20984,7 +20984,7 @@ mondata SPECIES_TOEDSCOOL, "Toedscool"
     basefriendship 50
     growthrate GROWTH_MEDIUM_SLOW
     egggroups EGG_GROUP_GRASS, EGG_GROUP_GRASS
-    abilities ABILITY_MYCELIUM_MIGHT, ABILITY_NONE
+    abilities ABILITY_SHED_SKIN, ABILITY_NONE
     runchance 0
     colorflip BODY_COLOR_YELLOW, 0
     mondexentry SPECIES_TOEDSCOOL, "Though it looks like Tentacool, Toedscool is\na completely different species. Its legs may\nbe thin, but it can run at a speed of 30 mph."
@@ -21005,7 +21005,7 @@ mondata SPECIES_TOEDSCRUEL, "Toedscruel"
     basefriendship 50
     growthrate GROWTH_MEDIUM_SLOW
     egggroups EGG_GROUP_GRASS, EGG_GROUP_GRASS
-    abilities ABILITY_MYCELIUM_MIGHT, ABILITY_NONE
+    abilities ABILITY_SHED_SKIN, ABILITY_NONE
     runchance 0
     colorflip BODY_COLOR_BLACK, 0
     mondexentry SPECIES_TOEDSCRUEL, "These Pokémon gather into groups and\nform colonies deep within forests. They\nabsolutely hate it when strangers approach."
@@ -22867,7 +22867,7 @@ mondata SPECIES_MEGA_AMPHAROS, "-----"
     runchance 0
     colorflip 0, 0
 
-mondata SPECIES_MEGA_STEELIX, "Mega Steelix"
+mondata SPECIES_MEGA_STEELIX, "-----"
     basestats 75, 125, 230, 30, 55, 95
     types TYPE_STEEL, TYPE_GROUND
     catchrate 25
@@ -23023,7 +23023,7 @@ mondata SPECIES_MEGA_SABLEYE, "-----"
     basefriendship 35
     growthrate GROWTH_MEDIUM_SLOW
     egggroups EGG_GROUP_HUMAN_LIKE, EGG_GROUP_HUMAN_LIKE
-    abilities ABILITY_PRESSURE, ABILITY_PRANKSTER //ABILITY_MAGIC_BOUNCE, ABILITY_MAGIC_BOUNCE
+    abilities ABILITY_MAGIC_BOUNCE, ABILITY_MAGIC_BOUNCE
     runchance 0
     colorflip 0, 0
 
@@ -23411,7 +23411,7 @@ mondata SPECIES_KYOGRE_PRIMAL, "-----"
     runchance 0
     colorflip 0, 0
 
-mondata SPECIES_RATTATA_ALOLAN, "-----"
+mondata SPECIES_RATTATA_ALOLAN, "Rattata"
     basestats 30, 56, 35, 72, 25, 35
     types TYPE_DARK, TYPE_NORMAL
     catchrate 255
@@ -23427,7 +23427,7 @@ mondata SPECIES_RATTATA_ALOLAN, "-----"
     runchance 0
     colorflip BODY_COLOR_BLACK, 0
 
-mondata SPECIES_RATICATE_ALOLAN, "-----"
+mondata SPECIES_RATICATE_ALOLAN, "Raticate"
     basestats 75, 71, 70, 77, 40, 80
     types TYPE_DARK, TYPE_NORMAL
     catchrate 127
@@ -23443,7 +23443,7 @@ mondata SPECIES_RATICATE_ALOLAN, "-----"
     runchance 0
     colorflip BODY_COLOR_BLACK, 0
 
-mondata SPECIES_RAICHU_ALOLAN, "-----"
+mondata SPECIES_RAICHU_ALOLAN, "Raichu"
     basestats 60, 85, 50, 110, 95, 85
     types TYPE_ELECTRIC, TYPE_PSYCHIC
     catchrate 75
@@ -23459,7 +23459,7 @@ mondata SPECIES_RAICHU_ALOLAN, "-----"
     runchance 0
     colorflip BODY_COLOR_BROWN, 0
 
-mondata SPECIES_SANDSHREW_ALOLAN, "-----"
+mondata SPECIES_SANDSHREW_ALOLAN, "Sandshrew"
     basestats 50, 75, 90, 40, 10, 35
     types TYPE_ICE, TYPE_STEEL
     catchrate 255
@@ -23475,7 +23475,7 @@ mondata SPECIES_SANDSHREW_ALOLAN, "-----"
     runchance 0
     colorflip BODY_COLOR_BLUE, 0
 
-mondata SPECIES_SANDSLASH_ALOLAN, "-----"
+mondata SPECIES_SANDSLASH_ALOLAN, "Sandslash"
     basestats 75, 100, 120, 65, 25, 65
     types TYPE_ICE, TYPE_STEEL
     catchrate 90
@@ -23491,7 +23491,7 @@ mondata SPECIES_SANDSLASH_ALOLAN, "-----"
     runchance 0
     colorflip BODY_COLOR_BLUE, 0
 
-mondata SPECIES_VULPIX_ALOLAN, "-----"
+mondata SPECIES_VULPIX_ALOLAN, "Vulpix"
     basestats 38, 41, 40, 65, 50, 65
     types TYPE_ICE, TYPE_ICE
     catchrate 190
@@ -23507,7 +23507,7 @@ mondata SPECIES_VULPIX_ALOLAN, "-----"
     runchance 0
     colorflip BODY_COLOR_BLUE, 0
 
-mondata SPECIES_NINETALES_ALOLAN, "-----"
+mondata SPECIES_NINETALES_ALOLAN, "Ninetales"
     basestats 73, 67, 75, 109, 81, 100
     types TYPE_ICE, TYPE_FAIRY
     catchrate 75
@@ -23523,7 +23523,7 @@ mondata SPECIES_NINETALES_ALOLAN, "-----"
     runchance 0
     colorflip BODY_COLOR_BLUE, 0
 
-mondata SPECIES_DIGLETT_ALOLAN, "-----"
+mondata SPECIES_DIGLETT_ALOLAN, "Diglett"
     basestats 10, 55, 30, 90, 35, 45
     types TYPE_GROUND, TYPE_STEEL
     catchrate 255
@@ -23539,7 +23539,7 @@ mondata SPECIES_DIGLETT_ALOLAN, "-----"
     runchance 0
     colorflip BODY_COLOR_BROWN, 0
 
-mondata SPECIES_DUGTRIO_ALOLAN, "-----"
+mondata SPECIES_DUGTRIO_ALOLAN, "Dugtrio"
     basestats 35, 100, 60, 110, 50, 70
     types TYPE_GROUND, TYPE_STEEL
     catchrate 50
@@ -23555,7 +23555,7 @@ mondata SPECIES_DUGTRIO_ALOLAN, "-----"
     runchance 0
     colorflip BODY_COLOR_BROWN, 1
 
-mondata SPECIES_MEOWTH_ALOLAN, "-----"
+mondata SPECIES_MEOWTH_ALOLAN, "Meowth"
     basestats 40, 35, 35, 90, 50, 40
     types TYPE_DARK, TYPE_DARK
     catchrate 255
@@ -23571,7 +23571,7 @@ mondata SPECIES_MEOWTH_ALOLAN, "-----"
     runchance 0
     colorflip BODY_COLOR_GRAY, 0
 
-mondata SPECIES_PERSIAN_ALOLAN, "-----"
+mondata SPECIES_PERSIAN_ALOLAN, "Persian"
     basestats 65, 60, 60, 115, 75, 65
     types TYPE_DARK, TYPE_DARK
     catchrate 90
@@ -23587,7 +23587,7 @@ mondata SPECIES_PERSIAN_ALOLAN, "-----"
     runchance 0
     colorflip BODY_COLOR_GRAY, 0
 
-mondata SPECIES_GEODUDE_ALOLAN, "-----"
+mondata SPECIES_GEODUDE_ALOLAN, "Geodude"
     basestats 40, 80, 100, 20, 30, 30
     types TYPE_ROCK, TYPE_ELECTRIC
     catchrate 255
@@ -23603,7 +23603,7 @@ mondata SPECIES_GEODUDE_ALOLAN, "-----"
     runchance 0
     colorflip BODY_COLOR_BROWN, 0
 
-mondata SPECIES_GRAVELER_ALOLAN, "-----"
+mondata SPECIES_GRAVELER_ALOLAN, "Graveler"
     basestats 55, 95, 115, 35, 45, 45
     types TYPE_ROCK, TYPE_ELECTRIC
     catchrate 120
@@ -23619,7 +23619,7 @@ mondata SPECIES_GRAVELER_ALOLAN, "-----"
     runchance 0
     colorflip BODY_COLOR_BROWN, 0
 
-mondata SPECIES_GOLEM_ALOLAN, "-----"
+mondata SPECIES_GOLEM_ALOLAN, "Golem"
     basestats 80, 120, 130, 45, 55, 65
     types TYPE_ROCK, TYPE_ELECTRIC
     catchrate 45
@@ -23635,7 +23635,7 @@ mondata SPECIES_GOLEM_ALOLAN, "-----"
     runchance 0
     colorflip BODY_COLOR_BROWN, 0
 
-mondata SPECIES_GRIMER_ALOLAN, "-----"
+mondata SPECIES_GRIMER_ALOLAN, "Grimer"
     basestats 80, 80, 50, 25, 40, 50
     types TYPE_POISON, TYPE_DARK
     catchrate 190
@@ -23651,7 +23651,7 @@ mondata SPECIES_GRIMER_ALOLAN, "-----"
     runchance 0
     colorflip BODY_COLOR_GREEN, 0
 
-mondata SPECIES_MUK_ALOLAN, "-----"
+mondata SPECIES_MUK_ALOLAN, "Muk"
     basestats 105, 105, 75, 50, 65, 100
     types TYPE_POISON, TYPE_DARK
     catchrate 75
@@ -23667,7 +23667,7 @@ mondata SPECIES_MUK_ALOLAN, "-----"
     runchance 0
     colorflip BODY_COLOR_GREEN, 1
 
-mondata SPECIES_EXEGGUTOR_ALOLAN, "-----"
+mondata SPECIES_EXEGGUTOR_ALOLAN, "Exeggutor"
     basestats 95, 105, 85, 45, 125, 75
     types TYPE_GRASS, TYPE_DRAGON
     catchrate 45
@@ -23683,7 +23683,7 @@ mondata SPECIES_EXEGGUTOR_ALOLAN, "-----"
     runchance 0
     colorflip BODY_COLOR_YELLOW, 0
 
-mondata SPECIES_MAROWAK_ALOLAN, "-----"
+mondata SPECIES_MAROWAK_ALOLAN, "Marowak"
     basestats 60, 80, 110, 45, 50, 80
     types TYPE_FIRE, TYPE_GHOST
     catchrate 75
@@ -23891,7 +23891,7 @@ mondata SPECIES_KOMMO_O_LARGE, "-----"
     runchance 0
     colorflip BODY_COLOR_GRAY, 0
 
-mondata SPECIES_MEOWTH_GALARIAN, "-----"
+mondata SPECIES_MEOWTH_GALARIAN, "Meowth"
     basestats 50, 65, 55, 40, 40, 40
     types TYPE_STEEL, TYPE_STEEL
     catchrate 255
@@ -23907,7 +23907,7 @@ mondata SPECIES_MEOWTH_GALARIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_BROWN, 0
 
-mondata SPECIES_PONYTA_GALARIAN, "-----"
+mondata SPECIES_PONYTA_GALARIAN, "Ponyta"
     basestats 50, 85, 55, 90, 65, 65
     types TYPE_PSYCHIC, TYPE_PSYCHIC
     catchrate 190
@@ -23919,11 +23919,11 @@ mondata SPECIES_PONYTA_GALARIAN, "-----"
     basefriendship 70
     growthrate GROWTH_MEDIUM_FAST
     egggroups EGG_GROUP_FIELD, EGG_GROUP_FIELD
-    abilities ABILITY_SYNCHRONIZE,  ABILITY_PASTEL_VEIL
+    abilities ABILITY_SYNCHRONIZE,  ABILITY_SYNCHRONIZE
     runchance 0
     colorflip BODY_COLOR_WHITE, 0
 
-mondata SPECIES_RAPIDASH_GALARIAN, "-----"
+mondata SPECIES_RAPIDASH_GALARIAN, "Rapidash"
     basestats 65, 100, 70, 105, 80, 80
     types TYPE_PSYCHIC, TYPE_FAIRY
     catchrate 60
@@ -23935,11 +23935,11 @@ mondata SPECIES_RAPIDASH_GALARIAN, "-----"
     basefriendship 70
     growthrate GROWTH_MEDIUM_FAST
     egggroups EGG_GROUP_FIELD, EGG_GROUP_FIELD
-    abilities ABILITY_SYNCHRONIZE,  ABILITY_PASTEL_VEIL
+    abilities ABILITY_SYNCHRONIZE,  ABILITY_SYNCHRONIZE
     runchance 0
     colorflip BODY_COLOR_WHITE, 0
 
-mondata SPECIES_SLOWPOKE_GALARIAN, "-----"
+mondata SPECIES_SLOWPOKE_GALARIAN, "Slowpoke"
     basestats 90, 65, 65, 15, 40, 40
     types TYPE_PSYCHIC, TYPE_PSYCHIC
     catchrate 190
@@ -23955,7 +23955,7 @@ mondata SPECIES_SLOWPOKE_GALARIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_PINK, 0
 
-mondata SPECIES_SLOWBRO_GALARIAN, "-----"
+mondata SPECIES_SLOWBRO_GALARIAN, "Slowbro"
     basestats 95, 100, 95, 30, 100, 70
     types TYPE_POISON, TYPE_PSYCHIC
     catchrate 75
@@ -23971,7 +23971,7 @@ mondata SPECIES_SLOWBRO_GALARIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_PINK, 0
 
-mondata SPECIES_FARFETCHD_GALARIAN, "-----"
+mondata SPECIES_FARFETCHD_GALARIAN, "Farfetch'd"
     basestats 52, 95, 55, 55, 58, 62
     types TYPE_FIGHTING, TYPE_FIGHTING
     catchrate 45
@@ -23987,7 +23987,7 @@ mondata SPECIES_FARFETCHD_GALARIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_BROWN, 0
 
-mondata SPECIES_WEEZING_GALARIAN, "-----"
+mondata SPECIES_WEEZING_GALARIAN, "Weezing"
     basestats 65, 90, 120, 60, 85, 70
     types TYPE_POISON, TYPE_FAIRY
     catchrate 60
@@ -24003,7 +24003,7 @@ mondata SPECIES_WEEZING_GALARIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_GRAY, 0
 
-mondata SPECIES_MR_MIME_GALARIAN, "-----"
+mondata SPECIES_MR_MIME_GALARIAN, "Mr. Mime"
     basestats 50, 65, 65, 100, 90, 90
     types TYPE_ICE, TYPE_PSYCHIC
     catchrate 45
@@ -24019,7 +24019,7 @@ mondata SPECIES_MR_MIME_GALARIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_WHITE, 0
 
-mondata SPECIES_ARTICUNO_GALARIAN, "-----"
+mondata SPECIES_ARTICUNO_GALARIAN, "Articuno"
     basestats 90, 85, 85, 95, 125, 100
     types TYPE_PSYCHIC, TYPE_FLYING
     catchrate 3
@@ -24035,7 +24035,7 @@ mondata SPECIES_ARTICUNO_GALARIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_PURPLE, 0
 
-mondata SPECIES_ZAPDOS_GALARIAN, "-----"
+mondata SPECIES_ZAPDOS_GALARIAN, "Zapdos"
     basestats 90, 125, 90, 100, 85, 90
     types TYPE_FIGHTING, TYPE_FLYING
     catchrate 3
@@ -24051,7 +24051,7 @@ mondata SPECIES_ZAPDOS_GALARIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_YELLOW, 0
 
-mondata SPECIES_MOLTRES_GALARIAN, "-----"
+mondata SPECIES_MOLTRES_GALARIAN, "Moltres"
     basestats 90, 85, 90, 90, 100, 125
     types TYPE_DARK, TYPE_FLYING
     catchrate 3
@@ -24067,7 +24067,7 @@ mondata SPECIES_MOLTRES_GALARIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_RED, 0
 
-mondata SPECIES_SLOWKING_GALARIAN, "-----"
+mondata SPECIES_SLOWKING_GALARIAN, "Slowking"
     basestats 95, 65, 80, 30, 110, 110
     types TYPE_POISON, TYPE_PSYCHIC
     catchrate 70
@@ -24079,11 +24079,11 @@ mondata SPECIES_SLOWKING_GALARIAN, "-----"
     basefriendship 70
     growthrate GROWTH_MEDIUM_FAST
     egggroups EGG_GROUP_MONSTER, EGG_GROUP_WATER_1
-    abilities ABILITY_CURIOUS_MEDICINE,  ABILITY_OWN_TEMPO
+    abilities ABILITY_OWN_TEMPO,  ABILITY_OWN_TEMPO
     runchance 0
     colorflip BODY_COLOR_PINK, 0
 
-mondata SPECIES_CORSOLA_GALARIAN, "-----"
+mondata SPECIES_CORSOLA_GALARIAN, "Corsola"
     basestats 60, 55, 100, 30, 65, 100
     types TYPE_GHOST, TYPE_GHOST
     catchrate 60
@@ -24099,7 +24099,7 @@ mondata SPECIES_CORSOLA_GALARIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_WHITE, 0
 
-mondata SPECIES_ZIGZAGOON_GALARIAN, "-----"
+mondata SPECIES_ZIGZAGOON_GALARIAN, "Zigzagoon"
     basestats 38, 30, 41, 60, 30, 41
     types TYPE_DARK, TYPE_NORMAL
     catchrate 255
@@ -24115,7 +24115,7 @@ mondata SPECIES_ZIGZAGOON_GALARIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_WHITE, 0
 
-mondata SPECIES_LINOONE_GALARIAN, "-----"
+mondata SPECIES_LINOONE_GALARIAN, "Linoone"
     basestats 78, 70, 61, 100, 50, 61
     types TYPE_DARK, TYPE_NORMAL
     catchrate 90
@@ -24131,7 +24131,7 @@ mondata SPECIES_LINOONE_GALARIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_WHITE, 0
 
-mondata SPECIES_DARUMAKA_GALARIAN, "-----"
+mondata SPECIES_DARUMAKA_GALARIAN, "Darumaka"
     basestats 70, 90, 45, 50, 15, 45
     types TYPE_ICE, TYPE_ICE
     catchrate 120
@@ -24147,7 +24147,7 @@ mondata SPECIES_DARUMAKA_GALARIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_WHITE, 0
 
-mondata SPECIES_DARMANITAN_GALARIAN, "-----"
+mondata SPECIES_DARMANITAN_GALARIAN, "Darmanitan"
     basestats 105, 140, 55, 95, 30, 55
     types TYPE_ICE, TYPE_ICE
     catchrate 60
@@ -24163,7 +24163,7 @@ mondata SPECIES_DARMANITAN_GALARIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_WHITE, 0
 
-mondata SPECIES_YAMASK_GALARIAN, "-----"
+mondata SPECIES_YAMASK_GALARIAN, "Yamask"
     basestats 38, 55, 85, 30, 30, 65
     types TYPE_GROUND, TYPE_GHOST
     catchrate 190
@@ -24179,7 +24179,7 @@ mondata SPECIES_YAMASK_GALARIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_BLACK, 0
 
-mondata SPECIES_STUNFISK_GALARIAN, "-----"
+mondata SPECIES_STUNFISK_GALARIAN, "Stunfisk"
     basestats 109, 81, 99, 32, 66, 84
     types TYPE_GROUND, TYPE_STEEL
     catchrate 75
@@ -24483,7 +24483,7 @@ mondata SPECIES_CHERRIM_SUNSHINE, "-----"
     runchance 0
     colorflip BODY_COLOR_PINK, 0
 
-mondata SPECIES_SHELLOS_EAST_SEA, "-----"
+mondata SPECIES_SHELLOS_EAST_SEA, "Shellos"
     basestats 76, 48, 48, 34, 57, 62
     types TYPE_WATER, TYPE_WATER
     catchrate 190
@@ -24499,7 +24499,7 @@ mondata SPECIES_SHELLOS_EAST_SEA, "-----"
     runchance 0
     colorflip BODY_COLOR_BLUE, 0
 
-mondata SPECIES_GASTRODON_EAST_SEA, "-----"
+mondata SPECIES_GASTRODON_EAST_SEA, "Gastrodon"
     basestats 111, 83, 68, 39, 92, 82
     types TYPE_WATER, TYPE_GROUND
     catchrate 75
@@ -24515,7 +24515,7 @@ mondata SPECIES_GASTRODON_EAST_SEA, "-----"
     runchance 0
     colorflip BODY_COLOR_BLUE, 0
 
-mondata SPECIES_DIALGA_ORIGIN, "-----"
+mondata SPECIES_DIALGA_ORIGIN, "Dialga"
     basestats 100, 100, 120, 90, 150, 120
     types TYPE_STEEL, TYPE_DRAGON
     catchrate 30
@@ -24531,7 +24531,7 @@ mondata SPECIES_DIALGA_ORIGIN, "-----"
     runchance 0
     colorflip BODY_COLOR_WHITE, 0
 
-mondata SPECIES_PALKIA_ORIGIN, "-----"
+mondata SPECIES_PALKIA_ORIGIN, "Palkia"
     basestats 90, 100, 100, 120, 150, 120
     types TYPE_WATER, TYPE_DRAGON
     catchrate 45
@@ -24547,7 +24547,7 @@ mondata SPECIES_PALKIA_ORIGIN, "-----"
     runchance 0
     colorflip BODY_COLOR_PURPLE, 0
 
-mondata SPECIES_BASCULIN_BLUE_STRIPED, "-----"
+mondata SPECIES_BASCULIN_BLUE_STRIPED, "Basculin"
     basestats 70, 92, 65, 98, 80, 55
     types TYPE_WATER, TYPE_WATER
     catchrate 25
@@ -24563,7 +24563,7 @@ mondata SPECIES_BASCULIN_BLUE_STRIPED, "-----"
     runchance 0
     colorflip BODY_COLOR_GREEN, 0
 
-mondata SPECIES_BASCULIN_WHITE_STRIPED, "-----"
+mondata SPECIES_BASCULIN_WHITE_STRIPED, "Basculin"
     basestats 70, 92, 65, 98, 80, 55
     types TYPE_WATER, TYPE_WATER
     catchrate 25
@@ -24579,7 +24579,7 @@ mondata SPECIES_BASCULIN_WHITE_STRIPED, "-----"
     runchance 0
     colorflip BODY_COLOR_GREEN, 0
 
-mondata SPECIES_DARMANITAN_ZEN_MODE, "-----"
+mondata SPECIES_DARMANITAN_ZEN_MODE, "Darmanitan"
     basestats 105, 30, 105, 55, 140, 105
     types TYPE_FIRE, TYPE_PSYCHIC
     catchrate 60
@@ -24595,7 +24595,7 @@ mondata SPECIES_DARMANITAN_ZEN_MODE, "-----"
     runchance 0
     colorflip BODY_COLOR_BLUE, 0
 
-mondata SPECIES_DARMANITAN_ZEN_MODE_GALARIAN, "-----"
+mondata SPECIES_DARMANITAN_ZEN_MODE_GALARIAN, "Darmanitan"
     basestats 105, 160, 55, 135, 30, 55
     types TYPE_ICE, TYPE_FIRE
     catchrate 60
@@ -24611,7 +24611,7 @@ mondata SPECIES_DARMANITAN_ZEN_MODE_GALARIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_WHITE, 0
 
-mondata SPECIES_DEERLING_SUMMER, "-----"
+mondata SPECIES_DEERLING_SUMMER, "Deerling"
     basestats 60, 60, 50, 75, 40, 50
     types TYPE_NORMAL, TYPE_GRASS
     catchrate 190
@@ -24627,7 +24627,7 @@ mondata SPECIES_DEERLING_SUMMER, "-----"
     runchance 0
     colorflip BODY_COLOR_GREEN, 0
 
-mondata SPECIES_DEERLING_AUTUMN, "-----"
+mondata SPECIES_DEERLING_AUTUMN, "Deerling"
     basestats 60, 60, 50, 75, 40, 50
     types TYPE_NORMAL, TYPE_GRASS
     catchrate 190
@@ -24643,7 +24643,7 @@ mondata SPECIES_DEERLING_AUTUMN, "-----"
     runchance 0
     colorflip BODY_COLOR_RED, 0
 
-mondata SPECIES_DEERLING_WINTER, "-----"
+mondata SPECIES_DEERLING_WINTER, "Deerling"
     basestats 60, 60, 50, 75, 40, 50
     types TYPE_NORMAL, TYPE_GRASS
     catchrate 190
@@ -24659,7 +24659,7 @@ mondata SPECIES_DEERLING_WINTER, "-----"
     runchance 0
     colorflip BODY_COLOR_BROWN, 0
 
-mondata SPECIES_SAWSBUCK_SUMMER, "-----"
+mondata SPECIES_SAWSBUCK_SUMMER, "Sawsbuck"
     basestats 80, 100, 70, 95, 60, 70
     types TYPE_NORMAL, TYPE_GRASS
     catchrate 75
@@ -24675,7 +24675,7 @@ mondata SPECIES_SAWSBUCK_SUMMER, "-----"
     runchance 0
     colorflip BODY_COLOR_BROWN, 0
 
-mondata SPECIES_SAWSBUCK_AUTUMN, "-----"
+mondata SPECIES_SAWSBUCK_AUTUMN, "Sawsbuck"
     basestats 80, 100, 70, 95, 60, 70
     types TYPE_NORMAL, TYPE_GRASS
     catchrate 75
@@ -24691,7 +24691,7 @@ mondata SPECIES_SAWSBUCK_AUTUMN, "-----"
     runchance 0
     colorflip BODY_COLOR_BROWN, 0
 
-mondata SPECIES_SAWSBUCK_WINTER, "-----"
+mondata SPECIES_SAWSBUCK_WINTER, "Sawsbuck"
     basestats 80, 100, 70, 95, 60, 70
     types TYPE_NORMAL, TYPE_GRASS
     catchrate 75
@@ -24707,7 +24707,7 @@ mondata SPECIES_SAWSBUCK_WINTER, "-----"
     runchance 0
     colorflip BODY_COLOR_BROWN, 0
 
-mondata SPECIES_TORNADUS_THERIAN, "-----"
+mondata SPECIES_TORNADUS_THERIAN, "Tornadus"
     basestats 79, 100, 80, 121, 110, 90
     types TYPE_FLYING, TYPE_FLYING
     catchrate 3
@@ -24723,7 +24723,7 @@ mondata SPECIES_TORNADUS_THERIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_GREEN, 0
 
-mondata SPECIES_THUNDURUS_THERIAN, "-----"
+mondata SPECIES_THUNDURUS_THERIAN, "Thundurus"
     basestats 79, 105, 70, 101, 145, 80
     types TYPE_ELECTRIC, TYPE_FLYING
     catchrate 3
@@ -24739,7 +24739,7 @@ mondata SPECIES_THUNDURUS_THERIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_BLUE, 0
 
-mondata SPECIES_LANDORUS_THERIAN, "-----"
+mondata SPECIES_LANDORUS_THERIAN, "Landorus"
     basestats 89, 145, 90, 91, 105, 80
     types TYPE_GROUND, TYPE_FLYING
     catchrate 3
@@ -24755,7 +24755,7 @@ mondata SPECIES_LANDORUS_THERIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_BROWN, 0
 
-mondata SPECIES_KYUREM_WHITE, "-----"
+mondata SPECIES_KYUREM_WHITE, "Kyurem"
     basestats 125, 120, 90, 95, 170, 100
     types TYPE_DRAGON, TYPE_ICE
     catchrate 3
@@ -24771,7 +24771,7 @@ mondata SPECIES_KYUREM_WHITE, "-----"
     runchance 0
     colorflip BODY_COLOR_GRAY, 1
 
-mondata SPECIES_KYUREM_BLACK, "-----"
+mondata SPECIES_KYUREM_BLACK, "Kyurem"
     basestats 125, 170, 100, 95, 120, 90
     types TYPE_DRAGON, TYPE_ICE
     catchrate 3
@@ -24787,7 +24787,7 @@ mondata SPECIES_KYUREM_BLACK, "-----"
     runchance 0
     colorflip BODY_COLOR_GRAY, 1
 
-mondata SPECIES_KELDEO_RESOLUTE, "-----"
+mondata SPECIES_KELDEO_RESOLUTE, "Keldeo"
     basestats 91, 72, 90, 108, 129, 90
     types TYPE_WATER, TYPE_FIGHTING
     catchrate 3
@@ -24803,7 +24803,7 @@ mondata SPECIES_KELDEO_RESOLUTE, "-----"
     runchance 0
     colorflip BODY_COLOR_YELLOW, 1
 
-mondata SPECIES_MELOETTA_PIROUETTE, "-----"
+mondata SPECIES_MELOETTA_PIROUETTE, "Meloetta"
     basestats 100, 128, 90, 128, 77, 77
     types TYPE_NORMAL, TYPE_FIGHTING
     catchrate 3
@@ -24819,7 +24819,7 @@ mondata SPECIES_MELOETTA_PIROUETTE, "-----"
     runchance 0
     colorflip BODY_COLOR_WHITE, 1
 
-mondata SPECIES_GENESECT_DOUSE_DRIVE, "-----"
+mondata SPECIES_GENESECT_DOUSE_DRIVE, "Genesect"
     basestats 71, 120, 95, 99, 120, 95
     types TYPE_BUG, TYPE_STEEL
     catchrate 3
@@ -25863,7 +25863,7 @@ mondata SPECIES_ROCKRUFF_OWN_TEMPO, "-----"
     runchance 0
     colorflip BODY_COLOR_BROWN, 0
 
-mondata SPECIES_LYCANROC_MIDNIGHT, "-----"
+mondata SPECIES_LYCANROC_MIDNIGHT, "Lycanroc"
     basestats 85, 115, 75, 82, 55, 75
     types TYPE_ROCK, TYPE_ROCK
     catchrate 90
@@ -25879,7 +25879,7 @@ mondata SPECIES_LYCANROC_MIDNIGHT, "-----"
     runchance 0
     colorflip BODY_COLOR_RED, 0
 
-mondata SPECIES_LYCANROC_DUSK, "-----"
+mondata SPECIES_LYCANROC_DUSK, "Lycanroc"
     basestats 75, 117, 65, 110, 55, 65
     types TYPE_ROCK, TYPE_ROCK
     catchrate 90
@@ -26151,7 +26151,7 @@ mondata SPECIES_NECROZMA_DUSK_MANE, "-----"
     runchance 0
     colorflip BODY_COLOR_YELLOW, 1
 
-mondata SPECIES_NECROZMA_DAWN_WINGS, "-----"
+mondata SPECIES_NECROZMA_DAWN_WINGS, "Necrozma"
     basestats 97, 113, 109, 77, 157, 127
     types TYPE_PSYCHIC, TYPE_GHOST
     catchrate 255
@@ -26167,7 +26167,7 @@ mondata SPECIES_NECROZMA_DAWN_WINGS, "-----"
     runchance 0
     colorflip BODY_COLOR_BLUE, 1
 
-mondata SPECIES_NECROZMA_ULTRA_DUSK_MANE, "-----"
+mondata SPECIES_NECROZMA_ULTRA_DUSK_MANE, "Necrozma"
     basestats 97, 167, 97, 129, 167, 97
     types TYPE_PSYCHIC, TYPE_DRAGON
     catchrate 255
@@ -26183,7 +26183,7 @@ mondata SPECIES_NECROZMA_ULTRA_DUSK_MANE, "-----"
     runchance 0
     colorflip BODY_COLOR_YELLOW, 1
 
-mondata SPECIES_NECROZMA_ULTRA_DAWN_WINGS, "-----"
+mondata SPECIES_NECROZMA_ULTRA_DAWN_WINGS, "Necrozma"
     basestats 97, 167, 97, 129, 167, 97
     types TYPE_PSYCHIC, TYPE_DRAGON
     catchrate 255
@@ -26199,7 +26199,7 @@ mondata SPECIES_NECROZMA_ULTRA_DAWN_WINGS, "-----"
     runchance 0
     colorflip BODY_COLOR_YELLOW, 1
 
-mondata SPECIES_MAGEARNA_ORIGINAL, "-----"
+mondata SPECIES_MAGEARNA_ORIGINAL, "Magearna"
     basestats 80, 95, 115, 65, 130, 115
     types TYPE_STEEL, TYPE_FAIRY
     catchrate 3
@@ -26279,7 +26279,7 @@ mondata SPECIES_CRAMORANT_GORGING, "-----"
     runchance 0
     colorflip BODY_COLOR_BLUE, 0
 
-mondata SPECIES_TOXTRICITY_LOW_KEY, "-----"
+mondata SPECIES_TOXTRICITY_LOW_KEY, "Toxtricity"
     basestats 75, 98, 70, 75, 114, 70
     types TYPE_ELECTRIC, TYPE_POISON
     catchrate 45
@@ -26295,7 +26295,7 @@ mondata SPECIES_TOXTRICITY_LOW_KEY, "-----"
     runchance 0
     colorflip BODY_COLOR_PURPLE, 0
 
-mondata SPECIES_SINISTEA_ANTIQUE, "-----"
+mondata SPECIES_SINISTEA_ANTIQUE, "Sinistea"
     basestats 40, 45, 45, 50, 74, 54
     types TYPE_GHOST, TYPE_GHOST
     catchrate 120
@@ -26311,7 +26311,7 @@ mondata SPECIES_SINISTEA_ANTIQUE, "-----"
     runchance 0
     colorflip BODY_COLOR_PURPLE, 0
 
-mondata SPECIES_POLTEAGEIST_ANTIQUE, "-----"
+mondata SPECIES_POLTEAGEIST_ANTIQUE, "Polteageist"
     basestats 60, 65, 65, 70, 134, 114
     types TYPE_GHOST, TYPE_GHOST
     catchrate 60
@@ -26487,7 +26487,7 @@ mondata SPECIES_MORPEKO_HANGRY, "-----"
     runchance 0
     colorflip BODY_COLOR_YELLOW, 0
 
-mondata SPECIES_ZACIAN_CROWNED, "-----"
+mondata SPECIES_ZACIAN_CROWNED, "Zacian"
     basestats 92, 170, 115, 148, 80, 115
     types TYPE_FAIRY, TYPE_STEEL
     catchrate 10
@@ -26503,7 +26503,7 @@ mondata SPECIES_ZACIAN_CROWNED, "-----"
     runchance 0
     colorflip BODY_COLOR_BLUE, 0
 
-mondata SPECIES_ZAMAZENTA_CROWNED, "-----"
+mondata SPECIES_ZAMAZENTA_CROWNED, "Zamazenta"
     basestats 92, 130, 145, 128, 80, 145
     types TYPE_FIGHTING, TYPE_STEEL
     catchrate 10
@@ -26535,7 +26535,7 @@ mondata SPECIES_ETERNATUS_ETERNAMAX, "-----"
     runchance 0
     colorflip BODY_COLOR_PURPLE, 0
 
-mondata SPECIES_URSHIFU_RAPID_STRIKE, "-----"
+mondata SPECIES_URSHIFU_RAPID_STRIKE, "Urshifu"
     basestats 100, 130, 100, 97, 63, 60
     types TYPE_FIGHTING, TYPE_WATER
     catchrate 3
@@ -26551,7 +26551,7 @@ mondata SPECIES_URSHIFU_RAPID_STRIKE, "-----"
     runchance 0
     colorflip BODY_COLOR_GRAY, 0
 
-mondata SPECIES_ZARUDE_DADA, "-----"
+mondata SPECIES_ZARUDE_DADA, "Zarude"
     basestats 105, 120, 105, 105, 70, 95
     types TYPE_DARK, TYPE_GRASS
     catchrate 3
@@ -26567,7 +26567,7 @@ mondata SPECIES_ZARUDE_DADA, "-----"
     runchance 0
     colorflip BODY_COLOR_GREEN, 0
 
-mondata SPECIES_CALYREX_ICE_RIDER, "-----"
+mondata SPECIES_CALYREX_ICE_RIDER, "Calyrex"
     basestats 100, 165, 150, 50, 85, 130
     types TYPE_PSYCHIC, TYPE_ICE
     catchrate 3
@@ -26615,7 +26615,7 @@ mondata SPECIES_ENAMORUS_THERIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_PINK, 0
 
-mondata SPECIES_GROWLITHE_HISUIAN, "-----"
+mondata SPECIES_GROWLITHE_HISUIAN, "Growlithe"
     basestats 60, 75, 45, 55, 65, 50
     types TYPE_FIRE, TYPE_ROCK
     catchrate 235
@@ -26631,7 +26631,7 @@ mondata SPECIES_GROWLITHE_HISUIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_BROWN, 0
 
-mondata SPECIES_ARCANINE_HISUIAN, "-----"
+mondata SPECIES_ARCANINE_HISUIAN, "Arcanine"
     basestats 95, 115, 80, 90, 95, 80
     types TYPE_FIRE, TYPE_ROCK
     catchrate 0
@@ -26647,7 +26647,7 @@ mondata SPECIES_ARCANINE_HISUIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_BROWN, 0
 
-mondata SPECIES_VOLTORB_HISUIAN, "-----"
+mondata SPECIES_VOLTORB_HISUIAN, "Voltorb"
     basestats 40, 30, 50, 100, 55, 55
     types TYPE_ELECTRIC, TYPE_GRASS
     catchrate 235
@@ -26663,7 +26663,7 @@ mondata SPECIES_VOLTORB_HISUIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_RED, 0
 
-mondata SPECIES_ELECTRODE_HISUIAN, "-----"
+mondata SPECIES_ELECTRODE_HISUIAN, "Electrode"
     basestats 60, 50, 70, 150, 80, 80
     types TYPE_ELECTRIC, TYPE_GRASS
     catchrate 135
@@ -26679,7 +26679,7 @@ mondata SPECIES_ELECTRODE_HISUIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_RED, 0
 
-mondata SPECIES_TYPHLOSION_HISUIAN, "-----"
+mondata SPECIES_TYPHLOSION_HISUIAN, "Typhlosion"
     basestats 73, 84, 78, 95, 119, 85
     types TYPE_FIRE, TYPE_GHOST
     catchrate 45
@@ -26695,7 +26695,7 @@ mondata SPECIES_TYPHLOSION_HISUIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_YELLOW, 0
 
-mondata SPECIES_QWILFISH_HISUIAN, "-----"
+mondata SPECIES_QWILFISH_HISUIAN, "Qwilfish"
     basestats 65, 95, 85, 85, 55, 55
     types TYPE_DARK, TYPE_POISON
     catchrate 235
@@ -26711,7 +26711,7 @@ mondata SPECIES_QWILFISH_HISUIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_GRAY, 0
 
-mondata SPECIES_SNEASEL_HISUIAN, "-----"
+mondata SPECIES_SNEASEL_HISUIAN, "Sneasel"
     basestats 55, 95, 55, 115, 35, 75
     types TYPE_FIGHTING, TYPE_POISON
     catchrate 235
@@ -26727,7 +26727,7 @@ mondata SPECIES_SNEASEL_HISUIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_BLACK, 1
 
-mondata SPECIES_SAMUROTT_HISUIAN, "-----"
+mondata SPECIES_SAMUROTT_HISUIAN, "Samurott"
     basestats 90, 108, 80, 85, 100, 65
     types TYPE_WATER, TYPE_DARK
     catchrate 55
@@ -26743,7 +26743,7 @@ mondata SPECIES_SAMUROTT_HISUIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_BLUE, 0
 
-mondata SPECIES_LILLIGANT_HISUIAN, "-----"
+mondata SPECIES_LILLIGANT_HISUIAN, "Lilligant"
     basestats 70, 105, 75, 105, 50, 75
     types TYPE_GRASS, TYPE_FIGHTING
     catchrate 135
@@ -26755,11 +26755,11 @@ mondata SPECIES_LILLIGANT_HISUIAN, "-----"
     basefriendship 70
     growthrate GROWTH_MEDIUM_FAST
     egggroups EGG_GROUP_GRASS, EGG_GROUP_GRASS
-    abilities ABILITY_CHLOROPHYLL, ABILITY_HUSTLE
+    abilities ABILITY_CHLOROPHYLL, ABILITY_CHLOROPHYLL
     runchance 0
     colorflip BODY_COLOR_EGG, 0
 
-mondata SPECIES_ZORUA_HISUIAN, "-----"
+mondata SPECIES_ZORUA_HISUIAN, "Zorua"
     basestats 35, 60, 40, 70, 85, 40
     types TYPE_NORMAL, TYPE_GHOST
     catchrate 215
@@ -26775,7 +26775,7 @@ mondata SPECIES_ZORUA_HISUIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_GRAY, 0
 
-mondata SPECIES_ZOROARK_HISUIAN, "-----"
+mondata SPECIES_ZOROARK_HISUIAN, "Zoroark"
     basestats 55, 100, 60, 110, 125, 60
     types TYPE_NORMAL, TYPE_GHOST
     catchrate 115
@@ -26791,7 +26791,7 @@ mondata SPECIES_ZOROARK_HISUIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_GRAY, 0
 
-mondata SPECIES_BRAVIARY_HISUIAN, "-----"
+mondata SPECIES_BRAVIARY_HISUIAN, "Braviary"
     basestats 110, 83, 70, 65, 112, 70
     types TYPE_PSYCHIC, TYPE_FLYING
     catchrate 135
@@ -26807,7 +26807,7 @@ mondata SPECIES_BRAVIARY_HISUIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_RED, 0
 
-mondata SPECIES_SLIGGOO_HISUIAN, "-----"
+mondata SPECIES_SLIGGOO_HISUIAN, "Sliggoo"
     basestats 58, 75, 83, 40, 83, 113
     types TYPE_STEEL, TYPE_DRAGON
     catchrate 55
@@ -26823,7 +26823,7 @@ mondata SPECIES_SLIGGOO_HISUIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_PURPLE, 0
 
-mondata SPECIES_GOODRA_HISUIAN, "-----"
+mondata SPECIES_GOODRA_HISUIAN, "Goodra"
     basestats 80, 100, 100, 60, 110, 150
     types TYPE_STEEL, TYPE_DRAGON
     catchrate 55
@@ -26839,7 +26839,7 @@ mondata SPECIES_GOODRA_HISUIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_PURPLE, 0
 
-mondata SPECIES_AVALUGG_HISUIAN, "-----"
+mondata SPECIES_AVALUGG_HISUIAN, "Avalugg"
     basestats 95, 127, 184, 38, 34, 36
     types TYPE_ICE, TYPE_ROCK
     catchrate 55
@@ -26855,7 +26855,7 @@ mondata SPECIES_AVALUGG_HISUIAN, "-----"
     runchance 0
     colorflip BODY_COLOR_BLUE, 0
 
-mondata SPECIES_DECIDUEYE_HISUIAN, "-----"
+mondata SPECIES_DECIDUEYE_HISUIAN, "Decidueye"
     basestats 88, 112, 80, 60, 95, 95
     types TYPE_GRASS, TYPE_FIGHTING
     catchrate 55
@@ -27207,7 +27207,7 @@ mondata SPECIES_GIMMIGHOUL_ROAMING, "-----"
     runchance 0
     colorflip BODY_COLOR_BROWN, 0
 
-mondata SPECIES_WOOPER_PALDEAN, "-----"
+mondata SPECIES_WOOPER_PALDEAN, "Wooper"
     basestats 55, 45, 45, 15, 25, 25
     types TYPE_POISON, TYPE_GROUND
     catchrate 255
@@ -27223,7 +27223,7 @@ mondata SPECIES_WOOPER_PALDEAN, "-----"
     runchance 0
     colorflip BODY_COLOR_BLUE, 0
 
-mondata SPECIES_TAUROS_COMBAT, "-----"
+mondata SPECIES_TAUROS_COMBAT, "Tauros"
     basestats 75, 110, 105, 100, 30, 70
     types TYPE_FIGHTING, TYPE_FIGHTING
     catchrate 45
@@ -27239,7 +27239,7 @@ mondata SPECIES_TAUROS_COMBAT, "-----"
     runchance 0
     colorflip BODY_COLOR_BROWN, 0
 
-mondata SPECIES_TAUROS_BLAZE, "-----"
+mondata SPECIES_TAUROS_BLAZE, "Tauros"
     basestats 75, 110, 105, 100, 30, 70
     types TYPE_FIGHTING, TYPE_FIRE
     catchrate 45
@@ -27255,7 +27255,7 @@ mondata SPECIES_TAUROS_BLAZE, "-----"
     runchance 0
     colorflip BODY_COLOR_BROWN, 0
 
-mondata SPECIES_TAUROS_AQUA, "-----"
+mondata SPECIES_TAUROS_AQUA, "Tauros"
     basestats 75, 110, 105, 100, 30, 70
     types TYPE_FIGHTING, TYPE_WATER
     catchrate 45
@@ -27640,7 +27640,7 @@ mondata SPECIES_OGERPON_CORNERSTONE_MASK_TERASTAL, "-----"
     runchance 0
     colorflip BODY_COLOR_GREEN, 0
 
-mondata SPECIES_URSALUNA_BLOODMOON, "-----"
+mondata SPECIES_URSALUNA_BLOODMOON, "Ursaluna"
     basestats 113, 70, 120, 52, 135, 65
     types TYPE_GROUND, TYPE_NORMAL
     catchrate 20
