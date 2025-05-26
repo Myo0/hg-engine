@@ -13935,7 +13935,7 @@ rocksmashrate 0
 oldrodrate 100
 goodrodrate 0
 superrodrate 0
-walklevels 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 2
+walklevels 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 4, 4
 
 //morning encounter slots
 pokemon SPECIES_MINCCINO
@@ -13988,36 +13988,36 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
 //surf encounters
-encounter SPECIES_FINNEON, 2, 2
-encounter SPECIES_MAGIKARP, 2, 2
-encounter SPECIES_FEEBAS, 1, 1
-encounter SPECIES_MAGIKARP, 1, 1
-encounter SPECIES_FEEBAS, 1, 1
+encounter SPECIES_FINNEON, 4, 4
+encounter SPECIES_MAGIKARP, 4, 4
+encounter SPECIES_FEEBAS, 3, 3
+encounter SPECIES_MAGIKARP, 3, 3
+encounter SPECIES_FEEBAS, 3, 3
 
 //rock smash encounters
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
 //old rod encounters
-encounter SPECIES_FINNEON, 2, 2
-encounter SPECIES_TYMPOLE, 2, 2
-encounter SPECIES_GOLDEEN, 1, 1
-encounter SPECIES_POLIWAG, 1, 1
-encounter SPECIES_LUVDISC, 1, 1
+encounter SPECIES_FINNEON, 4, 4
+encounter SPECIES_TYMPOLE, 4, 4
+encounter SPECIES_GOLDEEN, 3, 3
+encounter SPECIES_POLIWAG, 3, 3
+encounter SPECIES_LUVDISC, 3, 3
 
 //good rod encounters
-encounter SPECIES_FINNEON, 2, 2
-encounter SPECIES_TYMPOLE, 2, 2
-encounter SPECIES_GOLDEEN, 1, 1
-encounter SPECIES_POLIWAG, 1, 1
-encounter SPECIES_LUVDISC, 1, 1
+encounter SPECIES_FINNEON, 4, 4
+encounter SPECIES_TYMPOLE, 4, 4
+encounter SPECIES_GOLDEEN, 3, 3
+encounter SPECIES_POLIWAG, 3, 3
+encounter SPECIES_LUVDISC, 3, 3
 
 //super rod encounters
-encounter SPECIES_FINNEON, 2, 2
-encounter SPECIES_TYMPOLE, 2, 2
-encounter SPECIES_GOLDEEN, 1, 1
-encounter SPECIES_POLIWAG, 1, 1
-encounter SPECIES_LUVDISC, 1, 1
+encounter SPECIES_FINNEON, 4, 4
+encounter SPECIES_TYMPOLE, 4, 4
+encounter SPECIES_GOLDEEN, 3, 3
+encounter SPECIES_POLIWAG, 3, 3
+encounter SPECIES_LUVDISC, 3, 3
 
 //swarm grass
 pokemon SPECIES_NONE
@@ -14041,8 +14041,8 @@ superrodrate 0
 walklevels 4, 4, 4, 4, 4, 3, 3, 3, 4, 4, 3, 3
 
 //morning encounter slots
-pokemon SPECIES_TINKATINK
-pokemon SPECIES_TINKATINK
+pokemon SPECIES_KLINK
+pokemon SPECIES_KLINK
 monwithform SPECIES_MEOWTH, 2
 pokemon SPECIES_ARON
 pokemon SPECIES_ARON
@@ -14055,8 +14055,8 @@ pokemon SPECIES_SHIELDON
 pokemon SPECIES_SHIELDON
 
 //day encounter slots
-pokemon SPECIES_TINKATINK
-pokemon SPECIES_TINKATINK
+pokemon SPECIES_KLINK
+pokemon SPECIES_KLINK
 monwithform SPECIES_MEOWTH, 2
 pokemon SPECIES_ARON
 pokemon SPECIES_ARON
@@ -14069,8 +14069,8 @@ pokemon SPECIES_SHIELDON
 pokemon SPECIES_SHIELDON
 
 //night encounter slots
-pokemon SPECIES_TINKATINK
-pokemon SPECIES_TINKATINK
+pokemon SPECIES_KLINK
+pokemon SPECIES_KLINK
 monwithform SPECIES_MEOWTH, 2
 pokemon SPECIES_ARON
 pokemon SPECIES_ARON

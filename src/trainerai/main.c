@@ -253,12 +253,10 @@ enum AIActionChoice __attribute__((section (".init"))) TrainerAI_Main(struct Bat
 
         ctx->aiWorkTable.ai_dir_select_client[ai->attacker] = target;                   //assign the correct target for this attacker.
         for(int i = 0; i < 4; i++){
-            //debug_printf("the target for battler %d is %d",i,ctx->aiWorkTable.ai_dir_select_client[i]);
+            debug_printf("the target for battler %d is %d",i,ctx->aiWorkTable.ai_dir_select_client[i]);
         }
-        //debug_printf("Target: %d\n", target);
-        if (ctx->battlemon[target].hp == 0) {
+        debug_printf("Target: %d\n", target);
 
-        }
     }
     else{ //single battles
         
@@ -822,6 +820,7 @@ int BasicFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
     }
 
     /*Check for grass immunity to powder moves*/
+    // Isnt working????
     if((IsPowderMove(ai->attackerMove) || ai->attackerMove == MOVE_LEECH_SEED) && HasType(ctx, ai->defender, TYPE_GRASS) ){
         moveScore -= 10;
     }
@@ -1527,7 +1526,8 @@ int EvaluateAttackFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContex
     if(ai->attackerMoveEffect == MOVE_EFFECT_ALWAYS_FLINCH_FIRST_TURN_ONLY){
         return moveScore;
     }
-    if(is_current_move_not_strongest != 0){
+
+    if(ai->attackerMinRollMoveDamages[i] < ai->defenderHP && is_current_move_not_strongest != 0){
         for(int j = 0; j < 4; j++){
             if(ai->attackerMinRollMoveDamages[j] > ai->attackerMinRollMoveDamages[i]){
                 
@@ -1605,7 +1605,7 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
             moveScore -= 2;
        }
        if(BattleRand(bsys)% 2 < 1 ){
-            moveScore += 1;
+            moveScore += 2;
        }
     }
     /*IRIDIUM: handle setup moves*/
@@ -3176,6 +3176,7 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
 
     /*Pursuit*/
     //TODO: once again, really weird ai logic from gamefreak
+    /*
     else if(ai->attackerMoveEffect == MOVE_EFFECT_HIT_BEFORE_SWITCH){
         if(ai->attackerTurnsOnField == 0){
             if(BattleRand(bsys) % 2 < 1){
@@ -3193,6 +3194,7 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
             } 
         }
     }
+    */
 
     /*Rain Dance*/
     else if(ai->attackerMoveEffect == MOVE_EFFECT_WEATHER_RAIN){
@@ -4757,6 +4759,9 @@ int TagStrategyFlag(struct BattleSystem *bsys, u32 attacker, int i, AIContext *a
                         }
                     }
                 }
+                else{
+                    moveScore -= 30;
+                }
             }
             /*Water moves with Dry Skin and Water Absorb*/
             else if(ctx->moveTbl[ai->attackerMove].type == TYPE_WATER && ctx->moveTbl[ai->attackerMove].power){
@@ -5205,14 +5210,9 @@ int TagStrategyFlag(struct BattleSystem *bsys, u32 attacker, int i, AIContext *a
                 moveScore += 1;
             }
         }
-
-
-
     }
 
-
-
-
+    //debug_printf("TagStrategyFlag moveScore: %d\n", moveScore);
     return moveScore;
 }
 int CheckHPFlag(struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){

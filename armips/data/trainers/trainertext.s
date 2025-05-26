@@ -241,9 +241,9 @@ _0158: // Trainer 21
     trainertextentry  21, TEXT_DEFEATED_IN_BATTLE, "... ...extinguished!\n"
 
 _0164: // Trainer 30
-    trainertextentry  30, TEXT_LAST_MON_SENT_OUT, "H-hey! Just one left?\nBut... I ain’t losin’, you hear?\n"
-    trainertextentry  30, TEXT_LAST_MON_CRITICAL, "Poor me!\n"
-    trainertextentry  30, TEXT_DEFEATED_IN_BATTLE, "Ugh...\n"
+    trainertextentry 30, TEXT_NOTICE_IN_OVERWORLD, "Fire, water, grass!\nWhat a combo!\r"
+    trainertextentry 30, TEXT_DEFEATED_IN_BATTLE, "I got shattered!\n"
+    trainertextentry 30, TEXT_DEFEATED_IN_OVERWORLD, "My fire-water-grass core\nstood no chance!\n"
 
 _0170: // Trainer 31
     trainertextentry  31, TEXT_LAST_MON_CRITICAL, "Morty: Death do us part.\n"
@@ -311,9 +311,9 @@ _0200: // Trainer 719
     trainertextentry 719, TEXT_DEFEATED_IN_BATTLE, "Such power has never been seen\nin the Dragon's Den!\n"
 
 _020C: // Trainer 29
-    trainertextentry  29, TEXT_NOTICE_IN_OVERWORLD, "Ho ho!\rYou some kind of big shot? We’ll see\fwhat happens if you get pushed around\nup here. Think you’ll stagger and fall?\rBring it on!\r"
+    trainertextentry  29, TEXT_NOTICE_IN_OVERWORLD, "Surprise! It's bird time!\r"
     trainertextentry  29, TEXT_DEFEATED_IN_BATTLE, "Gaaah!\n"
-    trainertextentry  29, TEXT_DEFEATED_IN_OVERWORLD, "I heard a strong Pokemon\nlives up here.\n"
+    trainertextentry  29, TEXT_DEFEATED_IN_OVERWORLD, "I decided to train in these mines\nto get stronger... but it's creepy...\n"
 
 _0218: // Trainer 50
     trainertextentry  50, TEXT_NOTICE_IN_OVERWORLD, "I can’t believe how ridiculously high\nthis is! But from up here, you can tell\fwhat it feels like to be a bird Pokémon!\rLet me see if you’re good enough to\nface Falkner!\r"
@@ -2010,7 +2010,7 @@ _1194: // Trainer 23
 
 _11A0: // Trainer 25
     trainertextentry 25, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_1, "Haha! You're no match for Rhyperior!\r"
-    trainertextentry 25, TEXT_DOUBLE_DEFEATED_IN_BATTLE_1, "My Rhyperior!"
+    trainertextentry 25, TEXT_DOUBLE_DEFEATED_IN_BATTLE_1, "I got smoked...!"
     trainertextentry 25, TEXT_DOUBLE_DEFEATED_IN_OVERWORLD_1, "Okay! It's weak to grass and water!"
     trainertextentry 25, TEXT_DOUBLE_ONLY_1_POKEMON_1, "Come back with 2 or more Pokemon."
     trainertextentry 25, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_2, "Rhyperior: Ripe! Pear!\r"

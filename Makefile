@@ -1,7 +1,7 @@
 # Makefile
 
 ROMNAME = rom.nds
-BUILDROM = ai_test.nds
+BUILDROM = iridium_demo.nds
 
 DESIRED_GAMECODE := IPKE
 GAMECODE = $(shell dd bs=1 skip=12 count=4 if=$(ROMNAME) status=none)

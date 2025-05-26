@@ -46,13 +46,16 @@ int TrainerAI_PickCommand(struct BattleSystem *bsys, int attacker)
 
     
     if ((battleType & BATTLE_TYPE_TRAINER) || BATTLER_IS_ENEMY(attacker) == 0) { //w
-        debug_printf("1\n");
+        //debug_printf("1\n");
+
+        return PLAYER_INPUT_FIGHT;
+
         if (TrainerAI_ShouldSwitch(bsys, attacker)) {
             // If this is a switch which should use the post-KO switch logic, then do so.
             // If there is no valid battler, pick the first one in party order.
-            debug_printf("2\n");
+           // debug_printf("2\n");
             //if (ctx->aiSwitchedPartySlot[attacker] == 6) {
-                debug_printf("about to call postko switchin\n");
+                //debug_printf("about to call postko switchin\n");
                 if ((i = BattleAI_PostKOSwitchIn(bsys, attacker)) == 6) {
                     battler1 = attacker;
                     if (battleType & BATTLE_TYPE_TAG
@@ -85,7 +88,7 @@ int TrainerAI_PickCommand(struct BattleSystem *bsys, int attacker)
 
             return PLAYER_INPUT_PARTY;
         }
-        debug_printf("not going to swap\n")
+        //debug_printf("not going to swap\n")
         // Check if the AI determines that it should use an item
         /*
         if (TrainerAI_ShouldUseItem(bsys, attacker)) {

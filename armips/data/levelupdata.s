@@ -5151,21 +5151,21 @@ levelup SPECIES_AIPOM
 
 levelup SPECIES_SUNKERN
     learnset MOVE_ABSORB, 1
-    learnset MOVE_GROWTH, 1
+    learnset MOVE_GROWTH, 2
     learnset MOVE_INGRAIN, 4
-    learnset MOVE_GRASS_WHISTLE, 7
-    learnset MOVE_MEGA_DRAIN, 10
-    learnset MOVE_LEECH_SEED, 13
-    learnset MOVE_RAZOR_LEAF, 16
-    learnset MOVE_WORRY_SEED, 19
-    learnset MOVE_GIGA_DRAIN, 22
-    learnset MOVE_ENDEAVOR, 25
-    learnset MOVE_SYNTHESIS, 28
-    learnset MOVE_NATURAL_GIFT, 31
-    learnset MOVE_SOLAR_BEAM, 34
-    learnset MOVE_DOUBLE_EDGE, 37
-    learnset MOVE_SUNNY_DAY, 40
-    learnset MOVE_SEED_BOMB, 43
+    learnset MOVE_GRASS_WHISTLE, 5
+    learnset MOVE_MEGA_DRAIN, 7
+    learnset MOVE_LEECH_SEED, 9
+    learnset MOVE_RAZOR_LEAF, 13
+    learnset MOVE_WORRY_SEED, 16
+    learnset MOVE_GIGA_DRAIN, 19
+    learnset MOVE_ENDEAVOR, 22
+    learnset MOVE_SYNTHESIS, 25
+    learnset MOVE_NATURAL_GIFT, 28
+    learnset MOVE_SOLAR_BEAM, 31
+    learnset MOVE_DOUBLE_EDGE, 34
+    learnset MOVE_SUNNY_DAY, 37
+    learnset MOVE_SEED_BOMB, 40
     terminatelearnset
 
 
@@ -15978,30 +15978,25 @@ levelup SPECIES_FERROTHORN
 
 
 levelup SPECIES_KLINK
-    learnset MOVE_TACKLE,1                          // coverage
-    learnset MOVE_THUNDER_SHOCK,3                   // coverage
-    learnset MOVE_METAL_SOUND,5     // status
-    learnset MOVE_BIND,8                            // coverage
-    learnset MOVE_CHARGE_BEAM,11                    // coverage
-    learnset MOVE_BULLET_PUNCH,14           // stab
-    learnset MOVE_IRON_DEFENSE,17   // status
-    learnset MOVE_MAGNET_BOMB,20            // stab
-    learnset MOVE_SKILL_SWAP,23     // status
-    learnset MOVE_HEAT_CRASH,26                     // coverage
-    learnset MOVE_ROCK_THROW,29                     // coverage
-    learnset MOVE_GEAR_GRIND,33              // stab
-    learnset MOVE_AUTOTOMIZE,38       // status
-    learnset MOVE_DISCHARGE,40                      // coverage
-    learnset MOVE_LOCK_ON,44        // status
-    learnset MOVE_FLASH_CANNON,47           // stab
-    learnset MOVE_METAL_SOUND,49    // status
-    learnset MOVE_RAPID_SPIN,53                     // coverage
-    learnset MOVE_EARTHQUAKE,58                     // coverage
-    learnset MOVE_METAL_BURST,60            // stab
-    learnset MOVE_ICICLE_CRASH,62                   // coverage
-    learnset MOVE_IRON_HEAD,65              // stab
-    learnset MOVE_ZAP_CANNON,68                     // coverage
-    learnset MOVE_METEOR_MASH,72            // stab
+    learnset MOVE_BIND, 1
+    learnset MOVE_THUNDER_SHOCK, 2
+    learnset MOVE_METAL_SOUND, 3
+    learnset MOVE_VICE_GRIP, 4  
+    learnset MOVE_THUNDER_WAVE, 7 
+    learnset MOVE_MAGNET_RISE, 9  
+    learnset MOVE_SHOCK_WAVE, 11  
+    learnset MOVE_MAGNET_BOMB, 13  
+    learnset MOVE_HIDDEN_POWER, 17 
+    learnset MOVE_ASSURANCE, 19  
+    learnset MOVE_SIGNAL_BEAM, 22
+    learnset MOVE_FLASH_CANNON, 25 
+    learnset MOVE_DISCHARGE, 29 
+    learnset MOVE_LOCK_ON, 33
+    learnset MOVE_GEAR_GRIND, 36
+    learnset MOVE_ZAP_CANNON, 39
+    learnset MOVE_METAL_BURST, 42 
+    learnset MOVE_VOLT_SWITCH, 45
+    learnset MOVE_WILD_CHARGE, 49 
     terminatelearnset
 
 levelup SPECIES_KLANG
