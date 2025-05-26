@@ -5581,6 +5581,7 @@ int LONG_CALL AI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u
     
 
     return damage + 2;
+}
 // banlist is handled in original function, no need to include it here
 u32 RollMetronomeMove(struct BattleSystem *bsys)
 {

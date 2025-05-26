@@ -763,6 +763,10 @@ int BasicFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
     if(ctx->battlemon[ai->attacker].pp[i] == 0){
         moveScore -= 40;
     }
+    if(ctx->battlemon[ai->attacker].moveeffect.tauntTurns > 0 && 
+        ctx->moveTbl[ai->attackerMove].split == SPLIT_STATUS){
+        moveScore -= 40; //taunted, so no status moves
+    }
 
 
     /*Check for ai->defender type immunities.*/
