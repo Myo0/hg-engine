@@ -23471,7 +23471,7 @@ mondata SPECIES_SANDSHREW_ALOLAN, "Sandshrew"
     basefriendship 70
     growthrate GROWTH_MEDIUM_FAST
     egggroups EGG_GROUP_FIELD, EGG_GROUP_FIELD
-    abilities ABILITY_SNOW_CLOAK,  ABILITY_NONE
+    abilities ABILITY_SLUSH_RUSH,  ABILITY_NONE
     runchance 0
     colorflip BODY_COLOR_BLUE, 0
 
@@ -23487,7 +23487,7 @@ mondata SPECIES_SANDSLASH_ALOLAN, "Sandslash"
     basefriendship 70
     growthrate GROWTH_MEDIUM_FAST
     egggroups EGG_GROUP_FIELD, EGG_GROUP_FIELD
-    abilities ABILITY_SNOW_CLOAK,  ABILITY_NONE
+    abilities ABILITY_SLUSH_RUSH,  ABILITY_NONE
     runchance 0
     colorflip BODY_COLOR_BLUE, 0
 
