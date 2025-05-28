@@ -1196,12 +1196,12 @@ _0A30: // Trainer 249
 _0A3C: // Trainer 4
     trainertextentry  4, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_1, "WOAH! Where do you think\nyou're going!\fDouble battle time!\r"
     trainertextentry 4, TEXT_DOUBLE_DEFEATED_IN_BATTLE_1, "Blown back!\n"
-    trainertextentry  4, TEXT_DOUBLE_DEFEATED_IN_OVERWORLD_1, "My Combee stood no chance...\n"
+    trainertextentry  4, TEXT_DOUBLE_DEFEATED_IN_OVERWORLD_1, "My Dwebble stood no chance...\n"
     trainertextentry  4, TEXT_DOUBLE_ONLY_1_POKEMON_1, "2 or more Pokemon required.\n"
-    trainertextentry  4, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_2, "Combee: BEEEEE!\r"
-    trainertextentry  4, TEXT_DOUBLE_DEFEATED_IN_BATTLE_2, "Combee: beee...\n"
-    trainertextentry  4, TEXT_DOUBLE_DEFEATED_IN_OVERWORLD_2, "Combee: beee...\n"
-    trainertextentry  4, TEXT_DOUBLE_ONLY_1_POKEMON_2, "Combee: BEEEEE!\n"
+    trainertextentry  4, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_2, "Dwebble: DWEB!\r"
+    trainertextentry  4, TEXT_DOUBLE_DEFEATED_IN_BATTLE_2, "Dwebble: dweb...\n"
+    trainertextentry  4, TEXT_DOUBLE_DEFEATED_IN_OVERWORLD_2, "Dwebble: dweb...\n"
+    trainertextentry  4, TEXT_DOUBLE_ONLY_1_POKEMON_2, "Dwebble: DWEB!\n"
     trainertextentry   4, TEXT_REMATCH_IN_OVERWORLD, "I was waiting for you. Let’s battle!\r"
 
 _0A4C: // Trainer 383
@@ -1331,14 +1331,14 @@ _0B60: // Trainer 388
     trainertextentry 388, TEXT_REMATCH_IN_OVERWORLD, "I’ve been practicing breathing fire\nwhile waiting for you!\r"
 
 _0B70: // Trainer 7
-    trainertextentry 7, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_1, "Vulpixes, go!\r"
+    trainertextentry 7, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_1, "Gible, go!\r"
     trainertextentry 7, TEXT_DOUBLE_DEFEATED_IN_BATTLE_1, "My little friends!\n"
-    trainertextentry 7, TEXT_DOUBLE_DEFEATED_IN_OVERWORLD_1, "It's ok, Frosty...\nWe win next time.\n"
+    trainertextentry 7, TEXT_DOUBLE_DEFEATED_IN_OVERWORLD_1, "It's ok, Gible...\nWe win next time.\n"
     trainertextentry 7, TEXT_DOUBLE_ONLY_1_POKEMON_1, "You’ve only got one Pokémon.\nSo we can’t battle.\n"
-    trainertextentry 7, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_2, "Frosty: Pix!\r"
-    trainertextentry 7, TEXT_DOUBLE_DEFEATED_IN_BATTLE_2, "Frosty: oWo\n"
-    trainertextentry 7, TEXT_DOUBLE_DEFEATED_IN_OVERWORLD_2, "Frosty: Pix...\n"
-    trainertextentry 7, TEXT_DOUBLE_ONLY_1_POKEMON_2, "Frosty: Pix!\r"
+    trainertextentry 7, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_2, "Gible: Gib!\r"
+    trainertextentry 7, TEXT_DOUBLE_DEFEATED_IN_BATTLE_2, "Gibble: oWo\n"
+    trainertextentry 7, TEXT_DOUBLE_DEFEATED_IN_OVERWORLD_2, "Gibble: gib...\n"
+    trainertextentry 7, TEXT_DOUBLE_ONLY_1_POKEMON_2, "Gible: Gib!\r"
 
 _0B80: // Trainer 78
     trainertextentry  78, TEXT_NOTICE_IN_OVERWORLD, "I’ll go anywhere if bug Pokémon\nappear there.\r"
@@ -1451,9 +1451,9 @@ _0C80: // Trainer 86
     trainertextentry  86, TEXT_DEFEATED_IN_OVERWORLD, "Swimming exercises your entire body.\nIt’s healthy.\n"
 
 _0C8C: // Trainer 9
-    trainertextentry   9, TEXT_NOTICE_IN_OVERWORLD, "Muwahahah...\nPrepare to be walled.\r"
-    trainertextentry   9, TEXT_DEFEATED_IN_BATTLE, "Mareanie! My baby!\n"
-    trainertextentry   9, TEXT_DEFEATED_IN_OVERWORLD, "Maybe I should use more\nthan one Pokemon, huh.\n"
+    trainertextentry   9, TEXT_NOTICE_IN_OVERWORLD, "Muwahahah...\nRain team baby!.\r"
+    trainertextentry   9, TEXT_DEFEATED_IN_BATTLE, "Sonicboom didn't do jack!\n"
+    trainertextentry   9, TEXT_DEFEATED_IN_OVERWORLD, "Heh... my sneaky sonicboom\nstrategy didn't catch ya!\n"
 
 _0C98: // Trainer 85
     trainertextentry  85, TEXT_NOTICE_IN_OVERWORLD, "No inflatable tube for me.\nI’m hanging on to a sea Pokémon!\r"

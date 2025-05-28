@@ -11383,46 +11383,46 @@ superrodrate 0
 walklevels 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2
 
 //morning encounter slots
-pokemon SPECIES_BUIZEL
-pokemon SPECIES_BUIZEL
 pokemon SPECIES_WINGULL
-monwithform SPECIES_WOOPER, 1
+pokemon SPECIES_WINGULL
 pokemon SPECIES_DUCKLETT
-pokemon SPECIES_HOOTHOOT
+pokemon SPECIES_SHELLOS
+pokemon SPECIES_FINIZEN
+pokemon SPECIES_PSYDUCK
 pokemon SPECIES_PANPOUR
 pokemon SPECIES_LOTAD
-pokemon SPECIES_WINGULL
-monwithform SPECIES_WOOPER, 1
-pokemon SPECIES_SENTRET
-pokemon SPECIES_WHISMUR
+pokemon SPECIES_BUIZEL
+pokemon SPECIES_CLAUNCHER
+pokemon SPECIES_DUCKLETT
+pokemon SPECIES_SHELLOS
 
 //day encounter slots
-pokemon SPECIES_BUIZEL
-pokemon SPECIES_BUIZEL
 pokemon SPECIES_WINGULL
-monwithform SPECIES_WOOPER, 1
+pokemon SPECIES_WINGULL
 pokemon SPECIES_DUCKLETT
-pokemon SPECIES_HOOTHOOT
+pokemon SPECIES_SHELLOS
+pokemon SPECIES_FINIZEN
+pokemon SPECIES_PSYDUCK
 pokemon SPECIES_PANPOUR
 pokemon SPECIES_LOTAD
-pokemon SPECIES_WINGULL
-monwithform SPECIES_WOOPER, 1
-pokemon SPECIES_SENTRET
-pokemon SPECIES_WHISMUR
+pokemon SPECIES_BUIZEL
+pokemon SPECIES_CLAUNCHER
+pokemon SPECIES_DUCKLETT
+pokemon SPECIES_SHELLOS
 
 //night encounter slots
-pokemon SPECIES_BUIZEL
-pokemon SPECIES_BUIZEL
 pokemon SPECIES_WINGULL
-monwithform SPECIES_WOOPER, 1
+pokemon SPECIES_WINGULL
 pokemon SPECIES_DUCKLETT
-pokemon SPECIES_HOOTHOOT
+pokemon SPECIES_SHELLOS
+pokemon SPECIES_FINIZEN
+pokemon SPECIES_PSYDUCK
 pokemon SPECIES_PANPOUR
 pokemon SPECIES_LOTAD
-pokemon SPECIES_WINGULL
-monwithform SPECIES_WOOPER, 1
-pokemon SPECIES_SENTRET
-pokemon SPECIES_WHISMUR
+pokemon SPECIES_BUIZEL
+pokemon SPECIES_CLAUNCHER
+pokemon SPECIES_DUCKLETT
+pokemon SPECIES_SHELLOS
 
 //hoenn encounter slots
 pokemon SPECIES_NONE
@@ -13626,7 +13626,7 @@ rocksmashrate 0
 oldrodrate 100
 goodrodrate 0
 superrodrate 0
-walklevels 15, 17, 15, 17, 19, 19, 13, 13, 19, 24, 19, 29
+walklevels 7, 7, 7, 7, 5, 5, 5, 5, 7, 7, 3, 3
 
 //morning encounter slots
 pokemon SPECIES_PIKACHU
@@ -13644,32 +13644,33 @@ monwithform SPECIES_VOLTORB, 1
 
 
 //day encounter slots
-pokemon SPECIES_DIGLETT
-pokemon SPECIES_DIGLETT
-pokemon SPECIES_DIGLETT
-pokemon SPECIES_DIGLETT
-pokemon SPECIES_DIGLETT
-pokemon SPECIES_DIGLETT
-pokemon SPECIES_DIGLETT
-pokemon SPECIES_DIGLETT
-pokemon SPECIES_DUGTRIO
-pokemon SPECIES_DUGTRIO
-pokemon SPECIES_DUGTRIO
-pokemon SPECIES_DUGTRIO
+pokemon SPECIES_PIKACHU
+pokemon SPECIES_PIKACHU
+pokemon SPECIES_PAWMI
+pokemon SPECIES_MAREEP
+pokemon SPECIES_ELECTRIKE
+pokemon SPECIES_BLITZLE
+pokemon SPECIES_ELEKID
+pokemon SPECIES_TYNAMO
+pokemon SPECIES_PAWMI
+pokemon SPECIES_MAREEP
+pokemon SPECIES_MAGNEMITE
+monwithform SPECIES_VOLTORB, 1
 
 //night encounter slots
-pokemon SPECIES_DIGLETT
-pokemon SPECIES_DIGLETT
-pokemon SPECIES_DIGLETT
-pokemon SPECIES_DIGLETT
-pokemon SPECIES_DIGLETT
-pokemon SPECIES_DIGLETT
-pokemon SPECIES_DIGLETT
-pokemon SPECIES_DIGLETT
-pokemon SPECIES_DUGTRIO
-pokemon SPECIES_DUGTRIO
-pokemon SPECIES_DUGTRIO
-pokemon SPECIES_DUGTRIO
+pokemon SPECIES_PIKACHU
+pokemon SPECIES_PIKACHU
+pokemon SPECIES_PAWMI
+pokemon SPECIES_MAREEP
+pokemon SPECIES_ELECTRIKE
+pokemon SPECIES_BLITZLE
+pokemon SPECIES_ELEKID
+pokemon SPECIES_TYNAMO
+pokemon SPECIES_PAWMI
+pokemon SPECIES_MAREEP
+pokemon SPECIES_MAGNEMITE
+monwithform SPECIES_VOLTORB, 1
+
 //hoenn encounter slots
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE

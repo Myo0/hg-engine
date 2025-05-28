@@ -5218,7 +5218,7 @@ levelup SPECIES_WOOPER
     learnset MOVE_MUD_SLAP, 4
     learnset MOVE_WATER_GUN, 5
     learnset MOVE_YAWN, 7
-    learnset MOVE_SOAK, 11
+    learnset MOVE_AQUA_RING, 11
     learnset MOVE_ROCK_TOMB, 13
     learnset MOVE_MUD_SHOT, 16
     learnset MOVE_WATER_PULSE, 18
@@ -7328,7 +7328,7 @@ levelup SPECIES_WINGULL
     learnset MOVE_QUICK_ATTACK, 3
     learnset MOVE_SUPERSONIC, 4
     learnset MOVE_GUST, 7
-    learnset MOVE_SOAK, 9
+    learnset MOVE_AQUA_RING, 9
     learnset MOVE_CHILLING_WATER, 11
     learnset MOVE_TWISTER, 13
     learnset MOVE_AERIAL_ACE, 16

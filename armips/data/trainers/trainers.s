@@ -32,8 +32,8 @@ trainerdata 0, "-"
 
 trainerdata 1, "Silver"
     trainermontype TRAINER_DATA_TYPE_NOTHING
-    trainerclass TRAINERCLASS_IRIS
-    nummons 3
+    trainerclass TRAINERCLASS_BUG_CATCHER
+    nummons 1
     item ITEM_NONE
     item ITEM_NONE
     item ITEM_NONE
@@ -47,22 +47,9 @@ trainerdata 1, "Silver"
         ivs 30
         abilityslot 0
         level 14
-        pokemon SPECIES_GASTLY
+        pokemon SPECIES_TINKATINK
         ballseal 0
 
-        // mon 1
-        ivs 30
-        abilityslot 0
-        level 16
-        pokemon SPECIES_ZUBAT
-        ballseal 0
-
-        // mon 2
-        ivs 30
-        abilityslot 0
-        level 18
-        pokemon SPECIES_BAYLEEF
-        ballseal 0
     endparty
 
 
@@ -568,7 +555,7 @@ trainerdata 9, "Willy"
 		abilityslot 0
 		level 9
 		pokemon SPECIES_CLAMPERL
-		item ITEM_DEEP_SEA_TOOTH
+		item ITEM_DEEP_SEA_SCALE
 		move MOVE_WHIRLPOOL
 		move MOVE_IRON_DEFENSE
 		move MOVE_BUBBLE_BEAM
@@ -600,7 +587,7 @@ trainerdata 10, "P-001"
 		ivs 255
 		abilityslot 32
 		level 10
-		pokemon SPECIES_PANCHAM
+		pokemon SPECIES_MASCHIFF
 		item ITEM_WHITE_HERB
 		move MOVE_THUNDER_FANG
 		move MOVE_SNARL
@@ -713,7 +700,7 @@ trainerdata 12, "P-002"
 		ivs 255
 		abilityslot 32
 		level 9
-		monwithform SPECIES_PONYTA, 1
+		pokemon SPECIES_AMAURA
 		item ITEM_LIGHT_CLAY
 		move MOVE_ROCK_TOMB
 		move MOVE_DOUBLE_HIT
@@ -907,7 +894,7 @@ trainerdata 15, "Juniper"
 		ivs 250
 		abilityslot 32
 		level 11
-		pokemon SPECIES_NUZLEAF
+		pokemon SPECIES_LOMBRE
 		item ITEM_ASSAULT_VEST
 		move MOVE_FAKE_OUT
 		move MOVE_BRINE
