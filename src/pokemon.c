@@ -989,9 +989,10 @@ BOOL LONG_CALL UseItemOnPokemon(struct PartyPokemon *mon, u16 itemID, u16 moveId
     if (GetItemAttr_PreloadedItemData(itemData, ITEM_PARAM_LEVEL_UP)) {        
         if (sp5C < GetLevelCap()) {
             u16 species = (u16)GetMonData(mon, MON_DATA_SPECIES, NULL);
-            // u8 level = (u8)(GetMonData(mon, MON_DATA_LEVEL, NULL) + 1);            
+            u8 level = (u8)(GetMonData(mon, MON_DATA_LEVEL, NULL) + 1);            
             u32 growthrate = (u32)PokePersonalParaGet(species, PERSONAL_EXP_GROUP);
-            u32 maxexp = GetExpByGrowthRateAndLevel((int)growthrate, GetLevelCap());
+            //u32 maxexp = GetExpByGrowthRateAndLevel((int)growthrate, GetLevelCap());
+            u32 maxexp = GetExpByGrowthRateAndLevel((int)growthrate, level);
             if(itemData->holdEffectParam > 0) {
                 u32 exp = GetMonData(mon, MON_DATA_EXPERIENCE, NULL);
                 if (exp + itemData->holdEffectParam > maxexp) {

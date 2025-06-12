@@ -516,10 +516,19 @@ _03E8: // Trainer 261
     trainertextentry 261, TEXT_DEFEATED_IN_BATTLE, "This is the real power of Johto...\n"
 
 _03F4: // Trainer 253
-    trainertextentry   253, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_1, "Stupid Johto doesn't have\nany hot women!!\r"
-    trainertextentry   253, TEXT_DOUBLE_DEFEATED_IN_BATTLE_1, "You were hotter\nthan lava!"
-    trainertextentry   253, TEXT_DOUBLE_DEFEATED_IN_OVERWORLD_1, "Gross, why did I visit Johto...?\n"
-    trainertextentry   253, TEXT_REMATCH_IN_OVERWORLD, "I’ve been waiting!\nLet’s battle now!\r"
+    //trainertextentry   253, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_1, "My homeland was destroyed!\nNow I'm stuck in Johto!\r"
+    //trainertextentry   253, TEXT_DOUBLE_DEFEATED_IN_BATTLE_1, "I've been rocked!\n"
+    //trainertextentry   253, TEXT_DOUBLE_DEFEATED_IN_OVERWORLD_1, "Man... I miss Pewter City.\n"
+    //trainertextentry   253, TEXT_REMATCH_IN_OVERWORLD, "I’ve been waiting!\nLet’s battle now!\r"
+
+    trainertextentry 253, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_1, "My homeland was destroyed!\nNow I'm stuck in Johto!\r"
+    trainertextentry 253, TEXT_DOUBLE_DEFEATED_IN_BATTLE_1, "I've been rocked!\n"
+    trainertextentry 253, TEXT_DOUBLE_DEFEATED_IN_OVERWORLD_1, "Man... I miss Pewter City.\n"
+    trainertextentry 253, TEXT_DOUBLE_ONLY_1_POKEMON_1, "You need two Pokemon\nfor double battles.\n"
+    trainertextentry 253, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_2, "Geodude: Dude!\r"
+    trainertextentry 253, TEXT_DOUBLE_DEFEATED_IN_BATTLE_2, "Geodude: dude...\n"
+    trainertextentry 253, TEXT_DOUBLE_DEFEATED_IN_OVERWORLD_2, "Geodude: dude...\n"
+    trainertextentry 253, TEXT_DOUBLE_ONLY_1_POKEMON_2, "Geodude: Dude!\n"
 
 _0400: // Trainer 254
     trainertextentry 254, TEXT_LAST_MON_SENT_OUT, "Hmm... You’re pretty good...\n"

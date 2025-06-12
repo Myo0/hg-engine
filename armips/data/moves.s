@@ -9346,7 +9346,7 @@ movedata MOVE_GRASSY_TERRAIN, "Grassy Terrain"
     basepower 0
     type TYPE_GRASS
     accuracy 0
-    pp 5
+    pp 1
     effectchance 0
     target RANGE_FIELD
     priority 0
@@ -9362,7 +9362,7 @@ movedata MOVE_MISTY_TERRAIN, "Misty Terrain"
     basepower 0
     type (FAIRY_TYPE_IMPLEMENTED) ? TYPE_FAIRY : TYPE_NORMAL
     accuracy 0
-    pp 5
+    pp 1
     effectchance 0
     target RANGE_FIELD
     priority 0
@@ -9730,7 +9730,7 @@ movedatalongname MOVE_ELECTRIC_TERRAIN, "ElectricTerrain", "Electric Terrain"
     basepower 0
     type TYPE_ELECTRIC
     accuracy 0
-    pp 5
+    pp 1
     effectchance 0
     target RANGE_FIELD
     priority 0
@@ -10914,7 +10914,7 @@ movedata MOVE_PSYCHIC_TERRAIN, "Psychic Terrain"
     basepower 0
     type TYPE_PSYCHIC
     accuracy 0
-    pp 5
+    pp 1
     effectchance 0
     target RANGE_FIELD
     priority 0

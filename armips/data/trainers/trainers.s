@@ -11394,7 +11394,7 @@ trainerdata 252, "Harold"
 trainerdata 253, "Brock"
 	trainermontype TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET | TRAINER_DATA_TYPE_NATURE_SET | TRAINER_DATA_TYPE_NATURE_SET | TRAINER_DATA_TYPE_SHINY_LOCK
 	trainerclass TRAINERCLASS_BROCK
-	nummons 4
+	nummons 2
 	item ITEM_NONE
 	item ITEM_NONE
 	item ITEM_NONE
@@ -11406,65 +11406,33 @@ trainerdata 253, "Brock"
 	party 253// mon 0
 		ivs 250
 		abilityslot 32
-		level 6
-		pokemon SPECIES_GEODUDE
+		level 1
+		monwithform SPECIES_GEODUDE, 1
 		item ITEM_NONE
-		move MOVE_ROCK_BLAST
-		move MOVE_MUD_SLAP
+		move MOVE_TACKLE
 		move MOVE_DEFENSE_CURL
+		move MOVE_NONE
 		move MOVE_NONE
 		ability ABILITY_ROCK_HEAD
 		setivs 31, 31, 31, 31, 31, 31 // hp, atk, def, spe, spatk, spdef
-		setevs 100, 0, 0, 0, 0, 0
-		nature NATURE_RELAXED
-		shinylock 1
+		setevs 0, 0, 0, 0, 0, 0
+		nature NATURE_HARDY
+		shinylock 0
 		ballseal 16
 	// mon 1
 		ivs 250
 		abilityslot 32
-		level 6
-		pokemon SPECIES_ROGGENROLA
+		level 1
+		pokemon SPECIES_ONIX
 		item ITEM_NONE
-		move MOVE_TACKLE
+		move MOVE_WRAP
 		move MOVE_HARDEN
 		move MOVE_SANDSTORM
 		move MOVE_NONE
 		ability ABILITY_STURDY
 		setivs 31, 31, 31, 31, 31, 31 // hp, atk, def, spe, spatk, spdef
-		setevs 252, 0, 0, 0, 0, 0
-		nature NATURE_RELAXED
-		shinylock 0
-		ballseal 16
-	// mon 2
-		ivs 250
-		abilityslot 32
-		level 6
-		pokemon SPECIES_DWEBBLE
-		item ITEM_NONE
-		move MOVE_ROCK_THROW
-		move MOVE_FURY_CUTTER
-		move MOVE_SHARPEN
-		move MOVE_NONE
-		ability ABILITY_STURDY
-		setivs 31, 31, 31, 31, 31, 31 // hp, atk, def, spe, spatk, spdef
-		setevs 0, 0, 0, 0, 0, 252
-		nature NATURE_RELAXED
-		shinylock 0
-		ballseal 16
-	//mon 3
-		ivs 250
-		abilityslot 32
-		level 6
-		pokemon SPECIES_CRANIDOS
-		item ITEM_SHELL_BELL
-		move MOVE_HEADBUTT
-		move MOVE_FOCUS_ENERGY
-		move MOVE_ROCK_POLISH
-		move MOVE_NONE
-		ability ABILITY_MOLD_BREAKER
-		setivs 31, 31, 31, 31, 31, 31 // hp, atk, def, spe, spatk, spdef
-		setevs 0, 0, 252, 252, 0, 0
-		nature NATURE_JOLLY
+		setevs 0, 0, 0, 0, 0, 0
+		nature NATURE_HARDY
 		shinylock 0
 		ballseal 16
 	endparty
