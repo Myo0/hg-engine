@@ -20816,7 +20816,7 @@ mondata SPECIES_WATTREL, "Wattrel"
     basefriendship 50
     growthrate GROWTH_MEDIUM_SLOW
     egggroups EGG_GROUP_WATER_1, EGG_GROUP_FLYING
-    abilities ABILITY_WIND_POWER, ABILITY_VOLT_ABSORB
+    abilities ABILITY_VOLT_ABSORB, ABILITY_VOLT_ABSORB
     runchance 0
     colorflip BODY_COLOR_BLACK, 0
     mondexentry SPECIES_WATTREL, "These Pokémon make their nests on coastal\ncliffs. The nests have a strange, crackling\ntexture, and they're a popular delicacy."
