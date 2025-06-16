@@ -768,6 +768,11 @@ int BasicFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
         moveScore -= 50; //taunted, so no status moves
     }
 
+    if(ctx->battlemon[ai->attacker].moveeffect.disabledMove == ai->attackerMove &&
+        ctx->battlemon[ai->attacker].moveeffect.disabledTurns > 0){
+        moveScore -= 40; //disabled, will softlock
+    }
+
 
     /*Check for ai->defender type immunities.*/
     if(ai->attackerMoveEffectiveness == MOVE_STATUS_FLAG_NOT_EFFECTIVE){
