@@ -11599,8 +11599,8 @@ evodata SPECIES_QUAQUAVAL
 terminateevodata
 
 evodata SPECIES_LECHONK
-    evolutionwithform EVO_LEVEL_MALE, 18, SPECIES_OINKOLOGNE, 0
-    evolutionwithform EVO_LEVEL_FEMALE, 18, SPECIES_OINKOLOGNE, 1
+    evolutionwithform EVO_LEVEL_MALE, 25, SPECIES_OINKOLOGNE, 0
+    evolutionwithform EVO_LEVEL_FEMALE, 25, SPECIES_OINKOLOGNE, 1
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
