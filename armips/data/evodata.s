@@ -2604,7 +2604,7 @@ evodata SPECIES_SNEASEL
     terminateevodata
 
 evodata SPECIES_TEDDIURSA
-    evolution EVO_LEVEL, 30, SPECIES_URSARING
+    evolution EVO_LEVEL, 100, SPECIES_URSARING
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
@@ -6688,7 +6688,7 @@ evodata SPECIES_WATCHOG
     terminateevodata
 
 evodata SPECIES_LILLIPUP
-    evolution EVO_LEVEL, 16, SPECIES_HERDIER
+    evolution EVO_LEVEL, 14, SPECIES_HERDIER
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
@@ -6700,7 +6700,7 @@ evodata SPECIES_LILLIPUP
     terminateevodata
 
 evodata SPECIES_HERDIER
-    evolution EVO_LEVEL, 32, SPECIES_STOUTLAND
+    evolution EVO_LEVEL, 100, SPECIES_STOUTLAND
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
@@ -10445,7 +10445,7 @@ evodata SPECIES_INTELEON
 terminateevodata
 
 evodata SPECIES_SKWOVET
-    evolution EVO_LEVEL, 24, SPECIES_GREEDENT
+    evolution EVO_LEVEL, 22, SPECIES_GREEDENT
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
@@ -10589,7 +10589,7 @@ evodata SPECIES_ELDEGOSS
 terminateevodata
 
 evodata SPECIES_WOOLOO
-    evolution EVO_LEVEL, 24, SPECIES_DUBWOOL
+    evolution EVO_LEVEL, 30, SPECIES_DUBWOOL
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
