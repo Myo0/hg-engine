@@ -413,9 +413,9 @@ movedata MOVE_DOUBLE_KICK, "Double Kick"
 movedata MOVE_MEGA_KICK, "Mega Kick"
     battleeffect MOVE_EFFECT_HIT
     pss SPLIT_PHYSICAL
-    basepower 120
+    basepower 110
     type TYPE_NORMAL
-    accuracy 75
+    accuracy 85
     pp 5
     effectchance 0
     target RANGE_SINGLE_TARGET
@@ -1071,7 +1071,7 @@ movedata MOVE_SUBMISSION, "Submission"
     pss SPLIT_PHYSICAL
     basepower 80
     type TYPE_FIGHTING
-    accuracy 90
+    accuracy 100
     pp 10
     effectchance 0
     target RANGE_SINGLE_TARGET
@@ -3280,7 +3280,7 @@ movedata MOVE_CHARM, "Charm"
     basepower 0
     type FAIRY_TYPE_IMPLEMENTED ? TYPE_FAIRY : TYPE_NORMAL
     accuracy 100
-    pp 3
+    pp 2
     effectchance 0
     target RANGE_SINGLE_TARGET
     priority 0
@@ -4799,7 +4799,7 @@ movedata MOVE_BLAZE_KICK, "Blaze Kick"
     pss SPLIT_PHYSICAL
     basepower 85
     type TYPE_FIRE
-    accuracy 90
+    accuracy 100
     pp 10
     effectchance 10
     target RANGE_SINGLE_TARGET

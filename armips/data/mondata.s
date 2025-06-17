@@ -2798,7 +2798,7 @@ mondata SPECIES_DITTO, "Ditto"
     basefriendship 50
     growthrate GROWTH_MEDIUM_FAST
     egggroups EGG_GROUP_DITTO, EGG_GROUP_DITTO
-    abilities ABILITY_LIMBER, ABILITY_NONE
+    abilities ABILITY_LIMBER, ABILITY_PRANKSTER
     runchance 0
     colorflip BODY_COLOR_PURPLE, 0
     mondexentry SPECIES_DITTO, "It can transform into anything.\nWhen it sleeps, it changes into a\nstone to avoid being attacked."
@@ -4016,7 +4016,7 @@ mondata SPECIES_AIPOM, "Aipom"
     basefriendship 70
     growthrate GROWTH_FAST
     egggroups EGG_GROUP_FIELD, EGG_GROUP_FIELD
-    abilities ABILITY_RUN_AWAY, ABILITY_PICKUP
+    abilities ABILITY_RUN_AWAY, ABILITY_TECHNICIAN
     runchance 0
     colorflip BODY_COLOR_PURPLE, 0
     mondexentry SPECIES_AIPOM, "Its tail is so powerful that it can\nuse it to grab a tree branch and\nhold itself up in the air."
@@ -4877,7 +4877,7 @@ mondata SPECIES_PHANPY, "Phanpy"
     basefriendship 70
     growthrate GROWTH_MEDIUM_FAST
     egggroups EGG_GROUP_FIELD, EGG_GROUP_FIELD
-    abilities ABILITY_PICKUP, ABILITY_NONE
+    abilities ABILITY_ROCK_HEAD, ABILITY_NONE
     runchance 0
     colorflip BODY_COLOR_BLUE, 0
     mondexentry SPECIES_PHANPY, "It swings its long snout around\nplayfully, but because it is so\nstrong, that can be dangerous."
@@ -9455,7 +9455,7 @@ mondata SPECIES_HIPPOPOTAS, "Hippopotas"
     basefriendship 50
     growthrate GROWTH_SLOW
     egggroups EGG_GROUP_FIELD, EGG_GROUP_FIELD
-    abilities ABILITY_SAND_STREAM, ABILITY_NONE
+    abilities ABILITY_SAND_VEIL, ABILITY_NONE
     runchance 0
     colorflip BODY_COLOR_BROWN, 0
     mondexentry SPECIES_HIPPOPOTAS, "It shrouds itself in sand to ward off\ngerms. It travels easily through the\nsands of the desert."
@@ -13466,7 +13466,7 @@ mondata SPECIES_FOONGUS, "Foongus"
     basefriendship 50
     growthrate GROWTH_MEDIUM_FAST
     egggroups EGG_GROUP_GRASS, EGG_GROUP_GRASS
-    abilities ABILITY_EFFECT_SPORE, ABILITY_NONE
+    abilities ABILITY_EFFECT_SPORE, ABILITY_REGENERATOR
     runchance 0
     colorflip BODY_COLOR_WHITE, 0
     mondexentry SPECIES_FOONGUS, "It lures Pokémon with its pattern\nthat looks just like a Poké Ball\nthen releases poison spores."
@@ -14243,7 +14243,7 @@ mondata SPECIES_RUFFLET, "Rufflet"
     basefriendship 50
     growthrate GROWTH_SLOW
     egggroups EGG_GROUP_FLYING, EGG_GROUP_FLYING
-    abilities ABILITY_KEEN_EYE, ABILITY_SHEER_FORCE
+    abilities ABILITY_KEEN_EYE, ABILITY_HUSTLE
     runchance 0
     colorflip BODY_COLOR_WHITE, 0
     mondexentry SPECIES_RUFFLET, "It stands up to massive opponents, not\nout of courage, but out of recklessness.\nBut that is how it gets stronger."
@@ -15986,7 +15986,7 @@ mondata SPECIES_PUMPKABOO, "Pumpkaboo"
     basefriendship 50
     growthrate GROWTH_MEDIUM_FAST
     egggroups EGG_GROUP_AMORPHOUS, EGG_GROUP_AMORPHOUS
-    abilities ABILITY_PICKUP, ABILITY_FRISK
+    abilities ABILITY_CURSED_BODY, ABILITY_FRISK
     runchance 0
     colorflip BODY_COLOR_BROWN, 0
     mondexentry SPECIES_PUMPKABOO, "It is said to carry wandering spirits\nto the place where they belong so they\ncan move on."
@@ -16427,7 +16427,7 @@ mondata SPECIES_PIKIPEK, "Pikipek"
     basefriendship 70
     growthrate GROWTH_MEDIUM_FAST
     egggroups EGG_GROUP_FLYING, EGG_GROUP_FLYING
-    abilities ABILITY_KEEN_EYE, ABILITY_SKILL_LINK
+    abilities ABILITY_KEEN_EYE, ABILITY_BIG_PECKS
     runchance 0
     colorflip BODY_COLOR_BLACK, 0
     mondexentry SPECIES_PIKIPEK, "It may look spindly, but its neck\nmuscles are heavy-duty. It can peck at a\ntree 16 times per second!"
@@ -16448,7 +16448,7 @@ mondata SPECIES_TRUMBEAK, "Trumbeak"
     basefriendship 70
     growthrate GROWTH_MEDIUM_FAST
     egggroups EGG_GROUP_FLYING, EGG_GROUP_FLYING
-    abilities ABILITY_KEEN_EYE, ABILITY_SKILL_LINK
+    abilities ABILITY_KEEN_EYE, ABILITY_BIG_PECKS
     runchance 0
     colorflip BODY_COLOR_BLACK, 0
     mondexentry SPECIES_TRUMBEAK, "It can bend the tip of its beak to\nproduce over a hundred different cries\nat will."
@@ -20942,7 +20942,7 @@ mondata SPECIES_BRAMBLIN, "Bramblin"
     basefriendship 50
     growthrate GROWTH_MEDIUM_FAST
     egggroups EGG_GROUP_GRASS, EGG_GROUP_GRASS
-    abilities ABILITY_WIND_RIDER, ABILITY_NONE
+    abilities ABILITY_CURSED_BODY, ABILITY_NONE
     runchance 0
     colorflip BODY_COLOR_BROWN, 0
     mondexentry SPECIES_BRAMBLIN, "Not even Bramblin knows where it is headed\nas it tumbles across the wilderness, blown\nby the wind. It loathes getting wet."
@@ -25616,7 +25616,7 @@ mondata SPECIES_PUMPKABOO_LARGE, "-----"
     basefriendship 70
     growthrate GROWTH_MEDIUM_FAST
     egggroups EGG_GROUP_AMORPHOUS, EGG_GROUP_AMORPHOUS
-    abilities ABILITY_PICKUP,  ABILITY_FRISK
+    abilities ABILITY_CURSED_BODY, ABILITY_FRISK
     runchance 0
     colorflip BODY_COLOR_BROWN, 0
 
@@ -25632,7 +25632,7 @@ mondata SPECIES_PUMPKABOO_SUPER, "-----"
     basefriendship 70
     growthrate GROWTH_MEDIUM_FAST
     egggroups EGG_GROUP_AMORPHOUS, EGG_GROUP_AMORPHOUS
-    abilities ABILITY_PICKUP,  ABILITY_FRISK
+    abilities ABILITY_CURSED_BODY, ABILITY_FRISK
     runchance 0
     colorflip BODY_COLOR_BROWN, 0
 
