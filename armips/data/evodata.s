@@ -3720,7 +3720,7 @@ evodata SPECIES_MEDICHAM
     terminateevodata
 
 evodata SPECIES_ELECTRIKE
-    evolution EVO_LEVEL, 26, SPECIES_MANECTRIC
+    evolution EVO_LEVEL, 100, SPECIES_MANECTRIC
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
@@ -4776,7 +4776,7 @@ evodata SPECIES_STARLY
     terminateevodata
 
 evodata SPECIES_STARAVIA
-    evolution EVO_LEVEL, 34, SPECIES_STARAPTOR
+    evolution EVO_LEVEL, 100, SPECIES_STARAPTOR
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
@@ -13641,7 +13641,7 @@ evodata SPECIES_DUGTRIO_ALOLAN
 terminateevodata
 
 evodata SPECIES_MEOWTH_ALOLAN
-    evolutionwithform EVO_FRIENDSHIP, 0, SPECIES_PERSIAN, 1
+    evolutionwithform EVO_LEVEL, 28, SPECIES_PERSIAN, 1
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
