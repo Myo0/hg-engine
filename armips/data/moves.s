@@ -447,7 +447,7 @@ movedata MOVE_ROLLING_KICK, "Rolling Kick"
     pss SPLIT_PHYSICAL
     basepower 60
     type TYPE_FIGHTING
-    accuracy 85
+    accuracy 95
     pp 10
     effectchance 30
     target RANGE_SINGLE_TARGET
@@ -1696,7 +1696,7 @@ movedata MOVE_RECOVER, "Recover"
     basepower 0
     type TYPE_NORMAL
     accuracy 0
-    pp 5
+    pp 3
     effectchance 0
     target RANGE_USER
     priority 0
@@ -2176,7 +2176,7 @@ movedata MOVE_SOFT_BOILED, "Soft-Boiled"
     basepower 0
     type TYPE_NORMAL
     accuracy 0
-    pp 5
+    pp 3
     effectchance 0
     target RANGE_USER
     priority 0
@@ -3344,7 +3344,7 @@ movedata MOVE_MILK_DRINK, "Milk Drink"
     basepower 0
     type TYPE_NORMAL
     accuracy 0
-    pp 5
+    pp 3
     effectchance 0
     target RANGE_USER
     priority 0
@@ -3760,7 +3760,7 @@ movedata MOVE_MORNING_SUN, "Morning Sun"
     basepower 0
     type TYPE_FIRE
     accuracy 0
-    pp 5
+    pp 3
     effectchance 0
     target RANGE_USER
     priority 0
@@ -3776,7 +3776,7 @@ movedata MOVE_SYNTHESIS, "Synthesis"
     basepower 0
     type TYPE_GRASS
     accuracy 0
-    pp 5
+    pp 3
     effectchance 0
     target RANGE_USER
     priority 0
@@ -3792,7 +3792,7 @@ movedata MOVE_MOONLIGHT, "Moonlight"
     basepower 0
     type FAIRY_TYPE_IMPLEMENTED ? TYPE_FAIRY : TYPE_NORMAL
     accuracy 0
-    pp 5
+    pp 3
     effectchance 0
     target RANGE_USER
     priority 0
@@ -4864,7 +4864,7 @@ movedata MOVE_SLACK_OFF, "Slack Off"
     basepower 0
     type TYPE_NORMAL
     accuracy 0
-    pp 5
+    pp 3
     effectchance 0
     target RANGE_USER
     priority 0
@@ -7313,7 +7313,7 @@ movedata MOVE_HEAL_ORDER, "Heal Order"
     basepower 0
     type TYPE_BUG
     accuracy 0
-    pp 5
+    pp 3
     effectchance 0
     target RANGE_USER
     priority 0
@@ -10754,7 +10754,7 @@ movedata MOVE_STRENGTH_SAP, "Strength Sap"
     basepower 0
     type TYPE_GRASS
     accuracy 100
-    pp 5
+    pp 3
     effectchance 100
     target RANGE_SINGLE_TARGET
     priority 0
@@ -14253,7 +14253,7 @@ movedata MOVE_CHILLING_WATER, "Chilling Water"
     movedescription MOVE_CHILLING_WATER, "---"
 
 movedata MOVE_HYPER_DRILL, "Hyper Drill"
-    battleeffect MOVE_EFFECT_HIT
+    battleeffect 103
     pss SPLIT_PHYSICAL
     basepower 100
     type TYPE_NORMAL
