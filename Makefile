@@ -1,7 +1,7 @@
 # Makefile
 
 ROMNAME = rom.nds
-BUILDROM = withG5SpritesKemi.nds
+BUILDROM = withLevelCapToggle.nds
 
 DESIRED_GAMECODE := IPKE
 GAMECODE = $(shell dd bs=1 skip=12 count=4 if=$(ROMNAME) status=none)

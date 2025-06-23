@@ -3319,7 +3319,7 @@ int LONG_CALL BattleAI_PostKOSwitchIn(struct BattleSystem *battleSys, int battle
                     currentDamage = AI_CalcBaseDamage(battleSys, battleCtx, move, battleCtx->side_condition[BATTLER_IS_ENEMY(defender)],
                      battleCtx->field_condition, battleCtx->moveTbl[move].power, battleCtx->moveTbl[move].type, battler, defender, 0, 1, 0, mon);
                      debug_printf("BEFORE TYPE MOD: operating on %d which can deal  %d damage with move slot %d\n",i, currentDamage, j);
-                    currentDamage = AI_ServerDoTypeCalcMod(battleSys, battleCtx, move, battleCtx->moveTbl[move].type, battler, defender, currentDamage, &moveStatusFlags, 1, 0, mon) * 85 / 100;
+                    currentDamage = AI_ServerDoTypeCalcMod(battleSys, battleCtx, move, battleCtx->moveTbl[move].type, battler, defender, currentDamage, &moveStatusFlags, 1, 0, mon);// * 85 / 100 for min roll
                     debug_printf("AFTER TYPE MOD: operating on %d which can deal  %d damage with move slot %d\n",i, currentDamage, j);
 
                 }
@@ -3339,7 +3339,7 @@ int LONG_CALL BattleAI_PostKOSwitchIn(struct BattleSystem *battleSys, int battle
                 if(battleCtx->moveTbl[defenderMove].split != SPLIT_STATUS && battleCtx->moveTbl[defenderMove].power){
                     currentDamage = AI_CalcBaseDamage(battleSys, battleCtx, defenderMove, battleCtx->side_condition[BATTLER_IS_ENEMY(battler)],
                      battleCtx->field_condition, battleCtx->moveTbl[defenderMove].power, battleCtx->moveTbl[defenderMove].type, defender, battler, 0, 0, 1, mon);
-                     currentDamage = AI_ServerDoTypeCalcMod(battleSys, battleCtx, defenderMove, battleCtx->moveTbl[defenderMove].type, defender, battler, currentDamage, &moveStatusFlags, 0, 1, mon) * 85 / 100;
+                     currentDamage = AI_ServerDoTypeCalcMod(battleSys, battleCtx, defenderMove, battleCtx->moveTbl[defenderMove].type, defender, battler, currentDamage, &moveStatusFlags, 0, 1, mon); // * 85 / 100
                 }
                 if(currentDamage > minRollMaxDamageReceived[i]){
                     minRollMaxDamageReceived[i] = currentDamage;

@@ -1496,6 +1496,16 @@
 #define SEQ_VS_DIALGA_DPPT                  2503
 #define SEQ_NUVEMA_TOWN_HD                  2504
 #define SEQ_VS_DEOXYS                       2505
+#define SEQ_VS_GALACTIC                     2506
+#define SEQ_SAGE                            2507
+#define SEQ_CHARGESTONE_CAVE                2508
+#define SEQ_N_CASTLE_BETTER                 2509
+#define SEQ_SUBWAY_TRAINER                  2510
+#define SEQ_PLASMA_FRIGATE                  2511
+#define SEQ_PLASMA_FRIGATE_DECK             2512
+#define SEQ_PLASMA_FRIGATE_CONTROL_ROOM     2513
+#define SEQ_EYE_ZINZOLIN                    2514
+
 
 
 //Sounds marked BANK, WAVE, PLAYER, GROUP not ported over from pokeheartgold/include/constants/sndseq.h
@@ -1522,7 +1532,7 @@ enum {
     ANIM_MUSIC_COMBO_BRUNO,
     ANIM_MUSIC_COMBO_KAREN,
     ANIM_MUSIC_COMBO_ZINZOLIN,
-    ANIM_MUSIC_COMBO_IRIS,
+    ANIM_MUSIC_COMBO_MIASMA,
     ANIM_MUSIC_COMBO_RAIKOU,
     ANIM_MUSIC_COMBO_ENTEI,
     ANIM_MUSIC_COMBO_SUICUNE,

@@ -21041,7 +21041,7 @@ levelup SPECIES_CUFANT
     learnset MOVE_GYRO_BALL, 3
     learnset MOVE_ROCK_BLAST, 5
     learnset MOVE_ROLLOUT, 6
-    learnset MOVE_BRUTAL_SWING 8
+    learnset MOVE_BRUTAL_SWING, 8
     learnset MOVE_STOMP, 11
     learnset MOVE_MAGNET_BOMB, 13
     learnset MOVE_ROCK_TOMB, 15
