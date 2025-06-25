@@ -943,7 +943,7 @@ rocksmashrate 0
 oldrodrate 100
 goodrodrate 0
 superrodrate 0
-walklevels 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21
+walklevels 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3
 
 //morning encounter slots
 pokemon SPECIES_RALTS

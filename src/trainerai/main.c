@@ -3170,11 +3170,11 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
     /*Endure
     IRIDIUM: This sucks lmao, changing it to be defender-aware*/
     else if(ai->attackerMoveEffect == MOVE_EFFECT_SURVIVE_WITH_1_HP){
-        
+        debug_printf("In endure\n")
         if(ctx->battlemon[ai->attacker].moveeffect.protectSuccessTurns >= 1){
             moveScore -= 5;
         }
-        else if((ai->maxDamageReceived > ai->attackerHP) && ai->defenderMovesFirst){ //this is prioritized over a non-priority kill
+        else if((ai->maxDamageReceived > ai->attackerHP)){
             moveScore += 7;
         }
         else{
@@ -5883,11 +5883,15 @@ void SetupStateVariables(struct BattleSystem *bsys, u32 attacker, u32 defender, 
     for (int i = 0; i < GetBattlerLearnedMoveCount(bsys, ctx, ai->defender); i++){
         specialMovePower = 0;
         if(ctx->moveTbl[ctx->battlemon[ai->defender].move[i]].split != SPLIT_STATUS){
-            specialMovePower = AdjustUnusualMovePower(bsys, ai->defender, ai->attacker, attackerEffectCheck, ai);
+            specialMovePower = AdjustUnusualMovePower(bsys, ai->defender, ai->attacker, ctx->moveTbl[ctx->battlemon[ai->defender].move[i]].effect, ai);
             currentReceivedDamage = CalcBaseDamage(bsys, ctx, ctx->battlemon[ai->defender].move[i], ctx->side_condition[ai->attackerSide],ctx->field_condition, specialMovePower, 0, ai->defender, ai->attacker, 0, 0, 0, NULL);
+            debug_printf("base damage received for move index %d is: %d\n", i, currentReceivedDamage);
             currentReceivedDamage = ServerDoTypeCalcMod(bsys, ctx, ctx->battlemon[ai->defender].move[i], 0, ai->defender, ai->attacker, currentReceivedDamage, &temp); // looking at MIN roll. //*85 / 100 for min roll
-            currentReceivedDamage = AdjustUnusualMoveDamage(bsys, ai->defender, ai->attacker, currentReceivedDamage, ctx->battlemon[ai->defender].move[i], ai);
+            debug_printf("typed damage received for move index %d is: %d\n", i, currentReceivedDamage);
+            currentReceivedDamage = AdjustUnusualMoveDamage(bsys, ai->defender, ai->attacker, currentReceivedDamage, ctx->moveTbl[ctx->battlemon[ai->defender].move[i]].effect, ai);
+            debug_printf("damage received for move index %d is: %d\n", i, currentReceivedDamage);
             if(currentReceivedDamage > ai->maxDamageReceived){
+                
                 ai->maxDamageReceived = currentReceivedDamage;
             }
         }
@@ -5938,17 +5942,19 @@ void SetupStateVariables(struct BattleSystem *bsys, u32 attacker, u32 defender, 
 /*Adjusts the computed damage for attacks like multihit or flat damage moves.*/
 int AdjustUnusualMoveDamage(struct BattleSystem *bsys, u32 attacker, u32 defender, int damage, int moveEffect, AIContext *ai){
     struct BattleStruct *ctx = bsys->sp;
+    debug_printf("moveeffect in unusualdamage is: %d\n", moveEffect);
     switch(moveEffect){
         case MOVE_EFFECT_MULTI_HIT: //2-5 hit moves
-            if(ai->attackerAbility == ABILITY_SKILL_LINK){
+            if(ctx->battlemon[attacker].ability == ABILITY_SKILL_LINK){
                 return damage *= 5; //skill link guarantees 5 hits
             }
-            if(ai->attackerItem == ITEM_LOADED_DICE){
+            if(ctx->battlemon[attacker].item == ITEM_LOADED_DICE){
                 return damage *= 4;
             }
             return damage *= 3;
         case MOVE_EFFECT_LEVEL_DAMAGE_FLAT: //night shade, seismic toss
         case MOVE_EFFECT_RANDOM_DAMAGE_1_TO_150_LEVEL: //psybeam
+            debug_printf("Setting defender's HP to attacker's level in AdjustUnusualMoveDamage\n");
             return ctx->battlemon[attacker].level;
         case MOVE_EFFECT_10_DAMAGE_FLAT: //sonic boom
             return 20;
@@ -5956,11 +5962,17 @@ int AdjustUnusualMoveDamage(struct BattleSystem *bsys, u32 attacker, u32 defende
             return 40;
         case MOVE_EFFECT_POISON_MULTI_HIT: //twinneedle
         case MOVE_EFFECT_HIT_TWICE: //double hit, dual wingbeat, etc...
+            debug_printf("Setting defender's HP to half in AdjustUnusualMoveDamage\n");
             return damage *= 2;
+            
         case MOVE_EFFECT_HALVE_HP: //super fang, nature's madness
-            return ai->defenderHP / 2;
+            debug_printf("Setting defender's HP to half in AdjustUnusualMoveDamage\n");
+            return ctx->battlemon[defender].hp / 2;
         case MOVE_EFFECT_SET_HP_EQUAL_TO_USER: //endeavor
-            return ai->defenderHP - ai->attackerHP;
+            debug_printf("Setting defender's HP equal to attacker's HP in AdjustUnusualMoveDamage\n");
+            return ctx->battlemon[defender].hp - ctx->battlemon[attacker].hp;
+        default:
+            return damage;
     }
     return damage;
 }

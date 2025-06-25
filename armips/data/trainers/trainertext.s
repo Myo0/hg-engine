@@ -1800,14 +1800,32 @@ _1020: // Trainer 53
     trainertextentry  53, TEXT_DEFEATED_IN_OVERWORLD, "As Pokémon grow stronger, so does\nthe Trainer.\rNo, wait. As the Trainer grows\nstronger, so do the Pokémon.\n"
 
 _102C: // Trainer 54
-    trainertextentry  54, TEXT_NOTICE_IN_OVERWORLD, "Let me see how much you trust\nyour Pokémon.\r"
-    trainertextentry  54, TEXT_DEFEATED_IN_BATTLE, "Yes, your trust is real!\n"
-    trainertextentry  54, TEXT_DEFEATED_IN_OVERWORLD, "It is not far to the Elder.\n"
+    trainertextentry 54, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_1, "Let me see how much you trust\nyour Pokémon.\r"
+    trainertextentry 54, TEXT_DOUBLE_DEFEATED_IN_BATTLE_1, "Yes, your trust is real!\n"
+    trainertextentry 54, TEXT_DOUBLE_DEFEATED_IN_OVERWORLD_1, "It is not far to the Elder.\n"
+    trainertextentry 54, TEXT_DOUBLE_ONLY_1_POKEMON_1, "You need two Pokemon.\n"
+    trainertextentry 54, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_2, "Pansage: SAGE!\r"
+    trainertextentry 54, TEXT_DOUBLE_DEFEATED_IN_BATTLE_2, "Pansage: pan...\n"
+    trainertextentry 54, TEXT_DOUBLE_DEFEATED_IN_OVERWORLD_2, "Pansage: pan...\n"
+    trainertextentry 54, TEXT_DOUBLE_ONLY_1_POKEMON_2, "Pansage: SAGE!\n"
+
+    //trainertextentry  54, TEXT_NOTICE_IN_OVERWORLD, "Let me see how much you trust\nyour Pokémon.\r"
+    //trainertextentry  54, TEXT_DEFEATED_IN_BATTLE, "Yes, your trust is real!\n"
+    //trainertextentry  54, TEXT_DEFEATED_IN_OVERWORLD, "It is not far to the Elder.\n"
 
 _1038: // Trainer 52
-    trainertextentry  52, TEXT_NOTICE_IN_OVERWORLD, "I sway like leaves in the wind...\r"
-    trainertextentry  52, TEXT_DEFEATED_IN_BATTLE, "Oh, I’m weak!\n"
-    trainertextentry  52, TEXT_DEFEATED_IN_OVERWORLD, "I tried to copy Bellsprout’s gentle\nmovements for battle...\rBut I didn’t train well enough.\n"
+    trainertextentry 52, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_1, "I sway like leaves in the wind...\r"
+    trainertextentry 52, TEXT_DOUBLE_DEFEATED_IN_BATTLE_1, "Oh, I’m weak!\n"
+    trainertextentry 52, TEXT_DOUBLE_DEFEATED_IN_OVERWORLD_1, "I tried to copy Bellsprout’s gentle\nmovements for battle...\rBut I didn’t train well enough.\n"
+    trainertextentry 52, TEXT_DOUBLE_ONLY_1_POKEMON_1, "You need two Pokemon.\n"
+    trainertextentry 52, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_2, "Oddish: DISH!\r"
+    trainertextentry 52, TEXT_DOUBLE_DEFEATED_IN_BATTLE_2, "Oddish: Odd...\n"
+    trainertextentry 52, TEXT_DOUBLE_DEFEATED_IN_OVERWORLD_2, "Oddish: Odd...\n"
+    trainertextentry 52, TEXT_DOUBLE_ONLY_1_POKEMON_2, "Oddish: Odd...\n"
+
+    //trainertextentry  52, TEXT_NOTICE_IN_OVERWORLD, "I sway like leaves in the wind...\r"
+    //trainertextentry  52, TEXT_DEFEATED_IN_BATTLE, "Oh, I’m weak!\n"
+    //trainertextentry  52, TEXT_DEFEATED_IN_OVERWORLD, "I tried to copy Bellsprout’s gentle\nmovements for battle...\rBut I didn’t train well enough.\n"
 
 _1044: // Trainer 55
     trainertextentry  55, TEXT_NOTICE_IN_OVERWORLD, "The Elder guides us even\npitch-black darkness.\r"
