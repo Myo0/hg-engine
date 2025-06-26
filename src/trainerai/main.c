@@ -775,7 +775,7 @@ int BasicFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
 
 
     /*Check for ai->defender type immunities.*/
-    if(ai->attackerMoveEffectiveness == MOVE_STATUS_FLAG_NOT_EFFECTIVE){
+    if(ai->attackerMoveEffectiveness == MOVE_STATUS_FLAG_NOT_EFFECTIVE && ctx->moveTbl[ai->attackerMove].split != SPLIT_STATUS){
         moveScore -= 15;
     }
     /*Check for wonder guard*/
@@ -1102,7 +1102,7 @@ int BasicFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
 
     /*Misc persistent effects
     Focus Energy / Ingrain / Mud Sport / Water Sport / Camouflage /
-    Power Trick / Lucky Chant / Aqua Ring / Magnet Rise*/
+    Power Trick / Lucky Chant / Aqua Ring*/
     else if((ctx->battlemon[ai->defender].condition2 & STATUS2_FOCUS_ENERGY  &&
     ai->attackerMoveEffect == MOVE_EFFECT_CRIT_UP_2)||
     (ctx->battlemon[attacker].effect_of_moves & MOVE_EFFECT_FLAG_INGRAIN  &&
@@ -1118,13 +1118,17 @@ int BasicFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
                         (ctx->side_condition[ai->attackerSide] & SIDE_STATUS_LUCKY_CHANT &&
                             ai->attackerMoveEffect == MOVE_EFFECT_PREVENT_CRITS) ||
                             (ctx->battlemon[attacker].effect_of_moves & MOVE_EFFECT_FLAG_AQUA_RING &&
-                                ai->attackerMoveEffect == MOVE_EFFECT_RESTORE_HP_EVERY_TURN) ||
-                                (ctx->battlemon[attacker].effect_of_moves & MOVE_EFFECT_FLAG_MAGNET_RISE &&
-                                    ai->attackerMoveEffect == MOVE_EFFECT_GIVE_GROUND_IMMUNITY) ||
-                                    ( (ai->attackerType2  == TYPE_FLYING ||ai->attackerType2  == TYPE_FLYING ||
-                                        ai->attackerAbility == ABILITY_LEVITATE) &&
-                                        ai->attackerMoveEffect == MOVE_EFFECT_GIVE_GROUND_IMMUNITY)){
+                                ai->attackerMoveEffect == MOVE_EFFECT_RESTORE_HP_EVERY_TURN)){
         moveScore -= 15;
+    }
+
+    /*Magnet Rise*/
+    else if(ai->attackerMoveEffect == MOVE_EFFECT_GIVE_GROUND_IMMUNITY &&
+        (ctx->battlemon[attacker].effect_of_moves & MOVE_EFFECT_FLAG_MAGNET_RISE || ai->attackerType1  == TYPE_FLYING || ai->attackerType2  == TYPE_FLYING || ai->attackerAbility == ABILITY_LEVITATE)){
+        debug_printf("Magnet rise effect of moves is %d\n", ctx->battlemon[attacker].effect_of_moves & MOVE_EFFECT_FLAG_MAGNET_RISE);
+        debug_printf("Attacker type 1 is %d, type 2 is %d\n", ai->attackerType1  == TYPE_FLYING, ai->attackerType2  == TYPE_FLYING);
+        debug_printf("Attacker ability is %d\n", ai->attackerAbility == ABILITY_LEVITATE);
+            moveScore -= 15; //magnet rise is already active, or flying type, or levitate
     }
 
     /*Handle substitute*/
@@ -1243,7 +1247,7 @@ int BasicFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
     }
     /*Handle fake out after turn one*/
     else if(ai->attackerMoveEffect == MOVE_EFFECT_ALWAYS_FLINCH_FIRST_TURN_ONLY && ai->attackerTurnsOnField > 0){
-        moveScore -= 20;
+        moveScore -= 25;
     }
     /*Handle stockpile*/
     else if(ai->attackerMoveEffect == MOVE_EFFECT_STOCKPILE && ctx->battlemon[attacker].moveeffect.stockpileCount < 3){
@@ -1477,7 +1481,7 @@ int EvaluateAttackFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContex
     int moveScore = 0;
     struct BattleStruct *ctx = bsys->sp;
     BOOL is_current_move_not_strongest = 0;
-    if(ctx->moveTbl[ai->attackerMove].split == SPLIT_STATUS){
+    if(ctx->moveTbl[ai->attackerMove].split == SPLIT_STATUS || ai->attackerMoveEffect == MOVE_EFFECT_HALVE_DEFENSE){
         return 0;
     }
     for(int j = 0; j < ai->attackerMovesKnown; j++){
@@ -1496,33 +1500,31 @@ int EvaluateAttackFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContex
     }
     /*Check if the current move kills*/
     else if (ai->attackerMinRollMoveDamages[i] >= ai->defenderHP){
-        if(ai->attackerMoveEffect == MOVE_EFFECT_HALVE_DEFENSE ){//ignore explosion for killing moves
-            moveScore += 0;
-        }
-        else if(ai->attackerMoveEffect == MOVE_EFFECT_HIT_BEFORE_SWITCH && //pursuit while AI moves first
+ 
+        if(ai->attackerMoveEffect == MOVE_EFFECT_HIT_BEFORE_SWITCH && //pursuit while AI moves first
                 ai->attackerMovesFirst){
-            moveScore += 12;
+            moveScore += 14;
         }
         else if(ai->attackerMoveEffect == MOVE_EFFECT_HIT_BEFORE_SWITCH && //pursuit while AI moves second, but survives enemy attack
                 (ai->defenderMovesFirst && ai->maxDamageReceived < ai->attackerHP)){
-            moveScore += 11;
+            moveScore += 13;
         }
         //Prioritize priority moves that kill
         else if((ai->attackerMoveEffect == MOVE_EFFECT_ALWAYS_FLINCH_FIRST_TURN_ONLY &&
                 ai->attackerTurnsOnField == 0)){
-                moveScore += 11;
+                moveScore += 13;
         }
-        else if(ctx->moveTbl[ai->attackerMove].priority > 0 ||
-                (ai->attackerMove == MOVE_GRASSY_GLIDE && ctx->terrainOverlay.type == GRASSY_TERRAIN && ctx->terrainOverlay.numberOfTurnsLeft > 0)){
-            moveScore += 11;
+        else if(!(ai->attackerMoveEffect == MOVE_EFFECT_ALWAYS_FLINCH_FIRST_TURN_ONLY)  && (ctx->moveTbl[ai->attackerMove].priority > 0 ||
+                (ai->attackerMove == MOVE_GRASSY_GLIDE && ctx->terrainOverlay.type == GRASSY_TERRAIN && ctx->terrainOverlay.numberOfTurnsLeft > 0))){
+            moveScore += 13;
         }
         /*Prioritize fast kills*/
         else if(ai->attackerMovesFirst){
-            moveScore += 10;
+            moveScore += 12;
         }
         /*Slow Kill (slower or speed tie)*/
         else{
-            moveScore += 9;
+            moveScore += 11;
         }
     }
 
@@ -1535,11 +1537,7 @@ int EvaluateAttackFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContex
     help kill in the same number of turns
     
     It also ONLY happens if the move isn't being boosted by another effect*/
-    else if((ai->attackerMinRollMoveDamages[i] >= ai->defenderHP / 2) 
-            && ((ai->attackerMoveEffect == MOVE_EFFECT_RAISE_SPEED_HIT && ai->attackerAbility != ABILITY_SHEER_FORCE && ctx->moveTbl[ai->attackerMove].secondaryEffectChance == 100) ||
-            (ai->attackerMoveEffect == MOVE_EFFECT_LOWER_SPEED_HIT && ai->attackerAbility != ABILITY_SHEER_FORCE && ctx->moveTbl[ai->attackerMove].secondaryEffectChance == 100) || 
-            (ai->attackerMoveEffect == MOVE_EFFECT_PARALYZE_HIT && ai->attackerAbility != ABILITY_SHEER_FORCE && ctx->moveTbl[ai->attackerMove].secondaryEffectChance == 100) ||
-            (ai->attackerMoveEffect == MOVE_EFFECT_BIND_HIT ))){
+    else if((ai->attackerMinRollMoveDamages[i] >= ai->defenderHP / 2)){
         
         moveScore += 4;
     }
@@ -1577,7 +1575,7 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
     /*IRIDIUM: 50% chance if AI doesn't see a 2 hit KO
     Keep in mind that +4 is ai seeing a 2 hit KO*/
     if(ai->attackerMoveEffect == MOVE_EFFECT_STATUS_SLEEP){
-        if(ctx->moveTbl[ai->attacker].accuracy == 100 || ai->attackerAbility == ABILITY_COMPOUND_EYES){
+        if(ctx->moveTbl[ai->attackerMove].accuracy == 100 || ai->attackerAbility == ABILITY_COMPOUND_EYES){
             moveScore += 5; //on par with setup 2hko
         }
         else if(BattleRand(bsys) % 2 < 1){
@@ -1669,10 +1667,11 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
     else if(((ai->attackerMoveEffect == MOVE_EFFECT_RAISE_SPEED_HIT && ai->attackerAbility != ABILITY_SHEER_FORCE && ctx->moveTbl[ai->attackerMove].secondaryEffectChance == 100) ||
         (ai->attackerMoveEffect == MOVE_EFFECT_LOWER_SPEED_HIT && ai->attackerAbility != ABILITY_SHEER_FORCE && ctx->moveTbl[ai->attackerMove].secondaryEffectChance == 100) || 
         ai->attackerMoveEffect == MOVE_EFFECT_STATUS_PARALYZE ||
-        (ai->attackerMoveEffect == MOVE_EFFECT_PARALYZE_HIT && ai->attackerAbility != ABILITY_SHEER_FORCE && ctx->moveTbl[ai->attackerMove].secondaryEffectChance == 100)) &&
+        (ai->attackerMoveEffect == MOVE_EFFECT_PARALYZE_HIT && ai->attackerAbility != ABILITY_SHEER_FORCE && ctx->moveTbl[ai->attackerMove].secondaryEffectChance == 100 && ctx->battlemon[ai->defender].condition & CONDITION_NONE)) &&
         ai->attackerMinRollMoveDamages[i] < ai->defenderHP){ //only do this if we can't kill, to preserve random move if we can kill
 
         if(!(ai->trickRoomActive) && ai->defenderMovesFirst){ //this is tiered below slow kills, but above 2 hit KOs and setup into OHKO
+            debug_printf("Defender moves first is true.\n");
             return 6;
         }
         else if(ai->trickRoomActive){ //let's not go boosting the enemy turn order
@@ -1818,9 +1817,8 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
     Handle Stat-dropping moves*/
 
     /*Attack dropping status moves*/
-    else if(IsInList(ai->attackerMoveEffect,AttackDropList, NELEMS(AttackDropList)) ||
-            (ai->attackerMoveEffect == MOVE_EFFECT_LOWER_ATTACK_HIT && ctx->moveTbl[ai->attackerMove].secondaryEffectChance == 100)){
-
+    else if(IsInList(ai->attackerMoveEffect,AttackDropList, NELEMS(AttackDropList))){
+// ||(ai->attackerMoveEffect == MOVE_EFFECT_LOWER_ATTACK_HIT && ctx->moveTbl[ai->attackerMove].secondaryEffectChance == 100)
         if(ai->maxDamageReceived > ai->attackerHP || ai->attackerTurnsOnField > 2){
             return -3;
         }
@@ -1843,9 +1841,8 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
     }
 
     /*Sp. Atk dropping status moves*/
-    else if(IsInList(ai->attackerMoveEffect,SpAtkDropList, NELEMS(SpAtkDropList)) ||
-            (ai->attackerMoveEffect == MOVE_EFFECT_LOWER_SP_ATK_HIT && ctx->moveTbl[ai->attackerMove].secondaryEffectChance == 100)){
-
+    else if(IsInList(ai->attackerMoveEffect,SpAtkDropList, NELEMS(SpAtkDropList))){
+// || (ai->attackerMoveEffect == MOVE_EFFECT_LOWER_SP_ATK_HIT && ctx->moveTbl[ai->attackerMove].secondaryEffectChance == 100)
         if(ai->maxDamageReceived > ai->attackerHP || ai->attackerTurnsOnField > 2){
             return -3;
         }
@@ -1908,7 +1905,11 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
             moveScore -= 1;
         }
     }
-
+    else if(ai->attackerMoveEffect == MOVE_EFFECT_TAUNT){
+        if(BattlerHasMoveSplit(bsys, ai->defender, SPLIT_STATUS, ai) && ai->maxDamageReceived < ai->attackerHP / 2){ //taunt if we cant be 2 shot
+            moveScore += 3;
+        }
+    }
     /*IRIDIUM: Iron Defense*/
     else if(ai->attackerMoveEffect == MOVE_EFFECT_DEF_UP_2){
         if(ctx->battlemon[ai->defender].spatk < ctx->battlemon[ai->defender].attack){
@@ -1946,44 +1947,89 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
                 moveScore += 2;
             }
     }
+    /*IRIDIUM: Eva Up and Acc Down status moves*/
+    else if((IsInList(ai->attackerMoveEffect, AccDropList, NELEMS(AccDropList)) ||
+    IsInList(ai->attackerMoveEffect, EvaRaiseList, NELEMS(EvaRaiseList)))) {
+        if(ctx->battlemon[ai->attacker].states[STAT_EVASION] <= 6 || ctx->battlemon[ai->defender].states[STAT_ACCURACY] >= 6){
+            moveScore += 3;
+        }
+        else if(ctx->battlemon[ai->defender].states[STAT_EVASION] <= 8 || ctx->battlemon[ai->defender].states[STAT_ACCURACY] >= 4){
+            moveScore += 1;
+        }
+        else{
+            moveScore -= 4;
+        }
+    }
 
 
     /*Explosion, Self-destruct, Memento*/
     else if(ai->attackerMoveEffect == MOVE_EFFECT_HALVE_DEFENSE ||
         ai->attackerMoveEffect == MOVE_EFFECT_FAINT_AND_ATK_SP_ATK_DOWN_2){
-            if(ctx->battlemon[ai->defender].states[STAT_EVASION] >= 7){
-                moveScore -= 1;
-            }
-            if(ctx->battlemon[ai->defender].states[STAT_EVASION] >= 9){
-                if(BattleRand(bsys) % 10 < 8){
-                    moveScore -= 1;
+            if(ai->attackerPercentHP >= 88){
+                if(BattleRand(bsys) % 20 < 1){
+                    moveScore += 8; //above everything except for slow kills and above
+                }
+                else{
+                    moveScore -= 4;
                 }
             }
-            if(ai->attackerPercentHP >= 80 && (ai->attackerMovesFirst || ai->isSpeedTie)){
-                if(BattleRand(bsys) % 10 < 8){
-                    moveScore -= 3;
+            else if(ai->attackerPercentHP >= 76){
+                if(BattleRand(bsys) % 20 < 2){
+                    moveScore += 8; //above everything except for slow kills and above
+                }
+                else{
+                    moveScore -= 4;
                 }
             }
-            else if(ai->attackerPercentHP >= 80 && (ai->defenderMovesFirst || ai->isSpeedTie)){
-                if(BattleRand(bsys) % 10 < 8){
-                    moveScore -= 1;
+            else if(ai->attackerPercentHP >= 64){
+                if(BattleRand(bsys) % 20 < 4){
+                    moveScore += 8; //above everything except for slow kills and above
+                }
+                else{
+                    moveScore -= 4;
                 }
             }
-            else if(ai->attackerPercentHP > 50 ){
-                if(BattleRand(bsys) % 10 < 8){
-                    moveScore -= 1;
+            else if(ai->attackerPercentHP >= 52){
+                if(BattleRand(bsys) % 20 < 6){
+                    moveScore += 8; //above everything except for slow kills and above
+                }
+                else{
+                    moveScore -= 4;
                 }
             }
-            else if(ai->attackerPercentHP <= 50 && ai->attackerPercentHP > 30 ){
-                if(BattleRand(bsys) % 2 < 1){
-                    moveScore -= 1;
+            else if(ai->attackerPercentHP >= 40){
+                if(BattleRand(bsys) % 20 < 10){
+                    moveScore += 8; //above everything except for slow kills and above
+                }
+                else{
+                    moveScore -= 4;
                 }
             }
-            else if(ai->attackerPercentHP <= 30){
-                if(BattleRand(bsys) % 10 < 8){
-                    moveScore -= 1;
+            else if(ai->attackerPercentHP >= 28){
+                if(BattleRand(bsys) % 20 < 13){
+                    moveScore += 8; //above everything except for slow kills and above
+                }
+                else{
+                    moveScore -= 4;
                 }
             }
+            else if(ai->attackerPercentHP >= 16){
+                if(BattleRand(bsys) % 20 < 17){
+                    moveScore += 8; //above everything except for slow kills and above
+                }
+                else{
+                    moveScore -= 4;
+                }
+            }
+            else{
+                if(BattleRand(bsys) % 20 < 19){
+                    moveScore += 8; //above everything except for slow kills and above
+                }
+                else{
+                    moveScore -= 4;
+                }
+            }
+
     }
     /*Healing Wish, Lunar Dance*/
     else if(ai->attackerMoveEffect == MOVE_EFFECT_FAINT_FULL_RESTORE_NEXT_MON){
@@ -2744,6 +2790,8 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
 
 
     /*High crit rate moves*/
+    /*IRIDIUM: This is so incredibly stupid, and should be moved to calc damage ahead of time*/
+    /*
     else if(ai->attackerMoveEffect == MOVE_EFFECT_HIGH_CRITICAL_POISON_HIT ||
         ai->attackerMoveEffect == MOVE_EFFECT_HIGH_CRITICAL ||
         ai->attackerMoveEffect == MOVE_EFFECT_SLEEP_POISON_PARALYZE_HIT ||
@@ -2760,7 +2808,7 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
                         moveScore += 1;
                     }
                 }
-    }
+    }*/
 
     /*Recoil moves*/
     else if(ai->attackerMoveEffect == MOVE_EFFECT_RECOIL_QUARTER ||
@@ -3325,25 +3373,21 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
     
     /*Sunny Day*/
     else if(ai->attackerMoveEffect == MOVE_EFFECT_WEATHER_SUN){
-        if(ai->defenderMovesFirst && ai->attackerAbility == ABILITY_CHLOROPHYLL && !ai->trickRoomActive){
-            moveScore += 1;
+        if(ai->attackerItem == ITEM_HEAT_ROCK){
+            moveScore += 5;
         }
+        if(ai->defenderMovesFirst && ai->attackerAbility == ABILITY_CHLOROPHYLL && !ai->trickRoomActive){
+            moveScore += 4;
+        }
+        else if(ai->attackerAbility == ABILITY_SOLAR_POWER ||
+                ai->attackerAbility == ABILITY_HARVEST){
+                    moveScore += 3;
+            }
         else{
-            if(ai->attackerPercentHP < 40){
-                moveScore -= 1;
-            }
-            else if(ctx->field_condition & WEATHER_HAIL_ANY ||
-                ctx->field_condition & WEATHER_SNOW_ANY ||
-                ctx->field_condition & WEATHER_SANDSTORM_ANY ||
-                ctx->field_condition & WEATHER_SUNNY_ANY){
-                    moveScore += 1;
-            }
-            else if(ai->attackerAbility == ABILITY_FLOWER_GIFT ||
-                    (ai->attackerAbility == ABILITY_LEAF_GUARD && (ctx->battlemon[attacker].condition & STATUS_NONE))){
-                    moveScore += 1;
-            }
+            moveScore += 2;
         }
     }
+
 
     /*Hail & Snow*/  
     else if(ai->attackerMoveEffect == MOVE_EFFECT_WEATHER_SNOW ||
@@ -4458,28 +4502,18 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
     }
 
     /*Magnet Rise*/
-    //TODO: make this include more ground moves, or just check for the type
+    //IRIDIUM/GARBAGE GOLD: make this include more ground moves, or just check for the type
     else if(ai->attackerMoveEffect == MOVE_EFFECT_GIVE_GROUND_IMMUNITY){
-        if(ai->attackerPercentHP < 50){
-            moveScore += 0;
+
+        if(BattlerHasTypeDamagingMove(bsys, ai->defender, TYPE_GROUND, ai)){
+            moveScore += 5;
+            debug_printf("Has Ground Move\n");
         }
         else{
-            if(BattlerKnowsMove(bsys, ai->defender, MOVE_EARTHQUAKE, ai) ||
-                BattlerKnowsMove(bsys, ai->defender, MOVE_MAGNITUDE, ai) ||
-                BattlerKnowsMove(bsys, ai->defender, MOVE_BULLDOZE, ai) ||
-                BattlerKnowsMove(bsys, ai->defender, MOVE_EARTH_POWER, ai) ||
-                BattlerKnowsMove(bsys, ai->defender, MOVE_FISSURE, ai)){
-                moveScore += 1;
-            }
-            else if(HasType(ctx, ai->defender, TYPE_GROUND)){
-                moveScore += 1;
-            }
-            else{
-                if(BattleRand(bsys) % 2 < 1){
-                    moveScore += 1;
-                }
-            }
+            moveScore -= 15;
+            debug_printf("No Ground Move\n");
         }
+        
     }
 
     /*Defog*/
@@ -4525,16 +4559,8 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
             moveScore += 0;
         }
         else{
-            if(ai->attackerPercentHP <= 30 && ai->livingMembersAttacker == 1){
-                moveScore += 0;
-            }
-            else if(ai->attackerMovesFirst){
-                moveScore -= 1;
-            }
-            else if(ai->defenderMovesFirst){
-                if(BattleRand(bsys) % 4 < 3){
-                    moveScore += 3;
-                }
+            if(ai->defenderMovesFirst){
+                moveScore += 6;
             }
         }
     }
@@ -5509,7 +5535,7 @@ BOOL BattlerKnowsMove (struct BattleSystem *bsys, u32 battler, u32 move, AIConte
 }
 
 BOOL BattlerHasTypeDamagingMove (struct BattleSystem *bsys, u32 battler, u32 type, AIContext *ai){
-    BOOL hasMove = 0;
+    BOOL hasMove = FALSE;
     struct BattleStruct *ctx = bsys->sp;
     for(int i = 0; i < 4; i++){
         int battler_move_check = ctx->battlemon[battler].move[i];
@@ -5546,6 +5572,21 @@ BOOL BattlerHasMoveEffect (struct BattleSystem *bsys, u32 battler, u32 move_effe
         }
     }
     return hasMoveEffect;
+}
+
+/*Returns true if user has a particular damaging move type.*/
+BOOL BattlerHasDamagingMoveType (struct BattleSystem *bsys, u32 battler, u32 type, AIContext *ai){
+
+    BOOL hasMoveType = FALSE;
+    struct BattleStruct *ctx = bsys->sp;
+
+    for(int i = 0; i < 4; i++){
+        int battler_move_type = ctx->moveTbl[ctx->battlemon[battler].move[i]].type;
+        if(battler_move_type == type && ctx->moveTbl[ctx->battlemon[battler].move[i]].split != SPLIT_STATUS){
+            hasMoveType = TRUE;
+        }
+    }
+    return hasMoveType;
 }
 
 /*Returns true if the item has some sort of negative effect on holder.*/
@@ -5886,7 +5927,7 @@ void SetupStateVariables(struct BattleSystem *bsys, u32 attacker, u32 defender, 
             specialMovePower = AdjustUnusualMovePower(bsys, ai->defender, ai->attacker, ctx->moveTbl[ctx->battlemon[ai->defender].move[i]].effect, ai);
             currentReceivedDamage = CalcBaseDamage(bsys, ctx, ctx->battlemon[ai->defender].move[i], ctx->side_condition[ai->attackerSide],ctx->field_condition, specialMovePower, 0, ai->defender, ai->attacker, 0, 0, 0, NULL);
             debug_printf("base damage received for move index %d is: %d\n", i, currentReceivedDamage);
-            currentReceivedDamage = ServerDoTypeCalcMod(bsys, ctx, ctx->battlemon[ai->defender].move[i], 0, ai->defender, ai->attacker, currentReceivedDamage, &temp); // looking at MIN roll. //*85 / 100 for min roll
+            currentReceivedDamage = ServerDoTypeCalcMod(bsys, ctx, ctx->battlemon[ai->defender].move[i], 0, ai->defender, ai->attacker, currentReceivedDamage, &temp)*92 / 100; // looking at MIN roll. //*85 / 100 for min roll
             debug_printf("typed damage received for move index %d is: %d\n", i, currentReceivedDamage);
             currentReceivedDamage = AdjustUnusualMoveDamage(bsys, ai->defender, ai->attacker, currentReceivedDamage, ctx->moveTbl[ctx->battlemon[ai->defender].move[i]].effect, ai);
             debug_printf("damage received for move index %d is: %d\n", i, currentReceivedDamage);
@@ -5917,7 +5958,7 @@ void SetupStateVariables(struct BattleSystem *bsys, u32 attacker, u32 defender, 
             }
             specialMovePower = AdjustUnusualMovePower(bsys, attacker, ai->defender, attackerEffectCheck, ai);
             ai->attackerMinRollMoveDamages[i] = CalcBaseDamage(bsys, ctx, attackerMoveCheck, ctx->side_condition[ai->defenderSide],ctx->field_condition, specialMovePower, 0, ai->attacker, ai->defender, 0, 0, 0, NULL);
-            ai->attackerMinRollMoveDamages[i] = ServerDoTypeCalcMod(bsys, ctx, attackerMoveCheck, 0, attacker, ai->defender, ai->attackerMinRollMoveDamages[i], &temp); //85% is min roll. // *85 / 100 FOR MIN ROLL
+            ai->attackerMinRollMoveDamages[i] = ServerDoTypeCalcMod(bsys, ctx, attackerMoveCheck, 0, attacker, ai->defender, ai->attackerMinRollMoveDamages[i], &temp)*92 / 100; //85% is min roll. // *85 / 100 FOR MIN ROLL
             ai->attackerMinRollMoveDamages[i] = AdjustUnusualMoveDamage(bsys, ai->attacker, ai->defender, ai->attackerMinRollMoveDamages[i], attackerEffectCheck, ai);
 
         }
@@ -5971,6 +6012,10 @@ int AdjustUnusualMoveDamage(struct BattleSystem *bsys, u32 attacker, u32 defende
         case MOVE_EFFECT_SET_HP_EQUAL_TO_USER: //endeavor
             debug_printf("Setting defender's HP equal to attacker's HP in AdjustUnusualMoveDamage\n");
             return ctx->battlemon[defender].hp - ctx->battlemon[attacker].hp;
+        case MOVE_EFFECT_DOUBLE_DAMAGE_ON_STATUS:
+            if(!(ctx->battlemon[defender].condition & STATUS_NONE)){
+                return damage *= 2;
+            }
         default:
             return damage;
     }
