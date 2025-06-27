@@ -1596,6 +1596,7 @@ u32 LONG_CALL CheckIfMonsAreEqual(struct PartyPokemon *pokemon1, struct PartyPok
  *  @param heapID heap to use for allocations
  *  @return TRUE if can use item, FALSE otherwise
  */
+ /*
 BOOL CanUseItemOnMonInParty(struct Party *party, u16 itemID, s32 partyIdx, s32 moveIdx, u32 heapID) {
     struct PartyPokemon *mon = Party_GetMonByIndex(party, partyIdx);
 
@@ -1615,7 +1616,7 @@ BOOL CanUseItemOnMonInParty(struct Party *party, u16 itemID, s32 partyIdx, s32 m
 #endif
     return CanUseItemOnPokemon(mon, itemID, moveIdx, heapID);
 }
-
+*/
 
 /**
  *  @brief get the evolution species for a pokemon.  generalized depending on context
