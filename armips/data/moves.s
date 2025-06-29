@@ -254,7 +254,7 @@ movedata MOVE_CUT, "Cut"
     battleeffect MOVE_EFFECT_HIT
     pss SPLIT_PHYSICAL
     basepower 55
-    type TYPE_GRASS
+    type TYPE_NORMAL
     accuracy 95
     pp 10
     effectchance 0

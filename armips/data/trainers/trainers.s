@@ -716,9 +716,9 @@ trainerdata 12, "P-193"
 	// mon 1
 		ivs 250
 		abilityslot 32
-		level 8
+		level 7
 		pokemon SPECIES_SKORUPI
-		item ITEM_ORAN_BERRY
+		item ITEM_NONE
 		move MOVE_POISON_TAIL
 		move MOVE_TWINEEDLE
 		move MOVE_ROCK_SMASH
@@ -732,9 +732,9 @@ trainerdata 12, "P-193"
 	// mon 2
 		ivs 250
 		abilityslot 32
-		level 9
+		level 7
 		pokemon SPECIES_GRIMER
-		item ITEM_SHELL_BELL
+		item ITEM_NONE
 		move MOVE_SHADOW_PUNCH
 		move MOVE_POISON_STING
 		move MOVE_POWER_UP_PUNCH
@@ -742,7 +742,7 @@ trainerdata 12, "P-193"
 		ability ABILITY_POISON_TOUCH
 		setivs 31, 31, 31, 31, 31, 31 // hp, atk, def, spe, spatk, spdef
 		setevs 0, 0, 0, 0, 0, 0
-		nature NATURE_IMPISH
+		nature NATURE_HARDY
 		shinylock 0
 		ballseal 0
     endparty
@@ -780,7 +780,7 @@ trainerdata 13, "P-140"
 	// mon 1
 		ivs 250
 		abilityslot 32
-		level 11
+		level 9
 		pokemon SPECIES_NICKIT
 		item ITEM_ORAN_BERRY
 		move MOVE_THIEF
@@ -796,7 +796,7 @@ trainerdata 13, "P-140"
 	// mon 2
 		ivs 250
 		abilityslot 32
-		level 9
+		level 8
 		pokemon SPECIES_KOFFING
 		item ITEM_NONE
 		move MOVE_SMOG
@@ -4146,7 +4146,7 @@ trainerdata 67, "Frankie"
     item ITEM_NONE
     item ITEM_NONE
     item ITEM_NONE
-    aiflags F_PRIORITIZE_SUPER_EFFECTIVE | 0
+    aiflags F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | 0
     battletype SINGLE_BATTLE
     endentry
 
@@ -21073,7 +21073,7 @@ trainerdata 486, "Zinzolin"
 		move MOVE_FAKE_OUT
 		move MOVE_ICE_SHARD
 		move MOVE_PURSUIT
-		move MOVE_FURY_SWIPES
+		move MOVE_HONE_CLAWS
 		ability ABILITY_INNER_FOCUS
 		setivs 31, 31, 31, 31, 31, 31 // hp, atk, def, spe, spatk, spdef
 		setevs 0, 0, 0, 0, 0, 0
@@ -21099,7 +21099,7 @@ trainerdata 486, "Zinzolin"
 	// mon 3
 		ivs 250
 		abilityslot 32
-		level 6
+		level 8
 		pokemon SPECIES_SOLOSIS
 		item ITEM_ORAN_BERRY
 		move MOVE_CONFUSION
@@ -27922,7 +27922,7 @@ trainerdata 659, "Miasma"
         // mon 0
 		ivs 250
 		abilityslot 32
-		level 7
+		level 6
 		pokemon SPECIES_SLOWKING
 		item ITEM_NONE
 		move MOVE_WATER_GUN

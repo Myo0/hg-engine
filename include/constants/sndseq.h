@@ -1505,6 +1505,8 @@
 #define SEQ_PLASMA_FRIGATE_DECK             2512
 #define SEQ_PLASMA_FRIGATE_CONTROL_ROOM     2513
 #define SEQ_EYE_ZINZOLIN                    2514
+#define SEQ_VS_YWKON_OLD                    2515
+#define SEQ_PLASMA_EYE_BASIC_BANK           2516
 
 
 

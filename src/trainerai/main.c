@@ -1592,6 +1592,9 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
         if(BattlerHasMoveEffect(bsys, attacker, MOVE_EFFECT_DOUBLE_DAMAGE_ON_STATUS, ai)){
             moveScore += 2; //these +2 scores will stack
         }
+        if(ai->attackerMaxDamageOutputMinRoll < ai->defenderHP / 3){
+            moveScore += 1;
+        }
     }
 
     /*Poison should only be used if user/ai->defender is > 50% HP*/
@@ -1818,7 +1821,7 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
 
     /*Attack dropping status moves*/
     else if(IsInList(ai->attackerMoveEffect,AttackDropList, NELEMS(AttackDropList))){
-// ||(ai->attackerMoveEffect == MOVE_EFFECT_LOWER_ATTACK_HIT && ctx->moveTbl[ai->attackerMove].secondaryEffectChance == 100)
+    // ||(ai->attackerMoveEffect == MOVE_EFFECT_LOWER_ATTACK_HIT && ctx->moveTbl[ai->attackerMove].secondaryEffectChance == 100)
         if(ai->maxDamageReceived > ai->attackerHP || ai->attackerTurnsOnField > 2){
             return -3;
         }
@@ -1927,6 +1930,24 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
             moveScore -= 3;
         }
     }
+    /*IRIDIUM: Amnesia*/
+    else if(ai->attackerMoveEffect == MOVE_EFFECT_SP_DEF_UP_2){
+        if(ctx->battlemon[ai->defender].spatk < ctx->battlemon[ai->defender].attack){
+            if(ctx->battlemon[ai->attacker].states[STAT_SPDEF] <= 6){
+                moveScore += 3;
+            }
+            else if(ctx->battlemon[ai->attacker].states[STAT_SPDEF] >= 8){
+                moveScore -= 2;
+            }
+            else{
+                moveScore += 1;
+            }
+        }
+        else{
+            moveScore -= 3;
+        }
+    }
+    
     /*IRIDIUM: Destiny Bond*/
     else if(ai->attackerMoveEffect == MOVE_EFFECT_KO_MON_THAT_DEFEATED_USER){
         if(ai->maxDamageReceived > ai->attackerHP && ai->attackerMovesFirst){
@@ -1934,10 +1955,13 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
                 moveScore += 6;
             }
         }
-        if(ai->maxDamageReceived > ai->attackerHP / 2 && ai->defenderMovesFirst){
+        else if(ai->maxDamageReceived > ai->attackerHP / 2 && ai->defenderMovesFirst){
             if(BattleRand(bsys) % 2 < 1){
                 moveScore += 6;
             }
+        }
+        else{
+            moveScore -= 3; //if we are not in danger, don't use destiny bond
         }
     }
     /*Ingrain, aqua ring*/
@@ -2783,7 +2807,7 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
         }
 
         if(ctx->binding_turns[ai->defender] > 0){
-            moveScore -= 3;
+            moveScore -= 0;
         }
         
     }

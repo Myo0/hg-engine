@@ -2871,10 +2871,10 @@ _1984: // Trainer 658
     trainertextentry 658, TEXT_DEFEATED_IN_BATTLE, "Arrrk!\n"
 
 _1988: // Trainer 659
-    trainertextentry 659, TEXT_DEFEATED_IN_BATTLE, "Toooms!\n"
+    trainertextentry 659, TEXT_DEFEATED_IN_BATTLE, "Sloww!\n"
 
 _198C: // Trainer 660
-    trainertextentry 660, TEXT_DEFEATED_IN_BATTLE, "Aw, I’m hungry...\n"
+    trainertextentry 660, TEXT_DEFEATED_IN_BATTLE, "Toooms!\n"
 
 _1990: // Trainer 451
     trainertextentry 451, TEXT_DEFEATED_IN_BATTLE, "Wahahah! I’m the big loser!\n"
