@@ -687,19 +687,19 @@ int LONG_CALL CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 
 
     // handle marvel scale
     if(usePPForAttacker){
-        if (!(GetMonData(pp, MON_DATA_ABILITY, 0) == ABILITY_MOLD_BREAKER) && (AttackingMon.condition)&& sp->battlemon[defender].ability == ABILITY_MARVEL_SCALE )
+        if (!(GetMonData(pp, MON_DATA_ABILITY, 0) == ABILITY_MOLD_BREAKER) && (DefendingMon.condition) && sp->battlemon[defender].ability == ABILITY_MARVEL_SCALE )
         {
             defense = defense * 150 / 100;
         }
     }
     else if(usePPForDefender){
-        if ((GetMonData(pp, MON_DATA_ABILITY, 0) == ABILITY_MARVEL_SCALE) && sp->battlemon[attacker].ability != ABILITY_MOLD_BREAKER && (AttackingMon.condition))
+        if ((GetMonData(pp, MON_DATA_ABILITY, 0) == ABILITY_MARVEL_SCALE) && sp->battlemon[attacker].ability != ABILITY_MOLD_BREAKER && (DefendingMon.condition))
         {
             defense = defense * 150 / 100;
         }
     }
     else{
-        if ((MoldBreakerAbilityCheck(sp, attacker, defender, ABILITY_MARVEL_SCALE) == TRUE) && (AttackingMon.condition))
+        if ((MoldBreakerAbilityCheck(sp, attacker, defender, ABILITY_MARVEL_SCALE) == TRUE) && (DefendingMon.condition))
         {
             defense = defense * 150 / 100;
         }
