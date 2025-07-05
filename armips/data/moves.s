@@ -5499,7 +5499,7 @@ movedata MOVE_POISON_TAIL, "Poison Tail"
     movedescription MOVE_POISON_TAIL, "An attack with a\nhigh critical-hit\nratio. This tail \nattack may also \npoison the foe."
 
 movedata MOVE_COVET, "Covet"
-    battleeffect MOVE_EFFECT_HIT
+    battleeffect MOVE_EFFECT_STEAL_HELD_ITEM
     pss SPLIT_PHYSICAL
     basepower 60
     type TYPE_NORMAL

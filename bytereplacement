@@ -95,6 +95,9 @@ arm9 0208D2C4 78 21 03 23 FF F7 D8 FA
 
 #ifndef IMPLEMENT_LEVEL_CAP
 
+# dont go back to menu after item
+​#​arm9 02081c0e 04
+
 # revert IMPLEMENT_LEVEL_CAP hooks
 0012 02245A28 28 F6 8A FD 64 28 00 D1
 arm9 02070DB4 38 B5 82 B0 05 21 00 22

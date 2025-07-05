@@ -528,9 +528,9 @@ _040C: // Trainer 255
     trainertextentry 255, TEXT_DEFEATED_IN_BATTLE, "My electric trick...\n"
 
 _0418: // Trainer 256
-    trainertextentry 256, TEXT_LAST_MON_SENT_OUT, "Don’t go easy on me.\nGive me everything you’ve got!\n"
-    trainertextentry 256, TEXT_LAST_MON_CRITICAL, "Wow, that’s a bit harsh!\n"
-    trainertextentry 256, TEXT_DEFEATED_IN_BATTLE, "Looks like I underestimated you...\n"
+    trainertextentry  256, TEXT_NOTICE_IN_OVERWORLD, "Oh... another person!\nHow long has it been?\rEver since Kanto was destroyed,\nI've wandered these woods.\r"
+    trainertextentry  256, TEXT_DEFEATED_IN_BATTLE, "Ah... forest's curse...\n"
+    trainertextentry  256, TEXT_DEFEATED_IN_OVERWORLD, "I may wander here forever...\nZzz... zzz... zzz...\n"
 
 _0424: // Trainer 257
     trainertextentry 257, TEXT_LAST_MON_SENT_OUT, "You’ve got a great battle technique!\n"
@@ -960,9 +960,9 @@ _0820: // Trainer 331
     trainertextentry 331, TEXT_REMATCH_IN_OVERWORLD, "Welcome, welcome!\rHere you will face a battle with me, and\nI’m really athletic!\r"
 
 _0830: // Trainer 38
-    trainertextentry  38, TEXT_NOTICE_IN_OVERWORLD, "Have you forgotten anything?\r"
+    trainertextentry  38, TEXT_NOTICE_IN_OVERWORLD, "eheheheheh... EHEHEHEH!\r"
     trainertextentry  38, TEXT_DEFEATED_IN_BATTLE, "Kyaaah!\n"
-    trainertextentry  38, TEXT_DEFEATED_IN_OVERWORLD, "Before I became a teacher, I used to\nforget a lot of things.\n"
+    trainertextentry  38, TEXT_DEFEATED_IN_OVERWORLD, "I think this forest is fond\nof your soul.\fI can taste it!\n"
 
 _083C: // Trainer 382
     trainertextentry 382, TEXT_NOTICE_IN_OVERWORLD, "On sunny days, I think that the kids\nwould rather be playing in the\fplayground than studying in class.\r"
@@ -1106,9 +1106,9 @@ _0980: // Trainer 102
     trainertextentry 102, TEXT_REMATCH_IN_OVERWORLD, "I want to see how close you are to\nreal strength!\r"
 
 _0990: // Trainer 36
-    trainertextentry  36, TEXT_NOTICE_IN_OVERWORLD, "Since you’ve come this far, you must be\ngood. I’m going to give this battle\feverything I’ve got!\r"
-    trainertextentry  36, TEXT_DEFEATED_IN_BATTLE, "No! I don’t believe this!\n"
-    trainertextentry  36, TEXT_DEFEATED_IN_OVERWORLD, "I’ve defeated eight Gym Leaders, so I\nwas feeling confident.\rI’ll have to try harder next time.\n"
+    trainertextentry  36, TEXT_NOTICE_IN_OVERWORLD, "EHEHEHEHEH! Are you lost?\nHas the forest driven you mad?\r"
+    trainertextentry  36, TEXT_DEFEATED_IN_BATTLE, "Aieeeeeee!\n"
+    trainertextentry  36, TEXT_DEFEATED_IN_OVERWORLD, "Spooooooky!\n"
 
 _099C: // Trainer 113
     trainertextentry 113, TEXT_NOTICE_IN_OVERWORLD, "I lost to a redheaded Trainer. He was\nreally strong, but...it was as if he\fabsolutely had to win at any cost.\fI felt sorry for his Pokémon.\r"
@@ -1409,9 +1409,9 @@ _0C5C: // Trainer 45
     trainertextentry  45, TEXT_DEFEATED_IN_OVERWORLD, "Do you know about baby Pokémon?\nI’ll bet they’re just adorable!\n"
 
 _0C68: // Trainer 39
-    trainertextentry  39, TEXT_NOTICE_IN_OVERWORLD, "I just got back to Olivine.\nSo, how about a Pokémon battle?\r"
+    trainertextentry  39, TEXT_NOTICE_IN_OVERWORLD, "I went camping in the woods...\nThese are the WRONG woods!\r"
     trainertextentry  39, TEXT_DEFEATED_IN_BATTLE, "Awaaargh!\n"
-    trainertextentry  39, TEXT_DEFEATED_IN_OVERWORLD, "My Pokémon were caught and raised\noverseas. They’re my companions on\fthose long voyages.\n"
+    trainertextentry  39, TEXT_DEFEATED_IN_OVERWORLD, "How do I get out...?\n"
 
 _0C74: // Trainer 16
     trainertextentry  16, TEXT_NOTICE_IN_OVERWORLD, "You have to warm up before going into\nthe water.\rThat’s basic.\r"
