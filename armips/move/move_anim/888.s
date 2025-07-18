@@ -21,19 +21,29 @@ a010_888:
     loadparticlefromspa 1, 366
     waitparticle
 
+    initspriteresource
+    loadspriteresource 0
+    loadspriteresource 1
     playsepan 1983, -117
+    loadspritemaybe 0, 0, 0, 0
+    loadspritemaybe 0, 0, 1, 1
+    loadspriteresource 4
+    loadspritemaybe 2, 0, 4, 4
     cmd52 2, 0, 4
     callfunction 8, 0, "NaN", "NaN", "NaN", "NaN", "NaN", "NaN", "NaN", "NaN", "NaN", "NaN"
     addparticle 1, 0, 4
-    wait 20
+    wait 15
     playsepan 1827, 117
+    resetsprite 0
+    resetsprite 1
+    unloadspriteresource
     cmd53 0
     resetsprite 4
 
 
     callfunction 36, 5, 2, 0, 1, 1, 264, "NaN", "NaN", "NaN", "NaN", "NaN"
     waitstate
-    waitparticle
+
     unloadparticle 0
     waitstate
     unloadparticle 1

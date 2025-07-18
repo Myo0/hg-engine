@@ -143,7 +143,7 @@ BOOL LONG_CALL BattlerKnowsMoveInList(struct BattleSystem *bsys, u32 battler, co
 BOOL LONG_CALL BattlerMovesFirstDoubles(struct BattleSystem *bsys, struct BattleStruct *ctx, int mainBattler, int flag, AIContext *ai);
 BOOL LONG_CALL MoveIsStrongest(struct BattleSystem *bsys, struct BattleStruct *ctx, int moveIndex, AIContext *ai);
 void SetupStateVariables(struct BattleSystem *bsys, u32 attacker, u32 defender, AIContext *ai);
-int AdjustUnusualMoveDamage(struct BattleSystem *bsys, u32 attacker, u32 defender, int damage, int move, AIContext *ai);
+int AdjustUnusualMoveDamage(struct BattleSystem *bsys, u32 attacker, u32 defender, int damage, int moveEffect, AIContext *ai);
 int AdjustUnusualMovePower(struct BattleSystem *bsys, u32 attacker, u32 defender, int moveEffect, AIContext *ai);
 
 enum AIActionChoice __attribute__((section (".init"))) TrainerAI_Main(struct BattleSystem *bsys, u32 attacker)
@@ -1929,7 +1929,7 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
                 moveScore += 1;
             }
             else{
-                moveScore -= 1;
+                moveScore -= 3;
             }
         }
         else{
@@ -1953,7 +1953,7 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
                 moveScore += 1;
             }
             else{
-                moveScore -= 1;
+                moveScore -= 3;
             }
         }
         else{
@@ -1978,7 +1978,7 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
             moveScore += 1;
         }
         else{
-            moveScore -= 1;
+            moveScore -= 3;
         }
     }
 
@@ -1999,7 +1999,7 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
             moveScore += 1;
         }
         else{
-            moveScore -= 1;
+            moveScore -= 3;
         }
     }
     else if(ai->attackerMoveEffect == MOVE_EFFECT_TAUNT){
@@ -2014,7 +2014,7 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
                 moveScore += 3;
             }
             else if(ctx->battlemon[ai->attacker].states[STAT_DEFENSE] >= 8){
-                moveScore -= 2;
+                moveScore -= 3;
             }
             else{
                 moveScore += 1;
@@ -2031,7 +2031,7 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
                 moveScore += 3;
             }
             else if(ctx->battlemon[ai->attacker].states[STAT_SPDEF] >= 8){
-                moveScore -= 2;
+                moveScore -= 3;
             }
             else{
                 moveScore += 1;
@@ -2778,7 +2778,7 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
         if(ai->attackerItem == ITEM_LIGHT_CLAY){
             moveScore += 5;
         }
-        else if(ctx->battlemon[ai->defender].spatk  > ctx->battlemon[ai->defender].attack){
+        if(ctx->battlemon[ai->defender].spatk  > ctx->battlemon[ai->defender].attack){
             moveScore += 3;
         }
         if(ai->attackerAbility == ABILITY_PRANKSTER){
@@ -2795,7 +2795,7 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
         if(ai->attackerItem == ITEM_LIGHT_CLAY){
             moveScore += 5;
         }
-        else if(ctx->battlemon[ai->defender].attack  > ctx->battlemon[ai->defender].spatk){
+        if(ctx->battlemon[ai->defender].attack  > ctx->battlemon[ai->defender].spatk){
             moveScore += 3;
         }
         if(ai->attackerAbility == ABILITY_PRANKSTER){
@@ -3347,57 +3347,26 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, AIContext *ai){
     /*Substitute*/
     /*This logic seems to create a discrete distribution 
     of probability depending on the user's HP*/
+    /*IRIDIUM: Completely re-wrote this*/
     else if(ai->attackerMoveEffect == MOVE_EFFECT_SET_SUBSTITUTE){
-        if(BattlerHasMoveEffect(bsys, attacker, MOVE_EFFECT_HIT_LAST_WHIFF_IF_HIT, ai)){
-            if(BattleRand(bsys) % 10 < 6){
-                moveScore += 1;
-            }   
-        }
-        if(ai->attackerPercentHP <= 90){
-            if(ai->attackerPercentHP <= 50){
-                for(int i = 0; i < 3; i++){
-                    if(BattleRand(bsys) % 10 < 6){
-                        moveScore -= 1;
-                    } 
-                }
+        if(ai->attackerPercentHP > 50){ //only set up sub if we have more than 50% hp
+            if(ai->maxDamageReceived < ai->attackerHP / 4){ //If opponent does less damage than our sub's hp
+                moveScore += 8;
             }
-            else if(ai->attackerPercentHP > 50){
-                if(BattleRand(bsys) % 10 < 6){
-                    moveScore -= 1;
-                } 
-                if(ai->attackerPercentHP > 70){
-                    if(BattleRand(bsys) % 10 < 6){
-                        moveScore -= 1;
-                    } 
-                }
+            else if(ai->maxDamageReceived < ai->attackerHP / 3){ //If we are not threatened, set up sub.
+                moveScore += 5;
+            }
+            else if(ai->maxDamageReceived < ai->attackerHP / 2){ //Opponent requires 3 hits to kill
+                moveScore += 3;
+            }
+            else{
+                moveScore -= 3;
             }
         }
-        //TODO: This logic that gamefreak wrote sucks, so I am modifying it. Check it in game later.
-        if(ai->attackerMovesFirst){
-            if(ctx->moveTbl[ai->defenderLastUsedMove].split == SPLIT_STATUS){
-                if(ai->defenderLastUsedMoveEffect == MOVE_EFFECT_STATUS_PARALYZE ||
-                    ai->defenderLastUsedMoveEffect == MOVE_EFFECT_STATUS_POISON ||
-                    ai->defenderLastUsedMoveEffect == MOVE_EFFECT_STATUS_BADLY_POISON ||
-                    ai->defenderLastUsedMoveEffect == MOVE_EFFECT_STATUS_SLEEP ||
-                    ai->defenderLastUsedMoveEffect == MOVE_EFFECT_STATUS_BURN){
-                    if(BattleRand(bsys) % 10 < 6){
-                        moveScore += 1;
-                    } 
-                }
-                else if(ai->defenderLastUsedMoveEffect == MOVE_EFFECT_STATUS_CONFUSE ||
-                    ai->defenderLastUsedMoveEffect == MOVE_EFFECT_ATK_UP_2_STATUS_CONFUSION ||
-                    ai->defenderLastUsedMoveEffect == MOVE_EFFECT_SP_ATK_UP_CAUSE_CONFUSION ){
-                    if(BattleRand(bsys) % 10 < 6){
-                        moveScore += 1;
-                    } 
-                }
-                else if(ai->defenderLastUsedMoveEffect == MOVE_EFFECT_STATUS_LEECH_SEED){
-                    if(BattleRand(bsys) % 10 < 6){
-                        moveScore += 1;
-                    } 
-                }
-            }
+        else{
+            moveScore -= 3;
         }
+
     }
 
     /*Baton Pass*/
@@ -6024,16 +5993,14 @@ void SetupStateVariables(struct BattleSystem *bsys, u32 attacker, u32 defender, 
     int attackerMoveTypeCheck;
     int specialMovePower = 0;
 
-    /*Loop over defender's moves, and compute the max of all min roll damages*/
+    /*Loop over defender's moves, and compute the most damage AI can take*/
     int currentReceivedDamage = 0;
     for (int i = 0; i < GetBattlerLearnedMoveCount(bsys, ctx, ai->defender); i++){
         specialMovePower = 0;
         if(ctx->moveTbl[ctx->battlemon[ai->defender].move[i]].split != SPLIT_STATUS){
             specialMovePower = AdjustUnusualMovePower(bsys, ai->defender, ai->attacker, ctx->moveTbl[ctx->battlemon[ai->defender].move[i]].effect, ai);
             currentReceivedDamage = CalcBaseDamage(bsys, ctx, ctx->battlemon[ai->defender].move[i], ctx->side_condition[ai->attackerSide],ctx->field_condition, specialMovePower, 0, ai->defender, ai->attacker, 0, 0, 0, NULL);
-            debug_printf("base damage received for move index %d is: %d\n", i, currentReceivedDamage);
             currentReceivedDamage = ServerDoTypeCalcMod(bsys, ctx, ctx->battlemon[ai->defender].move[i], 0, ai->defender, ai->attacker, currentReceivedDamage, &temp)*92 / 100; // looking at MIN roll. //*85 / 100 for min roll
-            debug_printf("typed damage received for move index %d is: %d\n", i, currentReceivedDamage);
             currentReceivedDamage = AdjustUnusualMoveDamage(bsys, ai->defender, ai->attacker, currentReceivedDamage, ctx->moveTbl[ctx->battlemon[ai->defender].move[i]].effect, ai);
             debug_printf("damage received for move index %d is: %d\n", i, currentReceivedDamage);
             if(currentReceivedDamage > ai->maxDamageReceived){
@@ -6074,12 +6041,12 @@ void SetupStateVariables(struct BattleSystem *bsys, u32 attacker, u32 defender, 
         }
 
         if(ai->attackerMinRollMoveDamages[i] > 0){
-            ai->attackerHasDamagingMove = 1;
+            ai->attackerHasDamagingMove = TRUE;
         }
 
         AITypeCalc(ctx, attackerMoveCheck, attackerMoveTypeCheck, ai->attackerAbility, ai->defenderAbility, ai->holdEffect, ai->defenderType1, ai->defenderType2, & ai->attackerMoveEffectiveness);
         if(ai->attackerMoveEffectiveness == MOVE_STATUS_FLAG_SUPER_EFFECTIVE){
-            ai->attackerHasSupereffectiveMove = 1;
+            ai->attackerHasSupereffectiveMove = TRUE;
         }
 
     }

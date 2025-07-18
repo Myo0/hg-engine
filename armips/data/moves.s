@@ -2350,7 +2350,7 @@ movedata MOVE_DIZZY_PUNCH, "Dizzy Punch"
     battleeffect MOVE_EFFECT_CONFUSE_HIT
     pss SPLIT_PHYSICAL
     basepower 70
-    type TYPE_FIGHTING
+    type TYPE_NORMAL
     accuracy 100
     pp 10
     effectchance 20
