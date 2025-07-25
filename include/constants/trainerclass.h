@@ -29,7 +29,7 @@
 #define TRAINERCLASS_ACE_TRAINER_F          25
 #define TRAINERCLASS_WAITRESS               26
 #define TRAINERCLASS_VETERAN                27
-#define TRAINERCLASS_NINJA_BOY              28
+#define TRAINERCLASS_SHADOW_TRIAD              28
 #define TRAINERCLASS_DRAGON_TAMER           29
 #define TRAINERCLASS_BIRD_KEEPER            30
 #define TRAINERCLASS_JUGGLER                31

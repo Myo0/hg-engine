@@ -288,7 +288,7 @@ _01C4: // Trainer 714
     trainertextentry 714, TEXT_DEFEATED_IN_BATTLE, "Ugh...\n"
 
 _01D0: // Trainer 715
-    trainertextentry 715, TEXT_LAST_MON_SENT_OUT, "No, it’s not over yet--not yet!\nI still believe we can do it!\n"
+    trainertextentry 715, TEXT_LAST_MON_SENT_OUT, "I am a Great Sage!\nI will not lose!\n"
     trainertextentry 715, TEXT_LAST_MON_CRITICAL, "We’ve got more discipline than\nanyone else!\n"
     trainertextentry 715, TEXT_DEFEATED_IN_BATTLE, "How is this possible...\n"
 
@@ -1936,14 +1936,14 @@ _10B0: // Trainer 185
     trainertextentry 185, TEXT_DEFEATED_IN_BATTLE, "Y-you’re strong...\n"
 
 _10B4: // Trainer 186
-    trainertextentry 186, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_1, "P-505: Woah! You made it\ninto this cave!\rWe can't have that!\nStop, them, Dustox!\r"
+    trainertextentry 186, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_1, "P-505: Woah! You made it\ninto this cave!\rWe can't have that!\nStop, them, Qwilfish!\r"
     trainertextentry 186, TEXT_DOUBLE_DEFEATED_IN_BATTLE_1, "No!!\n"
     trainertextentry 186, TEXT_DOUBLE_DEFEATED_IN_OVERWORLD_1, "P-505: Get lost, kiddo!\n"
     trainertextentry 186, TEXT_DOUBLE_ONLY_1_POKEMON_1, "You need two Pokemon.\n"
-    trainertextentry 186, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_2, "Dustox: Dust!\r"
-    trainertextentry 186, TEXT_DOUBLE_DEFEATED_IN_BATTLE_2, "Dustox: Dust!\n"
-    trainertextentry 186, TEXT_DOUBLE_DEFEATED_IN_OVERWORLD_2, "Dustox: Dust!\n"
-    trainertextentry 186, TEXT_DOUBLE_ONLY_1_POKEMON_2, "Dustox: Dust!\n"
+    trainertextentry 186, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_2, "Qwilfish: Qwil!\r"
+    trainertextentry 186, TEXT_DOUBLE_DEFEATED_IN_BATTLE_2, "Qwilfish: Qwil!\n"
+    trainertextentry 186, TEXT_DOUBLE_DEFEATED_IN_OVERWORLD_2, "Qwilfish: Qwil!\n"
+    trainertextentry 186, TEXT_DOUBLE_ONLY_1_POKEMON_2, "Qwilfish: Qwil!\n"
 
 _10C0: // Trainer 187
     trainertextentry 187, TEXT_NOTICE_IN_OVERWORLD, "P-555: This cave is full of\nloot! I love money!\r"

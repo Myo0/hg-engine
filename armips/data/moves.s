@@ -255,7 +255,7 @@ movedata MOVE_CUT, "Cut"
     pss SPLIT_PHYSICAL
     basepower 55
     type TYPE_NORMAL
-    accuracy 95
+    accuracy 100
     pp 10
     effectchance 0
     target RANGE_SINGLE_TARGET
@@ -317,7 +317,7 @@ movedata MOVE_WHIRLWIND, "Whirlwind"
 movedata MOVE_FLY, "Fly"
     battleeffect MOVE_EFFECT_FLY
     pss SPLIT_PHYSICAL
-    basepower 90
+    basepower 65
     type TYPE_FLYING
     accuracy 100
     pp 10
@@ -925,7 +925,7 @@ movedata MOVE_HYDRO_PUMP, "Hydro Pump"
 movedata MOVE_SURF, "Surf"
     battleeffect MOVE_EFFECT_DOUBLE_DAMAGE_DIVE
     pss SPLIT_SPECIAL
-    basepower 90
+    basepower 60
     type TYPE_WATER
     accuracy 100
     pp 10
@@ -1133,8 +1133,8 @@ movedata MOVE_SEISMIC_TOSS, "Seismic Toss"
 movedata MOVE_STRENGTH, "Strength"
     battleeffect MOVE_EFFECT_HIT
     pss SPLIT_PHYSICAL
-    basepower 80
-    type TYPE_FIGHTING
+    basepower 60
+    type TYPE_NORMAL
     accuracy 100
     pp 10
     effectchance 0
@@ -2045,7 +2045,7 @@ movedata MOVE_FIRE_BLAST, "Fire Blast"
 movedata MOVE_WATERFALL, "Waterfall"
     battleeffect MOVE_EFFECT_FLINCH_HIT
     pss SPLIT_PHYSICAL
-    basepower 80
+    basepower 60
     type TYPE_WATER
     accuracy 100
     pp 10

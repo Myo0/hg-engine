@@ -4496,10 +4496,11 @@ int TagStrategyFlag(struct BattleSystem *bsys, u32 attacker, int i, AIContext *a
                     if(ctx->battlemon[ai->partner].states[STAT_ATTACK] < 8){//Less than +2
                         moveScore += 3;
                     }
+                    else{
+                        moveScore -= 30;
+                    }
                 }
-                else{
-                    moveScore -= 30;
-                }
+
             }
             /*Gastro Acid*/
             else if(ai->attackerMoveEffect == MOVE_EFFECT_SUPRESS_ABILITY){
