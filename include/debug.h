@@ -6,8 +6,8 @@
 // uncomment the define to have the information written to 0x23DF000
 //#define DEBUG_ADJUSTED_ACCURACY
 
-// DEBUG_ADJUSTED_DAMAGE is used to debug the adjusted damage for testing abilities that affect damage output.
-//#define DEBUG_ADJUSTED_DAMAGE
+// DEBUG_DAMAGE_ROLLS is used to print all of the damage rolls
+//#define DEBUG_DAMAGE_ROLLS
 
 // DEBUG_HIDDEN_ABILITIES is used to debug hidden abilities by forcing all generated mons to have the hidden ability bit set.
 // uncomment the define to activate
@@ -27,13 +27,16 @@
 //#define DEBUG_PRINT_OVERLAY_LOADS
 
 // DEBUG_SOUND_SSEQ_LOADS prints out sseq loads from the SDAT and the free space left after the load.
-//#define DEBUG_SOUND_SSEQ_LOADS
+#define DEBUG_SOUND_SSEQ_LOADS
 
 // DEBUG_SOUND_SBNK_LOADS prints out sseq loads from the SDAT and the free space left after the load.
-//#define DEBUG_SOUND_SBNK_LOADS
+#define DEBUG_SOUND_SBNK_LOADS
 
 // GUARANTEE_CAPTURES guarantees captures
 //#define GUARANTEE_CAPTURES
+
+// Uncomment this when you want to enable all gimmicks while testing
+#define DEBUG_ENABLE_ALL_GIMMICKS
 
 // DEBUG_SQRT prints debug information for the gpio sqrt function
 //#define DEBUG_SQRT
@@ -70,6 +73,9 @@
 
 // DEBUG_PRINT_HEAP_ALLOCATION allows for debug prints on memory allocation/free
 //#define DEBUG_PRINT_HEAP_ALLOCATION
+
+// DEBUG_DAMAGE_CALC shows debug information related to calculating damage.
+//#define DEBUG_DAMAGE_CALC
 
 //DEBUG_SPEED_CALC shows debug information related to calculating speed. It is very slow and laggy.
 // #define DEBUG_SPEED_CALC

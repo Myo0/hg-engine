@@ -1509,6 +1509,7 @@
 #define SEQ_PLASMA_EYE_BASIC_BANK           2516
 #define SEQ_TRIAD_TANDEM                    2517
 #define SEQ_VS_TRIAD                        2518
+#define SEQ_COLRESS_MINI                    2519
 
 
 
