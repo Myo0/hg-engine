@@ -7997,7 +7997,7 @@ mondata SPECIES_REGISTEEL, "Registeel"
 mondata SPECIES_LATIAS, "Latias"
     basestats 80, 80, 90, 110, 110, 130
     types TYPE_DRAGON, TYPE_PSYCHIC
-    catchrate 195
+    catchrate 1
     baseexp 0 // defined in baseexp.s
     evyields 0, 0, 0, 0, 0, 3
     items ITEM_NONE, ITEM_NONE

@@ -793,7 +793,7 @@ int BasicFlag (struct BattleSystem *bsys, u32 attacker, int i, struct AIContext 
 
 
     /*Check for ai->defender type immunities.*/
-    if(ai->attackerMoveEffectiveness == MOVE_STATUS_FLAG_NOT_EFFECTIVE && ctx->moveTbl[ai->attackerMove].split != SPLIT_STATUS){
+    if(ai->attackerMoveEffectiveness[i] == MOVE_STATUS_FLAG_NOT_EFFECTIVE && ctx->moveTbl[ai->attackerMove].split != SPLIT_STATUS){
         moveScore -= 15;
     }
     if(ctx->moveTbl[ai->attackerMove].split == SPLIT_STATUS && ai->defenderAbility == ABILITY_MAGIC_BOUNCE){
@@ -801,7 +801,7 @@ int BasicFlag (struct BattleSystem *bsys, u32 attacker, int i, struct AIContext 
     }
 
     /*Check for wonder guard*/
-    if(ai->attackerMoveEffectiveness != MOVE_STATUS_FLAG_SUPER_EFFECTIVE &&
+    if(ai->attackerMoveEffectiveness[i] != MOVE_STATUS_FLAG_SUPER_EFFECTIVE &&
         ai->defenderAbility == ABILITY_WONDER_GUARD && ai->attackerAbility != ABILITY_MOLD_BREAKER){
         moveScore -= 15;
     }
@@ -2356,8 +2356,8 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, struct AIContext
         ai->attackerMoveEffect == MOVE_EFFECT_CHARGE_TURN_SUN_SKIPS ||
         ai->attackerMoveEffect == MOVE_EFFECT_CHARGE_TURN_SP_ATK_UP ||
         ai->attackerMoveEffect == MOVE_EFFECT_CHARGE_TURN_SP_ATK_UP_RAIN_SKIPS){
-        if(ai->attackerMoveEffectiveness == MOVE_STATUS_FLAG_NOT_EFFECTIVE ||
-            ai->attackerMoveEffectiveness == MOVE_STATUS_FLAG_NOT_VERY_EFFECTIVE){
+        if(ai->attackerMoveEffectiveness[i] == MOVE_STATUS_FLAG_NOT_EFFECTIVE ||
+            ai->attackerMoveEffectiveness[i] == MOVE_STATUS_FLAG_NOT_VERY_EFFECTIVE){
                 moveScore -= 2;
         }
         else if((ai->attackerMoveEffect == MOVE_EFFECT_CHARGE_TURN_SUN_SKIPS &&
@@ -2848,8 +2848,8 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, struct AIContext
 
     /*Focus Punch*/
     else if(ai->attackerMoveEffect == MOVE_EFFECT_HIT_LAST_WHIFF_IF_HIT){
-        if(ai->attackerMoveEffectiveness == MOVE_STATUS_FLAG_NOT_EFFECTIVE ||
-            ai->attackerMoveEffectiveness == MOVE_STATUS_FLAG_NOT_VERY_EFFECTIVE){
+        if(ai->attackerMoveEffectiveness[i] == MOVE_STATUS_FLAG_NOT_EFFECTIVE ||
+            ai->attackerMoveEffectiveness[i] == MOVE_STATUS_FLAG_NOT_VERY_EFFECTIVE){
                 moveScore -= 1;
         }
         else if(ctx->battlemon[attacker].condition2 & STATUS2_SUBSTITUTE){
@@ -3047,8 +3047,8 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, struct AIContext
     /*Hammer Arm*/
     /*TODO: incentivize in trick room*/
     else if(ai->attackerMoveEffect == MOVE_EFFECT_USER_SPEED_DOWN_HIT){
-        if(ai->attackerMoveEffectiveness == MOVE_STATUS_FLAG_NOT_EFFECTIVE ||
-            ai->attackerMoveEffectiveness == MOVE_STATUS_FLAG_NOT_VERY_EFFECTIVE){
+        if(ai->attackerMoveEffectiveness[i] == MOVE_STATUS_FLAG_NOT_EFFECTIVE ||
+            ai->attackerMoveEffectiveness[i] == MOVE_STATUS_FLAG_NOT_VERY_EFFECTIVE){
             moveScore -= 1;
         }
         else if(ai->defenderMovesFirst){
@@ -3099,8 +3099,8 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, struct AIContext
 
     /*Fling*/
     else if(ai->attackerMoveEffect == MOVE_EFFECT_FLING){
-        if(ai->attackerMoveEffectiveness == MOVE_STATUS_FLAG_NOT_EFFECTIVE ||
-            ai->attackerMoveEffectiveness == MOVE_STATUS_FLAG_NOT_VERY_EFFECTIVE ||
+        if(ai->attackerMoveEffectiveness[i] == MOVE_STATUS_FLAG_NOT_EFFECTIVE ||
+            ai->attackerMoveEffectiveness[i] == MOVE_STATUS_FLAG_NOT_VERY_EFFECTIVE ||
         !(ai->attackerItem == ITEM_KINGS_ROCK || ai->attackerItem == ITEM_RAZOR_FANG ||
           ai->attackerItem == ITEM_POISON_BARB || ai->attackerItem == ITEM_TOXIC_ORB ||
           ai->attackerItem == ITEM_FLAME_ORB || ai->attackerItem == ITEM_LIGHT_BALL)){
@@ -3113,7 +3113,7 @@ int ExpertFlag (struct BattleSystem *bsys, u32 attacker, int i, struct AIContext
             if(BattleRand(bsys) % 4 < 3){
                 moveScore += 1;
             }
-            if(ai->attackerMoveEffectiveness == MOVE_STATUS_FLAG_SUPER_EFFECTIVE){
+            if(ai->attackerMoveEffectiveness[i] == MOVE_STATUS_FLAG_SUPER_EFFECTIVE){
                 moveScore += 4;
             }
             else{
@@ -3629,7 +3629,7 @@ int TagStrategyFlag(struct BattleSystem *bsys, u32 attacker, int i, struct AICon
         Essentially, we want to protect ourselves from an attack that would kill us,
         but only if our partner isn't in danger. We want to avoid a double protect.*/
         if(ai->attackerMoveEffect == MOVE_EFFECT_PROTECT){
-            if(ai->maxDamageReceived > ai->attackerHP && ai->defenderMovesFirst){ //if the player can fast kill us, we need to protect
+            if(ai->maxDamageReceived > ai->attackerHP && ai->defenderMovesFirst && ctx->battlemon[attacker].moveeffect.protectSuccessTurns == 0){ //if the player can fast kill us, we need to protect
                 moveScore += 13;
             }
         }
@@ -4650,7 +4650,7 @@ void SetupStateVariables(struct BattleSystem *bsys, u32 attacker, u32 defender, 
         }
         ai->attackerMoveEffectiveness[i] = BattleAI_GetTypeEffectiveness(bsys, ctx, attackerMoveTypeCheck, &effectivenessFlag, &ai->attackerMon, &ai->defenderMon);
         //AITypeCalc(ctx, attackerMoveCheck, attackerMoveTypeCheck, ai->attackerAbility, ai->defenderAbility, ai->holdEffect, ai->defenderType1, ai->defenderType2, & ai->attackerMoveEffectiveness);
-        if(ai->attackerMoveEffectiveness == MOVE_STATUS_FLAG_SUPER_EFFECTIVE){
+        if(ai->attackerMoveEffectiveness[i] == MOVE_STATUS_FLAG_SUPER_EFFECTIVE){
             ai->attackerHasSupereffectiveMove = TRUE;
         }
 

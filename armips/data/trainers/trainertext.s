@@ -2208,7 +2208,7 @@ _12CC: // Trainer 224
 _12D0: // Trainer 479
     trainertextentry 479, TEXT_LAST_MON_SENT_OUT, "Argh! I’m getting nervous!\n"
     trainertextentry 479, TEXT_LAST_MON_CRITICAL, "Eeek!\n"
-    trainertextentry 479, TEXT_DEFEATED_IN_BATTLE, "Tch, you really are strong.\rIt’s too bad. If you were to join Team\nRocket, you could become an Executive.\n"
+    trainertextentry 479, TEXT_DEFEATED_IN_BATTLE, "Tch, you really are strong.\rIt’s too bad. If you were to join Team\nPlasma, you could become an Executive.\n"
 
 _12DC: // Trainer 218
     trainertextentry 218, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_1, "The door won’t open?\rWell, duh. It has to have a password\nthat only Team Plasma knows.\r"
