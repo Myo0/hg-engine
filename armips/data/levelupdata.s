@@ -4605,28 +4605,22 @@ levelup SPECIES_UMBREON
 
 
 levelup SPECIES_MURKROW
-    learnset MOVE_PECK, 1
-    learnset MOVE_MUD_SLAP, 2
-    learnset MOVE_PURSUIT, 3
+    learnset MOVE_TACKLE, 1
+    learnset MOVE_SAND_ATTACK, 2
+    learnset MOVE_BEAT_UP, 3
     learnset MOVE_ASTONISH, 5
-    learnset MOVE_HAZE, 7
-    learnset MOVE_SNARL, 11
-    learnset MOVE_AERIAL_ACE, 13
-    learnset MOVE_MIRROR_MOVE, 16
-    learnset MOVE_NIGHT_SHADE, 19
-    learnset MOVE_KNOCK_OFF, 22
-    learnset MOVE_U_TURN, 25
-    learnset MOVE_TORMENT, 29
-    learnset MOVE_MEAN_LOOK, 32
-    learnset MOVE_SUCKER_PUNCH, 36
-    learnset MOVE_FEATHER_DANCE, 39
-    learnset MOVE_DARK_PULSE, 42
-    learnset MOVE_DRILL_PECK, 45
-    learnset MOVE_HEAT_WAVE, 48
-    learnset MOVE_TAILWIND, 51
-    learnset MOVE_FOUL_PLAY, 54
-    learnset MOVE_QUASH, 57
-    learnset MOVE_BRAVE_BIRD, 60
+    learnset MOVE_SNARL, 7
+    learnset MOVE_FEATHER_DANCE, 8
+    learnset MOVE_AIR_CUTTER, 11
+    learnset MOVE_NIGHT_SHADE, 13
+    learnset MOVE_HAZE, 15
+    learnset MOVE_KNOCK_OFF, 18
+    learnset MOVE_U_TURN, 21
+    learnset MOVE_WING_ATTACK, 23
+    learnset MOVE_SUCKER_PUNCH, 25
+    learnset MOVE_DRILL_PECK, 28
+    learnset MOVE_ROOST, 30
+    learnset MOVE_BRAVE_BIRD, 32
     terminatelearnset
 
 

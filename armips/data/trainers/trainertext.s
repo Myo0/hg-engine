@@ -211,10 +211,9 @@ _0104: // Trainer 287
     trainertextentry 287, TEXT_PLAYER_LOSES, "Hmm, seems my Pokémon are pretty good.\n"
 
 _0114: // Trainer 489
-    trainertextentry 489, TEXT_LAST_MON_SENT_OUT, "Why?!\nI’ve still got one left!\n"
-    trainertextentry 489, TEXT_LAST_MON_CRITICAL, "Do you think you’ve won already?\n"
-    trainertextentry 489, TEXT_DEFEATED_IN_BATTLE, "...\rOK. I lost...\n"
-    trainertextentry 489, TEXT_PLAYER_LOSES, "...\rWhew...\nWith my partners,\fI’m going to be the Champion!\n"
+    trainertextentry  489, TEXT_NOTICE_IN_OVERWORLD, "Shadow Triad Jin: Third time's the charm.\nLord Darkrai, lend me your strength!\r"
+    trainertextentry  489, TEXT_DEFEATED_IN_BATTLE, "Shadow Triad Jin: No!\n"
+    trainertextentry  489, TEXT_DEFEATED_IN_OVERWORLD, "Shadow Triad Jin: Tet and Tor\nwill finish the job for me.\n"
 
 _0124: // Trainer 490
     trainertextentry 490, TEXT_LAST_MON_SENT_OUT, "Why?!\nI’ve still got one left!\n"
@@ -1072,7 +1071,14 @@ _0904: // Trainer 296
     trainertextentry 296, TEXT_DEFEATED_IN_OVERWORLD, "I have to watch out for blemishes\ncaused by the sun.\n"
 
 _0910: // Trainer 353
-    trainertextentry 353, TEXT_DEFEATED_IN_BATTLE, "Ayieeeh! No, no, no, believe it I can’t!\nStrong very much be you! Match I am\fnot to you!\n"
+    trainertextentry 353, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_1, "P-845: Gahhh! Get them, Mothim!\r"
+    trainertextentry 353, TEXT_DOUBLE_DEFEATED_IN_BATTLE_1, "P-845: Noooooo!\n"
+    trainertextentry 353, TEXT_DOUBLE_DEFEATED_IN_OVERWORLD_1, "P-845: Guh... Zinzolin is\ngoing to be cross with me.\n"
+    trainertextentry 353, TEXT_DOUBLE_ONLY_1_POKEMON_1, "P-845: Two or more Pokemon\nor I'm not battling you.\n"
+    trainertextentry 353, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_2, "Mothim: Mooooth!\r"
+    trainertextentry 353, TEXT_DOUBLE_DEFEATED_IN_BATTLE_2, "Mothim: Mooooth!\n"
+    trainertextentry 353, TEXT_DOUBLE_DEFEATED_IN_OVERWORLD_2, "Mothim: Mooooth!\n"
+    trainertextentry 353, TEXT_DOUBLE_ONLY_1_POKEMON_2, "Mothim: Mooooth!\n"
 
 _0914: // Trainer 148
     trainertextentry 148, TEXT_NOTICE_IN_OVERWORLD, "OK! I’m No. 4. I’ll stomp you!\r"
@@ -1948,7 +1954,7 @@ _1090: // Trainer 184
 
 _10A0: // Trainer 178
     trainertextentry 178, TEXT_NOTICE_IN_OVERWORLD, "The world is deep. There are still lots\nof things we don’t know.\fBut I know more than you do!\r"
-    trainertextentry 178, TEXT_DEFEATED_IN_BATTLE, "Wh-wh-what?\n"
+    trainertextentry 178, TEXT_DEFEATED_IN_BATTLE, "Ho-oh: Hooooh...\n"
     trainertextentry 178, TEXT_DEFEATED_IN_OVERWORLD, "There is a lot to learn.\rFor example...\nThere are more than 90 kinds of TMs.\fAnd traded Pokémon level up faster.\n"
     trainertextentry 178, TEXT_REMATCH_IN_OVERWORLD, "Yay!\nYou kept your promise and came back!\r"
 
@@ -1996,16 +2002,21 @@ _10FC: // Trainer 190
     trainertextentry 190, TEXT_DEFEATED_IN_OVERWORLD, "I feel lousy over losing! Bah!\nI hate useless Pokémon!\n"
 
 _1108: // Trainer 191
-    trainertextentry 191, TEXT_NOTICE_IN_OVERWORLD, "Why did the door open? Did you have\nsomething to do with this?\r"
-    trainertextentry 191, TEXT_DEFEATED_IN_BATTLE, "Gulp! This is a bleak moment.\n"
-    trainertextentry 191, TEXT_DEFEATED_IN_OVERWORLD, "What?! You made it past our men in\nthe Underground? How could you have?\n"
+    trainertextentry 191, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_1, "P-892: Trevenant, destoy this child.\r"
+    trainertextentry 191, TEXT_DOUBLE_DEFEATED_IN_BATTLE_1, "P-892: What? Unbelievable!\n"
+    trainertextentry 191, TEXT_DOUBLE_DEFEATED_IN_OVERWORLD_1, "P-892: How did you best my\nincredible Trevenant?\n"
+    trainertextentry 191, TEXT_DOUBLE_ONLY_1_POKEMON_1, "You need two Pokemon.\n"
+    trainertextentry 191, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_2, "Trevenant: Tree!\r"
+    trainertextentry 191, TEXT_DOUBLE_DEFEATED_IN_BATTLE_2, "Trevenant: Tree!\n"
+    trainertextentry 191, TEXT_DOUBLE_DEFEATED_IN_OVERWORLD_2, "Trevenant: Tree!\n"
+    trainertextentry 191, TEXT_DOUBLE_ONLY_1_POKEMON_2, "Trevenant: Tree!\n"
 
 _1114: // Trainer 706
-    trainertextentry 706, TEXT_NOTICE_IN_OVERWORLD, "Proton: Now, wait just one second!\rAren’t you the one who got in\nour way at the SLOWPOKE Well?\rI see... You’re doing all this because\nyou want to make me angry. Be careful!\rBut since you seem to wish it, I’ll show\nyou the full extent of a Team Plasma\fExecutive’s wrath!\r"
-    trainertextentry 706, TEXT_LAST_MON_SENT_OUT, "Seriously, you’d chase me this far?!\n"
-    trainertextentry 706, TEXT_LAST_MON_CRITICAL, "Ugh... What are you?!\n"
-    trainertextentry 706, TEXT_DEFEATED_IN_BATTLE, "Phew...\n"
-    trainertextentry 706, TEXT_DEFEATED_IN_OVERWORLD, "Proton: You may have won this time...\nBut all you did was make Team Plasma’s\fwrath grow...\n"
+    trainertextentry 706, TEXT_NOTICE_IN_OVERWORLD, "Shadow Triad Tet: Surprise!\nI'll stop you right here.\r"
+    trainertextentry 706, TEXT_LAST_MON_SENT_OUT, "Shadow Triad Tet: One last stand!\n"
+    trainertextentry 706, TEXT_LAST_MON_CRITICAL, "Shadow Triad Tet: Lord Darkrai!\n"
+    trainertextentry 706, TEXT_DEFEATED_IN_BATTLE, "Shadow Triad Tet: So that's it...\n"
+    trainertextentry 706, TEXT_DEFEATED_IN_OVERWORLD, "Shadow Triad Tet: Tor will finish you.\n"
 
 _1128: // Trainer 472
     trainertextentry 472, TEXT_NOTICE_IN_OVERWORLD, "Most excellent!\rThis Radio Tower will fulfill our\ngrand design.\r"
@@ -2013,9 +2024,9 @@ _1128: // Trainer 472
     trainertextentry 472, TEXT_DEFEATED_IN_OVERWORLD, "Do you honestly believe you can stop\nTeam Plasma?\n"
 
 _1134: // Trainer 192
-    trainertextentry 192, TEXT_NOTICE_IN_OVERWORLD, "You plan to rescue the Director?\nSo sad that won’t be possible--\fbecause I’m going to beat you!\r"
-    trainertextentry 192, TEXT_DEFEATED_IN_BATTLE, "No! Unbelievable!\n"
-    trainertextentry 192, TEXT_DEFEATED_IN_OVERWORLD, "I do not believe it! I was beaten!\n"
+    trainertextentry 192, TEXT_NOTICE_IN_OVERWORLD, "P-894: We are so close to liberating\nall Pokemon of Johto!\fYou won't stop our dream!\r"
+    trainertextentry 192, TEXT_DEFEATED_IN_BATTLE, "P-894: My dreams!\n"
+    trainertextentry 192, TEXT_DEFEATED_IN_OVERWORLD, "P-894: Wha-? Team Plasma isn't\nreally trying to liberate Pokemon?\n"
 
 _1140: // Trainer 200
     trainertextentry 200, TEXT_DEFEATED_IN_BATTLE, "Oh, no! They’re so useless!\n"
@@ -2026,16 +2037,16 @@ _1144: // Trainer 487
     trainertextentry 487, TEXT_DEFEATED_IN_BATTLE, "OK, OK. I’ll tell you where he is.\n"
 
 _1150: // Trainer 478
-    trainertextentry 478, TEXT_NOTICE_IN_OVERWORLD, "Ariana: Hey, you...\nRemember me from the hideout in\fMahogany Town?\rThis time...\rHee hee hee. This time...it looks like\nyou’re really all alone. All alone...\rSo it should be quite easy.\nBring it! Let’s finish this!\r\n"
-    trainertextentry 478, TEXT_LAST_MON_SENT_OUT, "Hey, what do you think you’re doing?!\n"
-    trainertextentry 478, TEXT_LAST_MON_CRITICAL, "Wh... Wha... Why are you so strong?!\n"
-    trainertextentry 478, TEXT_DEFEATED_IN_BATTLE, "Aaaieeeee!\nThis can’t be happening!\rI fought hard, but I still lost...\n"
-    trainertextentry 478, TEXT_DEFEATED_IN_OVERWORLD, "What a waste...\nnot to use your strength to do\fbad things!\rFeh... People like you will never in a\nmillion years understand our brilliance!\rIt’s too bad... I’ve really come to\nrespect your strength.\n"
+    trainertextentry 478, TEXT_NOTICE_IN_OVERWORLD, "Shadow Triad Tor: So it's up to me\nto stop some punk kid...\fFine, I'll be the hero.\r"
+    trainertextentry 478, TEXT_LAST_MON_SENT_OUT, "Shadow Triad Tor: Don't count me out.\n"
+    trainertextentry 478, TEXT_LAST_MON_CRITICAL, "Shadow Triad Tor: Please don't have\na priority move...\n"
+    trainertextentry 478, TEXT_DEFEATED_IN_BATTLE, "Shadow Triad Tor: Unbelievable... We lost.\n"
+    trainertextentry 478, TEXT_DEFEATED_IN_OVERWORLD, "Shadow Triad Tor: Even with Shiny\nPokemon, I have been defeated...\n"
 
 _1164: // Trainer 485
-    trainertextentry 485, TEXT_LAST_MON_SENT_OUT, "We can’t have you getting in the way\nbefore news of our resurgence\freaches Giovanni!\n"
+    trainertextentry 485, TEXT_LAST_MON_SENT_OUT, "We can’t have you getting in the way\nbefore news of our resurgence\freaches Ghetsis!\n"
     trainertextentry 485, TEXT_LAST_MON_CRITICAL, "That’s impossible...\n"
-    trainertextentry 485, TEXT_DEFEATED_IN_BATTLE, "No!\nForgive me, Giovanni!\n"
+    trainertextentry 485, TEXT_DEFEATED_IN_BATTLE, "No!\nForgive me, Ghetsis!\n"
 
 _1170: // Trainer 42
     trainertextentry  42, TEXT_NOTICE_IN_OVERWORLD, "Plasma P-340: Waahh!\nWe are up on the trees!\r"
@@ -2294,14 +2305,19 @@ _137C: // Trainer 283
     trainertextentry 283, TEXT_DEFEATED_IN_OVERWORLD, "The underground warehouse?\rWhat do you want to go there for?\nThere’s nothing down there.\n"
 
 _1388: // Trainer 193
-    trainertextentry 193, TEXT_NOTICE_IN_OVERWORLD, "Open one door, another closes. Bet you\ncan’t get where you want to go!\r"
-    trainertextentry 193, TEXT_DEFEATED_IN_BATTLE, "Uh-oh! I was sunk by indecision!\n"
-    trainertextentry 193, TEXT_DEFEATED_IN_OVERWORLD, "I’m confused, too...\rI’m pretty sure that the green switch\nis the one to press last... I think?\n"
+    trainertextentry 193, TEXT_NOTICE_IN_OVERWORLD, "P-854: My new Shiny Pokemon are powerful!\nYou're going down.\r"
+    trainertextentry 193, TEXT_DEFEATED_IN_BATTLE, "P-854: No way...\n"
+    trainertextentry 193, TEXT_DEFEATED_IN_OVERWORLD, "P-854: You're a freak of nature\nto defeat my Shiny Pokemon.\n"
 
 _1394: // Trainer 195
-    trainertextentry 195, TEXT_NOTICE_IN_OVERWORLD, "I don’t care if you’re lost. You show up\nhere--you’re nothing but a victim!\r"
-    trainertextentry 195, TEXT_DEFEATED_IN_BATTLE, "Urk! Yeah, think you’re cool, huh?\n"
-    trainertextentry 195, TEXT_DEFEATED_IN_OVERWORLD, "You must have ice in your veins to\ncall out Team Plasma.\n"
+    trainertextentry 195, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_1, "P-862: My Nidoqueen will tear\nyou apart. Let's go!\r"
+    trainertextentry 195, TEXT_DOUBLE_DEFEATED_IN_BATTLE_1, "P-862: Nid nooo!\n"
+    trainertextentry 195, TEXT_DOUBLE_DEFEATED_IN_OVERWORLD_1, "P-862: Destroyed by a purple\nhaired freak... unbelievable\n"
+    trainertextentry 195, TEXT_DOUBLE_ONLY_1_POKEMON_1, "We fight as a team. Come back later with\nmore Pokémon.\n"
+    trainertextentry 195, TEXT_DOUBLE_NOTICE_IN_OVERWORLD_2, "Nidoqueen: Queen!\r"
+    trainertextentry 195, TEXT_DOUBLE_DEFEATED_IN_BATTLE_2, "Nidoqueen: Queen!\n"
+    trainertextentry 195, TEXT_DOUBLE_DEFEATED_IN_OVERWORLD_2, "Nidoqueen: Queen!\n"
+    trainertextentry 195, TEXT_DOUBLE_ONLY_1_POKEMON_2, "Nidoqueen: Queen!\n"
 
 _13A0: // Trainer 228
     trainertextentry 228, TEXT_NOTICE_IN_OVERWORLD, "Kwa ha ha!\rConfounded by the doors, are we?\rI’ll let you in on a secret if you can\nbeat me!\r"
@@ -2316,7 +2332,7 @@ _13AC: // Trainer 199
 _13B8: // Trainer 196
     trainertextentry 196, TEXT_NOTICE_IN_OVERWORLD, "You’re not going any farther!\nI don’t show mercy to my enemies,\fespecially not brats!\r"
     trainertextentry 196, TEXT_DEFEATED_IN_BATTLE, "Blast it!\n"
-    trainertextentry 196, TEXT_DEFEATED_IN_OVERWORLD, "I lost...\rPlease forgive me, Giovanni!\n"
+    trainertextentry 196, TEXT_DEFEATED_IN_OVERWORLD, "I lost...\rPlease forgive me, Ghetsis!\n"
 
 _13C4: // Trainer 197
     trainertextentry 197, TEXT_NOTICE_IN_OVERWORLD, "Hyuck-hyuck-hyuck!\nI remember you!\rYou got me good at our hideout!\r"
@@ -2326,7 +2342,7 @@ _13C4: // Trainer 197
 _13D0: // Trainer 227
     trainertextentry 227, TEXT_NOTICE_IN_OVERWORLD, "How did you get this far? I guess it\ncan’t be helped. I’ll dispose of you.\r"
     trainertextentry 227, TEXT_DEFEATED_IN_BATTLE, "I got disposed of...\n"
-    trainertextentry 227, TEXT_DEFEATED_IN_OVERWORLD, "Team Plasma will keep going, waiting for\nthe return of Giovanni.\rWe’ll do whatever it takes.\n"
+    trainertextentry 227, TEXT_DEFEATED_IN_OVERWORLD, "Team Plasma will keep going, waiting for\nthe return of Ghetsis.\rWe’ll do whatever it takes.\n"
 
 _13DC: // Trainer 158
     trainertextentry 158, TEXT_DEFEATED_IN_BATTLE, "Waaaarggh!\nI’m beaten!\n"
@@ -2583,17 +2599,17 @@ _1654: // Trainer 571
 
 _1660: // Trainer 572
     trainertextentry 572, TEXT_NOTICE_IN_OVERWORLD, "You’re gonna lose!\nI’ve got a hunch!\r"
-    trainertextentry 572, TEXT_DEFEATED_IN_BATTLE, "Maybe my hunch was a little off...\n"
+    trainertextentry 572, TEXT_DEFEATED_IN_BATTLE, "Jin: Unbelievable...\nBested again...\n"
     trainertextentry 572, TEXT_DEFEATED_IN_OVERWORLD, "You’re so cool!\nYou don’t do anything halfway!\n"
 
 _166C: // Trainer 573
     trainertextentry 573, TEXT_NOTICE_IN_OVERWORLD, "Modding my Bike costs a bunch of money!\nI need a job!\r"
-    trainertextentry 573, TEXT_DEFEATED_IN_BATTLE, "Argh. I failed!\n"
+    trainertextentry 573, TEXT_DEFEATED_IN_BATTLE, "Tet: Darkrai... I failed!\n"
     trainertextentry 573, TEXT_DEFEATED_IN_OVERWORLD, "Bike?\nOh, I was talking about my Bicycle!\n"
 
 _1678: // Trainer 574
     trainertextentry 574, TEXT_NOTICE_IN_OVERWORLD, "Hey, who told you you could ride up\nand down this road?\r"
-    trainertextentry 574, TEXT_DEFEATED_IN_BATTLE, "Crash!\n"
+    trainertextentry 574, TEXT_DEFEATED_IN_BATTLE, "Tor: No...! We all lost!\n"
     trainertextentry 574, TEXT_DEFEATED_IN_OVERWORLD, "See you later! Come back anytime!\n"
     trainertextentry 574, TEXT_REMATCH_IN_OVERWORLD, "Hey! Do you think you could just pass\nthrough here without stopping?\r"
 
