@@ -27,10 +27,10 @@
 //#define DEBUG_PRINT_OVERLAY_LOADS
 
 // DEBUG_SOUND_SSEQ_LOADS prints out sseq loads from the SDAT and the free space left after the load.
-#define DEBUG_SOUND_SSEQ_LOADS
+//#define DEBUG_SOUND_SSEQ_LOADS
 
 // DEBUG_SOUND_SBNK_LOADS prints out sseq loads from the SDAT and the free space left after the load.
-#define DEBUG_SOUND_SBNK_LOADS
+//#define DEBUG_SOUND_SBNK_LOADS
 
 // GUARANTEE_CAPTURES guarantees captures
 //#define GUARANTEE_CAPTURES
@@ -84,7 +84,7 @@
 // #define FANCY_PRINT_NICKNAME
 
 // NOCASH_GBA_PRINT swaps from desmume prints with the syscall to NO$GBA-style prints for use with i.e. melonDS
-//#define NOCASH_GBA_PRINT
+#define NOCASH_GBA_PRINT
 
 //DEBUG_TRAINER_AI turns on a number of debug prints related to the trainer AI
 //#define DEBUG_TRAINER_AI

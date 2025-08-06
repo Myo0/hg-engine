@@ -1274,7 +1274,7 @@ int LONG_CALL BattleAI_CalcDamage(void* bw, struct BattleStruct* sp, int moveno,
             critical = 2;
     }
     damage = BattleAI_CalcBaseDamage(bw, sp, moveno, side_cond, field_cond, pow, movetype, critical, attackerSlot, defenderSlot, attacker, defender);
-	
+	debug_printf("calc base damage complete\n");
     //=====Step 6. General Damage Modifiers=====
 
     // 6.1 Spread Move Modifier
@@ -1288,6 +1288,7 @@ int LONG_CALL BattleAI_CalcDamage(void* bw, struct BattleStruct* sp, int moveno,
             damage = QMul_RoundDown(damage, UQ412__0_75);
         }
     }
+    debug_printf("after is double battle\n");
     // TODO
     // handle parental bond
 
