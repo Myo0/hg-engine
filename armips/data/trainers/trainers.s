@@ -5025,7 +5025,7 @@ trainerdata 81, "Jeb"
 		setevs 0, 0, 0, 0, 0, 0
 		nature NATURE_HARDY
 		shinylock 0
-		ballseal 1
+		ballseal 0
 	// mon 2
 		ivs 249
 		abilityslot 0
@@ -5041,7 +5041,7 @@ trainerdata 81, "Jeb"
 		setevs 0, 0, 0, 0, 0, 0
 		nature NATURE_HARDY
 		shinylock 0
-		ballseal 1
+		ballseal 0
     endparty
 
 trainerdata 82, "Toby"
