@@ -1,7 +1,7 @@
 # Makefile
 
 ROMNAME = rom.nds
-BUILDROM = GG_Deluxe_AP_Patched.nds
+BUILDROM = withLevelCapToggle.nds
 
 define n
 

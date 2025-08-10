@@ -537,7 +537,7 @@ trainerdata 9, "Elaine"
 		abilityslot 0
 		level 18
 		pokemon SPECIES_OMANYTE
-		item ITEM_RINDO_BERRY
+		item ITEM_FOCUS_BAND
 		move MOVE_WATER_PULSE
 		move MOVE_ANCIENT_POWER
 		move MOVE_MUD_SHOT
@@ -2070,7 +2070,7 @@ trainerdata 32, "Pryce"
 		abilityslot 32
 		level 25
 		pokemon SPECIES_AURORUS
-		item ITEM_CHOPLE_BERRY
+		item ITEM_FOCUS_SASH
 		move MOVE_STOMP
 		move MOVE_ANCIENT_POWER
 		move MOVE_REFLECT
@@ -2134,7 +2134,7 @@ trainerdata 32, "Pryce"
 		abilityslot 32
 		level 27
 		pokemon SPECIES_ABOMASNOW
-		item ITEM_OCCA_BERRY
+		item ITEM_CHOPLE_BERRY
 		move MOVE_AVALANCHE
 		move MOVE_MAGICAL_LEAF
 		move MOVE_WATER_PULSE
@@ -2339,7 +2339,7 @@ trainerdata 34, "Chuck"
 		ballseal 16
     endparty
 
-trainerdata 35, "Cody"
+trainerdata 35, "Clair"
 	trainermontype TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET | TRAINER_DATA_TYPE_NATURE_SET | TRAINER_DATA_TYPE_NATURE_SET | TRAINER_DATA_TYPE_SHINY_LOCK
     trainerclass TRAINERCLASS_CLAIR
      
@@ -2374,7 +2374,7 @@ trainerdata 35, "Cody"
 		abilityslot 32
 		level 26
 		pokemon SPECIES_DRAGONITE
-		item ITEM_YACHE_BERRY
+		item ITEM_HABAN_BERRY
 		move MOVE_FIRE_PUNCH
 		move MOVE_ICE_PUNCH
 		move MOVE_DRAGON_PULSE
@@ -2395,7 +2395,7 @@ trainerdata 35, "Cody"
 		move MOVE_DRAGON_PULSE
 		move MOVE_ROCK_TOMB
 		move MOVE_SHOCK_WAVE
-		ability ABILITY_LEVITATE
+		ability ABILITY_GOOEY
 		setivs 31, 31, 31, 31, 31, 31 // hp, atk, def, spe, spatk, spdef
 		setevs 0, 0, 0, 0, 0, 0
 		nature NATURE_SASSY
@@ -3078,7 +3078,7 @@ trainerdata 45, "Ruth"
 		abilityslot 32
 		level 16
 		pokemon SPECIES_BOLDORE
-		item ITEM_RINDO_BERRY
+		item ITEM_CUSTAP_BERRY
 		move MOVE_ROCK_TOMB
 		move MOVE_MAGNITUDE
 		move MOVE_SELF_DESTRUCT
@@ -3094,7 +3094,7 @@ trainerdata 45, "Ruth"
 		abilityslot 32
 		level 15
 		pokemon SPECIES_PUPITAR
-		item ITEM_PASSHO_BERRY
+		item ITEM_CUSTAP_BERRY
 		move MOVE_ROCK_BLAST
 		move MOVE_SCORCHING_SANDS
 		move MOVE_SELF_DESTRUCT
@@ -3110,7 +3110,7 @@ trainerdata 45, "Ruth"
 		abilityslot 32
 		level 14
 		pokemon SPECIES_MAGCARGO
-		item ITEM_SHUCA_BERRY
+		item ITEM_CHOPLE_BERRY
 		move MOVE_FLAME_WHEEL
 		move MOVE_ANCIENT_POWER
 		move MOVE_SELF_DESTRUCT
@@ -6672,7 +6672,7 @@ trainerdata 115, "Megan"
 		abilityslot 32
 		level 16
 		pokemon SPECIES_WARTORTLE
-		item ITEM_QUICK_CLAW
+		item ITEM_ORAN_BERRY
 		move MOVE_FAKE_OUT
 		move MOVE_WATER_PULSE
 		move MOVE_BRICK_BREAK
@@ -6773,7 +6773,7 @@ trainerdata 117, "Lola"
 		abilityslot 32
 		level 24
 		pokemon SPECIES_GABITE
-		item ITEM_YACHE_BERRY
+		item ITEM_HABAN_BERRY
 		move MOVE_FIRE_FANG
 		move MOVE_BREAKING_SWIPE
 		move MOVE_POWER_GEM
@@ -9044,7 +9044,7 @@ trainerdata 178, "Miasma"
 		abilityslot 32
 		level 31
 		pokemon SPECIES_HO_OH
-		item ITEM_CHARTI_BERRY
+		item ITEM_BRIGHT_POWDER
 		move MOVE_DARK_VOID
 		move MOVE_DARK_PULSE
 		move MOVE_DREAM_EATER
@@ -14500,7 +14500,7 @@ trainerdata 289, "N"
 		abilityslot 32
 		level 23
 		pokemon SPECIES_ESCAVALIER
-		item ITEM_OCCA_BERRY
+		item ITEM_FOCUS_BAND
 		move MOVE_BUG_BITE
 		move MOVE_SMART_STRIKE
 		move MOVE_NIGHT_SLASH
@@ -21876,7 +21876,7 @@ trainerdata 485, "Colress"
     // mon 3
 		ivs 250
 		abilityslot 32
-		level 13
+		level 24
 		pokemon SPECIES_PORYGON2
 		item ITEM_NONE
 		move MOVE_TAKE_DOWN
@@ -21895,7 +21895,7 @@ trainerdata 485, "Colress"
 		level 24
 		monwithform SPECIES_ROTOM, 2
 		item ITEM_NONE
-		move MOVE_CHARGE_BEAM
+		move MOVE_VOLT_SWITCH
 		move MOVE_LIQUIDATION
 		move MOVE_CONFUSE_RAY
 		move MOVE_THUNDER_WAVE
@@ -31475,7 +31475,7 @@ trainerdata 715, "Zinzolin"
 		abilityslot 32
 		level 20
 		pokemon SPECIES_FROSMOTH
-		item ITEM_OCCA_BERRY
+		item ITEM_SITRUS_BERRY
 		move MOVE_AURORA_BEAM
 		move MOVE_U_TURN
 		move MOVE_AIR_CUTTER

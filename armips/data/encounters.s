@@ -482,10 +482,10 @@ pokemon SPECIES_NONE
 
 //surf encounters
 encounter SPECIES_GOLDEEN, 2, 2
-encounter SPECIES_SKRELP, 2, 2
-encounter SPECIES_SKRELP, 2, 2
-encounter SPECIES_SKRELP, 2, 2
-encounter SPECIES_SKRELP, 2, 2
+encounter SPECIES_SEEL, 2, 2
+encounter SPECIES_SHELLOS, 2, 2
+encounter SPECIES_CHINCHOU, 2, 2
+encounter SPECIES_OSHAWOTT, 2, 2
 
 //rock smash encounters
 encounter SPECIES_NONE, 0, 0
@@ -493,24 +493,24 @@ encounter SPECIES_NONE, 0, 0
 
 //old rod encounters
 encounter SPECIES_GOLDEEN, 2, 2
-encounter SPECIES_SKRELP, 2, 2
-encounter SPECIES_SKRELP, 2, 2
-encounter SPECIES_SKRELP, 2, 2
-encounter SPECIES_SKRELP, 2, 2
+encounter SPECIES_SEEL, 2, 2
+encounter SPECIES_SHELLOS, 2, 2
+encounter SPECIES_CHINCHOU, 2, 2
+encounter SPECIES_OSHAWOTT, 2, 2
 
 //good rod encounters
 encounter SPECIES_GOLDEEN, 2, 2
-encounter SPECIES_SKRELP, 2, 2
-encounter SPECIES_SKRELP, 2, 2
-encounter SPECIES_SKRELP, 2, 2
-encounter SPECIES_SKRELP, 2, 2
+encounter SPECIES_SEEL, 2, 2
+encounter SPECIES_SHELLOS, 2, 2
+encounter SPECIES_CHINCHOU, 2, 2
+encounter SPECIES_OSHAWOTT, 2, 2
 
 //super rod encounters
 encounter SPECIES_GOLDEEN, 2, 2
-encounter SPECIES_SKRELP, 2, 2
-encounter SPECIES_SKRELP, 2, 2
-encounter SPECIES_SKRELP, 2, 2
-encounter SPECIES_SKRELP, 2, 2
+encounter SPECIES_SEEL, 2, 2
+encounter SPECIES_SHELLOS, 2, 2
+encounter SPECIES_CHINCHOU, 2, 2
+encounter SPECIES_OSHAWOTT, 2, 2
 
 //swarm grass
 pokemon SPECIES_NONE
