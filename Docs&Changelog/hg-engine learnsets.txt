@@ -899,7 +899,7 @@ Lv.29: Body Slam
 Lv.33: Freeze Dry
 Lv.37: Extrasensory
 Lv.40: Ice Beam
-Lv.42: Dark Pulse
+Lv.42: Hyper Voice
 Lv.45: Confuse Ray
 Lv.50: Blizzard
 Lv.54: Moonblast
