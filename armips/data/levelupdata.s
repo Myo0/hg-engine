@@ -24087,7 +24087,176 @@ levelup SPECIES_REVAVROOM_RUCHBAH
     terminatelearnset
 
 levelup SPECIES_REVAVROOM_CAPH
-    learnset MOVE_TACKLE, 1
+    learnset MOVE_SHIFT_GEAR, 0
+    learnset MOVE_SHIFT_GEAR, 1
+    learnset MOVE_LICK, 1
+    learnset MOVE_MAGNET_RISE, 1
+    learnset MOVE_POISON_GAS, 1
+    learnset MOVE_SMOG, 4
+    learnset MOVE_TAUNT, 7
+    learnset MOVE_ASSURANCE, 10
+    learnset MOVE_SLUDGE, 13
+    learnset MOVE_GYRO_BALL, 17
+    learnset MOVE_HEADBUTT, 21
+    learnset MOVE_SCREECH, 25
+    learnset MOVE_IRON_HEAD, 28
+    learnset MOVE_SWAGGER, 32
+    learnset MOVE_POISON_JAB, 36
+    learnset MOVE_UPROAR, 46
+    learnset MOVE_SPIN_OUT, 52
+    learnset MOVE_GUNK_SHOT, 58
+    terminatelearnset
+
+levelup SPECIES_KORAIDON_LIMITED_BUILD
+    learnset MOVE_BREAKING_SWIPE, 1
+    learnset MOVE_SUNNY_DAY, 1
+    learnset MOVE_ROCK_SMASH, 7
+    learnset MOVE_ANCIENT_POWER, 14
+    learnset MOVE_DRAIN_PUNCH, 21
+    learnset MOVE_BRICK_BREAK, 28
+    learnset MOVE_AGILITY, 35
+    learnset MOVE_DRAGON_CLAW, 42
+    learnset MOVE_FLAMETHROWER, 49
+    learnset MOVE_COLLISION_COURSE, 56
+    learnset MOVE_SCREECH, 63
+    learnset MOVE_COUNTER, 70
+    learnset MOVE_OUTRAGE, 77
+    learnset MOVE_CLOSE_COMBAT, 84
+    learnset MOVE_FLARE_BLITZ, 91
+    learnset MOVE_GIGA_IMPACT, 98
+    terminatelearnset
+
+levelup SPECIES_KORAIDON_SPRINTING_BUILD
+    learnset MOVE_BREAKING_SWIPE, 1
+    learnset MOVE_SUNNY_DAY, 1
+    learnset MOVE_ROCK_SMASH, 7
+    learnset MOVE_ANCIENT_POWER, 14
+    learnset MOVE_DRAIN_PUNCH, 21
+    learnset MOVE_BRICK_BREAK, 28
+    learnset MOVE_AGILITY, 35
+    learnset MOVE_DRAGON_CLAW, 42
+    learnset MOVE_FLAMETHROWER, 49
+    learnset MOVE_COLLISION_COURSE, 56
+    learnset MOVE_SCREECH, 63
+    learnset MOVE_COUNTER, 70
+    learnset MOVE_OUTRAGE, 77
+    learnset MOVE_CLOSE_COMBAT, 84
+    learnset MOVE_FLARE_BLITZ, 91
+    learnset MOVE_GIGA_IMPACT, 98
+    terminatelearnset
+
+levelup SPECIES_KORAIDON_SWIMMING_BUILD
+    learnset MOVE_BREAKING_SWIPE, 1
+    learnset MOVE_SUNNY_DAY, 1
+    learnset MOVE_ROCK_SMASH, 7
+    learnset MOVE_ANCIENT_POWER, 14
+    learnset MOVE_DRAIN_PUNCH, 21
+    learnset MOVE_BRICK_BREAK, 28
+    learnset MOVE_AGILITY, 35
+    learnset MOVE_DRAGON_CLAW, 42
+    learnset MOVE_FLAMETHROWER, 49
+    learnset MOVE_COLLISION_COURSE, 56
+    learnset MOVE_SCREECH, 63
+    learnset MOVE_COUNTER, 70
+    learnset MOVE_OUTRAGE, 77
+    learnset MOVE_CLOSE_COMBAT, 84
+    learnset MOVE_FLARE_BLITZ, 91
+    learnset MOVE_GIGA_IMPACT, 98
+    terminatelearnset
+
+levelup SPECIES_KORAIDON_GLIDING_BUILD
+    learnset MOVE_BREAKING_SWIPE, 1
+    learnset MOVE_SUNNY_DAY, 1
+    learnset MOVE_ROCK_SMASH, 7
+    learnset MOVE_ANCIENT_POWER, 14
+    learnset MOVE_DRAIN_PUNCH, 21
+    learnset MOVE_BRICK_BREAK, 28
+    learnset MOVE_AGILITY, 35
+    learnset MOVE_DRAGON_CLAW, 42
+    learnset MOVE_FLAMETHROWER, 49
+    learnset MOVE_COLLISION_COURSE, 56
+    learnset MOVE_SCREECH, 63
+    learnset MOVE_COUNTER, 70
+    learnset MOVE_OUTRAGE, 77
+    learnset MOVE_CLOSE_COMBAT, 84
+    learnset MOVE_FLARE_BLITZ, 91
+    learnset MOVE_GIGA_IMPACT, 98
+    terminatelearnset
+
+levelup SPECIES_MIRAIDON_LOW_POWER_MODE
+    learnset MOVE_DRAGON_BREATH, 1
+    learnset MOVE_ELECTRIC_TERRAIN, 1
+    learnset MOVE_THUNDER_SHOCK, 1
+    learnset MOVE_SHOCK_WAVE, 7
+    learnset MOVE_CHARGE, 14
+    learnset MOVE_PARABOLIC_CHARGE, 21
+    learnset MOVE_DISCHARGE, 28
+    learnset MOVE_AGILITY, 35
+    learnset MOVE_DRAGON_PULSE, 42
+    learnset MOVE_ELECTRO_DRIFT, 56
+    learnset MOVE_METAL_SOUND, 63
+    learnset MOVE_MIRROR_COAT, 70
+    learnset MOVE_OUTRAGE, 77
+    learnset MOVE_THUNDER, 84
+    learnset MOVE_OVERHEAT, 91
+    learnset MOVE_HYPER_BEAM, 98
+    terminatelearnset
+
+levelup SPECIES_MIRAIDON_DRIVE_MODE
+    learnset MOVE_DRAGON_BREATH, 1
+    learnset MOVE_ELECTRIC_TERRAIN, 1
+    learnset MOVE_THUNDER_SHOCK, 1
+    learnset MOVE_SHOCK_WAVE, 7
+    learnset MOVE_CHARGE, 14
+    learnset MOVE_PARABOLIC_CHARGE, 21
+    learnset MOVE_DISCHARGE, 28
+    learnset MOVE_AGILITY, 35
+    learnset MOVE_DRAGON_PULSE, 42
+    learnset MOVE_ELECTRO_DRIFT, 56
+    learnset MOVE_METAL_SOUND, 63
+    learnset MOVE_MIRROR_COAT, 70
+    learnset MOVE_OUTRAGE, 77
+    learnset MOVE_THUNDER, 84
+    learnset MOVE_OVERHEAT, 91
+    learnset MOVE_HYPER_BEAM, 98
+    terminatelearnset
+
+levelup SPECIES_MIRAIDON_AQUATIC_MODE
+    learnset MOVE_DRAGON_BREATH, 1
+    learnset MOVE_ELECTRIC_TERRAIN, 1
+    learnset MOVE_THUNDER_SHOCK, 1
+    learnset MOVE_SHOCK_WAVE, 7
+    learnset MOVE_CHARGE, 14
+    learnset MOVE_PARABOLIC_CHARGE, 21
+    learnset MOVE_DISCHARGE, 28
+    learnset MOVE_AGILITY, 35
+    learnset MOVE_DRAGON_PULSE, 42
+    learnset MOVE_ELECTRO_DRIFT, 56
+    learnset MOVE_METAL_SOUND, 63
+    learnset MOVE_MIRROR_COAT, 70
+    learnset MOVE_OUTRAGE, 77
+    learnset MOVE_THUNDER, 84
+    learnset MOVE_OVERHEAT, 91
+    learnset MOVE_HYPER_BEAM, 98
+    terminatelearnset
+
+levelup SPECIES_MIRAIDON_GLIDE_MODE
+    learnset MOVE_DRAGON_BREATH, 1
+    learnset MOVE_ELECTRIC_TERRAIN, 1
+    learnset MOVE_THUNDER_SHOCK, 1
+    learnset MOVE_SHOCK_WAVE, 7
+    learnset MOVE_CHARGE, 14
+    learnset MOVE_PARABOLIC_CHARGE, 21
+    learnset MOVE_DISCHARGE, 28
+    learnset MOVE_AGILITY, 35
+    learnset MOVE_DRAGON_PULSE, 42
+    learnset MOVE_ELECTRO_DRIFT, 56
+    learnset MOVE_METAL_SOUND, 63
+    learnset MOVE_MIRROR_COAT, 70
+    learnset MOVE_OUTRAGE, 77
+    learnset MOVE_THUNDER, 84
+    learnset MOVE_OVERHEAT, 91
+    learnset MOVE_HYPER_BEAM, 98
     terminatelearnset
 
 levelup SPECIES_POLTCHAGEIST_MASTERPIECE

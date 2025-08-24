@@ -845,5 +845,12 @@
 
 .equ ITEM_INFINITE_CANDY, (ITEM_PIXE_PLATE + 216)
 
+.equ MAX_BASE_ITEM_NUM, ITEM_METAL_ALLOY
+
+// define your custom move effects below like this
+// .equ ITEM_CUSTOM_1, (MAX_BASE_ITEM_NUM + 1)
+
+
+
 
 .endif

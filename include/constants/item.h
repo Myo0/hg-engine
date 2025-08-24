@@ -870,6 +870,13 @@
 
 #define ITEM_INFINITE_CANDY     (ITEM_PIXIE_PLATE + 216)
 
+#define MAX_BASE_ITEM_NUM ITEM_METAL_ALLOY
+
+// define your custom move effects below like this
+// #define ITEM_CUSTOM_1 (MAX_BASE_ITEM_NUM + 1)
+
+
+
 #define NUM_MEGA_STONES 48 // includes the pixie plate
 
 #define IS_ITEM_TERRAIN_SEED(item) (item >= ITEM_ELECTRIC_SEED && item <= ITEM_PSYCHIC_SEED)
