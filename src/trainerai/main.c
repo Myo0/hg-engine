@@ -154,33 +154,34 @@ void SetupStateVariables(struct BattleSystem *bsys, int attacker, u32 defender, 
 int AdjustUnusualMoveDamage(struct BattleSystem *bsys, int attacker, u32 defender, int damage, int moveEffect, struct AIContext *ai);
 int AdjustUnusualMovePower(struct BattleSystem *bsys, int attacker, u32 defender, int moveEffect, struct AIContext *ai);
 
-enum AIActionChoice __attribute__((section (".init"))) TrainerAI_Main(struct BattleSystem *bsys, int attacker)
+unsigned int __attribute__((section (".init"))) TrainerAI_Main(struct BattleSystem *bsys, int attacker)
     {
     debug_printf("In TrainerAI_Main:\n");
     struct BattleStruct *ctx = bsys->sp;
     struct AIContext aictx = {0};
     struct AIContext *ai = &aictx;
-    enum AIActionChoice result = AI_ENEMY_ATTACK_1, highest_damage_something = 0;
+    unsigned int result = 0;
+    //enum AIActionChoice result = AI_ENEMY_ATTACK_1, highest_damage_something = 0;
     debug_printf("After enum\n");
-    int score = 0;
+    unsigned int score = 0;
     if (attacker >= 10)
 		return BattleAI_PostKOSwitchIn_Internal(bsys, attacker - 10, &score);
     debug_printf("After attacker>=10 thing\n");
-    u32 highest_move_score = 0;
-    u32 moveScores[4][4];
-    for (int i = 0; i < 4; i++) {           //don't want to get negative (unsigned ints) numbers, so start high at 100
-        for (int j = 0; j < 4; j++) {
+    unsigned int highest_move_score = 0;
+    unsigned int moveScores[4][4];
+    for (unsigned int i = 0; i < 4; i++) {           //don't want to get negative (unsigned ints) numbers, so start high at 100
+        for (unsigned int j = 0; j < 4; j++) {
             moveScores[i][j] = 100;
         }
     } 
     debug_printf("After moveScore setup\n");
-    u32 max_scores[4] = {0};                //highest score over all of the 4 moves the attacker has, measured against each mon on the field (self is always 0)
-    int num_defender_ties = 0;
-    int defender_tie_indices[4] = {0};
-    int num_move_score_ties = 0;
-    int move_tie_indices[4] = {0};
-    int target = 0;
-    u32 defender = BATTLER_OPPONENT(attacker);   //default for singles -- updated in the doubles section
+    unsigned int max_scores[4] = {0};                //highest score over all of the 4 moves the attacker has, measured against each mon on the field (self is always 0)
+    unsigned int num_defender_ties = 0;
+    unsigned int defender_tie_indices[4] = {0};
+    unsigned int num_move_score_ties = 0;
+    unsigned int move_tie_indices[4] = {0};
+    unsigned int target = 0;
+    unsigned int defender = BATTLER_OPPONENT(attacker);   //default for singles -- updated in the doubles section
     debug_printf("Before setup vars\n");
     SetupStateVariables(bsys, attacker, defender, ai);
     debug_printf("After Setup state vars\n");
@@ -189,19 +190,19 @@ enum AIActionChoice __attribute__((section (".init"))) TrainerAI_Main(struct Bat
     if(BattleTypeGet(bsys) & (BATTLE_TYPE_MULTI | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TAG)){
         /*ALWAYS turn on tag strategy in double battles. Prevents user errors. Otherwise targeting and scoring will be incorrect.*/
         bsys->trainers[ai->attacker].aibit |= AI_FLAG_TAG_STRATEGY;
-        for(int battler_no = 0; battler_no < CLIENT_MAX; battler_no++){
+        for(unsigned int battler_no = 0; battler_no < CLIENT_MAX; battler_no++){
             ai->defender = battler_no;
             debug_printf("\nfor Attacker: %d, Defender: %d\n", ai->attacker, ai->defender);
             SetupStateVariables(bsys, attacker, ai->defender, ai);             //need to reset the ai vars for each defender 
 
             if(battler_no == ai->attacker || ctx->battlemon[ai->defender].hp == 0){     //edge case for doubles when only one mon remains alive. Not including this causes incorrect scoring.
-                for(int i = 0; i < 4; i ++){
+                for(unsigned int i = 0; i < 4; i ++){
                     moveScores[battler_no][i] = 0;                                      //prevent ai from thinking it is also the defender for calculations
                 }
             }
             else{
                 /*Main loop over moves and select the best one*/
-                for (int i = 0; i < 4; i++)
+                for (unsigned int i = 0; i < 4; i++)
                 {  
                     /*Move-relevant variables*/
                     ai->attackerMove = ctx->battlemon[ai->attacker].move[i];
@@ -219,6 +220,11 @@ enum AIActionChoice __attribute__((section (".init"))) TrainerAI_Main(struct Bat
                     moveScores[battler_no][i] += TagStrategyFlag(bsys, attacker, i, ai);
 */
                     
+                    if (ai->attackerMove != MOVE_NONE &&
+                        (ai->attackerMove == ctx->battlemon[ai->attacker].moveeffect.moveNoChoice ||
+                        ai->attackerMove == ctx->battlemon[ai->attacker].moveeffect.encoredMove)){
+                        moveScores[battler_no][i] += 100; //force the user to use the move if choice locked
+                    }                
                     
                     for (unsigned int j = 0; j < sizeof(moveEvaluators) / sizeof(moveEvaluators[0]); j++) {
                         debug_printf("in move evaluators");
@@ -254,8 +260,8 @@ enum AIActionChoice __attribute__((section (".init"))) TrainerAI_Main(struct Bat
         }
         debug_printf("before tie break");
         //debug_printf("Highest move score: %d\n", highest_move_score);
-        int j_tie_index = 0;
-        for(int battler_no = 0; battler_no < 4; battler_no++){
+        unsigned int j_tie_index = 0;
+        for(unsigned int battler_no = 0; battler_no < 4; battler_no++){
             if(highest_move_score == max_scores[battler_no]){                           //find all defenders that tied for the maximum score 
                 num_defender_ties++;
                 defender_tie_indices[j_tie_index] = battler_no;
@@ -265,7 +271,7 @@ enum AIActionChoice __attribute__((section (".init"))) TrainerAI_Main(struct Bat
         target = defender_tie_indices[BattleRand(bsys) % num_defender_ties];        //randomly pick a target among the tie
         debug_printf("after target");
         ctx->aiWorkTable.ai_dir_select_client[ai->attacker] = target;                   //assign the correct target for this attacker.
-        for(int i = 0; i < 4; i++){
+        for(unsigned int i = 0; i < 4; i++){
             debug_printf("the target for battler %d is %d",i,ctx->aiWorkTable.ai_dir_select_client[i]);
         }
         debug_printf("Target: %d\n", target);
@@ -274,7 +280,7 @@ enum AIActionChoice __attribute__((section (".init"))) TrainerAI_Main(struct Bat
     else{ //single battles
         
         /*Main loop over moves and select the best one*/
-        for (int i = 0; i < 4; i++)
+        for (unsigned int i = 0; i < 4; i++)
         {   
             /*Move-relevant variables*/
             ai->attackerMove = ctx->battlemon[ai->attacker].move[i];
@@ -283,8 +289,12 @@ enum AIActionChoice __attribute__((section (".init"))) TrainerAI_Main(struct Bat
             ai->attackerMoveType = ctx->moveTbl[ai->attackerMove].type;
             ai->attackerMovePPRemaining = ctx->battlemon[ai->attacker].pp[i];
             //AITypeCalc(ctx, ai->attackerMove, ai->attackerMoveType, ai->attackerAbility, ai->defenderAbility, ai->holdEffect, ai->defenderType1, ai->defenderType2, & ai->attackerMoveEffectiveness);
-
-            for (int j = 0; j < sizeof(moveEvaluators) / sizeof(moveEvaluators[0]); j++) {
+            if (ai->attackerMove != MOVE_NONE &&
+                (ai->attackerMove == ctx->battlemon[ai->attacker].moveeffect.moveNoChoice ||
+                ai->attackerMove == ctx->battlemon[ai->attacker].moveeffect.encoredMove)){
+                moveScores[target][i] += 100; //force the user to use the move if choice locked
+            }     
+            for (unsigned int j = 0; j < sizeof(moveEvaluators) / sizeof(moveEvaluators[0]); j++) {
                 if (bsys->trainers[ai->attacker].aibit & moveEvaluators[j].flag) {
                     moveScores[target][i] += moveEvaluators[j].evaluator(bsys, ai->attacker, i, ai);
                 }
@@ -293,16 +303,16 @@ enum AIActionChoice __attribute__((section (".init"))) TrainerAI_Main(struct Bat
         }
         ctx->aiWorkTable.ai_dir_select_client[ai->attacker] = target;                   //target is always 0 in single battles (the player)
     }
-    for(int i = 0; i < 4; i++){
+    for(unsigned int i = 0; i < 4; i++){
         if(moveScores[target][i] > moveScores[target][result]){
             result = i;
         }
     }
 
     highest_move_score = moveScores[target][result];
-    int j_tie_index = 0;
+    unsigned int j_tie_index = 0;
 
-    for (int moveno = 0; moveno < 4; moveno++){                                         //check for ties
+    for (unsigned int moveno = 0; moveno < 4; moveno++){                                         //check for ties
         if(moveScores[target][moveno] == highest_move_score){
             num_move_score_ties++;
             move_tie_indices[j_tie_index] = moveno;
@@ -310,6 +320,8 @@ enum AIActionChoice __attribute__((section (".init"))) TrainerAI_Main(struct Bat
         }
     }
     result  = move_tie_indices[BattleRand(bsys) % num_move_score_ties];             //randomly pick a move among the tie
+
+
     return result;
 }
 
@@ -395,7 +407,7 @@ const u16 AttackRaiseList[] = {
     MOVE_EFFECT_SP_ATK_UP, //growth
     MOVE_EFFECT_ATK_SP_ATK_UP, //work up
     MOVE_EFFECT_ATK_ACC_UP, //hone claws
-    MOVE_EFFECT_RAISE_ATTACK_HIT, //powerup punch
+    //MOVE_EFFECT_RAISE_ATTACK_HIT, //powerup punch
    // MOVE_EFFECT_SPEED_UP_2_ATK_UP, //shift gear is part of speed raise list
     MOVE_EFFECT_ATK_SP_ATK_SPEED_UP_2_DEF_SP_DEF_DOWN, //shell smash
     MOVE_EFFECT_TIDY_UP, //tidy up is basically ddance
@@ -799,15 +811,18 @@ int BasicFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext 
 
 
     /*Check for ai->defender type immunities.*/
-    if(ai->attackerMoveEffectiveness[i] == MOVE_STATUS_FLAG_NOT_EFFECTIVE && ctx->moveTbl[ai->attackerMove].split != SPLIT_STATUS){
-        moveScore -= 15;
+    if(ai->attackerMoveEffectiveness[i] == TYPE_MUL_NO_EFFECT && ctx->moveTbl[ai->attackerMove].split != SPLIT_STATUS){
+        moveScore -= 25;
     }
     if(ctx->moveTbl[ai->attackerMove].split == SPLIT_STATUS && ai->defenderAbility == ABILITY_MAGIC_BOUNCE){
         moveScore -= 15; //status moves that bounce back to the user
     }
+    if(ai->attackerMove == MOVE_THUNDER_WAVE && HasType(ctx, ai->defender, TYPE_GROUND)){
+        moveScore -= 25;
+    }
 
     /*Check for wonder guard*/
-    if(ai->attackerMoveEffectiveness[i] != MOVE_STATUS_FLAG_SUPER_EFFECTIVE &&
+    if(ai->attackerMoveEffectiveness[i] < TYPE_MUL_SUPER_EFFECTIVE &&
         ai->defenderAbility == ABILITY_WONDER_GUARD && ai->attackerAbility != ABILITY_MOLD_BREAKER){
         moveScore -= 15;
     }
@@ -1152,7 +1167,7 @@ int BasicFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext 
     /*Misc persistent effects
     Focus Energy / Ingrain / Mud Sport / Water Sport / Camouflage /
     Power Trick / Lucky Chant / Aqua Ring*/
-    else if((ctx->battlemon[ai->defender].condition2 & STATUS2_FOCUS_ENERGY  &&
+    else if((ctx->battlemon[ai->attacker].condition2 & STATUS2_FOCUS_ENERGY  &&
     ai->attackerMoveEffect == MOVE_EFFECT_CRIT_UP_2)||
     (ctx->battlemon[attacker].effect_of_moves & MOVE_EFFECT_FLAG_INGRAIN  &&
         ai->attackerMoveEffect == MOVE_EFFECT_GROUND_TRAP_USER_CONTINUOUS_HEAL) ||
@@ -1168,7 +1183,7 @@ int BasicFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext 
                             ai->attackerMoveEffect == MOVE_EFFECT_PREVENT_CRITS) ||
                             (ctx->battlemon[attacker].effect_of_moves & MOVE_EFFECT_FLAG_AQUA_RING &&
                                 ai->attackerMoveEffect == MOVE_EFFECT_RESTORE_HP_EVERY_TURN)){
-        moveScore -= 15;
+        moveScore -= 25;
     }
     else if(ai->attackerMoveEffect == MOVE_EFFECT_TAUNT){
         if(ctx->battlemon[ai->defender].moveeffect.tauntTurns > 0){
@@ -1547,7 +1562,7 @@ int EvaluateAttackFlag (struct BattleSystem *bsys, int attacker, int i, struct A
         //debug_printf("Move %d: Max damage roll %d\n", j, ai->attackerAvgRollMoveDamages[j]);
     }
     /*If AI is about to die, get some priority damage*/
-    if(ai->maxDamageReceived > ai->attackerHP && ai->defenderMovesFirst && ai->attackerAvgRollMoveDamages[i] < ai->defenderHP && !BattlerHasMoveEffect(bsys, ai->attacker, MOVE_EFFECT_PROTECT, ai)){//last argument is a failsafe for double battles
+    if(ai->maxDamageReceived > ai->attackerHP && ai->defenderMovesFirst && !BattlerHasMoveEffect(bsys, ai->attacker, MOVE_EFFECT_PROTECT, ai)){//last argument is a failsafe for double battles
         if(ctx->moveTbl[ai->attackerMove].priority > 0 ){
             moveScore += 12;
         }
@@ -1732,7 +1747,8 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
         (ai->attackerMoveEffect == MOVE_EFFECT_LOWER_SPEED_HIT && ai->attackerAbility != ABILITY_SHEER_FORCE && ctx->moveTbl[ai->attackerMove].secondaryEffectChance == 100) || 
         ai->attackerMoveEffect == MOVE_EFFECT_STATUS_PARALYZE ||
         (ai->attackerMoveEffect == MOVE_EFFECT_PARALYZE_HIT && ai->attackerAbility != ABILITY_SHEER_FORCE && ctx->moveTbl[ai->attackerMove].secondaryEffectChance == 100 && ctx->battlemon[ai->defender].condition & CONDITION_NONE)) &&
-        ai->attackerAvgRollMoveDamages[i] < ai->defenderHP){ //only do this if we can't kill, to preserve random move if we can kill
+        ai->attackerAvgRollMoveDamages[i] < ai->defenderHP &&
+        ai->attackerMoveEffectiveness[i] != TYPE_MUL_NO_EFFECT){ //only do this if we can't kill, to preserve random move if we can kill
 
         if(!(ai->trickRoomActive) && ai->defenderMovesFirst){ //this is tiered below slow kills, but above 2 hit KOs and setup into OHKO
             debug_printf("Defender moves first is true.\n");
@@ -2365,8 +2381,8 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
         ai->attackerMoveEffect == MOVE_EFFECT_CHARGE_TURN_SUN_SKIPS ||
         ai->attackerMoveEffect == MOVE_EFFECT_CHARGE_TURN_SP_ATK_UP ||
         ai->attackerMoveEffect == MOVE_EFFECT_CHARGE_TURN_SP_ATK_UP_RAIN_SKIPS){
-        if(ai->attackerMoveEffectiveness[i] == MOVE_STATUS_FLAG_NOT_EFFECTIVE ||
-            ai->attackerMoveEffectiveness[i] == MOVE_STATUS_FLAG_NOT_VERY_EFFECTIVE){
+        if(ai->attackerMoveEffectiveness[i] == TYPE_MUL_NO_EFFECT ||
+            ai->attackerMoveEffectiveness[i] == TYPE_MUL_NOT_EFFECTIVE){
                 moveScore -= 2;
         }
         else if((ai->attackerMoveEffect == MOVE_EFFECT_CHARGE_TURN_SUN_SKIPS &&
@@ -2416,7 +2432,7 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
     }  
 
     /*Fake Out*/
-    else if(ai->attackerMoveEffect == MOVE_EFFECT_ALWAYS_FLINCH_FIRST_TURN_ONLY){
+    else if(ai->attackerMoveEffect == MOVE_EFFECT_ALWAYS_FLINCH_FIRST_TURN_ONLY &&  ai->attackerTurnsOnField > 0){
         if(ai->defenderAbility != ABILITY_INNER_FOCUS &&
             (ai->defenderAbility != ABILITY_STEADFAST && !ai->trickRoomActive) &&
             ai->defenderAbility != ABILITY_SHIELD_DUST &&
@@ -2599,11 +2615,12 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
 
     /*Protect / Detect */
     else if(ai->attackerMoveEffect == MOVE_EFFECT_PROTECT){
+        debug_printf("protect success turns: %d\n",ctx->protectSuccessTurns[ai->attacker])
         if(BattleTypeGet(bsys) & (BATTLE_TYPE_MULTI | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TAG)){ //Protect for doubles is handled in TagStrategy Flag
             moveScore += 0;
         }
         else{
-            if(ctx->battlemon[ai->attacker].moveeffect.protectSuccessTurns >= 1){// don't go for double protect
+            if(ctx->protectSuccessTurns[ai->attacker] > 0){// don't go for double protect
                 moveScore -= 4;
             }
             else if(ai->defenderMovesFirst && !(ai->trickRoomActive) && ai->attackerAbility == ABILITY_SPEED_BOOST){ //gain speed advantage
@@ -2644,7 +2661,7 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
     IRIDIUM: This sucks lmao, changing it to be defender-aware*/
     else if(ai->attackerMoveEffect == MOVE_EFFECT_SURVIVE_WITH_1_HP){
         debug_printf("In endure\n")
-        if(ctx->battlemon[ai->attacker].moveeffect.protectSuccessTurns >= 1){
+        if(ctx->protectSuccessTurns[ai->attacker] >= 1 || ai->attackerLastUsedMove == MOVE_ENDURE){
             moveScore -= 5;
         }
         else if((ai->maxDamageReceived > ai->attackerHP)){
@@ -2859,8 +2876,8 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
 
     /*Focus Punch*/
     else if(ai->attackerMoveEffect == MOVE_EFFECT_HIT_LAST_WHIFF_IF_HIT){
-        if(ai->attackerMoveEffectiveness[i] == MOVE_STATUS_FLAG_NOT_EFFECTIVE ||
-            ai->attackerMoveEffectiveness[i] == MOVE_STATUS_FLAG_NOT_VERY_EFFECTIVE){
+        if(ai->attackerMoveEffectiveness[i] == TYPE_MUL_NO_EFFECT ||
+            ai->attackerMoveEffectiveness[i] == TYPE_MUL_NOT_EFFECTIVE){
                 moveScore -= 1;
         }
         else if(ctx->battlemon[attacker].condition2 & STATUS2_SUBSTITUTE){
@@ -3058,8 +3075,8 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
     /*Hammer Arm*/
     /*TODO: incentivize in trick room*/
     else if(ai->attackerMoveEffect == MOVE_EFFECT_USER_SPEED_DOWN_HIT){
-        if(ai->attackerMoveEffectiveness[i] == MOVE_STATUS_FLAG_NOT_EFFECTIVE ||
-            ai->attackerMoveEffectiveness[i] == MOVE_STATUS_FLAG_NOT_VERY_EFFECTIVE){
+        if(ai->attackerMoveEffectiveness[i] == TYPE_MUL_NO_EFFECT ||
+            ai->attackerMoveEffectiveness[i] == TYPE_MUL_NOT_EFFECTIVE){
             moveScore -= 1;
         }
         else if(ai->defenderMovesFirst){
@@ -3110,8 +3127,8 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
 
     /*Fling*/
     else if(ai->attackerMoveEffect == MOVE_EFFECT_FLING){
-        if(ai->attackerMoveEffectiveness[i] == MOVE_STATUS_FLAG_NOT_EFFECTIVE ||
-            ai->attackerMoveEffectiveness[i] == MOVE_STATUS_FLAG_NOT_VERY_EFFECTIVE ||
+        if(ai->attackerMoveEffectiveness[i] == TYPE_MUL_NOT_EFFECTIVE ||
+            ai->attackerMoveEffectiveness[i] == TYPE_MUL_NO_EFFECT ||
         !(ai->attackerItem == ITEM_KINGS_ROCK || ai->attackerItem == ITEM_RAZOR_FANG ||
           ai->attackerItem == ITEM_POISON_BARB || ai->attackerItem == ITEM_TOXIC_ORB ||
           ai->attackerItem == ITEM_FLAME_ORB || ai->attackerItem == ITEM_LIGHT_BALL)){
@@ -3124,7 +3141,7 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
             if(BattleRand(bsys) % 4 < 3){
                 moveScore += 1;
             }
-            if(ai->attackerMoveEffectiveness[i] == MOVE_STATUS_FLAG_SUPER_EFFECTIVE){
+            if(ai->attackerMoveEffectiveness[i] >= TYPE_MUL_SUPER_EFFECTIVE){
                 moveScore += 4;
             }
             else{
@@ -3242,7 +3259,7 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
     /*Toxic Spikes*/
     /*Spikes*/
     /*Stealth Rock*/
-    else if(ai->attackerMoveEffect == MOVE_EFFECT_SET_SPIKES || ai->attackerMoveEffect == MOVE_EFFECT_TOXIC_SPIKES || ai->attackerMoveEffect == MOVE_EFFECT_STEALTH_ROCK){
+    else if(ai->attackerMoveEffect == MOVE_EFFECT_SET_SPIKES || ai->attackerMoveEffect == MOVE_EFFECT_TOXIC_SPIKES || ai->attackerMoveEffect == MOVE_EFFECT_STEALTH_ROCK || ai->attackerMoveEffect == MOVE_EFFECT_STICKY_WEB){
         if(ai->maxDamageReceived > ai->defenderHP){
             return -3; //Don't set toxic spikes if we are going to die
         }
@@ -3354,7 +3371,7 @@ int BatonPassFlag(struct BattleSystem *bsys, int attacker, int i, struct AIConte
             }
         }
         else if(ai->attackerMoveEffect == MOVE_EFFECT_PROTECT){
-            if(ctx->battlemon[attacker].moveeffect.protectSuccessTurns > 0){
+            if(ctx->protectSuccessTurns[ai->attacker] > 0){
                 moveScore -=2;
             }
             else{
@@ -3641,7 +3658,7 @@ int TagStrategyFlag(struct BattleSystem *bsys, int attacker, int i, struct AICon
         Essentially, we want to protect ourselves from an attack that would kill us,
         but only if our partner isn't in danger. We want to avoid a double protect.*/
         if(ai->attackerMoveEffect == MOVE_EFFECT_PROTECT){
-            if(ai->maxDamageReceived > ai->attackerHP && ai->defenderMovesFirst && ctx->battlemon[attacker].moveeffect.protectSuccessTurns == 0){ //if the player can fast kill us, we need to protect
+            if(ai->maxDamageReceived > ai->attackerHP && ai->defenderMovesFirst && ctx->protectSuccessTurns[ai->attacker] == 0){ //if the player can fast kill us, we need to protect
                 moveScore += 13;
             }
         }
@@ -4537,7 +4554,8 @@ void SetupStateVariables(struct BattleSystem *bsys, int attacker, u32 defender, 
         ctx->side_condition[ai->defenderSide] & SIDE_STATUS_SAFEGUARD ||
         ai->defenderAbility == ABILITY_MAGIC_GUARD ||
         ai->defenderAbility == ABILITY_WATER_VEIL ||
-        ai->defenderAbility == ABILITY_THERMAL_EXCHANGE) ||
+        ai->defenderAbility == ABILITY_THERMAL_EXCHANGE ||
+        ai->defenderAbility == ABILITY_WATER_BUBBLE) ||
         (ai->defenderAbility == ABILITY_LEAF_GUARD && ctx->field_condition & WEATHER_SUNNY_ANY)|| 
         (ai->defenderAbility == ABILITY_HYDRATION && ctx->field_condition & WEATHER_RAIN_ANY) ||
         (IsClientGrounded(ctx, ai->defender) && ctx->terrainOverlay.type == MISTY_TERRAIN);
@@ -4663,7 +4681,7 @@ void SetupStateVariables(struct BattleSystem *bsys, int attacker, u32 defender, 
         }
         ai->attackerMoveEffectiveness[i] = BattleAI_GetTypeEffectiveness(bsys, ctx, attackerMove.type, &effectivenessFlag, &ai->attackerMon, &ai->defenderMon);
         //AITypeCalc(ctx, attackerMoveCheck, attackerMoveTypeCheck, ai->attackerAbility, ai->defenderAbility, ai->holdEffect, ai->defenderType1, ai->defenderType2, & ai->attackerMoveEffectiveness);
-        if(ai->attackerMoveEffectiveness[i] == MOVE_STATUS_FLAG_SUPER_EFFECTIVE){
+        if(ai->attackerMoveEffectiveness[i] == TYPE_MUL_SUPER_EFFECTIVE){
             ai->attackerHasSupereffectiveMove = TRUE;
         }
 

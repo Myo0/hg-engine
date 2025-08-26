@@ -1751,9 +1751,9 @@ BOOL BattleController_CheckMoveFailures1(struct BattleSystem *bsys, struct Battl
 
     // TODO: client Transformed into the correct species can use the move as well
     // Dark Void when user isn't Darkrai
-    if ((currentMoveIndex == MOVE_DARK_VOID && attackClient.species != SPECIES_DARKRAI)
+    if (
     // Hyperspace Fury when user isn't Hoopa
-    || (currentMoveIndex == MOVE_HYPERSPACE_FURY && attackClient.species != SPECIES_HOOPA)
+     (currentMoveIndex == MOVE_HYPERSPACE_FURY && attackClient.species != SPECIES_HOOPA)
     // Aura Wheel when user isn't Morpeko
     || (currentMoveIndex == MOVE_AURA_WHEEL && attackClient.species != SPECIES_MORPEKO)) {
         ctx->oneTurnFlag[ctx->attack_client].parental_bond_flag = 0;
@@ -2507,7 +2507,7 @@ BOOL BattleController_CheckTypeBasedMoveConditionImmunities1(struct BattleSystem
     int priority = ctx->clientPriority[ctx->attack_client];
 
     // Dark-type Prankster immunity
-    if ((priority > 0 && GetBattlerAbility(ctx, ctx->attack_client) == ABILITY_PRANKSTER && HasType(ctx, defender, TYPE_DARK) && (ctx->attack_client & 1) != (defender & 1)) // used on an enemy)
+    if ((priority > 0 && GetBattlerAbility(ctx, ctx->attack_client) == ABILITY_PRANKSTER && HasType(ctx, defender, TYPE_DARK) && (ctx->attack_client & 1) != (defender & 1) && ctx->moveTbl[ctx->current_move_index].split == SPLIT_STATUS) // used on an enemy)
     // Ghost-type immunity to trapping moves
     // TODO: handle Octolock
     || (moveEffect == MOVE_EFFECT_PREVENT_ESCAPE && HasType(ctx, defender, TYPE_GHOST))

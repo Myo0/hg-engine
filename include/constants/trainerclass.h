@@ -87,7 +87,7 @@
 #define TRAINERCLASS_CAMERAMAN              83
 #define TRAINERCLASS_REPORTER               84
 #define TRAINERCLASS_COLRESS                85
-#define TRAINERCLASS_STEVEN                 86
+#define TRAINERCLASS_CHAMPION               86
 #define TRAINERCLASS_ELITE_FOUR_WILL        87
 #define TRAINERCLASS_ELITE_FOUR_KAREN       88
 #define TRAINERCLASS_ELITE_FOUR_KOGA        89

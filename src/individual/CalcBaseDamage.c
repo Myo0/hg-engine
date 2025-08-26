@@ -213,20 +213,21 @@ int UNUSED CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 sid
 
     // https://web.archive.org/web/20241226231016/https://www.trainertower.com/dawoblefets-damage-dissertation/
 
-    // switch (moveno) {
-    //     // handle body press - attack is derived from defense
-    //     case MOVE_BODY_PRESS:
-    //         attack = BattlePokemonParamGet(sp, attacker, BATTLE_MON_DATA_DEF, NULL);
-    //         atkstate = BattlePokemonParamGet(sp, attacker, BATTLE_MON_DATA_STATE_DEF, NULL) - 6;
-    //         break;
+     switch (moveno) {
+         // handle body press - attack is derived from defense
+         case MOVE_BODY_PRESS:
+             attack = BattlePokemonParamGet(sp, attacker, BATTLE_MON_DATA_DEF, NULL);
+             atkstate = BattlePokemonParamGet(sp, attacker, BATTLE_MON_DATA_STATE_DEF, NULL) - 6;
+             break;
 
-    //     default:
-    //         attack = BattlePokemonParamGet(sp, attacker, BATTLE_MON_DATA_ATK, NULL);
-    //         atkstate = BattlePokemonParamGet(sp, attacker, BATTLE_MON_DATA_STATE_ATK, NULL) - 6;
-    //         break;
-    // }
+         default:
+             attack = BattlePokemonParamGet(sp, attacker, BATTLE_MON_DATA_ATK, NULL);
+             atkstate = BattlePokemonParamGet(sp, attacker, BATTLE_MON_DATA_STATE_ATK, NULL) - 6;
+           break;
+     }
     
-    AttackingMon.attack = BattlePokemonParamGet(sp, attacker, BATTLE_MON_DATA_ATK, NULL);
+    //AttackingMon.attack = BattlePokemonParamGet(sp, attacker, BATTLE_MON_DATA_ATK, NULL);
+
     DefendingMon.attack = BattlePokemonParamGet(sp, defender, BATTLE_MON_DATA_ATK, NULL);
 
     AttackingMon.defense = BattlePokemonParamGet(sp, defender, BATTLE_MON_DATA_DEF, NULL);
@@ -238,7 +239,7 @@ int UNUSED CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 sid
     AttackingMon.sp_defense = BattlePokemonParamGet(sp, attacker, BATTLE_MON_DATA_SPDEF, NULL);
     DefendingMon.sp_defense = BattlePokemonParamGet(sp, defender, BATTLE_MON_DATA_SPDEF, NULL);
 
-    AttackingMon.atkstate = BattlePokemonParamGet(sp, attacker, BATTLE_MON_DATA_STATE_ATK, NULL) - 6;
+    //AttackingMon.atkstate = BattlePokemonParamGet(sp, attacker, BATTLE_MON_DATA_STATE_ATK, NULL) - 6;
     DefendingMon.atkstate = BattlePokemonParamGet(sp, defender, BATTLE_MON_DATA_STATE_ATK, NULL) - 6;
 
     AttackingMon.defstate = BattlePokemonParamGet(sp, attacker, BATTLE_MON_DATA_STATE_DEF, NULL) - 6;

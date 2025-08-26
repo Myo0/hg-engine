@@ -53,4 +53,4 @@ NO_PARTNER_DOUBLE_BATTLES equ 1
 
 // APPLY_ANTIPIRACY will apply the typical anti-piracy code changes to your ROM automatically so that the game runs well on hardware (TWLmenu and R4 are both tested)
 // comment out the lines if you do not want anti-piracy to be applied to your ROM
-.definelabel APPLY_ANTIPIRACY, 0
+//.definelabel APPLY_ANTIPIRACY, 0

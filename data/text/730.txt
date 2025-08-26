@@ -98,7 +98,7 @@ Elite Four
 Mastermind
 Leader
 Fallen Sage
-Factory Head
+Plasma Boss
 Plasma Boss
 Castle Valet
 Leader
@@ -106,7 +106,7 @@ Leader
 Leader
 Leader
 Henchman
-Leader
+Henchman
 ₧₦ Trainer
 Leader
 Elder

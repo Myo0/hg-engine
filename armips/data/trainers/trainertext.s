@@ -3188,7 +3188,7 @@ _1A7C: // Trainer 611
     trainertextentry 611, TEXT_DEFEATED_IN_BATTLE, "I can beat you in pride, but...\n"
 
 _1A80: // Trainer 447
-    trainertextentry 447, TEXT_DEFEATED_IN_BATTLE, "Whew! You’re hot stuff.\n"
+    trainertextentry 447, TEXT_DEFEATED_IN_BATTLE, "Houuuun!\n"
 
 _1A84: // Trainer 448
     trainertextentry 448, TEXT_DEFEATED_IN_BATTLE, "Whew! You’re hot stuff.\n"
