@@ -1,0 +1,127 @@
+#include "include/config.h"
+
+0012 SkillMenuTouchData 0226E930
+0012 SkillMenuTouchRet 0226E934
+0012 SkillMenuPaletteNo 0226E938
+
+#ifdef ALLOW_SAVE_CHANGES
+#ifdef ITEM_POCKET_EXPANSION
+
+arm9 sPocketCounts 08077C14
+# 021FA000
+0015 sPocketCountBytes 08000C80
+# 021FA16C
+0015 sPocketCountBytes 08000DEC
+# 021FF360
+0015 sPocketCountBytes 08005FE0
+# 021FF4E0
+0015 sPocketCountBytes 08006160
+
+#endif
+#endif
+
+0001 gOWTagToFileNum 021F92FC
+0001 gOWTagToFileNum 021FA280
+
+# repoint the type effectiveness table
+0012 TypeEffectivenessTable+1 02251D20
+0012 TypeEffectivenessTable+2 02251D24
+0012 TypeEffectivenessTable 0225204C
+0012 TypeEffectivenessTable 02252174
+0012 TypeEffectivenessTable+1 022521C0
+0012 TypeEffectivenessTable+2 022521C4
+0012 TypeEffectivenessTable 02252640
+0012 TypeEffectivenessTable+1 02252644
+0012 TypeEffectivenessTable+2 02252648
+0012 TypeEffectivenessTable 02252694
+
+# metronome and mimic banlist
+0012 sMetronomeMimicMoveBanList 02257D9C
+0012 sMetronomeMimicMoveBanList 02257DF4
+
+# item use func table
+arm9 sItemFieldUseFuncs 020649AC
+arm9 sItemFieldUseFuncs+4 020649B0
+arm9 sItemFieldUseFuncs+8 020649B4
+
+# terrain table expansion
+0012 TerrainPlatformPlayerNCGR 02265F1C
+0012 TerrainPlatformEnemyNCGR 02265F24
+0012 TerrainPlatformPalettes 02265F2C
+
+# swarm table
+arm9 sSwarmMapLUT 02097FF0
+arm9 sSwarmMapLUT 02097F94
+arm9 sSwarmMapLUT+2 02097F98
+
+# Trainer Class Money Table
+0012 PrizeMoney 08008380
+0012 PrizeMoney+2 08008384
+arm9 sTrainerGenders 020FFB90
+
+# sTrainerEncounterMusicParam
+arm9 sTrainerEncounterMusicParam 020550E0
+
+# Trainer class battle music table
+arm9 TrainerClassToMusicCombo 08051890
+
+# Combo table for battle music
+arm9 MainMusicComboTable 080517C8
+arm9 MainMusicComboTable+2 080517E4
+
+# Pokemon battle music table
+arm9 PokemonBattleMusic 080518D4
+
+# secret power move effect table
+0012 sSecretPowerEffectTable 0800CBC0
+
+# camouflage type table
+0012 sCamouflageTypeTable 0800CB60
+
+# move tutor moves
+0001 sTutorMoves 0220304C
+0001 sTutorMoves 02202C20
+0001 sTutorMoves+2 02202C24
+
+#ifdef MART_EXPANSION
+arm9 sCherrygroveCityMart 0210FA3C
+arm9 sVioletCityMart 0210FA40
+arm9 sAzaleaCityMart 0210FA44
+arm9 sGoldenrodDepartmentLower2F 0210FA48
+arm9 sGoldenrodDepartmentUpper2F 0210FA4C
+arm9 sGoldenrodDepartment3F 0210FA50
+arm9 sGoldenrodDepartment4F 0210FA54
+arm9 sGoldenrodDepartment5F 0210FA58
+arm9 sGoldenrodHerbs 0210FA5C
+arm9 sEcruteakMart 0210FA60
+arm9 sOlivineMart 0210FA64
+arm9 sCianwoodPharmacy 0210FA68
+arm9 sBlackthornAndBattleFrontierMart 0210FA6C
+arm9 sIndigoPlateau 0210FA70
+arm9 sVermilionAndSafariMart 0210FA74
+arm9 sSaffronMart 0210FA78
+arm9 sLavenderMart 0210FA7C
+arm9 sCeruleanMart 0210FA80
+arm9 sCeladonDepartmentUpper2F 0210FA84
+arm9 sCeladonDepartmentLower2F 0210FA88
+arm9 sCeladonDepartment3F 0210FA8C
+arm9 sCeladonDepartment4F 0210FA90
+arm9 sCeladonDepartmentLeft5F 0210FA94
+arm9 sCeladonDepartmentRight5F 0210FA98
+arm9 sFuschiaMart 0210FA9C
+arm9 sPewterMart 0210FAA0
+arm9 sViridianMart 0210FAA4
+arm9 sMtMoonSquare 0210FAA8
+arm9 sMahoganyPreRocketHideout  0210FAAC
+arm9 sMahoganyPostRocketHideout 0210FAB0
+#endif
+
+#ifdef POKEATHLON_SHOP_EXPANSION
+arm9 sPokeathlonShopSunday 0210FA20
+arm9 sPokeathlonShopMonday 0210FA24
+arm9 sPokeathlonShopTuesday 0210FA28
+arm9 sPokeathlonShopWednesday 0210FA2C
+arm9 sPokeathlonShopThursday 0210FA30
+arm9 sPokeathlonShopFriday 0210FA34
+arm9 sPokeathlonShopSaturday 0210FA38
+#endif

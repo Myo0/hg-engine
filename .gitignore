@@ -17,6 +17,8 @@ b.c
 dump.py
 dumpitem.py
 *_DSPRE_contents/*
+/tools/*.s
+/tools/dumped_armips/*
 
 # pycache files
 *.pyc
@@ -78,6 +80,10 @@ armips/asm/offset.s
 .vs/
 .vscode/
 rom_gen*.ld
+.idea/
+.zed
+compile_commands.json
+CLAUDE.md
 
 sdat/*
 *.swav
@@ -92,3 +98,8 @@ tools/swav2swar.exe
 *.gbapal
 *.4bpp
 changelog
+
+/data/generated/
+/armips/include/generated/
+/include/constants/generated/
+test_logs.txt
