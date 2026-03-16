@@ -6157,49 +6157,49 @@ rocksmashrate 0
 oldrodrate 25
 goodrodrate 50
 superrodrate 75
-walklevels 23, 22, 23, 22, 22, 22, 24, 24, 24, 26, 24, 26
+walklevels 58, 57, 57, 58, 59, 57, 58, 58, 58, 58, 59, 59
 
 // morning encounter slots
-pokemon SPECIES_TANGELA
-pokemon SPECIES_WEEPINBELL
-pokemon SPECIES_TANGELA
-pokemon SPECIES_WEEPINBELL
-pokemon SPECIES_BELLSPROUT
-pokemon SPECIES_BELLSPROUT
-pokemon SPECIES_LICKITUNG
-pokemon SPECIES_LICKITUNG
-pokemon SPECIES_WEEPINBELL
-pokemon SPECIES_LICKITUNG
-pokemon SPECIES_WEEPINBELL
-pokemon SPECIES_LICKITUNG
+monwithform SPECIES_RAPIDASH, 1
+pokemon SPECIES_AMBIPOM
+pokemon SPECIES_LOPUNNY
+pokemon SPECIES_TSAREENA
+pokemon SPECIES_DURANT
+pokemon SPECIES_HAXORUS
+pokemon SPECIES_ALAKAZAM
+pokemon SPECIES_CORVIKNIGHT
+pokemon SPECIES_ARCANINE
+monwithform SPECIES_ARCANINE, 1
+pokemon SPECIES_DRAGONITE
+pokemon SPECIES_DRAGONITE
 
 // day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
-pokemon SPECIES_TANGELA
-pokemon SPECIES_WEEPINBELL
-pokemon SPECIES_TANGELA
-pokemon SPECIES_WEEPINBELL
-pokemon SPECIES_BELLSPROUT
-pokemon SPECIES_BELLSPROUT
-pokemon SPECIES_LICKITUNG
-pokemon SPECIES_LICKITUNG
-pokemon SPECIES_WEEPINBELL
-pokemon SPECIES_LICKITUNG
-pokemon SPECIES_WEEPINBELL
-pokemon SPECIES_LICKITUNG
+monwithform SPECIES_RAPIDASH, 1
+pokemon SPECIES_AMBIPOM
+pokemon SPECIES_LOPUNNY
+pokemon SPECIES_TSAREENA
+pokemon SPECIES_DURANT
+pokemon SPECIES_HAXORUS
+pokemon SPECIES_ALAKAZAM
+pokemon SPECIES_CORVIKNIGHT
+pokemon SPECIES_ARCANINE
+monwithform SPECIES_ARCANINE, 1
+pokemon SPECIES_DRAGONITE
+pokemon SPECIES_DRAGONITE
 
 // night encounter slots
-pokemon SPECIES_TANGELA
-pokemon SPECIES_WEEPINBELL
-pokemon SPECIES_TANGELA
-pokemon SPECIES_WEEPINBELL
-pokemon SPECIES_BELLSPROUT
-pokemon SPECIES_BELLSPROUT
-pokemon SPECIES_LICKITUNG
-pokemon SPECIES_LICKITUNG
-pokemon SPECIES_WEEPINBELL
-pokemon SPECIES_LICKITUNG
-pokemon SPECIES_WEEPINBELL
-pokemon SPECIES_LICKITUNG
+monwithform SPECIES_RAPIDASH, 1
+pokemon SPECIES_AMBIPOM
+pokemon SPECIES_LOPUNNY
+pokemon SPECIES_TSAREENA
+pokemon SPECIES_DURANT
+pokemon SPECIES_HAXORUS
+pokemon SPECIES_ALAKAZAM
+pokemon SPECIES_CORVIKNIGHT
+pokemon SPECIES_ARCANINE
+monwithform SPECIES_ARCANINE, 1
+pokemon SPECIES_DRAGONITE
+pokemon SPECIES_DRAGONITE
 
 // hoenn encounter slots
 pokemon SPECIES_WHISMUR
@@ -6210,36 +6210,36 @@ pokemon SPECIES_BUIZEL
 pokemon SPECIES_BIDOOF
 
 // surf encounters; probabilities:  60, 30, 5, 4, 1
-encounter SPECIES_POLIWAG, 20, 30
-encounter SPECIES_POLIWAG, 15, 25
-encounter SPECIES_POLIWHIRL, 20, 30
-encounter SPECIES_POLIWHIRL, 20, 30
-encounter SPECIES_POLIWHIRL, 20, 30
+encounter SPECIES_CROBAT, 59, 59
+encounter SPECIES_NOIVERN, 59, 59
+encounter SPECIES_DREEPY, 5, 48
+encounter SPECIES_DREEPY, 5, 48
+encounter SPECIES_DREEPY, 5, 48
 
 // rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
 // old rod encounters
-encounter SPECIES_MAGIKARP, 10, 10
-encounter SPECIES_MAGIKARP, 10, 10
-encounter SPECIES_MAGIKARP, 10, 10
-encounter SPECIES_POLIWAG, 10, 10
-encounter SPECIES_POLIWAG, 10, 10
+encounter SPECIES_BARRASKEWDA, 59, 59
+encounter SPECIES_BLASTOISE, 59, 59
+encounter SPECIES_SHARPEDO, 59, 59
+encounter SPECIES_JELLICENT, 59, 59
+encounter SPECIES_JELLICENT, 59, 59
 
 // good rod encounters
-encounter SPECIES_MAGIKARP, 20, 20
-encounter SPECIES_POLIWAG, 20, 20
-encounter SPECIES_POLIWAG, 20, 20
-encounter SPECIES_POLIWAG, 20, 20
-encounter SPECIES_REMORAID, 20, 20
+encounter SPECIES_BARRASKEWDA, 59, 59
+encounter SPECIES_BLASTOISE, 59, 59
+encounter SPECIES_SHARPEDO, 59, 59
+encounter SPECIES_JELLICENT, 59, 59
+encounter SPECIES_JELLICENT, 59, 59
 
 // super rod encounters; probabilities:  40, 40, 15, 4, 1
-encounter SPECIES_POLIWAG, 40, 40
-encounter SPECIES_POLIWAG, 40, 40
-encounter SPECIES_MAGIKARP, 40, 40
-encounter SPECIES_REMORAID, 40, 40
-encounter SPECIES_MAGIKARP, 40, 40
+encounter SPECIES_BARRASKEWDA, 59, 59
+encounter SPECIES_BLASTOISE, 59, 59
+encounter SPECIES_SHARPEDO, 59, 59
+encounter SPECIES_JELLICENT, 59, 59
+encounter SPECIES_JELLICENT, 59, 59
 
 // swarm grass
 pokemon SPECIES_TANGELA
@@ -6261,49 +6261,49 @@ rocksmashrate 0
 oldrodrate 0
 goodrodrate 0
 superrodrate 0
-walklevels 21, 22, 21, 22, 22, 22, 23, 23, 22, 22, 22, 22
+walklevels 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 48, 60
 
 // morning encounter slots
-pokemon SPECIES_SWINUB
-pokemon SPECIES_GOLBAT
-pokemon SPECIES_SWINUB
-pokemon SPECIES_GOLBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_SWINUB
-pokemon SPECIES_SWINUB
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_JYNX
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_JYNX
+pokemon SPECIES_STARMIE
+pokemon SPECIES_GLALIE
+pokemon SPECIES_SNEASLER
+pokemon SPECIES_HARIYAMA
+pokemon SPECIES_WEAVILE
+pokemon SPECIES_MILTANK
+pokemon SPECIES_SNEASLER
+pokemon SPECIES_URSARING
+pokemon SPECIES_MORGREM
+pokemon SPECIES_METAGROSS
+pokemon SPECIES_ARCTIBAX
+pokemon SPECIES_BAXCALIBUR
 
 // day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
-pokemon SPECIES_SWINUB
-pokemon SPECIES_GOLBAT
-pokemon SPECIES_SWINUB
-pokemon SPECIES_GOLBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_SWINUB
-pokemon SPECIES_SWINUB
-pokemon SPECIES_JYNX
-pokemon SPECIES_JYNX
-pokemon SPECIES_JYNX
-pokemon SPECIES_JYNX
+pokemon SPECIES_STARMIE
+pokemon SPECIES_GLALIE
+pokemon SPECIES_SNEASLER
+pokemon SPECIES_HARIYAMA
+pokemon SPECIES_WEAVILE
+pokemon SPECIES_MILTANK
+pokemon SPECIES_SNEASLER
+pokemon SPECIES_URSARING
+pokemon SPECIES_MORGREM
+pokemon SPECIES_METAGROSS
+pokemon SPECIES_ARCTIBAX
+pokemon SPECIES_BAXCALIBUR
 
 // night encounter slots
-pokemon SPECIES_SWINUB
-pokemon SPECIES_GOLBAT
-pokemon SPECIES_SWINUB
-pokemon SPECIES_GOLBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_SWINUB
-pokemon SPECIES_SWINUB
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_JYNX
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_JYNX
+pokemon SPECIES_STARMIE
+pokemon SPECIES_GLALIE
+pokemon SPECIES_SNEASLER
+pokemon SPECIES_HARIYAMA
+pokemon SPECIES_WEAVILE
+pokemon SPECIES_MILTANK
+pokemon SPECIES_SNEASLER
+pokemon SPECIES_URSARING
+pokemon SPECIES_MORGREM
+pokemon SPECIES_METAGROSS
+pokemon SPECIES_ARCTIBAX
+pokemon SPECIES_BAXCALIBUR
 
 // hoenn encounter slots
 pokemon SPECIES_ABSOL
@@ -6365,49 +6365,49 @@ rocksmashrate 0
 oldrodrate 0
 goodrodrate 0
 superrodrate 0
-walklevels 21, 22, 21, 22, 22, 22, 23, 23, 22, 22, 22, 22
+walklevels 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60
 
 // morning encounter slots
-pokemon SPECIES_SWINUB
-pokemon SPECIES_GOLBAT
-pokemon SPECIES_SWINUB
-pokemon SPECIES_GOLBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_SWINUB
-pokemon SPECIES_SWINUB
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_JYNX
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_JYNX
+pokemon SPECIES_CROBAT
+pokemon SPECIES_AGGRON
+pokemon SPECIES_WEAVILE
+pokemon SPECIES_WEAVILE
+monwithform SPECIES_DARMANITAN, 1
+pokemon SPECIES_VANILLUXE
+monwithform SPECIES_SANDSLASH, 1
+monwithform SPECIES_SANDSLASH, 1
+pokemon SPECIES_SWAMPERT
+pokemon SPECIES_SWAMPERT
+monwithform SPECIES_MR_MIME, 1
+monwithform SPECIES_MR_MIME, 1
 
 // day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
-pokemon SPECIES_SWINUB
-pokemon SPECIES_GOLBAT
-pokemon SPECIES_SWINUB
-pokemon SPECIES_GOLBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_SWINUB
-pokemon SPECIES_SWINUB
-pokemon SPECIES_JYNX
-pokemon SPECIES_JYNX
-pokemon SPECIES_JYNX
-pokemon SPECIES_JYNX
+pokemon SPECIES_CROBAT
+pokemon SPECIES_AGGRON
+pokemon SPECIES_WEAVILE
+pokemon SPECIES_WEAVILE
+monwithform SPECIES_DARMANITAN, 1
+pokemon SPECIES_VANILLUXE
+monwithform SPECIES_SANDSLASH, 1
+monwithform SPECIES_SANDSLASH, 1
+pokemon SPECIES_SWAMPERT
+pokemon SPECIES_SWAMPERT
+monwithform SPECIES_MR_MIME, 1
+monwithform SPECIES_MR_MIME, 1
 
 // night encounter slots
-pokemon SPECIES_SWINUB
-pokemon SPECIES_GOLBAT
-pokemon SPECIES_SWINUB
-pokemon SPECIES_GOLBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_SWINUB
-pokemon SPECIES_SWINUB
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_JYNX
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_JYNX
+pokemon SPECIES_CROBAT
+pokemon SPECIES_AGGRON
+pokemon SPECIES_WEAVILE
+pokemon SPECIES_WEAVILE
+monwithform SPECIES_DARMANITAN, 1
+pokemon SPECIES_VANILLUXE
+monwithform SPECIES_SANDSLASH, 1
+monwithform SPECIES_SANDSLASH, 1
+pokemon SPECIES_SWAMPERT
+pokemon SPECIES_SWAMPERT
+monwithform SPECIES_MR_MIME, 1
+monwithform SPECIES_MR_MIME, 1
 
 // hoenn encounter slots
 pokemon SPECIES_ABSOL
@@ -6469,49 +6469,49 @@ rocksmashrate 0
 oldrodrate 0
 goodrodrate 0
 superrodrate 0
-walklevels 22, 23, 22, 23, 23, 23, 24, 24, 23, 23, 23, 23
+walklevels 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60
 
 // morning encounter slots
-pokemon SPECIES_SWINUB
-pokemon SPECIES_GOLBAT
-pokemon SPECIES_SWINUB
-pokemon SPECIES_GOLBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_SWINUB
-pokemon SPECIES_SWINUB
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_JYNX
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_JYNX
+pokemon SPECIES_AVALUGG
+monwithform SPECIES_SANDSLASH, 1
+monwithform SPECIES_NINETALES, 1
+monwithform SPECIES_NINETALES, 1
+pokemon SPECIES_CETITAN
+pokemon SPECIES_BEARTIC
+pokemon SPECIES_URSALUNA
+pokemon SPECIES_ABOMASNOW
+pokemon SPECIES_MAMOSWINE
+pokemon SPECIES_MAMOSWINE
+pokemon SPECIES_BAXCALIBUR
+pokemon SPECIES_BAXCALIBUR
 
 // day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
-pokemon SPECIES_SWINUB
-pokemon SPECIES_GOLBAT
-pokemon SPECIES_SWINUB
-pokemon SPECIES_GOLBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_SWINUB
-pokemon SPECIES_SWINUB
-pokemon SPECIES_JYNX
-pokemon SPECIES_JYNX
-pokemon SPECIES_JYNX
-pokemon SPECIES_JYNX
+pokemon SPECIES_AVALUGG
+monwithform SPECIES_SANDSLASH, 1
+monwithform SPECIES_NINETALES, 1
+monwithform SPECIES_NINETALES, 1
+pokemon SPECIES_CETITAN
+pokemon SPECIES_BEARTIC
+pokemon SPECIES_URSALUNA
+pokemon SPECIES_ABOMASNOW
+pokemon SPECIES_MAMOSWINE
+pokemon SPECIES_MAMOSWINE
+pokemon SPECIES_BAXCALIBUR
+pokemon SPECIES_BAXCALIBUR
 
 // night encounter slots
-pokemon SPECIES_SWINUB
-pokemon SPECIES_GOLBAT
-pokemon SPECIES_SWINUB
-pokemon SPECIES_GOLBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_SWINUB
-pokemon SPECIES_SWINUB
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_JYNX
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_JYNX
+pokemon SPECIES_AVALUGG
+monwithform SPECIES_SANDSLASH, 1
+monwithform SPECIES_NINETALES, 1
+monwithform SPECIES_NINETALES, 1
+pokemon SPECIES_CETITAN
+pokemon SPECIES_BEARTIC
+pokemon SPECIES_URSALUNA
+pokemon SPECIES_ABOMASNOW
+pokemon SPECIES_MAMOSWINE
+pokemon SPECIES_MAMOSWINE
+pokemon SPECIES_BAXCALIBUR
+pokemon SPECIES_BAXCALIBUR
 
 // hoenn encounter slots
 pokemon SPECIES_ABSOL
@@ -6573,49 +6573,49 @@ rocksmashrate 0
 oldrodrate 0
 goodrodrate 0
 superrodrate 0
-walklevels 22, 23, 22, 23, 23, 23, 24, 24, 23, 23, 23, 23
+walklevels 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61
 
 // morning encounter slots
-pokemon SPECIES_SWINUB
-pokemon SPECIES_GOLBAT
-pokemon SPECIES_SWINUB
-pokemon SPECIES_GOLBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_SWINUB
-pokemon SPECIES_SWINUB
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_JYNX
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_JYNX
+monwithform SPECIES_AVALUGG, 1
+pokemon SPECIES_ABOMASNOW
+pokemon SPECIES_AURORUS
+pokemon SPECIES_URSALUNA
+pokemon SPECIES_METAGROSS
+pokemon SPECIES_MR_RIME
+pokemon SPECIES_MAMOSWINE
+pokemon SPECIES_MAMOSWINE
+pokemon SPECIES_FROSLASS
+pokemon SPECIES_FROSLASS
+pokemon SPECIES_FROSLASS
+pokemon SPECIES_FROSLASS
 
 // day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
-pokemon SPECIES_SWINUB
-pokemon SPECIES_GOLBAT
-pokemon SPECIES_SWINUB
-pokemon SPECIES_GOLBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_SWINUB
-pokemon SPECIES_SWINUB
-pokemon SPECIES_JYNX
-pokemon SPECIES_JYNX
-pokemon SPECIES_JYNX
-pokemon SPECIES_JYNX
+monwithform SPECIES_AVALUGG, 1
+pokemon SPECIES_ABOMASNOW
+pokemon SPECIES_AURORUS
+pokemon SPECIES_URSALUNA
+pokemon SPECIES_METAGROSS
+pokemon SPECIES_MR_RIME
+pokemon SPECIES_MAMOSWINE
+pokemon SPECIES_MAMOSWINE
+pokemon SPECIES_FROSLASS
+pokemon SPECIES_FROSLASS
+pokemon SPECIES_FROSLASS
+pokemon SPECIES_FROSLASS
 
 // night encounter slots
-pokemon SPECIES_SWINUB
-pokemon SPECIES_GOLBAT
-pokemon SPECIES_SWINUB
-pokemon SPECIES_GOLBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_SWINUB
-pokemon SPECIES_SWINUB
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_JYNX
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_JYNX
+monwithform SPECIES_AVALUGG, 1
+pokemon SPECIES_ABOMASNOW
+pokemon SPECIES_AURORUS
+pokemon SPECIES_URSALUNA
+pokemon SPECIES_METAGROSS
+pokemon SPECIES_MR_RIME
+pokemon SPECIES_MAMOSWINE
+pokemon SPECIES_MAMOSWINE
+pokemon SPECIES_FROSLASS
+pokemon SPECIES_FROSLASS
+pokemon SPECIES_FROSLASS
+pokemon SPECIES_FROSLASS
 
 // hoenn encounter slots
 pokemon SPECIES_ABSOL
@@ -6633,8 +6633,8 @@ encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
 // rock smash encounters; probabilities:  90, 10
-encounter SPECIES_NONE, 0, 0
-encounter SPECIES_NONE, 0, 0
+encounter SPECIES_BERGMITE, 5, 60
+encounter SPECIES_BERGMITE, 5, 60
 
 // old rod encounters
 encounter SPECIES_NONE, 0, 0
@@ -6834,36 +6834,36 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
 // surf encounters; probabilities:  60, 30, 5, 4, 1
-encounter SPECIES_MAGIKARP, 10, 20
-encounter SPECIES_MAGIKARP, 5, 15
-encounter SPECIES_MAGIKARP, 2, 10
-encounter SPECIES_MAGIKARP, 2, 10
-encounter SPECIES_MAGIKARP, 2, 10
+encounter SPECIES_ALTARIA, 63, 63
+encounter SPECIES_DRAGONITE, 63, 63
+encounter SPECIES_HYDREIGON, 63, 63
+encounter SPECIES_GARCHOMP, 63, 63
+encounter SPECIES_GARCHOMP, 63, 63
 
 // rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
 // old rod encounters
-encounter SPECIES_MAGIKARP, 10, 10
-encounter SPECIES_MAGIKARP, 10, 10
-encounter SPECIES_MAGIKARP, 10, 10
-encounter SPECIES_POLIWAG, 10, 10
-encounter SPECIES_POLIWAG, 10, 10
+encounter SPECIES_DRAGONAIR, 30, 55
+encounter SPECIES_KINGDRA, 63, 63
+encounter SPECIES_DREEPY, 5, 49
+encounter SPECIES_SLIGGOO, 30, 50
+encounter SPECIES_GOOMY, 5, 49
 
 // good rod encounters
-encounter SPECIES_MAGIKARP, 20, 20
-encounter SPECIES_POLIWAG, 20, 20
-encounter SPECIES_POLIWAG, 20, 20
-encounter SPECIES_POLIWAG, 20, 20
-encounter SPECIES_POLIWAG, 20, 20
+encounter SPECIES_DRAGONAIR, 30, 55
+encounter SPECIES_KINGDRA, 63, 63
+encounter SPECIES_DREEPY, 5, 49
+encounter SPECIES_SLIGGOO, 30, 50
+encounter SPECIES_GOOMY, 5, 49
 
 // super rod encounters; probabilities:  40, 40, 15, 4, 1
-encounter SPECIES_POLIWAG, 40, 40
-encounter SPECIES_POLIWAG, 40, 40
-encounter SPECIES_MAGIKARP, 40, 40
-encounter SPECIES_POLIWAG, 40, 40
-encounter SPECIES_MAGIKARP, 40, 40
+encounter SPECIES_DRAGONAIR, 30, 55
+encounter SPECIES_KINGDRA, 63, 63
+encounter SPECIES_DREEPY, 5, 49
+encounter SPECIES_SLIGGOO, 30, 50
+encounter SPECIES_GOOMY, 5, 49
 
 // swarm grass
 pokemon SPECIES_NONE
@@ -6938,11 +6938,11 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
 // surf encounters; probabilities:  60, 30, 5, 4, 1
-encounter SPECIES_MAGIKARP, 10, 20
-encounter SPECIES_MAGIKARP, 5, 15
-encounter SPECIES_DRATINI, 5, 15
-encounter SPECIES_DRATINI, 5, 15
-encounter SPECIES_DRATINI, 5, 15
+encounter SPECIES_NOIVERN, 63, 63
+encounter SPECIES_SALAMENCE, 63, 63
+encounter SPECIES_DRAGALGE, 63, 63
+encounter SPECIES_HYDREIGON, 63, 63
+encounter SPECIES_HYDREIGON, 63, 63
 
 // rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
@@ -6963,11 +6963,11 @@ encounter SPECIES_DRATINI, 20, 20
 encounter SPECIES_MAGIKARP, 20, 20
 
 // super rod encounters; probabilities:  40, 40, 15, 4, 1
-encounter SPECIES_MAGIKARP, 40, 40
-encounter SPECIES_DRATINI, 40, 40
-encounter SPECIES_MAGIKARP, 40, 40
-encounter SPECIES_DRAGONAIR, 40, 40
-encounter SPECIES_MAGIKARP, 40, 40
+encounter SPECIES_DRAGONITE, 63, 63
+encounter SPECIES_GYARADOS, 63, 63
+encounter SPECIES_KINGDRA, 63, 63
+encounterwithform SPECIES_SLIGGOO, 1, 30, 50
+encounterwithform SPECIES_SLIGGOO, 1, 30, 50
 
 // swarm grass
 pokemon SPECIES_NONE
@@ -6989,49 +6989,49 @@ rocksmashrate 0
 oldrodrate 25
 goodrodrate 50
 superrodrate 75
-walklevels 23, 23, 23, 23, 24, 24, 20, 20, 25, 27, 25, 27
+walklevels 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63
 
 // morning encounter slots
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_GRAVELER
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_GRAVELER
-pokemon SPECIES_GLIGAR
-pokemon SPECIES_GLIGAR
-pokemon SPECIES_PHANPY
-pokemon SPECIES_PHANPY
-pokemon SPECIES_GRAVELER
-pokemon SPECIES_GRAVELER
-pokemon SPECIES_GRAVELER
-pokemon SPECIES_GRAVELER
+pokemon SPECIES_ALTARIA
+pokemon SPECIES_CLEFABLE
+pokemon SPECIES_CHARIZARD
+pokemon SPECIES_SCOVILLAIN
+pokemon SPECIES_HOUNDOOM
+pokemon SPECIES_SCYTHER
+pokemon SPECIES_DELPHOX
+pokemon SPECIES_OBSTAGOON
+pokemon SPECIES_CLAYDOL
+pokemon SPECIES_RILLABOOM
+pokemon SPECIES_TOGEKISS
+pokemon SPECIES_TOGEKISS
 
 // day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_GRAVELER
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_GRAVELER
-pokemon SPECIES_GLIGAR
-pokemon SPECIES_GLIGAR
-pokemon SPECIES_PHANPY
-pokemon SPECIES_PHANPY
-pokemon SPECIES_GRAVELER
-pokemon SPECIES_GRAVELER
-pokemon SPECIES_GRAVELER
-pokemon SPECIES_GRAVELER
+pokemon SPECIES_ALTARIA
+pokemon SPECIES_CLEFABLE
+pokemon SPECIES_CHARIZARD
+pokemon SPECIES_SCOVILLAIN
+pokemon SPECIES_HOUNDOOM
+pokemon SPECIES_SCYTHER
+pokemon SPECIES_DELPHOX
+pokemon SPECIES_OBSTAGOON
+pokemon SPECIES_CLAYDOL
+pokemon SPECIES_RILLABOOM
+pokemon SPECIES_TOGEKISS
+pokemon SPECIES_TOGEKISS
 
 // night encounter slots
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_GRAVELER
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_GRAVELER
-pokemon SPECIES_GLIGAR
-pokemon SPECIES_GLIGAR
-pokemon SPECIES_PHANPY
-pokemon SPECIES_PHANPY
-pokemon SPECIES_GRAVELER
-pokemon SPECIES_GRAVELER
-pokemon SPECIES_GRAVELER
-pokemon SPECIES_GRAVELER
+pokemon SPECIES_ALTARIA
+pokemon SPECIES_CLEFABLE
+pokemon SPECIES_CHARIZARD
+pokemon SPECIES_SCOVILLAIN
+pokemon SPECIES_HOUNDOOM
+pokemon SPECIES_SCYTHER
+pokemon SPECIES_DELPHOX
+pokemon SPECIES_OBSTAGOON
+pokemon SPECIES_CLAYDOL
+pokemon SPECIES_RILLABOOM
+pokemon SPECIES_TOGEKISS
+pokemon SPECIES_TOGEKISS
 
 // hoenn encounter slots
 pokemon SPECIES_WHISMUR
@@ -7042,36 +7042,36 @@ pokemon SPECIES_BUIZEL
 pokemon SPECIES_BIDOOF
 
 // surf encounters; probabilities:  60, 30, 5, 4, 1
-encounter SPECIES_MAGIKARP, 15, 25
-encounter SPECIES_MAGIKARP, 10, 20
-encounter SPECIES_MAGIKARP, 2, 10
-encounter SPECIES_MAGIKARP, 2, 10
-encounter SPECIES_MAGIKARP, 2, 10
+encounter SPECIES_SKARMORY, 63, 63
+encounter SPECIES_WUGTRIO, 63, 63
+encounter SPECIES_BARBARACLE, 63, 63
+encounter SPECIES_BARBARACLE, 63, 63
+encounter SPECIES_BARBARACLE, 63, 63
 
 // rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
 // old rod encounters
-encounter SPECIES_MAGIKARP, 10, 10
-encounter SPECIES_MAGIKARP, 10, 10
-encounter SPECIES_MAGIKARP, 10, 10
-encounter SPECIES_POLIWAG, 10, 10
-encounter SPECIES_POLIWAG, 10, 10
+encounter SPECIES_EELEKTROSS, 63, 63
+encounter SPECIES_FLOATZEL, 63, 63
+encounter SPECIES_RELICANTH, 63, 63
+encounter SPECIES_RELICANTH, 63, 63
+encounter SPECIES_RELICANTH, 63, 63
 
 // good rod encounters
-encounter SPECIES_MAGIKARP, 20, 20
-encounter SPECIES_POLIWAG, 20, 20
-encounter SPECIES_POLIWAG, 20, 20
-encounter SPECIES_POLIWAG, 20, 20
-encounter SPECIES_POLIWAG, 20, 20
+encounter SPECIES_EELEKTROSS, 63, 63
+encounter SPECIES_FLOATZEL, 63, 63
+encounter SPECIES_RELICANTH, 63, 63
+encounter SPECIES_RELICANTH, 63, 63
+encounter SPECIES_RELICANTH, 63, 63
 
 // super rod encounters; probabilities:  40, 40, 15, 4, 1
-encounter SPECIES_POLIWAG, 40, 40
-encounter SPECIES_POLIWAG, 40, 40
-encounter SPECIES_MAGIKARP, 40, 40
-encounter SPECIES_POLIWAG, 40, 40
-encounter SPECIES_MAGIKARP, 40, 40
+encounter SPECIES_EELEKTROSS, 63, 63
+encounter SPECIES_FLOATZEL, 63, 63
+encounter SPECIES_RELICANTH, 63, 63
+encounter SPECIES_RELICANTH, 63, 63
+encounter SPECIES_RELICANTH, 63, 63
 
 // swarm grass
 pokemon SPECIES_SWABLU
@@ -7301,49 +7301,49 @@ rocksmashrate 0
 oldrodrate 25
 goodrodrate 50
 superrodrate 75
-walklevels 23, 23, 23, 23, 25, 25, 20, 20, 25, 23, 25, 23
+walklevels 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63
 
 // morning encounter slots
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_GRAVELER
-pokemon SPECIES_GRAVELER
-pokemon SPECIES_WOBBUFFET
-pokemon SPECIES_WOBBUFFET
-pokemon SPECIES_WOBBUFFET
-pokemon SPECIES_GOLBAT
-pokemon SPECIES_WOBBUFFET
-pokemon SPECIES_GOLBAT
+pokemon SPECIES_HIPPOWDON
+pokemon SPECIES_CAMERUPT
+pokemon SPECIES_ABSOL
+pokemon SPECIES_TINKATON
+pokemon SPECIES_GARGANACL
+pokemon SPECIES_GRIMMSNARL
+pokemon SPECIES_DECIDUEYE
+pokemon SPECIES_RUNERIGUS
+pokemon SPECIES_AERODACTYL
+pokemon SPECIES_CHANDELURE
+pokemon SPECIES_DUSCLOPS
+pokemon SPECIES_AEGISLASH
 
 // day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_GRAVELER
-pokemon SPECIES_GRAVELER
-pokemon SPECIES_WOBBUFFET
-pokemon SPECIES_WOBBUFFET
-pokemon SPECIES_WOBBUFFET
-pokemon SPECIES_GOLBAT
-pokemon SPECIES_WOBBUFFET
-pokemon SPECIES_GOLBAT
+pokemon SPECIES_HIPPOWDON
+pokemon SPECIES_CAMERUPT
+pokemon SPECIES_ABSOL
+pokemon SPECIES_TINKATON
+pokemon SPECIES_GARGANACL
+pokemon SPECIES_GRIMMSNARL
+pokemon SPECIES_DECIDUEYE
+pokemon SPECIES_RUNERIGUS
+pokemon SPECIES_AERODACTYL
+pokemon SPECIES_CHANDELURE
+pokemon SPECIES_DUSCLOPS
+pokemon SPECIES_AEGISLASH
 
 // night encounter slots
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_GEODUDE
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_GRAVELER
-pokemon SPECIES_GRAVELER
-pokemon SPECIES_WOBBUFFET
-pokemon SPECIES_WOBBUFFET
-pokemon SPECIES_WOBBUFFET
-pokemon SPECIES_GOLBAT
-pokemon SPECIES_WOBBUFFET
-pokemon SPECIES_GOLBAT
+pokemon SPECIES_HIPPOWDON
+pokemon SPECIES_CAMERUPT
+pokemon SPECIES_ABSOL
+pokemon SPECIES_TINKATON
+pokemon SPECIES_GARGANACL
+pokemon SPECIES_GRIMMSNARL
+pokemon SPECIES_DECIDUEYE
+pokemon SPECIES_RUNERIGUS
+pokemon SPECIES_AERODACTYL
+pokemon SPECIES_CHANDELURE
+pokemon SPECIES_DUSCLOPS
+pokemon SPECIES_AEGISLASH
 
 // hoenn encounter slots
 pokemon SPECIES_ABSOL
@@ -7354,36 +7354,36 @@ pokemon SPECIES_BRONZOR
 pokemon SPECIES_CHINGLING
 
 // surf encounters; probabilities:  60, 30, 5, 4, 1
-encounter SPECIES_MAGIKARP, 10, 20
-encounter SPECIES_MAGIKARP, 5, 15
-encounter SPECIES_MAGIKARP, 2, 10
-encounter SPECIES_MAGIKARP, 2, 10
-encounter SPECIES_MAGIKARP, 2, 10
+encounter SPECIES_CROBAT, 63, 63
+encounter SPECIES_GLISCOR, 63, 63
+encounter SPECIES_SHARPEDO, 63, 63
+encounter SPECIES_SHARPEDO, 63, 63
+encounter SPECIES_SHARPEDO, 63, 63
 
 // rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
 encounter SPECIES_NONE, 0, 0
 
 // old rod encounters
-encounter SPECIES_MAGIKARP, 10, 10
-encounter SPECIES_MAGIKARP, 10, 10
-encounter SPECIES_MAGIKARP, 10, 10
-encounter SPECIES_GOLDEEN, 10, 10
-encounter SPECIES_GOLDEEN, 10, 10
+encounter SPECIES_OVERQWIL, 63, 63
+encounter SPECIES_DHELMISE, 63, 63
+encounter SPECIES_BASCULEGION, 63, 63
+encounter SPECIES_PRIMARINA, 63, 63
+encounter SPECIES_PRIMARINA, 63, 63
 
 // good rod encounters
-encounter SPECIES_MAGIKARP, 20, 20
-encounter SPECIES_GOLDEEN, 20, 20
-encounter SPECIES_GOLDEEN, 20, 20
-encounter SPECIES_GOLDEEN, 20, 20
-encounter SPECIES_GOLDEEN, 20, 20
+encounter SPECIES_OVERQWIL, 63, 63
+encounter SPECIES_DHELMISE, 63, 63
+encounter SPECIES_BASCULEGION, 63, 63
+encounter SPECIES_PRIMARINA, 63, 63
+encounter SPECIES_PRIMARINA, 63, 63
 
 // super rod encounters; probabilities:  40, 40, 15, 4, 1
-encounter SPECIES_GOLDEEN, 40, 40
-encounter SPECIES_GOLDEEN, 40, 40
-encounter SPECIES_MAGIKARP, 40, 40
-encounter SPECIES_SEAKING, 40, 40
-encounter SPECIES_MAGIKARP, 40, 40
+encounter SPECIES_OVERQWIL, 63, 63
+encounter SPECIES_DHELMISE, 63, 63
+encounter SPECIES_BASCULEGION, 63, 63
+encounter SPECIES_PRIMARINA, 63, 63
+encounter SPECIES_PRIMARINA, 63, 63
 
 // swarm grass
 pokemon SPECIES_GEODUDE

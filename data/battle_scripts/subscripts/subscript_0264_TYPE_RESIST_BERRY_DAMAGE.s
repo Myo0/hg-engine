@@ -138,7 +138,7 @@ _316:
 _321:
     // PlayBattleAnimation BATTLER_CATEGORY_MSG_TEMP, BATTLE_ANIMATION_HELD_ITEM
     // Wait 
-    DivideVarByValue BSCRIPT_VAR_HP_CALC, 2
+    // DivideVarByValue BSCRIPT_VAR_HP_CALC, 2
     // The {0} weakened {1}’s power!
     // PrintMessage 1131, TAG_ITEM_MOVE, BATTLER_CATEGORY_MSG_BATTLER_TEMP, BATTLER_CATEGORY_ATTACKER
     // Wait 

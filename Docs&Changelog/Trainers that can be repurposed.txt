@@ -4,6 +4,19 @@ Basic trainer info: (Will update after AI changes)
 
     aiflags F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | 0
 
+
+funny double battle gimmick i could probably use somewhere
+
+Aerodactyl rock slide + dark type attacker (probably kingambit) that uses assurance
+
+mimikyu + shuckle power trick + trick room team
+
+palafin + intimidate mon (custom AI for flip turn priority to activate hero mode)
+
+togekiss follow me + excadrill
+
+
+
 Trainers that can be repurposed:
 
 Hiker Phillip (used on ???)
@@ -40,6 +53,9 @@ I can tell that you’re a Trainer\nwith considerable skill.\rIf you don’t min
 404B -> Variable that is looked at to make sure player cannot leave area if party is larger than 3 before Ariana
 404C -> variable for the ambush in goldenrod radio tower 
 404D -> variable that disables switches before all trainers are done
+406A -> disables PC in dragon's den (at val=0)
+406A -> enables PC in blackthorn when exiting dragon's den (at val=1)
+406B -> Random value variable for legendary encounter.
 
 2570 -> Scientist Ross Flag
 2571 -> Grunt #6
@@ -47,5 +63,7 @@ I can tell that you’re a Trainer\nwith considerable skill.\rIf you don’t min
 2573 -> Grunt #7
 2574 -> Flag for grunt blocking stairway until the 4 trainers are beaten
 2575 -> flag for grunt blocking stairway during radio tower 2f gauntlet
+
+2660 -> Flag to check if player has already interacted with the legendary encounter in safari zone
 
 186 trainer for rocket grunt

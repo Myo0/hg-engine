@@ -1919,9 +1919,11 @@ _1150: // Trainer 478
     trainertextentry 478, TEXT_DEFEATED_IN_OVERWORLD, "What a waste...\nnot to use your strength to do\fbad things!\rFeh... People like you will never in a\nmillion years understand our brilliance!\rIt’s too bad... I’ve really come to\nrespect your strength.\n"
 
 _1164: // Trainer 485
+    trainertextentry 485, TEXT_NOTICE_IN_OVERWORLD, "Archer: Oh? You managed to get\nthis far...?\fYou must be quite the Trainer.\rWe intend to take over this\nRadio Tower and officially announce\four comeback.\rNow...\nOur boss Giovanni has returned!\rWe are going to regain our\nformer glory...\rI will not allow you to interfere with\nour meticulous plans!\r"
     trainertextentry 485, TEXT_LAST_MON_SENT_OUT, "We can’t have you getting in the way\nbefore news of our resurgence\freaches Giovanni!\n"
     trainertextentry 485, TEXT_LAST_MON_CRITICAL, "That’s impossible...\n"
     trainertextentry 485, TEXT_DEFEATED_IN_BATTLE, "No!\nForgive me, Giovanni!\n"
+    trainertextentry 485, TEXT_DEFEATED_IN_OVERWORLD, "Archer: How could this be...?\rOur dreams have come to naught.\nI was not up to the task after all."
 
 _1170: // Trainer 42
     trainertextentry  42, TEXT_NOTICE_IN_OVERWORLD, "Hmmm...\nThis is a strange place.\r"
@@ -3205,6 +3207,31 @@ _1B68: // Trainer 262
     trainertextentry 262, TEXT_NOTICE_IN_OVERWORLD, "Speed, skill, and style!\nI’ve got it all!\r"
     trainertextentry 262, TEXT_DEFEATED_IN_BATTLE, "You’re faster than I thought...\nNice work.\r"
     trainertextentry 262, TEXT_DEFEATED_IN_OVERWORLD, "That battle felt like hitting black ice!"
+
+_1B7C: // Trainer 292
+    trainertextentry 292, TEXT_NOTICE_IN_OVERWORLD, "Slippery floor?\nMore fun that way!\r"
+    trainertextentry 292, TEXT_DEFEATED_IN_BATTLE, "Yikes!\nI totally wiped out!\r"
+    trainertextentry 292, TEXT_DEFEATED_IN_OVERWORLD, "Battles in here feel like a downhill dash!\r"
+
+_1B80: // Trainer 295
+    trainertextentry 295, TEXT_NOTICE_IN_OVERWORLD, "Bet you can't keep up\nwith my board or my team!\r"
+    trainertextentry 295, TEXT_DEFEATED_IN_BATTLE, "Whoa! I totally\nwiped on that turn...\r"
+    trainertextentry 295, TEXT_DEFEATED_IN_OVERWORLD, "Next time I’ll bring a sharper edge!\r"
+
+_1B84: // Trainer 304
+    trainertextentry 304, TEXT_NOTICE_IN_OVERWORLD, "This cave’s a playground!\nLet’s shred and battle!\r"
+    trainertextentry 304, TEXT_DEFEATED_IN_BATTLE, "That was rough!\nBut still rad!\r"
+    trainertextentry 304, TEXT_DEFEATED_IN_OVERWORLD, "You're cooler than the cave walls!\nGood job dude!\r"
+
+_1B88: // Trainer 305
+    trainertextentry 305, TEXT_NOTICE_IN_OVERWORLD, "Balance is everything...\nFor skiing and in battle.\r"
+    trainertextentry 305, TEXT_DEFEATED_IN_BATTLE, "Lost my footing...\nAnd the match.\r"
+    trainertextentry 305, TEXT_DEFEATED_IN_OVERWORLD, "Even the cold can't shake\nmy love for the ice.\r"
+
+_1B9C: // Trainer 306
+    trainertextentry 306, TEXT_NOTICE_IN_OVERWORLD, "You think ice slows me down?\nThink again!\r"
+    trainertextentry 306, TEXT_DEFEATED_IN_BATTLE, "What?!\nYou outpaced me?\r"
+    trainertextentry 306, TEXT_DEFEATED_IN_OVERWORLD, "Alright... you’ve got skills.\nRespect.\r"
 .close
 
 
@@ -3503,10 +3530,10 @@ _1B68: // Trainer 262
 /* Trainer 289 */ .halfword _0094
 /* Trainer 290 */ .halfword _1050
 /* Trainer 291 */ .halfword _08BC
-/* Trainer 292 */ .halfword _0000
+/* Trainer 292 */ .halfword _1B7C
 /* Trainer 293 */ .halfword _08D4
 /* Trainer 294 */ .halfword _08E0
-/* Trainer 295 */ .halfword _0000
+/* Trainer 295 */ .halfword _1B80
 /* Trainer 296 */ .halfword _0904
 /* Trainer 297 */ .halfword _051C
 /* Trainer 298 */ .halfword _0528
@@ -3515,9 +3542,9 @@ _1B68: // Trainer 262
 /* Trainer 301 */ .halfword _0880
 /* Trainer 302 */ .halfword _088C
 /* Trainer 303 */ .halfword _1888
-/* Trainer 304 */ .halfword _0000
-/* Trainer 305 */ .halfword _0000
-/* Trainer 306 */ .halfword _0000
+/* Trainer 304 */ .halfword _1B84
+/* Trainer 305 */ .halfword _1B88
+/* Trainer 306 */ .halfword _1B9C
 /* Trainer 307 */ .halfword _0000
 /* Trainer 308 */ .halfword _04EC
 /* Trainer 309 */ .halfword _0698

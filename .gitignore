@@ -85,6 +85,7 @@ sdat/*
 tools/swav2swar.exe
 
 *:Zone.Identifier
+*Zone.Identifier
 
 *.ml*
 

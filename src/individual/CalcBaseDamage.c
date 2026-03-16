@@ -1085,17 +1085,18 @@ int UNUSED CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 sid
                 continue;
             }
 
-            // handle Soul Dew
-            if ((AttackingMon.item_held_effect == HOLD_EFFECT_LATI_SPECIAL)
-            && ((AttackingMon.species == SPECIES_LATIOS) || (AttackingMon.species == SPECIES_LATIAS))
-            && (movetype == TYPE_DRAGON || movetype == TYPE_PSYCHIC)) {
-                basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_2);
-                continue;
-            }
+            // handle Soul Dew (OLD SOUL DEW)
+            if ((AttackingMon.item_held_effect == HOLD_EFFECT_LATI_SPECIAL) &&
+                ((AttackingMon.species == SPECIES_LATIOS) || (AttackingMon.species == SPECIES_LATIAS)))
+                sp_attack = sp_attack * 150 / 100;
 
-            // handle Gems
+            if ((DefendingMon.item_held_effect == HOLD_EFFECT_LATI_SPECIAL) &&
+                ((DefendingMon.species == SPECIES_LATIOS) || (DefendingMon.species == SPECIES_LATIAS)))
+                sp_defense = sp_defense * 150 / 100;
+
+            // handle Gems (custom: revert back to 1.5x power)
             if (sp->gemBoostingMove) {
-                basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_3);
+                basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_5);
                 continue;
             }
 

@@ -2286,6 +2286,7 @@ levelup SPECIES_TAUROS
     learnset MOVE_IRON_TAIL, 42
     learnset MOVE_EARTHQUAKE, 48
     learnset MOVE_DOUBLE_EDGE, 55
+    learnset MOVE_HEADLONG_RUSH, 60
     terminatelearnset
 
 
@@ -4343,12 +4344,12 @@ levelup SPECIES_ENTEI
     learnset MOVE_BITE, 15
     learnset MOVE_DIG, 22
     learnset MOVE_FIRE_FANG, 30
-    learnset MOVE_EXTREME_SPEED, 37
+    learnset MOVE_BODY_SLAM, 37
     learnset MOVE_CRUNCH, 44
     learnset MOVE_FLAMETHROWER, 50
-    learnset MOVE_BODY_SLAM, 57
+    learnset MOVE_EXTREME_SPEED, 57
     learnset MOVE_STONE_EDGE, 64
-    learnset MOVE_STOMPING_TANTRUM, 70
+    learnset MOVE_HIGH_HORSEPOWER, 70
     learnset MOVE_SACRED_FIRE, 78
     terminatelearnset
 
@@ -8636,6 +8637,8 @@ levelup SPECIES_GIRATINA
 
 
 levelup SPECIES_CRESSELIA
+    learnset MOVE_REFLECT, 1
+    learnset MOVE_LIGHT_SCREEN, 1    
     learnset MOVE_CONFUSION, 1
     learnset MOVE_LUNAR_DANCE, 1
     learnset MOVE_AURORA_BEAM, 12
@@ -11748,9 +11751,9 @@ levelup SPECIES_TORNADUS
     learnset MOVE_AIR_CUTTER, 22
     learnset MOVE_AIR_SLASH, 31
     learnset MOVE_EXTRASENSORY, 36
-    learnset MOVE_TAILWIND, 42
+    learnset MOVE_HAMMER_ARM, 42
     learnset MOVE_CRUNCH, 46
-    learnset MOVE_HAMMER_ARM, 55
+    learnset MOVE_TAILWIND, 55
     learnset MOVE_HURRICANE, 63
     learnset MOVE_HEAT_WAVE, 69
     learnset MOVE_BLEAKWIND_STORM, 76
@@ -11767,9 +11770,9 @@ levelup SPECIES_THUNDURUS
     learnset MOVE_SHOCK_WAVE, 22
     learnset MOVE_VOLT_SWITCH, 31
     learnset MOVE_THUNDERBOLT, 36
-    learnset MOVE_TAILWIND, 42
+    learnset MOVE_HAMMER_ARM, 42
     learnset MOVE_CRUNCH, 46
-    learnset MOVE_HAMMER_ARM, 55
+    learnset MOVE_THUNDER_PUNCH, 55
     learnset MOVE_THUNDER, 63
     learnset MOVE_HEAT_WAVE, 69
     learnset MOVE_WILDBOLT_STORM, 76
@@ -16254,6 +16257,7 @@ levelup SPECIES_ZARUDE
 
 
 levelup SPECIES_REGIELEKI
+    learnset MOVE_VOLT_SWITCH, 1
     learnset MOVE_THUNDER_SHOCK, 1
     learnset MOVE_RAPID_SPIN, 1
     learnset MOVE_ELECTROWEB, 6
@@ -16262,11 +16266,11 @@ levelup SPECIES_REGIELEKI
     learnset MOVE_THUNDER_WAVE, 24
     learnset MOVE_EXTREME_SPEED, 30
     learnset MOVE_THUNDER_CAGE, 36
-    learnset MOVE_THUNDERBOLT, 42
     learnset MOVE_LOCK_ON, 51
-    learnset MOVE_ZAP_CANNON, 60
-    learnset MOVE_HYPER_BEAM, 65
+    learnset MOVE_THUNDERBOLT, 60
+    learnset MOVE_ACROBATICS, 65
     learnset MOVE_EXPLOSION, 70
+    learnset MOVE_ZAP_CANNON, 80
     terminatelearnset
 
 
@@ -23482,7 +23486,7 @@ levelup SPECIES_ELECTRODE_HISUIAN
     learnset MOVE_EXPLOSION, 37
     learnset MOVE_ENERGY_BALL, 40
     learnset MOVE_THUNDERBOLT, 43
-    learnset MOVE_THUNDER, 49
+    learnset MOVE_VOLT_SWITCH, 49
     terminatelearnset
 
 levelup SPECIES_TYPHLOSION_HISUIAN

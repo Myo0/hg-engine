@@ -1280,18 +1280,18 @@ headbuttheader  45,  17,   0   // Route 43
 
 headbuttheader  46,  14,   0   // Route 44
     // normal slots; probabilities: 50, 15, 15, 10, 5, 5
-    headbuttencounter SPECIES_SPEAROW, 21, 22
-    headbuttencounter SPECIES_HERACROSS, 21, 22
-    headbuttencounter SPECIES_HERACROSS, 21, 22
-    headbuttencounter SPECIES_AIPOM, 21, 22
-    headbuttencounter SPECIES_AIPOM, 21, 22
-    headbuttencounter SPECIES_AIPOM, 21, 22
-    headbuttencounter SPECIES_SPEAROW, 23, 24
-    headbuttencounter SPECIES_SPEAROW, 23, 24
-    headbuttencounter SPECIES_SPEAROW, 23, 24
-    headbuttencounter SPECIES_AIPOM, 23, 24
-    headbuttencounter SPECIES_AIPOM, 23, 24
-    headbuttencounter SPECIES_AIPOM, 23, 24
+    headbuttencounter SPECIES_BEEDRILL, 58, 58
+    headbuttencounter SPECIES_TREVENANT, 59, 59
+    headbuttencounter SPECIES_TREVENANT, 59, 59
+    headbuttencounter SPECIES_TREVENANT, 59, 59
+    headbuttencounter SPECIES_TREVENANT, 59, 59
+    headbuttencounter SPECIES_TREVENANT, 59, 59
+    headbuttencounter SPECIES_BEEDRILL, 58, 58
+    headbuttencounter SPECIES_TREVENANT, 59, 59
+    headbuttencounter SPECIES_TREVENANT, 59, 59
+    headbuttencounter SPECIES_TREVENANT, 59, 59
+    headbuttencounter SPECIES_TREVENANT, 59, 59
+    headbuttencounter SPECIES_TREVENANT, 59, 59
     // special slots
     headbuttencounter SPECIES_NONE, 0, 0
     headbuttencounter SPECIES_NONE, 0, 0
@@ -1318,18 +1318,18 @@ headbuttheader  46,  14,   0   // Route 44
 
 headbuttheader  47,   3,   0   // Route 45
     // normal slots; probabilities: 50, 15, 15, 10, 5, 5
-    headbuttencounter SPECIES_SPEAROW, 23, 24
-    headbuttencounter SPECIES_HERACROSS, 23, 24
-    headbuttencounter SPECIES_HERACROSS, 23, 25
-    headbuttencounter SPECIES_AIPOM, 23, 24
-    headbuttencounter SPECIES_AIPOM, 23, 24
-    headbuttencounter SPECIES_AIPOM, 23, 24
-    headbuttencounter SPECIES_SPEAROW, 26, 27
-    headbuttencounter SPECIES_SPEAROW, 26, 27
-    headbuttencounter SPECIES_SPEAROW, 26, 27
-    headbuttencounter SPECIES_AIPOM, 26, 27
-    headbuttencounter SPECIES_AIPOM, 26, 27
-    headbuttencounter SPECIES_AIPOM, 26, 27
+    headbuttencounter SPECIES_STARAPTOR, 63, 63
+    headbuttencounter SPECIES_HERACROSS, 63, 63
+    headbuttencounter SPECIES_HERACROSS, 63, 63
+    headbuttencounter SPECIES_BEEDRILL, 63, 63
+    headbuttencounter SPECIES_BEEDRILL, 63, 63
+    headbuttencounter SPECIES_BEEDRILL, 63, 63
+    headbuttencounter SPECIES_STARAPTOR, 63, 63
+    headbuttencounter SPECIES_HERACROSS, 63, 63
+    headbuttencounter SPECIES_HERACROSS, 63, 63
+    headbuttencounter SPECIES_BEEDRILL, 63, 63
+    headbuttencounter SPECIES_BEEDRILL, 63, 63
+    headbuttencounter SPECIES_BEEDRILL, 63, 63
     // special slots
     headbuttencounter SPECIES_NONE, 0, 0
     headbuttencounter SPECIES_NONE, 0, 0

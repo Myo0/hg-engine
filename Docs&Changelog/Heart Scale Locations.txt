@@ -16,6 +16,7 @@ Black Belt - Mt. Mortar back room just before the first gauntlet.
 Never-Melt Ice - Mt. Mortar B1F, central most Poke Ball.
 Pixie Plate - Team Rocket HQ B1F
 Twisted Spoon - Team Rocket HQ B3F
+Spell Tag - Goldenrod Department Store B1F
 
 Heart Scale Locations:
 
@@ -30,6 +31,8 @@ Mt. Mortar 1F (Back) North on the western most square plateau (Hidden)
 Mt. Mortar B1F - Northernmost Poke Ball
 Route 42 south of the pond on a rock (requires surf, hidden)
 Team Rocket HQ B3F - Right before Petrel.
+Goldenrod Radio Tower 4F - can only be obtained after beating Proton.
+Dark Cave (Route 46 Entrance)
 
 Other Good Items:
 
@@ -43,6 +46,9 @@ Iron Ball - Mt. Mortar
 Sticky Barb - Mt. Mortar
 Life Orb - Lake of Rage; Northeast
 Smoke Ball - Goldenrod Tunnel B2F
+Flame Orb - Goldenrod Department Store B1F
+Zoom Lens - Route 44
+Safety Goggles - Ice Path B2F
 
 Gems:
 
@@ -50,6 +56,12 @@ Normal Gem - Mt. Mortar
 Rock Gem - Mt. Mortar
 Bug Gem - Route 43 above the ledge
 Dark Gem - Team Rocket B3F next to the flower pot.
+Ground Gem - Route 44
+Ice Gem - Ice Path 1F
+Steel Gem - Ice Path 1F
+Dragon Gem - Dragon's Den
+Psychic Gem - Held by Latias given in The Dragon Shrine
+Fire Gem - Dark Cave (Route 45)
 
 Mega Stones:
 
@@ -60,6 +72,21 @@ Blastoisite - Given by Argenta
 Pidgeotite - Goldenrod Tunnel B2F
 Audinite - Rocket Warehouse
 Aggronite - Rocket Warehouse
+Garchompite - Route 44 behind Ace Trainer Allen
+Abomasite - Ice Path B2F
+Glalitite - Ice Path B3F
+Manectite - Blackthorn City
+Altarianite - Dragon's Den
+Charizardite X - Given by Clair in Dragon's Den
+Cameruptite - Route 45
+Medichamite - Route 45
+Sharpedonite - Route 45
+Heracronite - Route 45
+Houndoominite - Route 45
+Absolite - Route 45
+Scizorite - Route 45
+Gyaradosite - Route 46
+Pinsirite - Route 46
 
 Rare Candies 
 
@@ -72,6 +99,9 @@ Olivine Lighthouse (Exterior)
 Mt. Mortar B1F - Western most Poke Ball
 Mt. Mortar 2F - South West
 Team Rocket HQ B3F
+Ice Path B1F
+Dark Cave (Route 46 Entrance)
+Bell Tower 5F
 
 One-Time Use:
 

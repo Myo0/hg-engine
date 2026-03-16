@@ -95,7 +95,7 @@ movedata MOVE_MEGA_PUNCH, "Mega Punch"
     pss SPLIT_PHYSICAL
     basepower 80
     type TYPE_NORMAL
-    accuracy 95
+    accuracy 100
     pp 20
     effectchance 0
     target RANGE_SINGLE_TARGET
@@ -2459,7 +2459,7 @@ movedata MOVE_CRABHAMMER, "Crabhammer"
     movedescription MOVE_CRABHAMMER, "The foe is hammered\nwith a large pincer.\nThis move has a high\ncritical-hit ratio.\n"
 
 movedata MOVE_EXPLOSION, "Explosion"
-    battleeffect 7
+    battleeffect MOVE_EFFECT_HALVE_DEFENSE
     pss SPLIT_PHYSICAL
     basepower 250
     type TYPE_NORMAL
@@ -2859,7 +2859,7 @@ movedata MOVE_AEROBLAST, "Aeroblast"
     movedescription MOVE_AEROBLAST, "A vortex of air is\nshot at the foe to\ninflict damage.\nIt has a high\ncritical-hit ratio."
 
 movedata MOVE_COTTON_SPORE, "Cotton Spore"
-    battleeffect 60
+    battleeffect MOVE_EFFECT_SPEED_DOWN_2
     pss SPLIT_STATUS
     basepower 0
     type TYPE_GRASS
@@ -2875,7 +2875,7 @@ movedata MOVE_COTTON_SPORE, "Cotton Spore"
     movedescription MOVE_COTTON_SPORE, "The user releases\ncottonlike spores\nthat cling to the\nfoe, sharply reducing\nits Speed stat."
 
 movedata MOVE_REVERSAL, "Reversal"
-    battleeffect 99
+    battleeffect MOVE_EFFECT_INCREASE_POWER_WITH_LESS_HP
     pss SPLIT_PHYSICAL
     basepower 1
     type TYPE_FIGHTING
@@ -3949,7 +3949,7 @@ movedata MOVE_EXTREME_SPEED, "Extreme Speed"
 movedata MOVE_ANCIENT_POWER, "Ancient Power"
     battleeffect 140
     pss SPLIT_SPECIAL
-    basepower 70
+    basepower 75
     type TYPE_ROCK
     accuracy 100
     pp 5
@@ -6939,7 +6939,7 @@ movedata MOVE_DEFOG, "Defog"
     movedescription MOVE_DEFOG, "It reduces the foe’s\nevasion stat. It also\nremoves spikes,\nlight screens, etc."
 
 movedata MOVE_TRICK_ROOM, "Trick Room"
-    battleeffect MOVE_EFFECT_TRICK_ROOM
+    battleeffect 259
     pss SPLIT_STATUS
     basepower 0
     type TYPE_PSYCHIC

@@ -78,7 +78,6 @@ u8 LONG_CALL sub_0207B0B0(struct PLIST_WORK *wk, u8 *buf)
     return count;
 }
 
-
 void LONG_CALL sub_0207AFC4(struct PLIST_WORK *wk)
 {
     ClearFrameAndWindow2(&wk->windows[PARTY_MENU_WINDOW_ID_32], TRUE);
