@@ -68,7 +68,7 @@ BOOL Script_RunNewCmd(SCRIPTCONTEXT *ctx) {
 #endif
 
         case SCRIPT_NEW_CMD_SET_NATURE:; // set nature via DSPRE script
-        #ifdef SET_POKEMON_NATURE
+        #if 0 // SET_POKEMON_NATURE - disabled until re-encryption bug is fixed
         fsys = ctx->fsys;
         party = SaveData_GetPlayerPartyPtr(fsys->savedata);
         pos = GetScriptVar(0x8008);

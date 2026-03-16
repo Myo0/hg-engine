@@ -506,11 +506,11 @@ trainerdata 8, "Joey"
         abilityslot 0
         level 5
         pokemon SPECIES_RATTATA
-        item 0
+        item ITEM_NONE
         move MOVE_TACKLE
         move MOVE_QUICK_ATTACK
         move MOVE_BITE
-        move 0
+        move MOVE_NONE
         ability ABILITY_GUTS
         ball ITEM_POKE_BALL
         setivs 31, 31, 31, 31, 31, 31
@@ -522,11 +522,11 @@ trainerdata 8, "Joey"
         abilityslot 0
         level 6
         pokemon SPECIES_WOOLOO
-        item 0
+        item ITEM_NONE
         move MOVE_TACKLE
         move MOVE_DOUBLE_KICK
         move MOVE_DEFENSE_CURL
-        move 0
+        move MOVE_NONE
         ability ABILITY_FLUFFY
         ball ITEM_POKE_BALL
         setivs 31, 31, 31, 31, 31, 31
@@ -538,11 +538,11 @@ trainerdata 8, "Joey"
         abilityslot 0
         level 6
         pokemon SPECIES_FLETCHLING
-        item 0
+        item ITEM_NONE
         move MOVE_EMBER
         move MOVE_WING_ATTACK
         move MOVE_QUICK_ATTACK
-        move 0
+        move MOVE_NONE
         ability ABILITY_BIG_PECKS
         ball ITEM_POKE_BALL
         setivs 31, 31, 31, 31, 31, 31
@@ -10942,6 +10942,7 @@ trainerdata 168, "Garrett"
         setivs 31, 31, 31, 31, 31, 31
         setevs 0, 0, 0, 0, 0, 0
         nature NATURE_JOLLY
+        ballseal 0
     endparty
 
 trainerdata 169, "Magno"
