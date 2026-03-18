@@ -595,7 +595,7 @@ int LONG_CALL TestBattle_AIPickCommand(struct BattleSystem *bsys, int battler)
 
     if (action.action >= ACTION_SWITCH_SLOT_0 && action.action <= ACTION_SWITCH_SLOT_5) {
         u8 partySlot = action.action - ACTION_SWITCH_SLOT_0;
-        bsys->sp->ai_reshuffle_sel_mons_no[battler] = partySlot;
+        bsys->sp->aiSwitchedPartySlot[battler] = partySlot;
         IncrementScriptIndex(battler);
         return 3;  // SWITCH
     }

@@ -2404,6 +2404,20 @@ BOOL btl_scr_cmd_E7_ifmovepowergreaterthanzero(void *bw UNUSED, struct BattleStr
  *  @param client_no resolved battler
  *  @return `TRUE` if grounded, `FALSE` otherwise
  */
+BOOL LONG_CALL IsPartyPokemonGrounded(struct BattleStruct *sp, struct PartyPokemon *pp) {
+    u16 item = GetMonData(pp, MON_DATA_HELD_ITEM, 0);
+    u8 holdeffect = BattleItemDataGet(sp, item, 1);
+    if ((GetMonData(pp, MON_DATA_ABILITY, 0) != ABILITY_LEVITATE
+         && holdeffect != HOLD_EFFECT_UNGROUND_DESTROYED_ON_HIT
+         && !(GetMonData(pp, MON_DATA_TYPE_1, 0) == TYPE_FLYING)
+         && !(GetMonData(pp, MON_DATA_TYPE_2, 0) == TYPE_FLYING))
+        || holdeffect == HOLD_EFFECT_SPEED_DOWN_GROUNDED
+        || (sp->field_condition & FIELD_STATUS_GRAVITY)) {
+        return TRUE;
+    }
+    return FALSE;
+}
+
 BOOL LONG_CALL IsClientGrounded(struct BattleStruct *sp, u32 client_no) {
     u8 holdeffect = HeldItemHoldEffectGet(sp, client_no);
 

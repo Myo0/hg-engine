@@ -488,6 +488,8 @@ arm9 GF_AssertFail 0202551C 0
 
 # fix trainer ai being able to switch illegally when binded
 0010 ai_switch_ban_for_bind_hook 022203B4 2
+0012 TrainerAI_PickCommand_hook 0225E10C 0
+0012 BattleAI_PostKOSwitchIn 02258800 2
 
 0012 GetDynamicMoveType 02258688 4
 

@@ -86,6 +86,7 @@ plate_to_type_table:     // 21 bytes
 .close
 
 
+/*
 .open "base/overlay/overlay_0010.bin", 0x0221BE20
 
 // ARM9 OVERLAY 10 OFFSET 0x3352
@@ -114,6 +115,7 @@ hook_subroutine_0221F4C0_ov_0A:
 .endarea
 
 .close
+*/
 
 
 .open "base/overlay/overlay_0012.bin", 0x022378C0

@@ -1367,7 +1367,7 @@ struct BattleStruct {
     /*0x218C*/ u32 condition2_off_req[CLIENT_MAX];
     /*0x219C*/ u8 sel_mons_no[CLIENT_MAX];  // selectedMonIndex
     /*0x21A0*/ u8 reshuffle_sel_mons_no[CLIENT_MAX];
-    /*0x21A4*/ u8 ai_reshuffle_sel_mons_no[CLIENT_MAX];
+    /*0x21A4*/ u8 aiSwitchedPartySlot[CLIENT_MAX];
     /*0x21A8*/ u32 playerActions[4][4]; // client_act_work
     /*0x21E8*/ u8 executionOrder[4]; // client_agi_work -- accounts for running, items, etc used in battler slots
     /*0x21EC*/ u8 turnOrder[4]; // turn_order -- by pokemon speed, accounting for trick room
@@ -3106,6 +3106,7 @@ void LONG_CALL PushAndLoadBattleScript(struct BattleStruct *sp, int kind, int in
  *  @param client_no resolved battler
  *  @return `TRUE` if grounded, `FALSE` otherwise
  */
+BOOL LONG_CALL IsPartyPokemonGrounded(struct BattleStruct *sp, struct PartyPokemon *pp);
 BOOL LONG_CALL IsClientGrounded(struct BattleStruct *sp, u32 client_no);
 
 /**
