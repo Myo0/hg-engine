@@ -7,7 +7,7 @@
 //#define DEBUG_ADJUSTED_ACCURACY
 
 // DEBUG_DAMAGE_ROLLS is used to print all of the damage rolls
-//#define DEBUG_DAMAGE_ROLLS
+#define DEBUG_DAMAGE_ROLLS
 
 // DEBUG_HIDDEN_ABILITIES is used to debug hidden abilities by forcing all generated mons to have the hidden ability bit set.
 // uncomment the define to activate
@@ -21,10 +21,10 @@
 //#define DEBUG_SCALED_EXPERIENCE
 
 // DEBUG_BATTLE_SCRIPT_COMMANDS prints out the battle script command names in the desmume window
-//#define DEBUG_BATTLE_SCRIPT_COMMANDS
+#define DEBUG_BATTLE_SCRIPT_COMMANDS
 
 // DEBUG_PRINT_OVERLAY_LOADS prints out overlay loads and unloads in the desmume window
-//#define DEBUG_PRINT_OVERLAY_LOADS
+#define DEBUG_PRINT_OVERLAY_LOADS
 
 // DEBUG_SOUND_SSEQ_LOADS prints out sseq loads from the SDAT and the free space left after the load.
 //#define DEBUG_SOUND_SSEQ_LOADS
@@ -102,6 +102,6 @@
 //#define DEBUG_AUTO_CONTINUE_GAME
 
 // NOCASH_GBA_PRINT swaps from desmume prints with the syscall to NO$GBA-style prints for use with i.e. melonDS
-#define NOCASH_GBA_PRINT
+//#define NOCASH_GBA_PRINT
 
 #endif // DEBUG_H

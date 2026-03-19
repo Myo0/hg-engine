@@ -697,7 +697,7 @@ trainerdata 10, "Amy & Mimi"
 trainerdata 11, "Heather"
     trainermontype TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET | TRAINER_DATA_TYPE_NATURE_SET | 0
     trainerclass TRAINERCLASS_LASS
-    nummons 2
+    nummons 4
     item ITEM_NONE
     item ITEM_NONE
     item ITEM_NONE
@@ -737,6 +737,36 @@ trainerdata 11, "Heather"
         setivs 31, 31, 31, 31, 31, 31
         setevs 0, 0, 0, 0, 0, 0
         nature NATURE_QUIRKY
+        ballseal 0
+
+        ivs 200
+        abilityslot 0
+        level 9
+        pokemon SPECIES_LUVDISC
+        item ITEM_ORAN_BERRY
+        move MOVE_WATER_PULSE
+        move MOVE_DRAINING_KISS
+        move MOVE_ATTRACT
+        move MOVE_NONE
+        ability ABILITY_SWIFT_SWIM
+        setivs 31, 31, 31, 31, 31, 31
+        setevs 0, 0, 0, 0, 0, 0
+        nature NATURE_MODEST
+        ballseal 0
+
+        ivs 200
+        abilityslot 0
+        level 8
+        pokemon SPECIES_SHINX
+        item ITEM_ORAN_BERRY
+        move MOVE_SPARK
+        move MOVE_BITE
+        move MOVE_THUNDER_WAVE
+        move MOVE_QUICK_ATTACK
+        ability ABILITY_INTIMIDATE
+        setivs 31, 31, 31, 31, 31, 31
+        setevs 0, 0, 0, 0, 0, 0
+        nature NATURE_DOCILE
         ballseal 0
     endparty
 
@@ -3373,7 +3403,7 @@ trainerdata 46, "Martha"
 trainerdata 47, "Mikey"
     trainermontype TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET | TRAINER_DATA_TYPE_NATURE_SET | 0
     trainerclass TRAINERCLASS_YOUNGSTER
-    nummons 2
+    nummons 3
     item ITEM_NONE
     item ITEM_NONE
     item ITEM_NONE
@@ -3413,6 +3443,21 @@ trainerdata 47, "Mikey"
         setivs 31, 31, 31, 31, 31, 31
         setevs 0, 0, 0, 0, 0, 0
         nature NATURE_HARDY
+        ballseal 0
+
+        ivs 200
+        abilityslot 0
+        level 6
+        pokemon SPECIES_PATRAT
+        item ITEM_NONE
+        move MOVE_TACKLE
+        move MOVE_BITE
+        move MOVE_WORK_UP
+        move MOVE_NONE
+        ability ABILITY_ANALYTIC
+        setivs 31, 31, 31, 31, 31, 31
+        setevs 0, 0, 0, 0, 0, 0
+        nature NATURE_BRAVE
         ballseal 0
     endparty
 
@@ -3645,7 +3690,7 @@ trainerdata 51, "Nico"
 trainerdata 52, "Edmond"
     trainermontype TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET | TRAINER_DATA_TYPE_NATURE_SET | 0
     trainerclass TRAINERCLASS_SAGE
-    nummons 2
+    nummons 3
     item ITEM_NONE
     item ITEM_NONE
     item ITEM_NONE
@@ -3682,6 +3727,21 @@ trainerdata 52, "Edmond"
         move MOVE_THUNDER_WAVE
         move MOVE_NONE
         ability ABILITY_STATIC
+        setivs 31, 31, 31, 31, 31, 31
+        setevs 0, 0, 0, 0, 0, 0
+        nature NATURE_MODEST
+        ballseal 0
+
+        ivs 200
+        abilityslot 0
+        level 11
+        pokemon SPECIES_SHUPPET
+        item ITEM_SPELL_TAG
+        move MOVE_HEX
+        move MOVE_KNOCK_OFF
+        move MOVE_WILL_O_WISP
+        move MOVE_NONE
+        ability ABILITY_CURSED_BODY
         setivs 31, 31, 31, 31, 31, 31
         setevs 0, 0, 0, 0, 0, 0
         nature NATURE_MODEST
