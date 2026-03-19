@@ -26,6 +26,8 @@ XiaoFuDieZZZ,
 YGlitzer,
 Zedakae
 
+Sauceyatta - Custom AI framework
+
 [AdAstra](https://github.com/AdAstra-LD/) - `debugsyscall` implementation,  Music tables (trainerclassbattle, maintablescombo, and pokemonbattle)
 
 Adcroc1 - helping significantly with sprite formatting

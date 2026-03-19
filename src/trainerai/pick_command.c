@@ -101,7 +101,7 @@ BOOL TrainerAI_ShouldSwitch(struct BattleSystem * bsys, int attacker){
         }
     }
 
-    if (attackerMon.percenthp > 67
+    if (attackerMon.percenthp > 50
         && (onlyIneffectiveMoves || ((ctx->battlemon[attacker].effect_of_moves & MOVE_EFFECT_FLAG_PERISH_SONG_ACTIVE) && (BattleRand(bsys) % 2))))
     {
         int score = 0;
