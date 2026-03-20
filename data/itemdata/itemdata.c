@@ -161406,7 +161406,7 @@ const ITEMDATA __data[] =
     },
 },
 
-[ITEM_INFINITE_CANDY - NUM_UNKNOWN_SLOTS_EXPLORER_KIT] =
+[ITEM_INFINITE_CANDY] =
 {
     .price = 0,
     .holdEffect = 0,
