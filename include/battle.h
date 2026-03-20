@@ -2790,6 +2790,9 @@ int LONG_CALL AI_TypeCheckCalc(int effectiveness, u32 *flag);
  *  @return TRUE if should use normal type effectiveness calculator; FALSE otherwise
  */
 BOOL LONG_CALL AI_ShouldUseNormalTypeEffCalc(struct BattleStruct *sp, u32 held_effect, int pos);
+void LONG_CALL AITypeCalc(struct BattleStruct *sp, u32 move, u32 type, int atkAbility, int defAbility, int held_effect, int type1, int type2, u32 *flag);
+u8 LONG_CALL BattleAI_CalcSpeed(void *bw, struct BattleStruct *sp, int client1, struct PartyPokemon *partyMon, int flag);
+BOOL LONG_CALL IsPartyPokemonGrounded(struct BattleStruct *sp, struct PartyPokemon *pp);
 
 /**
  *  @brief grab trainer id of a client

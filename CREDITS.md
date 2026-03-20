@@ -28,6 +28,8 @@ Zedakae
 
 [AdAstra](https://github.com/AdAstra-LD/) - `debugsyscall` implementation,  Music tables (trainerclassbattle, maintablescombo, and pokemonbattle)
 
+Sauceyatta - Custom AI that I can build off of
+
 Adcroc1 - helping significantly with sprite formatting
 
 BagBoy - dex entries, SEQ_EYE, Prize money
