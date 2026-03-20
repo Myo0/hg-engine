@@ -486,8 +486,7 @@ arm9 GF_AssertFail 0202551C 0
 0012 BattleController_LoopMultiHit 0224CF14 3
 0012 ov12_02252D14 02252D14 3
 
-# fix trainer ai being able to switch illegally when binded
-0010 ai_switch_ban_for_bind_hook 022203B4 2
+0012 TrainerAI_PickCommand_hook 0225E10C 0
 
 0012 GetDynamicMoveType 02258688 4
 
