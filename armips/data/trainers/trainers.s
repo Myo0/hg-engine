@@ -1355,24 +1355,24 @@ trainerdata 20, "Falkner"
         // mon 0
         ivs 200
         abilityslot 0
-        level 16
-        pokemon SPECIES_CHATOT
-        item ITEM_WISE_GLASSES
-        move MOVE_AIR_CUTTER
-        move MOVE_ROOST
-        move MOVE_SING
-        move MOVE_SWIFT
-        ability ABILITY_KEEN_EYE
+        level 14
+        pokemon SPECIES_SKARMORY
+        item ITEM_LUM_BERRY
+        move MOVE_WING_ATTACK
+        move MOVE_STEEL_WING
+        move MOVE_SAND_TOMB
+        move MOVE_SPIKES
+        ability ABILITY_BATTLE_ARMOR
         ball ITEM_ULTRA_BALL
         setivs 31, 31, 31, 31, 31, 31
         setevs 0, 0, 0, 0, 0, 0
-        nature NATURE_HARDY
+        nature NATURE_ADAMANT
         shinylock 0
         ballseal 0
 
         ivs 200
         abilityslot 0
-        level 16
+        level 15
         pokemon SPECIES_MURKROW
         item ITEM_BERRY_JUICE
         move MOVE_WING_ATTACK
@@ -1389,7 +1389,7 @@ trainerdata 20, "Falkner"
 
         ivs 200
         abilityslot 0
-        level 16
+        level 15
         pokemon SPECIES_GLIGAR
         item ITEM_SOFT_SAND
         move MOVE_STOMPING_TANTRUM
@@ -1406,7 +1406,7 @@ trainerdata 20, "Falkner"
 
         ivs 200
         abilityslot 0
-        level 16
+        level 14
         pokemon SPECIES_TROPIUS
         item ITEM_SALAC_BERRY
         move MOVE_MAGICAL_LEAF
@@ -1426,10 +1426,10 @@ trainerdata 20, "Falkner"
         level 16
         pokemon SPECIES_EMOLGA
         item ITEM_ROCKY_HELMET
-        move MOVE_SHOCK_WAVE
+        move MOVE_VOLT_SWITCH
         move MOVE_AIR_CUTTER
-        move MOVE_U_TURN
-        move MOVE_THUNDER_WAVE
+        move MOVE_NUZZLE
+        move MOVE_LIGHT_SCREEN
         ability ABILITY_STATIC
         ball ITEM_ULTRA_BALL
         setivs 31, 31, 31, 31, 31, 31
@@ -3568,7 +3568,7 @@ trainerdata 49, "Albert"
 trainerdata 50, "Abe"
     trainermontype TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET | TRAINER_DATA_TYPE_NATURE_SET | 0
     trainerclass TRAINERCLASS_BIRD_KEEPER_GS
-    nummons 3
+    nummons 4
     item ITEM_NONE
     item ITEM_NONE
     item ITEM_NONE
@@ -3619,6 +3619,21 @@ trainerdata 50, "Abe"
         move MOVE_LEECH_SEED
         move MOVE_PROTECT
         ability ABILITY_INFILTRATOR
+        setivs 31, 31, 31, 31, 31, 31
+        setevs 0, 0, 0, 0, 0, 0
+        nature NATURE_ADAMANT
+        ballseal 0
+
+        ivs 200
+        abilityslot 0
+        level 15
+        pokemon SPECIES_STARAVIA
+        item ITEM_BERRY_JUICE
+        move MOVE_AERIAL_ACE
+        move MOVE_TAKE_DOWN
+        move MOVE_QUICK_ATTACK
+        move MOVE_U_TURN
+        ability ABILITY_INTIMIDATE
         setivs 31, 31, 31, 31, 31, 31
         setevs 0, 0, 0, 0, 0, 0
         nature NATURE_ADAMANT
@@ -3858,14 +3873,14 @@ trainerdata 54, "Troy"
         level 11
         pokemon SPECIES_TOXEL
         item ITEM_SALAC_BERRY
-        move MOVE_NUZZLE
+        move MOVE_SHOCK_WAVE
         move MOVE_ACID
         move MOVE_BELCH
-        move MOVE_NONE
+        move MOVE_NUZZLE
         ability ABILITY_RATTLED
         setivs 31, 31, 31, 31, 31, 31
         setevs 0, 0, 0, 0, 0, 0
-        nature NATURE_QUIRKY
+        nature NATURE_MODEST
         ballseal 0
     endparty
 

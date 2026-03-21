@@ -5,6 +5,7 @@
 #include "../../include/pokemon.h"
 #include "../../include/types.h"
 #include "../../include/constants/ability.h"
+#include "../../include/item.h"
 #include "../../include/constants/hold_item_effects.h"
 #include "../../include/constants/file.h"
 #include "../../include/constants/item.h"
@@ -61,10 +62,10 @@ void LONG_CALL FillDamageStructFromPartyMon(void* bw UNUSED, struct BattleStruct
     monStruct->speed = GetMonData(pp, MON_DATA_SPEED, 0);
     monStruct->weight = 1;
 
-    monStruct->attack = GetMonData(pp, MON_DATA_SPECIAL_ATTACK, 0);
-    monStruct->defense = GetMonData(pp, MON_DATA_SPECIAL_ATTACK, 0);
+    monStruct->attack = GetMonData(pp, MON_DATA_ATTACK, 0);
+    monStruct->defense = GetMonData(pp, MON_DATA_DEFENSE, 0);
     monStruct->sp_attack = GetMonData(pp, MON_DATA_SPECIAL_ATTACK, 0);
-    monStruct->sp_defense = GetMonData(pp, MON_DATA_SPECIAL_ATTACK, 0);
+    monStruct->sp_defense = GetMonData(pp, MON_DATA_SPECIAL_DEFENSE, 0);
 
     for (int i = 0; i < 8; i++)
         monStruct->states[i] = 0; // Reset all states to 0
@@ -328,7 +329,10 @@ int LONG_CALL BattleAI_CalcBaseDamage(void* bw, struct BattleStruct* sp, int mov
         if (defender->condition & STATUS_ALL)
             movepower *= 2;
         break;
-        //case MOVE_PAYBACK:
+    case MOVE_PAYBACK:
+        if (attacker->speed <= defender->speed)
+            movepower *= 2;
+        break;
         //case MOVE_PURSUIT:
     case MOVE_ROUND:
         // TODO: Implement Round
@@ -338,7 +342,8 @@ int LONG_CALL BattleAI_CalcBaseDamage(void* bw, struct BattleStruct* sp, int mov
             movepower *= 2;
         break;
     case MOVE_STOMPING_TANTRUM:
-        // TODO: Implement Stomping Tantrum
+        if (sp->moveConditionsFlags[attackerSlot].moveFailureLastTurn)
+            movepower *= 2;
         break;
     case MOVE_WAKE_UP_SLAP:
         if (defender->condition & STATUS_SLEEP)
@@ -371,7 +376,7 @@ int LONG_CALL BattleAI_CalcBaseDamage(void* bw, struct BattleStruct* sp, int mov
         break;
         // Item-based
     case MOVE_FLING:
-        // TODO
+        movepower = BattleItemDataGet(sp, attacker->item, ITEM_PARAM_FLING_POWER);
         break;
     case MOVE_NATURAL_GIFT:
         break;
@@ -524,13 +529,13 @@ int LONG_CALL BattleAI_CalcBaseDamage(void* bw, struct BattleStruct* sp, int mov
         basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_2);
 
     if ((attacker->ability == ABILITY_RECKLESS)
-        && (move.effect == MOVE_EFFECT_CRASH_ON_MISS)
-        && (move.effect == MOVE_EFFECT_RECOIL_QUARTER)
-        && (move.effect == MOVE_EFFECT_RECOIL_THIRD)
-        && (move.effect == MOVE_EFFECT_RECOIL_BURN_HIT)
-        && (move.effect == MOVE_EFFECT_RECOIL_PARALYZE_HIT)
-        && (move.effect == MOVE_EFFECT_RECOIL_HALF)
-        && (move.effect == MOVE_EFFECT_CONFUSE_HIT_CRASH_ON_MISS))
+        && (move.effect == MOVE_EFFECT_CRASH_ON_MISS
+         || move.effect == MOVE_EFFECT_RECOIL_QUARTER
+         || move.effect == MOVE_EFFECT_RECOIL_THIRD
+         || move.effect == MOVE_EFFECT_RECOIL_BURN_HIT
+         || move.effect == MOVE_EFFECT_RECOIL_PARALYZE_HIT
+         || move.effect == MOVE_EFFECT_RECOIL_HALF
+         || move.effect == MOVE_EFFECT_CONFUSE_HIT_CRASH_ON_MISS))
     {
         basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_2);
     }
@@ -1267,14 +1272,14 @@ int LONG_CALL BattleAI_CalcDamage(void* bw, struct BattleStruct* sp, int moveno,
     //=====Step 6. General Damage Modifiers=====
 
     // 6.1 Spread Move Modifier
-    // TODO: the vanilla implementation is probably wrong
     BOOL isDoubleBattle = (BattleTypeGet(bw) & (BATTLE_TYPE_MULTI | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TAG));
     if (isDoubleBattle)
     {
-        //TODO check if 2 battlers can be hit
         if ((move.target == RANGE_ADJACENT_OPPONENTS || move.target == RANGE_ALL_ADJACENT))
         {
-            damage = QMul_RoundDown(damage, UQ412__0_75);
+            u8 defenderPartnerSlot = defenderSlot ^ 1;
+            if (sp->battlemon[defenderPartnerSlot].hp > 0)
+                damage = QMul_RoundDown(damage, UQ412__0_75);
         }
     }
     debug_printf("after is double battle\n");
@@ -1505,7 +1510,18 @@ int LONG_CALL BattleAI_CalcDamage(void* bw, struct BattleStruct* sp, int moveno,
 
     // Effects relative to a particular side of the field
      // 6.9.1 Screens
-     // TODO: handle Aurora Veil
+     // handle Aurora Veil
+    if ((movesplit == SPLIT_PHYSICAL || movesplit == SPLIT_SPECIAL)
+        && ((side_cond & SIDE_STATUS_AURORA_VEIL) != 0)
+        && (sp->critical == 1)
+        && (move.effect != MOVE_EFFECT_REMOVE_SCREENS)
+        && (attacker->ability != ABILITY_INFILTRATOR))
+    {
+        if (isDoubleBattle)
+            finalModifier = QMul_RoundUp(finalModifier, UQ412__0_6666);
+        else
+            finalModifier = QMul_RoundUp(finalModifier, UQ412__0_5);
+    }
      // handle Reflect
     if ((movesplit == SPLIT_PHYSICAL)
         && ((side_cond & SIDE_STATUS_REFLECT) != 0)
