@@ -2135,18 +2135,10 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
                 moveScore += 2;
             }
     }
-    /*IRIDIUM: Eva Up and Acc Down status moves*/
+    /*Eva Up and Acc Down status moves*/
     else if((IsInList(ai->attackerMoveEffect, AccDropList, NELEMS(AccDropList)) ||
     IsInList(ai->attackerMoveEffect, EvaRaiseList, NELEMS(EvaRaiseList)))) {
-        if(ctx->battlemon[ai->attacker].states[STAT_EVASION] <= 6 || ctx->battlemon[ai->defender].states[STAT_ACCURACY] >= 6){
-            moveScore += 3;
-        }
-        else if(ctx->battlemon[ai->defender].states[STAT_EVASION] <= 8 || ctx->battlemon[ai->defender].states[STAT_ACCURACY] >= 4){
-            moveScore += 1;
-        }
-        else{
-            moveScore -= 4;
-        }
+        moveScore += 6;
     }
     /*IRIDIUM: make this extremely simple*/
     else if(ai->attackerMoveEffect == MOVE_EFFECT_INFATUATE){
