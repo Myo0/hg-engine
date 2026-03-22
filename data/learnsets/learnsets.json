@@ -19346,7 +19346,7 @@
       },
       {
         "Level": 26,
-        "Move": "MOVE_SWIFT"
+        "Move": "MOVE_SUPER_FANG"
       },
       {
         "Level": 29,
@@ -75506,6 +75506,10 @@
   },
   "SPECIES_FLETCHINDER": {
     "LevelMoves": [
+      {
+        "Level": 0,
+        "Move": "MOVE_FLAME_CHARGE"
+      },      
       {
         "Level": 1,
         "Move": "MOVE_PECK"

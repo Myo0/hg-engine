@@ -1017,8 +1017,8 @@ encounter SPECIES_MARSHTOMP, 34, 34
 encounter SPECIES_MARSHTOMP, 34, 34
 
 // rock smash encounters; probabilities:  90, 10
-encounter SPECIES_GEODUDE, 8, 14
-encounter SPECIES_GEODUDE, 3, 6
+encounter SPECIES_ONIX, 6, 16
+encounter SPECIES_ONIX, 6, 16
 
 // old rod encounters
 encounter SPECIES_MAGIKARP, 10, 10

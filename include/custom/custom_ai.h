@@ -41,8 +41,11 @@ struct PACKED AI_sDamageCalc
 
     u8 slowStartCount;
     u8 furyCutterCount;
-	u8 metronomeTurns;
+    u8 rolloutCount;
+    u8 metronomeTurns;
     //u8 lastResortCount;
+    u32 assuranceDamage;
+    u8 hiddenPowerType;
 };
 
 struct PACKED AI_damage

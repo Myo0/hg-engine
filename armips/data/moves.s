@@ -7733,7 +7733,7 @@ movedata MOVE_SMACK_DOWN, "Smack Down"
     effectchance 100
     target RANGE_SINGLE_TARGET
     priority 0
-    flags FLAG_MIRROR_MOVE | FLAG_UNUSABLE_UNIMPLEMENTED
+    flags FLAG_MIRROR_MOVE
     appeal 0x00
     contesttype CONTEST_TOUGH
     terminatedata
@@ -8283,7 +8283,7 @@ movedata MOVE_REFLECT_TYPE, "Reflect Type"
     terminatedata
     movedescription MOVE_REFLECT_TYPE, "The user reflects\nthe target’s type,\nmaking it the same\ntype as the target."
 
-movedata MOVE_RETALIATE, "Retaliate"
+movedata MOVE_RETALIATE, "Retaliate" // handled in CalcBaseDamage.c
     battleeffect MOVE_EFFECT_HIT
     pss SPLIT_PHYSICAL
     basepower 70

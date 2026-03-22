@@ -459,6 +459,7 @@
 .equ F_RISKY_ATTACKS, (1 << 4)
 .equ F_PRIORITIZE_DAMAGE, (1 << 5)
 .equ F_MULTI_BATTLE_PARTNER, (1 << 6)
+.equ F_BATON_PASS, (1 << 6)
 .equ F_DOUBLE_BATTLE, (1 << 7)
 .equ F_PRIORITIZE_HEALING, (1 << 8)
 .equ F_USE_WEATHER, (1 << 9)

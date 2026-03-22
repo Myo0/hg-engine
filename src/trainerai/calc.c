@@ -84,6 +84,16 @@ void LONG_CALL FillDamageStructFromPartyMon(void* bw UNUSED, struct BattleStruct
     monStruct->slowStartCount = 0;
     monStruct->furyCutterCount = 0;
     monStruct->metronomeTurns = 0;
+
+    u8 hpType = (GetMonData(pp, MON_DATA_HP_IV, 0) & 1)
+              | ((GetMonData(pp, MON_DATA_ATK_IV, 0) & 1) << 1)
+              | ((GetMonData(pp, MON_DATA_DEF_IV, 0) & 1) << 2)
+              | ((GetMonData(pp, MON_DATA_SPEED_IV, 0) & 1) << 3)
+              | ((GetMonData(pp, MON_DATA_SPATK_IV, 0) & 1) << 4)
+              | ((GetMonData(pp, MON_DATA_SPDEF_IV, 0) & 1) << 5);
+    hpType = (hpType * 15 / 63) + 1;
+    if (hpType >= TYPE_MYSTERY) hpType++;
+    monStruct->hiddenPowerType = hpType;
 }
 
 void LONG_CALL FillDamageStructFromBattleMon(void* bw, struct BattleStruct* sp, struct AI_sDamageCalc* monStruct, int numSlot)
@@ -138,8 +148,19 @@ void LONG_CALL FillDamageStructFromBattleMon(void* bw, struct BattleStruct* sp, 
 		
     monStruct->slowStartCount = (sp->total_turn - sp->battlemon[numSlot].moveeffect.slowStartTurns);
     monStruct->furyCutterCount = sp->battlemon[numSlot].moveeffect.furyCutterCount;
+    monStruct->rolloutCount = sp->battlemon[numSlot].moveeffect.rolloutCount;
     monStruct->metronomeTurns = sp->battlemon[numSlot].moveeffect.metronomeTurns;
     //monStruct->lastResortCount = sp->battlemon[numSlot].moveeffect.lastResortCount;
+
+    u8 hpType = (sp->battlemon[numSlot].hp_iv & 1)
+              | ((sp->battlemon[numSlot].atk_iv & 1) << 1)
+              | ((sp->battlemon[numSlot].def_iv & 1) << 2)
+              | ((sp->battlemon[numSlot].spe_iv & 1) << 3)
+              | ((sp->battlemon[numSlot].spatk_iv & 1) << 4)
+              | ((sp->battlemon[numSlot].spdef_iv & 1) << 5);
+    hpType = (hpType * 15 / 63) + 1;
+    if (hpType >= TYPE_MYSTERY) hpType++;
+    monStruct->hiddenPowerType = hpType;
 }
 
 int LONG_CALL BattleAI_CalcBaseDamage(void* bw, struct BattleStruct* sp, int moveno, u32 side_cond, u32 field_cond, u16 pow, u8 type, u8 critical, u8 attackerSlot, u8 defenderSlot, struct AI_sDamageCalc* attacker, struct AI_sDamageCalc* defender)
@@ -288,14 +309,29 @@ int LONG_CALL BattleAI_CalcBaseDamage(void* bw, struct BattleStruct* sp, int mov
         break;
     case MOVE_CRUSH_GRIP:
     case MOVE_WRING_OUT:
-        // TODO: Check correctness
         movepower = QMul_RoundDown(120 * 100, (defender->hp * 4096) / defender->maxhp) / 100;
         break;
-        //case MOVE_RETURN:
-        //case MOVE_FRUSTRATION:
-        //case MOVE_FURY_CUTTER:
-        //case MOVE_ROLLOUT:
-        //case MOVE_ICE_BALL:
+    case MOVE_RETURN:
+    case MOVE_FRUSTRATION:
+        movepower = 102;
+        break;
+    case MOVE_FURY_CUTTER:
+        for (u32 n = 1; n < attacker->furyCutterCount; n++)
+        {
+            if (movepower >= 160) break;
+            movepower *= 2;
+        }
+        break;
+    case MOVE_ROLLOUT:
+    case MOVE_ICE_BALL:
+        // rolloutCount counts down from 4 (turn 1) to 0 (turn 5); power doubles each turn
+        // Defence Curl doubling not yet implemented in engine, so not applied here either
+        for (u32 n = 1; n < 5 - attacker->rolloutCount; n++)
+        {
+            if (movepower >= 480) break;
+            movepower *= 2;
+        }
+        break;
         //case MOVE_SPIT_UP:
         //case MOVE_PUNISHMENT:
     case MOVE_STORED_POWER:
@@ -314,13 +350,20 @@ int LONG_CALL BattleAI_CalcBaseDamage(void* bw, struct BattleStruct* sp, int mov
         if (attacker->item == ITEM_NONE || attacker->item == ITEM_FLYING_GEM)
             movepower *= 2;
         break;
-        //case MOVE_ASSURANCE:
+    // case MOVE_ASSURANCE:
+    //     if (defender->assuranceDamage)
+    //         movepower *= 2;
+    //     break;
         //case MOVE_REVENGE:
         //case MOVE_WATER_PLEDGE:
         //case MOVE_FIRE_PLEDGE:
         //case MOVE_GRASS_PLEDGE:
-        //case MOVE_GUST:
-        //case MOVE_TWISTER:
+    case MOVE_GUST:
+    case MOVE_TWISTER:
+        // doubles power if target is in the invulnerable stage of Fly/Bounce/Sky Drop
+        if (defender->effect_of_moves & MOVE_EFFECT_FLAG_FLYING_IN_AIR)
+            movepower *= 2;
+        break;
             // TODO: handle charging turn of Sky Drop
         if (defender->effect_of_moves & MOVE_EFFECT_FLAG_FLYING_IN_AIR)
             movepower *= 2;
@@ -388,6 +431,7 @@ int LONG_CALL BattleAI_CalcBaseDamage(void* bw, struct BattleStruct* sp, int mov
         break;
     case MOVE_HIDDEN_POWER:
         movepower = 60;
+        movetype = attacker->hiddenPowerType;
         break;
     case MOVE_MAGNITUDE:
         movepower = 71;
@@ -428,8 +472,30 @@ int LONG_CALL BattleAI_CalcBaseDamage(void* bw, struct BattleStruct* sp, int mov
         }
         break;
     case MOVE_RETALIATE:
-        // TODO
+    {
+        BOOL teammateFaintedLastTurn = FALSE;
+        switch (attackerSlot) {
+        case BATTLER_PLAYER:
+            if (sp->playerSideHasFaintedTeammateLastTurn == TRAINER_1 || sp->playerSideHasFaintedTeammateLastTurn == TRAINER_BOTH)
+                teammateFaintedLastTurn = TRUE;
+            break;
+        case BATTLER_ENEMY:
+            if (sp->enemySideHasFaintedTeammateLastTurn == TRAINER_1 || sp->enemySideHasFaintedTeammateLastTurn == TRAINER_BOTH)
+                teammateFaintedLastTurn = TRUE;
+            break;
+        case BATTLER_PLAYER2:
+            if (sp->playerSideHasFaintedTeammateLastTurn == TRAINER_2 || sp->playerSideHasFaintedTeammateLastTurn == TRAINER_BOTH)
+                teammateFaintedLastTurn = TRUE;
+            break;
+        case BATTLER_ENEMY2:
+            if (sp->enemySideHasFaintedTeammateLastTurn == TRAINER_2 || sp->enemySideHasFaintedTeammateLastTurn == TRAINER_BOTH)
+                teammateFaintedLastTurn = TRUE;
+            break;
+        }
+        if (teammateFaintedLastTurn)
+            movepower *= 2;
         break;
+    }
         //case MOVE_FUSION_FLARE:
         //case MOVE_FUSION_BOLT:
     case MOVE_GRAV_APPLE:
@@ -444,7 +510,10 @@ int LONG_CALL BattleAI_CalcBaseDamage(void* bw, struct BattleStruct* sp, int mov
         if ((sp->terrainOverlay.numberOfTurnsLeft > 0) && (sp->terrainOverlay.type == MISTY_TERRAIN))
             basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_5);
         break;
-        // case MOVE_LASH_OUT:
+    case MOVE_LASH_OUT:
+        if (sp->moveConditionsFlags[attackerSlot].anyStatLoweredThisTurn)
+            movepower *= 2;
+        break;
     default:
         break;
     }
@@ -689,11 +758,10 @@ int LONG_CALL BattleAI_CalcBaseDamage(void* bw, struct BattleStruct* sp, int mov
         basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_2);
     }
 
-    // handle Gems
-    /*
-    if (IS_ITEM_GEM(attacker->item) && attacker->item_power == movetype)
-        basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_3);
-    */
+    // handle Gems: 1.5x boost when gem type matches move type
+    if (attacker->item_held_effect == HOLD_EFFECT_POWERING_UP_MOVE_ONCE
+     && attacker->item_power == movetype)
+        basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_5);
 
     // handle Punching Glove
     if ((attacker->item_held_effect == HOLD_EFFECT_INCREASE_PUNCHING_MOVE_DMG) && IsElementInArray(PunchingMovesTable, (u16*)&moveno, NELEMS(PunchingMovesTable), sizeof(PunchingMovesTable[0])))
@@ -748,11 +816,16 @@ int LONG_CALL BattleAI_CalcBaseDamage(void* bw, struct BattleStruct* sp, int mov
     debug_printf("[CalcBaseDamage] attacker->spatkstate: %d\n", attacker->states[STAT_SPATK]);
 #endif
 
-    // Step 3.2. handle Foul Play
+    // Step 3.2. handle Foul Play / Body Press
     if (moveno == MOVE_FOUL_PLAY)
     {
         attacker->attack = defender->attack;
         attacker->states[STAT_ATTACK] = defender->states[STAT_ATTACK];
+    }
+    else if (moveno == MOVE_BODY_PRESS)
+    {
+        attacker->attack = attacker->defense;
+        attacker->states[STAT_ATTACK] = attacker->states[STAT_DEFENSE];
     }
 
 #ifdef DEBUG_DAMAGE_CALC_AI
@@ -888,12 +961,10 @@ int LONG_CALL BattleAI_CalcBaseDamage(void* bw, struct BattleStruct* sp, int mov
         attackModifier = QMul_RoundUp(attackModifier, UQ412__1_5);
 
     // handle Dragon's Maw
-    // TODO: confirm location
     if (attacker->ability == ABILITY_DRAGONS_MAW && (movetype == TYPE_DRAGON))
         attackModifier = QMul_RoundUp(attackModifier, UQ412__1_5);
 
     // handle Transistor
-    // TODO: confirm location
     if (attacker->ability == ABILITY_TRANSISTOR && (movetype == TYPE_ELECTRIC))
         attackModifier = QMul_RoundUp(attackModifier, UQ412__1_3);
 
@@ -1012,9 +1083,6 @@ int LONG_CALL BattleAI_CalcBaseDamage(void* bw, struct BattleStruct* sp, int mov
     debug_printf("[CalcBaseDamage] defender->sp_defense: %d\n", defender->sp_defense);
 #endif
 
-    // Step 4.4. Wonder Room
-    // TODO
-
     // Step 4.5. Critical hit
     if (critical > 1) {
         // critical hits ignore defender's stat boosts
@@ -1045,7 +1113,7 @@ int LONG_CALL BattleAI_CalcBaseDamage(void* bw, struct BattleStruct* sp, int mov
     debug_printf("[CalcBaseDamage] sp_defense: %d\n", sp_defense);
 #endif
 
-    // Step 4.7. Sandstorm + Rock-type
+    // Step 4.7. Sandstorm + Rock-type & Snow + Ice-type
     if ((CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, attackerSlot, ABILITY_CLOUD_NINE) == 0)
         && (CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, attackerSlot, ABILITY_AIR_LOCK) == 0))
     {
@@ -1207,6 +1275,8 @@ int LONG_CALL BattleAI_CalcDamage(void* bw, struct BattleStruct* sp, int moveno,
 
     struct BattleMove move = sp->moveTbl[moveno];
     movetype = GetAdjustedMoveTypeBasics(sp, moveno, attacker->ability, move.type);
+    if (moveno == MOVE_HIDDEN_POWER)
+        movetype = attacker->hiddenPowerType;
 
     if (!attacker->hasMoldBreaker)
     {
@@ -1329,7 +1399,9 @@ int LONG_CALL BattleAI_CalcDamage(void* bw, struct BattleStruct* sp, int moveno,
     debug_printf("[CalcBaseDamage] 6.3 Weather Modifier\n");
     debug_printf("[CalcBaseDamage] damage: %d\n", damage);
 #endif
-    // 6.3.5 Glaive Rush
+    // 6.3.5 Glaive Rush: defender takes double damage the turn after using Glaive Rush
+    if (sp->moveConditionsFlags[defenderSlot].glaiveRush)
+        damage = damage * 200 / 100;
 
     // 6.4 Critical hit modifier
     if (critical > 1) {
