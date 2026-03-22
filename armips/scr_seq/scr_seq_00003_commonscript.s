@@ -88,6 +88,7 @@ scrdef scr_seq_0003_070
 scrdef scr_seq_0003_071
 scrdef scr_seq_0003_072_repels
 scrdef scr_seq_0003_073_autobattle_testing
+scrdef scr_seq_0003_074
 scrdef_end
 
 scr_seq_0003_002:
@@ -1748,6 +1749,11 @@ scr_seq_0003_073_autobattle_testing:
     releaseall
     end
 
-
-
+scr_seq_0003_074:
+    play_se SEQ_SE_DP_PC_LOGOFF
+    lockall
+    npc_msg 121
+    closemsg
+    releaseall
+    end
 .close

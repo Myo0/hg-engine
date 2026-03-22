@@ -684,8 +684,8 @@ trainerdata 10, "Amy & Mimi"
         item ITEM_LEFTOVERS
         move MOVE_TOXIC
         move MOVE_SAND_TOMB
-        move MOVE_BUG_BITE
-        move MOVE_STICKY_WEB
+        move MOVE_ROLLOUT
+        move MOVE_PROTECT
         ability ABILITY_SHELL_ARMOR
         ball ITEM_PREMIER_BALL
         setivs 31, 31, 31, 31, 31, 31

@@ -2494,15 +2494,20 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
 
         int matchingSplit = (ai->attackerMoveEffect == MOVE_EFFECT_COUNTER)
                           ? SPLIT_PHYSICAL : SPLIT_SPECIAL;
+        BOOL hasMatchingSplit = FALSE;
         BOOL onlyMatchingSplit = TRUE;
         for (int j = 0; j < 4; j++)
         {
             u16 defMove = ctx->battlemon[ai->defender].move[j];
             if (defMove == MOVE_NONE) continue;
             if (ctx->moveTbl[defMove].split == SPLIT_STATUS) continue;
-            if (ctx->moveTbl[defMove].split != matchingSplit)
-            { onlyMatchingSplit = FALSE; break; }
+            if (ctx->moveTbl[defMove].split == matchingSplit)
+                hasMatchingSplit = TRUE;
+            else
+                onlyMatchingSplit = FALSE;
         }
+        if (!hasMatchingSplit)
+            return -20;
 
         moveScore += 6;
         if ((attackerHasSturdy || attackerHasSash)
@@ -2655,7 +2660,7 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
 
     /*Endure*/
     else if(ai->attackerMoveEffect == MOVE_EFFECT_SURVIVE_WITH_1_HP){
-        if(ctx->protectSuccessTurns[ai->attacker] >= 1 || ai->attackerLastUsedMove == MOVE_ENDURE){
+        if(ctx->protectSuccessTurns[ai->attacker] >= 1){
             moveScore -= 20;
         }
         else if(ai->maxDamageReceived > ai->attackerHP){
@@ -2667,10 +2672,16 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
                 if(defMove == MOVE_NONE) continue;
                 if(ctx->moveTbl[defMove].priority > 0){ defenderHasPriority = TRUE; break; }
             }
-            if(hasComboMove && !defenderHasPriority && ai->attackerMovesFirst)
+            // Endure failed last turn: allow retry but skip +14 conditions this turn
+            if(ai->attackerLastUsedMove == MOVE_ENDURE)
+                moveScore += 6;
+            // Defender is low enough that Endeavor/Flail combo isn't needed
+            else if(ai->defenderPercentHP <= 33)
+                moveScore += 6;
+            else if(hasComboMove && !defenderHasPriority && ai->attackerMovesFirst)
                 moveScore += 14;
             else
-                moveScore += 7;
+                moveScore += 6;
         }
         else{
             moveScore -= 20;
