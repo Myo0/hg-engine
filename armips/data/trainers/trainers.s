@@ -38,7 +38,7 @@ trainerdata 1, "Silver" // Azalea
     item ITEM_NONE
     item ITEM_NONE
     item ITEM_NONE
-    aiflags F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE
+    aiflags F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS
     battletype SINGLE_BATTLE
     endentry
 
@@ -345,9 +345,9 @@ trainerdata 5, "Victoria"
     endparty
 
 trainerdata 6, "Keith"
-    trainermontype TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_BALL | TRAINER_DATA_TYPE_IV_EV_SET | TRAINER_DATA_TYPE_NATURE_SET | 0
+    trainermontype TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_BALL | TRAINER_DATA_TYPE_IV_EV_SET | TRAINER_DATA_TYPE_NATURE_SET | TRAINER_DATA_TYPE_ADDITIONAL_FLAGS | 0
     trainerclass TRAINERCLASS_POLICEMAN
-    nummons 3
+    nummons 4
     item ITEM_NONE
     item ITEM_NONE
     item ITEM_NONE
@@ -365,13 +365,14 @@ trainerdata 6, "Keith"
         item ITEM_MAGNET
         move MOVE_DISCHARGE
         move MOVE_CRUNCH
-        move MOVE_ICE_FANG
+        move MOVE_HIDDEN_POWER
         move MOVE_QUICK_ATTACK
         ability ABILITY_INTIMIDATE
         ball ITEM_POKE_BALL
-        setivs 31, 31, 31, 31, 31, 31
+        setivs 31, 31, 31, 30, 31, 31
         setevs 0, 0, 0, 0, 0, 0
         nature NATURE_NAIVE
+        additionalflags 0
         ballseal 0
 
         ivs 0
@@ -388,6 +389,7 @@ trainerdata 6, "Keith"
         setivs 31, 31, 31, 31, 31, 31
         setevs 0, 0, 0, 0, 0, 0
         nature NATURE_JOLLY
+        additionalflags 0
         ballseal 0
 
         ivs 0
@@ -404,6 +406,25 @@ trainerdata 6, "Keith"
         setivs 31, 31, 31, 31, 31, 31
         setevs 0, 0, 0, 0, 0, 0
         nature NATURE_JOLLY
+        additionalflags 0
+        ballseal 0
+
+        ivs 0
+        abilityslot 0
+        level 28
+        pokemon SPECIES_LINOONE
+        item ITEM_SITRUS_BERRY
+        move MOVE_FACADE
+        move MOVE_SEED_BOMB
+        move MOVE_PURSUIT
+        move MOVE_QUICK_ATTACK
+        ability ABILITY_GUTS
+        ball ITEM_POKE_BALL
+        setivs 31, 31, 31, 31, 31, 31
+        setevs 0, 0, 0, 0, 0, 0
+        nature NATURE_JOLLY
+        additionalflags TRAINER_DATA_EXTRA_TYPE_STATUS
+        status 16
         ballseal 0
     endparty
 
@@ -4277,7 +4298,7 @@ trainerdata 61, "Anthony"
 trainerdata 62, "Samuel"
     trainermontype TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_BALL | TRAINER_DATA_TYPE_IV_EV_SET | TRAINER_DATA_TYPE_NATURE_SET | 0
     trainerclass TRAINERCLASS_YOUNGSTER
-    nummons 3
+    nummons 4
     item ITEM_NONE
     item ITEM_NONE
     item ITEM_NONE
@@ -4293,7 +4314,7 @@ trainerdata 62, "Samuel"
         level 27
         pokemon SPECIES_BOLTUND
         item ITEM_MAGNET
-        move MOVE_VOLT_SWITCH
+        move MOVE_THUNDER_FANG
         move MOVE_CRUNCH
         move MOVE_FIRE_FANG
         move MOVE_ATTRACT
@@ -4301,7 +4322,7 @@ trainerdata 62, "Samuel"
         ball ITEM_POKE_BALL
         setivs 31, 31, 31, 31, 31, 31
         setevs 0, 0, 0, 0, 0, 0
-        nature NATURE_SERIOUS
+        nature NATURE_JOLLY
         ballseal 0
 
         // mon 1
@@ -4311,8 +4332,8 @@ trainerdata 62, "Samuel"
         pokemon SPECIES_WUGTRIO
         item ITEM_MYSTIC_WATER
         move MOVE_TRIPLE_DIVE
-        move MOVE_DIG
-        move MOVE_SUCKER_PUNCH
+        move MOVE_STOMPING_TANTRUM
+        move MOVE_FOUL_PLAY
         move MOVE_AQUA_JET
         ability ABILITY_GOOEY
         ball ITEM_POKE_BALL
@@ -4327,11 +4348,27 @@ trainerdata 62, "Samuel"
         level 28
         monwithform SPECIES_SANDSLASH, 1
         item ITEM_OCCA_BERRY
-        move MOVE_AVALANCHE
+        move MOVE_ICICLE_SPEAR
         move MOVE_IRON_HEAD
-        move MOVE_SHADOW_CLAW
+        move MOVE_ROCK_SLIDE
         move MOVE_SWORDS_DANCE
         ability ABILITY_SNOW_CLOAK
+        ball ITEM_POKE_BALL
+        setivs 31, 31, 31, 31, 31, 31
+        setevs 0, 0, 0, 0, 0, 0
+        nature NATURE_ADAMANT
+        ballseal 0
+
+        ivs 0
+        abilityslot 0
+        level 27
+        pokemon SPECIES_DUGTRIO
+        item ITEM_SOFT_SAND
+        move MOVE_STOMPING_TANTRUM
+        move MOVE_ROCK_SLIDE
+        move MOVE_SUCKER_PUNCH
+        move MOVE_SWORDS_DANCE
+        ability ABILITY_ARENA_TRAP
         ball ITEM_POKE_BALL
         setivs 31, 31, 31, 31, 31, 31
         setevs 0, 0, 0, 0, 0, 0
@@ -4492,13 +4529,13 @@ trainerdata 64, "Ian"
         level 29
         pokemon SPECIES_SUNFLORA
         item ITEM_SITRUS_BERRY
-        move MOVE_SUNNY_DAY
         move MOVE_GIGA_DRAIN
-        move MOVE_FLAME_BURST
         move MOVE_SLUDGE_BOMB
+        move MOVE_HIDDEN_POWER
+        move MOVE_SUNNY_DAY
         ability ABILITY_SOLAR_POWER
         ball ITEM_SAFARI_BALL
-        setivs 31, 31, 31, 31, 31, 31
+        setivs 31, 30, 30, 30, 31, 30
         setevs 0, 0, 0, 0, 0, 0
         nature NATURE_MODEST
         ballseal 0
@@ -17475,7 +17512,7 @@ trainerdata 266, "Silver" // Azalea
     item ITEM_NONE
     item ITEM_NONE
     item ITEM_NONE
-    aiflags F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE | 0
+    aiflags F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | 0
     battletype SINGLE_BATTLE
     endentry
 
@@ -17782,7 +17819,7 @@ trainerdata 269, "Silver" // Azalea
     item ITEM_NONE
     item ITEM_NONE
     item ITEM_NONE
-    aiflags F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE | 0
+    aiflags F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | 0
     battletype SINGLE_BATTLE
     endentry
 

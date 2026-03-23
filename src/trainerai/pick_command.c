@@ -72,7 +72,7 @@ BOOL TrainerAI_ShouldSwitch(struct BattleSystem *battleSys, int battler)
         // Calculate max damage the defender can deal to this party mon
         u32 maxDmgReceived = 0;
         u8 critical = 0;
-        int knownMoves = GetBattlerLearnedMoveCount(battleSys, ctx, defender);
+        int knownMoves = 4;
         for (int k = 0; k < knownMoves; k++)
         {
             struct AI_damage damages = {0};

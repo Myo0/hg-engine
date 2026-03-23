@@ -12,13 +12,41 @@
 #include "../../include/constants/moves.h"
 #include "../../include/constants/species.h"
 #include "../../include/constants/file.h"
+#include "../../include/overlay.h"
+#include "../../include/custom/custom_ai.h"
 
 
 
 // function declarations
 void AITypeCalc(struct BattleStruct *sp, u32 move, u32 type, int atkAbility, int defAbility, int held_effect, int type1, int type2, u32 *flag);
+int LONG_CALL BattleAI_PostKOSwitchIn(struct BattleSystem *battleSys, int battler);
 
 
+
+//in hooks
+//0012 BattleAI_PostKOSwitchIn 02258800 2
+int LONG_CALL BattleAI_PostKOSwitchIn(struct BattleSystem *bsys, int attacker)
+{
+    u32 offset;
+    int ret;
+    int (*internalFunc)(struct BattleSystem *bsys, int attacker);
+
+    u32 loadNeeded = IsOverlayLoaded(OVERLAY_BATTLE_ANIMS) ? OVERLAY_BATTLE_ANIMS : 0;
+    if (loadNeeded)
+        UnloadOverlayByID(OVERLAY_BATTLE_ANIMS); // unload colliding overlay so that this can be loaded
+
+    offset = 0x0221BE20 | 1; // TrainerAI_Main entry point in overlay 10 (Thumb bit set)
+    HandleLoadOverlay(OVERLAY_TRAINER_AI, 2);
+    internalFunc = (int (*)(struct BattleSystem *bsys, int attacker))(offset);
+    attacker = attacker + 10; // signals TrainerAI_Main to run PostKO logic
+    ret = internalFunc(bsys, attacker);
+    UnloadOverlayByID(OVERLAY_TRAINER_AI);
+
+    if (loadNeeded)
+        HandleLoadOverlay(OVERLAY_BATTLE_ANIMS, 2);
+
+    return ret;
+}
 
 /**
  *  @brief set up type calc flags for AI to respect and make decisions based on

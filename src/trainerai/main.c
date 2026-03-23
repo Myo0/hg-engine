@@ -1546,7 +1546,8 @@ int EvaluateAttackFlag(struct BattleSystem *bsys, int attacker, int i, struct AI
     {
         // Priority move while slower also qualifies as a fast kill
         BOOL isFastKill = (ai->attackerMovesFirst || ai->isSpeedTie
-                        || ctx->moveTbl[ai->attackerMove].priority > 0);
+                        || ctx->moveTbl[ai->attackerMove].priority > 0
+                        || (ai->attackerMove == MOVE_GRASSY_GLIDE && ctx->terrainOverlay.type == GRASSY_TERRAIN && ctx->terrainOverlay.numberOfTurnsLeft > 0));
         if (isFastKill)
             moveScore += 6;
         else
@@ -1563,7 +1564,8 @@ int EvaluateAttackFlag(struct BattleSystem *bsys, int attacker, int i, struct AI
     // Damaging priority moves: +11 if AI is dying and slower,
     // OR dying and faster but player has a priority move of their own
     if (ai->maxDamageReceived > ai->attackerHP
-     && ctx->moveTbl[ai->attackerMove].priority > 0)
+     && (ctx->moveTbl[ai->attackerMove].priority > 0
+      || (ai->attackerMove == MOVE_GRASSY_GLIDE && ctx->terrainOverlay.type == GRASSY_TERRAIN && ctx->terrainOverlay.numberOfTurnsLeft > 0)))
     {
         if (!ai->attackerMovesFirst && !ai->isSpeedTie)
         {
@@ -1576,7 +1578,7 @@ int EvaluateAttackFlag(struct BattleSystem *bsys, int attacker, int i, struct AI
             {
                 u16 defMove = ctx->battlemon[ai->defender].move[j];
                 if (defMove == MOVE_NONE) continue;
-                if (ctx->moveTbl[defMove].priority > 0) { defenderHasPriority = TRUE; break; }
+                if (ctx->moveTbl[defMove].priority > 0 || (defMove == MOVE_GRASSY_GLIDE && ctx->terrainOverlay.type == GRASSY_TERRAIN && ctx->terrainOverlay.numberOfTurnsLeft > 0)) { defenderHasPriority = TRUE; break; }
             }
             if (defenderHasPriority)
                 moveScore += 11;
@@ -1961,37 +1963,6 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
                 moveScore += 6;
                 if (defIncapacitated) moveScore += 3;
                 if (slowerAnd2HKOd)   moveScore -= 5;
-
-                // Boost-leads-to-kill: determine stat boosted and amount, then check KO threshold
-                int boostAmt = 0;
-                u8 boostStat = STAT_ATTACK;
-                if (ai->attackerMoveEffect == MOVE_EFFECT_ATK_UP_2)
-                    { boostAmt = 2; boostStat = STAT_ATTACK; }
-                else if (ai->attackerMoveEffect == MOVE_EFFECT_ATK_UP
-                      || ai->attackerMoveEffect == MOVE_EFFECT_ATK_SPEED_UP
-                      || ai->attackerMoveEffect == MOVE_EFFECT_SPEED_UP_2_ATK_UP
-                      || ai->attackerMoveEffect == MOVE_EFFECT_CURSE
-                      || ai->attackerMoveEffect == MOVE_EFFECT_RAISE_ATTACK_HIT)
-                    { boostAmt = 1; boostStat = STAT_ATTACK; }
-                else if (ai->attackerMoveEffect == MOVE_EFFECT_SP_ATK_UP
-                      || ai->attackerMoveEffect == MOVE_EFFECT_RAISE_SP_ATK_HIT)
-                    { boostAmt = 1; boostStat = STAT_SPATK; }
-
-                if (boostAmt > 0)
-                {
-                    int currentStage = (int)ctx->battlemon[attacker].states[boostStat] - 6;
-                    if (currentStage < 6)
-                    {
-                        int newStage = currentStage + boostAmt;
-                        if (newStage > 6) newStage = 6;
-                        // Accurate stat multiplier math: (2 + newStage) / (2 + currentStage)
-                        int boostedDamage = (ai->attackerMaxDamageOutputMinRoll * (2 + newStage)) / (2 + currentStage);
-                        if (boostedDamage >= ai->defenderHP)
-                            moveScore += 2;   // boost leads to OHKO (+8 total)
-                        else if (boostedDamage * 2 >= ai->defenderHP)
-                            moveScore += 1;   // boost leads to 2HKO (+7 total)
-                    }
-                }
             }
         }
     }
@@ -2670,7 +2641,7 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
             for(int j = 0; j < 4; j++){
                 u16 defMove = ctx->battlemon[ai->defender].move[j];
                 if(defMove == MOVE_NONE) continue;
-                if(ctx->moveTbl[defMove].priority > 0){ defenderHasPriority = TRUE; break; }
+                if(ctx->moveTbl[defMove].priority > 0 || (defMove == MOVE_GRASSY_GLIDE && ctx->terrainOverlay.type == GRASSY_TERRAIN && ctx->terrainOverlay.numberOfTurnsLeft > 0)){ defenderHasPriority = TRUE; break; }
             }
             // Endure failed last turn: allow retry but skip +14 conditions this turn
             if(ai->attackerLastUsedMove == MOVE_ENDURE)
@@ -2926,7 +2897,7 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
             for(int j = 0; j < 4; j++){
                 u16 defMove = ctx->battlemon[ai->defender].move[j];
                 if(defMove == MOVE_NONE) continue;
-                if(ctx->moveTbl[defMove].priority > 0){ defenderHasPriority = TRUE; break; }
+                if(ctx->moveTbl[defMove].priority > 0 || (defMove == MOVE_GRASSY_GLIDE && ctx->terrainOverlay.type == GRASSY_TERRAIN && ctx->terrainOverlay.numberOfTurnsLeft > 0)){ defenderHasPriority = TRUE; break; }
             }
             if(!defenderHasPriority){
                 if(BattleRand(bsys) % 5 == 0) moveScore += 8;
@@ -2985,7 +2956,8 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
          && ai->attackerAvgRollMoveDamages[i] >= ai->defenderHP)
         {
             BOOL isFast = (ai->attackerMovesFirst || ai->isSpeedTie
-                        || ctx->moveTbl[ai->attackerMove].priority > 0);
+                        || ctx->moveTbl[ai->attackerMove].priority > 0
+                        || (ai->attackerMove == MOVE_GRASSY_GLIDE && ctx->terrainOverlay.type == GRASSY_TERRAIN && ctx->terrainOverlay.numberOfTurnsLeft > 0));
             if (isFast)
                 moveScore += 9;
             else
@@ -4156,7 +4128,7 @@ void SetupStateVariables(struct BattleSystem *bsys, int attacker, u32 defender, 
 
     /*Loop over defender's moves, and compute the most damage AI can take*/
     int currentReceivedDamage = 0;
-    for (int i = 0; i < GetBattlerLearnedMoveCount(bsys, ctx, ai->defender); i++){
+    for (int i = 0; i < 4; i++){
         specialMovePower = 0;
         u32 defenderMoveno = ctx->battlemon[defender].move[i];
         struct BattleMove defenderMove = ctx->moveTbl[defenderMoveno];

@@ -280,33 +280,6 @@ int LONG_CALL BattleAI_CalcBaseDamage(void* bw, struct BattleStruct* sp, int mov
     case MOVE_WATER_SPOUT:
         movepower = (150 * attacker->hp) / attacker->maxhp;
         break;
-    case MOVE_FLAIL:
-        p = (48 * attacker->hp) / attacker->maxhp;
-        if (p >= 32) {
-            movepower = 20;
-            break;
-        }
-        if (p >= 17) {
-            movepower = 40;
-            break;
-        }
-        if (p >= 10) {
-            movepower = 80;
-            break;
-        }
-        if (p >= 5) {
-            movepower = 100;
-            break;
-        }
-        if (p >= 2) {
-            movepower = 150;
-            break;
-        }
-        if (p <= 1) {
-            movepower = 200;
-            break;
-        }
-        break;
     case MOVE_CRUSH_GRIP:
     case MOVE_WRING_OUT:
         movepower = QMul_RoundDown(120 * 100, (defender->hp * 4096) / defender->maxhp) / 100;
@@ -315,6 +288,18 @@ int LONG_CALL BattleAI_CalcBaseDamage(void* bw, struct BattleStruct* sp, int mov
     case MOVE_FRUSTRATION:
         movepower = 102;
         break;
+    case MOVE_REVERSAL:
+    case MOVE_FLAIL:
+    {
+        u32 p = (48 * attacker->hp) / attacker->maxhp;
+        if      (p >= 32) movepower = 20;
+        else if (p >= 17) movepower = 40;
+        else if (p >= 10) movepower = 80;
+        else if (p >= 5)  movepower = 100;
+        else if (p >= 2)  movepower = 150;
+        else              movepower = 200;
+        break;
+    }
     case MOVE_FURY_CUTTER:
         for (u32 n = 1; n < attacker->furyCutterCount; n++)
         {
@@ -496,6 +481,14 @@ int LONG_CALL BattleAI_CalcBaseDamage(void* bw, struct BattleStruct* sp, int mov
             movepower *= 2;
         break;
     }
+    case MOVE_BELCH:
+    {
+        u32 team = SanitizeClientForTeamAccess(bw, attackerSlot);
+        u32 partySlot = sp->sel_mons_no[attackerSlot];
+        if (!sp->onceOnlyMoveConditionFlags[team][partySlot].berryEatenAndCanBelch)
+            movepower = 0;
+        break;
+    }
         //case MOVE_FUSION_FLARE:
         //case MOVE_FUSION_BOLT:
     case MOVE_GRAV_APPLE:
@@ -514,6 +507,7 @@ int LONG_CALL BattleAI_CalcBaseDamage(void* bw, struct BattleStruct* sp, int mov
         if (sp->moveConditionsFlags[attackerSlot].anyStatLoweredThisTurn)
             movepower *= 2;
         break;
+
     default:
         break;
     }
@@ -1332,6 +1326,11 @@ int LONG_CALL BattleAI_CalcDamage(void* bw, struct BattleStruct* sp, int moveno,
     if (!attacker->hasMoldBreaker && defender->ability == ABILITY_ICE_FACE && defender->form == 0 && !(defender->condition2 & STATUS2_TRANSFORMED) && movesplit == SPLIT_PHYSICAL) //SPECIES_EISCUE
         return 0;
 
+    if (move.effect == MOVE_EFFECT_ALWAYS_CRITICAL || move.effect == MOVE_EFFECT_HIT_THREE_TIMES_ALWAYS_CRITICAL)
+    {
+        if (defender->ability != ABILITY_SHELL_ARMOR && defender->ability != ABILITY_BATTLE_ARMOR)
+            critical = 2;
+    }
     if (attacker->item == ITEM_SCOPE_LENS && attacker->ability == ABILITY_SUPER_LUCK && defender->ability != ABILITY_SHELL_ARMOR && defender->ability != ABILITY_BATTLE_ARMOR)
     {
         if (move.effect == MOVE_EFFECT_HIGH_CRITICAL)
@@ -1429,7 +1428,7 @@ int LONG_CALL BattleAI_CalcDamage(void* bw, struct BattleStruct* sp, int moveno,
     debug_printf("[CalcBaseDamage] damage: %d\n", damages->damageRoll);
 #endif
 
-    if (attacker->type1 == movetype || attacker->type2 == type || attacker->ability == ABILITY_PROTEAN || attacker->ability == ABILITY_LIBERO)
+    if (attacker->type1 == movetype || attacker->type2 == movetype || attacker->ability == ABILITY_PROTEAN || attacker->ability == ABILITY_LIBERO)
     {
         if (attacker->ability == ABILITY_ADAPTABILITY)
         {
@@ -1959,12 +1958,13 @@ int LONG_CALL BattleAI_AdjustUnusualMoveDamage(u32 attackerLevel, u32 attackerHP
         if (attackerAbility == ABILITY_SKILL_LINK)
             return damage * 10;
         else if (attackerItem == ITEM_LOADED_DICE)
-            return damage *= 5; //4-10
-        return damage *= 3;
-    case MOVE_EFFECT_HIT_THREE_TIMES_ALWAYS_CRITICAL: //surge Strikes
-    case MOVE_EFFECT_HIT_THREE_TIMES: //triple dive
-    case MOVE_EFFECT_HIT_THREE_TIMES_INCREMENT_BASE_POWER_10: // triple kick
-        return damage *= 3;
+            return damage * 5; //4-10
+        return damage * 3;
+    case MOVE_EFFECT_HIT_THREE_TIMES_ALWAYS_CRITICAL: //Surging Strikes
+    case MOVE_EFFECT_HIT_THREE_TIMES: //Triple Dive
+        return damage * 3;
+    case MOVE_EFFECT_HIT_THREE_TIMES_INCREMENT_BASE_POWER_10: // Triple Kick: 10+20+30=60, x6 base
+        return damage * 6;
     case MOVE_EFFECT_HIT_THREE_TIMES_INCREMENT_BASE_POWER_20: // triple axel
         return damage *= 6;
     case MOVE_EFFECT_MULTI_HIT: //2-5 hit moves
@@ -2137,7 +2137,7 @@ int LONG_CALL BattleAI_PostKOSwitchIn_Internal(struct BattleSystem* bsys, int at
                 }
             }
 
-            for (int k = 0; k < GetBattlerLearnedMoveCount(bsys, ctx, defender); ++k)
+            for (int k = 0; k < 4; ++k)
             {
                 struct AI_damage damages = { 0 };
                 u32 defenderMoveno = ctx->battlemon[defender].move[k];

@@ -36,6 +36,9 @@ Fisherman Andre
 Fisherman Raymond
 Ace Trainer Lois
 
+Scrapped Trainers to reduce overall trainer count:
+Pokefan Brandon (Route 34)
+Picnicker Gina (Route 34)
 
 
 Use Black Belt Kiyo for a Lopunny mega stone battle that becomes available as soon as the player defeats Pryce. (His overworld flag in Mt.Mortar is 2624)
@@ -56,6 +59,7 @@ I can tell that you’re a Trainer\nwith considerable skill.\rIf you don’t min
 406A -> disables PC in dragon's den (at val=0)
 406A -> enables PC in blackthorn when exiting dragon's den (at val=1)
 406B -> Random value variable for legendary encounter.
+406C -> azalea gym PC disable thing
 
 2570 -> Scientist Ross Flag
 2571 -> Grunt #6
