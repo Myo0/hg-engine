@@ -2298,8 +2298,9 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
 
 
     /*Atk/SpAtk reduction hit moves (Trop Kick, Skitter Smack, etc.)*/
-    else if (ai->attackerMoveEffect == MOVE_EFFECT_LOWER_ATTACK_HIT
-          || ai->attackerMoveEffect == MOVE_EFFECT_LOWER_SP_ATK_HIT)
+    else if ((ai->attackerMoveEffect == MOVE_EFFECT_LOWER_ATTACK_HIT
+           || ai->attackerMoveEffect == MOVE_EFFECT_LOWER_SP_ATK_HIT)
+          && ctx->moveTbl[ai->attackerMove].secondaryEffectChance == 100)
     {
         // if highest damage, EvaluateAttackFlag handles it. ExpertFlag adds stat-drop utility only when not highest.
         BOOL isHighestDamage = TRUE;
@@ -4135,7 +4136,7 @@ void SetupStateVariables(struct BattleSystem *bsys, int attacker, u32 defender, 
         struct AI_damage damages = { 0 };
         if(ctx->moveTbl[ctx->battlemon[ai->defender].move[i]].split != SPLIT_STATUS){
             //specialMovePower = AdjustUnusualMovePower(bsys, ai->defender, ai->attacker, ctx->moveTbl[ctx->battlemon[ai->defender].move[i]].effect, ai);
-            currentReceivedDamage = BattleAI_CalcDamage(bsys, ctx, ctx->battlemon[ai->defender].move[i], ctx->side_condition[BATTLER_IS_ENEMY(ai->defender)], ctx->field_condition, defenderMove.power, defenderMove.type, 0, ai->defender, ai->attacker,&damages, &ai->defenderMon, &ai->attackerMon);
+            currentReceivedDamage = BattleAI_CalcDamage(bsys, ctx, ctx->battlemon[ai->defender].move[i], ctx->side_condition[BATTLER_IS_ENEMY(ai->attacker)], ctx->field_condition, defenderMove.power, defenderMove.type, 0, ai->defender, ai->attacker,&damages, &ai->defenderMon, &ai->attackerMon);
             //currentReceivedDamage = CalcBaseDamage(bsys, ctx, ctx->battlemon[ai->defender].move[i], ctx->side_condition[ai->attackerSide],ctx->field_condition, specialMovePower, 0, ai->defender, ai->attacker, 0, 0, 0, NULL);
             //currentReceivedDamage = ServerDoTypeCalcMod(bsys, ctx, ctx->battlemon[ai->defender].move[i], 0, ai->defender, ai->attacker, currentReceivedDamage, &temp)*92 / 100; // looking at MIN roll. //*85 / 100 for min roll
             debug_printf("current received damage in main.c done\n");
@@ -4173,7 +4174,7 @@ void SetupStateVariables(struct BattleSystem *bsys, int attacker, u32 defender, 
             u8 moveTypeForCalc = (attackerMoveno == MOVE_HIDDEN_POWER)
                                ? ai->attackerMon.hiddenPowerType
                                : attackerMove.type;
-            ai->attackerAvgRollMoveDamages[i] = BattleAI_CalcDamage(bsys, ctx, attackerMoveno, ctx->side_condition[BATTLER_IS_ENEMY(attacker)], ctx->field_condition, attackerMove.power, moveTypeForCalc, critical, attacker, defender, &damages, &ai->attackerMon, &ai->defenderMon);
+            ai->attackerAvgRollMoveDamages[i] = BattleAI_CalcDamage(bsys, ctx, attackerMoveno, ctx->side_condition[BATTLER_IS_ENEMY(defender)], ctx->field_condition, attackerMove.power, moveTypeForCalc, critical, attacker, defender, &damages, &ai->attackerMon, &ai->defenderMon);
 
             ai->attackerAvgRollMoveDamages[i] = BattleAI_AdjustUnusualMoveDamage(ai->attackerMon.level, ai->attackerMon.hp, ai->defenderMon.hp, damages.damageRoll, attackerMove.effect, ai->attackerMon.ability, ai->attackerMon.item);
             

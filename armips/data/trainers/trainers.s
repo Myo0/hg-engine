@@ -23430,7 +23430,7 @@ trainerdata 395, "Mark"
         // mon 0
         ivs 0
         abilityslot 0
-        level 35
+        level 34
         pokemon SPECIES_SIGILYPH
         item ITEM_LUM_BERRY
         move MOVE_AIR_SLASH
@@ -23480,7 +23480,7 @@ trainerdata 395, "Mark"
 
         ivs 0
         abilityslot 0
-        level 35
+        level 34
         pokemon SPECIES_EXEGGUTOR
         item ITEM_SITRUS_BERRY
         move MOVE_GIGA_DRAIN

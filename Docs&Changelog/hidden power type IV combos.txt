@@ -28,3 +28,4 @@ Play Rough seems to get a random +6, probably from being in a attack stat-down l
 Mystical Fire also seems to get random bonuses
 Fix Pursuit damage calculation in-game (CalcBaseDamage.c)
 Iron Defense gets 103 score?
+discourage status moves if misty terrain
