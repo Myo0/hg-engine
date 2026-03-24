@@ -7665,6 +7665,10 @@
         "Move": "MOVE_SYNTHESIS"
       },
       {
+        "Level": 31,
+        "Move": "MOVE_GIGA_DRAIN"
+      },
+      {
         "Level": 34,
         "Move": "MOVE_POISON_JAB"
       },
@@ -35200,7 +35204,7 @@
         "Move": "MOVE_PSYCHO_CUT"
       },
       {
-        "Level": 37,
+        "Level": 35,
         "Move": "MOVE_BRICK_BREAK"
       },
       {
@@ -53715,6 +53719,10 @@
   "SPECIES_YANMEGA": {
     "LevelMoves": [
       {
+        "Level": 0,
+        "Move": "MOVE_AIR_SLASH"
+      },
+      {
         "Level": 1,
         "Move": "MOVE_REVERSAL"
       },
@@ -53767,7 +53775,11 @@
         "Move": "MOVE_ANCIENT_POWER"
       },
       {
-        "Level": 42,
+        "Level": 40,
+        "Move": "MOVE_AIR_SLASH"
+      },
+      {
+        "Level": 43,
         "Move": "MOVE_DRAGON_PULSE"
       },
       {
@@ -53776,7 +53788,7 @@
       },
       {
         "Level": 48,
-        "Move": "MOVE_AIR_SLASH"
+        "Move": "MOVE_HURRICANE"
       },
       {
         "Level": 52,

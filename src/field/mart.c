@@ -19,25 +19,31 @@ struct BadgeMartItems {
 
 // note: limited to 203 items (~34 pages)
 const struct BadgeMartItems sBadgeMart[] = {
-    { ITEM_POKE_BALL,      0 },
-    { ITEM_GREAT_BALL,     3 },
-    { ITEM_ULTRA_BALL,     5 },
-    { ITEM_POTION,         0 },
-    { ITEM_SUPER_POTION,   1 },
-    { ITEM_HYPER_POTION,   5 },
-    { ITEM_MAX_POTION,     7 },
-    { ITEM_FULL_RESTORE,   8 },
-    { ITEM_REVIVE,         3 },
-    { ITEM_ANTIDOTE,       0 },
-    { ITEM_PARALYZE_HEAL,  0 },
-    { ITEM_AWAKENING,      1 },
-    { ITEM_BURN_HEAL,      1 },
-    { ITEM_ICE_HEAL,       1 },
-    { ITEM_FULL_HEAL,      5 },
-    { ITEM_ESCAPE_ROPE,    1 },
-    { ITEM_REPEL,          1 },
-    { ITEM_SUPER_REPEL,    3 },
-    { ITEM_MAX_REPEL,      5 },
+    { ITEM_POKE_BALL,        0 },
+    { ITEM_GREAT_BALL,       3 },
+    { ITEM_ULTRA_BALL,       5 },
+    { ITEM_POTION,           0 },
+    { ITEM_SUPER_POTION,     1 },
+    { ITEM_HYPER_POTION,     5 },
+    { ITEM_MAX_POTION,       7 },
+    { ITEM_FULL_RESTORE,     8 },
+    { ITEM_REVIVE,           3 },
+    { ITEM_ANTIDOTE,         0 },
+    { ITEM_PARALYZE_HEAL,    0 },
+    { ITEM_AWAKENING,        1 },
+    { ITEM_BURN_HEAL,        1 },
+    { ITEM_ICE_HEAL,         1 },
+    { ITEM_FULL_HEAL,        5 },
+    { ITEM_ESCAPE_ROPE,      1 },
+    { ITEM_REPEL,            1 },
+    { ITEM_SUPER_REPEL,      3 },
+    { ITEM_MAX_REPEL,        5 },
+    { ITEM_LINKING_CORD,     3 },
+    { ITEM_BLACK_AUGURITE,   4 },
+    { ITEM_TART_APPLE,       4 },
+    { ITEM_AUSPICIOUS_ARMOR, 4 },
+    { ITEM_MALICIOUS_ARMOR,  4 },
+    { ITEM_CRACKED_POT,      4 },
 };
 
 void LONG_CALL InitMartUI(void *taskManager, FieldSystem *fieldSystem, const u16 *items, int kind, int buySell, int decoWhich, const struct MartItem *priceOverrides);
@@ -72,8 +78,9 @@ u16 sGoldenrodDepartment3F[] = {
 };
 
 u16 sGoldenrodDepartment4F[] = {
-    ITEM_PROTEIN, ITEM_IRON, ITEM_CALCIUM, ITEM_ZINC, ITEM_CARBOS,
-    ITEM_HP_UP, 0xFFFF
+    ITEM_FIRE_STONE, ITEM_WATER_STONE, ITEM_LEAF_STONE, ITEM_THUNDER_STONE, ITEM_DAWN_STONE,
+    ITEM_DUSK_STONE, ITEM_DAWN_STONE, ITEM_SUN_STONE, ITEM_MOON_STONE, ITEM_SHINY_STONE, 
+    ITEM_ICE_STONE, ITEM_HONEY, ITEM_DRAGON_SCALE, ITEM_TART_APPLE, ITEM_SWEET_APPLE, 0xFFFF
 };
 
 u16 sGoldenrodDepartment5F[] = {

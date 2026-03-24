@@ -1,17 +1,30 @@
-// HP Type      HP  Atk  Def  Spe  SpAtk  SpDef
-// Fighting     30 / 30 / 30 / 30 /  30 /  30
-// Flying       31 / 30 / 31 / 30 /  30 /  30
-// Poison       31 / 30 / 30 / 31 /  30 /  30
-// Ground       31 / 30 / 31 / 31 /  30 /  30
-// Rock         31 / 30 / 30 / 30 /  31 /  30
-// Bug          31 / 30 / 31 / 30 /  31 /  30
-// Ghost        30 / 31 / 30 / 31 /  31 /  30
-// Steel        30 / 31 / 31 / 31 /  31 /  30
-// Fire         30 / 31 / 30 / 30 /  30 /  31
-// Water        30 / 31 / 31 / 30 /  30 /  31
-// Grass        30 / 31 / 30 / 31 /  30 /  31
-// Electric     31 / 31 / 31 / 31 /  30 /  31
-// Psychic      31 / 31 / 30 / 30 /  31 /  31
-// Ice          31 / 31 / 31 / 30 /  31 /  31
-// Dragon       31 / 31 / 30 / 31 /  31 /  31
-// Dark         31 / 31 / 31 / 31 /  31 /  31
+,, HP Type      HP  Atk  Def  Spe  SpAtk  SpDef
+,, Fighting     30, 30, 30, 30, 30, 30
+,, Flying       31, 30, 31, 30, 30, 30
+,, Poison       31, 30, 30, 31, 30, 30
+,, Ground       31, 30, 31, 31, 30, 30
+,, Rock         31, 30, 30, 30, 31, 30
+,, Bug          31, 30, 31, 30, 31, 30
+,, Ghost        30, 31, 30, 31, 31, 30
+,, Steel        30, 31, 31, 31, 31, 30
+,, Fire         30, 31, 30, 30, 30, 31
+,, Water        30, 31, 31, 30, 30, 31
+,, Grass        30, 31, 30, 31, 30, 31
+,, Electric     31, 31, 31, 31, 30, 31
+,, Psychic      31, 31, 30, 30, 31, 31
+,, Ice          31, 31, 31, 30, 31, 31
+,, Dragon       31, 31, 30, 31, 31, 31
+,, Dark         31, 31, 31, 31, 31, 31
+
+        additionalflags TRAINER_DATA_EXTRA_TYPE_STATUS
+        status 16
+
+
+AI bugs for after weekly claude reset at 2:30 Tuesday
+
+once retaliate damage boost is active, it's never reset.
+AI doesn't calc for reflect/light screen/aurora veil when it checks to see if it can kill
+Play Rough seems to get a random +6, probably from being in a attack stat-down list
+Mystical Fire also seems to get random bonuses
+Fix Pursuit damage calculation in-game (CalcBaseDamage.c)
+Iron Defense gets 103 score?
