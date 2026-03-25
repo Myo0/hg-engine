@@ -2405,6 +2405,7 @@ BOOL LONG_CALL MoveIsAffectedByNormalizeVariants(int moveno) {
         case MOVE_TECHNO_BLAST:
         case MOVE_MULTI_ATTACK:
         case MOVE_TERRAIN_PULSE:
+        case MOVE_REVELATION_DANCE:
             return FALSE;
             break;
         default:

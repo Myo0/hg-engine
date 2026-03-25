@@ -1504,6 +1504,10 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
         }
     }
 
+    // Explosion / Self-Destruct / Misty Explosion: halve defender's defense (Gen 4 mechanic)
+    if (moveno == MOVE_EXPLOSION || moveno == MOVE_SELF_DESTRUCT || moveno == MOVE_MISTY_EXPLOSION)
+        defenseModifier = QMul_RoundDown(defenseModifier, UQ412__0_5);
+
     // Apply the chained modifier to the starting defense. That is, multiply the starting defense by the chained defense modifiers, divide by 4096, and pokeRound the result. If the current defense would now be less than 1, make it 1. Finally, if the defense is greater than 65,535, make it the defense modulo 65,536 (defense % 65536). If the defense stat is 0 because of this modifier, the result of base damage will always be 2.
     calculatedDefense = QMul_RoundDown(calculatedDefense, defenseModifier);
     calculatedDefense = calculatedDefense < 1 ? 1 : calculatedDefense;

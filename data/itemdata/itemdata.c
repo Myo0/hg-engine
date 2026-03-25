@@ -403,7 +403,7 @@ const ITEMDATA __data[] =
 
 [ITEM_NET_BALL] =
 {
-    ITEM_PRICE(1000),
+    ITEM_PRICE(500),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -468,7 +468,7 @@ const ITEMDATA __data[] =
 
 [ITEM_DIVE_BALL] =
 {
-    ITEM_PRICE(1000),
+    ITEM_PRICE(500),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -533,7 +533,7 @@ const ITEMDATA __data[] =
 
 [ITEM_NEST_BALL] =
 {
-    ITEM_PRICE(1000),
+    ITEM_PRICE(200),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -598,7 +598,7 @@ const ITEMDATA __data[] =
 
 [ITEM_REPEAT_BALL] =
 {
-    ITEM_PRICE(1000),
+    ITEM_PRICE(200),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -663,7 +663,7 @@ const ITEMDATA __data[] =
 
 [ITEM_TIMER_BALL] =
 {
-    ITEM_PRICE(1000),
+    ITEM_PRICE(600),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -728,7 +728,7 @@ const ITEMDATA __data[] =
 
 [ITEM_LUXURY_BALL] =
 {
-    ITEM_PRICE(3000),
+    ITEM_PRICE(200),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -858,7 +858,7 @@ const ITEMDATA __data[] =
 
 [ITEM_DUSK_BALL] =
 {
-    ITEM_PRICE(1000),
+    ITEM_PRICE(500),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -923,7 +923,7 @@ const ITEMDATA __data[] =
 
 [ITEM_HEAL_BALL] =
 {
-    ITEM_PRICE(300),
+    ITEM_PRICE(200),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -988,7 +988,7 @@ const ITEMDATA __data[] =
 
 [ITEM_QUICK_BALL] =
 {
-    ITEM_PRICE(1000),
+    ITEM_PRICE(800),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -31993,7 +31993,7 @@ const ITEMDATA __data[] =
 
 [ITEM_FAST_BALL] =
 {
-    ITEM_PRICE(300),
+    ITEM_PRICE(400),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -32058,7 +32058,7 @@ const ITEMDATA __data[] =
 
 [ITEM_LEVEL_BALL] =
 {
-    ITEM_PRICE(300),
+    ITEM_PRICE(500),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -32123,7 +32123,7 @@ const ITEMDATA __data[] =
 
 [ITEM_LURE_BALL] =
 {
-    ITEM_PRICE(300),
+    ITEM_PRICE(500),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -32253,7 +32253,7 @@ const ITEMDATA __data[] =
 
 [ITEM_LOVE_BALL] =
 {
-    ITEM_PRICE(300),
+    ITEM_PRICE(200),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -32318,7 +32318,7 @@ const ITEMDATA __data[] =
 
 [ITEM_FRIEND_BALL] =
 {
-    ITEM_PRICE(300),
+    ITEM_PRICE(150),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -32383,7 +32383,7 @@ const ITEMDATA __data[] =
 
 [ITEM_MOON_BALL] =
 {
-    ITEM_PRICE(300),
+    ITEM_PRICE(200),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,

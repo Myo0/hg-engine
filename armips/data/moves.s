@@ -14198,7 +14198,7 @@ movedata MOVE_TIDY_UP, "Tidy Up"
     movedescription MOVE_TIDY_UP, "The user tidies up and\nremoves entry hazards\nand Substitutes. This\nalso boosts the user’s\nAttack and Speed stats."
 
 movedata MOVE_SNOWSCAPE, "Snowscape"
-    battleeffect MOVE_EFFECT_HIT
+    battleeffect MOVE_EFFECT_WEATHER_SNOW
     pss SPLIT_STATUS
     basepower 0
     type TYPE_ICE

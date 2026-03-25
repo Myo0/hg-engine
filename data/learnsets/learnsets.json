@@ -7737,6 +7737,10 @@
         "Move": "MOVE_SLEEP_POWDER"
       },
       {
+        "Level": 37,
+        "Move": "MOVE_POISON_JAB"
+      },
+      {
         "Level": 40,
         "Move": "MOVE_LEECH_LIFE"
       },
@@ -48162,15 +48166,15 @@
       },
       {
         "Level": 39,
-        "Move": "MOVE_RECOVER"
-      },
-      {
-        "Level": 42,
         "Move": "MOVE_MUDDY_WATER"
       },
       {
-        "Level": 45,
+        "Level": 43,
         "Move": "MOVE_ANCIENT_POWER"
+      },
+      {
+        "Level": 46,
+        "Move": "MOVE_RECOVER"
       }
     ],
     "MachineMoves": [
@@ -119758,7 +119762,7 @@
       },
       {
         "Level": 36,
-        "Move": "MOVE_RECOVER"
+        "Move": "MOVE_EARTH_POWER"
       },
       {
         "Level": 39,
@@ -119770,7 +119774,7 @@
       },
       {
         "Level": 46,
-        "Move": "MOVE_EARTH_POWER"
+        "Move": "MOVE_RECOVER"
       }
     ],
     "MachineMoves": [

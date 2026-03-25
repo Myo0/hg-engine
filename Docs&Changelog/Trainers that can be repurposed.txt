@@ -45,6 +45,18 @@ Picnicker Brooke (Route 35)
 Policeman Dirk (Route 35)
 Pokefan William (National Park)
 School Kid Belle (Route 36)
+Beauty Callie & Beauty Cassandra (Route 37)
+Lass Dana (Route 38)
+Sailor Harry (Route 38)
+Sailor Eugene (Route 39)
+Pokefan Derek (Route 39)
+Sailor Huey (Lighthouse)
+Gentleman Preston (Lighthouse)
+Lass Connie (Lighthouse)
+Sailor Kent (Lighthouse)
+Bird Keeper Denis (Lighthouse)
+Swimmer Simon (Route 40)
+Swimmer Elaine (Route 40)
 
 
 Use Black Belt Kiyo for a Lopunny mega stone battle that becomes available as soon as the player defeats Pryce. (His overworld flag in Mt.Mortar is 2624)
@@ -73,6 +85,7 @@ I can tell that you’re a Trainer\nwith considerable skill.\rIf you don’t min
 2573 -> Grunt #7
 2574 -> Flag for grunt blocking stairway until the 4 trainers are beaten
 2575 -> flag for grunt blocking stairway during radio tower 2f gauntlet
+2576 -> Route 35 Pidgey
 
 2660 -> Flag to check if player has already interacted with the legendary encounter in safari zone
 

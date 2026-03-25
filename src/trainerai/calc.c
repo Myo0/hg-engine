@@ -1457,7 +1457,7 @@ int LONG_CALL BattleAI_CalcDamage(void* bw, struct BattleStruct* sp, int moveno,
     // 6.7 Type Effectiveness Modifier
     // TODO: need to factor in Tera Shell
     u32 flag = 0;
-    moveEffectiveness = BattleAI_GetTypeEffectiveness(bw, sp, movetype, &flag, attacker, defender);
+    moveEffectiveness = BattleAI_GetTypeEffectiveness(bw, sp, moveno, movetype, &flag, attacker, defender);
 	damages->moveEffectiveness = moveEffectiveness;
 
     switch (moveEffectiveness)
@@ -1784,7 +1784,7 @@ int LONG_CALL BattleAI_CalcDamage(void* bw, struct BattleStruct* sp, int moveno,
     return damages->damageRoll;
 }
 
-int LONG_CALL BattleAI_GetTypeEffectiveness(void* bw, struct BattleStruct* sp, int move_type, u32* flag, struct AI_sDamageCalc* attacker, struct AI_sDamageCalc* defender)
+int LONG_CALL BattleAI_GetTypeEffectiveness(void* bw, struct BattleStruct* sp, int moveno, int move_type, u32* flag, struct AI_sDamageCalc* attacker, struct AI_sDamageCalc* defender)
 {
     int i = 0;
     u8 defender_type_1 = defender->type1 & 0x1F;
@@ -1843,6 +1843,14 @@ int LONG_CALL BattleAI_GetTypeEffectiveness(void* bw, struct BattleStruct* sp, i
             // TODO: Handle type3, Tera Type
         }
         i++;
+    }
+
+    // Freeze-Dry is always super effective against Water-type regardless of normal chart
+    if (moveno == MOVE_FREEZE_DRY) {
+        if (defender_type_1 == TYPE_WATER)
+            type1Effectiveness = TYPE_MUL_SUPER_EFFECTIVE;
+        if (defender_type_2 == TYPE_WATER && defender_type_1 != defender_type_2)
+            type2Effectiveness = TYPE_MUL_SUPER_EFFECTIVE;
     }
 
     // TODO: Refactor!!!

@@ -238,7 +238,7 @@ Mega Ampharos ✓
 Bellossom X	
 Marill ✓	 
 Azumarill ✓	
-Sudowoodo X	
+Sudowoodo ✓	
 Politoed X	
 Hoppip X	
 Skiploom X	

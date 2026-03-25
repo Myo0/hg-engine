@@ -21,7 +21,23 @@ struct BadgeMartItems {
 const struct BadgeMartItems sBadgeMart[] = {
     { ITEM_POKE_BALL,        0 },
     { ITEM_GREAT_BALL,       3 },
-    { ITEM_ULTRA_BALL,       5 },
+    { ITEM_ULTRA_BALL,       4 },
+    { ITEM_QUICK_BALL,       4 },
+    { ITEM_LURE_BALL,        4 },
+    { ITEM_NET_BALL,         3 },
+    { ITEM_DIVE_BALL,        3 },
+    { ITEM_TIMER_BALL,       3 },
+    { ITEM_DUSK_BALL,        3 },
+    { ITEM_FAST_BALL,        3 },
+    { ITEM_LEVEL_BALL,       2 },
+    { ITEM_MOON_BALL,        2 },
+    { ITEM_NEST_BALL,        1 },
+    { ITEM_REPEAT_BALL,      1 },
+    { ITEM_LUXURY_BALL,      1 },
+    { ITEM_HEAL_BALL,        1 },
+    { ITEM_HEAVY_BALL,       1 },
+    { ITEM_LOVE_BALL,        1 },
+    { ITEM_FRIEND_BALL,      1 },
     { ITEM_POTION,           0 },
     { ITEM_SUPER_POTION,     1 },
     { ITEM_HYPER_POTION,     5 },
@@ -94,11 +110,15 @@ u16 sGoldenrodHerbs[] = {
 };
 
 u16 sEcruteakMart[] = {
-    ITEM_HEART_MAIL, ITEM_HEAL_BALL, ITEM_NET_BALL, 0xFFFF
+    ITEM_FIRE_STONE, ITEM_WATER_STONE, ITEM_LEAF_STONE, ITEM_THUNDER_STONE, ITEM_DAWN_STONE,
+    ITEM_DUSK_STONE, ITEM_DAWN_STONE, ITEM_SUN_STONE, ITEM_MOON_STONE, ITEM_SHINY_STONE, 
+    ITEM_ICE_STONE, 0xFFFF
 };
 
 u16 sOlivineMart[] = {
-    ITEM_HEART_MAIL, ITEM_HEAL_BALL, ITEM_NET_BALL, 0xFFFF
+    ITEM_FIRE_STONE, ITEM_WATER_STONE, ITEM_LEAF_STONE, ITEM_THUNDER_STONE, ITEM_DAWN_STONE,
+    ITEM_DUSK_STONE, ITEM_DAWN_STONE, ITEM_SUN_STONE, ITEM_MOON_STONE, ITEM_SHINY_STONE, 
+    ITEM_ICE_STONE, 0xFFFF
 };
 
 u16 sCianwoodPharmacy[] = {

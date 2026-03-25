@@ -220,8 +220,13 @@ unsigned int __attribute__((section (".init"))) TrainerAI_Main(struct BattleSyst
                         (ai->attackerMove == ctx->battlemon[ai->attacker].moveeffect.moveNoChoice ||
                         ai->attackerMove == ctx->battlemon[ai->attacker].moveeffect.encoredMove)){
                         moveScores[battler_no][i] += 100; //force the user to use the move if choice locked
-                    }                
-                    
+                    }
+
+                    // Gigaton Hammer / Blood Moon: can't be used twice in a row
+                    if ((ai->attackerMove == MOVE_GIGATON_HAMMER || ai->attackerMove == MOVE_BLOOD_MOON)
+                     && ai->attackerLastUsedMove == ai->attackerMove)
+                        moveScores[battler_no][i] -= 20;
+
                     for (unsigned int j = 0; j < sizeof(moveEvaluators) / sizeof(moveEvaluators[0]); j++) {
                         debug_printf("in move evaluators");
                         if(BattleTypeGet(bsys) &  BATTLE_TYPE_DOUBLE){
@@ -291,7 +296,13 @@ unsigned int __attribute__((section (".init"))) TrainerAI_Main(struct BattleSyst
                 (ai->attackerMove == ctx->battlemon[ai->attacker].moveeffect.moveNoChoice ||
                 ai->attackerMove == ctx->battlemon[ai->attacker].moveeffect.encoredMove)){
                 moveScores[target][i] += 100; //force the user to use the move if choice locked
-            }     
+            }
+
+            // Gigaton Hammer / Blood Moon: can't be used twice in a row
+            if ((ai->attackerMove == MOVE_GIGATON_HAMMER || ai->attackerMove == MOVE_BLOOD_MOON)
+             && ai->attackerLastUsedMove == ai->attackerMove)
+                moveScores[target][i] -= 20;
+
             for (unsigned int j = 0; j < sizeof(moveEvaluators) / sizeof(moveEvaluators[0]); j++) {
                 if (bsys->trainers[ai->attacker].aibit & moveEvaluators[j].flag) {
                     moveScores[target][i] += moveEvaluators[j].evaluator(bsys, ai->attacker, i, ai);
@@ -1482,6 +1493,21 @@ int EvaluateAttackFlag(struct BattleSystem *bsys, int attacker, int i, struct AI
     if (ctx->moveTbl[ai->attackerMove].split == SPLIT_STATUS)
         return 0;
 
+    // Gigaton Hammer / Blood Moon: can't be used twice in a row — exclude from damage bonus
+    if ((ai->attackerMove == MOVE_GIGATON_HAMMER || ai->attackerMove == MOVE_BLOOD_MOON)
+     && ai->attackerLastUsedMove == ai->attackerMove)
+        return 0;
+
+    // Psychic Terrain: priority moves targeting grounded defenders fail
+    if (ctx->terrainOverlay.type == PSYCHIC_TERRAIN
+     && ctx->terrainOverlay.numberOfTurnsLeft > 0
+     && ctx->moveTbl[ai->attackerMove].priority > 0
+     && ai->defenderType1 != TYPE_FLYING
+     && ai->defenderType2 != TYPE_FLYING
+     && ai->defenderAbility != ABILITY_LEVITATE
+     && ai->defenderItem != ITEM_AIR_BALLOON)
+        return -20;
+
     BOOL isExcludedFromDamageBonus = MoveExcludedFromDamageBonus(ai->attackerMove, ai->attackerMoveEffect);
 
     // Contrary: self-lowering moves become self-boosts — ExpertFlag handles the bonus instead
@@ -1523,6 +1549,7 @@ int EvaluateAttackFlag(struct BattleSystem *bsys, int attacker, int i, struct AI
             u16 movenoJ = ctx->battlemon[attacker].move[j];
             if (movenoJ == MOVE_NONE) continue;
             if (MoveExcludedFromDamageBonus(movenoJ, ctx->moveTbl[movenoJ].effect)) continue;
+            if ((movenoJ == MOVE_GIGATON_HAMMER || movenoJ == MOVE_BLOOD_MOON) && ai->attackerLastUsedMove == movenoJ) continue;
             if (ai->attackerAvgRollMoveDamages[i] < ai->attackerAvgRollMoveDamages[j])
             {
                 isHighestDamage = FALSE;
@@ -1611,6 +1638,25 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
     int moveScore = 0;
     struct BattleStruct *ctx = bsys->sp;
     debug_printf("In expert flag\n");
+
+    // Misty Terrain: status conditions and confusion fail on grounded defenders
+    BOOL defenderIsGrounded = (ai->defenderType1 != TYPE_FLYING
+                            && ai->defenderType2 != TYPE_FLYING
+                            && ai->defenderAbility != ABILITY_LEVITATE
+                            && ai->defenderItem != ITEM_AIR_BALLOON);
+    if (ctx->terrainOverlay.type == MISTY_TERRAIN
+     && ctx->terrainOverlay.numberOfTurnsLeft > 0
+     && defenderIsGrounded
+     && (ai->attackerMoveEffect == MOVE_EFFECT_STATUS_SLEEP
+      || ai->attackerMoveEffect == MOVE_EFFECT_STATUS_SLEEP_NEXT_TURN
+      || ai->attackerMoveEffect == MOVE_EFFECT_STATUS_BURN
+      || ai->attackerMoveEffect == MOVE_EFFECT_STATUS_POISON
+      || ai->attackerMoveEffect == MOVE_EFFECT_STATUS_BADLY_POISON
+      || ai->attackerMoveEffect == MOVE_EFFECT_STATUS_PARALYZE
+      || ai->attackerMoveEffect == MOVE_EFFECT_STATUS_CONFUSE
+      || ai->attackerMoveEffect == MOVE_EFFECT_SP_ATK_UP_CAUSE_CONFUSION
+      || ai->attackerMoveEffect == MOVE_EFFECT_ATK_UP_2_STATUS_CONFUSION))
+        return -20;
 
     /*Sleep moves*/
     if(ai->attackerMoveEffect == MOVE_EFFECT_STATUS_SLEEP
@@ -4152,6 +4198,11 @@ void SetupStateVariables(struct BattleSystem *bsys, int attacker, u32 defender, 
     }
     //debug_printf("Max damage received PERIOD is: %d\n",ai->maxDamageReceived);
 
+    // Focus Sash: if the AI is at full HP, it cannot be OHKOd — cap received damage at HP-1
+    if (ai->attackerItem == ITEM_FOCUS_SASH && ai->attackerHP == ai->attackerMaxHP)
+        if (ai->maxDamageReceived >= ai->attackerHP)
+            ai->maxDamageReceived = ai->attackerHP - 1;
+
     /*Loop over all moves for checking certain conditions*/
     /*Set up max roll damage calculations for all known moves.
     Also check if user has a super-effective move*/
@@ -4196,7 +4247,7 @@ void SetupStateVariables(struct BattleSystem *bsys, int attacker, u32 defender, 
         u8 moveTypeForEffectiveness = (attackerMoveno == MOVE_HIDDEN_POWER)
                                     ? ai->attackerMon.hiddenPowerType
                                     : attackerMove.type;
-        ai->attackerMoveEffectiveness[i] = BattleAI_GetTypeEffectiveness(bsys, ctx, moveTypeForEffectiveness, &effectivenessFlag, &ai->attackerMon, &ai->defenderMon);
+        ai->attackerMoveEffectiveness[i] = BattleAI_GetTypeEffectiveness(bsys, ctx, attackerMoveno, moveTypeForEffectiveness, &effectivenessFlag, &ai->attackerMon, &ai->defenderMon);
         //AITypeCalc(ctx, attackerMoveCheck, attackerMoveTypeCheck, ai->attackerAbility, ai->defenderAbility, ai->holdEffect, ai->defenderType1, ai->defenderType2, & ai->attackerMoveEffectiveness);
         if(ai->attackerMoveEffectiveness[i] == TYPE_MUL_SUPER_EFFECTIVE){
             ai->attackerHasSupereffectiveMove = TRUE;
