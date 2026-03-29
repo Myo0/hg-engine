@@ -28,3 +28,58 @@ Mystical Fire also seems to get random bonuses
 Fix Pursuit damage calculation in-game (CalcBaseDamage.c)
 Iron Defense gets 103 score?
 discourage status moves if misty terrain
+
+
+
+LEGENDS Z/A MEGAS WITH ABILITIES I'D GIVE THEM
+
+Mega Raichu X : Levitate
+Mega Raichu Y : Surge Surfer
+Mega Clefable : Fairy Aura
+Mega Victreebel : Chlorophyll
+Mega Starmie : Clear Body
+Mega Dragonite : Multiscale
+Mega Meganium : Mega Sol
+Mega Feraligatr : Dragonize
+Mega Skarmory : Tough Claws
+Mega Chimecho : Levitate
+Mega Absol Z : Magic Bounce
+Mega Staraptor : Intimidate
+Mega Garchomp Z : Sand Force
+Mega Lucario Z : Adaptability
+Mega Froslass : Snow Warning
+Mega Heatran : Drought (an ability that sets up sun & the magma storm move effect would be fire)
+Mega Darkrai : Bad Dreams
+Mega Emboar : Mold Breaker
+Mega Excadrill : Sand Rush
+Mega Scolipede : Speed Boost
+Mega Scrafty : Moxie
+Mega Eelektross : Levitate
+Mega Chandelure : Shadow Tag
+Mega Golurk : Iron Fist
+Mega Chesnaught : Vessel of Ruin
+Mega Delphox : Psychic Surge
+Mega Greninja : Protean
+Mega Pyroar : Unnerve
+Mega Floette : Flower Veil
+Mega Meowstic (Male) : Prankster
+Mega Meowstic (Female) : Competitive
+Mega Malamar : Neuroforce
+Mega Barbarcle : Tough Claws
+Mega Dragalge : Adaptability
+Mega Hawlucha : Defiant
+Mega Zygarde : Aura Break
+Mega Crabominable : Iron Fist
+Mega Golisopod : Emergency Exit
+Mega Drampa : Drizzle (honestly I hope it has an ability that sets up electric terrain & rain at the same time)
+Mega Magearna : Soul Heart
+Mega Zeraora : Volt Absorb
+Mega Falinks : Sharpness? kinda looks like it has a sword
+Mega Scovillain : Chlorophyll
+Mega Glimmora : Toxic Debris
+Mega Tatsugiri : i have no fucking clue
+Mega Baxcalibur : Thermal Exchange
+
+
+
+

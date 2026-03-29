@@ -191,6 +191,11 @@
 // Script to apply status dynamically via porta PC menu
 #define APPLY_STATUS_BY_SCRIPT
 
+// KANTO_LEVEL_SCALING dynamically adjusts trainer Pokemon levels based on how many Kanto badges the player has earned.
+// Badges 9-16 are Kanto badges. At 0 Kanto badges, no offset is applied.
+// Only trainers in trainers.s that are designated for scaling (via level constants) are intended to use this.
+#define KANTO_LEVEL_SCALING
+
 // ----------------------- UPSTREAM -------------------
 
 // UPDATED_MACHINE_MOVE_LABELS modernizes bag label rendering for machine moves (TMs, HMs, and TRs)
@@ -226,7 +231,7 @@
 
 // BLOCK_LEARNING_UNIMPLEMENTED_MOVES prevents learning moves that are not implemented
 // based on the move having FLAG_UNUSABLE_UNIMPLEMENTED
-#define BLOCK_LEARNING_UNIMPLEMENTED_MOVES
+// #define BLOCK_LEARNING_UNIMPLEMENTED_MOVES
 
 // VANILLA_PARADOX_BOOSTER_ENERGY_BEHAVIOUR makes the Paradox Booster item behave as it does in vanilla, where the
 // DLC paradox forms can have Booster Energy tricked onto them.

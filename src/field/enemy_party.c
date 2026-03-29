@@ -53,6 +53,44 @@ void randomize(int arr[], int n) {
 
 extern u32 gLastPokemonLevelForMoneyCalc;
 
+#ifdef KANTO_LEVEL_SCALING
+void *LONG_CALL SaveBlock2_get(void);
+
+static u8 GetKantoBadgeCount(void)
+{
+    u8 i, count = 0;
+    struct PlayerProfile *profile = Sav2_PlayerData_GetProfileAddr(SaveBlock2_get());
+    // Badge indices 8-15 correspond to the 8 Kanto gym badges
+    for (i = 8; i < 16; i++)
+    {
+        if (PlayerProfile_TestBadgeFlag(profile, i) == TRUE)
+            count++;
+    }
+    return count;
+}
+
+static u8 GetJohtoBadgeCount(void)
+{
+    u8 i, count = 0;
+    struct PlayerProfile *profile = Sav2_PlayerData_GetProfileAddr(SaveBlock2_get());
+    // Badge indices 0-7 correspond to the 8 Johto gym badges
+    for (i = 0; i < 8; i++)
+    {
+        if (PlayerProfile_TestBadgeFlag(profile, i) == TRUE)
+            count++;
+    }
+    return count;
+}
+
+static u16 ApplyKantoLevelScaling(u16 level, u8 kantoBadgeCount, u8 johtoBadgeCount)
+{
+
+    if (level > 100)
+        level = 100;
+    return level;
+}
+#endif // KANTO_LEVEL_SCALING
+
 /**
  *  @brief create the trainer Party from the trainer data file and trainer party file
  *
@@ -99,6 +137,10 @@ void MakeTrainerPokemonParty(struct BATTLE_PARAM *bp, int num, int heapID)
     u16 *nickname = sys_AllocMemory(heapID, 11*sizeof(u16));
     u8 form_no = 0, abilityslot = 0, nature = 0, ballseal = 0, shinylock = 0, status = 0;
     u32 additionalflags = 0;
+#ifdef KANTO_LEVEL_SCALING
+    u8 kantoBadgeCount = GetKantoBadgeCount();
+    u8 johtoBadgeCount = GetJohtoBadgeCount();
+#endif
 
     int partyOrder[pokecount];
     if (randomorder_flag)
@@ -150,6 +192,9 @@ void MakeTrainerPokemonParty(struct BATTLE_PARAM *bp, int num, int heapID)
 
         // level field
         level = buf[offset] | (buf[offset+1] << 8);
+#ifdef KANTO_LEVEL_SCALING
+        level = ApplyKantoLevelScaling(level, kantoBadgeCount, johtoBadgeCount);
+#endif
         gLastPokemonLevelForMoneyCalc = level; // ends up being the last level at the end of the loop that we use for the money calc loop default case
         offset += 2;
 

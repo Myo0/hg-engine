@@ -401,7 +401,6 @@ Emboar ✓
 Oshawott ✓
 Dewott ✓
 Samurott ✓
-Hisuian Samurott ✓
 Lillipup ✓ (Route 46)
 Herdier ✓
 Stoutland ✓

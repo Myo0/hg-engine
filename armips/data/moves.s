@@ -5053,7 +5053,7 @@ movedata MOVE_AIR_CUTTER, "Air Cutter"
 movedata MOVE_OVERHEAT, "Overheat"
     battleeffect MOVE_EFFECT_USER_SP_ATK_DOWN_2
     pss SPLIT_SPECIAL
-    basepower 130
+    basepower 140
     type TYPE_FIRE
     accuracy 100
     pp 5
@@ -6955,9 +6955,9 @@ movedata MOVE_TRICK_ROOM, "Trick Room"
     movedescription MOVE_TRICK_ROOM, "The user creates a\nbizarre area in which\nslower Pokémon get\nto move first for five\nturns."
 
 movedata MOVE_DRACO_METEOR, "Draco Meteor"
-    battleeffect MOVE_EFFECT_RECOIL_THIRD
+    battleeffect MOVE_EFFECT_USER_SP_ATK_DOWN_2
     pss SPLIT_SPECIAL
-    basepower 120
+    basepower 140
     type TYPE_DRAGON
     accuracy 100
     pp 5
@@ -7005,7 +7005,7 @@ movedata MOVE_LAVA_PLUME, "Lava Plume"
 movedata MOVE_LEAF_STORM, "Leaf Storm"
     battleeffect MOVE_EFFECT_USER_SP_ATK_DOWN_2
     pss SPLIT_SPECIAL
-    basepower 130
+    basepower 140
     type TYPE_GRASS
     accuracy 100
     pp 5
@@ -9116,7 +9116,7 @@ movedata MOVE_FELL_STINGER, "Fell Stinger"
     movedescription MOVE_FELL_STINGER, "When the user knocks\nout a target with\nthis move, the\nuser's Attack stat\nrises drastically."
 
 movedata MOVE_PHANTOM_FORCE, "Phantom Force"
-    battleeffect MOVE_EFFECT_SHADOW_FORCE
+    battleeffect MOVE_EFFECT_HIT
     pss SPLIT_PHYSICAL
     basepower 90
     type TYPE_GHOST
@@ -11348,7 +11348,7 @@ movedata MOVE_SHELL_TRAP, "Shell Trap"
 movedata MOVE_FLEUR_CANNON, "Fleur Cannon"
     battleeffect MOVE_EFFECT_USER_SP_ATK_DOWN_2
     pss SPLIT_SPECIAL
-    basepower 130
+    basepower 140
     type (FAIRY_TYPE_IMPLEMENTED) ? TYPE_FAIRY : TYPE_NORMAL
     accuracy 100
     pp 5

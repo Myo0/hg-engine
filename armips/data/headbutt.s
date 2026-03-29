@@ -1198,9 +1198,6 @@ headbuttheader  43,   3,   0   // Route 39
     headbuttencounter SPECIES_NONE, 0, 0
     headbuttencounter SPECIES_NONE, 0, 0
     // normal trees
-    treecoords 269, 183, 270, 183, 270, 182, 270, 181, 269, 181, -1, -1
-    treecoords 284, 193, 285, 193, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 274, 216, 275, 216, -1, -1, -1, -1, -1, -1, -1, -1
 .close
 
 headbuttheader  44,  10,   0   // Route 42
@@ -1847,18 +1844,18 @@ headbuttheader  73,  27,   0   // Violet City
 
 headbuttheader  74,  15,   0   // Azalea Town
     // normal slots; probabilities: 50, 15, 15, 10, 5, 5
-    headbuttencounter SPECIES_SPEAROW, 3, 5
-    headbuttencounter SPECIES_HERACROSS, 3, 5
-    headbuttencounter SPECIES_HERACROSS, 3, 5
-    headbuttencounter SPECIES_AIPOM, 3, 5
-    headbuttencounter SPECIES_AIPOM, 3, 5
-    headbuttencounter SPECIES_AIPOM, 3, 5
-    headbuttencounter SPECIES_SPEAROW, 6, 8
-    headbuttencounter SPECIES_SPEAROW, 6, 8
-    headbuttencounter SPECIES_SPEAROW, 6, 8
-    headbuttencounter SPECIES_AIPOM, 6, 8
-    headbuttencounter SPECIES_AIPOM, 6, 8
-    headbuttencounter SPECIES_AIPOM, 6, 8
+    headbuttencounter SPECIES_STARLY, 10, 16
+    headbuttencounter SPECIES_HERACROSS, 16, 16
+    headbuttencounter SPECIES_HERACROSS, 16, 16
+    headbuttencounter SPECIES_AIPOM, 10, 16
+    headbuttencounter SPECIES_AIPOM, 10, 16
+    headbuttencounter SPECIES_AIPOM, 10, 16
+    headbuttencounter SPECIES_STARLY, 10, 16
+    headbuttencounter SPECIES_HERACROSS, 16, 16
+    headbuttencounter SPECIES_HERACROSS, 16, 16
+    headbuttencounter SPECIES_AIPOM, 10, 16
+    headbuttencounter SPECIES_AIPOM, 10, 16
+    headbuttencounter SPECIES_AIPOM, 10, 16
     // special slots
     headbuttencounter SPECIES_NONE, 0, 0
     headbuttencounter SPECIES_NONE, 0, 0
@@ -2570,23 +2567,6 @@ headbuttheader 174,  17,   0   // Safari Zone Gate (Outside)
     headbuttencounter SPECIES_NONE, 0, 0
     headbuttencounter SPECIES_NONE, 0, 0
     // normal trees
-    treecoords 77, 317, 78, 317, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 76, 313, 76, 312, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 76, 311, 76, 310, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 76, 307, 76, 306, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 76, 303, 76, 302, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 76, 301, 76, 300, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 76, 297, 76, 296, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 77, 293, 78, 293, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 79, 293, 80, 293, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 97, 293, 98, 293, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 99, 293, 100, 293, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 99, 317, 100, 317, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 101, 315, 101, 314, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 101, 309, 101, 308, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 101, 307, 101, 306, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 101, 305, 101, 304, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 101, 299, 101, 298, -1, -1, -1, -1, -1, -1, -1, -1
 .close
 
 headbuttheader 175,   0,   0   // Jubilife City ? (Unused)
