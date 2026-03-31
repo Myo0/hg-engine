@@ -416,6 +416,7 @@
 #define FIELD_STATUS_FOG                    (0x00008000)                                                                    // 0000 1000 0000 0000 0000
 #define FIELD_CONDITION_TRICK_ROOM_INIT     (0x00050000)                                                                    // 0101 0000 0000 0000 0000
 #define FIELD_STATUS_TRICK_ROOM             (0x00070000)                                                                    // 0111 0000 0000 0000 0000
+#define FIELD_STATUS_GRAVITY_PERMANENT      (0x00080000)                                                                    // 1000 0000 0000 0000 0000
 
 // New weathers
 #define WEATHER_SNOW                        (0x00100000)                                                          //      0001 0000 0000 0000 0000 0000

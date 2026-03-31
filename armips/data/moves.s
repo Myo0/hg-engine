@@ -4555,7 +4555,7 @@ movedata MOVE_ENDEAVOR, "Endeavor"
     movedescription MOVE_ENDEAVOR, "An attack move that\ncuts down the foe’s\nHP to equal the\nuser’s HP.\n"
 
 movedata MOVE_ERUPTION, "Eruption"
-    battleeffect MOVE_EFFECT_RECOIL_THIRD
+    battleeffect MOVE_EFFECT_DECREASE_POWER_WITH_LESS_USER_HP
     pss SPLIT_SPECIAL
     basepower 150
     type TYPE_FIRE
@@ -5179,7 +5179,7 @@ movedata MOVE_COSMIC_POWER, "Cosmic Power"
     movedescription MOVE_COSMIC_POWER, "The user absorbs a\nmystical power from\nspace to raise its\nDefense and Sp. Def\nstats."
 
 movedata MOVE_WATER_SPOUT, "Water Spout"
-    battleeffect MOVE_EFFECT_RECOIL_THIRD
+    battleeffect MOVE_EFFECT_DECREASE_POWER_WITH_LESS_USER_HP
     pss SPLIT_SPECIAL
     basepower 150
     type TYPE_WATER
@@ -7621,7 +7621,7 @@ movedata MOVE_WONDER_ROOM, "Wonder Room"
     effectchance 0
     target RANGE_USER
     priority 0
-    flags FLAG_MIRROR_MOVE | FLAG_UNUSABLE_UNIMPLEMENTED
+    flags FLAG_MIRROR_MOVE
     appeal 0x00
     contesttype CONTEST_SMART
     terminatedata
@@ -12092,7 +12092,7 @@ movedata MOVE_DRAGON_DARTS, "Dragon Darts"
     effectchance 0
     target RANGE_SINGLE_TARGET
     priority 0
-    flags FLAG_KEEP_HP_BAR | FLAG_PROTECT | FLAG_MIRROR_MOVE | FLAG_UNUSABLE_UNIMPLEMENTED
+    flags FLAG_KEEP_HP_BAR | FLAG_PROTECT | FLAG_MIRROR_MOVE
     appeal 0x00
     contesttype CONTEST_COOL
     terminatedata

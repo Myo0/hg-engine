@@ -1981,28 +1981,6 @@ headbuttheader  88,  22,   0   // Lake of Rage
     headbuttencounter SPECIES_NONE, 0, 0
     headbuttencounter SPECIES_NONE, 0, 0
     // normal trees
-    treecoords 552, 52, 552, 53, 553, 53, -1, -1, -1, -1, -1, -1
-    treecoords 552, 62, 553, 62, 553, 61, -1, -1, -1, -1, -1, -1
-    treecoords 556, 63, 556, 62, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 556, 61, 556, 60, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 546, 68, 547, 68, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 548, 68, 549, 68, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 543, 80, 543, 79, 544, 79, -1, -1, -1, -1, -1, -1
-    treecoords 523, 89, 523, 88, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 512, 91, 513, 91, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 508, 91, 509, 91, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 506, 91, 507, 91, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 500, 85, 501, 85, 501, 84, 500, 83, 501, 83, -1, -1
-    treecoords 494, 81, 495, 81, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 488, 75, 489, 75, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 487, 74, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 487, 73, 487, 72, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 488, 71, 489, 71, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 504, 33, 505, 33, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 506, 33, 507, 33, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 538, 35, 539, 35, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 540, 35, 541, 35, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 542, 35, 543, 35, -1, -1, -1, -1, -1, -1, -1, -1
 .close
 
 headbuttheader  89,   0,   0   // Blackthorn City
@@ -2030,11 +2008,6 @@ headbuttheader  90,   5,   0   // Mt. Silver
     headbuttencounter SPECIES_NONE, 0, 0
     headbuttencounter SPECIES_NONE, 0, 0
     // normal trees
-    treecoords 803, 277, 804, 277, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 805, 277, 806, 277, 806, 276, -1, -1, -1, -1, -1, -1
-    treecoords 811, 275, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 812, 275, 813, 275, -1, -1, -1, -1, -1, -1, -1, -1
-    treecoords 816, 262, 816, 261, -1, -1, -1, -1, -1, -1, -1, -1
 .close
 
 headbuttheader  91,   0,   0   // Route 19

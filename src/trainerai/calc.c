@@ -2097,6 +2097,11 @@ int LONG_CALL BattleAI_PostKOSwitchIn_Internal(struct BattleSystem* bsys, int at
 
     FillDamageStructFromBattleMon(bsys, ctx, &defenderMon, defender);
 
+    // Double KO: defender has fainted so hp == 0, which breaks damage scoring.
+    // Restore to maxhp so the AI evaluates matchups against the player's fainted mon's actual bulk.
+    if (defenderMon.hp == 0)
+        defenderMon.hp = defenderMon.maxhp;
+
     partySize = Battle_GetClientPartySize(bsys, attacker);
     for (int i = 0; i < partySize; i++)
     {

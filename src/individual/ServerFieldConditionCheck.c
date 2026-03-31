@@ -1540,7 +1540,7 @@ void ServerFieldConditionCheck(void *bw, struct BattleStruct *sp) {
                 debug_printf(buf);
                 #endif
 
-                if (sp->field_condition & FIELD_STATUS_GRAVITY) {
+                if ((sp->field_condition & FIELD_STATUS_GRAVITY) && !(sp->field_condition & FIELD_STATUS_GRAVITY_PERMANENT)) {
                     sp->field_condition -= (1 << 12);
                     if ((sp->field_condition & FIELD_STATUS_GRAVITY) == 0) {
                         LoadBattleSubSeqScript(sp, ARC_BATTLE_SUB_SEQ, SUB_SEQ_GRAVITY_END);

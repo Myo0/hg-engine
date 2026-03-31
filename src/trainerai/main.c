@@ -328,7 +328,26 @@ unsigned int __attribute__((section (".init"))) TrainerAI_Main(struct BattleSyst
             j_tie_index++;
         }
     }
+    // Tiebreak: if AI is dying and slower, prefer a priority move over a slow kill
+    if (num_move_score_ties > 1
+     && ai->maxDamageReceived > ai->attackerHP
+     && !ai->attackerMovesFirst
+     && !ai->isSpeedTie)
+    {
+        for (unsigned int t = 0; t < num_move_score_ties; t++)
+        {
+            unsigned int moveno = move_tie_indices[t];
+            u16 tieMove = ctx->battlemon[ai->attacker].move[moveno];
+            if (ctx->moveTbl[tieMove].priority > 0
+             || (tieMove == MOVE_GRASSY_GLIDE && ctx->terrainOverlay.type == GRASSY_TERRAIN && ctx->terrainOverlay.numberOfTurnsLeft > 0))
+            {
+                result = moveno;
+                goto ai_move_chosen;
+            }
+        }
+    }
     result  = move_tie_indices[BattleRand(bsys) % num_move_score_ties];             //randomly pick a move among the tie
+ai_move_chosen:;
 
     debug_printf("AI (attacker=%d) chooses Move[%d] ID=%d Score=%d\n",
         ai->attacker, result, ctx->battlemon[ai->attacker].move[result], moveScores[target][result]);
@@ -1143,13 +1162,18 @@ int BasicFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext 
     }
 
     /*Handle hazards*/
-    else if((ai->attackerMoveEffect == MOVE_EFFECT_STEALTH_ROCK && 
+    else if((ai->attackerMoveEffect == MOVE_EFFECT_STEALTH_ROCK &&
         (ctx->side_condition[ai->defenderSide] & SIDE_STATUS_STEALTH_ROCK || ai->livingMembersDefender == 1 )) ||
-        (ai->attackerMoveEffect == MOVE_EFFECT_SET_SPIKES && 
+        (ai->attackerMoveEffect == MOVE_EFFECT_SET_SPIKES &&
             (ctx->scw[ai->defenderSide].spikesLayers >= 3 || ai->livingMembersDefender == 1) )||
-            (ai->attackerMoveEffect == MOVE_EFFECT_TOXIC_SPIKES && 
+            (ai->attackerMoveEffect == MOVE_EFFECT_TOXIC_SPIKES &&
                 (ctx->scw[ai->defenderSide].toxicSpikesLayers >= 2 || ai->livingMembersDefender == 1))){
         moveScore -= 15;
+    }
+    /*Sticky Web already up*/
+    else if (ai->attackerMoveEffect == MOVE_EFFECT_STICKY_WEB &&
+        (ctx->side_condition[ai->defenderSide] & SIDE_STATUS_STICKY_WEB)){
+        moveScore -= 20;
     }
 
     /*Handle weather*/
@@ -1196,6 +1220,11 @@ int BasicFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext 
         else if (ai->defenderAbility != ABILITY_SHIELD_DUST && ai->defenderAbility != ABILITY_INNER_FOCUS)
             moveScore += 9;   // first turn, target not immune
         // else first turn but target immune: no extra bonus
+    }
+    /*First Impression*/
+    else if(ai->attackerMoveEffect == MOVE_EFFECT_FIRST_TURN_ONLY){
+        if (ai->attackerTurnsOnField > 0)
+            moveScore -= 25;  // after turn 1: never use
     }
     /*Handle stockpile*/
     else if(ai->attackerMoveEffect == MOVE_EFFECT_STOCKPILE && ctx->battlemon[attacker].moveeffect.stockpileCount < 3){
@@ -2043,8 +2072,7 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
     }
 
     /*Defense dropping status moves*/
-    else if(IsInList(ai->attackerMoveEffect, DefenseDropList, NELEMS(DefenseDropList)) ||
-            (ai->attackerMoveEffect == MOVE_EFFECT_LOWER_DEFENSE_HIT && ctx->moveTbl[ai->attackerMove].secondaryEffectChance == 100))
+    else if(IsInList(ai->attackerMoveEffect, DefenseDropList, NELEMS(DefenseDropList)))
     {
         BOOL hasPhysical = FALSE;
         for (int j = 0; j < 4; j++) {
@@ -2061,8 +2089,7 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
     }
 
     /*Sp. Def dropping status moves*/
-    else if(IsInList(ai->attackerMoveEffect, SpDefDropList, NELEMS(SpDefDropList)) ||
-            (ai->attackerMoveEffect == MOVE_EFFECT_LOWER_SP_DEF_HIT && ctx->moveTbl[ai->attackerMove].secondaryEffectChance == 100))
+    else if(IsInList(ai->attackerMoveEffect, SpDefDropList, NELEMS(SpDefDropList)))
     {
         BOOL hasSpecial = FALSE;
         for (int j = 0; j < 4; j++) {
@@ -2294,6 +2321,29 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
         {
             if (ai->attackerItem == ITEM_LIGHT_CLAY) moveScore += 1;
             if (BattleRand(bsys) % 2 == 0) moveScore += 1;
+        }
+    }
+
+    /*Aurora Veil*/
+    else if(ai->attackerMoveEffect == MOVE_EFFECT_SET_AURORA_VEIL){
+        if (ctx->field_condition & (WEATHER_HAIL_ANY | WEATHER_SNOW_ANY)){
+            moveScore += 6;
+            BOOL defenderHasDamaging = FALSE;
+            for (int j = 0; j < 4; j++)
+            {
+                u16 defMove = ctx->battlemon[ai->defender].move[j];
+                if (defMove == MOVE_NONE) continue;
+                if (ctx->moveTbl[defMove].split != SPLIT_STATUS) { defenderHasDamaging = TRUE; break; }
+            }
+            if (defenderHasDamaging)
+            {
+                if (ai->attackerItem == ITEM_LIGHT_CLAY) moveScore += 1;
+                if (BattleRand(bsys) % 2 == 0) moveScore += 1;
+            }
+        }
+        else
+        {
+            moveScore -= 15;
         }
     }
 
@@ -2811,10 +2861,16 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
     /*Modified from vanilla for IRIDIUM.
     Should also get a section in TagStrategy Flag*/
     else if(ai->attackerMoveEffect == MOVE_EFFECT_DOUBLE_SPEED_3_TURNS){
-        if (!ai->attackerMovesFirst && !ai->isSpeedTie)
-            moveScore += 9;
-        else
-            moveScore += 5;
+        // Tailwind targets own side — penalize heavily if evaluated against an enemy
+        // in doubles so the AI never tries to use it targeting an opponent
+        if (ai->defenderSide != ai->attackerSide){
+            moveScore -= 20;
+        } else {
+            if (!ai->attackerMovesFirst && !ai->isSpeedTie)
+                moveScore += 9;
+            else
+                moveScore += 5;
+        }
     }
 
     /*Trick & Switcheroo*/

@@ -8736,7 +8736,7 @@ mondata SPECIES_COMBEE, "Combee"
     baseexp 0 // defined in baseexp.s
     evyields 0, 0, 0, 0, 0, 0
     items ITEM_HONEY, ITEM_NONE
-    genderratio 31
+    genderratio 254
     eggcycles 15
     basefriendship 50
     growthrate GROWTH_MEDIUM_SLOW
