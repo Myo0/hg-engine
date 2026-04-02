@@ -390,7 +390,6 @@ Mega Gallade ✓
 Dusknoir ✓
 Froslass ✓
 Cresselia ✓ (Roamer)
-Darkrai	✓ (Roamer)
 Victini	✓ (Game Corner)
 Snivy ✓
 Servine ✓
@@ -712,3 +711,55 @@ Archaludon ✓
 
 I CHANGED MY MIND ON THESE:
 Sudowoodo ✓
+
+		
+	
+353	Shuppet	
+354	Banette	
+380	Latias	Roamer
+381	Latios	Roamer	
+410	Shieldon	
+411	Bastiodon	
+425	Drifloon	
+426	Drifblim	
+442	Spiritomb	
+488	Cresselia	Roamer
+491	Darkrai	Roamer
+494	Victini	Game Corner
+517	Munna	
+518	Musharna	
+561	Sigilyph	
+562	Yamask (regular)	
+563	Cofagrigus	
+566	Archen	
+567	Archeops	
+570	Hisuian Zorua	Regional
+571	Hisuian Zoroark	Regional
+588	Karrablast	
+589	Escavalier	
+636	Larvesta	
+637	Volcarona	
+650	Chespin	
+651	Quilladin	
+652	Chesnaught		
+778	Mimikyu	
+829	Gossifleur	
+830	Eldegoss	
+864	Cursola	
+884	Duraludon	
+899	Wyrdeer	
+900	Kleavor	
+905	Enamorus	Roamer
+911	Charcadet	
+912	Armarouge	
+913	Ceruledge	
+948	Toedscool	
+949	Toedscruel	
+972	Greavard	
+973	Houndstone	
+1012	Poltchageist	
+1013	Sinistcha	
+1018	Archaludon	
+984+	Paradox Pokémon	Late-game Kanto
+
+

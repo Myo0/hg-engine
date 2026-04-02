@@ -61,14 +61,19 @@ Ground Gem - Route 44
 Ice Gem - Ice Path 1F
 Steel Gem - Ice Path 1F
 Dragon Gem - Dragon's Den
+Fairy Gem - Dragon's Den
 Psychic Gem - Held by Latias given in The Dragon Shrine
-Fire Gem - Dark Cave (Route 45)
+Fire Gem - Dark Cave (Route 31/46 Requires Surf)
 
-Mega Stones:
+Mega Stones: (EVERSTONE'S IN DSPRE ARE Z/A MEGA STONE PLACEHOLDERS)
 
+Barbaracite - Cherrygrove City (Requires Surf)
+Skarmorite - Route 30 (Requires Surf)
+Victreebelite - Violet City (Requires Surf)
 Steelixite - Given by Jasmine
 Mawilite - Mt. Mortar 1F Entrance left side of the Waterfall
 Sablenite - Mt. Mortar after Veteran Osvaldo
+Lopunnite - Mt. Mortar given by Black Belt Kiyo
 Blastoisite - Given by Argenta
 Pidgeotite - Goldenrod Tunnel B2F
 Audinite - Rocket Warehouse
@@ -88,6 +93,79 @@ Absolite - Route 45
 Scizorite - Route 45
 Gyaradosite - Route 46
 Pinsirite - Route 46
+
+Mega Venusaur
+Mega Charizard X [DONE]
+Mega Charizard Y
+Mega Blastoise [DONE]
+Mega Beedrill
+Mega Pidgeot [DONE]
+Mega Alakazam
+Mega Kangaskhan
+Mega Slowbro
+Mega Gengar
+Mega Gyarados [DONE]
+Mega Aerodactyl
+Mega Ampharos
+Mega Steelix [DONE]
+Mega Scizor [DONE]
+Mega Heracross [DONE]
+Mega Houndoom [DONE]
+Mega Tyranitar
+Mega Sceptile
+Mega Blaziken
+Mega Swampert
+Mega Sableye [DONE]
+Mega Mawile [DONE]
+Mega Aggron [DONE]
+Mega Medicham [DONE]
+Mega Manectric [DONE]
+Mega Sharpedo [DONE]
+Mega Camerupt [DONE]
+Mega Altaria [DONE]
+Mega Salamence
+Mega Metagross 
+Mega Lopunny [DONE]
+Mega Gardevoir
+Mega Gallade
+Mega Lucario
+Mega Abomasnow [DONE]
+Mega Banette
+Mega Absol [DONE]
+Mega Glalie [DONE]
+Mega Garchomp [DONE]
+Mega Pinsir [DONE]
+Mega Audino [DONE]
+
+Z/A MEGAS
+
+Mega Clefable
+Mega Victreebel
+Mega Starmie
+Mega Dragonite
+Mega Meganium
+Mega Feraligatr
+Mega Skarmory [DONE]
+Mega Emboar
+Mega Excadrill
+Mega Scolipede
+Mega Eelektross
+Mega Chandelure
+Mega Chesnaught
+Mega Delphox
+Mega Greninja
+Mega Barbaracle [DONE]
+Mega Dragalge
+Mega Hawlucha
+Mega Falinks
+Mega Raichu X and Y
+Mega Absol Z
+Mega Staraptor
+Mega Golurk
+Mega Meowstic
+Mega Golisopod
+Mega Scovillain
+Mega Glimmora
 
 Rare Candies 
 

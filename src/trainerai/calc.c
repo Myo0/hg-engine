@@ -255,25 +255,14 @@ int LONG_CALL BattleAI_CalcBaseDamage(void* bw, struct BattleStruct* sp, int mov
         break;
     case MOVE_HEAVY_SLAM:
     case MOVE_HEAT_CRASH:
-        switch (attacker->weight / defender->weight)
-        {
-        case 2:
-            movepower = 60;
-            break;
-        case 3:
-            movepower = 80;
-            break;
-        case 4:
-            movepower = 100;
-            break;
-        case 5:
-            movepower = 120;
-            break;
-            // less than 2
-        default:
-            movepower = 40;
-            break;
-        }
+    {
+        u32 ratio = attacker->weight / defender->weight;
+        if      (ratio >= 5) movepower = 120;
+        else if (ratio >= 4) movepower = 100;
+        else if (ratio >= 3) movepower = 80;
+        else if (ratio >= 2) movepower = 60;
+        else                 movepower = 40;
+    }
         break;
         // HP-based
     case MOVE_ERUPTION:

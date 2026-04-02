@@ -82,6 +82,8 @@ Team Rocket Grunt #15 (Beneath Goldenrod tunnel)
 Psychic Phil (Route 44)
 Fisherman Edgar (Route 44)
 Boarder Isidro (Ice Path B1F)
+Ace Trainer Piper (Dragon's Den)
+Ace Trainer Kobe (Dragon's Den)
 
 
 Use Black Belt Kiyo for a Lopunny mega stone battle that becomes available as soon as the player defeats Pryce. (His overworld flag in Mt.Mortar is 2624)
@@ -112,6 +114,7 @@ I can tell that you’re a Trainer\nwith considerable skill.\rIf you don’t min
 2575 -> flag for grunt blocking stairway during radio tower 2f gauntlet
 2576 -> Route 35 Pidgey
 2577 -> workers blocking Mt. Mortar 2F until after Clair
+2578 -> workers blocking route 45 until after dragon's den
 
 2660 -> Flag to check if player has already interacted with the legendary encounter in safari zone
 

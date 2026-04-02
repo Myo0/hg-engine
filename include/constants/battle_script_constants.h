@@ -492,7 +492,7 @@
 #define SUB_SEQ_MOVE_FAIL_THROAT_CHOP                 (482)
 #define SUB_SEQ_USER_DEF_DOWN_1_SPEED_UP_1            (483)
 
-#define MAX_BASE_SUBSCRIPT_NUM 483
+#define MAX_BASE_SUBSCRIPT_NUM 498
 
 // define your custom subscripts below like this
 // #define MOVE_SUBSCRIPT_PTR_CUSTOM_1 (MAX_BASE_SUBSCRIPT_NUM + 1)
@@ -503,6 +503,7 @@
 #define SUB_SEQ_OVERWORLD_RAIN_TERRAIN        (MAX_BASE_SUBSCRIPT_NUM + 4)
 #define SUB_SEQ_OVERWORLD_SUN_TERRAIN         (MAX_BASE_SUBSCRIPT_NUM + 5)
 #define SUB_SEQ_OVERWORLD_SNOW_TERRAIN        (MAX_BASE_SUBSCRIPT_NUM + 6)
+#define SUB_SEQ_RECOIL_HALF_MAX_HP            (MAX_BASE_SUBSCRIPT_NUM + 7)
 
 
 // add status effect constants--used in battle effect scripts to queue up a subscript through the table in src/moves.c
@@ -729,6 +730,7 @@
 
 // define your custom subscripts below like this
 // #define MOVE_SUBSCRIPT_PTR_CUSTOM_1 (MAX_BASE_SUBSCRIPT_PTR_NUM + 1)
+#define ADD_STATUS_EFF_RECOIL_HALF_MAX_HP     (MAX_BASE_SUBSCRIPT_PTR_NUM + 1)
 
 // additional effect constants
 #define ADD_STATUS_NONE (0)

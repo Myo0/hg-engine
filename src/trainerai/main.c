@@ -1247,10 +1247,15 @@ int BasicFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext 
         moveScore -= 15;
     }
 
-    /*Trick, Switcheroo, Knock Off*/ 
+    /*Trick, Switcheroo, Knock Off*/
     //These checks from game freak make absolutely no sense. Knock off can still do boosted damage
     //against sticky hold targets, and you can still give your item to your opponent if they
     //dont have their own. I'm going to skip these for now.
+
+    /*Poltergeist: fails if defender has no item*/
+    else if(ai->attackerMoveEffect == MOVE_EFFECT_POLTERGEIST && ai->defenderItem == ITEM_NONE){
+        moveScore -= 15;
+    }
 
     /*Handle imprison*/
     else if(ai->attackerMoveEffect == MOVE_EFFECT_MAKE_SHARED_MOVES_UNUSEABLE && 
@@ -1398,13 +1403,34 @@ int BasicFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext 
     }
 
     /*Psycho Shift*/
-    else if(ai->attackerMoveEffect == MOVE_EFFECT_TRANSFER_STATUS &&
-        (ctx->battlemon[ai->defender].condition & STATUS_ALL || 
-            ctx->side_condition[ai->defenderSide] & SIDE_STATUS_SAFEGUARD ||
-        (ctx->battlemon[attacker].condition & STATUS_BURN && ai->defenderImmuneToBurn) ||
-        (ctx->battlemon[attacker].condition & STATUS_POISON_ALL && ai->defenderImmuneToPoison) ||
-        (ctx->battlemon[attacker].condition & STATUS_PARALYSIS && ai->defenderImmuneToParalysis) )){
+    else if(ai->attackerMoveEffect == MOVE_EFFECT_TRANSFER_STATUS){
+        if (!(ctx->battlemon[attacker].condition & STATUS_ALL)){
+            // No status to transfer — move fails
             moveScore -= 15;
+        }
+        else if (ctx->battlemon[ai->defender].condition2 & STATUS2_SUBSTITUTE){
+            // Substitute blocks status transfer
+            moveScore -= 15;
+        }
+        else if ((ctx->battlemon[attacker].condition & STATUS_BURN) && ai->defenderImmuneToBurn){
+            moveScore -= 15;
+        }
+        else if ((ctx->battlemon[attacker].condition & STATUS_POISON_ALL) && ai->defenderImmuneToPoison){
+            moveScore -= 15;
+        }
+        else if ((ctx->battlemon[attacker].condition & STATUS_PARALYSIS) && ai->defenderImmuneToParalysis){
+            moveScore -= 15;
+        }
+        else if ((ctx->battlemon[attacker].condition & STATUS_SLEEP) && ai->defenderImmuneToSleep){
+            moveScore -= 15;
+        }
+        else if ((ctx->battlemon[attacker].condition & STATUS_FREEZE) &&
+                 (ai->defenderType1 == TYPE_ICE || ai->defenderType2 == TYPE_ICE ||
+                  ai->defenderAbility == ABILITY_MAGMA_ARMOR ||
+                  ctx->battlemon[ai->defender].condition & STATUS_ALL ||
+                  ctx->side_condition[ai->defenderSide] & SIDE_STATUS_SAFEGUARD)){
+            moveScore -= 15;
+        }
     }
 
     /*Copycat*/
@@ -3150,6 +3176,29 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
         if (ai->trickRoomActive)
             moveScore -= 20;
     }
+    /*Psycho Shift*/
+    else if (ai->attackerMoveEffect == MOVE_EFFECT_TRANSFER_STATUS){
+        u32 attackerCondition = ctx->battlemon[attacker].condition;
+        u32 attackerAbility   = ai->attackerAbility;
+
+        // Attacker is burned and defender uses physical moves: transferring burn is valuable
+        if ((attackerCondition & STATUS_BURN) && BattlerHasMoveSplit(bsys, ai->defender, SPLIT_PHYSICAL, ai)){
+            moveScore += 7;
+        }
+        // Discourage if attacker's ability benefits from their current status condition
+        else if (((attackerAbility == ABILITY_GUTS || attackerAbility == ABILITY_QUICK_FEET || attackerAbility == ABILITY_MARVEL_SCALE)
+              && (attackerCondition & STATUS_ALL))
+             || (attackerAbility == ABILITY_POISON_HEAL && (attackerCondition & STATUS_POISON_ALL))
+             || (attackerAbility == ABILITY_FLARE_BOOST && (attackerCondition & STATUS_BURN))
+             || (attackerAbility == ABILITY_TOXIC_BOOST  && (attackerCondition & STATUS_POISON_ALL))){
+            moveScore -= 10;
+        }
+        // Default: good move to use
+        else {
+            moveScore += 6;
+        }
+    }
+
     debug_printf("end of expert flag\n");
     return moveScore;
 }

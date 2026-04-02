@@ -55,14 +55,14 @@ Function 161:
 	AdrsValueSet 0x202DB10 0
 	AdrsValueSet 0x202DB14 0
 	SetVar 0x401F 0
-	Message 120
+	Message 122
 Jump Function#16
 
 Function 162:
 	AdrsValueSet 0x202DB10 1
 	AdrsValueSet 0x202DB14 1
 	SetVar 0x401F 1
-	Message 121
+	Message 123
 Jump Function#16
 
 ------------------------------------------------------------------

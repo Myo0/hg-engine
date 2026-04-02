@@ -228,6 +228,7 @@ u16 move_effect_to_subscripts[] =
     [ADD_STATUS_EFF_STUFF_CHEEKS]                   = SUB_SEQ_STUFF_CHEEKS,
     [ADD_STATUS_EFF_POWDER]                         = SUB_SEQ_POWDER,
     [ADD_STATUS_EFF_LASER_FOCUS]                    = SUB_SEQ_LASER_FOCUS,
+    [ADD_STATUS_EFF_RECOIL_HALF_MAX_HP]             = SUB_SEQ_RECOIL_HALF_MAX_HP,
 };
 
 

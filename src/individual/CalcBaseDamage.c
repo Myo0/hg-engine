@@ -166,25 +166,15 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
         break;
     case MOVE_HEAVY_SLAM:
     case MOVE_HEAT_CRASH:
-        switch (AttackingMon.weight / DefendingMon.weight) {
-            case 2:
-                movepower = 60;
-                break;
-            case 3:
-                movepower = 80;
-                break;
-            case 4:
-                movepower = 100;
-                break;
-            case 5:
-                movepower = 120;
-                break;
-            // less than 2
-            default:
-                movepower = 40;
-                break;
-        }
+    {
+        u32 ratio = AttackingMon.weight / DefendingMon.weight;
+        if      (ratio >= 5) movepower = 120;
+        else if (ratio >= 4) movepower = 100;
+        else if (ratio >= 3) movepower = 80;
+        else if (ratio >= 2) movepower = 60;
+        else                 movepower = 40;
         break;
+    }
     // HP-based
     case MOVE_ERUPTION:
     case MOVE_WATER_SPOUT:

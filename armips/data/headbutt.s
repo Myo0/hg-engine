@@ -949,13 +949,13 @@ headbuttheader  37,   4,   0   // Route 33
     // normal slots; probabilities: 50, 15, 15, 10, 5, 5
     headbuttencounter SPECIES_AIPOM, 16, 16
     headbuttencounter SPECIES_CORVISQUIRE, 16, 16
-    headbuttencounter SPECIES_CORVISQUIRE, 16, 16
+    headbuttencounter SPECIES_PARAS, 16, 16
     headbuttencounter SPECIES_SHELMET, 16, 16
     headbuttencounter SPECIES_HERACROSS, 16, 16
     headbuttencounter SPECIES_HERACROSS, 16, 16
     headbuttencounter SPECIES_AIPOM, 16, 16
     headbuttencounter SPECIES_CORVISQUIRE, 16, 16
-    headbuttencounter SPECIES_CORVISQUIRE, 16, 16
+    headbuttencounter SPECIES_PARAS, 16, 16
     headbuttencounter SPECIES_SHELMET, 16, 16
     headbuttencounter SPECIES_HERACROSS, 16, 16
     headbuttencounter SPECIES_HERACROSS, 16, 16
