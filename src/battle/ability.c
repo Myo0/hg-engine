@@ -439,7 +439,7 @@ void LONG_CALL UpdateTerrainOverlay(struct BattleStruct *ctx, u8 client, enum Te
     int holdPower = HeldItemAtkGet(ctx, client, ATK_CHECK_NORMAL);
 
     if (terrainType != TERRAIN_NONE) {
-        ctx->terrainOverlay.numberOfTurnsLeft = 5;
+        ctx->terrainOverlay.numberOfTurnsLeft = 99;
         if (holdEffect == HOLD_EFFECT_EXTEND_TERRAIN) {
             ctx->terrainOverlay.numberOfTurnsLeft += holdPower;
         }
