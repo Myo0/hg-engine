@@ -47,13 +47,6 @@ BATTLES_UNCAPPED_FRAME_RATE equ 0
 // FAST_TEXT_PRINTING will make the text print quickly, almost instantly
 FAST_TEXT_PRINTING equ 1
 
-// REUSABLE_TMS will make TMs infinite and hide the quantity number.
-REUSABLE_TMS equ 0
-
-// DELETABLE_HMS Allows HMs to be forgotten, this also makes their quantity reduce, but the infinite TMs change prevents this.
-DELETABLE_HMS equ 0
-
-
 // NO_PARTNER_DOUBLE_BATTLES allows for setting trainers to double battles without setting up a partner trainer.  set to 0 to disable
 // note that the entry in `armips/data/trainers/trainertext.s` has to use `TEXT_DOUBLE_DEFEATED_IN_BATTLE_1`, but the overworld entries can remain the same.
 NO_PARTNER_DOUBLE_BATTLES equ 1

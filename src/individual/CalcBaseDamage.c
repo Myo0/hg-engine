@@ -79,29 +79,6 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
 
     // https://web.archive.org/web/20241226231016/https://www.trainertower.com/dawoblefets-damage-dissertation/
 
-    if ((MoldBreakerAbilityCheckInternal(attacker, defender, AttackingMon.ability, DefendingMon.ability, moveno, movesplit, ABILITY_DISGUISE) == TRUE)
-    && (DefendingMon.species == SPECIES_MIMIKYU)
-    // Mimikyu or Mimikyu-Large
-    && (DefendingMon.form == 0 || DefendingMon.form == 2)
-    // Not transformed
-    && !(DefendingMon.condition2 & STATUS2_TRANSFORMED)) {
-        sp->waza_status_flag &= ~MOVE_STATUS_FLAG_SUPER_EFFECTIVE;
-        sp->waza_status_flag &= ~MOVE_STATUS_FLAG_NOT_VERY_EFFECTIVE;
-        return 0;
-    }
-
-
-    if ((MoldBreakerAbilityCheckInternal(attacker, defender, AttackingMon.ability, DefendingMon.ability, moveno, movesplit, ABILITY_ICE_FACE) == TRUE)
-    && (DefendingMon.species == SPECIES_EISCUE)
-    && (DefendingMon.form == 0)
-    // Not transformed
-    && !(DefendingMon.condition2 & STATUS2_TRANSFORMED)
-    && (movesplit == SPLIT_PHYSICAL)) {
-        sp->waza_status_flag &= ~MOVE_STATUS_FLAG_SUPER_EFFECTIVE;
-        sp->waza_status_flag &= ~MOVE_STATUS_FLAG_NOT_VERY_EFFECTIVE;
-        return 0;
-    }
-
 
     //=====Step 1. Custom BP=====
 
@@ -297,7 +274,7 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
         // TODO: Implement Round
         break;
     case MOVE_SMELLING_SALTS:
-        if (DefendingMon.condition & STATUS_PARALYSIS) {
+        if (CheckSubstitute(sp, defender) == FALSE && DefendingMon.condition & STATUS_PARALYSIS) {
             movepower *= 2;
         }
         break;
@@ -308,7 +285,8 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
         }
         break;
     case MOVE_WAKE_UP_SLAP:
-        if (DefendingMon.condition & STATUS_SLEEP) {
+        if (CheckSubstitute(sp, defender) == FALSE  && 
+            (DefendingMon.condition & STATUS_SLEEP || MoldBreakerAbilityCheck(sp, defender, defender, ABILITY_COMATOSE))) {
             movepower *= 2;
         }
         break;
@@ -340,11 +318,10 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
         break;
     // Item-based
     case MOVE_FLING:
-        // TODO: test Parental Bond interaction
-        movepower = damage_power;
+        movepower = GetHeldItemFlingPower(sp, attacker);
         break;
     case MOVE_NATURAL_GIFT:
-        movepower = damage_power;
+        movepower = GetNaturalGiftPower(sp, attacker);
         break;
     // Other
     case MOVE_BEAT_UP:
@@ -1079,6 +1056,16 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
                     flowerGiftAppliedForAttackModifier = TRUE;
                     attackModifier = QMul_RoundUp(attackModifier, UQ412__1_5);
                 }
+                // handle Orichalcum Pulse
+                // https://www.smogon.com/forums/threads/scarlet-violet-battle-mechanics-research.3709545/page-20#post-9423025
+                if ((AttackingMon.ability == ABILITY_ORICHALCUM_PULSE)
+                && (field_cond & WEATHER_SUNNY_ANY)
+                // https://www.smogon.com/forums/threads/scarlet-violet-battle-mechanics-research.3709545/post-9426805
+                // TODO: For Orichalcum Pulse itself - still shows "sending its ancient pulse into a frenzy!" message even with Utility Umbrella disabling the attack boost.
+                && !(AttackingMon.item_held_effect == HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN)
+                && (movesplit == SPLIT_PHYSICAL)) {
+                    attackModifier = QMul_RoundUp(attackModifier, UQ412__1_3333);
+                }
             }
 
             // handle Guts
@@ -1139,7 +1126,7 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
 
             // handle Gorilla Tactics
             // https://www.smogon.com/forums/threads/sword-shield-battle-mechanics-research.3655528/post-8303447
-            if (AttackingMon.ability == ABILITY_GORILLA_TACTICS) {
+            if (AttackingMon.ability == ABILITY_GORILLA_TACTICS && (movesplit == SPLIT_PHYSICAL)) {
                 attackModifier = QMul_RoundUp(attackModifier, UQ412__1_5);
             }
 
@@ -1158,6 +1145,23 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
             // handle Rocky Payload
             if (AttackingMon.ability == ABILITY_ROCKY_PAYLOAD && (movetype == TYPE_ROCK)) {
                 attackModifier = QMul_RoundUp(attackModifier, UQ412__1_5);
+            }
+
+            // handle Protosynthesis and Quark Drive
+            // https://www.smogon.com/forums/threads/scarlet-violet-battle-mechanics-research.3709545/page-20#post-9423025
+            if ((AttackingMon.ability == ABILITY_PROTOSYNTHESIS || AttackingMon.ability == ABILITY_QUARK_DRIVE)
+            && ((movesplit == SPLIT_PHYSICAL && AttackingMon.paradoxBoostedStat == STAT_ATTACK) ||
+                (movesplit == SPLIT_SPECIAL && AttackingMon.paradoxBoostedStat == STAT_SPATK))) {
+                attackModifier = QMul_RoundUp(attackModifier, UQ412__1_3);
+            }
+
+            // handle Hadron Engine
+            // https://www.smogon.com/forums/threads/scarlet-violet-battle-mechanics-research.3709545/page-20#post-9423025
+            if ((AttackingMon.ability == ABILITY_HADRON_ENGINE)
+            && (movesplit == SPLIT_SPECIAL)
+            && (terrainOverlayType == ELECTRIC_TERRAIN)
+            && (terrainOverlayNumberOfTurnsLeft > 0)) {
+                attackModifier = QMul_RoundUp(attackModifier, UQ412__1_3333);
             }
         }
 
@@ -1253,6 +1257,8 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
     debug_printf("[CalcBaseDamage] Step 3.6. Attack Modifiers\n");
     debug_printf("[CalcBaseDamage] attackModifier: %d\n", attackModifier);
     debug_printf("[CalcBaseDamage] calculatedAttack: %d\n", calculatedAttack);
+    debug_printf("[Paradox Abilities] Attacker paradoxBoostedStat: %d\n", AttackingMon.paradoxBoostedStat);
+    debug_printf("[Paradox Abilities] Attacker boosterEnergyActivated: %d\n", AttackingMon.boosterEnergyActivated);
 #endif
 
     switch (movesplit) {
@@ -1432,6 +1438,14 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
             && (movesplit == SPLIT_PHYSICAL)) {
                 defenseModifier = QMul_RoundUp(defenseModifier, UQ412__2_0);
             }
+
+            // handle Protosynthesis and Quark Drive
+            // https://www.smogon.com/forums/threads/scarlet-violet-battle-mechanics-research.3709545/page-20#post-9423025
+            if ((DefendingMon.ability == ABILITY_PROTOSYNTHESIS || DefendingMon.ability == ABILITY_QUARK_DRIVE)
+            && ((movesplit == SPLIT_PHYSICAL && DefendingMon.paradoxBoostedStat == STAT_DEFENSE) ||
+                (movesplit == SPLIT_SPECIAL && DefendingMon.paradoxBoostedStat == STAT_SPDEF))) {
+                defenseModifier = QMul_RoundUp(defenseModifier, UQ412__1_3);
+            }
         }
 
         if (BATTLER_ALLY(defender) == damageCalc->rawSpeedNonRNGClientOrder[i]) {
@@ -1508,6 +1522,8 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
     debug_printf("[CalcBaseDamage] Step 4.8. Defense Modifiers\n");
     debug_printf("[CalcBaseDamage] defenseModifier: %d\n", defenseModifier);
     debug_printf("[CalcBaseDamage] calculatedDefense: %d\n", calculatedDefense);
+    debug_printf("[Paradox Ability] Defender paradoxBoostedStat: %d\n", DefendingMon.paradoxBoostedStat);
+    debug_printf("[Paradox Ability] Defender boosterEnergyActivated: %d\n", DefendingMon.boosterEnergyActivated);
 #endif
 
     switch (movesplit) {

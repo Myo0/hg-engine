@@ -11683,7 +11683,7 @@ evodata SPECIES_PAWMI
 terminateevodata
 
 evodata SPECIES_PAWMO
-    evolution EVO_LEVEL, 32, SPECIES_PAWMOT // TODO: program steps evolution
+    evolution EVO_LETS_GO, 0, SPECIES_PAWMOT // TODO: program steps evolution
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
@@ -11971,7 +11971,7 @@ evodata SPECIES_GRAFAIAI
 terminateevodata
 
 evodata SPECIES_BRAMBLIN
-    evolution EVO_LEVEL, 32, SPECIES_BRAMBLEGHAST // TODO: program steps evolution
+    evolution EVO_LETS_GO, 0, SPECIES_BRAMBLEGHAST // TODO: program steps evolution
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
@@ -12607,7 +12607,7 @@ evodata SPECIES_BAXCALIBUR
 terminateevodata
 
 evodata SPECIES_GIMMIGHOUL
-    evolution EVO_ITEM_DAY, ITEM_AMULET_COIN, SPECIES_GHOLDENGO // TODO:  proper gimmighoul coins implementation
+    evolution EVO_FORM_ARGUMENT, 999, SPECIES_GHOLDENGO // When leveled up while the player has 999 Gimmighoul Coins TODO: proper gimmighoul coins implementation
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
