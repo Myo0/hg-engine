@@ -3,6 +3,9 @@
 
 #define GEN_LATEST 9
 
+// Uncomment to enable Retaliate flag debug prints (no$gba/mgba console)
+#define DEBUG_RETALIATE
+
 // FAIRY_TYPE_IMPLEMENTED should be used if you want to implement the fairy type and overwrite type 9 in this project
 // set FAIRY_TYPE_IMPLEMENTED to 0 if you do not want this to happen
 #define FAIRY_TYPE_IMPLEMENTED 1
@@ -127,7 +130,7 @@
 
 // Friendship grants additional bonuses.
 // Comment out the line below to revert back to Gen 5- behaviour
-#define FRIENDSHIP_EFFECTS
+// #define FRIENDSHIP_EFFECTS
 
 // RESTORE_ITEMS_AT_BATTLE_END will restore held items that are single-use at the end of battle (Gen 9)
 // comment out the line below to revert back to Gen 8- behavior

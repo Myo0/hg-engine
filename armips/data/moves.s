@@ -2683,9 +2683,9 @@ movedata MOVE_SKETCH, "Sketch"
     movedescription MOVE_SKETCH, "It enables the user\nto permanently learn\nthe move last used by\nthe foe. Once used,\nSketch disappears."
 
 movedata MOVE_TRIPLE_KICK, "Triple Kick"
-    battleeffect MOVE_EFFECT_HIT_THREE_TIMES_INCREMENT_BASE_POWER_10
+    battleeffect MOVE_EFFECT_HIT_THREE_TIMES_INCREMENT_BASE_POWER_20
     pss SPLIT_PHYSICAL
-    basepower 10
+    basepower 20
     type TYPE_FIGHTING
     accuracy 100
     pp 10
@@ -3949,7 +3949,7 @@ movedata MOVE_EXTREME_SPEED, "Extreme Speed"
 movedata MOVE_ANCIENT_POWER, "Ancient Power"
     battleeffect MOVE_EFFECT_RAISE_ALL_STATS_HIT
     pss SPLIT_SPECIAL
-    basepower 75
+    basepower 80
     type TYPE_ROCK
     accuracy 100
     pp 5

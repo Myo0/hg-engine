@@ -28639,19 +28639,19 @@
       },
       {
         "Level": 48,
-        "Move": "MOVE_GIGA_DRAIN"
-      },
-      {
-        "Level": 55,
-        "Move": "MOVE_SACRED_FIRE"
-      },
-      {
-        "Level": 65,
         "Move": "MOVE_RECOVER"
       },
       {
-        "Level": 70,
+        "Level": 55,
         "Move": "MOVE_WEATHER_BALL"
+      },
+      {
+        "Level": 65,
+        "Move": "MOVE_GIGA_DRAIN"
+      },
+      {
+        "Level": 70,
+        "Move": "MOVE_SACRED_FIRE"
       },
       {
         "Level": 76,

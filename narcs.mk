@@ -623,7 +623,8 @@ SCR_SEQ_DIR := $(BUILD)/a012
 SCR_SEQ_NARC := $(BUILD_NARC)/scr_seq.narc
 SCR_SEQ_TARGET := $(FILESYS)/a/0/1/2
 SCR_SEQ_DEPENDENCIES_DIR := armips/scr_seq
-SCR_SEQ_DEPENDENCIES := $(SCR_SEQ_DEPENDENCIES_DIR)/*
+SCR_SEQ_DEPENDENCIES := $(filter-out $(SCR_SEQ_DEPENDENCIES_DIR)/backup.s, \
+                        $(wildcard $(SCR_SEQ_DEPENDENCIES_DIR)/*.s))
 
 $(SCR_SEQ_NARC): $(SCR_SEQ_DEPENDENCIES)
 	$(NARCHIVE) extract $(SCR_SEQ_TARGET) -o $(SCR_SEQ_DIR) -nf
@@ -654,13 +655,21 @@ TRAINER_GFX_TARGET := $(FILESYS)/a/0/5/8
 TRAINER_GFX_DEPENDENCIES_DIR := data/graphics/trainer_gfx
 TRAINER_GFX_DEPENDENCIES := $(TRAINER_GFX_DEPENDENCIES_DIR)/*
 
-TRAINER_GFX_PICS := $(wildcard $(TRAINER_GFX_DEPENDENCIES_DIR)/*_enc.png)
+# Trainer class 102 (Castle Valet) uses prebuilt files extracted from the original ROM.
+# Its source PNG produces corrupt output, so we skip it from the wildcard build.
+TRAINER_GFX_PICS := $(filter-out $(TRAINER_GFX_DEPENDENCIES_DIR)/102_enc.png, \
+                    $(wildcard $(TRAINER_GFX_DEPENDENCIES_DIR)/*_enc.png))
 TRAINER_GFX_NCGR := $(patsubst $(TRAINER_GFX_DEPENDENCIES_DIR)/%_enc.png,$(TRAINER_GFX_DIR)/8_%-00.NCGR,$(TRAINER_GFX_PICS))
 TRAINER_GFX_PALS := $(patsubst $(TRAINER_GFX_DEPENDENCIES_DIR)/%_enc.png,$(TRAINER_GFX_DIR)/8_%-01.NCLR,$(TRAINER_GFX_PICS))
 TRAINER_GFX_NCER := $(patsubst $(TRAINER_GFX_DEPENDENCIES_DIR)/%_enc.png,$(TRAINER_GFX_DIR)/8_%-02.NCER,$(TRAINER_GFX_PICS))
 TRAINER_GFX_NANR := $(patsubst $(TRAINER_GFX_DEPENDENCIES_DIR)/%_enc.png,$(TRAINER_GFX_DIR)/8_%-03.NANR,$(TRAINER_GFX_PICS))
 TRAINER_GFX_NCBR := $(patsubst $(TRAINER_GFX_DEPENDENCIES_DIR)/%_enc.png,$(TRAINER_GFX_DIR)/8_%-04.NCGR,$(TRAINER_GFX_PICS))
-TRAINER_GFX_OBJS := $(TRAINER_GFX_NCGR) $(TRAINER_GFX_PALS) $(TRAINER_GFX_NCER) $(TRAINER_GFX_NANR) $(TRAINER_GFX_NCBR)
+TRAINER_GFX_OBJS := $(TRAINER_GFX_NCGR) $(TRAINER_GFX_PALS) $(TRAINER_GFX_NCER) $(TRAINER_GFX_NANR) $(TRAINER_GFX_NCBR) \
+                    $(TRAINER_GFX_DIR)/8_102-00.NCGR \
+                    $(TRAINER_GFX_DIR)/8_102-01.NCLR \
+                    $(TRAINER_GFX_DIR)/8_102-02.NCER \
+                    $(TRAINER_GFX_DIR)/8_102-03.NANR \
+                    $(TRAINER_GFX_DIR)/8_102-04.NCGR
 
 $(TRAINER_GFX_DIR)/8_%-00.NCGR:$(TRAINER_GFX_DEPENDENCIES_DIR)/%.png
 	$(GFX) $< $@ -clobbersize -version101 -bitdepth 4 -vram -mappingtype 64
@@ -676,6 +685,18 @@ $(TRAINER_GFX_DIR)/8_%-03.NANR:$(TRAINER_GFX_DEPENDENCIES_DIR)/%_anim.json
 
 $(TRAINER_GFX_DIR)/8_%-04.NCGR:$(TRAINER_GFX_DEPENDENCIES_DIR)/%_enc.png
 	$(GFX) $< $@ -bitdepth 4 -scanned -mwidth 20
+
+# Prebuilt rules for trainer class 102 - copy from source, do not rebuild
+$(TRAINER_GFX_DIR)/8_102-00.NCGR: $(TRAINER_GFX_DEPENDENCIES_DIR)/102-prebuilt-00.NCGR
+	cp $< $@
+$(TRAINER_GFX_DIR)/8_102-01.NCLR: $(TRAINER_GFX_DEPENDENCIES_DIR)/102-prebuilt-01.NCLR
+	cp $< $@
+$(TRAINER_GFX_DIR)/8_102-02.NCER: $(TRAINER_GFX_DEPENDENCIES_DIR)/102-prebuilt-02.NCER
+	cp $< $@
+$(TRAINER_GFX_DIR)/8_102-03.NANR: $(TRAINER_GFX_DEPENDENCIES_DIR)/102-prebuilt-03.NANR
+	cp $< $@
+$(TRAINER_GFX_DIR)/8_102-04.NCGR: $(TRAINER_GFX_DEPENDENCIES_DIR)/102-prebuilt-04.NCGR
+	cp $< $@
 
 $(TRAINER_GFX_NARC): $(TRAINER_GFX_DEPENDENCIES) $(TRAINER_GFX_OBJS)
 	$(NARCHIVE) create $@ $(TRAINER_GFX_DIR) -nf

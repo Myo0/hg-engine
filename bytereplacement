@@ -414,13 +414,13 @@ arm9 080517AA 2D
 arm9 080517D4 2D
 
 # TrainerClassToMusicCombo table range
-arm9 08051886 24
+arm9 08051886 26
 
 # PokemonBattleMusic table range
 arm9 080518CA 0B
 
 # sTrainerEncounterMusicParam table range
-arm9 080550D4 2C
+arm9 080550D4 2D
 
 # PrizeMoney table range
 0012 0223FBD0 81

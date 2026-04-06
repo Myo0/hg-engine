@@ -34,6 +34,8 @@ Route 42 south of the pond on a rock (requires surf, hidden)
 Team Rocket HQ B3F - Right before Petrel.
 Goldenrod Radio Tower 4F - can only be obtained after beating Proton.
 Dark Cave (Route 46 Entrance)
+Bell Tower 3F
+Bell Tower 7F
 
 Other Good Items:
 
@@ -41,15 +43,22 @@ Muscle Band - Union Cave
 Wide Lens - Azalea Town
 Wise Glasses - Ilex Forest
 Protective Pads - National Park
+Eviolite - Ecruteak City
 Lagging Tail - Route 47 South of Double Team Thom & Kae
-Shed Shell x1 - Mt. Mortar
+Heavy-Duty Boots - Union Cave Lapras Floor
+Shed Shell - Mt. Mortar
 Iron Ball - Mt. Mortar
 Sticky Barb - Mt. Mortar
 Life Orb - Lake of Rage; Northeast
 Smoke Ball - Goldenrod Tunnel B2F
 Flame Orb - Goldenrod Department Store B1F
+Focus Band - Whirl Islands B2F
 Zoom Lens - Route 44
 Safety Goggles - Ice Path B2F
+Punching Glove - Bell Tower 8F
+Shed Shell - Bell Tower 8F
+Expert Belt - Bell Tower 10F
+Room Service - Victory Road 1F
 
 Gems:
 
@@ -57,6 +66,7 @@ Normal Gem - Mt. Mortar
 Rock Gem - Mt. Mortar
 Bug Gem - Route 43 above the ledge
 Dark Gem - Team Rocket B3F next to the flower pot.
+Poison Gem - Whirl Islands B2F
 Ground Gem - Route 44
 Ice Gem - Ice Path 1F
 Steel Gem - Ice Path 1F
@@ -64,12 +74,23 @@ Dragon Gem - Dragon's Den
 Fairy Gem - Dragon's Den
 Psychic Gem - Held by Latias given in The Dragon Shrine
 Fire Gem - Dark Cave (Route 31/46 Requires Surf)
+Grass Gem - Bell Tower 6F
+Flying Gem - Bell Tower Roof
+Ghost Gem - Route 26
+Fighting Gem - Victory Road 1F
+Water Gem - Victory Road 2F
+Electric Gem - Victory Road 3F
+
 
 Mega Stones: (EVERSTONE'S IN DSPRE ARE Z/A MEGA STONE PLACEHOLDERS)
 
 Barbaracite - Cherrygrove City (Requires Surf)
 Skarmorite - Route 30 (Requires Surf)
 Victreebelite - Violet City (Requires Surf)
+Falinksite - Ruins of Alph (Requires Surf)
+Chimechite - Union Cave; Directly North of Lapras (Requires Surf)
+Scovillainite - Route 35 (Requires Surf)
+Ampharosite - Lighthouse Top Floor
 Steelixite - Given by Jasmine
 Mawilite - Mt. Mortar 1F Entrance left side of the Waterfall
 Sablenite - Mt. Mortar after Veteran Osvaldo
@@ -78,6 +99,8 @@ Blastoisite - Given by Argenta
 Pidgeotite - Goldenrod Tunnel B2F
 Audinite - Rocket Warehouse
 Aggronite - Rocket Warehouse
+Galladite - Whirl Islands B1F
+Banettite - Whirl Islands B1F
 Garchompite - Route 44 behind Ace Trainer Allen
 Abomasite - Ice Path B2F
 Glalitite - Ice Path B3F
@@ -93,6 +116,12 @@ Absolite - Route 45
 Scizorite - Route 45
 Gyaradosite - Route 46
 Pinsirite - Route 46
+Meowsticite - Bell Tower 4F
+Staraptite - Bell Tower 6F
+Meganiumite - Bell Tower 9F
+Scolipite - Route 26
+Tyranitarite - Victory Road 1F
+Aerodactylite - Victory Road 2F
 
 Mega Venusaur
 Mega Charizard X [DONE]
@@ -105,13 +134,13 @@ Mega Kangaskhan
 Mega Slowbro
 Mega Gengar
 Mega Gyarados [DONE]
-Mega Aerodactyl
-Mega Ampharos
+Mega Aerodactyl [DONE]
+Mega Ampharos [DONE]
 Mega Steelix [DONE]
 Mega Scizor [DONE]
 Mega Heracross [DONE]
 Mega Houndoom [DONE]
-Mega Tyranitar
+Mega Tyranitar [DONE]
 Mega Sceptile
 Mega Blaziken
 Mega Swampert
@@ -127,10 +156,10 @@ Mega Salamence
 Mega Metagross 
 Mega Lopunny [DONE]
 Mega Gardevoir
-Mega Gallade
+Mega Gallade [DONE]
 Mega Lucario
 Mega Abomasnow [DONE]
-Mega Banette
+Mega Banette [DONE]
 Mega Absol [DONE]
 Mega Glalie [DONE]
 Mega Garchomp [DONE]
@@ -140,15 +169,16 @@ Mega Audino [DONE]
 Z/A MEGAS
 
 Mega Clefable
-Mega Victreebel
+Mega Victreebel [DONE]
 Mega Starmie
+Mega Chimecho [DONE]
 Mega Dragonite
-Mega Meganium
+Mega Meganium [DONE]
 Mega Feraligatr
 Mega Skarmory [DONE]
 Mega Emboar
 Mega Excadrill
-Mega Scolipede
+Mega Scolipede [DONE]
 Mega Eelektross
 Mega Chandelure
 Mega Chesnaught
@@ -157,14 +187,14 @@ Mega Greninja
 Mega Barbaracle [DONE]
 Mega Dragalge
 Mega Hawlucha
-Mega Falinks
+Mega Falinks [DONE]
 Mega Raichu X and Y
 Mega Absol Z
-Mega Staraptor
+Mega Staraptor [DONE]
 Mega Golurk
-Mega Meowstic
+Mega Meowstic [DONE]
 Mega Golisopod
-Mega Scovillain
+Mega Scovillain [DONE]
 Mega Glimmora
 
 Rare Candies 
@@ -181,6 +211,8 @@ Team Rocket HQ B3F
 Ice Path B1F
 Dark Cave (Route 46 Entrance)
 Bell Tower 5F
+Route 27
+Victory Road 3F
 
 One-Time Use:
 

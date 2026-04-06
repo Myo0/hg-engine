@@ -776,12 +776,64 @@ int BasicFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext 
     
     We check if the base priority of the move is zero or greater, since 
     it would be boosted by prankster to +1 or higher if it is status*/
-    if((ai->defenderType1 == TYPE_DARK || ai->defenderType2 == TYPE_DARK) && 
+    if((ai->defenderType1 == TYPE_DARK || ai->defenderType2 == TYPE_DARK) &&
         (ctx->moveTbl[ai->attackerMove].split == SPLIT_STATUS &&
         ai->attackerAbility == ABILITY_PRANKSTER &&
         ctx->moveTbl[ai->attackerMove].priority >= 0)
         && attacker != ai->defender){
         moveScore -= 15;
+    }
+
+    /*Parting Shot*/
+    if (ai->attackerMoveEffect == MOVE_EFFECT_PARTING_SHOT) {
+        // Fails against Dark types
+        if (ai->defenderType1 == TYPE_DARK || ai->defenderType2 == TYPE_DARK) {
+            moveScore -= 15;
+        }
+        // Fails against Soundproof (Parting Shot is a sound move)
+        else if (ai->defenderAbility == ABILITY_SOUNDPROOF) {
+            moveScore -= 15;
+        }
+        else {
+            // Find best damage and whether any move can KO
+            BOOL canKO = FALSE;
+            int bestDamage = 0;
+            for (int j = 0; j < ai->attackerMovesKnown; j++) {
+                if (ai->attackerAvgRollMoveDamages[j] > bestDamage)
+                    bestDamage = ai->attackerAvgRollMoveDamages[j];
+                if (ai->attackerAvgRollMoveDamages[j] >= ai->defenderHP)
+                    canKO = TRUE;
+            }
+
+            // Don't pivot when a KO is available
+            if (canKO) {
+                moveScore -= 15;
+            }
+            // Opponent is low on HP - press for the KO instead
+            else if (ai->defenderHP * 100 / ctx->battlemon[ai->defender].maxhp < 30) {
+                moveScore -= 8;
+            }
+
+            // No party members to switch into - pivot value is lost
+            if (ai->livingMembersAttacker == 1) {
+                moveScore -= 8;
+            }
+
+            // AI has attack boosts it would throw away by pivoting
+            if (ctx->battlemon[attacker].states[STAT_ATTACK] > 6 ||
+                ctx->battlemon[attacker].states[STAT_SPATK] > 6) {
+                moveScore -= 10;
+            }
+
+            // Best damage is low (< 30% of defender's max HP) - matchup is unfavorable, pivot is smart
+            if (bestDamage * 100 / ctx->battlemon[ai->defender].maxhp < 30) {
+                moveScore += 8;
+            }
+            // AI moves first but is threatened with a KO - ideal Parting Shot scenario
+            else if (ai->attackerSpeed > ai->defenderSpeed && ai->maxDamageReceived >= ai->attackerHP) {
+                moveScore += 8;
+            }
+        }
     }
 
     /*Check for immunity to paralysis*/
@@ -3016,24 +3068,6 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
             return -20;
     }
 
-    /*U-turn, Volt Switch, Flip Turn*/
-    else if(ai->attackerMoveEffect == MOVE_EFFECT_SWITCH_HIT){
-        if(ai->maxDamageReceived >= ai->attackerHP
-        && ai->attackerMovesFirst
-        && ai->livingMembersAttacker > 1)
-        {
-            BOOL defenderHasPriority = FALSE;
-            for(int j = 0; j < 4; j++){
-                u16 defMove = ctx->battlemon[ai->defender].move[j];
-                if(defMove == MOVE_NONE) continue;
-                if(ctx->moveTbl[defMove].priority > 0 || (defMove == MOVE_GRASSY_GLIDE && ctx->terrainOverlay.type == GRASSY_TERRAIN && ctx->terrainOverlay.numberOfTurnsLeft > 0)){ defenderHasPriority = TRUE; break; }
-            }
-            if(!defenderHasPriority){
-                if(BattleRand(bsys) % 5 == 0) moveScore += 8;
-                else moveScore += 6;
-            }
-        }
-    }
     /*Fling
       If fling raises target speed (Salac Berry) + partner has WP + SE: +12
       If fling raises target speed but no WP or not SE: +9*/
@@ -3196,6 +3230,65 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
         // Default: good move to use
         else {
             moveScore += 6;
+        }
+    }
+
+    /*U-turn, Volt Switch, Flip Turn*/
+    if (ai->attackerMoveEffect == MOVE_EFFECT_SWITCH_HIT) {
+        // Find best damage and whether any move can KO
+        BOOL canKO = FALSE;
+        int bestDamage = 0;
+        for (int j = 0; j < ai->attackerMovesKnown; j++) {
+            if (ai->attackerAvgRollMoveDamages[j] > bestDamage)
+                bestDamage = ai->attackerAvgRollMoveDamages[j];
+            if (ai->attackerAvgRollMoveDamages[j] >= ai->defenderHP)
+                canKO = TRUE;
+        }
+
+        // Don't pivot when a KO is available (EvaluateAttackFlag already handles this
+        // as the kill bonus, but reinforce here to avoid pivot preference)
+        if (canKO) {
+            moveScore -= 10;
+        }
+        // Opponent is low on HP - press for the KO instead of pivoting
+        else if (ai->defenderHP * 100 / ctx->battlemon[ai->defender].maxhp < 30) {
+            moveScore -= 8;
+        }
+
+        // No party members to switch into - pivot value is lost
+        if (ai->livingMembersAttacker == 1) {
+            moveScore -= 8;
+        }
+
+        // AI has attack boosts it would throw away by pivoting
+        if (ctx->battlemon[attacker].states[STAT_ATTACK] > 6 ||
+            ctx->battlemon[attacker].states[STAT_SPATK] > 6) {
+            moveScore -= 10;
+        }
+
+        // Matchup is bad - AI's best damage is low relative to opponent's HP
+        if (bestDamage * 100 / ctx->battlemon[ai->defender].maxhp < 30) {
+            moveScore += 8;
+        }
+        // AI moves first but is threatened with a KO - ideal pivot scenario
+        // Also check opponent has no priority move to intercept the switch
+        else if (ai->attackerMovesFirst && ai->maxDamageReceived >= ai->attackerHP
+              && ai->livingMembersAttacker > 1) {
+            BOOL defenderHasPriority = FALSE;
+            for (int j = 0; j < 4; j++) {
+                u16 defMove = ctx->battlemon[ai->defender].move[j];
+                if (defMove == MOVE_NONE) continue;
+                if (ctx->moveTbl[defMove].priority > 0
+                 || (defMove == MOVE_GRASSY_GLIDE
+                  && ctx->terrainOverlay.type == GRASSY_TERRAIN
+                  && ctx->terrainOverlay.numberOfTurnsLeft > 0)) {
+                    defenderHasPriority = TRUE;
+                    break;
+                }
+            }
+            if (!defenderHasPriority) {
+                moveScore += 8;
+            }
         }
     }
 
@@ -4161,6 +4254,16 @@ void SetupStateVariables(struct BattleSystem *bsys, int attacker, u32 defender, 
         ai->isSpeedTie = 1;
     }
 
+    // Custap Berry: guaranteed to move first when below 25% HP (before normal priority consideration)
+    // Only applies when not already moving first and Custap hasn't been consumed yet
+    if (ai->attackerItem == ITEM_CUSTAP_BERRY
+     && ai->attackerHP * 4 <= ai->attackerMaxHP
+     && !ai->attackerMovesFirst) {
+        ai->attackerMovesFirst = 1;
+        ai->defenderMovesFirst = 0;
+        ai->isSpeedTie = 0;
+    }
+
     if(ctx->field_condition & FIELD_STATUS_TRICK_ROOM){
         ai->trickRoomActive = 1;
     }
@@ -4327,9 +4430,21 @@ void SetupStateVariables(struct BattleSystem *bsys, int attacker, u32 defender, 
                 specialMovePower = 71;
             }
 
-            u8 moveTypeForCalc = (attackerMoveno == MOVE_HIDDEN_POWER)
-                               ? ai->attackerMon.hiddenPowerType
-                               : attackerMove.type;
+            u8 moveTypeForCalc;
+            if (attackerMoveno == MOVE_HIDDEN_POWER) {
+                moveTypeForCalc = ai->attackerMon.hiddenPowerType;
+            } else if (attackerMoveno == MOVE_WEATHER_BALL
+                    && (ctx->field_condition & FIELD_CONDITION_WEATHER)
+                    && !CheckSideAbility(bsys, ctx, CHECK_ABILITY_ALL_HP, attacker, ABILITY_CLOUD_NINE)
+                    && !CheckSideAbility(bsys, ctx, CHECK_ABILITY_ALL_HP, attacker, ABILITY_AIR_LOCK)) {
+                if (ctx->field_condition & WEATHER_RAIN_ANY)         moveTypeForCalc = TYPE_WATER;
+                else if (ctx->field_condition & WEATHER_SUNNY_ANY)   moveTypeForCalc = TYPE_FIRE;
+                else if (ctx->field_condition & WEATHER_SANDSTORM_ANY) moveTypeForCalc = TYPE_ROCK;
+                else if (ctx->field_condition & WEATHER_HAIL_ANY)    moveTypeForCalc = TYPE_ICE;
+                else                                                  moveTypeForCalc = attackerMove.type;
+            } else {
+                moveTypeForCalc = attackerMove.type;
+            }
             ai->attackerAvgRollMoveDamages[i] = BattleAI_CalcDamage(bsys, ctx, attackerMoveno, ctx->side_condition[BATTLER_IS_ENEMY(defender)], ctx->field_condition, attackerMove.power, moveTypeForCalc, critical, attacker, defender, &damages, &ai->attackerMon, &ai->defenderMon);
 
             ai->attackerAvgRollMoveDamages[i] = BattleAI_AdjustUnusualMoveDamage(ai->attackerMon.level, ai->attackerMon.hp, ai->defenderMon.hp, damages.damageRoll, attackerMove.effect, ai->attackerMon.ability, ai->attackerMon.item);

@@ -354,8 +354,13 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
         movepower = damage_power;
         break;
     case MOVE_TRIPLE_KICK:
-        movepower = damage_power;
+    case MOVE_TRIPLE_AXEL: {
+        // Power increments each hit: base, base*2, base*3
+        // multiHitCountTemp=3 (total), multiHitCount counts down 3→2→1 as hits land
+        u8 hitNum = sp->multiHitCountTemp - sp->multiHitCount + 1;
+        movepower = sp->moveTbl[moveno].power * hitNum;
         break;
+    }
     case MOVE_TRUMP_CARD:
         movepower = damage_power;
         break;
@@ -443,6 +448,13 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
                     break;
                 }
 
+                #ifdef DEBUG_RETALIATE
+                debug_printf("Retaliate: attacker=%d lastTurn p=%d e=%d boost=%d\n",
+                    attacker,
+                    playerSideHasFaintedTeammateLastTurn,
+                    enemySideHasFaintedTeammateLastTurn,
+                    teammateFaintedLastTurn);
+                #endif
                 if (teammateFaintedLastTurn) {
                     basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__2_0);
                 }

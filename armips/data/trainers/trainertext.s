@@ -3232,6 +3232,21 @@ _1B9C: // Trainer 306
     trainertextentry 306, TEXT_NOTICE_IN_OVERWORLD, "You think ice slows me down?\nThink again!\r"
     trainertextentry 306, TEXT_DEFEATED_IN_BATTLE, "What?!\nYou outpaced me?\r"
     trainertextentry 306, TEXT_DEFEATED_IN_OVERWORLD, "Alright... you’ve got skills.\nRespect.\r"
+
+_1BA0: // Trainer 340
+    trainertextentry 340, TEXT_NOTICE_IN_OVERWORLD, "Victory Road tests everyone.\r"
+    trainertextentry 340, TEXT_DEFEATED_IN_BATTLE, "So this is the strength\nthat made it this far...\r"
+    trainertextentry 340, TEXT_DEFEATED_IN_OVERWORLD, "You’ve earned your place\namong the best of the best."
+
+_1BA4: // Trainer 341
+    trainertextentry 341, TEXT_NOTICE_IN_OVERWORLD, "Show us your best.\r"
+    trainertextentry 341, TEXT_DEFEATED_IN_BATTLE, "Our teamwork was solid...\nBut you have bested us.\r"
+    trainertextentry 341, TEXT_DEFEATED_IN_OVERWORLD, "Keep climbing.\nThe summit’s close now."
+
+_1BA8: // Trainer 342
+    trainertextentry 342, TEXT_NOTICE_IN_OVERWORLD, "Welcome to my grand finale!\nCan you follow the act?"
+    trainertextentry 342, TEXT_DEFEATED_IN_BATTLE, "And for my last trick...\nI vanish in defeat!"
+    trainertextentry 342, TEXT_DEFEATED_IN_OVERWORLD, "Damn.\nEven my last trick was a failure.\r"
 .close
 
 
@@ -3578,9 +3593,9 @@ _1B9C: // Trainer 306
 /* Trainer 337 */ .halfword _0540
 /* Trainer 338 */ .halfword _0000
 /* Trainer 339 */ .halfword _0F6C
-/* Trainer 340 */ .halfword _0000
-/* Trainer 341 */ .halfword _0000
-/* Trainer 342 */ .halfword _0000
+/* Trainer 340 */ .halfword _1BA0
+/* Trainer 341 */ .halfword _1BA4
+/* Trainer 342 */ .halfword _1BA8
 /* Trainer 343 */ .halfword _0000
 /* Trainer 344 */ .halfword _0000
 /* Trainer 345 */ .halfword _0000

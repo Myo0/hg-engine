@@ -84,7 +84,11 @@ Fisherman Edgar (Route 44)
 Boarder Isidro (Ice Path B1F)
 Ace Trainer Piper (Dragon's Den)
 Ace Trainer Kobe (Dragon's Den)
-
+Bird Keeper Jose (Route 27)
+Ace Trainer Brian (Route 27)
+Psychic Vernon (Route 26)
+Ace Trainer Joyce (Route 26)
+Ace Trainer Gaven (Route 26)
 
 Use Black Belt Kiyo for a Lopunny mega stone battle that becomes available as soon as the player defeats Pryce. (His overworld flag in Mt.Mortar is 2624)
 
@@ -105,6 +109,9 @@ I can tell that you’re a Trainer\nwith considerable skill.\rIf you don’t min
 406A -> enables PC in blackthorn when exiting dragon's den (at val=1)
 406B -> Random value variable for legendary encounter.
 406C -> azalea gym PC disable thing
+406D -> Victory Road Darach Script
+406E -> Victory Road Irina & Nick Gauntlet
+406F -> Victory Road Ted -> McConnell Gauntlet
 
 2570 -> Scientist Ross Flag
 2571 -> Grunt #6
@@ -115,6 +122,9 @@ I can tell that you’re a Trainer\nwith considerable skill.\rIf you don’t min
 2576 -> Route 35 Pidgey
 2577 -> workers blocking Mt. Mortar 2F until after Clair
 2578 -> workers blocking route 45 until after dragon's den
+2579 -> Darach & Caitlin victory road
+2580 -> Crobats for Irina & Nick VR Gauntlet
+2581 -> Crobats for Ted -> McConnell Gauntlet
 
 2660 -> Flag to check if player has already interacted with the legendary encounter in safari zone
 

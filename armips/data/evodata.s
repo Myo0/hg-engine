@@ -4080,7 +4080,7 @@ evodata SPECIES_SOLROCK
     terminateevodata
 
 evodata SPECIES_BARBOACH
-    evolution EVO_LEVEL, 30, SPECIES_WHISCASH
+    evolution EVO_LEVEL, 25, SPECIES_WHISCASH
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
@@ -7036,7 +7036,7 @@ evodata SPECIES_CONKELDURR
     terminateevodata
 
 evodata SPECIES_TYMPOLE
-    evolution EVO_LEVEL, 25, SPECIES_PALPITOAD
+    evolution EVO_LEVEL, 17, SPECIES_PALPITOAD
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE

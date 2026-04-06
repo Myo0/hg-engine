@@ -4378,6 +4378,13 @@ BOOL BtlCmd_PlayFaintAnimation(struct BattleSystem* bsys, struct BattleStruct* s
         break;
     }
 
+    #ifdef DEBUG_RETALIATE
+    debug_printf("FaintAnim: client=%d thisTurn p=%d e=%d\n",
+        sp->fainting_client,
+        sp->playerSideHasFaintedTeammateThisTurn,
+        sp->enemySideHasFaintedTeammateThisTurn);
+    #endif
+
     InitFaintedWork(bsys, sp, sp->fainting_client);
     return FALSE;
 }

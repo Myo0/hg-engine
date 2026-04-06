@@ -786,6 +786,7 @@ _0A2E:
     call_if_unset FLAG_SYS_MET_BILL, _0A78
     call_if_set FLAG_SYS_MET_BILL, _0A82
     menu_item_add 63, 255, 1
+    menu_item_add 477, 255, 2
     goto_if_set FLAG_GAME_CLEAR, _0A8C
     goto_if_unset FLAG_GAME_CLEAR, _0AD1
     goto _0AD1
@@ -799,21 +800,23 @@ _0A82:
     return
 
 _0A8C:
-    menu_item_add 64, 255, 2
+    menu_item_add 64, 255, 3
+    menu_item_add 66, 255, 4
+    menu_exec
+    switch VAR_SPECIAL_x8006
+    case 0, _0B01
+    case 1, _0C23
+    case 2, _repel_toggle
+    case 3, _0DBA
+    goto _0DF0
+
+_0AD1:
     menu_item_add 66, 255, 3
     menu_exec
     switch VAR_SPECIAL_x8006
     case 0, _0B01
     case 1, _0C23
-    case 2, _0DBA
-    goto _0DF0
-
-_0AD1:
-    menu_item_add 66, 255, 2
-    menu_exec
-    switch VAR_SPECIAL_x8006
-    case 0, _0B01
-    case 1, _0C23
+    case 2, _repel_toggle
     goto _0DF0
 
 _0B01:
@@ -829,7 +832,9 @@ _0B17:
     menu_item_add 68, 77, 1
     menu_item_add 69, 78, 2
     menu_item_add 70, 79, 3
-    menu_item_add 72, 81, 5
+    menu_item_add 478, 255, 5
+    menu_item_add 479, 255, 6
+    menu_item_add 72, 81, 7
     return
     .byte 0x46, 0x00, 0x47, 0x00, 0x50, 0x00, 0x04
     .byte 0x00, 0x1b, 0x00
@@ -841,6 +846,8 @@ _0B53:
     case 2, _0BC8
     case 3, _0BDB
     case 4, _0BEE
+    case 5, _heal_party
+    case 6, _apply_status
     goto _0A2E
 
 _0BA2:
@@ -1756,4 +1763,154 @@ scr_seq_0003_074:
     closemsg
     releaseall
     end
+
+// -------------------------------------------------------
+// INFINITE REPEL TOGGLE
+// Called from Porta-PC main menu (case 2).
+// Uses VAR_TEMP_x401F as the on/off flag.
+// Writes to RAM address 0x202DB10/0x202DB14 (repel step counters).
+// Text: bank 40 @ 122 = "Infinite Repel Disabled"
+//       bank 40 @ 123 = "Infinite Repel Enabled"
+// -------------------------------------------------------
+_repel_toggle:
+    compare VAR_TEMP_x401F, 0
+    goto_if_eq _repel_enable
+    // repel is currently ON -> disable it
+    AdrsRegSet 0x202DB10, 0
+    AdrsRegSet 0x202DB14, 0
+    setvar VAR_TEMP_x401F, 0
+    npc_msg 123
+    goto _0A2E
+
+_repel_enable:
+    // repel is currently OFF -> enable it
+    AdrsRegSet 0x202DB10, 1
+    AdrsRegSet 0x202DB14, 1
+    setvar VAR_TEMP_x401F, 1
+    npc_msg 122
+    goto _0A2E
+
+// -------------------------------------------------------
+// HEAL PARTY
+// Called from PC boxes submenu (case 5).
+// Text: bank 40 @ 124 = "Your party has been healed."
+// -------------------------------------------------------
+_heal_party:
+    fade_screen 6, 1, 0, RGB_BLACK
+    wait_fade
+    closemsg
+    play_fanfare SEQ_ME_ASA
+    wait_fanfare
+    heal_party
+    fade_screen 6, 1, 1, RGB_BLACK
+    wait_fade
+    LockFollowingPoke 0
+    npc_msg 124
+    closemsg
+    scrcmd_150
+    goto _0A2E
+
+// -------------------------------------------------------
+// APPLY STATUS
+// Called from PC boxes submenu (case 6).
+// Function 164: party select, then dispatch to status menu
+// Text: bank 40 @ 125 = "What Pokemon will get the effect?"
+//       bank 40 @ 126 = "What status effect do you want?"
+//       bank 40 @ 127 = "The status has been applied."
+// -------------------------------------------------------
+_apply_status:
+    npc_msg 125
+    wait_button
+    closemsg
+    fade_screen 6, 1, 0, RGB_BLACK
+    wait_fade
+    party_select_ui
+    get_party_selection VAR_SPECIAL_x8008
+    scrcmd_150
+    fade_screen 6, 1, 1, RGB_BLACK
+    wait_fade
+    npc_msg 126
+    closemsg
+    goto _apply_status_menu
+
+// Function 165: status selection menu
+// Text: bank 40 @ 129-135 = Sleep/Poison/Burn/Freeze/Paralysis/Toxic Poison/Exit
+_apply_status_menu:
+    menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
+    menu_item_add 129, 255, 0
+    menu_item_add 130, 255, 1
+    menu_item_add 131, 255, 2
+    menu_item_add 132, 255, 3
+    menu_item_add 133, 255, 4
+    menu_item_add 134, 255, 5
+    menu_item_add 135, 255, 6
+    menu_exec
+    compare VAR_SPECIAL_RESULT, 0
+    call_if_eq _status_sleep
+    compare VAR_SPECIAL_RESULT, 1
+    call_if_eq _status_poison
+    compare VAR_SPECIAL_RESULT, 2
+    call_if_eq _status_burn
+    compare VAR_SPECIAL_RESULT, 3
+    call_if_eq _status_freeze
+    compare VAR_SPECIAL_RESULT, 4
+    call_if_eq _status_paralysis
+    compare VAR_SPECIAL_RESULT, 5
+    call_if_eq _status_toxic
+    compare VAR_SPECIAL_RESULT, 6
+    goto_if_eq _0B01
+    DummyTextTrap 6, 0
+    npc_msg 127
+    closemsg
+    goto _0A2E
+
+// Function 166: Sleep (random 1-3 turns)
+_status_sleep:
+    GetRandom VAR_SPECIAL_x8003, 3
+    compare VAR_SPECIAL_x8003, 0
+    call_if_eq _sleep_rng_1
+    compare VAR_SPECIAL_x8003, 1
+    call_if_eq _sleep_rng_2
+    compare VAR_SPECIAL_x8003, 2
+    call_if_eq _sleep_rng_3
+    return
+
+// Function 167: Poison
+_status_poison:
+    setvar VAR_SPECIAL_x8009, 0x8
+    return
+
+// Function 168: Burn
+_status_burn:
+    setvar VAR_SPECIAL_x8009, 0x10
+    return
+
+// Function 169: Freeze
+_status_freeze:
+    setvar VAR_SPECIAL_x8009, 0x20
+    return
+
+// Function 170: Paralysis
+_status_paralysis:
+    setvar VAR_SPECIAL_x8009, 0x40
+    return
+
+// Function 171: Toxic Poison
+_status_toxic:
+    setvar VAR_SPECIAL_x8009, 0x80
+    return
+
+// Functions 172-174: Sleep RNG variants (1/2/3 turn sleep byte)
+_sleep_rng_1:
+    setvar VAR_SPECIAL_x8009, 0x1
+    return
+
+_sleep_rng_2:
+    setvar VAR_SPECIAL_x8009, 0x2
+    return
+
+_sleep_rng_3:
+    setvar VAR_SPECIAL_x8009, 0x4
+    return
+
 .close

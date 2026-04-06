@@ -1643,7 +1643,7 @@ mondata SPECIES_PONYTA, "Ponyta"
     basefriendship 50
     growthrate GROWTH_MEDIUM_FAST
     egggroups EGG_GROUP_FIELD, EGG_GROUP_FIELD
-    abilities ABILITY_FLAME_BODY, ABILITY_FLAME_BODY
+    abilities ABILITY_FLAME_BODY, ABILITY_BLAZE
     runchance 0
     colorflip BODY_COLOR_YELLOW, 0
     mondexentry SPECIES_PONYTA, "It is a weak runner immediately\nafter birth. It gradually becomes\nfaster by chasing after its parents."
@@ -1664,7 +1664,7 @@ mondata SPECIES_RAPIDASH, "Rapidash"
     basefriendship 50
     growthrate GROWTH_MEDIUM_FAST
     egggroups EGG_GROUP_FIELD, EGG_GROUP_FIELD
-    abilities ABILITY_FLAME_BODY, ABILITY_FLAME_BODY
+    abilities ABILITY_FLAME_BODY, ABILITY_BLAZE
     runchance 0
     colorflip BODY_COLOR_YELLOW, 0
     mondexentry SPECIES_RAPIDASH, "At full gallop, its four hooves\nbarely touch the ground because\nit moves so incredibly fast."
@@ -5270,7 +5270,7 @@ mondata SPECIES_HO_OH, "Ho-oh"
     catchrate 3
     baseexp 0 // defined in baseexp.s
     evyields 0, 0, 0, 0, 0, 0
-    items ITEM_NONE, ITEM_NONE
+    items ITEM_LIFE_ORB, ITEM_LIFE_ORB
     genderratio 255
     eggcycles 120
     basefriendship 0
@@ -7208,7 +7208,7 @@ mondata SPECIES_CRAWDAUNT, "Crawdaunt"
     basefriendship 50
     growthrate GROWTH_FLUCTUATING
     egggroups EGG_GROUP_WATER_1, EGG_GROUP_WATER_3
-    abilities ABILITY_HYPER_CUTTER, ABILITY_SHELL_ARMOR
+    abilities ABILITY_ADAPTABILITY, ABILITY_SHELL_ARMOR
     runchance 0
     colorflip BODY_COLOR_RED, 0
     mondexentry SPECIES_CRAWDAUNT, "A brutish Pokémon that loves to\nbattle. It will crash itself into any\nfoe that approaches its nest."
@@ -9308,7 +9308,7 @@ mondata SPECIES_SPIRITOMB, "Spiritomb"
     basefriendship 50
     growthrate GROWTH_MEDIUM_FAST
     egggroups EGG_GROUP_AMORPHOUS, EGG_GROUP_AMORPHOUS
-    abilities ABILITY_PRESSURE, ABILITY_NONE
+    abilities ABILITY_DARK_AURA, ABILITY_NONE
     runchance 0
     colorflip BODY_COLOR_PURPLE, 0
     mondexentry SPECIES_SPIRITOMB, "It was formed by uniting 108 spirits.\nIt has been bound to the Odd Keystone\nto keep it from doing any mischief."
@@ -18485,7 +18485,7 @@ mondata SPECIES_GOSSIFLEUR, "Gossifleur"
     basefriendship 50
     growthrate GROWTH_MEDIUM_FAST
     egggroups EGG_GROUP_GRASS, EGG_GROUP_GRASS
-    abilities ABILITY_COTTON_DOWN, ABILITY_REGENERATOR
+    abilities ABILITY_COTTON_DOWN, ABILITY_COTTON_DOWN
     runchance 0
     colorflip BODY_COLOR_GREEN, 0
     mondexentry SPECIES_GOSSIFLEUR, "It anchors itself in the ground and\nbasks in the sun. After absorbing\nenough sunlight, it blooms vividly."
@@ -18506,7 +18506,7 @@ mondata SPECIES_ELDEGOSS, "Eldegoss"
     basefriendship 50
     growthrate GROWTH_MEDIUM_FAST
     egggroups EGG_GROUP_GRASS, EGG_GROUP_GRASS
-    abilities ABILITY_COTTON_DOWN, ABILITY_REGENERATOR
+    abilities ABILITY_COTTON_DOWN, ABILITY_COTTON_DOWN
     runchance 0
     colorflip BODY_COLOR_GREEN, 0
     mondexentry SPECIES_ELDEGOSS, "The seeds attached to its cotton fluff\nare full of nutrients. It spreads them on\nthe wind so that others can benefit."

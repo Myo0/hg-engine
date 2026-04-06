@@ -1976,6 +1976,13 @@ void ServerFieldConditionCheck(void *bw, struct BattleStruct *sp) {
                     sp->moveConditionsFlags[i].dragonDartsStatus = 0;
                 }
 
+                #ifdef DEBUG_RETALIATE
+                debug_printf("ENDTURN_END: thisTurn p=%d e=%d -> lastTurn p=%d e=%d\n",
+                    sp->playerSideHasFaintedTeammateThisTurn,
+                    sp->enemySideHasFaintedTeammateThisTurn,
+                    sp->playerSideHasFaintedTeammateLastTurn,
+                    sp->enemySideHasFaintedTeammateLastTurn);
+                #endif
                 sp->playerSideHasFaintedTeammateLastTurn = sp->playerSideHasFaintedTeammateThisTurn;
                 sp->enemySideHasFaintedTeammateLastTurn = sp->enemySideHasFaintedTeammateThisTurn;
                 sp->playerSideHasFaintedTeammateThisTurn = 0;

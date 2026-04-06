@@ -1,7 +1,41 @@
-#include "../include/types.h"
-#include "../include/pokemon.h"
 #include "../include/npc_trade.h"
-#include "../include/constants/species.h" 
+
+#include "../include/constants/ability.h"
+#include "../include/constants/item.h"
+#include "../include/constants/species.h"
+#include "../include/pokemon.h"
+#include "../include/types.h"
+
+#define CUSTOM_TRADES
+
+static void arrayShuffle(u8 *array, int len)
+{
+    for (int i = len - 1; i > 0; i--) {
+        int j = gf_rand() % (i + 1);
+        u8 tmp = array[i];
+        array[i] = array[j];
+        array[j] = tmp;
+    }
+}
+
+void randomIV(struct NPCTrade *trade_dat)
+{
+    u8 array[] = { 31, 31, 31, 0, 0, 0 };
+
+    int i = gf_rand();
+    array[3] = (i & (0x001f << 0)) >> 0;
+    array[4] = (i & (0x001f << 5)) >> 5;
+    array[5] = (i & (0x001f << 10)) >> 10;
+
+    arrayShuffle(array, 6);
+
+    trade_dat->hpIv = array[0];
+    trade_dat->atkIv = array[1];
+    trade_dat->defIv = array[2];
+    trade_dat->speedIv = array[3];
+    trade_dat->spAtkIv = array[4];
+    trade_dat->spDefIv = array[5];
+}
 
 void LONG_CALL _CreateTradeMon(struct PartyPokemon *mon, struct NPCTrade *trade_dat, u32 level, u32 tradeno, u32 mapno, u32 met_level_strat, u32 heapId)
 {
@@ -9,12 +43,37 @@ void LONG_CALL _CreateTradeMon(struct PartyPokemon *mon, struct NPCTrade *trade_
     u8 nickname_flag;
     u32 mapsec;
     int heapId_2;
+    int ability = -1;
+    BOOL skipRandomIV = FALSE;
 
-    PokeParaSet(mon, trade_dat->give_species, level, 32, TRUE, trade_dat->pid, OT_ID_PRESET, trade_dat->otId);
+#ifdef CUSTOM_TRADES
+    if (tradeno == NPC_TRADE_ROCKY_ONIX) {
+        trade_dat->hpIv    = 31;
+        trade_dat->atkIv   = 31;
+        trade_dat->defIv   = 31;
+        trade_dat->speedIv = 31;
+        trade_dat->spAtkIv = 31;
+        trade_dat->spDefIv = 31;
+        trade_dat->heldItem = ITEM_BERRY_JUICE;
+        skipRandomIV = TRUE;
+    }
+#endif
+
+    if (!skipRandomIV) {
+        randomIV(trade_dat);
+    }
+
+    u32 pid = gf_rand();
+#ifdef CUSTOM_TRADES
+    if (tradeno == NPC_TRADE_ROCKY_ONIX) {
+        pid = (pid - (pid % 25)) + NATURE_ADAMANT;
+    }
+#endif
+    PokeParaSet(mon, trade_dat->give_species, level, 32, FALSE, pid, OT_ID_PRESET, trade_dat->otId);
 
     heapId_2 = (int)heapId;
-    name     = _GetNpcTradeName(heapId_2, tradeno);
-    SetMonData(mon, MON_DATA_NICKNAME_3 /*MON_DATA_NICKNAME_STRING = 119*/, name);
+    name = _GetNpcTradeName(heapId_2, tradeno);
+    SetMonData(mon, MON_DATA_NICKNAME_3, name);
     String_Delete(name);
 
     nickname_flag = TRUE;
@@ -26,12 +85,6 @@ void LONG_CALL _CreateTradeMon(struct PartyPokemon *mon, struct NPCTrade *trade_
     SetMonData(mon, MON_DATA_SPEED_IV, &trade_dat->speedIv);
     SetMonData(mon, MON_DATA_SPATK_IV, &trade_dat->spAtkIv);
     SetMonData(mon, MON_DATA_SPDEF_IV, &trade_dat->spDefIv);
-
-    SetMonData(mon, MON_DATA_COOL, &trade_dat->cool);
-    SetMonData(mon, MON_DATA_BEAUTY, &trade_dat->beauty);
-    SetMonData(mon, MON_DATA_CUTE, &trade_dat->cute);
-    SetMonData(mon, MON_DATA_SMART, &trade_dat->smart);
-    SetMonData(mon, MON_DATA_TOUGH, &trade_dat->tough);
 
     SetMonData(mon, MON_DATA_HELD_ITEM, &trade_dat->heldItem);
 
@@ -45,6 +98,10 @@ void LONG_CALL _CreateTradeMon(struct PartyPokemon *mon, struct NPCTrade *trade_
     mapsec = MapHeader_GetMapSec(mapno);
     MonSetTrainerMemo(mon, NULL, met_level_strat, mapsec, heapId);
 
-    RecalcPartyPokemonStats(mon); //CalcMonLevelAndStats(mon);
-    //GF_ASSERT(!MonIsShiny(mon));
+    if (ability != -1) {
+        SetMonData(mon, MON_DATA_ABILITY, &ability);
+    }
+
+    RecalcPartyPokemonStats(mon);
+    ResetPartyPokemonAbility(mon);
 }

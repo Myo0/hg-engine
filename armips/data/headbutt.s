@@ -616,18 +616,18 @@ headbuttheader  29,  11,   4   // Route 25
 
 headbuttheader  30,  17,   0   // Route 26
     // normal slots; probabilities: 50, 15, 15, 10, 5, 5
-    headbuttencounter SPECIES_HOOTHOOT, 28, 29
-    headbuttencounter SPECIES_PINECO, 28, 29
-    headbuttencounter SPECIES_PINECO, 28, 29
-    headbuttencounter SPECIES_EXEGGCUTE, 28, 29
-    headbuttencounter SPECIES_EXEGGCUTE, 28, 29
-    headbuttencounter SPECIES_EXEGGCUTE, 28, 29
-    headbuttencounter SPECIES_HOOTHOOT, 31, 32
-    headbuttencounter SPECIES_SPINARAK, 31, 32
-    headbuttencounter SPECIES_SPINARAK, 31, 32
-    headbuttencounter SPECIES_EXEGGCUTE, 31, 32
-    headbuttencounter SPECIES_EXEGGCUTE, 31, 32
-    headbuttencounter SPECIES_EXEGGCUTE, 31, 32
+    headbuttencounterwithform SPECIES_EXEGGUTOR, 1, 50, 65
+    headbuttencounter SPECIES_RIBOMBEE, 50, 65
+    headbuttencounter SPECIES_SCYTHER, 50, 65
+    headbuttencounter SPECIES_RILLABOOM, 50, 65
+    headbuttencounter SPECIES_VESPIQUEN, 50, 65
+    headbuttencounter SPECIES_VOLCARONA, 50, 65
+    headbuttencounterwithform SPECIES_EXEGGUTOR, 1, 50, 65
+    headbuttencounter SPECIES_RIBOMBEE, 50, 65
+    headbuttencounter SPECIES_SCYTHER, 50, 65
+    headbuttencounter SPECIES_RILLABOOM, 50, 65
+    headbuttencounter SPECIES_VESPIQUEN, 50, 65
+    headbuttencounter SPECIES_VOLCARONA, 50, 65
     // special slots
     headbuttencounter SPECIES_NONE, 0, 0
     headbuttencounter SPECIES_NONE, 0, 0
@@ -657,18 +657,18 @@ headbuttheader  30,  17,   0   // Route 26
 
 headbuttheader  31,  17,   0   // Route 27
     // normal slots; probabilities: 50, 15, 15, 10, 5, 5
-    headbuttencounter SPECIES_HOOTHOOT, 28, 29
-    headbuttencounter SPECIES_PINECO, 28, 29
-    headbuttencounter SPECIES_PINECO, 28, 29
-    headbuttencounter SPECIES_EXEGGCUTE, 28, 29
-    headbuttencounter SPECIES_EXEGGCUTE, 28, 29
-    headbuttencounter SPECIES_EXEGGCUTE, 28, 29
-    headbuttencounter SPECIES_HOOTHOOT, 31, 32
-    headbuttencounter SPECIES_SPINARAK, 31, 32
-    headbuttencounter SPECIES_SPINARAK, 31, 32
-    headbuttencounter SPECIES_EXEGGCUTE, 31, 32
-    headbuttencounter SPECIES_EXEGGCUTE, 31, 32
-    headbuttencounter SPECIES_EXEGGCUTE, 31, 32
+    headbuttencounter SPECIES_VIKAVOLT, 50, 65
+    headbuttencounter SPECIES_PINSIR, 50, 65
+    headbuttencounter SPECIES_HERACROSS, 50, 65
+    headbuttencounter SPECIES_VIGOROTH, 20, 35
+    headbuttencounter SPECIES_NINJASK, 50, 65
+    headbuttencounter SPECIES_NINJASK, 50, 65
+    headbuttencounter SPECIES_VIKAVOLT, 50, 65
+    headbuttencounter SPECIES_PINSIR, 50, 65
+    headbuttencounter SPECIES_HERACROSS, 50, 65
+    headbuttencounter SPECIES_VIGOROTH, 20, 35
+    headbuttencounter SPECIES_NINJASK, 50, 65
+    headbuttencounter SPECIES_NINJASK, 50, 65
     // special slots
     headbuttencounter SPECIES_NONE, 0, 0
     headbuttencounter SPECIES_NONE, 0, 0
@@ -1847,13 +1847,13 @@ headbuttheader  74,  15,   0   // Azalea Town
     headbuttencounter SPECIES_STARLY, 10, 16
     headbuttencounter SPECIES_HERACROSS, 16, 16
     headbuttencounter SPECIES_HERACROSS, 16, 16
-    headbuttencounter SPECIES_AIPOM, 10, 16
+    headbuttencounter SPECIES_NINCADA, 10, 16
     headbuttencounter SPECIES_AIPOM, 10, 16
     headbuttencounter SPECIES_AIPOM, 10, 16
     headbuttencounter SPECIES_STARLY, 10, 16
     headbuttencounter SPECIES_HERACROSS, 16, 16
     headbuttencounter SPECIES_HERACROSS, 16, 16
-    headbuttencounter SPECIES_AIPOM, 10, 16
+    headbuttencounter SPECIES_NINCADA, 10, 16
     headbuttencounter SPECIES_AIPOM, 10, 16
     headbuttencounter SPECIES_AIPOM, 10, 16
     // special slots
