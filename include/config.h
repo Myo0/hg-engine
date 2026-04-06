@@ -3,8 +3,8 @@
 
 #define GEN_LATEST 9
 
-// Uncomment to enable Retaliate flag debug prints (no$gba/mgba console)
-#define DEBUG_RETALIATE
+// // Uncomment to enable Retaliate flag debug prints (no$gba/mgba console)
+// #define DEBUG_RETALIATE
 
 // FAIRY_TYPE_IMPLEMENTED should be used if you want to implement the fairy type and overwrite type 9 in this project
 // set FAIRY_TYPE_IMPLEMENTED to 0 if you do not want this to happen
