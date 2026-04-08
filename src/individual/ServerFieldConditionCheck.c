@@ -1480,7 +1480,8 @@ void ServerFieldConditionCheck(void *bw, struct BattleStruct *sp) {
                                 sprintf(buf, "\n\nAurora Veil side %d, turns left %d\n\n", side, sp->scw[side].auroraVeilCount);
                                 debug_printf(buf);
 #endif
-                                if (--sp->scw[side].auroraVeilCount == 0) {
+                                if (!(sp->side_condition[side] & SIDE_STATUS_AURORA_VEIL_PERMANENT)
+                                 && --sp->scw[side].auroraVeilCount == 0) {
                                     sp->side_condition[side] &= ~(SIDE_STATUS_AURORA_VEIL);
                                     sp->waza_work = MOVE_AURORA_VEIL;
                                     LoadBattleSubSeqScript(sp, ARC_BATTLE_SUB_SEQ, SUB_SEQ_WEAR_OFF);
@@ -1751,7 +1752,7 @@ void ServerFieldConditionCheck(void *bw, struct BattleStruct *sp) {
                                     break;
                                 }
                                 case ABILITY_SLOW_START: {
-                                    if ((sp->battlemon[battlerId].slow_start_end_flag == 0) && (sp->battlemon[battlerId].hp) && (GetBattlerAbility(sp, battlerId) == ABILITY_SLOW_START) && ((sp->total_turn - sp->battlemon[battlerId].moveeffect.slowStartTurns) == 5)) {
+                                    if ((sp->battlemon[battlerId].slow_start_end_flag == 0) && (sp->battlemon[battlerId].hp) && (GetBattlerAbility(sp, battlerId) == ABILITY_SLOW_START) && ((sp->total_turn - sp->battlemon[battlerId].moveeffect.slowStartTurns) == 3)) {
                                         sp->battlemon[battlerId].slow_start_end_flag = 1;
                                         sp->battlerIdTemp = battlerId;
                                         seq_no = SUB_SEQ_HANDLE_SLOW_START_END;

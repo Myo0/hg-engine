@@ -353,7 +353,7 @@
 /* Trainer 342 */ scrdef scr_seq_0953_normalTrainer
 /* Trainer 343 */ scrdef scr_seq_0953_normalTrainer
 /* Trainer 344 */ scrdef scr_seq_0953_normalTrainer
-/* Trainer 345 */ scrdef scr_seq_0953_normalTrainer
+/* Trainer 345 */ scrdef scr_seq_0953_healAndBattle
 /* Trainer 346 */ scrdef scr_seq_0953_normalTrainer
 /* Trainer 347 */ scrdef scr_seq_0953_normalTrainer
 /* Trainer 348 */ scrdef scr_seq_0953_normalTrainer
@@ -753,6 +753,10 @@
 
 scrdef_end
 
+scr_seq_0953_healAndBattle:
+	heal_party
+	goto scr_seq_0953_normalTrainer
+
 scr_seq_0953_normalTrainer:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -897,16 +901,10 @@ _0DC7:
 	return
 
 _0DCF:
-	get_phone_contact_msg_ids 0, VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	msgbox_extern VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	goto _0DF9
-	end
+	return
 
 _0DE4:
-	get_phone_contact_msg_ids 3, VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	msgbox_extern VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	goto _0DF9
-	end
+	return
 
 _0DF9:
 	touchscreen_menu_hide

@@ -872,9 +872,18 @@ int LONG_CALL BattleAI_CalcBaseDamage(void* bw, struct BattleStruct* sp, int mov
     }
 
     // Abilities
-            // handle Slow Start
-    if (attacker->ability == ABILITY_SLOW_START && (attacker->slowStartCount < 5) && (movesplit == SPLIT_PHYSICAL || MoveIsZMove(moveno)))
-        attackModifier = QMul_RoundUp(attackModifier, UQ412__0_5);
+            // handle Slow Start (graduated: 50% → 62.5% → 75% → 87.5% over 4 turns)
+    if (attacker->ability == ABILITY_SLOW_START && (movesplit == SPLIT_PHYSICAL || MoveIsZMove(moveno))) {
+        int slowStartElapsed = (int)(s8)attacker->slowStartCount;
+        u32 slowStartModifier;
+        if (slowStartElapsed < 0)       slowStartModifier = UQ412__0_5;
+        else if (slowStartElapsed == 0) slowStartModifier = UQ412__0_625;
+        else if (slowStartElapsed == 1) slowStartModifier = UQ412__0_75;
+        else if (slowStartElapsed == 2) slowStartModifier = UQ412__0_875;
+        else                            slowStartModifier = 0;
+        if (slowStartModifier)
+            attackModifier = QMul_RoundUp(attackModifier, slowStartModifier);
+    }
 
     // handle Defeatist
     if ((attacker->ability == ABILITY_DEFEATIST) && (attacker->hp <= attacker->maxhp / 2))

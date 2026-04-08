@@ -130,6 +130,23 @@ int UNUSED SwitchInAbilityCheck(void *bw, struct BattleStruct *sp)
                             ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
                             scriptnum = SUB_SEQ_APPLY_GRAVITY;
                             break;
+                        case 28: // Stealth Rock on player's side (player side = index 0)
+                            sp->side_condition[0] |= SIDE_STATUS_STEALTH_ROCK;
+                            sp->attack_client = BATTLER_ENEMY;
+                            sp->defence_client = BATTLER_PLAYER;
+                            sp->current_move_index = MOVE_STEALTH_ROCK;
+                            scriptnum = SUB_SEQ_SET_STEALTH_ROCK;
+                            ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                            break;
+                        case 27: // Permanent Aurora Veil on AI side (enemy side = index 1)
+                            // Set permanent flag before subscript runs; subscript will OR in
+                            // SIDE_STATUS_AURORA_VEIL and set count/battler, but won't clear this flag
+                            sp->side_condition[1] |= SIDE_STATUS_AURORA_VEIL_PERMANENT;
+                            sp->attack_client = BATTLER_ENEMY;
+                            sp->current_move_index = MOVE_AURORA_VEIL;
+                            scriptnum = SUB_SEQ_AURORA_VEIL;
+                            ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                            break;
                     }
                     if (ret == SWITCH_IN_CHECK_MOVE_SCRIPT) {
                         sp->weather_check_flag = 1;
@@ -553,7 +570,7 @@ int UNUSED SwitchInAbilityCheck(void *bw, struct BattleStruct *sp)
                         }
 
                         // check slow start end as well
-                        if ((sp->battlemon[client_no].slow_start_end_flag == 0) && (sp->battlemon[client_no].hp) && (GetBattlerAbility(sp, client_no) == ABILITY_SLOW_START) && ((sp->total_turn - sp->battlemon[client_no].moveeffect.slowStartTurns) == 5)) {
+                        if ((sp->battlemon[client_no].slow_start_end_flag == 0) && (sp->battlemon[client_no].hp) && (GetBattlerAbility(sp, client_no) == ABILITY_SLOW_START) && ((sp->total_turn - sp->battlemon[client_no].moveeffect.slowStartTurns) == 3)) {
                             sp->battlemon[client_no].slow_start_end_flag = 1;
                             sp->battlerIdTemp = client_no;
                             scriptnum = SUB_SEQ_HANDLE_SLOW_START_END;

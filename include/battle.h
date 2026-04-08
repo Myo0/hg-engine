@@ -375,6 +375,7 @@
 #define SIDE_STATUS_STICKY_WEB (0x800)
 #define SIDE_STATUS_LUCKY_CHANT (0x7000)
 #define SIDE_STATUS_AURORA_VEIL (0x8000)
+#define SIDE_STATUS_AURORA_VEIL_PERMANENT (0x10000) // set by overworld weather; bypasses turn countdown
 
 /**
  *  @brief self status flags that apply to BattleStruct's oneSelfFlag[battler].status_flag

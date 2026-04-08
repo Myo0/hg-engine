@@ -5376,7 +5376,7 @@ evodata SPECIES_MUNCHLAX
     terminateevodata
 
 evodata SPECIES_RIOLU
-    evolution EVO_LEVEL, 36, SPECIES_LUCARIO
+    evolution EVO_LEVEL, 33, SPECIES_LUCARIO
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
@@ -9544,7 +9544,7 @@ evodata SPECIES_RIBOMBEE
 terminateevodata
 
 evodata SPECIES_ROCKRUFF
-    evolutionwithform EVO_STONE, ITEM_SUN_STONE, SPECIES_LYCANROC, 3
+    evolution EVO_STONE, ITEM_SUN_STONE, SPECIES_LYCANROC
     evolutionwithform EVO_STONE, ITEM_MOON_STONE, SPECIES_LYCANROC, 1
     evolutionwithform EVO_STONE, ITEM_DUSK_STONE, SPECIES_LYCANROC, 2
     evolution EVO_NONE, 0, SPECIES_NONE
@@ -10481,7 +10481,7 @@ evodata SPECIES_ROOKIDEE
 terminateevodata
 
 evodata SPECIES_CORVISQUIRE
-    evolution EVO_LEVEL, 38, SPECIES_CORVIKNIGHT
+    evolution EVO_LEVEL, 36, SPECIES_CORVIKNIGHT
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
@@ -10902,7 +10902,7 @@ evodata SPECIES_HATENNA
 terminateevodata
 
 evodata SPECIES_HATTREM
-    evolution EVO_LEVEL, 42, SPECIES_HATTERENE
+    evolution EVO_LEVEL, 36, SPECIES_HATTERENE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE

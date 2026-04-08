@@ -333,7 +333,7 @@ movedata MOVE_FLY, "Fly"
 movedata MOVE_BIND, "Bind"
     battleeffect MOVE_EFFECT_BIND_HIT
     pss SPLIT_PHYSICAL
-    basepower 15
+    basepower 60
     type TYPE_NORMAL
     accuracy 100
     pp 20
@@ -1341,7 +1341,7 @@ movedata MOVE_DRAGON_RAGE, "Dragon Rage"
 movedata MOVE_FIRE_SPIN, "Fire Spin"
     battleeffect MOVE_EFFECT_BIND_HIT
     pss SPLIT_SPECIAL
-    basepower 35
+    basepower 60
     type TYPE_FIRE
     accuracy 100
     pp 15
@@ -2061,7 +2061,7 @@ movedata MOVE_WATERFALL, "Waterfall"
 movedata MOVE_CLAMP, "Clamp"
     battleeffect MOVE_EFFECT_BIND_HIT
     pss SPLIT_PHYSICAL
-    basepower 35
+    basepower 60
     type TYPE_WATER
     accuracy 100
     pp 15
@@ -2606,7 +2606,7 @@ movedata MOVE_SUPER_FANG, "Super Fang"
     battleeffect MOVE_EFFECT_HALVE_HP
     pss SPLIT_PHYSICAL
     basepower 1
-    type TYPE_DARK
+    type TYPE_NORMAL
     accuracy 100
     pp 10
     effectchance 0
@@ -4013,7 +4013,7 @@ movedata MOVE_ROCK_SMASH, "Rock Smash"
 movedata MOVE_WHIRLPOOL, "Whirlpool"
     battleeffect MOVE_EFFECT_WHIRLPOOL
     pss SPLIT_SPECIAL
-    basepower 35
+    basepower 60
     type TYPE_WATER
     accuracy 100
     pp 15
@@ -5261,7 +5261,7 @@ movedata MOVE_SKY_UPPERCUT, "Sky Uppercut"
 movedata MOVE_SAND_TOMB, "Sand Tomb"
     battleeffect MOVE_EFFECT_BIND_HIT
     pss SPLIT_PHYSICAL
-    basepower 35
+    basepower 60
     type TYPE_GROUND
     accuracy 100
     pp 15
@@ -9838,7 +9838,7 @@ movedata MOVE_HOLD_BACK, "Hold Back"
 movedata MOVE_INFESTATION, "Infestation"
     battleeffect MOVE_EFFECT_BIND_HIT
     pss SPLIT_SPECIAL
-    basepower 20
+    basepower 60
     type TYPE_BUG
     accuracy 100
     pp 20
@@ -12534,7 +12534,7 @@ movedata MOVE_DRUM_BEATING, "Drum Beating"
 movedata MOVE_SNAP_TRAP, "Snap Trap"
     battleeffect MOVE_EFFECT_HIT
     pss SPLIT_PHYSICAL
-    basepower 35
+    basepower 60
     type TYPE_GRASS
     accuracy 100
     pp 15

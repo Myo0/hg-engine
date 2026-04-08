@@ -110,20 +110,16 @@ typedef struct {
 int BasicFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext *ai);
 int EvaluateAttackFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext *ai);
 int ExpertFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext *ai);
-int PrioritizeDamageFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext *ai);
 int BatonPassFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext *ai);
 int TagStrategyFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext *ai);
-int WeatherFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext *ai);
 
 /*Add your own custom flags to this list*/
 const MoveEvaluator moveEvaluators[] = {
     { AI_FLAG_BASIC,                BasicFlag },
     { AI_FLAG_EVAL_ATTACK,          EvaluateAttackFlag },
     { AI_FLAG_EXPERT,               ExpertFlag },
-    { AI_FLAG_DAMAGE_PRIORITY,      PrioritizeDamageFlag },
     { AI_FLAG_BATON_PASS,           BatonPassFlag },
     { AI_FLAG_TAG_STRATEGY,         TagStrategyFlag },
-    { AI_FLAG_WEATHER,              WeatherFlag },
 };
 
 /*Helper Functions*/
@@ -591,34 +587,6 @@ const u16 ContraryBenefitList[] = {
     MOVE_EFFECT_USER_SPEED_DOWN_HIT,             // Hammer Arm
 };
 
-const u16 PrioritizeDamageFlagList[] = {
-    MOVE_EFFECT_HALVE_DEFENSE,
-    MOVE_EFFECT_RECOVER_DAMAGE_SLEEP,
-    MOVE_EFFECT_CHARGE_TURN_HIGH_CRIT,
-    MOVE_EFFECT_CHARGE_TURN_DEF_UP,
-    MOVE_EFFECT_CHARGE_TURN_HIGH_CRIT_FLINCH,
-    MOVE_EFFECT_CHARGE_TURN_SUN_SKIPS,
-    MOVE_EFFECT_CHARGE_TURN_SP_ATK_UP,
-    MOVE_EFFECT_CHARGE_TURN_SP_ATK_UP_RAIN_SKIPS,
-    MOVE_EFFECT_RECHARGE_AFTER,
-    MOVE_EFFECT_SPIT_UP,
-    MOVE_EFFECT_HIT_LAST_WHIFF_IF_HIT,
-    MOVE_EFFECT_USER_ATK_DEF_DOWN_HIT,
-    MOVE_EFFECT_INCREASE_POWER_WITH_LESS_HP,
-    MOVE_EFFECT_HIT_FIRST_IF_TARGET_ATTACKING,
-    MOVE_EFFECT_RECOIL_HALF,
-    MOVE_EFFECT_RANDOM_TYPE_BASED_ON_IVS,
-    MOVE_EFFECT_POWER_BASED_ON_LOW_SPEED,
-    MOVE_EFFECT_NATURAL_GIFT,
-    MOVE_EFFECT_JUDGMENT,
-    MOVE_EFFECT_POWER_BASED_ON_FRIENDSHIP,
-    MOVE_EFFECT_POWER_BASED_ON_LOW_FRIENDSHIP,
-    MOVE_EFFECT_INCREASE_POWER_WITH_WEIGHT,
-    MOVE_EFFECT_RANDOM_DAMAGE_1_TO_150_LEVEL,
-    MOVE_EFFECT_LEVEL_DAMAGE_FLAT,
-    MOVE_EFFECT_40_DAMAGE_FLAT,
-    MOVE_EFFECT_10_DAMAGE_FLAT
-};
 
 
 const u16 TagStrategyFlagList_SkillSwap[] = {
@@ -3297,17 +3265,6 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
 }
 
 
-int PrioritizeDamageFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext *ai){
-    int moveScore = 0;
-    struct BattleStruct *ctx = bsys->sp;
-    if(IsInList(ai->attackerMoveEffect, PrioritizeDamageFlagList, NELEMS(PrioritizeDamageFlagList))){
-        if(BattleRand(bsys) % 10 < 6){
-            moveScore += 2;
-        }
-    }
-    return moveScore;
-}
-
 int BatonPassFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext *ai){
     int moveScore = 0;
     struct BattleStruct *ctx = bsys->sp;
@@ -3877,28 +3834,6 @@ int TagStrategyFlag(struct BattleSystem *bsys, int attacker, int i, struct AICon
     //debug_printf("TagStrategyFlag moveScore: %d\n", moveScore);
     return moveScore;
 }
-int WeatherFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext *ai){
-    int moveScore = 0;
-    struct BattleStruct *ctx = bsys->sp;
-    
-    if((ai->attackerMoveEffect == MOVE_EFFECT_WEATHER_SANDSTORM && 
-        !(ctx->field_condition & WEATHER_SANDSTORM_ANY)) ||
-        (ai->attackerMoveEffect == MOVE_EFFECT_WEATHER_HAIL && 
-            !(ctx->field_condition & WEATHER_HAIL_ANY )) ||
-            (ai->attackerMoveEffect == MOVE_EFFECT_WEATHER_SNOW && 
-                !(ctx->field_condition & WEATHER_SNOW_ANY )) ||
-            (ai->attackerMoveEffect == MOVE_EFFECT_WEATHER_RAIN && 
-                !(ctx->field_condition & WEATHER_RAIN_ANY)) ||
-                (ai->attackerMoveEffect == MOVE_EFFECT_WEATHER_SUN && 
-                    !(ctx->field_condition & WEATHER_SUNNY_ANY))){
-                moveScore += 5;
-    }
-    return moveScore;
-}
-
-
-
-
 /*-------------------------------Helper Functions--------------------------------*/
 
 

@@ -3247,6 +3247,21 @@ _1BA8: // Trainer 342
     trainertextentry 342, TEXT_NOTICE_IN_OVERWORLD, "Welcome to my grand finale!\nCan you follow the act?"
     trainertextentry 342, TEXT_DEFEATED_IN_BATTLE, "And for my last trick...\nI vanish in defeat!"
     trainertextentry 342, TEXT_DEFEATED_IN_OVERWORLD, "Damn.\nEven my last trick was a failure.\r"
+
+_1BAC: // Trainer 343
+    trainertextentry 343, TEXT_NOTICE_IN_OVERWORLD, "You’ve come far.\nNow show me your spirit!\r"
+    trainertextentry 343, TEXT_DEFEATED_IN_BATTLE, "That was wonderful...\r"
+    trainertextentry 343, TEXT_DEFEATED_IN_OVERWORLD, "Strength alone won’t do.\nYou need discipline too.\r"
+
+_1BB0: // Trainer 344
+    trainertextentry 344, TEXT_NOTICE_IN_OVERWORLD, "Many reach this place.\nFew deserve to pass.\rAre you one of the few?\r"
+    trainertextentry 344, TEXT_DEFEATED_IN_BATTLE, "I can see it now... You’re ready.\r"
+    trainertextentry 344, TEXT_DEFEATED_IN_OVERWORLD, "Don’t let confidence become carelessness.\r"
+
+_1BB4: // Trainer 345
+    trainertextentry 345, TEXT_NOTICE_IN_OVERWORLD, "I walk between the worlds...\nSoon... you...\rwill be dragged to the underworld.\r"
+    trainertextentry 345, TEXT_DEFEATED_IN_BATTLE, "Ah... So that was your fate.\r"
+    trainertextentry 345, TEXT_DEFEATED_IN_OVERWORLD, "Good luck, son.\r"
 .close
 
 
@@ -3596,9 +3611,9 @@ _1BA8: // Trainer 342
 /* Trainer 340 */ .halfword _1BA0
 /* Trainer 341 */ .halfword _1BA4
 /* Trainer 342 */ .halfword _1BA8
-/* Trainer 343 */ .halfword _0000
-/* Trainer 344 */ .halfword _0000
-/* Trainer 345 */ .halfword _0000
+/* Trainer 343 */ .halfword _1BAC
+/* Trainer 344 */ .halfword _1BB0
+/* Trainer 345 */ .halfword _1BB4
 /* Trainer 346 */ .halfword _059C
 /* Trainer 347 */ .halfword _0000
 /* Trainer 348 */ .halfword _071C

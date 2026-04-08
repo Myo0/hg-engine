@@ -268,14 +268,22 @@ u8 LONG_CALL BattleAI_CalcSpeed(void* bw, struct BattleStruct* sp, int client1, 
     debug_printf("[CalcSpeed] %s's speedModifier2: %d\n", client2Nickname, speedModifier2);
 #endif
 
-    // Step 3: Slow Start
+    // Step 3: Slow Start (graduated: 50% → 62.5% → 75% → 87.5% over 4 turns)
 
-    if ((ability1 == ABILITY_SLOW_START)
-        && ((sp->total_turn - sp->battlemon[client1].moveeffect.slowStartTurns) < 5)) {
-        speedModifier1 = QMul_RoundUp(speedModifier1, UQ412__0_5);
+    if (ability1 == ABILITY_SLOW_START) {
+        int slowStartElapsed1 = (int)(sp->total_turn - sp->battlemon[client1].moveeffect.slowStartTurns);
+        u32 slowStartModifier1;
+        if (slowStartElapsed1 < 0)       slowStartModifier1 = UQ412__0_5;
+        else if (slowStartElapsed1 == 0) slowStartModifier1 = UQ412__0_625;
+        else if (slowStartElapsed1 == 1) slowStartModifier1 = UQ412__0_75;
+        else if (slowStartElapsed1 == 2) slowStartModifier1 = UQ412__0_875;
+        else                             slowStartModifier1 = 0;
+        if (slowStartModifier1)
+            speedModifier1 = QMul_RoundUp(speedModifier1, slowStartModifier1);
     }
 
     if (ability2 == ABILITY_SLOW_START) {
+        // partyMon is always a bench mon being evaluated as a switch-in; Slow Start is always at turn 1 (50%)
         speedModifier2 = QMul_RoundUp(speedModifier2, UQ412__0_5);
     }
 #ifdef DEBUG_SPEED_CALC

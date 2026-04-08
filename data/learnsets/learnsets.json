@@ -44855,7 +44855,7 @@
         "Move": "MOVE_FIRE_PUNCH"
       },
       {
-        "Level": 33,
+        "Level": 32,
         "Move": "MOVE_BRICK_BREAK"
       },
       {
@@ -51132,6 +51132,10 @@
   },
   "SPECIES_LUCARIO": {
     "LevelMoves": [
+      {
+        "Level": 0,
+        "Move": "MOVE_FLASH_CANNON"
+      },
       {
         "Level": 1,
         "Move": "MOVE_DRAIN_PUNCH"
