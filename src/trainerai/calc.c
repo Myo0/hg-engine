@@ -324,11 +324,17 @@ int LONG_CALL BattleAI_CalcBaseDamage(void* bw, struct BattleStruct* sp, int mov
         if (attacker->item == ITEM_NONE || attacker->item == ITEM_FLYING_GEM)
             movepower *= 2;
         break;
-    // case MOVE_ASSURANCE:
-    //     if (defender->assuranceDamage)
-    //         movepower *= 2;
-    //     break;
-        //case MOVE_REVENGE:
+    case MOVE_ASSURANCE:
+    case MOVE_REVENGE:
+    case MOVE_AVALANCHE: {
+        // AI assumes it will be hit if slower (or faster if Trick Room is active),
+        BOOL trickRoom = field_cond & FIELD_STATUS_TRICK_ROOM;
+        BOOL aiIsSlower = trickRoom ? (attacker->speed > defender->speed)
+                                    : (attacker->speed < defender->speed);
+        if (aiIsSlower)
+            movepower *= 2;
+        break;
+    }
         //case MOVE_WATER_PLEDGE:
         //case MOVE_FIRE_PLEDGE:
         //case MOVE_GRASS_PLEDGE:

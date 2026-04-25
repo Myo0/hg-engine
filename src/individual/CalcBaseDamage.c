@@ -239,6 +239,7 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
         break;
     case MOVE_ASSURANCE:
     case MOVE_REVENGE:
+    case MOVE_AVALANCHE:
         if (DefendingMon.assuranceDamage) {
             movepower *= 2;
         }

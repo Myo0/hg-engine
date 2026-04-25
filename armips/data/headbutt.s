@@ -1690,14 +1690,14 @@ headbuttheader  59,   0,   0   // Saffron City
 headbuttheader  60,  11,   0   // New Bark Town
     // normal slots; probabilities: 50, 15, 15, 10, 5, 5
     headbuttencounter SPECIES_ROOKIDEE, 4, 5
-    headbuttencounter SPECIES_JOLTIK, 3, 4
-    headbuttencounter SPECIES_JOLTIK, 3, 4
+    headbuttencounter SPECIES_LEDYBA, 3, 4
+    headbuttencounter SPECIES_LEDYBA, 3, 4
     headbuttencounter SPECIES_EXEGGCUTE, 3, 5
     headbuttencounter SPECIES_EXEGGCUTE, 3, 5
     headbuttencounter SPECIES_EXEGGCUTE, 3, 5
     headbuttencounter SPECIES_ROOKIDEE, 4, 5
-    headbuttencounter SPECIES_JOLTIK, 3, 4
-    headbuttencounter SPECIES_JOLTIK, 3, 4
+    headbuttencounter SPECIES_LEDYBA, 3, 4
+    headbuttencounter SPECIES_LEDYBA, 3, 4
     headbuttencounter SPECIES_EXEGGCUTE, 3, 5
     headbuttencounter SPECIES_EXEGGCUTE, 3, 5
     headbuttencounter SPECIES_EXEGGCUTE, 3, 5

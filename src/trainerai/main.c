@@ -432,6 +432,7 @@ const u16 RBSetupList[] = {
     MOVE_EFFECT_STOCKPILE,                              // Stockpile
     MOVE_EFFECT_ATK_SP_ATK_SPEED_UP_2_DEF_SP_DEF_DOWN, // Shell Smash
     MOVE_EFFECT_MAX_ATK_LOSE_HALF_MAX_HP,               // Belly Drum
+    MOVE_EFFECT_RAISE_ALL_STATS_LOSE_THIRD_MAX_HP,      // Clangorous Soul
     MOVE_EFFECT_SPEED_UP_2,                             // Agility, Rock Polish
     MOVE_EFFECT_AUTOTOMIZE,                             // Autotomize
     MOVE_EFFECT_STUFF_CHEEKS,                           // Stuff Cheeks
@@ -1551,7 +1552,6 @@ static BOOL MoveExcludedFromDamageBonus(int moveno, int moveEffect)
 {
     return (moveEffect == MOVE_EFFECT_HALVE_DEFENSE           // Explosion, Self-Destruct
          || moveEffect == MOVE_EFFECT_DOUBLE_POWER_EACH_TURN_LOCK_INTO // Rollout, Ice Ball
-         || moveEffect == MOVE_EFFECT_BIND_HIT                // trapping moves
          || moveEffect == MOVE_EFFECT_HIT_IN_3_TURNS          // Future Sight, Doom Desire
          || moveEffect == MOVE_EFFECT_CHARGE_TURN_SP_ATK_UP   // Meteor Beam
          || moveno == MOVE_RELIC_SONG
@@ -1732,6 +1732,34 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
       || ai->attackerMoveEffect == MOVE_EFFECT_SP_ATK_UP_CAUSE_CONFUSION
       || ai->attackerMoveEffect == MOVE_EFFECT_ATK_UP_2_STATUS_CONFUSION))
         return -20;
+
+    /*Trapping moves (Fire Spin, Sand Tomb, Wrap, etc.)
+      Only score here if EvaluateAttackFlag didn't handle it (not highest damage, doesn't kill).
+      If it is highest damage or kills, EvaluateAttackFlag applies the standard +6/+8 and kill bonus.*/
+    if (ai->attackerMoveEffect == MOVE_EFFECT_BIND_HIT)
+    {
+        BOOL trapIsKill = (ai->attackerAvgRollMoveDamages[i] >= ai->defenderHP);
+        BOOL trapIsHighest = TRUE;
+        for (int j = 0; j < ai->attackerMovesKnown; j++)
+        {
+            if (i == j) continue;
+            u16 mj = ctx->battlemon[attacker].move[j];
+            if (mj == MOVE_NONE) continue;
+            if (MoveExcludedFromDamageBonus(mj, ctx->moveTbl[mj].effect)) continue;
+            if (ai->attackerAvgRollMoveDamages[i] < ai->attackerAvgRollMoveDamages[j])
+            {
+                trapIsHighest = FALSE;
+                break;
+            }
+        }
+        if (!trapIsHighest && !trapIsKill)
+        {
+            if (BattleRand(bsys) % 5 == 0)
+                moveScore += 8;
+            else
+                moveScore += 6;
+        }
+    }
 
     /*Sleep moves*/
     if(ai->attackerMoveEffect == MOVE_EFFECT_STATUS_SLEEP
@@ -2069,6 +2097,22 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
                         moveScore += 2;
                 }
             }
+        }
+        // ---- Clangorous Soul: raises all stats, costs 1/3 max HP ----
+        else if (ai->attackerMoveEffect == MOVE_EFFECT_RAISE_ALL_STATS_LOSE_THIRD_MAX_HP)
+        {
+            // Never if already at +2 or higher in both attacking stats
+            if (ctx->battlemon[attacker].states[STAT_ATTACK] >= 8
+             && ctx->battlemon[attacker].states[STAT_SPATK]  >= 8)
+                return -20;
+
+            int hpAfterSoul = ai->attackerHP - ai->attackerMaxHP / 3;
+            if (hpAfterSoul <= 0)
+                return -20;
+
+            moveScore += 6;
+            if (defIncapacitated) moveScore += 3;
+            if (slowerAnd2HKOd)   moveScore -= 5;
         }
         // ---- Offensive Setup: DD / Shift Gear / SD / Howl / Hone Claws / Growth / Stuff Cheeks / Curse / PuP / Charge Beam / etc. ----
         else
@@ -2533,7 +2577,11 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
           || ai->attackerMoveEffect == MOVE_EFFECT_MAKE_GLOBAL_TARGET)
     {
         if (BattleTypeGet(bsys) & (BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_TAG))
+        {
+            if (ai->partnerHP == 0)
+                return -20;
             moveScore += 6;
+        }
         // singles handled by BasicFlag (returns -15)
     }
 
@@ -3343,7 +3391,7 @@ int TagStrategyFlag(struct BattleSystem *bsys, int attacker, int i, struct AICon
             else if(ai->attackerMoveEffect == MOVE_EFFECT_STATUS_BURN){
                 if( ai->partnerAbility == ABILITY_FLASH_FIRE){
                     if(ctx->battlemon[ai->defender].moveeffect.flashFire == 0){
-                        moveScore += 3;
+                        moveScore += 2;
                     }
                     else{
                         moveScore -= 30;
@@ -3355,20 +3403,7 @@ int TagStrategyFlag(struct BattleSystem *bsys, int attacker, int i, struct AICon
                         ai->partnerItem != ITEM_FLAME_ORB &&
                         ai->partnerItem != ITEM_TOXIC_ORB &&
                         ai->partnerPercentHP >=  81){
-                            moveScore += 5;
-                }
-                else{
-                    moveScore -= 30;
-                }
-            }
-            /*Paralyze*/
-            else if(ai->attackerMoveEffect == MOVE_EFFECT_STATUS_PARALYZE){
-                if(HasType(ctx, ai->partner,TYPE_GROUND)){
-                    moveScore -= 30;
-                }
-                else if(ai->partnerAbility == ABILITY_MOTOR_DRIVE ||
-                    ai->partnerAbility == ABILITY_VOLT_ABSORB){
-                    //handle like damaging electric move
+                            moveScore += 3;
                 }
                 else{
                     moveScore -= 30;
@@ -3383,25 +3418,11 @@ int TagStrategyFlag(struct BattleSystem *bsys, int attacker, int i, struct AICon
                     !HasType(ctx,ai->partner, TYPE_POISON) &&
                     !HasType(ctx,ai->partner, TYPE_STEEL) &&
                     ai->partnerPercentHP >=  81){
-                        moveScore += 5;
+                        moveScore += 3;
                     }
                 else {
                     moveScore -= 30;
                 }      
-            }
-            /*Helping Hand*/
-            else if(ai->attackerMoveEffect == MOVE_EFFECT_BOOST_ALLY_POWER_BY_50_PERCENT){
-                if(ai->partnerPercentHP > 50 || BattlerMovesFirstDoubles(bsys, ctx, ai->partner, 0, ai)){
-                    if(BattleRand(bsys) % 4 < 3){
-                        moveScore += 2;
-                    }
-                    else{
-                        moveScore -= 1;
-                    }
-                }
-                else{
-                    moveScore -= 3;
-                }
             }
             /*Swagger*/
             else if(ai->attackerMoveEffect == MOVE_EFFECT_ATK_UP_2_STATUS_CONFUSION){
@@ -3411,7 +3432,7 @@ int TagStrategyFlag(struct BattleSystem *bsys, int attacker, int i, struct AICon
                 }
                 else{
                     if(ctx->battlemon[ai->partner].states[STAT_ATTACK] < 8){//Less than +2
-                        moveScore += 3;
+                        moveScore += 2;
                     }
                     else{
                         moveScore -= 30;
@@ -3426,98 +3447,22 @@ int TagStrategyFlag(struct BattleSystem *bsys, int attacker, int i, struct AICon
                 }
                 else if(ai->partnerAbility == ABILITY_TRUANT ||
                     ai->partnerAbility == ABILITY_SLOW_START){
-                        moveScore += 5;
+                        moveScore += 10;
                 }
                 else{
                     moveScore -= 30;
                 }
 
             }
-            /*Acupressure*/
-            else if(ai->attackerMoveEffect == MOVE_EFFECT_RANDOM_STAT_UP_2){
-                if(BattlerHasStatBoostGreater(bsys, ai->partner, 12, ai)){ //if any stats are at +6{
-                    moveScore -= 30;
-                }
-                else if(ai->partnerPercentHP <= 50){
-                    moveScore -= 1;
-                }
-                else if(ai->partnerPercentHP > 90){
-                    if(BattleRand(bsys) % 10 < 7){
-                        moveScore += 2;
-                    }
-                }
-                else{
-                    if(BattleRand(bsys) % 10 < 7){
-                        moveScore += 2;
-                    }
-                }
-            }
-            /*Electric moves with Motor Drive and Volt Absorb*/
-            else if(ctx->moveTbl[ai->attackerMove].type == TYPE_ELECTRIC && ctx->moveTbl[ai->attackerMove].power){
-                if(ai->partnerAbility == ABILITY_MOTOR_DRIVE){
-                    if(BattleRand(bsys) % 10 < 6){
-                        moveScore += 0;
+            /*Shadow Sneak / Aqua Jet / Ice Shard - activate partner Weakness Policy*/
+            else if(ai->attackerMove == MOVE_SHADOW_SNEAK || ai->attackerMove == MOVE_AQUA_JET || ai->attackerMove == MOVE_ICE_SHARD){
+                if(ai->partnerItem == ITEM_WEAKNESS_POLICY){
+                    AITypeCalc(ctx, ai->attackerMove, ai->attackerMoveType, ai->attackerAbility, ai->partnerAbility, BattleItemDataGet(ctx, ai->partnerItem, 1), ctx->battlemon[ai->partner].type1, ctx->battlemon[ai->partner].type2, &effectivenessOnPartner);
+                    if(effectivenessOnPartner == MOVE_STATUS_FLAG_SUPER_EFFECTIVE){
+                        moveScore += 12;
                     }
                     else{
-                        if(ctx->battlemon[ai->partner].states[STAT_SPEED] == 12){
-                            moveScore -= 30;
-                        }
-                        else{
-                            moveScore += 3;
-                        }
-                    }
-                }
-                else if(ai->partnerAbility == ABILITY_VOLT_ABSORB){
-                    if(ai->partnerPercentHP  == 100){
-                        moveScore -= 15;
-                    }
-                    else if(ai->partnerPercentHP  > 90){
-                        moveScore += 0;
-                    }
-                    else if(ai->partnerPercentHP  > 75){
-                        if(BattleRand(bsys) % 4 < 1){
-                            moveScore += 3;
-                        }
-                    }
-                    else if(ai->partnerPercentHP  > 50){
-                        if(BattleRand(bsys) % 2 < 1){
-                            moveScore += 3;
-                        }
-                    }
-                    else{
-                        if(BattleRand(bsys) % 4 < 3){
-                            moveScore += 3;
-                        }
-                    }
-                }
-                else{
-                    moveScore -= 30;
-                }
-            }
-            /*Water moves with Dry Skin and Water Absorb*/
-            else if(ctx->moveTbl[ai->attackerMove].type == TYPE_WATER && ctx->moveTbl[ai->attackerMove].power){
-                if(ai->partnerAbility == ABILITY_DRY_SKIN ||
-                   ai->partnerAbility == ABILITY_WATER_ABSORB){
-                    if(ai->partnerPercentHP  == 100){
-                        moveScore -= 15;
-                    }
-                    else if(ai->partnerPercentHP  > 90){
-                        moveScore += 0;
-                    }
-                    else if(ai->partnerPercentHP  > 75){
-                        if(BattleRand(bsys) % 4 < 1){
-                            moveScore += 3;
-                        }
-                    }
-                    else if(ai->partnerPercentHP  > 50){
-                        if(BattleRand(bsys) % 2 < 1){
-                            moveScore += 3;
-                        }
-                    }
-                    else{
-                        if(BattleRand(bsys) % 4 < 3){
-                            moveScore += 3;
-                        }
+                        moveScore -= 30;
                     }
                 }
                 else{
@@ -3526,33 +3471,13 @@ int TagStrategyFlag(struct BattleSystem *bsys, int attacker, int i, struct AICon
             }
             /*DO NOT attack our partner otherwise!*/
             else{
-                moveScore -= 30; 
+                moveScore -= 30;
             }
 
 
         }
     }
     else{
-
-        /*In a double battle, if the move can OHKO the opponent from their current HP,
-        prioritize using a spread move over a single target move, for extra damage on the partner.
-        NOTE: this will encourage moves like Surf that can hit a partner, too.*/
-        if(ctx->moveTbl[ai->attackerMove].split != SPLIT_STATUS &&
-           ai->attackerAvgRollMoveDamages[i] >= ai->defenderHP &&
-           (ctx->moveTbl[ai->attackerMove].target == RANGE_ALL_ADJACENT || ctx->moveTbl[ai->attackerMove].target == RANGE_ADJACENT_OPPONENTS)){
-            moveScore += 1;
-        }
-        
-        
-
-        /*Protect in Double Battles functions differently than singles
-        Essentially, we want to protect ourselves from an attack that would kill us,
-        but only if our partner isn't in danger. We want to avoid a double protect.*/
-        if(ai->attackerMoveEffect == MOVE_EFFECT_PROTECT){
-            if(ai->maxDamageReceived > ai->attackerHP && ai->defenderMovesFirst && ctx->protectSuccessTurns[ai->attacker] == 0){ //if the player can fast kill us, we need to protect
-                moveScore += 13;
-            }
-        }
 
 
         /*Skill Swap*/
@@ -3576,19 +3501,22 @@ int TagStrategyFlag(struct BattleSystem *bsys, int attacker, int i, struct AICon
         /*Earthquake and Magnitude*/
         else if((ai->attackerMoveEffect == MOVE_EFFECT_RANDOM_POWER_10_CASES ||
             ai->attackerMoveEffect == MOVE_EFFECT_DOUBLE_DAMAGE_DIG) && ai->partnerHP != 0){
-                AITypeCalc(ctx, MOVE_EARTHQUAKE, TYPE_GROUND, ai->attackerAbility, ai->partnerAbility, BattleItemDataGet(ctx, ai->partnerItem, 1), ctx->battlemon[ai->partner].type1, ctx->battlemon[ai->partner].type1, & effectivenessOnPartner);
+                AITypeCalc(ctx, MOVE_EARTHQUAKE, TYPE_GROUND, ai->attackerAbility, ai->partnerAbility, BattleItemDataGet(ctx, ai->partnerItem, 1), ctx->battlemon[ai->partner].type1, ctx->battlemon[ai->partner].type2, &effectivenessOnPartner);
                 if(ai->partnerAbility == ABILITY_LEVITATE ||
                     HasType(ctx, ai->partner, TYPE_FLYING) ||
                     ctx->battlemon[ai->partner].effect_of_moves & MOVE_EFFECT_FLAG_MAGNET_RISE){
                         moveScore += 2;
                 }
-                else if(effectivenessOnPartner == MOVE_STATUS_FLAG_SUPER_EFFECTIVE){
-                    moveScore -= 15;
+                else if(effectivenessOnPartner == MOVE_STATUS_FLAG_SUPER_EFFECTIVE
+                     && (HasType(ctx, ai->partner, TYPE_FIRE)
+                      || HasType(ctx, ai->partner, TYPE_POISON)
+                      || HasType(ctx, ai->partner, TYPE_ELECTRIC)
+                      || HasType(ctx, ai->partner, TYPE_ROCK))){
+                    moveScore -= 10;
                 }
                 else{
                     moveScore -= 3;
                 }
-            
         }
         /*Future Sight & Doom Desire*/
         else if(ai->attackerMoveEffect == MOVE_EFFECT_HIT_IN_3_TURNS){
@@ -3607,55 +3535,6 @@ int TagStrategyFlag(struct BattleSystem *bsys, int attacker, int i, struct AICon
                     }
                 }
             }
-        }
-        /*Weather Section:*/
-        /*Rain Dance*/
-        else if(ai->attackerMoveEffect == MOVE_EFFECT_WEATHER_RAIN){
-            if(ai->attackerAbility == ABILITY_SWIFT_SWIM || ai->attackerAbility == ABILITY_RAIN_DISH ||
-               ai->attackerAbility == ABILITY_DRY_SKIN || ai->attackerAbility == ABILITY_HYDRATION)
-                moveScore += 2;
-            if(ai->partnerAbility == ABILITY_SWIFT_SWIM || ai->partnerAbility == ABILITY_RAIN_DISH ||
-               ai->partnerAbility == ABILITY_DRY_SKIN || ai->partnerAbility == ABILITY_HYDRATION)
-                moveScore += 2;
-        }
-        /*Sunny Day*/
-        else if(ai->attackerMoveEffect == MOVE_EFFECT_WEATHER_SUN){
-            if(ai->attackerAbility == ABILITY_CHLOROPHYLL || ai->attackerAbility == ABILITY_SOLAR_POWER ||
-               ai->attackerAbility == ABILITY_HARVEST || ai->attackerAbility == ABILITY_FLOWER_GIFT ||
-               ai->attackerAbility == ABILITY_LEAF_GUARD)
-                moveScore += 2;
-            else if(ai->attackerAbility == ABILITY_DRY_SKIN)
-                moveScore -= 2;
-            if(ai->partnerAbility == ABILITY_CHLOROPHYLL || ai->partnerAbility == ABILITY_SOLAR_POWER ||
-               ai->partnerAbility == ABILITY_HARVEST || ai->partnerAbility == ABILITY_FLOWER_GIFT ||
-               ai->partnerAbility == ABILITY_LEAF_GUARD)
-                moveScore += 2;
-            else if(ai->partnerAbility == ABILITY_DRY_SKIN)
-                moveScore -= 2;
-        }
-        /*Hail / Snow*/
-        else if(ai->attackerMoveEffect == MOVE_EFFECT_WEATHER_HAIL || ai->attackerMoveEffect == MOVE_EFFECT_WEATHER_SNOW){
-            if(ai->attackerAbility == ABILITY_ICE_BODY || ai->attackerAbility == ABILITY_SNOW_CLOAK ||
-               ai->attackerAbility == ABILITY_SLUSH_RUSH ||
-               BattlerHasMoveEffect(bsys, ai->attacker, MOVE_EFFECT_BLIZZARD, ai))
-                moveScore += 2;
-            if(ai->partnerAbility == ABILITY_ICE_BODY || ai->partnerAbility == ABILITY_SNOW_CLOAK ||
-               ai->partnerAbility == ABILITY_SLUSH_RUSH ||
-               BattlerHasMoveEffect(bsys, ai->partner, MOVE_EFFECT_BLIZZARD, ai))
-                moveScore += 2;
-        }
-        /*Sandstorm*/
-        else if(ai->attackerMoveEffect == MOVE_EFFECT_WEATHER_SANDSTORM){
-            if(ai->attackerAbility == ABILITY_SAND_VEIL || ai->attackerAbility == ABILITY_SAND_RUSH ||
-               ai->attackerAbility == ABILITY_SAND_FORCE ||
-               HasType(ctx, ai->attacker, TYPE_ROCK) || HasType(ctx, ai->attacker, TYPE_GROUND) ||
-               HasType(ctx, ai->attacker, TYPE_STEEL))
-                moveScore += 2;
-            if(ai->partnerAbility == ABILITY_SAND_VEIL || ai->partnerAbility == ABILITY_SAND_RUSH ||
-               ai->partnerAbility == ABILITY_SAND_FORCE ||
-               HasType(ctx, ai->partner, TYPE_ROCK) || HasType(ctx, ai->partner, TYPE_GROUND) ||
-               HasType(ctx, ai->partner, TYPE_STEEL))
-                moveScore += 2;
         }
 
         /*Gravity*/
@@ -3686,77 +3565,22 @@ int TagStrategyFlag(struct BattleSystem *bsys, int attacker, int i, struct AICon
             }
         }
 
-        /*Trick Room*/
-        else if(ai->attackerMoveEffect == MOVE_EFFECT_TRICK_ROOM){
-            if(ai->livingMembersAttacker == 1 || ai-> livingMembersDefender == 1){
-                moveScore -= 30;
-            }
-            else if(ctx->turnOrder[ai->attacker] == 0){//if attacker moves first
-                if(ctx->turnOrder[ai->partner] == 0 || ctx->turnOrder[ai->partner] == 1){ //partner moves first or second
-                    moveScore -= 30;
-                }
-                else{
-                    moveScore -= 5;
-                }
-            }
-            else if(ctx->turnOrder[ai->attacker] == 1){//if attacker moves second
-                if(ctx->turnOrder[ai->partner] == 0 ){ //partner moves first
-                    moveScore -= 30;
-                }
-                else{
-                    moveScore -= 5;
-                }
-            }
-            else if(ctx->turnOrder[ai->attacker] == 2){//if attacker moves third
-                if(ctx->turnOrder[ai->partner] != 3 ){ //partner doesn't move last
-                    moveScore -= 5;
-                }
-                else{
-                    if(BattleRand(bsys) % 4 < 3){
-                        moveScore += 5;
-                    }
-                    else{
-                        moveScore -= 5;
-                    }
-                }
-            }
-            else if(ctx->turnOrder[ai->attacker] == 3){//if attacker moves last
-                if(ctx->turnOrder[ai->partner] != 2 ){ //partner doesn't move third
-                    moveScore -= 5;
-                }
-                else{
-                    if(BattleRand(bsys) % 4 < 3){
-                        moveScore += 5;
-                    }
-                    else{
-                        moveScore -= 5;
-                    }
-                }
-            }
-        }
 
-        /*Follow Me*/
-        if(ai->attackerMoveEffect == MOVE_EFFECT_MAKE_GLOBAL_TARGET ){
-            if(ai->partnerHP == 0){
-                return -10;
-            }
-            moveScore += 6;
-        }
 
-        /*Discharge & Parabolic Thingy*/
-        else if(ai->attackerMoveType == TYPE_ELECTRIC && ctx->moveTbl[ai->attackerMove].target == RANGE_ALL_ADJACENT){
-            AITypeCalc(ctx, MOVE_DISCHARGE, TYPE_ELECTRIC, ai->attackerAbility, ai->partnerAbility, BattleItemDataGet(ctx, ai->partnerItem, 1), ctx->battlemon[ai->partner].type1, ctx->battlemon[ai->partner].type1, & effectivenessOnPartner);
+        /*Spread Electric moves (Discharge, Parabolic Charge, etc.)*/
+        else if(ai->attackerMoveType == TYPE_ELECTRIC
+             && ctx->moveTbl[ai->attackerMove].target == RANGE_ALL_ADJACENT
+             && ai->partnerHP != 0){
+            AITypeCalc(ctx, MOVE_DISCHARGE, TYPE_ELECTRIC, ai->attackerAbility, ai->partnerAbility, BattleItemDataGet(ctx, ai->partnerItem, 1), ctx->battlemon[ai->partner].type1, ctx->battlemon[ai->partner].type2, &effectivenessOnPartner);
 
-            if(ai->partnerAbility == ABILITY_MOTOR_DRIVE ||
-                ai->partnerAbility == ABILITY_VOLT_ABSORB ||
-                ai->partnerAbility == ABILITY_LIGHTNING_ROD){
-                    moveScore += 3;
-            }
-            else if(effectivenessOnPartner == MOVE_STATUS_FLAG_NOT_EFFECTIVE){
-                moveScore += 3;
+            if(ai->partnerAbility == ABILITY_MOTOR_DRIVE
+            || ai->partnerAbility == ABILITY_VOLT_ABSORB
+            || ai->partnerAbility == ABILITY_LIGHTNING_ROD
+            || effectivenessOnPartner == MOVE_STATUS_FLAG_NOT_EFFECTIVE){
+                moveScore += 2;
             }
             else if(effectivenessOnPartner == MOVE_STATUS_FLAG_SUPER_EFFECTIVE){
-                moveScore -= 3;
+                moveScore -= 15;
             }
             else{
                 moveScore -= 3;
@@ -3765,7 +3589,7 @@ int TagStrategyFlag(struct BattleSystem *bsys, int attacker, int i, struct AICon
 
         /*Single Target Electric Moves*/
         else if(ai->attackerMoveType == TYPE_ELECTRIC && ctx->moveTbl[ai->attackerMove].target == RANGE_SINGLE_TARGET){
-            if(ctx->battlemon[ai->defender].ability == ABILITY_LIGHTNING_ROD || 
+            if(ctx->battlemon[ai->defender].ability == ABILITY_LIGHTNING_ROD ||
                 (ctx->battlemon[BATTLER_ALLY(ai->defender)].ability == ABILITY_LIGHTNING_ROD && ctx->battlemon[BATTLER_ALLY(ai->defender)].hp != 0)){
                     moveScore -= 9;
             }
@@ -3774,48 +3598,47 @@ int TagStrategyFlag(struct BattleSystem *bsys, int attacker, int i, struct AICon
             }
         }
 
-        /*Lava Plume */
-        else if(ai->attackerMoveType == TYPE_FIRE && ctx->moveTbl[ai->attackerMove].target == RANGE_ALL_ADJACENT){
-            AITypeCalc(ctx, MOVE_LAVA_PLUME, TYPE_FIRE, ai->attackerAbility, ai->partnerAbility, BattleItemDataGet(ctx, ai->partnerItem, 1), ctx->battlemon[ai->partner].type1, ctx->battlemon[ai->partner].type1, & effectivenessOnPartner);
-
-            if(ctx->battlemon[ai->defender].moveeffect.flashFire == 1){
-                moveScore += 1; //this is kinda weird to add this instead of subtracting
-            }
+        /*Spread Fire moves (Lava Plume, Heat Wave, etc.)*/
+        else if(ai->attackerMoveType == TYPE_FIRE
+             && ctx->moveTbl[ai->attackerMove].target == RANGE_ALL_ADJACENT
+             && ai->partnerHP != 0){
+            AITypeCalc(ctx, MOVE_LAVA_PLUME, TYPE_FIRE, ai->attackerAbility, ai->partnerAbility, BattleItemDataGet(ctx, ai->partnerItem, 1), ctx->battlemon[ai->partner].type1, ctx->battlemon[ai->partner].type2, &effectivenessOnPartner);
 
             if(ai->partnerAbility == ABILITY_FLASH_FIRE){
-                moveScore += 3;
+                moveScore += 2;
             }
-            else if(ai->partnerAbility == ABILITY_DRY_SKIN || ai->partnerAbility == ABILITY_FLUFFY){
-                moveScore -= 3;
-            }
-            else if(effectivenessOnPartner == MOVE_STATUS_FLAG_SUPER_EFFECTIVE){
-                moveScore -= 3;
-            }
-            else if(effectivenessOnPartner == MOVE_STATUS_FLAG_NOT_VERY_EFFECTIVE){
-                moveScore += 1;
+            else if(effectivenessOnPartner == MOVE_STATUS_FLAG_SUPER_EFFECTIVE
+                 || ai->partnerAbility == ABILITY_DRY_SKIN
+                 || ai->partnerAbility == ABILITY_FLUFFY){
+                moveScore -= 15;
             }
             else{
-                moveScore -= 3; //TODO: this might want to be excluded...
+                moveScore -= 3;
             }
         }
 
-        /*Surf*/
-        else if(ai->attackerMoveType == TYPE_WATER && ctx->moveTbl[ai->attackerMove].target == RANGE_ALL_ADJACENT){
-            AITypeCalc(ctx, MOVE_SURF, TYPE_WATER, ai->attackerAbility, ai->partnerAbility, BattleItemDataGet(ctx, ai->partnerItem, 1), ctx->battlemon[ai->partner].type1, ctx->battlemon[ai->partner].type1, & effectivenessOnPartner);
-            if(ai->partnerAbility == ABILITY_DRY_SKIN || ai->partnerAbility == ABILITY_WATER_ABSORB){
-                moveScore += 3;
+        /*Spread Water moves (Surf, Muddy Water, etc.)*/
+        else if(ai->attackerMoveType == TYPE_WATER
+             && ctx->moveTbl[ai->attackerMove].target == RANGE_ALL_ADJACENT
+             && ai->partnerHP != 0){
+            AITypeCalc(ctx, MOVE_SURF, TYPE_WATER, ai->attackerAbility, ai->partnerAbility, BattleItemDataGet(ctx, ai->partnerItem, 1), ctx->battlemon[ai->partner].type1, ctx->battlemon[ai->partner].type2, &effectivenessOnPartner);
+
+            if(ai->partnerAbility == ABILITY_WATER_ABSORB
+            || ai->partnerAbility == ABILITY_DRY_SKIN
+            || ai->partnerAbility == ABILITY_STORM_DRAIN){
+                moveScore += 2;
             }
             else if(effectivenessOnPartner == MOVE_STATUS_FLAG_SUPER_EFFECTIVE){
-                moveScore -= 3;
+                moveScore -= 15;
             }
             else{
-                moveScore -= 3;//this might want to be excluded...
+                moveScore -= 3;
             }
         }
 
         /*Single Target Water moves*/
         else if(ai->attackerMoveType == TYPE_WATER && ctx->moveTbl[ai->attackerMove].target == RANGE_SINGLE_TARGET){
-            if(ctx->battlemon[ai->defender].ability == ABILITY_STORM_DRAIN || 
+            if(ctx->battlemon[ai->defender].ability == ABILITY_STORM_DRAIN ||
                 (ctx->battlemon[BATTLER_ALLY(ai->defender)].ability == ABILITY_STORM_DRAIN && ctx->battlemon[BATTLER_ALLY(ai->defender)].hp != 0)){
                     moveScore -= 15;
             }
@@ -3823,11 +3646,45 @@ int TagStrategyFlag(struct BattleSystem *bsys, int attacker, int i, struct AICon
                 moveScore -= 15;
             }
         }
-        /*Encourage Damaging moves if partner has Helping Hand. We exclude flat damaging moves for obvious reasons.*/
-        else if(BattlerHasMoveEffect(bsys, ai->partner, MOVE_EFFECT_BOOST_ALLY_POWER_BY_50_PERCENT, ai)){
-            if(!IsInList(ai->attackerMoveEffect, MovesEffectsWithFlatDamageOrOHKO, NELEMS(MovesEffectsWithFlatDamageOrOHKO))){
-                moveScore += 1;
-            }
+
+        /*Role Play - copy a valuable partner ability*/
+        else if(ai->attackerMoveEffect == MOVE_EFFECT_COPY_ABILITY){
+            BOOL partnerHasDesiredAbility = (ai->partnerAbility == ABILITY_HUGE_POWER
+                                          || ai->partnerAbility == ABILITY_PURE_POWER
+                                          || ai->partnerAbility == ABILITY_PROTEAN
+                                          || ai->partnerAbility == ABILITY_TOUGH_CLAWS);
+            BOOL attackerHasDesiredAbility = (ai->attackerAbility == ABILITY_HUGE_POWER
+                                           || ai->attackerAbility == ABILITY_PURE_POWER
+                                           || ai->attackerAbility == ABILITY_PROTEAN
+                                           || ai->attackerAbility == ABILITY_TOUGH_CLAWS);
+            if(partnerHasDesiredAbility && !attackerHasDesiredAbility)
+                moveScore += 9;
+            else
+                return -20;
+        }
+
+        /*Fling (Salac Berry) - speed-raise item fling synergy*/
+        else if(ai->attackerMoveEffect == MOVE_EFFECT_FLING && ai->attackerItem == ITEM_SALAC_BERRY){
+            if(ai->partnerItem == ITEM_WEAKNESS_POLICY)
+                moveScore += 12;
+            else
+                moveScore += 9;
+        }
+
+        /*Icy Wind / Electroweb - speed-drop moves gain +1 in doubles*/
+        else if(ai->attackerMoveEffect == MOVE_EFFECT_LOWER_SPEED_HIT){
+            moveScore += 1;
+        }
+
+        /*Spread Atk/SpAtk drop moves (e.g. spread Trop Kick / Skitter Smack effects) - +1 in doubles*/
+        else if((ai->attackerMoveEffect == MOVE_EFFECT_LOWER_ATTACK_HIT || ai->attackerMoveEffect == MOVE_EFFECT_LOWER_SP_ATK_HIT)
+             && ctx->moveTbl[ai->attackerMove].target == RANGE_ADJACENT_OPPONENTS){
+            moveScore += 1;
+        }
+
+        /*Dark Void - spread sleep move gains +1 in doubles*/
+        else if(ai->attackerMove == MOVE_DARK_VOID){
+            moveScore += 1;
         }
     }
     debug_printf("tag strategy end\n");

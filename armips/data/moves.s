@@ -251,10 +251,10 @@ movedata MOVE_SWORDS_DANCE, "Swords Dance"
     movedescription MOVE_SWORDS_DANCE, "A frenetic dance to\nuplift the fighting\nspirit. It sharply\nraises the user’s\nAttack stat."
 
 movedata MOVE_CUT, "Cut"
-    battleeffect MOVE_EFFECT_HIT
+    battleeffect MOVE_EFFECT_HIGH_CRITICAL
     pss SPLIT_PHYSICAL
-    basepower 50
-    type TYPE_NORMAL
+    basepower 60
+    type TYPE_GRASS
     accuracy 100
     pp 30
     effectchance 0
@@ -1134,7 +1134,7 @@ movedata MOVE_STRENGTH, "Strength"
     battleeffect MOVE_EFFECT_HIT
     pss SPLIT_PHYSICAL
     basepower 80
-    type TYPE_NORMAL
+    type TYPE_FIGHTING
     accuracy 100
     pp 15
     effectchance 0
@@ -2031,7 +2031,7 @@ movedata MOVE_FIRE_BLAST, "Fire Blast"
     pss SPLIT_SPECIAL
     basepower 110
     type TYPE_FIRE
-    accuracy 100
+    accuracy 85
     pp 5
     effectchance 10
     target RANGE_SINGLE_TARGET
@@ -2191,7 +2191,7 @@ movedata MOVE_HIGH_JUMP_KICK, "High Jump Kick"
     pss SPLIT_PHYSICAL
     basepower 130
     type TYPE_FIGHTING
-    accuracy 90
+    accuracy 95
     pp 10
     effectchance 0
     target RANGE_SINGLE_TARGET
@@ -2477,7 +2477,7 @@ movedata MOVE_EXPLOSION, "Explosion"
 movedata MOVE_FURY_SWIPES, "Fury Swipes"
     battleeffect MOVE_EFFECT_MULTI_HIT
     pss SPLIT_PHYSICAL
-    basepower 18
+    basepower 20
     type TYPE_NORMAL
     accuracy 100
     pp 15
@@ -3389,7 +3389,7 @@ movedata MOVE_FURY_CUTTER, "Fury Cutter"
 movedata MOVE_STEEL_WING, "Steel Wing"
     battleeffect MOVE_EFFECT_RAISE_DEF_HIT
     pss SPLIT_PHYSICAL
-    basepower 80
+    basepower 70
     type TYPE_STEEL
     accuracy 100
     pp 25
@@ -6147,7 +6147,7 @@ movedata MOVE_COPYCAT, "Copycat"
     pp 20
     effectchance 0
     target RANGE_SINGLE_TARGET_SPECIAL
-    priority 0
+    priority 1
     flags 0
     appeal APPEAL_STEAL_VOLTAGE
     contesttype CONTEST_COOL
@@ -6909,7 +6909,7 @@ movedata MOVE_FLASH_CANNON, "Flash Cannon"
 movedata MOVE_ROCK_CLIMB, "Rock Climb"
     battleeffect MOVE_EFFECT_CONFUSE_HIT
     pss SPLIT_PHYSICAL
-    basepower 80
+    basepower 90
     type TYPE_ROCK
     accuracy 100
     pp 20
@@ -7327,7 +7327,7 @@ movedata MOVE_HEAD_SMASH, "Head Smash"
     pss SPLIT_PHYSICAL
     basepower 150
     type TYPE_ROCK
-    accuracy 85
+    accuracy 90
     pp 5
     effectchance 0
     target RANGE_SINGLE_TARGET
@@ -7423,7 +7423,7 @@ movedata MOVE_MAGMA_STORM, "Magma Storm"
     pss SPLIT_SPECIAL
     basepower 100
     type TYPE_FIRE
-    accuracy 85
+    accuracy 100
     pp 5
     effectchance 0
     target RANGE_SINGLE_TARGET
@@ -7469,7 +7469,7 @@ movedata MOVE_SEED_FLARE, "Seed Flare"
 movedata MOVE_OMINOUS_WIND, "Ominous Wind"
     battleeffect MOVE_EFFECT_RAISE_ALL_STATS_HIT
     pss SPLIT_SPECIAL
-    basepower 70
+    basepower 80
     type TYPE_GHOST
     accuracy 100
     pp 5
@@ -12534,7 +12534,7 @@ movedata MOVE_DRUM_BEATING, "Drum Beating"
 movedata MOVE_SNAP_TRAP, "Snap Trap"
     battleeffect MOVE_EFFECT_HIT
     pss SPLIT_PHYSICAL
-    basepower 60
+    basepower 75
     type TYPE_GRASS
     accuracy 100
     pp 15
@@ -13307,7 +13307,7 @@ movedata MOVE_DIRE_CLAW, "Dire Claw"
     type TYPE_POISON
     accuracy 100
     pp 15
-    effectchance 50
+    effectchance 30
     target RANGE_SINGLE_TARGET
     priority 0
     flags FLAG_PROTECT | FLAG_MIRROR_MOVE | FLAG_CONTACT
@@ -13319,7 +13319,7 @@ movedata MOVE_DIRE_CLAW, "Dire Claw"
 movedata MOVE_PSYSHIELD_BASH, "Psyshield Bash"
     battleeffect MOVE_EFFECT_RAISE_DEF_HIT
     pss SPLIT_PHYSICAL
-    basepower 80
+    basepower 70
     type TYPE_PSYCHIC
     accuracy 100
     pp 10
@@ -13449,7 +13449,7 @@ movedata MOVE_MOUNTAIN_GALE, "Mountain Gale"
     pss SPLIT_PHYSICAL
     basepower 100
     type TYPE_ICE
-    accuracy 90
+    accuracy 100
     pp 10
     effectchance 30
     target RANGE_SINGLE_TARGET
@@ -13846,7 +13846,7 @@ movedata MOVE_POPULATION_BOMB, "Population Bomb"
     movedescription MOVE_POPULATION_BOMB, "The user’s fellows\ngather in droves to\nperform a combo attack\nthat hits the target one\nto ten times in a row."
 
 movedata MOVE_ICE_SPINNER, "Ice Spinner"
-    battleeffect MOVE_EFFECT_END_TERRAIN
+    battleeffect MOVE_EFFECT_HIT
     pss SPLIT_PHYSICAL
     basepower 80
     type TYPE_ICE
@@ -14280,7 +14280,7 @@ movedata MOVE_HYPER_DRILL, "Hyper Drill"
 movedata MOVE_TWIN_BEAM, "Twin Beam"
     battleeffect MOVE_EFFECT_HIT_TWICE
     pss SPLIT_SPECIAL
-    basepower 55
+    basepower 40
     type TYPE_PSYCHIC
     accuracy 100
     pp 10

@@ -78,8 +78,8 @@ Galarian Rapidash ✓
 Slowpoke ✓
 Slowbro	✓
 Mega Slowbro ✓
-Magnemite ✓
-Magneton ✓
+Magnemite ✓ 
+Magneton ✓ 
 Galarian Farfetch'd ✓
 Alolan Grimer ✓
 Alolan Muk ✓
@@ -121,7 +121,7 @@ Magikarp ✓ (Cherrygrove)
 Gyarados ✓
 Mega Gyarados ✓
 Lapras ✓ (New Bark)
-Porygon ✓
+Porygon ✓ 
 Omanyte ✓
 Omastar	✓
 Kabuto ✓
@@ -163,7 +163,7 @@ Marill ✓
 Azumarill ✓
 Aipom ✓ (Route 29)
 Yanma ✓ (Route 30)
-Paldean Wooper ✓
+Paldean Wooper ✓ 
 Murkrow ✓
 Slowking ✓
 Girafarig ✓
@@ -178,7 +178,7 @@ Granbull ✓
 Hisuian Qwilfish ✓
 Scizor ✓
 Mega Scizor ✓
-Heracross ✓
+Heracross ✓ <- ended here
 Mega Heracross ✓
 Sneasel ✓
 Hisuian Sneasel ✓
@@ -186,18 +186,18 @@ Teddiursa ✓
 Ursaring ✓
 Slugma ✓
 Magcargo ✓
-Swinub ✓
+Swinub ✓ 
 Piloswine ✓
 Galarian Corsola ✓
 Remoraid ✓
 Octillery ✓
-Skarmory ✓
-Houndour ✓ (Route 46)
+Skarmory ✓ 
+Houndour ✓ (Route 46) <- ended here
 Houndoom ✓
 Mega Houndoom ✓
 Kingdra	✓
 Phanpy ✓
-Donphan ✓
+Donphan ✓ <- NOT FINISHED
 Porygon2 ✓
 Stantler ✓
 Tyrogue ✓
