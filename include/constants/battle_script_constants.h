@@ -520,6 +520,7 @@
 #define SUB_SEQ_OVERWORLD_SNOW_TERRAIN        (MAX_BASE_SUBSCRIPT_NUM + 6)
 #define SUB_SEQ_RECOIL_HALF_MAX_HP            (MAX_BASE_SUBSCRIPT_NUM + 7)
 #define SUB_SEQ_ILLUMINATE                    (MAX_BASE_SUBSCRIPT_NUM + 8)
+#define SUB_SEQ_FROSTBITE_DAMAGE              (MAX_BASE_SUBSCRIPT_NUM + 9)
 
 
 // add status effect constants--used in battle effect scripts to queue up a subscript through the table in src/moves.c

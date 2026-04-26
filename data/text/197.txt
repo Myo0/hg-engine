@@ -99,16 +99,16 @@ The opposing {STRVAR_1 1, 0, 0} is hurt\nby its burn!
 {STRVAR_1 1, 0, 0} is already burned!
 The wild {STRVAR_1 1, 0, 0}\nis already burned!
 The opposing {STRVAR_1 1, 0, 0}\nis already burned!
-{STRVAR_1 1, 0, 0} was\nfrozen solid!
-The wild {STRVAR_1 1, 0, 0} was\nfrozen solid!
-The opposing {STRVAR_1 1, 0, 0} was\nfrozen solid!
-{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\nfroze {STRVAR_1 1, 2, 0} solid!
-{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\nfroze the wild {STRVAR_1 1, 2, 0} solid!
-{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\nfroze the opposing {STRVAR_1 1, 2, 0} solid!
-The wild {STRVAR_1 1, 0, 0}’s\n{STRVAR_1 5, 1, 0} froze {STRVAR_1 1, 2, 0}\fsolid!
-The wild {STRVAR_1 1, 0, 0}’s\n{STRVAR_1 5, 1, 0} froze the wild\f{STRVAR_1 1, 2, 0} solid!
-The opposing {STRVAR_1 1, 0, 0}’s\n{STRVAR_1 5, 1, 0} froze {STRVAR_1 1, 2, 0}\fsolid!
-The opposing {STRVAR_1 1, 0, 0}’s\n{STRVAR_1 5, 1, 0} froze the opposing\f{STRVAR_1 1, 2, 0} solid!
+{STRVAR_1 1, 0, 0} is hurt\nby its frostbite!
+The wild {STRVAR_1 1, 0, 0} is hurt\nby its frostbite!
+The opposing {STRVAR_1 1, 0, 0} is hurt\nby its frostbite!
+{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\ngave {STRVAR_1 1, 2, 0} a frostbite!
+{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\ngave the wild {STRVAR_1 1, 2, 0} a frostbite!
+{STRVAR_1 1, 0, 0}’s {STRVAR_1 5, 1, 0}\ngave the opposing {STRVAR_1 1, 2, 0} a frostbite!
+The wild {STRVAR_1 1, 0, 0}’s\n{STRVAR_1 5, 1, 0} gave {STRVAR_1 1, 2, 0}\fa frostbite!
+The wild {STRVAR_1 1, 0, 0}’s\n{STRVAR_1 5, 1, 0} gave the wild\f{STRVAR_1 1, 2, 0} a frostbite!
+The opposing {STRVAR_1 1, 0, 0}’s\n{STRVAR_1 5, 1, 0} gave {STRVAR_1 1, 2, 0}\fa frostbite!
+The opposing {STRVAR_1 1, 0, 0}’s\n{STRVAR_1 5, 1, 0} gave the opposing\f{STRVAR_1 1, 2, 0} a frostbite!
 {STRVAR_1 1, 0, 0} is\nfrozen solid!
 The wild {STRVAR_1 1, 0, 0} is\nfrozen solid!
 The opposing {STRVAR_1 1, 0, 0} is\nfrozen solid!
@@ -1714,3 +1714,6 @@ The opposing {STRVAR_1 1, 0, 0} is\nno longer tormented!
 {STRVAR_1 1, 0, 0} is no longer\nprevented from healing!
 The wild {STRVAR_1 1, 0, 0} is no longer\nprevented from healing!
 The opposing {STRVAR_1 1, 0, 0} is no longer\nprevented from healing!
+{STRVAR_1 1, 0, 0} was frostbitten!
+The wild {STRVAR_1 1, 0, 0}\nwas frostbitten!
+The opposing {STRVAR_1 1, 0, 0}\nwas frostbitten!

@@ -5275,20 +5275,20 @@ movedata MOVE_SAND_TOMB, "Sand Tomb"
     movedescription MOVE_SAND_TOMB, "The user traps the\nfoe inside a harshly\nraging sandstorm for\ntwo to five turns.\n"
 
 movedata MOVE_SHEER_COLD, "Sheer Cold"
-    battleeffect MOVE_EFFECT_ONE_HIT_KO
-    pss SPLIT_SPECIAL
-    basepower 1
+    battleeffect MOVE_EFFECT_STATUS_FROSTBITE
+    pss SPLIT_STATUS
+    basepower 0
     type TYPE_ICE
-    accuracy 30
-    pp 5
+    accuracy 85
+    pp 15
     effectchance 0
     target RANGE_SINGLE_TARGET
     priority 0
-    flags FLAG_MIRROR_MOVE | FLAG_PROTECT
+    flags FLAG_MIRROR_MOVE | FLAG_MAGIC_COAT | FLAG_PROTECT
     appeal APPEAL_ALL_SAME_JUDGE
     contesttype CONTEST_BEAUTY
     terminatedata
-    movedescription MOVE_SHEER_COLD, "The foe is attacked\nwith a blast of\nabsolute-zero cold.\nThe foe instantly\nfaints if it hits."
+    movedescription MOVE_SHEER_COLD, "The foe is attacked\nwith a blast of\nabsolute-zero cold\nthat inflicts\nfrostbite on the\ntarget."
 
 movedata MOVE_MUDDY_WATER, "Muddy Water"
     battleeffect MOVE_EFFECT_LOWER_ACCURACY_HIT

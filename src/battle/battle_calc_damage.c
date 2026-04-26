@@ -515,6 +515,19 @@ void CalcDamageOverall(void *bw, struct BattleStruct *sp) {
         }
     }
 
+    if (movesplit == SPLIT_SPECIAL) {
+        // frostbite halves special damage
+        if (sp->battlemon[attacker].condition & STATUS_FREEZE) {
+            damage = QMul_RoundDown(damage, UQ412__0_5);
+#ifdef DEBUG_DAMAGE_ROLLS
+            for (int u = 0; u < 16; u++)
+            {
+                predamage[u] = QMul_RoundDown(predamage[u], UQ412__0_5);
+            }
+#endif  // DEBUG_DAMAGE_ROLLS
+        }
+    }
+
 #ifdef DEBUG_DAMAGE_CALC
     debug_printf("\n=================\n");
     debug_printf("[CalcBaseDamage] 6.8 Burn Modifier\n");

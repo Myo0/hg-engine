@@ -130,7 +130,7 @@ Apply Status
 Sleep
 Poison
 Burn
-Freeze
+Frostbite
 Paralysis
 Toxic Poison
 Exit

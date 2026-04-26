@@ -28,6 +28,7 @@ struct PACKED AIContext{
     BOOL defenderImmuneToPoison;
     BOOL defenderImmuneToParalysis;
     BOOL defenderImmuneToBurn;
+    BOOL defenderImmuneToFrostbite;
     BOOL defenderImmuneToSleep;
     BOOL attackerKnowsPsychUp;
     BOOL attackerHasSupereffectiveMove;
@@ -813,6 +814,11 @@ int BasicFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext 
 
     /*Check for immunity to burn*/
     else if((ai->attackerMoveEffect == MOVE_EFFECT_STATUS_BURN) && ai->defenderImmuneToBurn){
+        moveScore -= 15;
+    }
+
+    /*Check for immunity to frostbite*/
+    else if((ai->attackerMoveEffect == MOVE_EFFECT_STATUS_FROSTBITE) && ai->defenderImmuneToFrostbite){
         moveScore -= 15;
     }
 
@@ -1808,6 +1814,27 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
         }
     }
 
+    /*Sheer Cold / Frostbite*/
+    else if(ai->attackerMoveEffect == MOVE_EFFECT_STATUS_FROSTBITE){
+        moveScore += 6;
+        if (BattleRand(bsys) % 8 < 3)  // ~37%
+        {
+            BOOL defenderHasSpecial = FALSE;
+            for (int j = 0; j < 4; j++)
+            {
+                u16 defMove = ctx->battlemon[ai->defender].move[j];
+                if (defMove == MOVE_NONE) continue;
+                if (ctx->moveTbl[defMove].split == SPLIT_SPECIAL) { defenderHasSpecial = TRUE; break; }
+            }
+            if (defenderHasSpecial)
+                moveScore += 1;
+            if (BattlerHasMoveEffect(bsys, attacker, MOVE_EFFECT_DOUBLE_DAMAGE_ON_STATUS, ai)
+             || (BattleTypeGet(bsys) & (BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_TAG)
+              && BattlerHasMoveEffect(bsys, ai->partner, MOVE_EFFECT_DOUBLE_DAMAGE_ON_STATUS, ai)))
+                moveScore += 1;
+        }
+    }
+
     /*Poison moves*/
     else if(ai->attackerMoveEffect == MOVE_EFFECT_STATUS_POISON
          || ai->attackerMoveEffect == MOVE_EFFECT_STATUS_BADLY_POISON){
@@ -1945,9 +1972,8 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
         if (ai->defenderAbility == ABILITY_UNAWARE && !bypassesUnaware)
             return -20;
 
-        // Is defender incapacitated (asleep, frozen, recharging)?
+        // Is defender incapacitated (asleep or recharging)? Frostbite does not incapacitate.
         BOOL defIncapacitated = ((ctx->battlemon[ai->defender].condition  & STATUS_SLEEP)   != 0)
-                             || ((ctx->battlemon[ai->defender].condition  & STATUS_FREEZE)  != 0)
                              || ((ctx->battlemon[ai->defender].condition2 & STATUS2_RECHARGE) != 0);
 
         // Is AI slower and 2HKO'd?
@@ -3396,14 +3422,28 @@ int TagStrategyFlag(struct BattleSystem *bsys, int attacker, int i, struct AICon
                     }
                     else{
                         moveScore -= 30;
-                    }                    
+                    }
                 }
-                else if(ctx->battlemon[ai->partner].ability == ABILITY_GUTS && 
-                        ctx->battlemon[ai->partner].condition & STATUS_NONE && 
-                        !HasType(ctx, ai->partner, TYPE_FIRE) && 
+                else if(ctx->battlemon[ai->partner].ability == ABILITY_GUTS &&
+                        ctx->battlemon[ai->partner].condition & STATUS_NONE &&
+                        !HasType(ctx, ai->partner, TYPE_FIRE) &&
                         ai->partnerItem != ITEM_FLAME_ORB &&
                         ai->partnerItem != ITEM_TOXIC_ORB &&
                         ai->partnerPercentHP >=  81){
+                            moveScore += 3;
+                }
+                else{
+                    moveScore -= 30;
+                }
+            }
+            /*Frostbite*/
+            else if(ai->attackerMoveEffect == MOVE_EFFECT_STATUS_FROSTBITE){
+                if(ctx->battlemon[ai->partner].ability == ABILITY_GUTS &&
+                        ctx->battlemon[ai->partner].condition & STATUS_NONE &&
+                        !HasType(ctx, ai->partner, TYPE_ICE) &&
+                        ai->partnerItem != ITEM_FLAME_ORB &&
+                        ai->partnerItem != ITEM_TOXIC_ORB &&
+                        ai->partnerPercentHP >= 81){
                             moveScore += 3;
                 }
                 else{
@@ -4106,15 +4146,24 @@ void SetupStateVariables(struct BattleSystem *bsys, int attacker, u32 defender, 
         (ai->defenderAbility == ABILITY_HYDRATION && ctx->field_condition & WEATHER_RAIN_ANY) ||
         (ai->defenderAbility == ABILITY_MAGIC_GUARD && ctx->battlemon[attacker].speed > ctx->battlemon[ai->defender].speed)) ||
         (IsClientGrounded(ctx, ai->defender) && ctx->terrainOverlay.type == MISTY_TERRAIN) ;
-    ai->defenderImmuneToBurn =  
+    ai->defenderImmuneToBurn =
         (ai->defenderType1 == TYPE_FIRE || ai->defenderType2 == TYPE_FIRE ||
-        ctx->battlemon[ai->defender].condition & STATUS_ALL || 
+        ctx->battlemon[ai->defender].condition & STATUS_ALL ||
         ctx->side_condition[ai->defenderSide] & SIDE_STATUS_SAFEGUARD ||
         ai->defenderAbility == ABILITY_MAGIC_GUARD ||
         ai->defenderAbility == ABILITY_WATER_VEIL ||
         ai->defenderAbility == ABILITY_THERMAL_EXCHANGE ||
         ai->defenderAbility == ABILITY_WATER_BUBBLE) ||
-        (ai->defenderAbility == ABILITY_LEAF_GUARD && ctx->field_condition & WEATHER_SUNNY_ANY)|| 
+        (ai->defenderAbility == ABILITY_LEAF_GUARD && ctx->field_condition & WEATHER_SUNNY_ANY)||
+        (ai->defenderAbility == ABILITY_HYDRATION && ctx->field_condition & WEATHER_RAIN_ANY) ||
+        (IsClientGrounded(ctx, ai->defender) && ctx->terrainOverlay.type == MISTY_TERRAIN);
+    ai->defenderImmuneToFrostbite =
+        (ai->defenderType1 == TYPE_ICE || ai->defenderType2 == TYPE_ICE ||
+        ctx->battlemon[ai->defender].condition & STATUS_ALL ||
+        ctx->side_condition[ai->defenderSide] & SIDE_STATUS_SAFEGUARD ||
+        ai->defenderAbility == ABILITY_MAGMA_ARMOR ||
+        ai->defenderAbility == ABILITY_PURIFYING_SALT) ||
+        (ai->defenderAbility == ABILITY_LEAF_GUARD && ctx->field_condition & WEATHER_SUNNY_ANY) ||
         (ai->defenderAbility == ABILITY_HYDRATION && ctx->field_condition & WEATHER_RAIN_ANY) ||
         (IsClientGrounded(ctx, ai->defender) && ctx->terrainOverlay.type == MISTY_TERRAIN);
     ai->defenderImmuneToSleep = (ctx->battlemon[ai->defender].condition & STATUS_ALL || 

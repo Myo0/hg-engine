@@ -412,6 +412,7 @@
 // define your custom move effects below like this
 // .equ MOVE_EFFECT_CUSTOM_1, (MAX_BASE_MOVE_EFFECT_NUM + 1)
 .equ MOVE_EFFECT_RECOIL_HALF_MAX_HP, (MAX_BASE_MOVE_EFFECT_NUM + 1)
+.equ MOVE_EFFECT_STATUS_FROSTBITE,   (MAX_BASE_MOVE_EFFECT_NUM + 2)
 
 
 .endif
