@@ -192,12 +192,12 @@ Galarian Corsola ✓
 Remoraid ✓
 Octillery ✓
 Skarmory ✓ 
-Houndour ✓ (Route 46) <- ended here
+Houndour ✓ (Route 46)
 Houndoom ✓
 Mega Houndoom ✓
 Kingdra	✓
 Phanpy ✓
-Donphan ✓ <- NOT FINISHED
+Donphan ✓
 Porygon2 ✓
 Stantler ✓
 Tyrogue ✓
@@ -251,9 +251,9 @@ Sableye ✓
 Mega Sableye ✓
 Mawile ✓
 Mega Mawile ✓
-Aron ✓ (Route 31)
+Aron ✓ (Route 31) <- ended here
 Lairon ✓
-Aggron ✓
+Aggron ✓ 
 Mega Aggron ✓
 Meditite ✓
 Medicham ✓

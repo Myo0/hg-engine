@@ -2616,7 +2616,7 @@ evodata SPECIES_TEDDIURSA
     terminateevodata
 
 evodata SPECIES_URSARING
-    evolution EVO_STONE ITEM_PEAT_BLOCK, SPECIES_URSALUNA
+    evolution EVO_STONE, ITEM_PEAT_BLOCK, SPECIES_URSALUNA
     evolutionwithform EVO_LEVEL, 50, SPECIES_URSALUNA, 1 
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
@@ -14061,7 +14061,7 @@ evodata SPECIES_ZIGZAGOON_GALARIAN
 terminateevodata
 
 evodata SPECIES_LINOONE_GALARIAN
-    evolution EVO_LEVEL, 35, SPECIES_OBSTAGOON
+    evolution EVO_LEVEL, 41, SPECIES_OBSTAGOON
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE

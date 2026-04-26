@@ -1734,30 +1734,34 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
         return -20;
 
     /*Trapping moves (Fire Spin, Sand Tomb, Wrap, etc.)
-      Only score here if EvaluateAttackFlag didn't handle it (not highest damage, doesn't kill).
-      If it is highest damage or kills, EvaluateAttackFlag applies the standard +6/+8 and kill bonus.*/
+      If defender is already trapped, EvaluateAttackFlag owns the score entirely (pure damage value).
+      If not trapped, only score here when the move isn't the highest damage option and doesn't kill —
+      those cases are handled by EvaluateAttackFlag's standard bonuses.*/
     if (ai->attackerMoveEffect == MOVE_EFFECT_BIND_HIT)
     {
-        BOOL trapIsKill = (ai->attackerAvgRollMoveDamages[i] >= ai->defenderHP);
-        BOOL trapIsHighest = TRUE;
-        for (int j = 0; j < ai->attackerMovesKnown; j++)
+        if (ctx->binding_turns[ai->defender] == 0)
         {
-            if (i == j) continue;
-            u16 mj = ctx->battlemon[attacker].move[j];
-            if (mj == MOVE_NONE) continue;
-            if (MoveExcludedFromDamageBonus(mj, ctx->moveTbl[mj].effect)) continue;
-            if (ai->attackerAvgRollMoveDamages[i] < ai->attackerAvgRollMoveDamages[j])
+            BOOL trapIsKill = (ai->attackerAvgRollMoveDamages[i] >= ai->defenderHP);
+            BOOL trapIsHighest = TRUE;
+            for (int j = 0; j < ai->attackerMovesKnown; j++)
             {
-                trapIsHighest = FALSE;
-                break;
+                if (i == j) continue;
+                u16 mj = ctx->battlemon[attacker].move[j];
+                if (mj == MOVE_NONE) continue;
+                if (MoveExcludedFromDamageBonus(mj, ctx->moveTbl[mj].effect)) continue;
+                if (ai->attackerAvgRollMoveDamages[i] < ai->attackerAvgRollMoveDamages[j])
+                {
+                    trapIsHighest = FALSE;
+                    break;
+                }
             }
-        }
-        if (!trapIsHighest && !trapIsKill)
-        {
-            if (BattleRand(bsys) % 5 == 0)
-                moveScore += 8;
-            else
-                moveScore += 6;
+            if (!trapIsHighest && !trapIsKill)
+            {
+                if (BattleRand(bsys) % 5 == 0)
+                    moveScore += 8;
+                else
+                    moveScore += 6;
+            }
         }
     }
 
@@ -2437,14 +2441,6 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
         }
     }
 
-    /*Binding moves*/
-    else if(ai->attackerMoveEffect == MOVE_EFFECT_BIND_HIT){
-        if (ctx->binding_turns[ai->defender] == 0) {
-            if (BattleRand(bsys) % 5 == 0) moveScore += 8;
-            else moveScore += 6;
-        }
-    }
-
     /*Recoil moves*/
 
 
@@ -3116,7 +3112,7 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
     else if (ai->attackerMoveEffect == MOVE_EFFECT_HIT_BEFORE_SWITCH)
     {
         if (ai->attackerAvgRollMoveDamages[i] >= ai->defenderHP)
-            moveScore += 10;
+            moveScore += 12;
         else if (ai->defenderPercentHP < 20)
             moveScore += 10;
         else if (ai->defenderPercentHP < 40)
@@ -3306,6 +3302,11 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
                 moveScore += 8;
             }
         }
+    }
+
+    /*Metronome*/
+    if (ai->attackerMoveEffect == MOVE_EFFECT_CALL_RANDOM_MOVE) {
+        moveScore += (BattleRand(bsys) % 5 == 0) ? 8 : 6;
     }
 
     debug_printf("end of expert flag\n");

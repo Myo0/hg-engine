@@ -1845,13 +1845,13 @@ headbuttheader  73,  27,   0   // Violet City
 headbuttheader  74,  15,   0   // Azalea Town
     // normal slots; probabilities: 50, 15, 15, 10, 5, 5
     headbuttencounter SPECIES_STARLY, 10, 16
-    headbuttencounter SPECIES_HERACROSS, 16, 16
+    headbuttencounter SPECIES_SURSKIT, 16, 16
     headbuttencounter SPECIES_HERACROSS, 16, 16
     headbuttencounter SPECIES_NINCADA, 10, 16
     headbuttencounter SPECIES_AIPOM, 10, 16
     headbuttencounter SPECIES_AIPOM, 10, 16
     headbuttencounter SPECIES_STARLY, 10, 16
-    headbuttencounter SPECIES_HERACROSS, 16, 16
+    headbuttencounter SPECIES_SURSKIT, 16, 16
     headbuttencounter SPECIES_HERACROSS, 16, 16
     headbuttencounter SPECIES_NINCADA, 10, 16
     headbuttencounter SPECIES_AIPOM, 10, 16
@@ -2388,13 +2388,13 @@ headbuttheader 150,   0,   0   // Route 35 & Pok�athlon Dome Inbetween
 headbuttheader 151,  10,   4   // Route 47
     // normal slots; probabilities: 50, 15, 15, 10, 5, 5
     headbuttencounter SPECIES_STARAPTOR, 40, 40
-    headbuttencounter SPECIES_HERACROSS, 40, 40
+    headbuttencounter SPECIES_VESPIQUEN, 40, 40
     headbuttencounter SPECIES_HERACROSS, 40, 40
     headbuttencounter SPECIES_BEEDRILL, 40, 40
     headbuttencounter SPECIES_BEEDRILL, 40, 40
     headbuttencounter SPECIES_BEEDRILL, 40, 40
     headbuttencounter SPECIES_STARAPTOR, 40, 40
-    headbuttencounter SPECIES_HERACROSS, 40, 40
+    headbuttencounter SPECIES_VESPIQUEN, 40, 40
     headbuttencounter SPECIES_HERACROSS, 40, 40
     headbuttencounter SPECIES_BEEDRILL, 40, 40
     headbuttencounter SPECIES_BEEDRILL, 40, 40

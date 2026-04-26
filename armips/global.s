@@ -34,6 +34,8 @@
 .include "armips/asm/custom/smashable_rock_items.s"
 .include "armips/asm/custom/remove_obedience_check.s"
 .include "armips/asm/custom/double_battle_music.s"
+.include "armips/asm/custom/encounter_rates.s"
+.include "armips/asm/custom/fishing_autohook.s"
 
 .if FAIRY_TYPE_IMPLEMENTED == 1
 

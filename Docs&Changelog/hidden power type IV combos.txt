@@ -19,6 +19,10 @@
         additionalflags TRAINER_DATA_EXTRA_TYPE_STATUS
         status 16
 
+command for reverting to old gen cries if i see fit:
+
+git revert dc8b99802ec07006f7966eb27dde46cdc5c0f73e
+
 
 AI bugs for after weekly claude reset at 2:30 Tuesday
 

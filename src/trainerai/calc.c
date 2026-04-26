@@ -2126,6 +2126,7 @@ int LONG_CALL BattleAI_PostKOSwitchIn_Internal(struct BattleSystem* bsys, int at
 
             speedCalc = BattleAI_CalcSpeed(bsys, ctx, defender, mon, CALCSPEED_FLAG_NO_PRIORITY); //checks actual turn order with field state considered
 
+            BOOL pursuitOHKOs = FALSE;
             for (u8 j = 0; j < CLIENT_MAX; ++j)
             {
                 struct AI_damage damages = { 0 };
@@ -2148,17 +2149,26 @@ int LONG_CALL BattleAI_PostKOSwitchIn_Internal(struct BattleSystem* bsys, int at
                         {
 							monHighestDamageMoveno = moveno;
                             monDealsRolledDamage[i] = damages.damageRoll;
-                        }    
+                        }
+
+                        if (attackerMove.effect == MOVE_EFFECT_HIT_BEFORE_SWITCH && damages.damageRoll >= defenderMon.hp)
+                            pursuitOHKOs = TRUE;
                     }
                     debug_printf("Dealing with move %d: %d deals [%d-%d], roll %d > def.HP %d\n", j, moveno, damages.damageRange[0], damages.damageRange[15], damages.damageRoll, defenderMon.hp);
                 }
             }
 
+            BOOL defenderHasStatusMove = FALSE;
             for (int k = 0; k < 4; ++k)
             {
                 struct AI_damage damages = { 0 };
                 u32 defenderMoveno = ctx->battlemon[defender].move[k];
                 struct BattleMove defenderMove = ctx->moveTbl[defenderMoveno];
+
+                if (defenderMove.effect == MOVE_EFFECT_STATUS_BURN
+                 || defenderMove.effect == MOVE_EFFECT_STATUS_POISON
+                 || defenderMove.effect == MOVE_EFFECT_STATUS_BADLY_POISON)
+                    defenderHasStatusMove = TRUE;
 
                 if (defenderMove.split != SPLIT_STATUS && defenderMove.power)
                 {
@@ -2188,12 +2198,19 @@ int LONG_CALL BattleAI_PostKOSwitchIn_Internal(struct BattleSystem* bsys, int at
 
             debug_printf("SwitchScore: SpeedCalc %d. Attacker %d deals %d%% to defender %d. Receives %d%%", speedCalc, attacker, (100 * monDealsRolledDamage[i] / defenderMon.hp), defender, (100 * monReceivesDamage[i] / attackerMon.hp));
             
-            if (!playerCanOneShotAiMon && (attackerMon.species == SPECIES_WYNAUT || attackerMon.species == SPECIES_WOBBUFFET))
-                switchInScore[i] += 2;
+            if (attackerMon.species == SPECIES_WYNAUT || attackerMon.species == SPECIES_WOBBUFFET)
+            {
+                if (defenderHasStatusMove || playerCanOneShotAiMon)
+                    switchInScore[i] -= 1;
+                else
+                    switchInScore[i] += 2;
+            }
 
             if (speedCalc > 0)
             {
-                if (aiMonCanOneshotPlayer)
+                if (pursuitOHKOs)
+                    switchInScore[i] += 6;
+                else if (aiMonCanOneshotPlayer)
                     switchInScore[i] += 5;
                 else if (partyMonPercentDamageDealt >= partyMonPercentDamageReceived)
                     switchInScore[i] += 3;

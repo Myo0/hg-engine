@@ -1314,7 +1314,7 @@ trainerdata 18, "Justin"
 trainerdata 19, "Lyra"
     trainermontype TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_BALL | TRAINER_DATA_TYPE_IV_EV_SET | TRAINER_DATA_TYPE_NATURE_SET | 0
     trainerclass TRAINERCLASS_PKMN_TRAINER_LYRA
-    nummons 3
+    nummons 5
     item ITEM_NONE
     item ITEM_NONE
     item ITEM_NONE
@@ -1360,6 +1360,38 @@ trainerdata 19, "Lyra"
 
         ivs 200
         abilityslot 0
+        level 10
+        pokemon SPECIES_TOGEPI
+        item ITEM_BERRY_JUICE
+        move MOVE_METRONOME
+        move MOVE_SWEET_KISS
+        move MOVE_LOVELY_KISS
+        move MOVE_NONE
+        ability ABILITY_SERENE_GRACE
+        ball ITEM_FRIEND_BALL 
+        setivs 31, 31, 31, 31, 31, 31
+        setevs 0, 0, 0, 0, 0, 0
+        nature NATURE_RELAXED
+        ballseal 0
+
+        ivs 200
+        abilityslot 0
+        level 10
+        pokemon SPECIES_CHIKORITA
+        item ITEM_MIRACLE_SEED
+        move MOVE_RAZOR_LEAF
+        move MOVE_POISON_POWDER
+        move MOVE_LEECH_SEED
+        move MOVE_PROTECT
+        ability ABILITY_OVERGROW
+        ball ITEM_FRIEND_BALL 
+        setivs 31, 31, 31, 31, 31, 31
+        setevs 0, 0, 0, 0, 0, 0
+        nature NATURE_IMPISH
+        ballseal 0
+
+        ivs 200
+        abilityslot 0
         level 11
         pokemon SPECIES_MARILL
         item ITEM_WATER_GEM
@@ -1391,7 +1423,7 @@ trainerdata 20, "Falkner"
         // mon 0
         ivs 200
         abilityslot 0
-        level 14
+        level 15
         pokemon SPECIES_SKARMORY
         item ITEM_LUM_BERRY
         move MOVE_WING_ATTACK
@@ -1410,10 +1442,10 @@ trainerdata 20, "Falkner"
         abilityslot 0
         level 15
         pokemon SPECIES_MURKROW
-        item ITEM_BERRY_JUICE
+        item ITEM_BLACK_GLASSES
         move MOVE_WING_ATTACK
-        move MOVE_ASSURANCE
-        move MOVE_MEAN_LOOK
+        move MOVE_PURSUIT
+        move MOVE_CONFUSE_RAY
         move MOVE_THUNDER_WAVE
         ability ABILITY_PRANKSTER
         ball ITEM_POKE_BALL
@@ -1442,18 +1474,18 @@ trainerdata 20, "Falkner"
 
         ivs 200
         abilityslot 0
-        level 14
+        level 15
         pokemon SPECIES_TROPIUS
-        item ITEM_SALAC_BERRY
-        move MOVE_MAGICAL_LEAF
+        item ITEM_LIECHI_BERRY
+        move MOVE_TRAILBLAZE
         move MOVE_AERIAL_ACE
-        move MOVE_HEADBUTT
+        move MOVE_U_TURN
         move MOVE_SYNTHESIS
         ability ABILITY_HARVEST
         ball ITEM_SAFARI_BALL
         setivs 31, 31, 31, 31, 31, 31
         setevs 0, 0, 0, 0, 0, 0
-        nature NATURE_NAIVE
+        nature NATURE_ADAMANT
         shinylock 0
         ballseal 0
 
@@ -1477,17 +1509,17 @@ trainerdata 20, "Falkner"
         ivs 200
         abilityslot 0
         level 17
-        pokemon SPECIES_PIDGEOTTO
-        item ITEM_FLYING_GEM
-        move MOVE_DRILL_PECK
-        move MOVE_STEEL_WING
-        move MOVE_PURSUIT
-        move MOVE_QUICK_ATTACK
-        ability ABILITY_KEEN_EYE
+        pokemon SPECIES_NOCTOWL
+        item ITEM_BERRY_JUICE
+        move MOVE_AIR_CUTTER
+        move MOVE_SWIFT
+        move MOVE_PSYBEAM
+        move MOVE_HYPNOSIS
+        ability ABILITY_TINTED_LENS
         ball ITEM_CHERISH_BALL
         setivs 31, 31, 31, 31, 31, 31
         setevs 0, 0, 0, 0, 0, 0
-        nature NATURE_ADAMANT
+        nature NATURE_TIMID
         shinylock 1
         ballseal 5
     endparty
@@ -1568,7 +1600,7 @@ trainerdata 21, "Bugsy"
         move MOVE_SMART_STRIKE
         move MOVE_X_SCISSOR
         move MOVE_RETALIATE
-        ability ABILITY_SWARM
+        ability ABILITY_HUSTLE
         ball ITEM_HEAVY_BALL
         setivs 31, 31, 31, 31, 31, 31
         setevs 0, 0, 0, 0, 0, 0
@@ -1581,7 +1613,7 @@ trainerdata 21, "Bugsy"
         level 25
         pokemon SPECIES_CENTISKORCH
         item ITEM_LUM_BERRY
-        move MOVE_FLAME_WHEEL
+        move MOVE_FIRE_FANG
         move MOVE_SKITTER_SMACK
         move MOVE_THUNDER_FANG
         move MOVE_FIRE_SPIN
@@ -2506,13 +2538,13 @@ trainerdata 32, "Pryce"
         item ITEM_CHARTI_BERRY
         move MOVE_TAILWIND
         move MOVE_BLIZZARD
-        move MOVE_REFLECT
-        move MOVE_LIGHT_SCREEN
-        ability ABILITY_ICE_BODY
+        move MOVE_BRAVE_BIRD
+        move MOVE_AURORA_VEIL
+        ability ABILITY_SNOW_CLOAK
         ball ITEM_MASTER_BALL
         setivs 31, 31, 31, 31, 31, 31
         setevs 0, 0, 0, 0, 0, 0
-        nature NATURE_MODEST
+        nature NATURE_RASH
         shinylock 1
         ballseal 0
 
@@ -2659,7 +2691,7 @@ trainerdata 33, "Jasmine"
         move MOVE_IRON_HEAD
         move MOVE_RETALIATE
         move MOVE_SUCKER_PUNCH
-        ability ABILITY_DEFIANT
+        ability ABILITY_SUPREME_OVERLORD
         ball ITEM_LUXURY_BALL
         setivs 31, 31, 31, 31, 31, 31
         setevs 0, 0, 0, 0, 0, 0
@@ -2812,7 +2844,7 @@ trainerdata 34, "Chuck"
         level 50
         pokemon SPECIES_GALLADE
         item ITEM_GALLADITE
-        move MOVE_PSYCHO_CUT
+        move MOVE_PSYBLADE
         move MOVE_CLOSE_COMBAT
         move MOVE_SHADOW_SNEAK
         move MOVE_X_SCISSOR
@@ -3148,7 +3180,7 @@ trainerdata 39, "Eugene"
 trainerdata 40, "Ethan"
     trainermontype TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_BALL | TRAINER_DATA_TYPE_IV_EV_SET | TRAINER_DATA_TYPE_NATURE_SET | 0
     trainerclass TRAINERCLASS_PKMN_TRAINER_ETHAN
-    nummons 3
+    nummons 5
     item ITEM_NONE
     item ITEM_NONE
     item ITEM_NONE
@@ -3163,7 +3195,7 @@ trainerdata 40, "Ethan"
         abilityslot 0
         level 10
         pokemon SPECIES_LITTEN
-        item ITEM_BERRY_JUICE
+        item ITEM_LIECHI_BERRY
         move MOVE_EMBER
         move MOVE_BITE
         move MOVE_FAKE_OUT
@@ -3190,6 +3222,38 @@ trainerdata 40, "Ethan"
         setivs 31, 31, 31, 31, 31, 31
         setevs 0, 0, 0, 0, 0, 0
         nature NATURE_MODEST
+        ballseal 0
+
+        ivs 200
+        abilityslot 0
+        level 10
+        pokemon SPECIES_SHROODLE
+        item ITEM_BERRY_JUICE
+        move MOVE_METRONOME
+        move MOVE_TOXIC
+        move MOVE_SWAGGER
+        move MOVE_NONE
+        ability ABILITY_TRACE
+        ball ITEM_FRIEND_BALL 
+        setivs 31, 31, 31, 31, 31, 31
+        setevs 0, 0, 0, 0, 0, 0
+        nature NATURE_IMPISH
+        ballseal 0
+
+        ivs 200
+        abilityslot 0
+        level 10
+        pokemon SPECIES_TOTODILE
+        item ITEM_MYSTIC_WATER
+        move MOVE_AQUA_JET
+        move MOVE_BITE
+        move MOVE_SCREECH
+        move MOVE_BLOCK 
+        ability ABILITY_TORRENT
+        ball ITEM_FRIEND_BALL 
+        setivs 31, 31, 31, 31, 31, 31
+        setevs 0, 0, 0, 0, 0, 0
+        nature NATURE_CAREFUL
         ballseal 0
 
         ivs 200

@@ -345,7 +345,7 @@ pokemon SPECIES_YAMPER
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_KARRABLAST
 pokemon SPECIES_BUDEW
-pokemon SPECIES_BUDEW
+pokemon SPECIES_RALTS
 pokemon SPECIES_CHIKORITA
 pokemon SPECIES_CHIKORITA
 
@@ -359,7 +359,7 @@ pokemon SPECIES_YAMPER
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_KARRABLAST
 pokemon SPECIES_BUDEW
-pokemon SPECIES_BUDEW
+pokemon SPECIES_RALTS
 pokemon SPECIES_CHIKORITA
 pokemon SPECIES_CHIKORITA
 
@@ -373,7 +373,7 @@ pokemon SPECIES_YAMPER
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_KARRABLAST
 pokemon SPECIES_BUDEW
-pokemon SPECIES_BUDEW
+pokemon SPECIES_RALTS
 pokemon SPECIES_CHIKORITA
 pokemon SPECIES_CHIKORITA
 
@@ -557,7 +557,7 @@ pokemon SPECIES_SIZZLIPEDE
 pokemon SPECIES_SIZZLIPEDE
 pokemon SPECIES_SIZZLIPEDE
 
-// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
+// day encounter slots; probabilities:  10/10/10/10/10/10/10/10/10/5/4/1
 pokemon SPECIES_PONYTA
 pokemon SPECIES_SLUGMA
 pokemon SPECIES_MAGBY
@@ -593,14 +593,14 @@ pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 pokemon SPECIES_NONE
 
-// surf encounters; probabilities:  60, 30, 5, 4, 1
+// surf encounters; probabilities:  40/20/20/10/10
 encounter SPECIES_OCTILLERY, 36, 38
 encounter SPECIES_OCTILLERY, 36, 38
 encounter SPECIES_STARAPTOR, 39, 39
 encounter SPECIES_STARAPTOR, 39, 39
 encounter SPECIES_STARAPTOR, 39, 39
 
-// rock smash encounters; probabilities:  90, 10
+// rock smash encounters; probabilities:  70/30
 encounter SPECIES_GEODUDE, 15, 15
 encounter SPECIES_GEODUDE, 15, 15
 
@@ -618,7 +618,7 @@ encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 encounter SPECIES_POLIWAG, 20, 20
 
-// super rod encounters; probabilities:  40, 40, 15, 4, 1
+// super rod encounters; probabilities:  40/20/20/10/10
 encounter SPECIES_CHEWTLE, 7, 9
 encounter SPECIES_REMORAID, 8, 8
 encounter SPECIES_BINACLE, 8, 9
@@ -2309,7 +2309,7 @@ rocksmashrate 0
 oldrodrate 25
 goodrodrate 50
 superrodrate 75
-walklevels 22, 23, 22, 24, 23, 23, 23, 24, 22, 23, 25, 25
+walklevels 22, 23, 25, 24, 23, 23, 23, 24, 22, 23, 25, 25
 
 // morning encounter slots
 pokemon SPECIES_SNUBBULL
@@ -7203,43 +7203,43 @@ walklevels 8, 8, 7, 7, 9, 9, 7, 7, 7, 7, 8, 9
 pokemon SPECIES_GEODUDE
 monwithform SPECIES_GEODUDE, 1
 pokemon SPECIES_ZUBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_MURKROW
+pokemon SPECIES_ARON
+pokemon SPECIES_MAWILE
 pokemon SPECIES_SWINUB
 pokemon SPECIES_HIPPOPOTAS
 pokemon SPECIES_PANCHAM
 pokemon SPECIES_MURKROW
 pokemon SPECIES_MURKROW
-pokemon SPECIES_MAWILE
-pokemon SPECIES_MAWILE
+pokemon SPECIES_RHYHORN
+pokemon SPECIES_RHYHORN
 
 // day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_GEODUDE
 monwithform SPECIES_GEODUDE, 1
 pokemon SPECIES_ZUBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_MURKROW
+pokemon SPECIES_ARON
+pokemon SPECIES_MAWILE
 pokemon SPECIES_SWINUB
 pokemon SPECIES_HIPPOPOTAS
 pokemon SPECIES_PANCHAM
 pokemon SPECIES_MURKROW
 pokemon SPECIES_MURKROW
-pokemon SPECIES_MAWILE
-pokemon SPECIES_MAWILE
+pokemon SPECIES_RHYHORN
+pokemon SPECIES_RHYHORN
 
 // night encounter slots
 pokemon SPECIES_GEODUDE
 monwithform SPECIES_GEODUDE, 1
 pokemon SPECIES_ZUBAT
-pokemon SPECIES_ZUBAT
-pokemon SPECIES_MURKROW
+pokemon SPECIES_ARON
+pokemon SPECIES_MAWILE
 pokemon SPECIES_SWINUB
 pokemon SPECIES_HIPPOPOTAS
 pokemon SPECIES_PANCHAM
 pokemon SPECIES_MURKROW
 pokemon SPECIES_MURKROW
-pokemon SPECIES_MAWILE
-pokemon SPECIES_MAWILE
+pokemon SPECIES_RHYHORN
+pokemon SPECIES_RHYHORN
 
 // hoenn encounter slots
 pokemon SPECIES_ABSOL
