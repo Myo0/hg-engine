@@ -1,8 +1,9 @@
 #ifndef WEATHER_H
 #define WEATHER_H
 
-#include "script.h"
 #include "types.h"
+
+#include "script.h"
 
 typedef struct _WEATHER_SYS_CONTROL {
     /* 0x00 */ void *pWSD;

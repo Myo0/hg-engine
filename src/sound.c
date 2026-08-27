@@ -1,7 +1,8 @@
-#include "../include/types.h"
-#include "../include/config.h"
-#include "../include/debug.h"
-#include "../include/sound.h"
+#include "config.h"
+#include "debug.h"
+#include "types.h"
+
+#include "sound.h"
 
 BOOL LONG_CALL GF_Snd_LoadSeq(int seqNo)
 {

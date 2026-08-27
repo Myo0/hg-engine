@@ -2,8 +2,9 @@
 #define POKEDIAMOND_ITEM_H
 
 #include "types.h"
-#include "task.h"
+
 #include "script.h"
+#include "task.h"
 
 /*
  * Bit array describing the effects of using the item on a
@@ -134,6 +135,12 @@ struct BagViewAppWork {
 typedef void (*ItemMenuUseFunc)(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2);
 typedef BOOL (*ItemFieldUseFunc)(struct ItemFieldUseData *data);
 typedef u32 (*ItemCheckUseFunc)(const struct ItemCheckUseData *data);
+
+#define NUM_VANILLA_FIELD_USE_FUNCS 30
+
+#define USE_ITEM_TASK_MENU  0
+#define USE_ITEM_TASK_FIELD 1
+#define USE_ITEM_TASK_CHECK 2
 
 struct ItemUseFuncDat {
     ItemMenuUseFunc menu;

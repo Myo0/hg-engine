@@ -1,23 +1,26 @@
-#include "../../include/types.h"
-#include "../../include/bag.h"
-#include "../../include/battle.h"
-#include "../../include/config.h"
-#include "../../include/debug.h"
-#include "../../include/pokemon.h"
-#include "../../include/rtc.h"
-#include "../../include/save.h"
-#include "../../include/script.h"
-#include "../../include/constants/ability.h"
-#include "../../include/constants/file.h"
-#include "../../include/constants/game.h"
-#include "../../include/constants/hold_item_effects.h"
-#include "../../include/constants/item.h"
-#include "../../include/constants/moves.h"
-#include "../../include/constants/species.h"
-#include "../../include/constants/weather_numbers.h"
+#include "config.h"
+#include "debug.h"
+#include "types.h"
+
+#include "constants/ability.h"
+#include "constants/file.h"
+#include "constants/game.h"
+#include "constants/hold_item_effects.h"
+#include "constants/item.h"
+#include "constants/moves.h"
+#include "constants/species.h"
+#include "constants/weather_numbers.h"
+
+#include "bag.h"
+#include "battle.h"
+#include "pokemon.h"
+#include "rtc.h"
+#include "save.h"
+#include "script.h"
+#include "trainer_data.h"
 
 #ifdef DEBUG_BATTLE_SCENARIOS
-#include "../../include/test_battle.h"
+#include "test_battle.h"
 #endif // DEBUG_BATTLE_SCENARIOS
 
 struct BattleSetup LONG_CALL *BattleSetup_New_Tutorial(u32 heapID, FieldSystem *fieldSystem);
@@ -55,45 +58,6 @@ void randomize(int arr[], int n)
 
 extern u32 gLastPokemonLevelForMoneyCalc;
 
-#ifdef KANTO_LEVEL_SCALING
-void *LONG_CALL SaveBlock2_get(void);
-
-static u8 GetKantoBadgeCount(void)
-{
-    u8 i, count = 0;
-    struct PlayerProfile *profile = Sav2_PlayerData_GetProfileAddr(SaveBlock2_get());
-    // Badge indices 8-15 correspond to the 8 Kanto gym badges
-    for (i = 8; i < 16; i++) {
-        if (PlayerProfile_TestBadgeFlag(profile, i) == TRUE) {
-            count++;
-        }
-    }
-    return count;
-}
-
-static u8 GetJohtoBadgeCount(void)
-{
-    u8 i, count = 0;
-    struct PlayerProfile *profile = Sav2_PlayerData_GetProfileAddr(SaveBlock2_get());
-    // Badge indices 0-7 correspond to the 8 Johto gym badges
-    for (i = 0; i < 8; i++) {
-        if (PlayerProfile_TestBadgeFlag(profile, i) == TRUE) {
-            count++;
-        }
-    }
-    return count;
-}
-
-static u16 ApplyKantoLevelScaling(u16 level, u8 kantoBadgeCount, u8 johtoBadgeCount)
-{
-
-    if (level > 100) {
-        level = 100;
-    }
-    return level;
-}
-#endif // KANTO_LEVEL_SCALING
-
 /**
  *  @brief create the trainer Party from the trainer data file and trainer party file
  *
@@ -124,7 +88,7 @@ void MakeTrainerPokemonParty(struct BATTLE_PARAM *bp, int num, int heapID)
     }
 
     u8 pokecount = bp->trainer_data[num].poke_count;
-    u8 randomorder_flag = pokecount & 0x80;
+    u8 randomorder_flag = pokecount & TRAINER_DATA_RANDOM_PARTY_ORDER;
     pokecount &= 0x7f;
 
     // goal:  get rid of massive switch statement with each individual byte.  make the trainer type a bitfield
@@ -138,10 +102,6 @@ void MakeTrainerPokemonParty(struct BATTLE_PARAM *bp, int num, int heapID)
     u16 *nickname = sys_AllocMemory(heapID, 11 * sizeof(u16));
     u8 form_no = 0, abilityslot = 0, nature = 0, ballseal = 0, shinylock = 0, status = 0;
     u32 additionalflags = 0;
-#ifdef KANTO_LEVEL_SCALING
-    u8 kantoBadgeCount = GetKantoBadgeCount();
-    u8 johtoBadgeCount = GetJohtoBadgeCount();
-#endif
 
     int partyOrder[pokecount];
     if (randomorder_flag) {
@@ -181,9 +141,6 @@ void MakeTrainerPokemonParty(struct BATTLE_PARAM *bp, int num, int heapID)
 
         // level field
         level = buf[offset] | (buf[offset + 1] << 8);
-#ifdef KANTO_LEVEL_SCALING
-        level = ApplyKantoLevelScaling(level, kantoBadgeCount, johtoBadgeCount);
-#endif
         gLastPokemonLevelForMoneyCalc = level; // ends up being the last level at the end of the loop that we use for the money calc loop default case
         offset += 2;
 
@@ -332,8 +289,7 @@ void MakeTrainerPokemonParty(struct BATTLE_PARAM *bp, int num, int heapID)
         ab1 = PokePersonalParaGet(adjustedSpecies, PERSONAL_ABILITY_1);
         ab2 = PokePersonalParaGet(adjustedSpecies, PERSONAL_ABILITY_2);
         if (ab2 != 0) {
-            if (abilityslot & 1 || abilityslot == 32) // abilityslot 32 gives second slot in vanilla
-            {
+            if (abilityslot & 1 || abilityslot == TRAINER_POKEMON_ABILITY_2) {
                 SetMonData(mons[i], MON_DATA_ABILITY, (u16 *)&ab2);
             } else {
                 SetMonData(mons[i], MON_DATA_ABILITY, (u16 *)&ab1);
@@ -343,7 +299,7 @@ void MakeTrainerPokemonParty(struct BATTLE_PARAM *bp, int num, int heapID)
         }
 
         // if abilityslot is 2 force hidden ability with the bit set.  this specifically to cover darmanitan with zen mode switching between forms and such.
-        if (abilityslot == 2) {
+        if (abilityslot == TRAINER_POKEMON_ABILITY_HIDDEN) {
             u16 hiddenability = GetMonHiddenAbility(species, form_no);
             SET_MON_HIDDEN_ABILITY_BIT(mons[i]);
             SetMonData(mons[i], MON_DATA_ABILITY, (u16 *)&hiddenability);

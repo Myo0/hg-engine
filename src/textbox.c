@@ -1,5 +1,5 @@
-#include "../include/types.h"
 #include "../include/config.h"
+#include "../include/types.h"
 #include "../include/window.h"
 
 #ifdef IMPLEMENT_TRANSPARENT_TEXTBOXES

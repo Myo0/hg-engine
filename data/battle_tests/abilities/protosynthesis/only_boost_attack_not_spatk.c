@@ -1,7 +1,7 @@
 // Test: Protosynthesis either Attack or Special Attack only, not both.
 {
-    .battleType = BATTLE_TYPE_SINGLE,
-    .weather = WEATHER_NONE,
+    .battleType = BATTLE_TYPE_TRAINER,
+    .weather = FIELD_CONDITION_NONE,
     .fieldCondition = 0,
     .terrain = TERRAIN_NONE,
 
@@ -13,7 +13,7 @@
             .ability = ABILITY_PROTOSYNTHESIS,
             .item = ITEM_NONE,
             .moves = {MOVE_SUNNY_DAY, MOVE_SCRATCH, MOVE_ROUND, MOVE_NONE},
-            .hp = 0,
+            .hp = FULL_HP,
             .status = 0,
             .condition2 = 0,
             .moveEffectFlags = 0,
@@ -33,7 +33,7 @@
             .ability = ABILITY_SHADOW_TAG,
             .item = ITEM_NONE,
             .moves = {MOVE_SUNNY_DAY, MOVE_SLEEP_TALK, MOVE_NONE, MOVE_NONE},
-            .hp = 0,
+            .hp = FULL_HP,
             .status = 0,
             .condition2 = 0,
             .moveEffectFlags = 0,

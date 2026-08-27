@@ -1,7 +1,7 @@
 // Test: Orichalcum Pulse activation message won't show in extremely harsh sunlight, but the damage is still boosted
 {
-    .battleType = BATTLE_TYPE_SINGLE,
-    .weather = WEATHER_NONE,
+    .battleType = BATTLE_TYPE_TRAINER,
+    .weather = FIELD_CONDITION_NONE,
     .fieldCondition = 0,
     .terrain = TERRAIN_NONE,
 
@@ -13,7 +13,7 @@
             .ability = ABILITY_STATIC,
             .item = ITEM_NONE,
             .moves = {MOVE_SLEEP_TALK, MOVE_NONE, MOVE_NONE, MOVE_NONE},
-            .hp = 0,
+            .hp = FULL_HP,
             .status = 0,
             .condition2 = 0,
             .moveEffectFlags = 0,
@@ -25,7 +25,7 @@
             .ability = ABILITY_ORICHALCUM_PULSE,
             .item = ITEM_NONE,
             .moves = {MOVE_ROUND, MOVE_SCRATCH, MOVE_NONE, MOVE_NONE},
-            .hp = 0,
+            .hp = FULL_HP,
             .status = 0,
             .condition2 = 0,
             .moveEffectFlags = 0,
@@ -44,7 +44,7 @@
             .ability = ABILITY_DROUGHT,
             .item = ITEM_RED_ORB,
             .moves = {MOVE_SLEEP_TALK, MOVE_RECOVER, MOVE_NONE, MOVE_NONE},
-            .hp = 0,
+            .hp = FULL_HP,
             .status = 0,
             .condition2 = 0,
             .moveEffectFlags = 0,

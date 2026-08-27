@@ -3,6 +3,7 @@
 #include "../include/repel.h"
 #include "../include/constants/file.h"
 #include "../include/constants/save.h"
+#include "../include/roamer.h"
 
 #define SCRIPT_NEW_CMD_REPEL_USE          0
 #define SCRIPT_NEW_CMD_BOTTLE_CAP_USE     1
@@ -258,3 +259,12 @@ BOOL Script_RunNewCmd(SCRIPTCONTEXT *ctx)
         return FALSE;
     }
 }
+
+#ifdef EXPAND_ROAMERS
+BOOL LONG_CALL ScrCmd_CreateRoamer(SCRIPTCONTEXT *ctx)
+{
+    u8 roamerNo = ScriptReadByte(ctx);
+    Save_CreateRoamerByID(ctx->fsys->savedata, roamerNo);
+    return FALSE;
+}
+#endif // EXPAND_ROAMERS

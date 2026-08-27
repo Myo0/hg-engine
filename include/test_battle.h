@@ -4,6 +4,7 @@
 #define TEST_BATTLE_H
 
 #include "types.h"
+
 #include "battle.h"
 
 #define AI_SCRIPT_MAX_MOVES 8
@@ -16,6 +17,8 @@
 #define STATE_HAS_MORE_BIT     (1 << 21)
 #define STATE_TEST_INDEX_SHIFT 22
 #define STATE_TEST_INDEX_MASK  0x3FF
+
+#define NUM_FURTHER_TEST_PARAMS 4
 
 // Battle action for scripted tests
 struct PACKED BattleAction {
@@ -31,10 +34,11 @@ struct PACKED TestBattlePokemon {
     u16 ability;
     u16 item;
     u16 moves[4];
-    u16 hp; // 0 = full HP
+    u16 hp; // 0xFFFF = full HP
     u32 status; // STATUS_BURN, STATUS_POISON, STATUS_SLEEP, etc.
     u32 condition2; // STATUS2_RECHARGE, STATUS2_CONFUSION, etc. (can be OR'd)
     u32 moveEffectFlags; // MOVE_EFFECT_FLAG_LEECH_SEED_ACTIVE, etc. (can be OR'd)
+    u16 furtherParams[NUM_FURTHER_TEST_PARAMS][2]; // pairs of MON_DATA_* constants and the value to set them to.  u32 is thought to be unnecessary
 };
 
 enum ExpectationType {
@@ -43,6 +47,9 @@ enum ExpectationType {
     EXPECTATION_TYPE_MESSAGE_CONTAINS,
     EXPECTATION_TYPE_ATTACK_MESSAGE,
     EXPECTATION_OVERWORLD_FORM,
+    EXPECTATION_CURRENT_HP,
+    EXPECTATION_TYPE_MESSAGE_DOES_NOT_CONTAIN,
+    EXPECTATION_TYPE_NOT_MESSAGE
 };
 
 union ExpectationValue {
@@ -50,6 +57,7 @@ union ExpectationValue {
     u32 hpRecovered[16];
     char message[TEST_BATTLE_MESSAGE_LEN];
     u16 formID;
+    s32 currentHP;
 };
 
 struct Expectations {
@@ -62,7 +70,7 @@ struct Expectations {
 
 // Complete test scenario definition
 struct PACKED TestBattleScenario {
-    u32 battleType; // BATTLE_TYPE_SINGLE, BATTLE_TYPE_DOUBLE, etc.
+    u32 battleType; // BATTLE_TYPE_SINGLE, BATTLE_TYPE_DOUBLES, etc.
     u32 weather; // WEATHER_RAIN, WEATHER_SANDSTORM, etc.
     u32 fieldCondition; // FIELD_CONDITION_TRICK_ROOM_INIT, etc.
     u8 terrain; // GRASSY_TERRAIN, MISTY_TERRAIN, etc.
@@ -76,10 +84,11 @@ struct PACKED TestBattleScenario {
     struct Expectations expectations[MAX_EXPECTATIONS];
 
     u8 expectationPassCount;
-    u8 knownFailing;
+    u8 knownFailing : 1;
+    u8 markAsFail : 7;
 };
 
-#define FULL_HP 0
+#define FULL_HP (0xFFFF)
 
 // Action type constants
 #define ACTION_MOVE_SLOT_1   0

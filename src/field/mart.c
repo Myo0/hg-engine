@@ -1,9 +1,11 @@
-#include "../../include/debug.h"
-#include "../../include/pokemon.h"
-#include "../../include/save.h"
-#include "../../include/script.h"
-#include "../../include/types.h"
-#include "../../include/constants/item.h"
+#include "debug.h"
+#include "types.h"
+
+#include "constants/item.h"
+
+#include "pokemon.h"
+#include "save.h"
+#include "script.h"
 
 #ifdef MART_EXPANSION
 
@@ -21,23 +23,7 @@ struct BadgeMartItems {
 const struct BadgeMartItems sBadgeMart[] = {
     { ITEM_POKE_BALL, 0 },
     { ITEM_GREAT_BALL, 3 },
-    { ITEM_ULTRA_BALL, 4 },
-    { ITEM_QUICK_BALL, 4 },
-    { ITEM_LURE_BALL, 4 },
-    { ITEM_NET_BALL, 3 },
-    { ITEM_DIVE_BALL, 3 },
-    { ITEM_TIMER_BALL, 3 },
-    { ITEM_DUSK_BALL, 3 },
-    { ITEM_FAST_BALL, 3 },
-    { ITEM_LEVEL_BALL, 2 },
-    { ITEM_MOON_BALL, 2 },
-    { ITEM_NEST_BALL, 1 },
-    { ITEM_REPEAT_BALL, 1 },
-    { ITEM_LUXURY_BALL, 1 },
-    { ITEM_HEAL_BALL, 1 },
-    { ITEM_HEAVY_BALL, 1 },
-    { ITEM_LOVE_BALL, 1 },
-    { ITEM_FRIEND_BALL, 1 },
+    { ITEM_ULTRA_BALL, 5 },
     { ITEM_POTION, 0 },
     { ITEM_SUPER_POTION, 1 },
     { ITEM_HYPER_POTION, 5 },
@@ -54,13 +40,6 @@ const struct BadgeMartItems sBadgeMart[] = {
     { ITEM_REPEL, 1 },
     { ITEM_SUPER_REPEL, 3 },
     { ITEM_MAX_REPEL, 5 },
-    { ITEM_LINKING_CORD, 4 },
-    { ITEM_BLACK_AUGURITE, 4 },
-    { ITEM_TART_APPLE, 4 },
-    { ITEM_AUSPICIOUS_ARMOR, 4 },
-    { ITEM_MALICIOUS_ARMOR, 4 },
-    { ITEM_CRACKED_POT, 4 },
-    { ITEM_PEAT_BLOCK, 7 },
 };
 
 void LONG_CALL InitMartUI(void *taskManager, FieldSystem *fieldSystem, const u16 *items, int kind, int buySell, int decoWhich, const struct MartItem *priceOverrides);
@@ -90,7 +69,7 @@ u16 sGoldenrodDepartment3F[] = {
 };
 
 u16 sGoldenrodDepartment4F[] = {
-    ITEM_FIRE_STONE, ITEM_WATER_STONE, ITEM_LEAF_STONE, ITEM_THUNDER_STONE, ITEM_SUN_STONE, ITEM_MOON_STONE, ITEM_ICE_STONE, ITEM_HONEY, ITEM_DRAGON_SCALE, ITEM_TART_APPLE, ITEM_SWEET_APPLE, 0xFFFF
+    ITEM_PROTEIN, ITEM_IRON, ITEM_CALCIUM, ITEM_ZINC, ITEM_CARBOS, ITEM_HP_UP, 0xFFFF
 };
 
 u16 sGoldenrodDepartment5F[] = {
@@ -102,11 +81,11 @@ u16 sGoldenrodHerbs[] = {
 };
 
 u16 sEcruteakMart[] = {
-    ITEM_FIRE_STONE, ITEM_WATER_STONE, ITEM_LEAF_STONE, ITEM_THUNDER_STONE, ITEM_SUN_STONE, ITEM_MOON_STONE, ITEM_ICE_STONE, 0xFFFF
+    ITEM_HEART_MAIL, ITEM_HEAL_BALL, ITEM_NET_BALL, 0xFFFF
 };
 
 u16 sOlivineMart[] = {
-    ITEM_FIRE_STONE, ITEM_WATER_STONE, ITEM_LEAF_STONE, ITEM_THUNDER_STONE, ITEM_DAWN_STONE, ITEM_DUSK_STONE, ITEM_DAWN_STONE, ITEM_SUN_STONE, ITEM_MOON_STONE, ITEM_SHINY_STONE, ITEM_ICE_STONE, 0xFFFF
+    ITEM_HEART_MAIL, ITEM_HEAL_BALL, ITEM_NET_BALL, 0xFFFF
 };
 
 u16 sCianwoodPharmacy[] = {
@@ -216,7 +195,77 @@ BOOL ScrCmd_MartBuy(SCRIPTCONTEXT *ctx)
 
 #ifdef POKEATHLON_SHOP_EXPANSION
 
-const struct MartItem sPokeathlonShopSunday[] = {
+const struct MartItem sPokeathlonShop_Sunday[] = {
+    { ITEM_RED_APRICORN, 200 },
+    { ITEM_BLUE_APRICORN, 200 },
+    { ITEM_BLACK_APRICORN, 200 },
+    { ITEM_MOOMOO_MILK, 100 },
+    { ITEM_KINGS_ROCK, 3000 },
+    { ITEM_HEART_SCALE, 1000 },
+    { 0xFFFF, 0 },
+};
+
+const struct MartItem sPokeathlonShop_Monday[] = {
+    { ITEM_RED_APRICORN, 200 },
+    { ITEM_BLUE_APRICORN, 200 },
+    { ITEM_GREEN_APRICORN, 200 },
+    { ITEM_MOOMOO_MILK, 100 },
+    { ITEM_MOON_STONE, 3000 },
+    { ITEM_RARE_CANDY, 2000 },
+    { 0xFFFF, 0 },
+};
+
+const struct MartItem sPokeathlonShop_Tuesday[] = {
+    { ITEM_YELLOW_APRICORN, 200 },
+    { ITEM_PINK_APRICORN, 200 },
+    { ITEM_WHITE_APRICORN, 200 },
+    { ITEM_MOOMOO_MILK, 100 },
+    { ITEM_FIRE_STONE, 2500 },
+    { ITEM_PP_UP, 1000 },
+    { 0xFFFF, 0 },
+};
+
+const struct MartItem sPokeathlonShop_Wednesday[] = {
+    { ITEM_BLUE_APRICORN, 200 },
+    { ITEM_PINK_APRICORN, 200 },
+    { ITEM_BLACK_APRICORN, 200 },
+    { ITEM_MOOMOO_MILK, 100 },
+    { ITEM_WATER_STONE, 2500 },
+    { ITEM_HEART_SCALE, 1000 },
+    { 0xFFFF, 0 },
+};
+
+const struct MartItem sPokeathlonShop_Thursday[] = {
+    { ITEM_YELLOW_APRICORN, 200 },
+    { ITEM_PINK_APRICORN, 200 },
+    { ITEM_WHITE_APRICORN, 200 },
+    { ITEM_MOOMOO_MILK, 100 },
+    { ITEM_THUNDER_STONE, 2500 },
+    { ITEM_PP_UP, 1000 },
+    { 0xFFFF, 0 },
+};
+
+const struct MartItem sPokeathlonShop_Friday[] = {
+    { ITEM_RED_APRICORN, 200 },
+    { ITEM_YELLOW_APRICORN, 200 },
+    { ITEM_GREEN_APRICORN, 200 },
+    { ITEM_MOOMOO_MILK, 100 },
+    { ITEM_METAL_COAT, 2500 },
+    { ITEM_NUGGET, 500 },
+    { 0xFFFF, 0 },
+};
+
+const struct MartItem sPokeathlonShop_Saturday[] = {
+    { ITEM_GREEN_APRICORN, 200 },
+    { ITEM_WHITE_APRICORN, 200 },
+    { ITEM_BLACK_APRICORN, 200 },
+    { ITEM_MOOMOO_MILK, 100 },
+    { ITEM_LEAF_STONE, 2500 },
+    { ITEM_RARE_CANDY, 2000 },
+    { 0xFFFF, 0 },
+};
+
+const struct MartItem sPokeathlonShop_NatdexSunday[] = {
     { ITEM_RED_APRICORN, 200 },
     { ITEM_BLUE_APRICORN, 200 },
     { ITEM_BLACK_APRICORN, 200 },
@@ -232,7 +281,7 @@ const struct MartItem sPokeathlonShopSunday[] = {
     { 0xFFFF, 0 },
 };
 
-const struct MartItem sPokeathlonShopMonday[] = {
+const struct MartItem sPokeathlonShop_NatdexMonday[] = {
     { ITEM_RED_APRICORN, 200 },
     { ITEM_BLUE_APRICORN, 200 },
     { ITEM_GREEN_APRICORN, 200 },
@@ -248,7 +297,7 @@ const struct MartItem sPokeathlonShopMonday[] = {
     { 0xFFFF, 0 },
 };
 
-const struct MartItem sPokeathlonShopTuesday[] = {
+const struct MartItem sPokeathlonShop_NatdexTuesday[] = {
     { ITEM_YELLOW_APRICORN, 200 },
     { ITEM_PINK_APRICORN, 200 },
     { ITEM_WHITE_APRICORN, 200 },
@@ -264,7 +313,7 @@ const struct MartItem sPokeathlonShopTuesday[] = {
     { 0xFFFF, 0 },
 };
 
-const struct MartItem sPokeathlonShopWednesday[] = {
+const struct MartItem sPokeathlonShop_NatdexWednesday[] = {
     { ITEM_BLUE_APRICORN, 200 },
     { ITEM_PINK_APRICORN, 200 },
     { ITEM_BLACK_APRICORN, 200 },
@@ -280,7 +329,7 @@ const struct MartItem sPokeathlonShopWednesday[] = {
     { 0xFFFF, 0 },
 };
 
-const struct MartItem sPokeathlonShopThursday[] = {
+const struct MartItem sPokeathlonShop_NatdexThursday[] = {
     { ITEM_YELLOW_APRICORN, 200 },
     { ITEM_PINK_APRICORN, 200 },
     { ITEM_WHITE_APRICORN, 200 },
@@ -296,7 +345,7 @@ const struct MartItem sPokeathlonShopThursday[] = {
     { 0xFFFF, 0 },
 };
 
-const struct MartItem sPokeathlonShopFriday[] = {
+const struct MartItem sPokeathlonShop_NatdexFriday[] = {
     { ITEM_RED_APRICORN, 200 },
     { ITEM_YELLOW_APRICORN, 200 },
     { ITEM_GREEN_APRICORN, 200 },
@@ -312,7 +361,7 @@ const struct MartItem sPokeathlonShopFriday[] = {
     { 0xFFFF, 0 },
 };
 
-const struct MartItem sPokeathlonShopSaturday[] = {
+const struct MartItem sPokeathlonShop_NatdexSaturday[] = {
     { ITEM_GREEN_APRICORN, 200 },
     { ITEM_WHITE_APRICORN, 200 },
     { ITEM_BLACK_APRICORN, 200 },

@@ -1,21 +1,23 @@
-#include "../../include/battle.h"
-#include "../../include/config.h"
-#include "../../include/debug.h"
-#include "../../include/pokemon.h"
-#include "../../include/types.h"
-#include "../../include/constants/ability.h"
-#include "../../include/constants/hold_item_effects.h"
-#include "../../include/constants/battle_message_constants.h"
-#include "../../include/constants/battle_script_constants.h"
-#include "../../include/constants/item.h"
-#include "../../include/constants/move_effects.h"
-#include "../../include/constants/moves.h"
-#include "../../include/constants/species.h"
-#include "../../include/constants/file.h"
-#include "../../include/overlay.h"
+#include "config.h"
+#include "debug.h"
+#include "types.h"
+
+#include "constants/ability.h"
+#include "constants/battle_message_constants.h"
+#include "constants/battle_script_constants.h"
+#include "constants/file.h"
+#include "constants/hold_item_effects.h"
+#include "constants/item.h"
+#include "constants/move_effects.h"
+#include "constants/moves.h"
+#include "constants/species.h"
+
+#include "battle.h"
+#include "overlay.h"
+#include "pokemon.h"
 
 #ifdef DEBUG_BATTLE_SCENARIOS
-#include "../../include/test_battle.h"
+#include "test_battle.h"
 #endif
 
 void ServerHPCalc(struct BattleSystem *bw, struct BattleStruct *sp)
@@ -23,7 +25,7 @@ void ServerHPCalc(struct BattleSystem *bw, struct BattleStruct *sp)
     int eqp;
     int atk;
 
-    if (sp->waza_status_flag & MOVE_STATUS_FLAG_OHKO_HIT) {
+    if (sp->waza_status_flag & MOVE_STATUS_ONE_HIT_KO) {
         sp->damage = sp->battlemon[sp->defence_client].maxhp * -1;
     }
 
@@ -54,6 +56,12 @@ void ServerHPCalc(struct BattleSystem *bw, struct BattleStruct *sp)
             sp->oneSelfFlag[sp->defence_client].status_flag |= SELF_STATUS_FLAG_SUBSTITUTE_HIT;
             sp->battlerIdTemp = sp->defence_client;
         } else {
+            BOOL negatedDamage = FALSE;
+            // limit damage value to current hp
+            if ((sp->battlemon[sp->defence_client].hp + sp->damage) <= 0) {
+                sp->damage = (sp->battlemon[sp->defence_client].hp) * -1;
+            }
+
             if (sp->moveTbl[sp->current_move_index].effect == MOVE_EFFECT_LEAVE_WITH_1_HP) {
                 if ((sp->battlemon[sp->defence_client].hp + sp->damage) <= 0) {
                     sp->damage = (sp->battlemon[sp->defence_client].hp - 1) * -1;
@@ -66,6 +74,15 @@ void ServerHPCalc(struct BattleSystem *bw, struct BattleStruct *sp)
                     sp->oneSelfFlag[sp->defence_client].prevent_one_hit_ko_item = TRUE;
                 } else {
                     sp->oneSelfFlag[sp->defence_client].prevent_one_hit_ko_item = FALSE;
+                }
+            }
+
+            if (sp->moveConditionsFlags[sp->defence_client].endure) {
+                if ((sp->battlemon[sp->defence_client].hp + sp->damage) <= 0) {
+                    sp->damage = (sp->battlemon[sp->defence_client].hp - 1) * -1;
+                }
+                if (sp->damage == 0) {
+                    negatedDamage = TRUE;
                 }
             }
 
@@ -82,15 +99,19 @@ void ServerHPCalc(struct BattleSystem *bw, struct BattleStruct *sp)
                 if ((sp->battlemon[sp->defence_client].hp + sp->damage) <= 0) {
                     sp->damage = (sp->battlemon[sp->defence_client].hp - 1) * -1;
                     if (sp->oneTurnFlag[sp->defence_client].prevent_one_hit_ko_ability) {
-                        sp->waza_status_flag |= MOVE_STATUS_FLAG_HELD_ON_ABILITY;
+                        sp->waza_status_flag |= MOVE_STATUS_ENDURED;
                     } else {
-                        sp->waza_status_flag |= MOVE_STATUS_FLAG_HELD_ON_ITEM;
+                        sp->waza_status_flag |= MOVE_STATUS_ENDURED_ITEM;
                     }
+                }
+                if (sp->damage == 0) {
+                    negatedDamage = TRUE;
                 }
             }
 
 #ifdef DEBUG_BATTLE_SCENARIOS
             // debug_printf("In ServerHPCalc\n");
+            debug_printf("[Move %d     Damage %d%s]", sp->current_move_index, sp->damage, (sp->critical > 1) ? " (crit)" : "");
             struct TestBattleScenario *scenario = TestBattle_GetCurrentScenario();
             if (scenario != NULL && TestBattle_HasMoreExpectations()) {
 #ifdef DEBUG_DAMAGE_CALC
@@ -105,8 +126,9 @@ void ServerHPCalc(struct BattleSystem *bw, struct BattleStruct *sp)
                     && sp->defence_client == scenario->expectations[scenario->expectationPassCount].battlerIDOrPartySlot) {
                     for (int i = 0; i < 16; i++) {
                         // debug_printf("sp->damage: %d, expect: %d\n", sp->damage, scenario->expectations[scenario->expectationPassCount].expectationValue.hpTaken[i]);
-                        if (sp->damage == scenario->expectations[scenario->expectationPassCount].expectationValue.hpTaken[i]
-                            || sp->damage * -1 == scenario->expectations[scenario->expectationPassCount].expectationValue.hpTaken[i]) {
+                        if ((u32)sp->damage == scenario->expectations[scenario->expectationPassCount].expectationValue.hpRecovered[i]
+                            || (u32)(sp->damage * -1) == scenario->expectations[scenario->expectationPassCount].expectationValue.hpTaken[i]) {
+                            debug_printf(" ✅");
                             scenario->expectationPassCount++;
                             break;
                         }
@@ -114,6 +136,7 @@ void ServerHPCalc(struct BattleSystem *bw, struct BattleStruct *sp)
                     // debug_printf("\n");
                 }
             }
+            debug_printf("\n");
 #endif
 
             /**
@@ -125,17 +148,21 @@ void ServerHPCalc(struct BattleSystem *bw, struct BattleStruct *sp)
             if (sp->battlemon[sp->defence_client].hit_count < 255) {
                 sp->battlemon[sp->defence_client].hit_count++;
             }
+            int storedDamage = sp->damage;
+            if (storedDamage == 0 && negatedDamage) {
+                storedDamage = 1;
+            }
             if (GetMoveSplit(sp, sp->current_move_index) == SPLIT_PHYSICAL) {
-                sp->oneTurnFlag[sp->defence_client].physical_damage[sp->attack_client] = sp->damage;
+                sp->oneTurnFlag[sp->defence_client].physical_damage[sp->attack_client] = storedDamage;
                 sp->oneTurnFlag[sp->defence_client].physical_damager = sp->attack_client;
                 sp->oneTurnFlag[sp->defence_client].physical_damager_bit |= No2Bit(sp->attack_client);
-                sp->oneSelfFlag[sp->defence_client].physical_damage = sp->damage;
+                sp->oneSelfFlag[sp->defence_client].physical_damage = storedDamage;
                 sp->oneSelfFlag[sp->defence_client].physical_damager = sp->attack_client;
             } else if (GetMoveSplit(sp, sp->current_move_index) == SPLIT_SPECIAL) {
-                sp->oneTurnFlag[sp->defence_client].special_damage[sp->attack_client] = sp->damage;
+                sp->oneTurnFlag[sp->defence_client].special_damage[sp->attack_client] = storedDamage;
                 sp->oneTurnFlag[sp->defence_client].special_damager = sp->attack_client;
                 sp->oneTurnFlag[sp->defence_client].special_damager_bit |= No2Bit(sp->attack_client);
-                sp->oneSelfFlag[sp->defence_client].special_damage = sp->damage;
+                sp->oneSelfFlag[sp->defence_client].special_damage = storedDamage;
                 sp->oneSelfFlag[sp->defence_client].special_damager = sp->attack_client;
             }
 

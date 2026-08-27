@@ -13,8 +13,8 @@ const struct TestBattleScenario BattleTests[] = {
 
 #endif
 
-    { .battleType = BATTLE_TYPE_SINGLE,
-        .weather = WEATHER_SUNNY_PERMANENT,
+    { .battleType = BATTLE_TYPE_TRAINER,
+        .weather = FIELD_CONDITION_SUN_PERMANENT,
         .fieldCondition = 0,
         .terrain = TERRAIN_NONE,
 
@@ -26,7 +26,7 @@ const struct TestBattleScenario BattleTests[] = {
                 .ability = ABILITY_DRIZZLE,
                 .item = ITEM_NONE,
                 .moves = { MOVE_RAIN_DANCE, MOVE_NONE, MOVE_NONE, MOVE_NONE },
-                .hp = 0,
+                .hp = FULL_HP,
                 .status = 0,
                 .condition2 = 0,
                 .moveEffectFlags = 0,
@@ -44,7 +44,7 @@ const struct TestBattleScenario BattleTests[] = {
                             .ability = ABILITY_DRIZZLE,
                             .item = ITEM_BLUE_ORB,
                             .moves = { MOVE_SANDSTORM, MOVE_NONE, MOVE_NONE, MOVE_NONE },
-                            .hp = 0,
+                            .hp = FULL_HP,
                             .status = 0,
                             .condition2 = 0,
                             .moveEffectFlags = 0,

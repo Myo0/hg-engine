@@ -1,8 +1,9 @@
-#include "../include/config.h"
 #include "../include/message.h"
-#include "../include/types.h"
+
+#include "../include/config.h"
 #include "../include/constants/file.h"
 #include "../include/constants/item.h"
+#include "../include/types.h"
 
 void BufferOffsetItemLineFromFile(MessageFormat *msgFmt, u32 fieldno, u32 itemId, u32 fileId)
 {

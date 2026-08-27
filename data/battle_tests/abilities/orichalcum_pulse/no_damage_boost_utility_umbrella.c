@@ -1,7 +1,7 @@
 // Test: Orichalcum Pulse does not boost physical moves if holder has Utility Umbrella
 {
-    .battleType = BATTLE_TYPE_SINGLE,
-    .weather = WEATHER_NONE,
+    .battleType = BATTLE_TYPE_TRAINER,
+    .weather = FIELD_CONDITION_NONE,
     .fieldCondition = 0,
     .terrain = TERRAIN_NONE,
 
@@ -13,7 +13,7 @@
             .ability = ABILITY_DROUGHT,
             .item = ITEM_NONE,
             .moves = {MOVE_SLEEP_TALK, MOVE_NONE, MOVE_NONE, MOVE_NONE},
-            .hp = 0,
+            .hp = FULL_HP,
             .status = 0,
             .condition2 = 0,
             .moveEffectFlags = 0,
@@ -25,7 +25,7 @@
             .ability = ABILITY_ORICHALCUM_PULSE,
             .item = ITEM_UTILITY_UMBRELLA,
             .moves = {MOVE_SCRATCH, MOVE_NONE, MOVE_NONE, MOVE_NONE},
-            .hp = 0,
+            .hp = FULL_HP,
             .status = 0,
             .condition2 = 0,
             .moveEffectFlags = 0,
@@ -44,7 +44,7 @@
             .ability = ABILITY_TELEPATHY,
             .item = ITEM_NONE,
             .moves = {MOVE_SLEEP_TALK, MOVE_RECOVER, MOVE_NONE, MOVE_NONE},
-            .hp = 0,
+            .hp = FULL_HP,
             .status = 0,
             .condition2 = 0,
             .moveEffectFlags = 0,

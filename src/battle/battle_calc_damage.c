@@ -1,17 +1,19 @@
-#include "../../include/battle.h"
-#include "../../include/config.h"
-#include "../../include/debug.h"
-#include "../../include/overlay.h"
-#include "../../include/pokemon.h"
-#include "../../include/types.h"
-#include "../../include/constants/ability.h"
-#include "../../include/constants/hold_item_effects.h"
-#include "../../include/constants/file.h"
-#include "../../include/constants/item.h"
-#include "../../include/constants/move_effects.h"
-#include "../../include/constants/moves.h"
-#include "../../include/constants/species.h"
-#include "../../include/q412.h"
+#include "config.h"
+#include "debug.h"
+#include "types.h"
+
+#include "constants/ability.h"
+#include "constants/file.h"
+#include "constants/hold_item_effects.h"
+#include "constants/item.h"
+#include "constants/move_effects.h"
+#include "constants/moves.h"
+#include "constants/species.h"
+
+#include "battle.h"
+#include "overlay.h"
+#include "pokemon.h"
+#include "q412.h"
 
 // function declarations
 int CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond, u32 field_cond, u16 pow, u8 type, u8 attacker, u8 defender, u8 critical);
@@ -21,8 +23,17 @@ int AdjustDamageForRoll(void *bw, struct BattleStruct *sp, int damage);
 
 int CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond UNUSED, u32 field_cond, u16 pow UNUSED, u8 type UNUSED, u8 attacker, u8 defender, u8 critical)
 {
-
     struct DamageCalcStruct damageCalc = { 0 };
+
+    BOOL isFutureSightWithoutAttacker = FALSE;
+    int moveEffect = sp->moveTbl[moveno].effect;
+    if (!IsAttackerOnField(sp) && moveEffect == MOVE_EFFECT_HIT_IN_3_TURNS) { // we set attacker to valid and overwrite stats afterwards
+        attacker = sp->fcc.future_prediction_client_no[defender];
+        isFutureSightWithoutAttacker = TRUE;
+#ifdef DEBUG_DAMAGE_CALC
+        debug_printf("Original Future Sight attacker not on field\n");
+#endif
+    }
 
     damageCalc.maxBattlers = BattleWorkClientSetMaxGet(bw);
     damageCalc.attackerPartySize = Battle_GetClientPartySize(bw, attacker);
@@ -34,7 +45,7 @@ int CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond 
     damageCalc.defender = defender;
     damageCalc.critical = critical;
     damageCalc.moveno = moveno;
-    damageCalc.movetype = GetAdjustedMoveType(sp, attacker, moveno);
+    damageCalc.movetype = GetAdjustedMoveType(sp, isFutureSightWithoutAttacker ? BATTLER_NONE : attacker, moveno);
     damageCalc.movesplit = GetMoveSplit(sp, moveno);
     damageCalc.movepower = sp->moveTbl[moveno].power;
     damageCalc.damage_power = sp->damage_power;
@@ -64,6 +75,7 @@ int CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond 
     damageCalc.originalMoveType = sp->moveTbl[moveno].type;
     damageCalc.moveEffect = sp->moveTbl[moveno].effect;
     damageCalc.moveFlag = sp->moveTbl[moveno].flag;
+    damageCalc.multiHitCount = sp->multiHitCount;
 
     for (u32 i = 0; i < damageCalc.maxBattlers; i++) {
         struct sDamageCalc client = { 0 };
@@ -113,6 +125,56 @@ int CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond 
         damageCalc.clients[i] = client;
     }
 
+    if (isFutureSightWithoutAttacker) {
+        struct PartyPokemon *pp = Battle_GetClientPartyMon(bw, attacker, sp->fcc.wish_sel_mons[attacker]);
+        damageCalc.clients[attacker].attack = GetMonData(pp, MON_DATA_ATTACK, 0);
+        damageCalc.clients[attacker].defense = GetMonData(pp, MON_DATA_DEFENSE, 0);
+        damageCalc.clients[attacker].sp_attack = GetMonData(pp, MON_DATA_SPECIAL_ATTACK, 0);
+        damageCalc.clients[attacker].sp_defense = GetMonData(pp, MON_DATA_SPECIAL_DEFENSE, 0);
+        damageCalc.clients[attacker].atkstate = 0;
+        damageCalc.clients[attacker].defstate = 0;
+        damageCalc.clients[attacker].spatkstate = 0;
+        damageCalc.clients[attacker].spdefstate = 0;
+        damageCalc.clients[attacker].positiveStatBoosts = 0;
+
+        damageCalc.clients[attacker].level = GetMonData(pp, MON_DATA_LEVEL, 0);
+        damageCalc.clients[attacker].species = GetMonData(pp, MON_DATA_SPECIES, 0);
+        damageCalc.clients[attacker].hp = GetMonData(pp, MON_DATA_HP, 0);
+        damageCalc.clients[attacker].maxhp = GetMonData(pp, MON_DATA_MAXHP, 0);
+#ifdef DEBUG_DAMAGE_CALC
+        debug_printf("Original Future Sight partyMon %d, species %d, spAtk %d\n", sp->fcc.wish_sel_mons[attacker], damageCalc.clients[attacker].species, damageCalc.clients[attacker].sp_attack);
+#endif
+        damageCalc.clients[attacker].condition = 0;
+        damageCalc.clients[attacker].condition2 = 0;
+        damageCalc.clients[attacker].ability = 0;
+        damageCalc.clients[attacker].sex = GetMonData(pp, MON_DATA_GENDER, 0);
+        damageCalc.clients[attacker].speed = GetMonData(pp, MON_DATA_SPEED, 0);
+        damageCalc.clients[attacker].weight = 1; // we dont really care for weight in this case
+        damageCalc.clients[attacker].happiness = GetMonData(pp, MON_DATA_FRIENDSHIP, 0);
+        damageCalc.clients[attacker].form = GetMonData(pp, MON_DATA_FORM, 0);
+        damageCalc.clients[attacker].furyCutterCount = 0;
+        damageCalc.clients[attacker].rolloutCount = 0;
+        damageCalc.clients[attacker].stockpileCount = 0;
+        damageCalc.clients[attacker].parentalBondFlag = 0;
+        damageCalc.clients[attacker].helpingHandFlag = 0;
+        damageCalc.clients[attacker].sheerForceFlag = 0;
+        damageCalc.clients[attacker].effectOfMoves = 0;
+        damageCalc.clients[attacker].type1 = GetMonData(pp, MON_DATA_TYPE_1, 0);
+        damageCalc.clients[attacker].type2 = GetMonData(pp, MON_DATA_TYPE_2, 0);
+        damageCalc.clients[attacker].type3 = TYPE_TYPELESS;
+        damageCalc.clients[attacker].isGrounded = TRUE;
+        if (damageCalc.clients[attacker].type1 == TYPE_FLYING || damageCalc.clients[attacker].type2 == TYPE_FLYING) //&& !(sp->field_condition & FIELD_CONDITION_GRAVITY)) //unknown
+        {
+            damageCalc.clients[attacker].isGrounded = FALSE;
+        }
+        damageCalc.clients[attacker].item = 0;
+        damageCalc.clients[attacker].item_held_effect = 0;
+        damageCalc.clients[attacker].item_power = 0;
+        damageCalc.clients[attacker].hasMoveFailureLastTurn = 0;
+        damageCalc.clients[attacker].paradoxBoostedStat = 0;
+        damageCalc.clients[attacker].boosterEnergyActivated = 0;
+    }
+
     u32 ovyId, offset;
     int ret;
     int (*internalFunc)(struct BattleSystem *bw, struct BattleStruct *sp, struct DamageCalcStruct *damageCalc);
@@ -136,6 +198,9 @@ int CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond 
  */
 u16 LONG_CALL GetBattleMonItem(struct BattleStruct *sp, int client_no)
 {
+    if (client_no == BATTLER_NONE) {
+        return 0;
+    }
     if (GetBattlerAbility(sp, client_no) == ABILITY_KLUTZ) {
         return 0;
     }
@@ -175,8 +240,14 @@ void CalcDamageOverall(void *bw, struct BattleStruct *sp)
     u32 attacker = sp->attack_client;
     u32 defender = sp->defence_client;
     u32 finalModifier = UQ412__1_0;
-    u32 attackerAbility = GetBattlerAbility(sp, attacker);
+    u32 attackerAbility = ABILITY_NONE;
+    u32 attackerItemHeldEffect = HOLD_EFFECT_NONE;
+    if (IsAttackerOnField(sp)) {
+        attackerAbility = GetBattlerAbility(sp, attacker);
+        attackerItemHeldEffect = HeldItemHoldEffectGet(sp, attacker);
+    }
     u32 defenderAbility = GetBattlerAbility(sp, defender);
+    u32 weather = GetWeather(bw, sp, attacker);
 
     u32 damage = 0;
 
@@ -185,9 +256,9 @@ void CalcDamageOverall(void *bw, struct BattleStruct *sp)
         // Mimikyu or Mimikyu-Large
         && (sp->battlemon[defender].form_no == 0 || sp->battlemon[defender].form_no == 2)
         // Not transformed
-        && !(sp->battlemon[defender].condition2 & STATUS2_TRANSFORMED)) {
-        sp->waza_status_flag &= ~MOVE_STATUS_FLAG_SUPER_EFFECTIVE;
-        sp->waza_status_flag &= ~MOVE_STATUS_FLAG_NOT_VERY_EFFECTIVE;
+        && !(sp->battlemon[defender].condition2 & STATUS2_TRANSFORM)) {
+        sp->waza_status_flag &= ~MOVE_STATUS_SUPER_EFFECTIVE;
+        sp->waza_status_flag &= ~MOVE_STATUS_NOT_VERY_EFFECTIVE;
         sp->damage = 0;
         return;
     }
@@ -196,10 +267,10 @@ void CalcDamageOverall(void *bw, struct BattleStruct *sp)
         && (sp->battlemon[defender].species == SPECIES_EISCUE)
         && (sp->battlemon[defender].form_no == 0)
         // Not transformed
-        && !(sp->battlemon[defender].condition2 & STATUS2_TRANSFORMED)
+        && !(sp->battlemon[defender].condition2 & STATUS2_TRANSFORM)
         && (movesplit == SPLIT_PHYSICAL)) {
-        sp->waza_status_flag &= ~MOVE_STATUS_FLAG_SUPER_EFFECTIVE;
-        sp->waza_status_flag &= ~MOVE_STATUS_FLAG_NOT_VERY_EFFECTIVE;
+        sp->waza_status_flag &= ~MOVE_STATUS_SUPER_EFFECTIVE;
+        sp->waza_status_flag &= ~MOVE_STATUS_NOT_VERY_EFFECTIVE;
         sp->damage = 0;
         return;
     }
@@ -245,11 +316,11 @@ void CalcDamageOverall(void *bw, struct BattleStruct *sp)
         }
     }
 
-    if ((battle_type & BATTLE_TYPE_DOUBLE) && IsTargetFoes(bw, sp, moveno) && (numTargetedFoes >= 2)) {
+    if ((battle_type & BATTLE_TYPE_DOUBLES) && IsTargetFoes(bw, sp, moveno) && (numTargetedFoes >= 2)) {
         damage = QMul_RoundDown(damage, UQ412__0_75);
     }
 
-    if ((battle_type & BATTLE_TYPE_DOUBLE) && IsTargetFoesAndAlly(bw, sp, moveno) && (numTargetedAll >= 2)) {
+    if ((battle_type & BATTLE_TYPE_DOUBLES) && IsTargetFoesAndAlly(bw, sp, moveno) && (numTargetedAll >= 2)) {
         damage = QMul_RoundDown(damage, UQ412__0_75);
     }
 
@@ -267,7 +338,7 @@ void CalcDamageOverall(void *bw, struct BattleStruct *sp)
 #endif
 
     // this is beacuse of weirdness, just make sure the value is correct at all times
-    if (sp->oneTurnFlag[attacker].parental_bond_flag) {
+    if (IsAttackerOnField(sp) && sp->oneTurnFlag[attacker].parental_bond_flag) {
 #ifdef DEBUG_DAMAGE_CALC
         debug_printf("[CalcBaseDamage] parental_bond_flag: %d\n", sp->oneTurnFlag[attacker].parental_bond_flag);
 #endif
@@ -299,32 +370,30 @@ void CalcDamageOverall(void *bw, struct BattleStruct *sp)
 
     // 6.3 Weather Modifier
 
-    if ((CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) == 0) && (CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK) == 0)) {
-        if (sp->field_condition & WEATHER_RAIN_ANY) {
-            switch (type) {
-            case TYPE_FIRE:
-                damage = QMul_RoundDown(damage, UQ412__0_5);
-                break;
-            case TYPE_WATER:
-                damage = QMul_RoundDown(damage, UQ412__1_5);
-                break;
-            }
+    if (weather & FIELD_CONDITION_RAIN_ALL) {
+        switch (type) {
+        case TYPE_FIRE:
+            damage = QMul_RoundDown(damage, UQ412__0_5);
+            break;
+        case TYPE_WATER:
+            damage = QMul_RoundDown(damage, UQ412__1_5);
+            break;
         }
+    }
 
-        if (sp->field_condition & WEATHER_SUNNY_ANY) {
-            switch (type) {
-            case TYPE_FIRE:
+    if (weather & FIELD_CONDITION_SUN_ALL) {
+        switch (type) {
+        case TYPE_FIRE:
+            damage = QMul_RoundDown(damage, UQ412__1_5);
+            break;
+        case TYPE_WATER:
+            // If the current weather is Sunny Day and the user is not holding Utility Umbrella, this move's damage is multiplied by 1.5 instead of halved for being Water type.
+            if (moveno == MOVE_HYDRO_STEAM && attackerItemHeldEffect != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN) {
                 damage = QMul_RoundDown(damage, UQ412__1_5);
-                break;
-            case TYPE_WATER:
-                // If the current weather is Sunny Day and the user is not holding Utility Umbrella, this move's damage is multiplied by 1.5 instead of halved for being Water type.
-                if (moveno == MOVE_HYDRO_STEAM && GetBattleMonItem(sp, attacker) != ITEM_UTILITY_UMBRELLA) {
-                    damage = QMul_RoundDown(damage, UQ412__1_5);
-                } else {
-                    damage = QMul_RoundDown(damage, UQ412__0_5);
-                }
-                break;
+            } else {
+                damage = QMul_RoundDown(damage, UQ412__0_5);
             }
+            break;
         }
     }
 #ifdef DEBUG_DAMAGE_CALC
@@ -377,8 +446,17 @@ void CalcDamageOverall(void *bw, struct BattleStruct *sp)
 #endif
 
     // 6.6 Same-Type Attack Bonus (STAB) Modifier
-
-    if (((sp->server_status_flag & SERVER_STATUS_FLAG_TYPE_FLAT) == 0) && HasType(sp, attacker, type)) {
+    int moveEffect = sp->moveTbl[moveno].effect;
+    if (moveEffect == MOVE_EFFECT_HIT_IN_3_TURNS && sp->futureSightNoAttacker) {
+        if (sp->futureSightSTAB) {
+#ifdef DEBUG_DAMAGE_ROLLS
+            for (int u = 0; u < 16; u++) {
+                predamage[u] = QMul_RoundDown(predamage[u], UQ412__1_5);
+            }
+#endif // DEBUG_DAMAGE_ROLLS
+            damage = QMul_RoundDown(damage, UQ412__1_5);
+        }
+    } else if (((sp->server_status_flag & SERVER_STATUS_FLAG_TYPE_FLAT) == 0) && HasType(sp, attacker, type)) {
         if (attackerAbility == ABILITY_ADAPTABILITY) {
 #ifdef DEBUG_DAMAGE_ROLLS
             for (int u = 0; u < 16; u++) {
@@ -492,18 +570,6 @@ void CalcDamageOverall(void *bw, struct BattleStruct *sp)
         }
     }
 
-    if (movesplit == SPLIT_SPECIAL) {
-        // frostbite halves special damage
-        if (sp->battlemon[attacker].condition & STATUS_FREEZE) {
-            damage = QMul_RoundDown(damage, UQ412__0_5);
-#ifdef DEBUG_DAMAGE_ROLLS
-            for (int u = 0; u < 16; u++) {
-                predamage[u] = QMul_RoundDown(predamage[u], UQ412__0_5);
-            }
-#endif // DEBUG_DAMAGE_ROLLS
-        }
-    }
-
 #ifdef DEBUG_DAMAGE_CALC
     debug_printf("\n=================\n");
     debug_printf("[CalcBaseDamage] 6.8 Burn Modifier\n");
@@ -519,20 +585,20 @@ void CalcDamageOverall(void *bw, struct BattleStruct *sp)
     // 6.9.14 Doubled-damage moves
 
     // 6.9.14.1 Minimize
-    if (sp->battlemon[defender].effect_of_moves & MOVE_EFFECT_FLAG_MINIMIZED
+    if (sp->battlemon[defender].effect_of_moves & MOVE_EFFECT_FLAG_MINIMIZE
         && !sp->battlemon[defender].is_currently_dynamaxed
         && IsMoveInMinimizeVulnerabilityMovesList(moveno)) {
         finalModifier = QMul_RoundUp(finalModifier, UQ412__2_0);
     }
 
     // 6.9.14.2 Dig
-    if (sp->battlemon[defender].effect_of_moves & MOVE_EFFECT_FLAG_DIGGING
+    if (sp->battlemon[defender].effect_of_moves & MOVE_EFFECT_FLAG_DIG
         && moveno == MOVE_EARTHQUAKE) {
         finalModifier = QMul_RoundUp(finalModifier, UQ412__2_0);
     }
 
     // 6.9.14.3 Dive
-    if (sp->battlemon[defender].effect_of_moves & MOVE_EFFECT_FLAG_IS_DIVING
+    if (sp->battlemon[defender].effect_of_moves & MOVE_EFFECT_FLAG_DIVE
         && (moveno == MOVE_SURF || moveno == MOVE_WHIRLPOOL)) {
         finalModifier = QMul_RoundUp(finalModifier, UQ412__2_0);
     }
@@ -572,8 +638,8 @@ void CalcDamageOverall(void *bw, struct BattleStruct *sp)
         && ((side_cond & SIDE_STATUS_REFLECT) != 0 || (side_cond & SIDE_STATUS_AURORA_VEIL) != 0)
         && (sp->critical == 1)
         && (sp->moveTbl[moveno].effect != MOVE_EFFECT_REMOVE_SCREENS)
-        && (sp->battlemon[attacker].ability != ABILITY_INFILTRATOR)) {
-        if (battle_type & BATTLE_TYPE_DOUBLE) {
+        && (attackerAbility != ABILITY_INFILTRATOR)) {
+        if (battle_type & BATTLE_TYPE_DOUBLES) {
             finalModifier = QMul_RoundUp(finalModifier, UQ412__0_6666);
         } else {
             finalModifier = QMul_RoundUp(finalModifier, UQ412__0_5);
@@ -585,7 +651,7 @@ void CalcDamageOverall(void *bw, struct BattleStruct *sp)
         && (sp->critical == 1)
         && (sp->moveTbl[moveno].effect != MOVE_EFFECT_REMOVE_SCREENS)
         && (attackerAbility != ABILITY_INFILTRATOR)) {
-        if (battle_type & BATTLE_TYPE_DOUBLE) {
+        if (battle_type & BATTLE_TYPE_DOUBLES) {
             finalModifier = QMul_RoundUp(finalModifier, UQ412__0_6666);
         } else {
             finalModifier = QMul_RoundUp(finalModifier, UQ412__0_5);
@@ -661,7 +727,7 @@ void CalcDamageOverall(void *bw, struct BattleStruct *sp)
         if ((sp->rawSpeedNonRNGClientOrder[i] == defender)
             && MoldBreakerAbilityCheck(sp, attacker, defender, ABILITY_FLUFFY)) {
             // 6.9.6 Fluffy (contact moves)
-            if (IsContactBeingMade(GetBattlerAbility(sp, sp->attack_client), HeldItemHoldEffectGet(sp, sp->attack_client), HeldItemHoldEffectGet(sp, sp->defence_client), sp->current_move_index, sp->moveTbl[sp->current_move_index].flag)) {
+            if (IsContactBeingMade(GetBattlerAbility(sp, sp->attack_client), attackerItemHeldEffect, HeldItemHoldEffectGet(sp, sp->defence_client), sp->current_move_index, sp->moveTbl[sp->current_move_index].flag)) {
                 finalModifier = QMul_RoundUp(finalModifier, UQ412__0_5);
 #ifdef DEBUG_DAMAGE_CALC
                 debug_printf("\n=================\n");
@@ -734,7 +800,7 @@ void CalcDamageOverall(void *bw, struct BattleStruct *sp)
     for (u32 i = 0; i < maxBattlers; i++) {
         // 6.9.9 Metronome (item)
         if ((sp->rawSpeedNonRNGClientOrder[i] == attacker)
-            && HeldItemHoldEffectGet(sp, attacker) == HOLD_EFFECT_BOOST_REPEATED) {
+            && attackerItemHeldEffect == HOLD_EFFECT_BOOST_REPEATED) {
             switch (sp->battlemon[attacker].moveeffect.metronomeTurns) {
             case 0:
                 break;
@@ -774,7 +840,7 @@ void CalcDamageOverall(void *bw, struct BattleStruct *sp)
         case TYPE_MUL_TRIPLE_SUPER_EFFECTIVE:
             // 6.9.11 Expert Belt
             if ((sp->rawSpeedNonRNGClientOrder[i] == attacker)
-                && HeldItemHoldEffectGet(sp, attacker) == HOLD_EFFECT_POWER_UP_SE) {
+                && attackerItemHeldEffect == HOLD_EFFECT_POWER_UP_SE) {
                 finalModifier = QMul_RoundUp(finalModifier, UQ412__1_2);
 #ifdef DEBUG_DAMAGE_CALC
                 debug_printf("\n=================\n");
@@ -799,7 +865,7 @@ void CalcDamageOverall(void *bw, struct BattleStruct *sp)
         }
 
         // 6.9.12 Life Orb
-        if ((sp->rawSpeedNonRNGClientOrder[i] == attacker) && HeldItemHoldEffectGet(sp, attacker) == HOLD_EFFECT_HP_DRAIN_ON_ATK) {
+        if ((sp->rawSpeedNonRNGClientOrder[i] == attacker) && attackerItemHeldEffect == HOLD_EFFECT_HP_DRAIN_ON_ATK) {
             finalModifier = QMul_RoundUp(finalModifier, UQ412__1_3_BUT_LOWER);
 #ifdef DEBUG_DAMAGE_CALC
             debug_printf("\n=================\n");
@@ -832,6 +898,28 @@ void CalcDamageOverall(void *bw, struct BattleStruct *sp)
 #ifdef DEBUG_DAMAGE_CALC
     debug_printf("\n=================\n");
     debug_printf("[CalcBaseDamage] Step 10. Z-move into Protecting Move Modifier\n");
+    debug_printf("[CalcBaseDamage] damage: %d\n", damage);
+#endif
+
+    // Todo Z-Move + Unseen Fist?
+    // Step 10.1 Unseen Fist / Piercing Drill
+    // 0.25x damage into protect
+    if (((attackerAbility == ABILITY_PIERCING_DRILL)
+#if UNSEEN_FIST_GENERATION >= GEN_CHAMPIONS
+            || (attackerAbility == ABILITY_UNSEEN_FIST))
+#endif
+        && sp->oneTurnFlag[defender].protectFlag) {
+        damage = QMul_RoundDown(damage, UQ412__0_25);
+#ifdef DEBUG_DAMAGE_ROLLS
+        for (int u = 0; u < 16; u++) {
+            predamage[u] = QMul_RoundDown(predamage[u], UQ412__0_25);
+        }
+#endif // DEBUG_DAMAGE_ROLLS
+    }
+
+#ifdef DEBUG_DAMAGE_CALC
+    debug_printf("\n=================\n");
+    debug_printf("[CalcBaseDamage] Step 10.1 Unseen Fist / Piercing Drill\n");
     debug_printf("[CalcBaseDamage] damage: %d\n", damage);
 #endif
 

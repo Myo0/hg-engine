@@ -4,8 +4,9 @@
 // #include "lib/string.h"
 
 #include "types.h"
-#include "window.h"
+
 #include "pokemon.h"
+#include "window.h"
 
 enum SummaryStringJustify {
     JUSTIFY_LEFT,

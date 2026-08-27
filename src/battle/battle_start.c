@@ -1,21 +1,23 @@
-#include "../../include/types.h"
-#include "../../include/config.h"
-#include "../../include/battle.h"
-#include "../../include/item.h"
-#include "../../include/mega.h"
-#include "../../include/pokemon.h"
-#include "../../include/constants/ability.h"
-#include "../../include/constants/battle_script_constants.h"
-#include "../../include/constants/file.h"
-#include "../../include/constants/item.h"
-#include "../../include/constants/moves.h"
-#include "../../include/constants/move_effects.h"
-#include "../../include/constants/species.h"
-#include "../../include/constants/system_control.h"
-#include "../../include/overlay.h"
+#include "config.h"
+#include "types.h"
+
+#include "constants/ability.h"
+#include "constants/battle_script_constants.h"
+#include "constants/file.h"
+#include "constants/item.h"
+#include "constants/move_effects.h"
+#include "constants/moves.h"
+#include "constants/species.h"
+#include "constants/system_control.h"
+
+#include "battle.h"
+#include "item.h"
+#include "mega.h"
+#include "overlay.h"
+#include "pokemon.h"
 
 #ifdef DEBUG_BATTLE_SCENARIOS
-#include "../../include/test_battle.h"
+#include "test_battle.h"
 #endif // DEBUG_BATTLE_SCENARIOS
 
 /********************************************************************************************************************/
@@ -110,7 +112,7 @@ void ServerBeforeAct(struct BattleSystem *bsys, struct BattleStruct *ctx)
             // #ifdef DEBUG_BEFORE_MOVE_LOGIC
             //             debug_printf("Restoring overlay %d...\n", (ServerBeforeAct_restoreOverlay == 1 ? 0 : ServerBeforeAct_restoreOverlay));
             // #endif
-            HandleLoadOverlay((ServerBeforeAct_restoreOverlay == 1 ? OVERLAY_WIFI : ServerBeforeAct_restoreOverlay), 2);
+            HandleLoadOverlay(ServerBeforeAct_restoreOverlay == 1 ? OVERLAY_WIFI : ServerBeforeAct_restoreOverlay, 2);
         }
     }
 }
@@ -172,7 +174,7 @@ void ServerWazaBefore(void *bw, struct BattleStruct *sp)
             // #ifdef DEBUG_BEFORE_MOVE_LOGIC
             //             debug_printf("Restoring overlay %d...\n", (ServerWazaBefore_restoreOverlay == 1 ? 0 : ServerWazaBefore_restoreOverlay));
             // #endif
-            HandleLoadOverlay((ServerWazaBefore_restoreOverlay == 1 ? OVERLAY_WIFI : ServerWazaBefore_restoreOverlay), 2);
+            HandleLoadOverlay(ServerWazaBefore_restoreOverlay == 1 ? OVERLAY_WIFI : ServerWazaBefore_restoreOverlay, 2);
             ServerWazaBefore_restoreOverlay = FALSE;
         }
     }

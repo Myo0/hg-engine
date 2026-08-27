@@ -1,7 +1,7 @@
 // Test: Protosynthesis doesn't activate for a transformed battler
 {
-    .battleType = BATTLE_TYPE_SINGLE,
-    .weather = WEATHER_NONE,
+    .battleType = BATTLE_TYPE_TRAINER,
+    .weather = FIELD_CONDITION_NONE,
     .fieldCondition = 0,
     .terrain = TERRAIN_NONE,
 
@@ -13,7 +13,7 @@
             .ability = ABILITY_PROTOSYNTHESIS,
             .item = ITEM_BOOSTER_ENERGY,
             .moves = {MOVE_SCRATCH, MOVE_SUNNY_DAY, MOVE_NONE, MOVE_NONE},
-            .hp = 0,
+            .hp = FULL_HP,
             .status = 0,
             .condition2 = 0,
             .moveEffectFlags = 0,
@@ -33,7 +33,7 @@
             .ability = ABILITY_DROUGHT,
             .item = ITEM_CHOICE_SCARF,
             .moves = {MOVE_TRANSFORM, MOVE_SCRATCH, MOVE_NONE, MOVE_NONE},
-            .hp = 0,
+            .hp = FULL_HP,
             .status = 0,
             .condition2 = 0,
             .moveEffectFlags = 0,

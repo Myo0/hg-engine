@@ -1,19 +1,21 @@
 
-#include "../../include/types.h"
-#include "../../include/config.h"
-#include "../../include/battle.h"
-#include "../../include/item.h"
-#include "../../include/mega.h"
-#include "../../include/pokemon.h"
-#include "../../include/constants/ability.h"
-#include "../../include/constants/battle_script_constants.h"
-#include "../../include/constants/file.h"
-#include "../../include/constants/item.h"
-#include "../../include/constants/moves.h"
-#include "../../include/constants/move_effects.h"
-#include "../../include/constants/species.h"
-#include "../../include/constants/system_control.h"
-#include "../../include/overlay.h"
+#include "config.h"
+#include "types.h"
+
+#include "constants/ability.h"
+#include "constants/battle_script_constants.h"
+#include "constants/file.h"
+#include "constants/item.h"
+#include "constants/move_effects.h"
+#include "constants/moves.h"
+#include "constants/species.h"
+#include "constants/system_control.h"
+
+#include "battle.h"
+#include "item.h"
+#include "mega.h"
+#include "overlay.h"
+#include "pokemon.h"
 
 static BOOL MegaEvolutionOrUltraBurst(struct BattleSystem *bsys, struct BattleStruct *ctx);
 
@@ -50,6 +52,7 @@ void __attribute__((section(".init"))) ServerBeforeActInternal(struct BattleSyst
 #ifdef DEBUG_BEFORE_MOVE_LOGIC
     debug_printf("In ServerBeforeActInternal\n");
 #endif
+
     ret = 0;
     u32 flag = FALSE;
     client_set_max = BattleWorkClientSetMaxGet(bw);
@@ -65,6 +68,9 @@ void __attribute__((section(".init"))) ServerBeforeActInternal(struct BattleSyst
         switch (sp->sba_seq_no) {
         case SBA_RESET_DEFIANT: {
             // debug_printf("In SBA_RESET_DEFIANT\n");
+#ifdef DEBUG_BATTLE_SCENARIOS
+            debug_printf("--- Turn %d ---\n", sp->total_turn);
+#endif
 
             CalcPriorityAndQuickClawCustapBerry(bw, sp);
 
@@ -107,6 +113,9 @@ void __attribute__((section(".init"))) ServerBeforeActInternal(struct BattleSyst
             // debug_printf("In SBA_SET_GIMMICK_REQUEST_STATUS\n");
 
             for (client_no = 0; client_no < client_set_max; client_no++) {
+#ifdef DEBUG_BATTLE_SCENARIOS
+                newBS.playerWantMega = No2Bit(client_no);
+#endif
                 flag = FALSE;
                 if (sp->playerActions[0][3] != SELECT_ESCAPE_COMMAND && sp->playerActions[2][3] != SELECT_ESCAPE_COMMAND) {
                     if (BattleTypeGet(bw) & BATTLE_TYPE_MULTI) {
@@ -123,7 +132,7 @@ void __attribute__((section(".init"))) ServerBeforeActInternal(struct BattleSyst
                         }
                         // ai requests mega
                         else {
-                            if (CheckCanMega(sp, client_no) && (BattleTypeGet(bw) & (BATTLE_TYPE_TRAINER | BATTLE_TYPE_BATTLE_TOWER))) {
+                            if (CheckCanMega(sp, client_no) && (BattleTypeGet(bw) & (BATTLE_TYPE_TRAINER | BATTLE_TYPE_FRONTIER))) {
                                 sp->battlemon[client_no].canMega = 1;
                                 newBS.SideMega[client_no] = TRUE;
                                 flag = TRUE;
@@ -141,7 +150,7 @@ void __attribute__((section(".init"))) ServerBeforeActInternal(struct BattleSyst
                         }
                         // ai requests mega
                         else {
-                            if (CheckCanMega(sp, client_no) && (BattleTypeGet(bw) & (BATTLE_TYPE_TRAINER | BATTLE_TYPE_BATTLE_TOWER))) {
+                            if (CheckCanMega(sp, client_no) && (BattleTypeGet(bw) & (BATTLE_TYPE_TRAINER | BATTLE_TYPE_FRONTIER))) {
                                 sp->battlemon[client_no].canMega = 1;
                                 newBS.SideMega[1] = TRUE;
                                 newBS.SideMega[3] = TRUE;
@@ -351,7 +360,7 @@ void __attribute__((section(".init"))) ServerBeforeActInternal(struct BattleSyst
                     sp->battlerIdTemp = client_no;
                     // decomp doesn't have this???
                     // sp->battlemon[client_no].form_no = 1; // ?
-                    LoadBattleSubSeqScript(sp, ARC_BATTLE_SUB_SEQ, SUB_SEQ_FOCUS_PUNCH_START);
+                    LoadBattleSubSeqScript(sp, ARC_BATTLE_SUB_SEQ, BATTLE_SUBSCRIPT_TIGHTEN_FOCUS);
                     sp->next_server_seq_no = sp->server_seq_no;
                     sp->server_seq_no = 22;
                     sp->oneTurnFlag[client_no].pendingFocusPunchFlag = TRUE;
@@ -401,7 +410,6 @@ static BOOL MegaEvolutionOrUltraBurst(struct BattleSystem *bsys, struct BattleSt
 {
     int client_no, i;
     int client_set_max;
-    int seq;
 
     client_set_max = BattleWorkClientSetMaxGet(bsys);
     for (i = 0; i < client_set_max; i++) {
@@ -415,6 +423,10 @@ static BOOL MegaEvolutionOrUltraBurst(struct BattleSystem *bsys, struct BattleSt
                 newBS.PlayerMegaed = TRUE;
             }
 
+            if (IS_CLIENT_IN_ILLUSION(bsys, client_no)) {
+                gIllusionStruct.dontRemoveIllusion = TRUE;
+            }
+
             ctx->battlemon[client_no].form_no = GrabMegaTargetForm(ctx->battlemon[client_no].species, ctx->battlemon[client_no].item);
 
             // https://www.smogon.com/forums/threads/scarlet-violet-battle-mechanics-research.3709545/post-9458017
@@ -425,9 +437,9 @@ static BOOL MegaEvolutionOrUltraBurst(struct BattleSystem *bsys, struct BattleSt
             newBS.needMega[client_no] = MEGA_CHECK_APPER;
             ctx->battlerIdTemp = client_no;
             if (CheckCanSpeciesMegaEvolveByMove(ctx, client_no)) {
-                LoadBattleSubSeqScript(ctx, ARC_BATTLE_SUB_SEQ, SUB_SEQ_HANDLE_MOVE_MEGA_EVOLUTION);
+                LoadBattleSubSeqScript(ctx, ARC_BATTLE_SUB_SEQ, BATTLE_SUBSCRIPT_HANDLE_MOVE_MEGA_EVOLUTION);
             } else {
-                LoadBattleSubSeqScript(ctx, ARC_BATTLE_SUB_SEQ, SUB_SEQ_HANDLE_MEGA_EVOLUTION); // load sequence 297 and execute
+                LoadBattleSubSeqScript(ctx, ARC_BATTLE_SUB_SEQ, BATTLE_SUBSCRIPT_HANDLE_MEGA_EVOLUTION); // load sequence 297 and execute
             }
             ctx->next_server_seq_no = ctx->server_seq_no;
             ctx->server_seq_no = CONTROLLER_COMMAND_RUN_SCRIPT;
@@ -435,13 +447,11 @@ static BOOL MegaEvolutionOrUltraBurst(struct BattleSystem *bsys, struct BattleSt
         }
         if (newBS.needMega[client_no] == MEGA_CHECK_APPER && ctx->battlemon[client_no].hp) {
             newBS.needMega[client_no] = MEGA_NO_NEED;
-            seq = ST_ServerPokeAppearCheck(bsys, ctx);
-            if (seq) {
-                LoadBattleSubSeqScript(ctx, ARC_BATTLE_SUB_SEQ, seq);
-                ctx->next_server_seq_no = ctx->server_seq_no;
-                ctx->server_seq_no = CONTROLLER_COMMAND_RUN_SCRIPT;
-                return TRUE;
-            }
+
+            LoadBattleSubSeqScript(ctx, ARC_BATTLE_SUB_SEQ, BATTLE_SUBSCRIPT_SWITCH_IN_ABILITY_CHECK);
+            ctx->next_server_seq_no = ctx->server_seq_no;
+            ctx->server_seq_no = CONTROLLER_COMMAND_RUN_SCRIPT;
+            return TRUE;
         }
         newBS.needMega[client_no] = MEGA_NO_NEED;
     }

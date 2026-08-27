@@ -1,18 +1,20 @@
-#include "../../include/battle.h"
-#include "../../include/debug.h"
-#include "../../include/overlay.h"
-#include "../../include/pokemon.h"
-#include "../../include/types.h"
-#include "../../include/constants/ability.h"
-#include "../../include/constants/battle_script_constants.h"
-#include "../../include/constants/hold_item_effects.h"
-#include "../../include/constants/item.h"
-#include "../../include/constants/move_effects.h"
-#include "../../include/constants/moves.h"
-#include "../../include/constants/species.h"
-#include "../../include/constants/weather_numbers.h"
-#include "../../include/constants/battle_message_constants.h"
-#include "../../include/constants/file.h"
+#include "debug.h"
+#include "types.h"
+
+#include "constants/ability.h"
+#include "constants/battle_message_constants.h"
+#include "constants/battle_script_constants.h"
+#include "constants/file.h"
+#include "constants/hold_item_effects.h"
+#include "constants/item.h"
+#include "constants/move_effects.h"
+#include "constants/moves.h"
+#include "constants/species.h"
+#include "constants/weather_numbers.h"
+
+#include "battle.h"
+#include "overlay.h"
+#include "pokemon.h"
 
 // this file's function declarations
 // u32 MoveHitUTurnHeldItemEffectCheck(void *bw, struct BattleStruct *sp, int *seq_no);
@@ -59,7 +61,7 @@ u32 LONG_CALL MoveHitUTurnHeldItemEffectCheck(void *bw, struct BattleStruct *sp,
     {
         sp->hp_calc_work = BattleDamageDivide(sp->oneSelfFlag[sp->attack_client].shell_bell_damage * -1, atk_item_param);
         sp->battlerIdTemp = sp->attack_client;
-        seq_no[0] = SUB_SEQ_ITEM_HP_GRADUAL;
+        seq_no[0] = BATTLE_SUBSCRIPT_RESTORE_A_LITTLE_HP;
         ret = TRUE;
     }
 
@@ -72,7 +74,7 @@ u32 LONG_CALL MoveHitUTurnHeldItemEffectCheck(void *bw, struct BattleStruct *sp,
     {
         sp->hp_calc_work = BattleDamageDivide(sp->battlemon[sp->attack_client].maxhp * -1, 10);
         sp->battlerIdTemp = sp->attack_client;
-        seq_no[0] = SUB_SEQ_ITEM_HP_LOSS;
+        seq_no[0] = BATTLE_SUBSCRIPT_LOSE_HP_FROM_ITEM;
         ret = TRUE;
     }
 
@@ -81,7 +83,7 @@ u32 LONG_CALL MoveHitUTurnHeldItemEffectCheck(void *bw, struct BattleStruct *sp,
         && (GetBattlerAbility(sp, sp->attack_client) != ABILITY_MAGIC_GUARD)
         && (sp->oneSelfFlag[sp->defence_client].physical_damage)) {
         sp->hp_calc_work = BattleDamageDivide(sp->battlemon[sp->attack_client].maxhp * -1, def_item_param);
-        seq_no[0] = SUB_SEQ_ITEM_DAMAGE_BACK;
+        seq_no[0] = BATTLE_SUBSCRIPT_HELD_ITEM_RECOIL_WHEN_HIT;
         ret = TRUE;
     }
 
@@ -96,7 +98,7 @@ u32 LONG_CALL MoveHitUTurnHeldItemEffectCheck(void *bw, struct BattleStruct *sp,
         // Attacker used a move that makes contact
         && (IsContactBeingMade(GetBattlerAbility(sp, sp->attack_client), HeldItemHoldEffectGet(sp, sp->attack_client), HeldItemHoldEffectGet(sp, sp->defence_client), sp->current_move_index, sp->moveTbl[sp->current_move_index].flag))) {
         sp->hp_calc_work = BattleDamageDivide(sp->battlemon[sp->attack_client].maxhp * -1, def_item_param);
-        seq_no[0] = SUB_SEQ_ITEM_DAMAGE_BACK;
+        seq_no[0] = BATTLE_SUBSCRIPT_HELD_ITEM_RECOIL_WHEN_HIT;
         ret = TRUE;
     }
 
@@ -107,7 +109,7 @@ u32 LONG_CALL MoveHitUTurnHeldItemEffectCheck(void *bw, struct BattleStruct *sp,
         && ((sp->oneSelfFlag[sp->defence_client].physical_damage)
             || (sp->oneSelfFlag[sp->defence_client].special_damage))
         && (IsContactBeingMade(GetBattlerAbility(sp, sp->attack_client), HeldItemHoldEffectGet(sp, sp->attack_client), HeldItemHoldEffectGet(sp, sp->defence_client), sp->current_move_index, sp->moveTbl[sp->current_move_index].flag))) {
-        seq_no[0] = SUB_SEQ_ITEM_GIVE_STICKY_BARB;
+        seq_no[0] = BATTLE_SUBSCRIPT_TRANSFER_STICKY_BARB;
         ret = TRUE;
     }
 
@@ -179,7 +181,7 @@ u32 LONG_CALL ServerWazaHitAfterCheckAct(void *bw UNUSED, struct BattleStruct *s
                    {
                        sp->hp_calc_work = BattleDamageDivide(sp->oneSelfFlag[sp->attack_client].shell_bell_damage * -1, hold_effect_param);
                        sp->battlerIdTemp=sp->attack_client;
-                       LoadBattleSubSeqScript(sp, ARC_BATTLE_SUB_SEQ, SUB_SEQ_ITEM_HP_GRADUAL);
+                       LoadBattleSubSeqScript(sp, ARC_BATTLE_SUB_SEQ, BATTLE_SUBSCRIPT_RESTORE_A_LITTLE_HP);
                        sp->next_server_seq_no = sp->server_seq_no;
                        sp->server_seq_no = 22;
                        ret = 1;
@@ -197,7 +199,7 @@ u32 LONG_CALL ServerWazaHitAfterCheckAct(void *bw UNUSED, struct BattleStruct *s
                {
                    sp->hp_calc_work = BattleDamageDivide(sp->battlemon[sp->attack_client].maxhp * -1, 10);
                    sp->battlerIdTemp = sp->attack_client;
-                   LoadBattleSubSeqScript(sp, ARC_BATTLE_SUB_SEQ, SUB_SEQ_ITEM_HP_LOSS);
+                   LoadBattleSubSeqScript(sp, ARC_BATTLE_SUB_SEQ, BATTLE_SUBSCRIPT_LOSE_HP_FROM_ITEM);
                    sp->next_server_seq_no = sp->server_seq_no;
                    sp->server_seq_no = 22;
                    ret = 1;
@@ -232,8 +234,9 @@ BOOL LONG_CALL CheckDefenderItemEffectOnHit(void *bw, struct BattleStruct *sp, i
 {
     u32 ovyId, offset;
     BOOL ret;
-    BOOL (*internalFunc)
-    (void *bw, struct BattleStruct *sp, int *seq_no);
+    // clang-format off
+    BOOL (*internalFunc)(void *bw, struct BattleStruct *sp, int *seq_no);
+    // clang-format on
 
     ovyId = OVERLAY_CHECKDEFENDERITEMEFFECTONHIT;
     offset = 0x023C0400 | 1;
@@ -267,56 +270,56 @@ BOOL LONG_CALL GetHeldItemStatusRecoverySubscript(struct BattleStruct *ctx, int 
     switch (itemHeldEffect) {
     case HOLD_EFFECT_PRZ_RESTORE:
         if (ctx->battlemon[battlerId].condition & STATUS_PARALYSIS) {
-            *seq_no = SUB_SEQ_ITEM_RECOVER_PRZ;
+            *seq_no = BATTLE_SUBSCRIPT_HELD_ITEM_PRZ_RESTORE;
         }
         break;
     case HOLD_EFFECT_SLP_RESTORE:
         if (ctx->battlemon[battlerId].condition & STATUS_SLEEP) {
-            *seq_no = SUB_SEQ_ITEM_RECOVER_SLP;
+            *seq_no = BATTLE_SUBSCRIPT_HELD_ITEM_SLP_RESTORE;
         }
         break;
     case HOLD_EFFECT_PSN_RESTORE:
         if (ctx->battlemon[battlerId].condition & STATUS_POISON_ALL) {
-            *seq_no = SUB_SEQ_ITEM_RECOVER_PSN;
+            *seq_no = BATTLE_SUBSCRIPT_HELD_ITEM_PSN_RESTORE;
         }
         break;
     case HOLD_EFFECT_BRN_RESTORE:
         if (ctx->battlemon[battlerId].condition & STATUS_BURN) {
-            *seq_no = SUB_SEQ_ITEM_RECOVER_BRN;
+            *seq_no = BATTLE_SUBSCRIPT_HELD_ITEM_BRN_RESTORE;
         }
         break;
     case HOLD_EFFECT_FRZ_RESTORE:
         if (ctx->battlemon[battlerId].condition & STATUS_FREEZE) {
-            *seq_no = SUB_SEQ_ITEM_RECOVER_FRZ;
+            *seq_no = BATTLE_SUBSCRIPT_HELD_ITEM_PRZ_RESTORE;
         }
         break;
     case HOLD_EFFECT_CONFUSE_RESTORE:
         if (ctx->battlemon[battlerId].condition2 & STATUS2_CONFUSION) {
-            *seq_no = SUB_SEQ_ITEM_RECOVER_CNF;
+            *seq_no = BATTLE_SUBSCRIPT_HELD_ITEM_CNF_RESTORE;
         }
         break;
     case HOLD_EFFECT_STATUS_RESTORE:
         if ((ctx->battlemon[battlerId].condition & STATUS_ALL) || (ctx->battlemon[battlerId].condition2 & STATUS2_CONFUSION)) {
             if (ctx->battlemon[battlerId].condition & STATUS_PARALYSIS) {
-                *seq_no = SUB_SEQ_ITEM_RECOVER_PRZ;
+                *seq_no = BATTLE_SUBSCRIPT_HELD_ITEM_PRZ_RESTORE;
             }
             if (ctx->battlemon[battlerId].condition & STATUS_SLEEP) {
-                *seq_no = SUB_SEQ_ITEM_RECOVER_SLP;
+                *seq_no = BATTLE_SUBSCRIPT_HELD_ITEM_SLP_RESTORE;
             }
             if (ctx->battlemon[battlerId].condition & STATUS_POISON_ALL) {
-                *seq_no = SUB_SEQ_ITEM_RECOVER_PSN;
+                *seq_no = BATTLE_SUBSCRIPT_HELD_ITEM_PSN_RESTORE;
             }
             if (ctx->battlemon[battlerId].condition & STATUS_BURN) {
-                *seq_no = SUB_SEQ_ITEM_RECOVER_BRN;
+                *seq_no = BATTLE_SUBSCRIPT_HELD_ITEM_BRN_RESTORE;
             }
             if (ctx->battlemon[battlerId].condition & STATUS_FREEZE) {
-                *seq_no = SUB_SEQ_ITEM_RECOVER_FRZ;
+                *seq_no = BATTLE_SUBSCRIPT_HELD_ITEM_PRZ_RESTORE;
             }
             if (ctx->battlemon[battlerId].condition2 & STATUS2_CONFUSION) {
-                *seq_no = SUB_SEQ_ITEM_RECOVER_CNF;
+                *seq_no = BATTLE_SUBSCRIPT_HELD_ITEM_CNF_RESTORE;
             }
             if ((ctx->battlemon[battlerId].condition & STATUS_ALL) && (ctx->battlemon[battlerId].condition2 & STATUS2_CONFUSION)) {
-                *seq_no = SUB_SEQ_ITEM_RECOVER_ALL;
+                *seq_no = BATTLE_SUBSCRIPT_HELD_ITEM_MULTI_RESTORE;
             }
         }
         break;
@@ -334,6 +337,10 @@ BOOL LONG_CALL TryUseHeldItem(void *bw, struct BattleStruct *ctx, int battlerId)
     int itemHeldEffect;
     int boost;
 
+    if (battlerId == BATTLER_NONE) {
+        return FALSE;
+    }
+
     itemHeldEffect = HeldItemHoldEffectGet(ctx, battlerId);
     boost = HeldItemAtkGet(ctx, battlerId, ATK_CHECK_NORMAL);
     BOOL hpLowerThan50 = (ctx->battlemon[battlerId].hp <= (s32)(ctx->battlemon[battlerId].maxhp) / 2);
@@ -343,14 +350,14 @@ BOOL LONG_CALL TryUseHeldItem(void *bw, struct BattleStruct *ctx, int battlerId)
         case HOLD_EFFECT_HP_RESTORE: // oran berry, berry juice
             if (hpLowerThan50) {
                 ctx->hp_calc_work = boost;
-                script = SUB_SEQ_ITEM_HP_RESTORE;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
                 ret = TRUE;
             }
             break;
         case HOLD_EFFECT_HP_PCT_RESTORE: // sitrus berry
             if (hpLowerThan50) {
                 ctx->hp_calc_work = BattleDamageDivide(ctx->battlemon[battlerId].maxhp * boost, 100);
-                script = SUB_SEQ_ITEM_HP_RESTORE;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
                 ret = TRUE;
             }
             break;
@@ -366,7 +373,7 @@ BOOL LONG_CALL TryUseHeldItem(void *bw, struct BattleStruct *ctx, int battlerId)
                 BattleMon_AddVar(&ctx->battlemon[battlerId], MON_DATA_MOVE1PP + index, boost);
                 CopyBattleMonToPartyMon(bw, ctx, battlerId);
                 ctx->waza_work = ctx->battlemon[battlerId].move[index];
-                script = SUB_SEQ_ITEM_PP_RESTORE;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_PP_RESTORE;
                 ret = TRUE;
             }
             break;
@@ -385,9 +392,9 @@ BOOL LONG_CALL TryUseHeldItem(void *bw, struct BattleStruct *ctx, int battlerId)
                 ctx->hp_calc_work = BattleDamageDivide(ctx->battlemon[battlerId].maxhp, boost);
                 ctx->msg_work = 0;
                 if (GetFlavorPreferenceFromPID(ctx->battlemon[battlerId].personal_rnd, FLAVOR_SPICY) == -1) {
-                    script = SUB_SEQ_ITEM_HP_RESTORE_CNF;
+                    script = BATTLE_SUBSCRIPT_HELD_ITEM_DISLIKE_FLAVOR;
                 } else {
-                    script = SUB_SEQ_ITEM_HP_RESTORE;
+                    script = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
                 }
                 ret = TRUE;
             }
@@ -397,9 +404,9 @@ BOOL LONG_CALL TryUseHeldItem(void *bw, struct BattleStruct *ctx, int battlerId)
                 ctx->hp_calc_work = BattleDamageDivide(ctx->battlemon[battlerId].maxhp, boost);
                 ctx->msg_work = 1;
                 if (GetFlavorPreferenceFromPID(ctx->battlemon[battlerId].personal_rnd, FLAVOR_DRY) == -1) {
-                    script = SUB_SEQ_ITEM_HP_RESTORE_CNF;
+                    script = BATTLE_SUBSCRIPT_HELD_ITEM_DISLIKE_FLAVOR;
                 } else {
-                    script = SUB_SEQ_ITEM_HP_RESTORE;
+                    script = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
                 }
                 ret = TRUE;
             }
@@ -409,9 +416,9 @@ BOOL LONG_CALL TryUseHeldItem(void *bw, struct BattleStruct *ctx, int battlerId)
                 ctx->hp_calc_work = BattleDamageDivide(ctx->battlemon[battlerId].maxhp, boost);
                 ctx->msg_work = 2;
                 if (GetFlavorPreferenceFromPID(ctx->battlemon[battlerId].personal_rnd, FLAVOR_SWEET) == -1) {
-                    script = SUB_SEQ_ITEM_HP_RESTORE_CNF;
+                    script = BATTLE_SUBSCRIPT_HELD_ITEM_DISLIKE_FLAVOR;
                 } else {
-                    script = SUB_SEQ_ITEM_HP_RESTORE;
+                    script = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
                 }
                 ret = TRUE;
             }
@@ -421,9 +428,9 @@ BOOL LONG_CALL TryUseHeldItem(void *bw, struct BattleStruct *ctx, int battlerId)
                 ctx->hp_calc_work = BattleDamageDivide(ctx->battlemon[battlerId].maxhp, boost);
                 ctx->msg_work = 3;
                 if (GetFlavorPreferenceFromPID(ctx->battlemon[battlerId].personal_rnd, FLAVOR_BITTER) == -1) {
-                    script = SUB_SEQ_ITEM_HP_RESTORE_CNF;
+                    script = BATTLE_SUBSCRIPT_HELD_ITEM_DISLIKE_FLAVOR;
                 } else {
-                    script = SUB_SEQ_ITEM_HP_RESTORE;
+                    script = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
                 }
                 ret = TRUE;
             }
@@ -433,9 +440,9 @@ BOOL LONG_CALL TryUseHeldItem(void *bw, struct BattleStruct *ctx, int battlerId)
                 ctx->hp_calc_work = BattleDamageDivide(ctx->battlemon[battlerId].maxhp, boost);
                 ctx->msg_work = 4;
                 if (GetFlavorPreferenceFromPID(ctx->battlemon[battlerId].personal_rnd, FLAVOR_SOUR) == -1) {
-                    script = SUB_SEQ_ITEM_HP_RESTORE_CNF;
+                    script = BATTLE_SUBSCRIPT_HELD_ITEM_DISLIKE_FLAVOR;
                 } else {
-                    script = SUB_SEQ_ITEM_HP_RESTORE;
+                    script = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
                 }
                 ret = TRUE;
             }
@@ -444,9 +451,9 @@ BOOL LONG_CALL TryUseHeldItem(void *bw, struct BattleStruct *ctx, int battlerId)
             if (GetBattlerAbility(ctx, battlerId) == ABILITY_GLUTTONY) {
                 boost /= 2;
             }
-            if (ctx->battlemon[battlerId].hp <= (s32)(ctx->battlemon[battlerId].maxhp) / boost && ctx->battlemon[battlerId].states[1] < SUB_SEQ_BOOST_STATS) {
+            if (ctx->battlemon[battlerId].hp <= (s32)(ctx->battlemon[battlerId].maxhp) / boost && ctx->battlemon[battlerId].states[1] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
                 ctx->msg_work = 1;
-                script = SUB_SEQ_ITEM_STAT_BOOST;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_RAISE_STAT;
                 ret = TRUE;
             }
             break;
@@ -454,9 +461,9 @@ BOOL LONG_CALL TryUseHeldItem(void *bw, struct BattleStruct *ctx, int battlerId)
             if (GetBattlerAbility(ctx, battlerId) == ABILITY_GLUTTONY) {
                 boost /= 2;
             }
-            if (ctx->battlemon[battlerId].hp <= (s32)(ctx->battlemon[battlerId].maxhp) / boost && ctx->battlemon[battlerId].states[2] < SUB_SEQ_BOOST_STATS) {
+            if (ctx->battlemon[battlerId].hp <= (s32)(ctx->battlemon[battlerId].maxhp) / boost && ctx->battlemon[battlerId].states[2] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
                 ctx->msg_work = 2;
-                script = SUB_SEQ_ITEM_STAT_BOOST;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_RAISE_STAT;
                 ret = TRUE;
             }
             break;
@@ -464,9 +471,9 @@ BOOL LONG_CALL TryUseHeldItem(void *bw, struct BattleStruct *ctx, int battlerId)
             if (GetBattlerAbility(ctx, battlerId) == ABILITY_GLUTTONY) {
                 boost /= 2;
             }
-            if (ctx->battlemon[battlerId].hp <= (s32)(ctx->battlemon[battlerId].maxhp) / boost && ctx->battlemon[battlerId].states[3] < SUB_SEQ_BOOST_STATS) {
+            if (ctx->battlemon[battlerId].hp <= (s32)(ctx->battlemon[battlerId].maxhp) / boost && ctx->battlemon[battlerId].states[3] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
                 ctx->msg_work = 3;
-                script = SUB_SEQ_ITEM_STAT_BOOST;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_RAISE_STAT;
                 ret = TRUE;
             }
             break;
@@ -474,9 +481,9 @@ BOOL LONG_CALL TryUseHeldItem(void *bw, struct BattleStruct *ctx, int battlerId)
             if (GetBattlerAbility(ctx, battlerId) == ABILITY_GLUTTONY) {
                 boost /= 2;
             }
-            if (ctx->battlemon[battlerId].hp <= (s32)(ctx->battlemon[battlerId].maxhp) / boost && ctx->battlemon[battlerId].states[4] < SUB_SEQ_BOOST_STATS) {
+            if (ctx->battlemon[battlerId].hp <= (s32)(ctx->battlemon[battlerId].maxhp) / boost && ctx->battlemon[battlerId].states[4] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
                 ctx->msg_work = 4;
-                script = SUB_SEQ_ITEM_STAT_BOOST;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_RAISE_STAT;
                 ret = TRUE;
             }
             break;
@@ -484,9 +491,9 @@ BOOL LONG_CALL TryUseHeldItem(void *bw, struct BattleStruct *ctx, int battlerId)
             if (GetBattlerAbility(ctx, battlerId) == ABILITY_GLUTTONY) {
                 boost /= 2;
             }
-            if (ctx->battlemon[battlerId].hp <= (s32)(ctx->battlemon[battlerId].maxhp) / boost && ctx->battlemon[battlerId].states[5] < SUB_SEQ_BOOST_STATS) {
+            if (ctx->battlemon[battlerId].hp <= (s32)(ctx->battlemon[battlerId].maxhp) / boost && ctx->battlemon[battlerId].states[5] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
                 ctx->msg_work = 5;
-                script = SUB_SEQ_ITEM_STAT_BOOST;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_RAISE_STAT;
                 ret = TRUE;
             }
             break;
@@ -495,7 +502,7 @@ BOOL LONG_CALL TryUseHeldItem(void *bw, struct BattleStruct *ctx, int battlerId)
                 boost /= 2;
             }
             if (ctx->battlemon[battlerId].hp <= (s32)(ctx->battlemon[battlerId].maxhp) / boost && !(ctx->battlemon[battlerId].condition2 & STATUS2_FOCUS_ENERGY)) {
-                script = SUB_SEQ_ITEM_STAT_BOOST_2;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_SHARPLY_RAISE_STAT;
                 ret = TRUE;
             }
             break;
@@ -506,28 +513,28 @@ BOOL LONG_CALL TryUseHeldItem(void *bw, struct BattleStruct *ctx, int battlerId)
             if (ctx->battlemon[battlerId].hp <= (s32)(ctx->battlemon[battlerId].maxhp) / boost) {
                 int stat;
                 for (stat = 0; stat < 5; stat++) {
-                    if (ctx->battlemon[battlerId].states[1 + stat] < SUB_SEQ_BOOST_STATS) {
+                    if (ctx->battlemon[battlerId].states[1 + stat] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
                         break;
                     }
                 }
                 if (stat != 5) {
                     do {
                         stat = BattleRand(bw) % 5;
-                    } while (ctx->battlemon[battlerId].states[1 + stat] == SUB_SEQ_BOOST_STATS);
+                    } while (ctx->battlemon[battlerId].states[1 + stat] == BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE);
                     ctx->msg_work = stat + 1;
-                    script = SUB_SEQ_ITEM_STAT_BOOST_2;
+                    script = BATTLE_SUBSCRIPT_HELD_ITEM_SHARPLY_RAISE_STAT;
                     ret = TRUE;
                 }
             }
             break;
         case HOLD_EFFECT_HEAL_MENTAL_CONDITIONS: // Mental Herb
-            if (ctx->battlemon[ctx->defence_client].condition2 & STATUS2_ATTRACT
-                || ctx->battlemon[ctx->defence_client].condition2 & STATUS2_TORMENT
-                || ctx->battlemon[ctx->defence_client].moveeffect.tauntTurns
-                || ctx->battlemon[ctx->defence_client].moveeffect.encoredTurns
-                || ctx->battlemon[ctx->defence_client].moveeffect.healBlockTurns
-                || ctx->battlemon[ctx->defence_client].moveeffect.disabledTurns) {
-                script = SUB_SEQ_ITEM_HEAL_MENTAL_CONDITIONS;
+            if (ctx->battlemon[battlerId].condition2 & STATUS2_ATTRACT
+                || ctx->battlemon[battlerId].condition2 & STATUS2_TORMENT
+                || ctx->battlemon[battlerId].moveeffect.tauntTurns
+                || ctx->battlemon[battlerId].moveeffect.encoredTurns
+                || ctx->battlemon[battlerId].moveeffect.healBlockTurns
+                || ctx->battlemon[battlerId].moveeffect.disabledTurns) {
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_HEAL_MENTAL_CONDITIONS;
                 ret = TRUE;
             }
             break;
@@ -536,7 +543,7 @@ BOOL LONG_CALL TryUseHeldItem(void *bw, struct BattleStruct *ctx, int battlerId)
                 boost /= 2;
             }
             if (ctx->battlemon[battlerId].hp <= ((s32)(ctx->battlemon[battlerId].maxhp) / boost)) {
-                script = SUB_SEQ_ITEM_ACC_UP_ONCE;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_TEMP_ACC_UP;
                 ret = TRUE;
             }
             break;
@@ -574,35 +581,35 @@ BOOL LONG_CALL TryFling(struct BattleSystem *bsys, struct BattleStruct *sp, int 
     switch (item) {
     case STEAL_EFFECT_RESTORE_HP: // Oran Berry
         sp->flingData = mod;
-        sp->flingScript = SUB_SEQ_ITEM_HP_RESTORE;
+        sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
         break;
     case STEAL_EFFECT_RESTORE_HP_PERCENT: // Sitrus Berry
         sp->flingData = BattleDamageDivide(sp->battlemon[sp->defence_client].maxhp * mod, 100);
-        sp->flingScript = SUB_SEQ_ITEM_HP_RESTORE;
+        sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
         break;
     case STEAL_EFFECT_CURE_PARALYSIS: // Cheri Berry
         if (sp->battlemon[sp->defence_client].condition & STATUS_PARALYSIS) {
-            sp->flingScript = SUB_SEQ_ITEM_RECOVER_PRZ;
+            sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_PRZ_RESTORE;
         }
         break;
     case STEAL_EFFECT_CURE_SLEEP: // Chesto Berry
         if (sp->battlemon[sp->defence_client].condition & STATUS_SLEEP) {
-            sp->flingScript = SUB_SEQ_ITEM_RECOVER_SLP;
+            sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_SLP_RESTORE;
         }
         break;
     case STEAL_EFFECT_CURE_POISON: // Pecha Berry
         if (sp->battlemon[sp->defence_client].condition & STATUS_POISON_ALL) {
-            sp->flingScript = SUB_SEQ_ITEM_RECOVER_PSN;
+            sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_PSN_RESTORE;
         }
         break;
     case STEAL_EFFECT_CURE_BURN: // Rawst Berry
         if (sp->battlemon[sp->defence_client].condition & STATUS_BURN) {
-            sp->flingScript = SUB_SEQ_ITEM_RECOVER_BRN;
+            sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_BRN_RESTORE;
         }
         break;
     case STEAL_EFFECT_CURE_FREEZE: // Aspear Berry
         if (sp->battlemon[sp->defence_client].condition & STATUS_FREEZE) {
-            sp->flingScript = SUB_SEQ_ITEM_RECOVER_FRZ;
+            sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_PRZ_RESTORE;
         }
         break;
     case STEAL_EFFECT_RESTORE_PP: // Leppa Berry
@@ -633,37 +640,37 @@ BOOL LONG_CALL TryFling(struct BattleSystem *bsys, struct BattleStruct *sp, int 
             sp->battlemon[sp->defence_client].pp[mostMissingIndex] += mod;
             CopyBattleMonToPartyMon(bsys, sp, sp->defence_client);
             sp->waza_work = sp->battlemon[sp->defence_client].move[mostMissingIndex];
-            sp->flingScript = SUB_SEQ_ITEM_PP_RESTORE;
+            sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_PP_RESTORE;
         }
         break;
     }
     case STEAL_EFFECT_CURE_CONFUSION: // Persim Berry
         if (sp->battlemon[sp->defence_client].condition2 & STATUS2_CONFUSION) {
-            sp->flingScript = SUB_SEQ_ITEM_RECOVER_CNF;
+            sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_CNF_RESTORE;
         }
         break;
     case STEAL_EFFECT_CURE_ALL: // Lum Berry
         if ((sp->battlemon[sp->defence_client].condition & STATUS_ALL) || (sp->battlemon[sp->defence_client].condition2 & STATUS2_CONFUSION)) {
             if (sp->battlemon[sp->defence_client].condition & STATUS_PARALYSIS) {
-                sp->flingScript = SUB_SEQ_ITEM_RECOVER_PRZ;
+                sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_PRZ_RESTORE;
             }
             if (sp->battlemon[sp->defence_client].condition & STATUS_SLEEP) {
-                sp->flingScript = SUB_SEQ_ITEM_RECOVER_SLP;
+                sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_SLP_RESTORE;
             }
             if (sp->battlemon[sp->defence_client].condition & STATUS_POISON_ALL) {
-                sp->flingScript = SUB_SEQ_ITEM_RECOVER_PSN;
+                sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_PSN_RESTORE;
             }
             if (sp->battlemon[sp->defence_client].condition & STATUS_BURN) {
-                sp->flingScript = SUB_SEQ_ITEM_RECOVER_BRN;
+                sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_BRN_RESTORE;
             }
             if (sp->battlemon[sp->defence_client].condition & STATUS_FREEZE) {
-                sp->flingScript = SUB_SEQ_ITEM_RECOVER_FRZ;
+                sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_PRZ_RESTORE;
             }
             if (sp->battlemon[sp->defence_client].condition2 & STATUS2_CONFUSION) {
-                sp->flingScript = SUB_SEQ_ITEM_RECOVER_CNF;
+                sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_CNF_RESTORE;
             }
             if ((sp->battlemon[sp->defence_client].condition & STATUS_ALL) && (sp->battlemon[sp->defence_client].condition2 & STATUS2_CONFUSION)) {
-                sp->flingScript = SUB_SEQ_ITEM_RECOVER_ALL;
+                sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_MULTI_RESTORE;
             }
         }
         break;
@@ -671,45 +678,45 @@ BOOL LONG_CALL TryFling(struct BattleSystem *bsys, struct BattleStruct *sp, int 
         sp->flingData = BattleDamageDivide(sp->battlemon[sp->defence_client].maxhp, mod);
         sp->msg_work = FLAVOR_SPICY;
         if (GetFlavorPreferenceFromPID(sp->battlemon[sp->defence_client].personal_rnd, FLAVOR_SPICY) == -1) {
-            sp->flingScript = SUB_SEQ_ITEM_HP_RESTORE_CNF;
+            sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_DISLIKE_FLAVOR;
         } else {
-            sp->flingScript = SUB_SEQ_ITEM_HP_RESTORE;
+            sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
         }
         break;
     case STEAL_EFFECT_RESTORE_DRY: // Wiki Berry
         sp->flingData = BattleDamageDivide(sp->battlemon[sp->defence_client].maxhp, mod);
         sp->msg_work = FLAVOR_DRY;
         if (GetFlavorPreferenceFromPID(sp->battlemon[sp->defence_client].personal_rnd, FLAVOR_DRY) == -1) {
-            sp->flingScript = SUB_SEQ_ITEM_HP_RESTORE_CNF;
+            sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_DISLIKE_FLAVOR;
         } else {
-            sp->flingScript = SUB_SEQ_ITEM_HP_RESTORE;
+            sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
         }
         break;
     case STEAL_EFFECT_RESTORE_SWEET: // Mago Berry
         sp->flingData = BattleDamageDivide(sp->battlemon[sp->defence_client].maxhp, mod);
         sp->msg_work = FLAVOR_SWEET;
         if (GetFlavorPreferenceFromPID(sp->battlemon[sp->defence_client].personal_rnd, FLAVOR_SWEET) == -1) {
-            sp->flingScript = SUB_SEQ_ITEM_HP_RESTORE_CNF;
+            sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_DISLIKE_FLAVOR;
         } else {
-            sp->flingScript = SUB_SEQ_ITEM_HP_RESTORE;
+            sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
         }
         break;
     case STEAL_EFFECT_RESTORE_BITTER: // Aguav Berry
         sp->flingData = BattleDamageDivide(sp->battlemon[sp->defence_client].maxhp, mod);
         sp->msg_work = FLAVOR_BITTER;
         if (GetFlavorPreferenceFromPID(sp->battlemon[sp->defence_client].personal_rnd, FLAVOR_BITTER) == -1) {
-            sp->flingScript = SUB_SEQ_ITEM_HP_RESTORE_CNF;
+            sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_DISLIKE_FLAVOR;
         } else {
-            sp->flingScript = SUB_SEQ_ITEM_HP_RESTORE;
+            sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
         }
         break;
     case STEAL_EFFECT_RESTORE_SOUR: // Iapapa Berry
         sp->flingData = BattleDamageDivide(sp->battlemon[sp->defence_client].maxhp, mod);
         sp->msg_work = FLAVOR_SOUR;
         if (GetFlavorPreferenceFromPID(sp->battlemon[sp->defence_client].personal_rnd, FLAVOR_SOUR) == -1) {
-            sp->flingScript = SUB_SEQ_ITEM_HP_RESTORE_CNF;
+            sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_DISLIKE_FLAVOR;
         } else {
-            sp->flingScript = SUB_SEQ_ITEM_HP_RESTORE;
+            sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
         }
         break;
     case STEAL_EFFECT_RESET_STATS: // White Herb
@@ -718,7 +725,7 @@ BOOL LONG_CALL TryFling(struct BattleSystem *bsys, struct BattleStruct *sp, int 
         for (stat = 0; stat < 8; stat++) {
             if (sp->battlemon[sp->defence_client].states[stat] < 6) {
                 sp->battlemon[sp->defence_client].states[stat] = 6;
-                sp->flingScript = SUB_SEQ_ITEM_RECOVER_STAT_DROP;
+                sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_STATDOWN_RESTORE;
             }
         }
     } break;
@@ -730,62 +737,62 @@ BOOL LONG_CALL TryFling(struct BattleSystem *bsys, struct BattleStruct *sp, int 
             || sp->battlemon[sp->defence_client].moveeffect.healBlockTurns
             || sp->battlemon[sp->defence_client].moveeffect.disabledTurns) {
             sp->msg_work = 6; // TODO: Check if this msg_work should have an infatuate const.
-            sp->flingScript = SUB_SEQ_ITEM_HEAL_MENTAL_CONDITIONS;
+            sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_HEAL_MENTAL_CONDITIONS;
         }
         break;
     case STEAL_EFFECT_FLINCH: // King's Rock, Razor Fang
         sp->state_client = battlerId;
-        sp->addeffect_type = ADD_EFFECT_INDIRECT;
-        sp->flingScript = SUB_SEQ_TRY_FLINCH;
+        sp->addeffect_type = SIDE_EFFECT_TYPE_INDIRECT;
+        sp->flingScript = BATTLE_SUBSCRIPT_FLINCH_MON;
         break;
     case STEAL_EFFECT_PARALYZE: // Light Ball
         sp->state_client = battlerId;
-        sp->addeffect_type = ADD_EFFECT_INDIRECT;
-        sp->flingScript = SUB_SEQ_APPLY_PARALYSIS;
+        sp->addeffect_type = SIDE_EFFECT_TYPE_INDIRECT;
+        sp->flingScript = BATTLE_SUBSCRIPT_PARALYZE;
         break;
     case STEAL_EFFECT_POISON: // Poison Barb
         sp->state_client = battlerId;
-        sp->addeffect_type = ADD_EFFECT_INDIRECT;
-        sp->flingScript = SUB_SEQ_APPLY_POISON;
+        sp->addeffect_type = SIDE_EFFECT_TYPE_INDIRECT;
+        sp->flingScript = BATTLE_SUBSCRIPT_POISON;
         break;
     case STEAL_EFFECT_BAD_POISON: // Toxic Orb
         sp->state_client = battlerId;
-        sp->addeffect_type = ADD_EFFECT_INDIRECT;
-        sp->flingScript = SUB_SEQ_BADLY_POISON;
+        sp->addeffect_type = SIDE_EFFECT_TYPE_INDIRECT;
+        sp->flingScript = BATTLE_SUBSCRIPT_BADLY_POISON;
         break;
     case STEAL_EFFECT_BURN: // Flame Orb
         sp->state_client = battlerId;
-        sp->addeffect_type = ADD_EFFECT_INDIRECT;
-        sp->flingScript = SUB_SEQ_APPLY_BURN;
+        sp->addeffect_type = SIDE_EFFECT_TYPE_INDIRECT;
+        sp->flingScript = BATTLE_SUBSCRIPT_BURN;
         break;
     case STEAL_EFFECT_ATK_UP: // Liechi Berry
         if (sp->battlemon[sp->defence_client].states[STAT_ATTACK] < 12) {
             sp->msg_work = STAT_ATTACK;
-            sp->flingScript = SUB_SEQ_BADLY_POISON;
+            sp->flingScript = BATTLE_SUBSCRIPT_BADLY_POISON;
         }
         break;
     case STEAL_EFFECT_DEF_UP: // Ganlon Berry, Kee Berry
         if (sp->battlemon[sp->defence_client].states[STAT_DEFENSE] < 12) {
             sp->msg_work = STAT_DEFENSE;
-            sp->flingScript = SUB_SEQ_ITEM_STAT_BOOST;
+            sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_RAISE_STAT;
         }
         break;
     case STEAL_EFFECT_SPEED_UP: // Salac Berry
         if (sp->battlemon[sp->defence_client].states[STAT_SPEED] < 12) {
             sp->msg_work = STAT_SPEED;
-            sp->flingScript = SUB_SEQ_ITEM_STAT_BOOST;
+            sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_RAISE_STAT;
         }
         break;
     case STEAL_EFFECT_SPATK_UP: // Petaya Berry
-        if (sp->battlemon[sp->defence_client].states[STAT_SPATK] < 12) {
-            sp->msg_work = STAT_SPATK;
-            sp->flingScript = SUB_SEQ_ITEM_STAT_BOOST;
+        if (sp->battlemon[sp->defence_client].states[STAT_SPECIAL_ATTACK] < 12) {
+            sp->msg_work = STAT_SPECIAL_ATTACK;
+            sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_RAISE_STAT;
         }
         break;
     case STEAL_EFFECT_SPDEF_UP: // Apicot Berry, Maranga Berry
-        if (sp->battlemon[sp->defence_client].states[STAT_SPDEF] < 12) {
-            sp->msg_work = STAT_SPDEF;
-            sp->flingScript = SUB_SEQ_ITEM_STAT_BOOST;
+        if (sp->battlemon[sp->defence_client].states[STAT_SPECIAL_DEFENSE] < 12) {
+            sp->msg_work = STAT_SPECIAL_DEFENSE;
+            sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_RAISE_STAT;
         }
         break;
     case STEAL_EFFECT_RANDOM_UP: // Starf Berry
@@ -801,17 +808,17 @@ BOOL LONG_CALL TryFling(struct BattleSystem *bsys, struct BattleStruct *sp, int 
                 stat = BattleRand(bsys) % 5;
             } while (sp->battlemon[sp->defence_client].states[1 + stat] == 12);
             sp->msg_work = stat + 1;
-            sp->flingScript = SUB_SEQ_ITEM_STAT_BOOST_2;
+            sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_SHARPLY_RAISE_STAT;
         }
         break;
     }
     case STEAL_EFFECT_CRITRATE_UP: // Lansat Berry
         if (!(sp->battlemon[sp->defence_client].condition2 & STATUS2_FOCUS_ENERGY)) {
-            sp->flingScript = SUB_SEQ_ITEM_RAISE_CRIT;
+            sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_RAISE_CRIT;
         }
         break;
     case STEAL_EFFECT_ACC_UP: // Micle Berry
-        sp->flingScript = SUB_SEQ_ITEM_ACC_UP_ONCE;
+        sp->flingScript = BATTLE_SUBSCRIPT_HELD_ITEM_TEMP_ACC_UP;
         break;
     default:
         break;

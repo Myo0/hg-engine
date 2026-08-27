@@ -1,8 +1,9 @@
 #include "../include/repel.h"
-#include "../include/item.h"
-#include "../include/constants/item.h"
+
 #include "../include/bag.h"
 #include "../include/constants/file.h"
+#include "../include/constants/item.h"
+#include "../include/item.h"
 
 void Repel_SetCurrentType();
 

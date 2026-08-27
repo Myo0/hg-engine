@@ -2,6 +2,7 @@
 #define SCRIPT_H
 
 #include "types.h"
+
 #include "save.h"
 
 // pokeheartgold coming through

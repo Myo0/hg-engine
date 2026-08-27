@@ -3,7 +3,7 @@
 .thumb
 
 .include "asm/include/interop_macros.inc"
-.include "asm/include/moves.inc"
+#include "../../include/constants/moves.h"
 
 //形态变化恢复
 .global TryRevertFormChange_hook
@@ -378,6 +378,39 @@ bl RollMetronomeMove
 ldr r1, =0x022408BA|1
 bx r1
 
+.global ai_switch_ban_for_bind_hook
+ai_switch_ban_for_bind_hook:
+
+// r0 is already bw, r1 is already sp, r6 is battler
+
+push {r0-r3}
+
+add r2, r6, #0
+bl SeeIfBindShouldRestrainSwitch
+cmp r0, #1
+beq _returnTo02220424
+
+pop {r0-r3}
+// else do not return false and just continue the checks, starting with mean look
+//ldr r2, =0x2DB0
+mov r2, #0x2D
+lsl r2, #0x8
+add r2, #0xB0 // fuck you movw
+mov r3, #1
+lsl r3, #26 // 0x04000000 for mean look
+ldr r4, [r5, r2]
+str r0, [sp, #4]
+ldr r7, =0x022203BC | 1
+bx r7
+
+_returnTo02220424:
+pop {r0-r3}
+ldr r0, =0x02220424 | 1
+bx r0
+
+.pool
+
+
 
 // Start missingno hooks
 
@@ -709,3 +742,45 @@ bx   r3
 .pool
 
 // End missingno hooks
+
+.global hook_GrabIllusionBoxMonForHpBar
+hook_GrabIllusionBoxMonForHpBar:
+mov r3, r4
+bl BattleSystem_GrabIllusionBoxMonNameForHpBar // (struct BattleSystem *battleSystem, int client, int partyIndex, MessageFormat *msgFormat)
+ldr r1, =0x022651C0 | 1
+bx r1
+
+.global GetPokemon_CheckIfTrainer_hook
+GetPokemon_CheckIfTrainer_hook:
+ldr r0, [r4]
+bl ShouldPreventMonCapture
+cmp r0, #0
+beq _returnTo02246728
+ldr r0, =0x02246710 | 1
+bx r0
+
+_returnTo02246728:
+ldr r0, =0x02246728 | 1
+bx r0
+
+.pool
+
+.global GetPokemon_BallBlocked_hook
+GetPokemon_BallBlocked_hook:
+// no need to preserve original instructions since we are rewriting the case entirely
+mov r0, r4 // data is in r4, move to r0 for positional argument into PrintBallBlockedMessage
+bl PrintBallBlockedMessage // (data, msgData)
+ldr r0, [r4, #0x28] // overwrite r0 with our current state, as it has already been set, to prevent it from getting scrambled.
+ldr r5, =0x022470CA | 1 // near end of case. r0 and r4 are still in use
+bx r5
+
+.pool
+
+.global PlayerTrainerVictoryBGM_hook
+PlayerTrainerVictoryBGM_hook:
+// No need to preserve original instructions since we are replicating the switch case in C.
+bl PlayTrainerVictoryBGM // (trainer)
+ldr r0, =0x0224DB3C | 1 // Immediately after the switch case. No registers are in use.
+bx r0
+
+.pool

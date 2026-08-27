@@ -62,6 +62,9 @@
 // DEBUG_ALWAYS_OBEY will force all battlers to obey regardless of badges owned
 // #define DEBUG_ALWAYS_OBEY
 
+// DEBUG_SWITCH_IN_ABILITY_CHECK turns on a number of debug prints related to the switch-in logic
+// #define DEBUG_SWITCH_IN_ABILITY_CHECK
+
 // DEBUG_ENDTURN_LOGIC turns on a number of debug prints related to the end-turn logic
 // #define DEBUG_ENDTURN_LOGIC
 
@@ -100,6 +103,9 @@
 // See src/test_battle.c for scenario definitions
 // recommend turning on DEBUG_AUTO_CONTINUE_GAME for test roms
 // #define DEBUG_BATTLE_SCENARIOS
+
+// automatically queue up script 73 from the common script file on rom start
+// #define DEBUG_AUTO_QUEUE_SCRIPT
 
 // DEBUG_AUTO_CONTINUE_GAME skips the title screen and start menu to automatically continue the game
 // when enabled, skips the intro movie and title screen to immediately continue the loaded save

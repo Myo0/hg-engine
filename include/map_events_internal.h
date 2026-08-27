@@ -3,6 +3,7 @@
 
 // #include "wild_encounter.h"
 #include "types.h"
+
 #include "script.h"
 
 typedef struct BG_EVENT {

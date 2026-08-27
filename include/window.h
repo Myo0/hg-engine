@@ -1,8 +1,9 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
-#include "message.h"
 #include "types.h"
+
+#include "message.h"
 
 typedef struct
 {

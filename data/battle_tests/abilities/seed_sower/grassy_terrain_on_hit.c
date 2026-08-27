@@ -1,7 +1,7 @@
 // Test: Seed Sower - basic implementation
 {
-    .battleType = BATTLE_TYPE_SINGLE,
-    .weather = WEATHER_NONE,
+    .battleType = BATTLE_TYPE_TRAINER,
+    .weather = FIELD_CONDITION_NONE,
     .fieldCondition = 0,
     .terrain = TERRAIN_NONE,
 
@@ -13,7 +13,7 @@
             .ability = ABILITY_SEED_SOWER,
             .item = ITEM_NONE,
             .moves = {MOVE_RAZOR_LEAF, MOVE_NONE, MOVE_NONE, MOVE_NONE},
-            .hp = 0,
+            .hp = FULL_HP,
             .status = 0,
             .condition2 = 0,
             .moveEffectFlags = 0,
@@ -33,7 +33,7 @@
             .ability = ABILITY_WEAK_ARMOR,
             .item = ITEM_NONE,
             .moves = {MOVE_MEGA_DRAIN, MOVE_NONE, MOVE_NONE, MOVE_NONE},
-            .hp = 0,
+            .hp = FULL_HP,
             .status = 0,
             .condition2 = 0,
             .moveEffectFlags = 0,

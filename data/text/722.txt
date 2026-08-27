@@ -33,7 +33,7 @@ The Pokémon draws in all\nElectric-type moves.
 Boosts the likelihood of\nadded effects appearing.
 Boosts the Pokémon’s\nSpeed in rain.
 Boosts the Pokémon’s\nSpeed in sunshine.
-Lowers the foe’s\nSpecial Attack stat.
+Raises the likelihood of\nmeeting wild Pokémon.
 The Pokémon copies the\nfoe’s ability.
 Raises the Pokémon’s\nAttack stat.
 Contact with the Pokémon\nmay poison the foe.
@@ -54,7 +54,7 @@ Prevents the Attack\nstat from being lowered.
 The Pokémon may\npick up items.
 Pokémon can’t attack\non consecutive turns.
 Boosts the Attack stat,\nbut lowers accuracy.
-Contact may cause infatuation.\nPower varies with foe’s gender.
+Contact with the Pokémon\nmay cause infatuation.
 Ups Sp. Atk if another\nPokémon has Minus.
 Ups Sp. Atk if another\nPokémon has Plus.
 CASTFORM transforms with\nthe weather.
@@ -194,7 +194,7 @@ Boosts Defense when\nhit by an attack.
 Wimpily switches out if its\nHP becomes half or less.
 Switches out if its HP\nbecomes half or less.
 Sharply ups Defense when\nhit by a Water-type move.
-Its attacks are critical hits\nwhen it is poisoned.
+Its attacks are critical\nhits if target is poisoned.
 Its shell breaks if its\nHP becomes half or less.
 Deals doubles damage to\na target’s replacement.
 Weakens incoming Fire-type\nmoves and prevents burns.
@@ -309,4 +309,12 @@ Transforms into Terastal Form\nupon entering battle.
 Resists all damage when\nHP is full.
 Reduces effects of weather\nand terrain to zero.
 Poison-inflicting moves\nwill also cause confusion.
+The Pokémon’s contact\nmoves ignore protections.
+Normal-type moves become\nDragon-type and powered up.
+Placeholder
+Placeholder
+All moves act as if\nHarsh Sunlight is active.
+Placeholder
+Placeholder
+Burns the attacker upon\ntaking damage.
 Boosts ice type moves\nin the snow.

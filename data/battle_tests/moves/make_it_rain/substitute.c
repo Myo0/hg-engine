@@ -13,8 +13,8 @@ const struct TestBattleScenario BattleTests[] = {
 #endif
 
     {
-        .battleType = BATTLE_TYPE_DOUBLE,
-        .weather = WEATHER_NONE,
+        .battleType = BATTLE_TYPE_DOUBLES,
+        .weather = FIELD_CONDITION_NONE,
         .fieldCondition = 0,
         .terrain = TERRAIN_NONE,
         .playerParty = {
@@ -22,7 +22,7 @@ const struct TestBattleScenario BattleTests[] = {
                 .species = SPECIES_GHOLDENGO,
                 .level = 50,
                 .form = 0,
-                .ability = ABILITY_GOOD_AS_GOLD,
+                .ability = ABILITY_NO_GUARD,
                 .item = ITEM_LIFE_ORB,
                 .moves = { MOVE_MAKE_IT_RAIN, MOVE_NONE, MOVE_NONE, MOVE_NONE },
                 .hp = FULL_HP,

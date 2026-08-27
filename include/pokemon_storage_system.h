@@ -4,8 +4,10 @@
 #include "config.h"
 // #include "save.h"
 #include "types.h"
-#include "pokemon.h"
+
 #include "constants/save.h"
+
+#include "pokemon.h"
 
 #define BOX_ALL_MODIFIED_FLAG ((u32)((1 << NUM_PC_BOXES) - 1))
 

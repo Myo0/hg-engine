@@ -1,10 +1,8 @@
 #ifndef POKEHEARTGOLD_NPC_TRADE_H
 #define POKEHEARTGOLD_NPC_TRADE_H
 
-#include "pokemon.h"
 #include "message.h"
-
-#define OT_ID_PRESET 1
+#include "pokemon.h"
 
 typedef enum NpcTradeNum {
     NPC_TRADE_ROCKY_ONIX,

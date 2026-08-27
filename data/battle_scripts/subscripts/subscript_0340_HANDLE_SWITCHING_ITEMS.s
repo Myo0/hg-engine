@@ -1,4 +1,5 @@
-.include "asm/include/battle_commands.inc"
+#include "constants/battle_constants.h"
+.include "battle_commands.inc"
 
 .data
 
@@ -11,11 +12,24 @@ _000:
     UpdateVarFromVar OPCODE_SET, BSCRIPT_VAR_BATTLER_FAINTED, BSCRIPT_VAR_LAST_BATTLER_ID
     UpdateVarFromVar OPCODE_SET, BSCRIPT_VAR_BATTLER_SWITCH, BSCRIPT_VAR_MSG_BATTLER_TEMP
 
+    CompareMonDataToValue OPCODE_EQU, BATTLER_CATEGORY_MSG_BATTLER_TEMP, BMON_DATA_HELD_ITEM, ITEM_EJECT_PACK, _ejectPack
     // {0} is switched out with the Eject Button!
     PrintMessage 1622, TAG_NICKNAME, BATTLER_CATEGORY_MSG_BATTLER_TEMP
     Wait 
     WaitButtonABTime 30
     RemoveItem BATTLER_CATEGORY_MSG_BATTLER_TEMP
+    GoTo _pursuit
+
+
+_ejectPack:
+    // {0} is switched out by the Eject Pack!
+    PrintMessage 1625, TAG_NICKNAME, BATTLER_CATEGORY_MSG_BATTLER_TEMP
+    Wait 
+    WaitButtonABTime 30
+    RemoveItem BATTLER_CATEGORY_MSG_BATTLER_TEMP
+
+_pursuit:
+    SetCurrentMoveSwitchingStatus CURRENT_MOVE_SWITCH_PENDING
     Call BATTLE_SUBSCRIPT_PURSUIT
     CompareMonDataToValue OPCODE_EQU, BATTLER_CATEGORY_MSG_BATTLER_TEMP, BMON_DATA_HP, 0, _end
     TryRestoreStatusOnSwitch BATTLER_CATEGORY_MSG_BATTLER_TEMP, _nostatusrestored
@@ -31,13 +45,11 @@ _nostatusrestored:
     UpdateVar OPCODE_FLAG_ON, BSCRIPT_VAR_BATTLE_STATUS_2, BATTLE_STATUS2_UTURN
     UpdateVar OPCODE_FLAG_OFF, BSCRIPT_VAR_BATTLE_STATUS, BATTLE_STATUS_SYNCRONIZE
     UpdateVar OPCODE_SET, BSCRIPT_VAR_SIDE_EFFECT_MON_SELF_TURN_STATUS_FLAGS, SELF_TURN_FLAG_CLEAR
-    SetCurrentMoveSwitchingStatus CURRENT_MOVE_SWITCH_PENDING
     CompareVarToValue OPCODE_EQU, BSCRIPT_VAR_SIDE_EFFECT_TYPE, SIDE_EFFECT_TYPE_STICKY_WEB, _completeSwitch
 
 _end:
     End 
 
 _completeSwitch:
-    SetCurrentMoveSwitchingStatus CURRENT_MOVE_SWITCH_DONE
     GoToSubscript BATTLE_SUBSCRIPT_SHOW_PARTY_LIST
     End

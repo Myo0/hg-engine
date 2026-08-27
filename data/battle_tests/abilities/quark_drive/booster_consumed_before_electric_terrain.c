@@ -1,8 +1,8 @@
 // Test: Quark Drive will activate with Booster Energy instead of Electric Terrain, if the other Terrain setter goes first.
 // Variation of https://bsky.app/profile/nerdofnow.bsky.social/post/3lg3xoq5ye22f
 {
-    .battleType = BATTLE_TYPE_DOUBLE,
-    .weather = WEATHER_NONE,
+    .battleType = BATTLE_TYPE_DOUBLES,
+    .weather = FIELD_CONDITION_NONE,
     .fieldCondition = 0,
     .terrain = TERRAIN_NONE,
 
@@ -14,7 +14,7 @@
             .ability = ABILITY_QUARK_DRIVE,
             .item = ITEM_BOOSTER_ENERGY,
             .moves = {MOVE_SLEEP_TALK, MOVE_NONE, MOVE_NONE, MOVE_NONE},
-            .hp = 0,
+            .hp = FULL_HP,
             .status = 0,
             .condition2 = 0,
             .moveEffectFlags = 0,
@@ -26,7 +26,7 @@
             .ability = ABILITY_ELECTRIC_SURGE,
             .item = ITEM_NONE,
             .moves = {MOVE_SLEEP_TALK, MOVE_NONE, MOVE_NONE, MOVE_NONE},
-            .hp = 0,
+            .hp = FULL_HP,
             .status = 0,
             .condition2 = 0,
             .moveEffectFlags = 0,
@@ -45,7 +45,7 @@
             .ability = ABILITY_MISTY_SURGE,
             .item = ITEM_NONE,
             .moves = {MOVE_SLEEP_TALK, MOVE_NONE, MOVE_NONE, MOVE_NONE},
-            .hp = 0,
+            .hp = FULL_HP,
             .status = 0,
             .condition2 = 0,
             .moveEffectFlags = 0,
@@ -57,7 +57,7 @@
             .ability = ABILITY_SNOW_CLOAK,
             .item = ITEM_NONE,
             .moves = {MOVE_SLEEP_TALK, MOVE_NONE, MOVE_NONE, MOVE_NONE},
-            .hp = 0,
+            .hp = FULL_HP,
             .status = 0,
             .condition2 = 0,
             .moveEffectFlags = 0,

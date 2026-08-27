@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_BAG_H
 
 #include "types.h"
+
 #include "constants/item.h"
 // #include "item.h"
 // #include "save.h"

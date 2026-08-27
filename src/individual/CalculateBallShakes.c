@@ -1,22 +1,24 @@
-#include "../../include/types.h"
-#include "../../include/battle.h"
-#include "../../include/config.h"
-#include "../../include/debug.h"
-#include "../../include/mega.h"
-#include "../../include/overlay.h"
-#include "../../include/pokemon.h"
-#include "../../include/save.h"
-#include "../../include/constants/ability.h"
-#include "../../include/constants/battle_script_constants.h"
-#include "../../include/constants/battle_message_constants.h"
-#include "../../include/constants/file.h"
-#include "../../include/constants/hold_item_effects.h"
-#include "../../include/constants/item.h"
-#include "../../include/constants/move_effects.h"
-#include "../../include/constants/moves.h"
-#include "../../include/constants/species.h"
-#include "../../include/constants/weather_numbers.h"
-#include "../../include/q412.h"
+#include "config.h"
+#include "debug.h"
+#include "types.h"
+
+#include "constants/ability.h"
+#include "constants/battle_message_constants.h"
+#include "constants/battle_script_constants.h"
+#include "constants/file.h"
+#include "constants/hold_item_effects.h"
+#include "constants/item.h"
+#include "constants/move_effects.h"
+#include "constants/moves.h"
+#include "constants/species.h"
+#include "constants/weather_numbers.h"
+
+#include "battle.h"
+#include "mega.h"
+#include "overlay.h"
+#include "pokemon.h"
+#include "q412.h"
+#include "save.h"
 
 u32 get_shake_chance(int input_value);
 
@@ -60,7 +62,7 @@ u32 __attribute__((section(".init"))) CalculateBallShakesInternal(void *bw, stru
     int badges, missingBadges;
     BOOL isCriticalCatch = FALSE;
 
-    if (BattleTypeGet(bw) & (BATTLE_TYPE_PAL_PARK | BATTLE_TYPE_CATCHING_DEMO)) // poke park and safari zone always succeed
+    if (BattleTypeGet(bw) & (BATTLE_TYPE_PAL_PARK | BATTLE_TYPE_TUTORIAL)) // poke park and safari zone always succeed
     {
         return 4;
     }
@@ -292,7 +294,7 @@ u32 __attribute__((section(".init"))) CalculateBallShakesInternal(void *bw, stru
     debug_printf("Step 1: Calculate the HP modifier\n");
 #endif
 
-    a = (u64)(QMul_RoundDown(((3 * sp->battlemon[sp->defence_client].maxhp - 2 * sp->battlemon[sp->defence_client].hp) * UQ412__1_0), UQ412__1_0) + QMul_RoundDown(1, UQ412__0_5));
+    a = (u64)(QMul_RoundDown((3 * sp->battlemon[sp->defence_client].maxhp - 2 * sp->battlemon[sp->defence_client].hp) * UQ412__1_0, UQ412__1_0) + QMul_RoundDown(1, UQ412__0_5));
 #ifdef DEBUG_CAPTURE_RATE_PERCENTAGES
     debug_printf("a: %d\n\n", a);
 #endif
@@ -612,7 +614,7 @@ u32 __attribute__((section(".init"))) CalculateBallShakesInternal(void *bw, stru
 #else
     // if the capture is successful, and the target species is already registered, use the critical capture animation, otherwise there should still be 0-3 shakes.
     // https://xcancel.com/Sibuna_Switch/status/1847665451809075315#m
-#ifdef IMPLEMENT_CRITICAL_CAPTURE
+#if defined(IMPLEMENT_CRITICAL_CAPTURE) && CRITICAL_CAPTURE_GENERATION >= 9
     if (Battle_CheckIfHasCaughtMon(bw, sp->battlemon[sp->defence_client].species)) {
         return (i == 4 || i == (1 | CRITICAL_CAPTURE_MASK)) ? (1 | CRITICAL_CAPTURE_MASK) : (i);
     }

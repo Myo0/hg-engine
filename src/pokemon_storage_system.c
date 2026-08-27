@@ -1,13 +1,14 @@
-#include "../include/types.h"
+#include "../include/pokemon_storage_system.h"
+
 #include "../include/config.h"
-#include "../include/debug.h"
 #include "../include/constants/species.h"
+#include "../include/debug.h"
 #include "../include/message.h"
 #include "../include/pokemon.h"
-#include "../include/pokemon_storage_system.h"
 #include "../include/save.h"
 #include "../include/script.h"
 #include "../include/task.h"
+#include "../include/types.h"
 
 #ifdef ALLOW_SAVE_CHANGES
 #ifdef EXPAND_PC_BOXES
@@ -29,7 +30,7 @@ void PCStorage_InitializeBoxes(PCStorage *storage)
             u32 species = SPECIES_VICTINI + j + i * MONS_PER_BOX; // j + 1 + i * MONS_PER_BOX + ((j + 1 + i * MONS_PER_BOX) > SPECIES_ARCEUS ? 50 : 0);
             u32 form = 0;
             if (species <= MAX_SPECIES_INCLUDING_FORMS) {
-                if (species > MAX_MON_NUM) {
+                if (species > SPECIES_MAX_MON_NUM) {
                     form = GetFormFromAdjustedForm(species);
                     species = GetBaseSpeciesFromAdjustedForm(species);
                 }

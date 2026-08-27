@@ -3,7 +3,11 @@ name: build
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - '**.md'
   pull_request:
+    paths-ignore:
+      - '**.md'
   workflow_dispatch:
 
 env:
@@ -129,11 +133,6 @@ jobs:
           wget https://github.com/BluRosie/hg-engine/raw/workflows/assets/test.sav -P $GITHUB_WORKSPACE/
         working-directory: ~
 
-      - name: Set Swap Space
-        uses: pierotofy/set-swap-space@master
-        with:
-          swap-size-gb: 19
-
       - name: Build hg-engine
         run: |
           unset CC
@@ -141,4 +140,4 @@ jobs:
           make AUTO_TEST=Y -j$(nproc)
       - name: Run tests
         run: |
-          scripts/run_tests.sh
+          scripts/run_tests.sh -c -j $(nproc)

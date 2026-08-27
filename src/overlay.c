@@ -1,8 +1,11 @@
-#include "../include/types.h"
-#include "../include/debug.h"
-#include "../include/overlay.h"
-#include "../include/save.h"
-#include "../include/constants/file.h"
+#include "debug.h"
+#include "types.h"
+
+#include "overlay.h"
+
+#include "constants/file.h"
+
+#include "save.h"
 
 struct LinkedOverlayList gLinkedOverlayList[] = {
     { OVERLAY_BATTLE, OVERLAY_BATTLE_EXTENSION },
