@@ -126,11 +126,11 @@ Your party has been healed.\r
 What Pokémon will get the effect?\r
 What status effect do you want?\r
 The status has been applied.\r
-Apply Status
-Sleep
-Poison
-Burn
-Frostbite
-Paralysis
-Toxic Poison
-Exit
+APPLY STATUS
+SLEEP
+POISON
+BURN
+FROSTBITE
+PARALYSIS
+TOXIC POISON
+EXIT

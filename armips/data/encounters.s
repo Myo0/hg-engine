@@ -310,8 +310,8 @@ encounter SPECIES_KRABBY, 20, 20
 encounter SPECIES_CHINCHOU, 3, 6
 encounter SPECIES_TYMPOLE, 4, 6
 encounter SPECIES_SQUIRTLE, 5, 6
-encounter SPECIES_MAGIKARP, 6, 6
-encounter SPECIES_MAGIKARP, 4, 6
+encounter SPECIES_REMORAID, 6, 6
+encounter SPECIES_FEEBAS, 4, 6
 
 // swarm grass
 pokemon SPECIES_NONE
@@ -388,7 +388,7 @@ pokemon SPECIES_BIDOOF
 // surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_SHARPEDO, 35, 35
 encounter SPECIES_CORVIKNIGHT, 35, 35
-encounter SPECIES_PALPITOAD, 35, 35
+encounter SPECIES_CLOYSTER, 35, 35
 encounter SPECIES_PALPITOAD, 35, 35
 encounter SPECIES_PALPITOAD, 35, 35
 
@@ -413,7 +413,7 @@ encounter SPECIES_POLIWAG, 20, 20
 // super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_BARBOACH, 6, 7
 encounter SPECIES_KRABBY, 7, 7
-encounter SPECIES_CARVANHA, 7, 7
+encounter SPECIES_CORPHISH, 7, 7
 encounter SPECIES_CARVANHA, 7, 7
 encounter SPECIES_CARVANHA, 7, 7
 
@@ -491,8 +491,8 @@ pokemon SPECIES_BIDOOF
 
 // surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_DREDNAW, 36, 36
-encounter SPECIES_LANTURN, 36, 36
-encounter SPECIES_LANTURN, 36, 36
+encounter SPECIES_HUNTAIL, 36, 36
+encounter SPECIES_GOREBYSS, 36, 36
 encounter SPECIES_LANTURN, 36, 36
 encounter SPECIES_LANTURN, 36, 36
 
@@ -517,9 +517,9 @@ encounter SPECIES_POLIWAG, 20, 20
 // super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_PSYDUCK, 8, 8
 encounter SPECIES_CLAMPERL, 8, 8
+encounter SPECIES_BINACLE, 8, 8
 encounter SPECIES_CHINCHOU, 8, 8
-encounter SPECIES_CHINCHOU, 8, 8
-encounter SPECIES_CHINCHOU, 8, 8
+encounter SPECIES_OSHAWOTT, 8, 8
 
 // swarm grass
 pokemon SPECIES_PIDGEY
@@ -547,15 +547,15 @@ walklevels 8, 7, 9, 9, 7, 7, 5, 5, 9, 8, 8, 8
 pokemon SPECIES_PONYTA
 pokemon SPECIES_SLUGMA
 pokemon SPECIES_MAGBY
-pokemon SPECIES_MAGBY
+pokemon SPECIES_NUMEL
 pokemon SPECIES_GROWLITHE
-pokemon SPECIES_GROWLITHE
+pokemon SPECIES_CHARMANDER
 pokemon SPECIES_CYNDAQUIL
 pokemon SPECIES_TEPIG
 monwithform SPECIES_GROWLITHE, 1
+pokemon SPECIES_DARUMAKA
 pokemon SPECIES_SIZZLIPEDE
-pokemon SPECIES_SIZZLIPEDE
-pokemon SPECIES_SIZZLIPEDE
+pokemon SPECIES_CHARCADET
 
 // day encounter slots; probabilities:  10/10/10/10/10/10/10/10/10/5/4/1
 pokemon SPECIES_PONYTA
@@ -753,7 +753,7 @@ walklevels 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7
 
 // morning encounter slots
 pokemon SPECIES_BELLSPROUT
-pokemon SPECIES_BELLSPROUT
+pokemon SPECIES_SWABLU
 pokemon SPECIES_MANKEY
 pokemon SPECIES_MASCHIFF
 pokemon SPECIES_MEDITITE
@@ -767,7 +767,7 @@ pokemon SPECIES_KAKUNA
 
 // day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
 pokemon SPECIES_BELLSPROUT
-pokemon SPECIES_BELLSPROUT
+pokemon SPECIES_SWABLU
 pokemon SPECIES_MANKEY
 pokemon SPECIES_MASCHIFF
 pokemon SPECIES_MEDITITE
@@ -781,7 +781,7 @@ pokemon SPECIES_KAKUNA
 
 // night encounter slots
 pokemon SPECIES_BELLSPROUT
-pokemon SPECIES_BELLSPROUT
+pokemon SPECIES_SWABLU
 pokemon SPECIES_MANKEY
 pokemon SPECIES_MASCHIFF
 pokemon SPECIES_MEDITITE
@@ -862,7 +862,7 @@ monwithform SPECIES_WOOPER, 1
 pokemon SPECIES_STARLY
 pokemon SPECIES_SEEDOT
 pokemon SPECIES_TOGEDEMARU
-pokemon SPECIES_CROAGUNK
+pokemon SPECIES_CHINGLING
 pokemon SPECIES_CROAGUNK
 pokemon SPECIES_MACHOP
 pokemon SPECIES_MACHOP 
@@ -876,7 +876,7 @@ monwithform SPECIES_WOOPER, 1
 pokemon SPECIES_STARLY
 pokemon SPECIES_SEEDOT
 pokemon SPECIES_TOGEDEMARU
-pokemon SPECIES_CROAGUNK
+pokemon SPECIES_CHINGLING
 pokemon SPECIES_CROAGUNK
 pokemon SPECIES_MACHOP
 pokemon SPECIES_MACHOP 
@@ -890,7 +890,7 @@ monwithform SPECIES_WOOPER, 1
 pokemon SPECIES_STARLY
 pokemon SPECIES_SEEDOT
 pokemon SPECIES_TOGEDEMARU
-pokemon SPECIES_CROAGUNK
+pokemon SPECIES_CHINGLING
 pokemon SPECIES_CROAGUNK
 pokemon SPECIES_MACHOP
 pokemon SPECIES_MACHOP 
@@ -1157,7 +1157,7 @@ pokemon SPECIES_NONE
 .close
 
 
-encounterdata  11   // Ruins of Alph (Inside, Main Room - Not sure when used?)
+encounterdata  11   // Ruins of Alph (Kabuto Chamber)
 
 walkrate 15
 surfrate 0
@@ -1261,7 +1261,7 @@ pokemon SPECIES_NONE
 .close
 
 
-encounterdata  12   // Ruins of Alph (Inside, Main Room - Not sure when used?)
+encounterdata  12   // Ruins of Alph (Aerodactyl Chamber)
 
 walkrate 15
 surfrate 0
@@ -1365,7 +1365,7 @@ pokemon SPECIES_NONE
 .close
 
 
-encounterdata  13   // Ruins of Alph (Inside, Ladder Room - This has no encounter tile permissions though)
+encounterdata  13   // Ruins of Alph (Ho-oh Chamber)
 
 walkrate 15
 surfrate 0
@@ -1483,7 +1483,7 @@ walklevels 13, 12, 13, 13, 12, 13, 14, 14, 13, 13, 14, 14
 pokemon SPECIES_ONIX
 pokemon SPECIES_PHANPY
 pokemon SPECIES_RHYHORN
-pokemon SPECIES_RHYHORN
+pokemon SPECIES_PAWNIARD
 pokemon SPECIES_ZUBAT
 pokemon SPECIES_MUDBRAY
 monwithform SPECIES_DIGLETT, 1 
@@ -2364,9 +2364,9 @@ pokemon SPECIES_BIDOOF
 // surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_GOLDUCK, 40, 40
 encounter SPECIES_GYARADOS, 40, 40
-encounter SPECIES_BASCULIN, 5, 40
-encounter SPECIES_BASCULIN, 5, 40
-encounter SPECIES_BASCULIN, 5, 40
+encounterwithform SPECIES_BASCULIN, 2, 5, 40
+encounterwithform SPECIES_BASCULIN, 2, 5, 40
+encounterwithform SPECIES_BASCULIN, 2, 5, 40
 
 // rock smash encounters; probabilities:  90, 10
 encounter SPECIES_NONE, 0, 0
@@ -2633,7 +2633,7 @@ pokemon SPECIES_PINSIR
 pokemon SPECIES_DOLLIV
 pokemon SPECIES_BOLTUND
 pokemon SPECIES_SAWSBUCK
-monwithform SPECIES_SAWSBUCK, 2
+pokemon SPECIES_KECLEON
 pokemon SPECIES_DUNSPARCE
 pokemon SPECIES_DUNSPARCE
 
@@ -2647,7 +2647,7 @@ pokemon SPECIES_PINSIR
 pokemon SPECIES_DOLLIV
 pokemon SPECIES_BOLTUND
 pokemon SPECIES_SAWSBUCK
-monwithform SPECIES_SAWSBUCK, 2
+pokemon SPECIES_KECLEON
 pokemon SPECIES_DUNSPARCE
 pokemon SPECIES_DUNSPARCE
 
@@ -2661,7 +2661,7 @@ pokemon SPECIES_PINSIR
 pokemon SPECIES_DOLLIV
 pokemon SPECIES_BOLTUND
 pokemon SPECIES_SAWSBUCK
-monwithform SPECIES_SAWSBUCK, 2
+pokemon SPECIES_KECLEON
 pokemon SPECIES_DUNSPARCE
 pokemon SPECIES_DUNSPARCE
 
@@ -2946,7 +2946,7 @@ pokemon SPECIES_SKUNTANK
 pokemon SPECIES_MUSHARNA
 pokemon SPECIES_SCOLIPEDE
 pokemon SPECIES_NIDOKING
-pokemon SPECIES_CYCLIZAR
+pokemon SPECIES_DUSKULL
 pokemon SPECIES_CYCLIZAR
 
 // day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
@@ -2960,7 +2960,7 @@ pokemon SPECIES_SKUNTANK
 pokemon SPECIES_MUSHARNA
 pokemon SPECIES_SCOLIPEDE
 pokemon SPECIES_NIDOKING
-pokemon SPECIES_CYCLIZAR
+pokemon SPECIES_DUSKULL
 pokemon SPECIES_CYCLIZAR
 
 // night encounter slots
@@ -2974,7 +2974,7 @@ pokemon SPECIES_SKUNTANK
 pokemon SPECIES_MUSHARNA
 pokemon SPECIES_SCOLIPEDE
 pokemon SPECIES_NIDOKING
-pokemon SPECIES_CYCLIZAR
+pokemon SPECIES_DUSKULL
 pokemon SPECIES_CYCLIZAR
 
 // hoenn encounter slots
@@ -4339,7 +4339,7 @@ pokemon SPECIES_NONE
 
 // surf encounters; probabilities:  60, 30, 5, 4, 1
 encounter SPECIES_CLAWITZER, 30, 38
-encounter SPECIES_BASCULIN, 25, 35
+encounterwithform SPECIES_BASCULIN, 2, 25, 35
 encounter SPECIES_DRAGONAIR, 30, 40
 encounter SPECIES_DRAGONAIR, 30, 40
 encounter SPECIES_DRAGONAIR, 30, 40
@@ -6998,7 +6998,7 @@ pokemon SPECIES_CHARIZARD
 pokemon SPECIES_SCOVILLAIN
 pokemon SPECIES_HOUNDOOM
 pokemon SPECIES_SCYTHER
-pokemon SPECIES_DELPHOX
+pokemon SPECIES_INFERNAPE
 pokemon SPECIES_OBSTAGOON
 pokemon SPECIES_CLAYDOL
 pokemon SPECIES_RILLABOOM
@@ -7012,7 +7012,7 @@ pokemon SPECIES_CHARIZARD
 pokemon SPECIES_SCOVILLAIN
 pokemon SPECIES_HOUNDOOM
 pokemon SPECIES_SCYTHER
-pokemon SPECIES_DELPHOX
+pokemon SPECIES_INFERNAPE
 pokemon SPECIES_OBSTAGOON
 pokemon SPECIES_CLAYDOL
 pokemon SPECIES_RILLABOOM
@@ -7026,7 +7026,7 @@ pokemon SPECIES_CHARIZARD
 pokemon SPECIES_SCOVILLAIN
 pokemon SPECIES_HOUNDOOM
 pokemon SPECIES_SCYTHER
-pokemon SPECIES_DELPHOX
+pokemon SPECIES_INFERNAPE
 pokemon SPECIES_OBSTAGOON
 pokemon SPECIES_CLAYDOL
 pokemon SPECIES_RILLABOOM
@@ -7106,7 +7106,7 @@ pokemon SPECIES_HOUNDOUR
 pokemon SPECIES_TOEDSCOOL
 pokemon SPECIES_CLEFAIRY
 pokemon SPECIES_GROWLITHE
-pokemon SPECIES_DEERLING
+pokemon SPECIES_CHINGLING
 pokemon SPECIES_DEERLING
 
 // day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
@@ -7120,7 +7120,7 @@ pokemon SPECIES_HOUNDOUR
 pokemon SPECIES_TOEDSCOOL
 pokemon SPECIES_CLEFAIRY
 pokemon SPECIES_GROWLITHE
-pokemon SPECIES_DEERLING
+pokemon SPECIES_CHINGLING
 pokemon SPECIES_DEERLING
 
 // night encounter slots
@@ -7134,7 +7134,7 @@ pokemon SPECIES_HOUNDOUR
 pokemon SPECIES_TOEDSCOOL
 pokemon SPECIES_CLEFAIRY
 pokemon SPECIES_GROWLITHE
-pokemon SPECIES_DEERLING
+pokemon SPECIES_CHINGLING
 pokemon SPECIES_DEERLING
 
 // hoenn encounter slots
@@ -7209,7 +7209,7 @@ pokemon SPECIES_SWINUB
 pokemon SPECIES_HIPPOPOTAS
 pokemon SPECIES_PANCHAM
 pokemon SPECIES_MURKROW
-pokemon SPECIES_MURKROW
+pokemon SPECIES_SANDILE
 pokemon SPECIES_RHYHORN
 pokemon SPECIES_RHYHORN
 
@@ -7223,7 +7223,7 @@ pokemon SPECIES_SWINUB
 pokemon SPECIES_HIPPOPOTAS
 pokemon SPECIES_PANCHAM
 pokemon SPECIES_MURKROW
-pokemon SPECIES_MURKROW
+pokemon SPECIES_SANDILE
 pokemon SPECIES_RHYHORN
 pokemon SPECIES_RHYHORN
 
@@ -7237,7 +7237,7 @@ pokemon SPECIES_SWINUB
 pokemon SPECIES_HIPPOPOTAS
 pokemon SPECIES_PANCHAM
 pokemon SPECIES_MURKROW
-pokemon SPECIES_MURKROW
+pokemon SPECIES_SANDILE
 pokemon SPECIES_RHYHORN
 pokemon SPECIES_RHYHORN
 
@@ -7276,10 +7276,10 @@ encounter SPECIES_GOLDEEN, 20, 20
 
 // super rod encounters; probabilities:  40, 40, 15, 4, 1
 encounter SPECIES_TIRTOUGA, 6, 9
-encounter SPECIES_TIRTOUGA, 6, 9
+encounter SPECIES_BUIZEL, 6, 9
 encounter SPECIES_WIGLETT, 8, 8
-encounter SPECIES_NOIBAT, 6, 6
-encounter SPECIES_NOIBAT, 6, 6
+encounter SPECIES_LILEEP, 6, 6
+encounter SPECIES_ANORITH, 6, 6
 
 // swarm grass
 pokemon SPECIES_DUNSPARCE
@@ -14778,5 +14778,109 @@ pokemon SPECIES_POLIWAG
 pokemon SPECIES_POLIWAG
 // swarm super rod
 pokemon SPECIES_MAGIKARP
+
+.close
+
+
+encounterdata 142   // Ruin of Alph (Omanyte Chamber)
+
+walkrate 25
+surfrate 0
+rocksmashrate 0
+oldrodrate 0
+goodrodrate 0
+superrodrate 0
+walklevels 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+
+// morning encounter slots
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+
+// day encounter slots; probabilities:  20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+
+// night encounter slots
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+
+// hoenn encounter slots
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+
+// sinnoh encounter slots
+pokemon SPECIES_NONE
+pokemon SPECIES_NONE
+
+// surf encounters; probabilities:  60, 30, 5, 4, 1
+encounter SPECIES_NONE, 0, 0
+encounter SPECIES_NONE, 0, 0
+encounter SPECIES_NONE, 0, 0
+encounter SPECIES_NONE, 0, 0
+encounter SPECIES_NONE, 0, 0
+
+// rock smash encounters; probabilities:  90, 10
+encounter SPECIES_NONE, 0, 0
+encounter SPECIES_NONE, 0, 0
+
+// old rod encounters
+encounter SPECIES_NONE, 0, 0
+encounter SPECIES_NONE, 0, 0
+encounter SPECIES_NONE, 0, 0
+encounter SPECIES_NONE, 0, 0
+encounter SPECIES_NONE, 0, 0
+
+// good rod encounters
+encounter SPECIES_NONE, 0, 0
+encounter SPECIES_NONE, 0, 0
+encounter SPECIES_NONE, 0, 0
+encounter SPECIES_NONE, 0, 0
+encounter SPECIES_NONE, 0, 0
+
+// super rod encounters; probabilities:  40, 40, 15, 4, 1
+encounter SPECIES_NONE, 0, 0
+encounter SPECIES_NONE, 0, 0
+encounter SPECIES_NONE, 0, 0
+encounter SPECIES_NONE, 0, 0
+encounter SPECIES_NONE, 0, 0
+
+// swarm grass
+pokemon SPECIES_NONE
+// swarm surf
+pokemon SPECIES_NONE
+// swarm good rod
+pokemon SPECIES_NONE
+// swarm super rod
+pokemon SPECIES_NONE
 
 .close

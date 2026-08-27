@@ -636,6 +636,23 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
                 continue;
             }
 
+            // handle Cute Charm - opposite of Rivalry: boost vs opposite gender, penalty vs same gender
+            if ((AttackingMon.ability == ABILITY_CUTE_CHARM)
+            && (AttackingMon.sex != DefendingMon.sex)
+            && (AttackingMon.sex != POKEMON_GENDER_UNKNOWN)
+            && (DefendingMon.sex != POKEMON_GENDER_UNKNOWN)) {
+                basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_25);
+                continue;
+            }
+
+            if ((AttackingMon.ability == ABILITY_CUTE_CHARM)
+            && (AttackingMon.sex == DefendingMon.sex)
+            && (AttackingMon.sex != POKEMON_GENDER_UNKNOWN)
+            && (DefendingMon.sex != POKEMON_GENDER_UNKNOWN)) {
+                basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__0_75);
+                continue;
+            }
+
             if (MoveIsAffectedByNormalizeVariants(moveno)) {
                 // handle Aerilate - 20% boost if a Normal type move was changed to a Flying type move. Does not boost Flying type moves themselves
                 if (AttackingMon.ability == ABILITY_AERILATE && movetype == TYPE_FLYING && originalMoveType == TYPE_NORMAL) {
@@ -666,6 +683,12 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
                     basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_2);
                     continue;
                 }
+            }
+
+            // handle Liquid Voice - 20% boost if a sound-based move was changed to Water type
+            if (AttackingMon.ability == ABILITY_LIQUID_VOICE && movetype == TYPE_WATER && IsMoveSoundBased(moveno)) {
+                basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_2);
+                continue;
             }
 
             // handle Iron Fist
@@ -699,6 +722,14 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
             && (field_cond & WEATHER_SANDSTORM_ANY)
             && (movetype == TYPE_GROUND || movetype == TYPE_ROCK || movetype == TYPE_STEEL)) {
                 basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_3);
+                continue;
+            }
+
+            // CUSTOM ABILITY: Permafrost boosts Ice-type moves by 50% in Snow
+            if (AttackingMon.ability == ABILITY_PERMAFROST
+            && (field_cond & WEATHER_SNOW_ANY)
+            && movetype == TYPE_ICE) {
+                basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_5);
                 continue;
             }
 

@@ -16,6 +16,24 @@
 #include "../../include/overlay.h"
 #include "../../include/constants/file.h"
 
+// Suppress all AI trace prints unless explicitly debugging trainer AI logic.
+#ifndef DEBUG_TRAINER_AI_LOGS
+#undef debug_printf
+#define debug_printf(...) ((void)0)
+#endif
+
+#define IS_NO_REPEAT_MOVE(m) ((m) == MOVE_GIGATON_HAMMER  \
+                           || (m) == MOVE_BLOOD_MOON      \
+                           || (m) == MOVE_HYPER_BEAM      \
+                           || (m) == MOVE_GIGA_IMPACT     \
+                           || (m) == MOVE_BLAST_BURN      \
+                           || (m) == MOVE_HYDRO_CANNON    \
+                           || (m) == MOVE_FRENZY_PLANT    \
+                           || (m) == MOVE_ROCK_WRECKER    \
+                           || (m) == MOVE_ROAR_OF_TIME    \
+                           || (m) == MOVE_PRISMATIC_LASER \
+                           || (m) == MOVE_METEOR_ASSAULT  \
+                           || (m) == MOVE_ETERNABEAM)
 
 
 
@@ -155,8 +173,16 @@ unsigned int __attribute__((section (".init"))) TrainerAI_Main(struct BattleSyst
     //enum AIActionChoice result = AI_ENEMY_ATTACK_1, highest_damage_something = 0;
     debug_printf("After enum\n");
     unsigned int score = 0;
-    if (attacker >= 10)
-		return BattleAI_PostKOSwitchIn_Internal(bsys, attacker - 10, &score);
+    if (attacker >= 10) {
+        int realBattler = attacker - 10;
+        extern int gImmunitySwitchTargetSlot;
+        if (ctx->battlemon[realBattler].hp > 0 && gImmunitySwitchTargetSlot >= 0) {
+            int slot = gImmunitySwitchTargetSlot + 1;
+            gImmunitySwitchTargetSlot = -1;
+            return slot;
+        }
+        return BattleAI_PostKOSwitchIn_Internal(bsys, realBattler, &score);
+    }
     debug_printf("After attacker>=10 thing\n");
     unsigned int highest_move_score = 0;
     unsigned int moveScores[4][4];
@@ -219,9 +245,8 @@ unsigned int __attribute__((section (".init"))) TrainerAI_Main(struct BattleSyst
                         moveScores[battler_no][i] += 100; //force the user to use the move if choice locked
                     }
 
-                    // Gigaton Hammer / Blood Moon: can't be used twice in a row
-                    if ((ai->attackerMove == MOVE_GIGATON_HAMMER || ai->attackerMove == MOVE_BLOOD_MOON)
-                     && ai->attackerLastUsedMove == ai->attackerMove)
+                    // No-repeat moves: can't be used twice in a row
+                    if (IS_NO_REPEAT_MOVE(ai->attackerMove) && ai->attackerLastUsedMove == ai->attackerMove)
                         moveScores[battler_no][i] -= 20;
 
                     for (unsigned int j = 0; j < sizeof(moveEvaluators) / sizeof(moveEvaluators[0]); j++) {
@@ -295,9 +320,8 @@ unsigned int __attribute__((section (".init"))) TrainerAI_Main(struct BattleSyst
                 moveScores[target][i] += 100; //force the user to use the move if choice locked
             }
 
-            // Gigaton Hammer / Blood Moon: can't be used twice in a row
-            if ((ai->attackerMove == MOVE_GIGATON_HAMMER || ai->attackerMove == MOVE_BLOOD_MOON)
-             && ai->attackerLastUsedMove == ai->attackerMove)
+            // No-repeat moves: can't be used twice in a row
+            if (IS_NO_REPEAT_MOVE(ai->attackerMove) && ai->attackerLastUsedMove == ai->attackerMove)
                 moveScores[target][i] -= 20;
 
             for (unsigned int j = 0; j < sizeof(moveEvaluators) / sizeof(moveEvaluators[0]); j++) {
@@ -1574,9 +1598,8 @@ int EvaluateAttackFlag(struct BattleSystem *bsys, int attacker, int i, struct AI
     if (ctx->moveTbl[ai->attackerMove].split == SPLIT_STATUS)
         return 0;
 
-    // Gigaton Hammer / Blood Moon: can't be used twice in a row — exclude from damage bonus
-    if ((ai->attackerMove == MOVE_GIGATON_HAMMER || ai->attackerMove == MOVE_BLOOD_MOON)
-     && ai->attackerLastUsedMove == ai->attackerMove)
+    // No-repeat moves: can't be used twice in a row — exclude from damage bonus
+    if (IS_NO_REPEAT_MOVE(ai->attackerMove) && ai->attackerLastUsedMove == ai->attackerMove)
         return 0;
 
     // Psychic Terrain: priority moves targeting grounded defenders fail
@@ -1630,7 +1653,7 @@ int EvaluateAttackFlag(struct BattleSystem *bsys, int attacker, int i, struct AI
             u16 movenoJ = ctx->battlemon[attacker].move[j];
             if (movenoJ == MOVE_NONE) continue;
             if (MoveExcludedFromDamageBonus(movenoJ, ctx->moveTbl[movenoJ].effect)) continue;
-            if ((movenoJ == MOVE_GIGATON_HAMMER || movenoJ == MOVE_BLOOD_MOON) && ai->attackerLastUsedMove == movenoJ) continue;
+            if (IS_NO_REPEAT_MOVE(movenoJ) && ai->attackerLastUsedMove == movenoJ) continue;
             if (ai->attackerAvgRollMoveDamages[i] < ai->attackerAvgRollMoveDamages[j])
             {
                 isHighestDamage = FALSE;
@@ -1832,6 +1855,32 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
              || (BattleTypeGet(bsys) & (BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_TAG)
               && BattlerHasMoveEffect(bsys, ai->partner, MOVE_EFFECT_DOUBLE_DAMAGE_ON_STATUS, ai)))
                 moveScore += 1;
+        }
+    }
+
+    /*Power Trick*/
+    else if (ai->attackerMoveEffect == MOVE_EFFECT_SWAP_ATK_DEF
+          && !(ctx->battlemon[attacker].effect_of_moves & MOVE_EFFECT_FLAG_POWER_TRICK)) {
+        if (ctx->battlemon[attacker].species == SPECIES_SHUCKLE) {
+            BOOL defenderThreatensDefense = FALSE;
+            for (int j = 0; j < 4; j++) {
+                u16 defMove = ctx->battlemon[ai->defender].move[j];
+                if (defMove == MOVE_NONE) continue;
+                if (ctx->moveTbl[defMove].power == 0) continue;
+                if (ctx->moveTbl[defMove].split == SPLIT_PHYSICAL
+                 || defMove == MOVE_PSYSHOCK
+                 || defMove == MOVE_PSYSTRIKE
+                 || defMove == MOVE_SECRET_SWORD) {
+                    defenderThreatensDefense = TRUE;
+                    break;
+                }
+            }
+            if (defenderThreatensDefense)
+                moveScore -= 15;
+            else
+                moveScore += 8;
+        } else {
+            moveScore += 6;
         }
     }
 
@@ -2317,7 +2366,9 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
     if(ai->attackerMoveEffect == MOVE_EFFECT_CRIT_UP_2
     || ai->attackerMoveEffect == MOVE_EFFECT_LASER_FOCUS){
         if (ai->defenderAbility == ABILITY_SHELL_ARMOR
-         || ai->defenderAbility == ABILITY_BATTLE_ARMOR)
+         || ai->defenderAbility == ABILITY_BATTLE_ARMOR
+         || ai->defenderAbility == ABILITY_LEAF_GUARD
+         || ai->defenderAbility == ABILITY_MAGMA_ARMOR)
             return -20;
         if (ai->attackerAbility == ABILITY_SUPER_LUCK
          || ai->attackerAbility == ABILITY_SNIPER
@@ -3335,6 +3386,14 @@ int ExpertFlag (struct BattleSystem *bsys, int attacker, int i, struct AIContext
         moveScore += (BattleRand(bsys) % 5 == 0) ? 8 : 6;
     }
 
+    // Regenerator: switching out restores 1/3 HP, making pivot moves more valuable
+    if (ai->attackerAbility == ABILITY_REGENERATOR &&
+        (ai->attackerMoveEffect == MOVE_EFFECT_SWITCH_HIT ||
+         ai->attackerMoveEffect == MOVE_EFFECT_PARTING_SHOT ||
+         ai->attackerMoveEffect == MOVE_EFFECT_PASS_STATS_AND_STATUS)) {
+        moveScore += 1;
+    }
+
     debug_printf("end of expert flag\n");
     return moveScore;
 }
@@ -3931,7 +3990,9 @@ BOOL IsDesirableAbility(u32 ability){
         ability == ABILITY_FILTER ||
         ability == ABILITY_SOLID_ROCK ||
         ability == ABILITY_RECKLESS ||
-        ability == ABILITY_SHELL_ARMOR){
+        ability == ABILITY_SHELL_ARMOR ||
+        ability == ABILITY_LEAF_GUARD ||
+        ability == ABILITY_MAGMA_ARMOR){
             return TRUE;
         }
     else{

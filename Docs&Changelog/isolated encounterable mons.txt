@@ -251,7 +251,7 @@ Sableye ✓
 Mega Sableye ✓
 Mawile ✓
 Mega Mawile ✓
-Aron ✓ (Route 31) <- ended here
+Aron ✓ (Route 31)
 Lairon ✓
 Aggron ✓ 
 Mega Aggron ✓
@@ -289,7 +289,7 @@ Lileep ✓
 Cradily ✓
 Anorith ✓
 Armaldo ✓
-Feebas ✓
+Feebas ✓ 
 Milotic ✓
 Kecleon ✓
 Shuppet ✓
@@ -317,10 +317,13 @@ Beldum ✓
 Metang ✓
 Metagross ✓
 Mega Metagross ✓
+Regice ✓
+Regirock ✓
+Registeel ✓
 Latias ✓ (Roamer)
 Latios ✓ (Roamer)
 Jirachi ✓ (Game Corner)
-Turtwig	✓
+Turtwig	✓ 
 Grotle ✓
 Torterra ✓
 Chimchar ✓
@@ -337,10 +340,8 @@ Luxio ✓
 Luxray ✓
 Budew ✓ (Route 30)
 Roserade ✓
-Cranidos ✓
+Cranidos ✓ 
 Rampardos ✓
-Shieldon ✓
-Bastiodon ✓
 Combee ✓
 Vespiquen ✓
 Buizel ✓
@@ -371,7 +372,6 @@ Skorupi ✓
 Drapion ✓
 Croagunk ✓
 Toxicroak ✓
-Carnivine ✓
 Snover ✓
 Abomasnow ✓
 Mega Abomasnow ✓
@@ -408,7 +408,7 @@ Musharna ✓
 Roggenrola ✓ (Route 46)
 Boldore	✓
 Gigalith ✓
-Drilbur	✓
+Drilbur	✓ 
 Excadrill ✓
 Audino ✓
 Mega Audino ✓
@@ -433,9 +433,10 @@ Darumaka ✓
 Galarian Darumaka ✓
 Darmanitan ✓
 Galarian Darmanitan ✓
-Maractus ✓
 Dwebble ✓
 Crustle ✓
+Scraggy ✓
+Scrafty ✓
 Sigilyph ✓
 Yamask ✓
 Galarian Yamask ✓
@@ -512,7 +513,7 @@ Floette ✓
 Florges ✓
 Skiddo ✓
 Gogoat ✓
-Pancham ✓
+Pancham ✓ 
 Pangoro ✓
 Espurr ✓
 Meowstic Male ✓
@@ -589,7 +590,7 @@ Melmetal ✓ (Game Corner)
 Grookey	✓
 Thwackey ✓
 Rillaboom ✓
-Scorbunny ✓
+Scorbunny ✓ 
 Raboot ✓
 Cinderace ✓
 Sobble ✓
@@ -647,7 +648,7 @@ Crocalor ✓
 Skeledirge ✓
 Quaxly ✓
 Quaxwell ✓
-Quaquaval ✓
+Quaquaval ✓ 
 Smoliv ✓ (Route 31)
 Dolliv ✓
 Arboliva ✓
@@ -659,7 +660,7 @@ Armarouge ✓
 Ceruledge ✓
 Maschiff ✓
 Mabosstiff ✓
-Toedscool ✓
+Toedscool ✓ 
 Toedscruel ✓
 Klawf ✓
 Capsakid ✓
@@ -677,7 +678,7 @@ Glimmora ✓
 Greavard ✓
 Houndstone ✓
 Flamigo ✓
-Cetoddle ✓
+Cetoddle ✓ 
 Cetitan ✓
 Veluza ✓
 Dondozo	✓
@@ -689,8 +690,8 @@ Dudunsparce	Three-Segment Form ✓
 Kingambit ✓
 Great Tusk ✓ (ALL PARADOX MONS ARE IN LATE-GAME KANTO)
 Scream Tail ✓
-Brute Bonnet ✓
-Flutter Mane ✓
+Brute Bonnet ✓ 
+Flutter Mane ✓ 
 Slither Wing ✓
 Sandy Shocks ✓
 Iron Treads ✓
@@ -698,7 +699,7 @@ Iron Bundle ✓
 Iron Hands ✓
 Iron Jugulis ✓
 Iron Moth ✓
-Iron Thorns ✓
+Iron Thorns ✓    <- ended here
 Frigibax ✓
 Arctibax ✓
 Baxcalibur ✓
@@ -712,8 +713,16 @@ Archaludon ✓
 I CHANGED MY MIND ON THESE:
 Sudowoodo ✓
 Slaking ✓
-
-		
+Poliwag ✓
+Poliwhirl ✓
+Poliwrath ✓
+Bruxish
+Drampa (Mega)
+Cufant
+Copperajah
+Pawmi
+Pawmo
+Pawmot	
 	
 353	Shuppet	
 354	Banette	
@@ -764,3 +773,314 @@ Slaking ✓
 984+	Paradox Pokémon	Late-game Kanto
 
 
+FISHING STUFF:
+
+Squirtle ✓ (Cherrygrove)
+Wartortle ✓
+Blastoise ✓
+Mega Blastoise ✓
+Psyduck ✓ (Route 31)
+Golduck ✓
+Tentacool ✓
+Tentacruel ✓
+Slowpoke ✓
+Slowbro ✓
+Mega Slowbro ✓
+Shellder ✓ (New Bark)
+Cloyster ✓
+Krabby ✓ (Route 30)
+Kingler ✓ (New Bark)
+Horsea ✓
+Seadra ✓ (Cherrygrove)
+Staryu ✓
+Starmie ✓ (New Bark)
+Magikarp ✓ (Cherrygrove)
+Gyarados ✓
+Mega Gyarados ✓
+Lapras ✓ (New Bark)
+Omanyte ✓
+Omastar ✓
+Kabuto ✓
+Kabutops ✓
+Totodile ✓
+Croconaw ✓
+Feraligatr ✓
+Chinchou ✓ (Cherrygrove, Route 31)
+Lanturn ✓ (New Bark)
+Marill ✓
+Azumarill ✓
+Hisuian Qwilfish ✓
+Remoraid ✓
+Octillery ✓
+Kingdra ✓
+Mudkip ✓
+Marshtomp ✓
+Swampert ✓
+Mega Swampert ✓
+Lotad ✓ (Route 31)
+Lombre ✓
+Ludicolo ✓
+Surskit ✓ (Route 30)
+Carvanha ✓ (Route 30)
+Sharpedo ✓ (Cherrygrove, Route 30)
+Mega Sharpedo ✓
+Wailmer ✓
+Wailord ✓
+Barboach ✓ (Route 30)
+Whiscash ✓
+Corphish ✓
+Crawdaunt ✓
+Feebas ✓
+Milotic ✓
+Spheal ✓
+Sealeo ✓ (Cherrygrove)
+Walrein ✓
+Clamperl ✓ (New Bark, Route 31)
+Huntail ✓
+Gorebyss ✓
+Relicanth ✓
+Piplup ✓ (New Bark)
+Prinplup ✓
+Empoleon ✓
+Buizel ✓
+Floatzel ✓
+Shellos ✓
+Gastrodon ✓
+Froakie ✓
+Frogadier ✓
+Greninja ✓
+Tympole ✓ (Cherrygrove)
+Palpitoad ✓ (Route 30)
+Seismitoad ✓
+Tirtouga ✓ (New Bark)
+Carracosta ✓
+Frillish ✓
+Jellicent ✓
+Slowking ✓
+Dewpider ✓
+Araquanid ✓
+Wimpod ✓
+Golisopod ✓
+Sobble ✓
+Drizzile ✓
+Inteleon ✓
+Chewtle ✓
+Drednaw ✓
+Arrokuda ✓
+Barraskewda ✓
+Basculin Red-Striped Form ✓
+Basculin Blue-Striped Form ✓
+Basculegion Male ✓
+Quaxly ✓
+Quaxwell ✓
+Quaquaval ✓
+Veluza ✓
+Dondozo ✓
+Wiglett ✓
+Wugtrio ✓ (New Bark)
+
++BRUXISH
+
+Two I excluded that might surprise you: Azurill (Normal/Fairy, despite being Marill's pre-evo) and Masquerain (Bug/Flying, Surskit loses Water on evolution).
+
+HEADBUTT ENCOUNTER TABLES
+
+Bug Types
+Weedle ✓ (Cherrygrove)
+Kakuna ✓
+Beedrill ✓
+Mega Beedrill ✓
+Paras ✓
+Parasect ✓
+Scyther ✓
+Pinsir ✓
+Mega Pinsir ✓
+Yanma ✓ (Route 30)
+Heracross ✓
+Mega Heracross ✓
+Pineco ✓ (Route 29)
+Forretress ✓
+Scizor ✓
+Mega Scizor ✓
+Nincada ✓
+Ninjask ✓
+Surskit ✓ (Route 30)
+Masquerain ✓
+Combee ✓
+Vespiquen ✓
+Venipede ✓
+Whirlipede ✓
+Scolipede ✓
+Dwebble ✓
+Crustle ✓
+Karrablast ✓
+Escavalier ✓
+Joltik ✓ (New Bark, Cherrygrove)
+Galvantula ✓
+Shelmet ✓
+Accelgor ✓
+Larvesta ✓
+Volcarona ✓
+Scatterbug ✓ (Route 30)
+Spewpa ✓ (Route 29, Route 46)
+Vivillon ✓
+Grubbin ✓ (Route 30)
+Charjabug ✓
+Vikavolt ✓
+Cutiefly ✓
+Ribombee ✓
+Wimpod ✓
+Golisopod ✓
+Sizzlipede ✓
+Centiskorch ✓
+Yanmega ✓
+
+Grass Types
+Bulbasaur ✓
+Ivysaur ✓
+Venusaur ✓
+Mega Venusaur ✓
+Paras ✓
+Parasect ✓
+Bellsprout ✓ (Route 31)
+Weepinbell ✓
+Victreebel ✓
+Exeggcute ✓ (New Bark, Route 29)
+Exeggutor ✓
+Alolan Exeggutor ✓
+Chikorita ✓ (Route 30)
+Bayleef ✓
+Meganium ✓
+Lotad ✓ (Route 31)
+Lombre ✓
+Ludicolo ✓
+Seedot ✓
+Nuzleaf ✓
+Shiftry ✓
+Roselia ✓
+Roserade ✓
+Cacnea ✓
+Cacturne ✓
+Lileep ✓
+Cradily ✓
+Treecko ✓
+Grovyle ✓
+Sceptile ✓
+Mega Sceptile ✓
+Dhelmise ✓
+Petilil ✓ (Route 46)
+Lilligant ✓
+Hisuian Lilligant ✓
+Maractus ✓
+Ferroseed ✓
+Ferrothorn ✓
+Chespin ✓
+Quilladin ✓
+Chesnaught ✓
+Skiddo ✓
+Gogoat ✓
+Bounsweet ✓ (Route 31)
+Steenee ✓
+Tsareena ✓
+Grookey ✓
+Thwackey ✓
+Rillaboom ✓
+Gossifleur ✓
+Eldegoss ✓
+Sprigatito ✓
+Floragato ✓
+Meowscarada ✓
+Smoliv ✓ (Route 31)
+Dolliv ✓
+Arboliva ✓
+Toedscool ✓
+Toedscruel ✓
+Capsakid ✓
+Scovillain ✓
+Brute Bonnet ✓
+
+Flying Types
+Pidgey ✓ (Route 29, Route 30)
+Pidgeotto ✓
+Pidgeot ✓ (Cherrygrove)
+Mega Pidgeot ✓
+Zubat ✓ (Route 30)
+Golbat ✓
+Crobat ✓
+Scyther ✓
+Natu ✓ (Route 46)
+Xatu ✓
+Yanma ✓ (Route 30)
+Yanmega ✓
+Togetic ✓
+Togekiss ✓
+Murkrow ✓
+Honchkrow ✓
+Skarmory ✓
+Gyarados ✓
+Mega Gyarados ✓
+Aerodactyl ✓
+Mega Aerodactyl ✓
+Taillow ✓ (Route 29)
+Swellow ✓
+Masquerain ✓
+Swablu ✓
+Altaria ✓
+Mega Altaria ✓
+Ninjask ✓
+Combee ✓
+Vespiquen ✓
+Mega Pinsir ✓
+Starly ✓ (Route 29)
+Staravia ✓
+Staraptor ✓
+Drifloon ✓
+Drifblim ✓
+Archen ✓
+Archeops ✓
+Sigilyph ✓
+Rufflet ✓
+Braviary ✓
+Hisuian Braviary ✓
+Fletchling ✓ (Route 29, Route 46)
+Fletchinder ✓
+Talonflame ✓
+Vivillon ✓
+Hawlucha ✓
+Noibat ✓
+Noivern ✓
+Rookidee ✓ (New Bark)
+Corvisquire ✓
+Corviknight ✓ (Route 30)
+Flamigo ✓
+Galarian Articuno ✓
+Galarian Zapdos ✓
+Galarian Moltres ✓
+Tornadus Incarnate Forme ✓ (Roamer)
+Enamorus Incarnate Forme ✓ (Roamer)
+
+Thematic Headbutt Fits (beyond typing)
+Aipom ✓ (Route 29) — tree-dwelling primate, signature headbutt mon
+Ambipom ✓ — same
+Teddiursa ✓ — bears raid trees for honey
+Ursaring ✓ — same
+Ursaluna ✓ — same lineage
+Stantler ✓ — woodland deer
+Deerling ✓ (Route 46)
+Sawsbuck ✓
+Buneary ✓
+Lopunny ✓
+Mega Lopunny ✓
+Munchlax ✓ — sleeping in/under trees
+Snorlax ✓ — same
+Kangaskhan ✓ — forested habitats
+Mega Kangaskhan ✓
+Pancham ✓
+Pangoro ✓
+Stufful ✓
+Bewear ✓
+Murkrow ✓ — nests in trees (also Flying, listed above)
+Gligar ✓ — clings to trees/cliffs
+Pineco ✓ (Route 29) — literally falls from trees when headbutted
+Heracross ✓ — lives in trees feeding on sap (also Bug)
+Dunsparce ✓ — hides in hollows

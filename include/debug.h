@@ -108,4 +108,13 @@
 // NOCASH_GBA_PRINT swaps from desmume prints with the syscall to NO$GBA-style prints for use with i.e. melonDS
 //#define NOCASH_GBA_PRINT
 
+// ---------------------------------------------------------
+// CUSTOM AI DEBUG STUFF
+
+// DEBUG_DAMAGE_CALC_AI enables per-step damage calc traces in trainerai/calc.c (very verbose)
+//#define DEBUG_DAMAGE_CALC_AI
+
+// DEBUG_TRAINER_AI_LOGS enables trace prints throughout trainerai/main.c (scoring, state setup)
+//#define DEBUG_TRAINER_AI_LOGS
+
 #endif // DEBUG_H

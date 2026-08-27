@@ -30,19 +30,14 @@ a010_340:
     resetsprite 1
     resetsprite 2
     resetsprite 3
-    checkturn _00C8, _0124
-    end
-_00C8:
+    // leap
     addparticle 0, 1, 3
     addparticle 0, 3, 3
     wait 8
     playsepan 1980, -117
     callfunction 40, 2, 2, 1, "NaN", "NaN", "NaN", "NaN", "NaN", "NaN", "NaN", "NaN"
     waitstate
-    waitparticle
-    unloadparticle 0
-    end
-_0124:
+    // land + strike
     addparticle 0, 2, 4
     wait 10
     playsepan 1925, 117

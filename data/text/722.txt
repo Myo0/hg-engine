@@ -33,7 +33,7 @@ The Pokémon draws in all\nElectric-type moves.
 Boosts the likelihood of\nadded effects appearing.
 Boosts the Pokémon’s\nSpeed in rain.
 Boosts the Pokémon’s\nSpeed in sunshine.
-Raises the likelihood of\nmeeting wild Pokémon.
+Lowers the foe’s\nSpecial Attack stat.
 The Pokémon copies the\nfoe’s ability.
 Raises the Pokémon’s\nAttack stat.
 Contact with the Pokémon\nmay poison the foe.
@@ -54,7 +54,7 @@ Prevents the Attack\nstat from being lowered.
 The Pokémon may\npick up items.
 Pokémon can’t attack\non consecutive turns.
 Boosts the Attack stat,\nbut lowers accuracy.
-Contact with the Pokémon\nmay cause infatuation.
+Contact may cause infatuation.\nPower varies with foe’s gender.
 Ups Sp. Atk if another\nPokémon has Minus.
 Ups Sp. Atk if another\nPokémon has Plus.
 CASTFORM transforms with\nthe weather.
@@ -309,3 +309,4 @@ Transforms into Terastal Form\nupon entering battle.
 Resists all damage when\nHP is full.
 Reduces effects of weather\nand terrain to zero.
 Poison-inflicting moves\nwill also cause confusion.
+Boosts ice type moves\nin the snow.

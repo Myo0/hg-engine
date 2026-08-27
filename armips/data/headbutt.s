@@ -739,15 +739,15 @@ headbuttheader  33,  35,   0   // Route 29
     // normal slots; probabilities: 50, 15, 15, 10, 5, 5
     headbuttencounter SPECIES_SPEWPA, 7, 7
     headbuttencounter SPECIES_PINECO, 7, 7 
-    headbuttencounter SPECIES_PINECO, 7, 7
-    headbuttencounter SPECIES_EXEGGCUTE, 7, 7
-    headbuttencounter SPECIES_EXEGGCUTE, 7, 7
+    headbuttencounter SPECIES_COMBEE, 7, 7
+    headbuttencounter SPECIES_VENIPEDE, 7, 7
+    headbuttencounter SPECIES_NINCADA, 7, 7
     headbuttencounter SPECIES_EXEGGCUTE, 7, 7
     headbuttencounter SPECIES_SPEWPA, 7, 7
     headbuttencounter SPECIES_PINECO, 7, 7 
-    headbuttencounter SPECIES_PINECO, 7, 7
-    headbuttencounter SPECIES_EXEGGCUTE, 7, 7
-    headbuttencounter SPECIES_EXEGGCUTE, 7, 7
+    headbuttencounter SPECIES_COMBEE, 7, 7
+    headbuttencounter SPECIES_VENIPEDE, 7, 7
+    headbuttencounter SPECIES_NINCADA, 7, 7
     headbuttencounter SPECIES_EXEGGCUTE, 7, 7
     // special slots
     headbuttencounter SPECIES_NONE, 0, 0
@@ -1344,16 +1344,16 @@ headbuttheader  48,  10,   0   // Route 46
     // normal slots; probabilities: 50, 15, 15, 10, 5, 5
     headbuttencounter SPECIES_SPEWPA, 7, 7
     headbuttencounter SPECIES_FLETCHLING, 4, 7
-    headbuttencounter SPECIES_FLETCHLING, 4, 7
+    headbuttencounter SPECIES_ROOKIDEE, 4, 7
+    headbuttencounter SPECIES_BUDEW, 4, 7
     headbuttencounter SPECIES_PETILIL, 4, 7
-    headbuttencounter SPECIES_PETILIL, 4, 7
-    headbuttencounter SPECIES_PETILIL, 4, 7
+    headbuttencounter SPECIES_TAILLOW, 4, 7
     headbuttencounter SPECIES_SPEWPA, 7, 7
     headbuttencounter SPECIES_FLETCHLING, 4, 7
-    headbuttencounter SPECIES_FLETCHLING, 4, 7
+    headbuttencounter SPECIES_ROOKIDEE, 4, 7
+    headbuttencounter SPECIES_BUDEW, 4, 7
     headbuttencounter SPECIES_PETILIL, 4, 7
-    headbuttencounter SPECIES_PETILIL, 4, 7
-    headbuttencounter SPECIES_PETILIL, 4, 7
+    headbuttencounter SPECIES_TAILLOW, 4, 7
     // special slots
     headbuttencounter SPECIES_NONE, 0, 0
     headbuttencounter SPECIES_NONE, 0, 0
@@ -1691,15 +1691,15 @@ headbuttheader  60,  11,   0   // New Bark Town
     // normal slots; probabilities: 50, 15, 15, 10, 5, 5
     headbuttencounter SPECIES_ROOKIDEE, 4, 5
     headbuttencounter SPECIES_LEDYBA, 3, 4
-    headbuttencounter SPECIES_LEDYBA, 3, 4
-    headbuttencounter SPECIES_EXEGGCUTE, 3, 5
-    headbuttencounter SPECIES_EXEGGCUTE, 3, 5
+    headbuttencounter SPECIES_DWEBBLE, 3, 4
+    headbuttencounter SPECIES_SCATTERBUG, 3, 5
+    headbuttencounter SPECIES_LOTAD, 3, 5
     headbuttencounter SPECIES_EXEGGCUTE, 3, 5
     headbuttencounter SPECIES_ROOKIDEE, 4, 5
     headbuttencounter SPECIES_LEDYBA, 3, 4
-    headbuttencounter SPECIES_LEDYBA, 3, 4
-    headbuttencounter SPECIES_EXEGGCUTE, 3, 5
-    headbuttencounter SPECIES_EXEGGCUTE, 3, 5
+    headbuttencounter SPECIES_DWEBBLE, 3, 4
+    headbuttencounter SPECIES_SCATTERBUG, 3, 5
+    headbuttencounter SPECIES_LOTAD, 3, 5
     headbuttencounter SPECIES_EXEGGCUTE, 3, 5
     // special slots
     headbuttencounter SPECIES_NONE, 0, 0
@@ -1744,15 +1744,15 @@ headbuttheader  67,   7,   4   // Cherrygrove City
     // normal slots; probabilities: 50, 15, 15, 10, 5, 5
     headbuttencounter SPECIES_LEDYBA, 3, 5
     headbuttencounter SPECIES_JOLTIK, 5, 7
-    headbuttencounter SPECIES_JOLTIK, 5, 7
-    headbuttencounter SPECIES_WEEDLE, 3, 4
-    headbuttencounter SPECIES_WEEDLE, 3, 4
+    headbuttencounter SPECIES_GRUBBIN, 5, 7
+    headbuttencounter SPECIES_SIZZLIPEDE, 3, 4
+    headbuttencounter SPECIES_DEERLING, 3, 4
     headbuttencounter SPECIES_WEEDLE, 3, 4
     headbuttencounter SPECIES_LEDYBA, 3, 5
     headbuttencounter SPECIES_JOLTIK, 5, 7
-    headbuttencounter SPECIES_JOLTIK, 5, 7
-    headbuttencounter SPECIES_WEEDLE, 3, 4
-    headbuttencounter SPECIES_WEEDLE, 3, 4
+    headbuttencounter SPECIES_GRUBBIN, 5, 7
+    headbuttencounter SPECIES_SIZZLIPEDE, 3, 4
+    headbuttencounter SPECIES_DEERLING, 3, 4
     headbuttencounter SPECIES_WEEDLE, 3, 4
     // special slots
     headbuttencounter SPECIES_LEDYBA, 3, 5

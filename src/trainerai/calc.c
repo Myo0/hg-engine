@@ -15,6 +15,11 @@
 #include "../../include/q412.h"
 #include "../../include/custom/custom_ai.h"
 
+// Suppress all AI trace prints unless explicitly debugging damage calculations.
+#ifndef DEBUG_DAMAGE_CALC_AI
+#undef debug_printf
+#define debug_printf(...) ((void)0)
+#endif
 
 // these are already declared (non-const) in battle.h — no re-declaration needed here
 
@@ -55,7 +60,6 @@ void LONG_CALL FillDamageStructFromPartyMon(void* bw UNUSED, struct BattleStruct
     monStruct->type1 = GetMonData(pp, MON_DATA_TYPE_1, 0);
     monStruct->type2 = GetMonData(pp, MON_DATA_TYPE_2, 0);
 
-    monStruct->condition = GetMonData(pp, MON_DATA_STATUS, 0);
     monStruct->condition = 0;
     monStruct->isGrounded = IsPartyPokemonGrounded(sp, pp);
 
@@ -135,7 +139,6 @@ void LONG_CALL FillDamageStructFromBattleMon(void* bw, struct BattleStruct* sp, 
     monStruct->states[STAT_EVASION] = BattlePokemonParamGet(sp, numSlot, BATTLE_MON_DATA_STATE_EVASIVENESS, NULL) - 6;
 
     monStruct->level = BattlePokemonParamGet(sp, numSlot, BATTLE_MON_DATA_LEVEL, NULL);
-    monStruct->form = sp->battlemon[numSlot].form_no;
 
     monStruct->hasMoldBreaker = FALSE;
     if (monStruct->ability == ABILITY_MOLD_BREAKER || monStruct->ability == ABILITY_TERAVOLT || monStruct->ability == ABILITY_TURBOBLAZE)
@@ -193,6 +196,9 @@ int LONG_CALL BattleAI_CalcBaseDamage(void* bw, struct BattleStruct* sp, int mov
     struct BattleMove move = sp->moveTbl[moveno];
     movepower = move.power;
     movetype = GetAdjustedMoveTypeBasics(sp, moveno, attacker->ability, move.type);
+    if (moveno == MOVE_REVELATION_DANCE)
+        movetype = (attacker->type1 != TYPE_TYPELESS) ? attacker->type1 :
+                   (attacker->type2 != TYPE_TYPELESS) ? attacker->type2 : TYPE_TYPELESS;
 
     switch (moveno)
     {
@@ -344,10 +350,6 @@ int LONG_CALL BattleAI_CalcBaseDamage(void* bw, struct BattleStruct* sp, int mov
         if (defender->effect_of_moves & MOVE_EFFECT_FLAG_FLYING_IN_AIR)
             movepower *= 2;
         break;
-            // TODO: handle charging turn of Sky Drop
-        if (defender->effect_of_moves & MOVE_EFFECT_FLAG_FLYING_IN_AIR)
-            movepower *= 2;
-        break;
     case MOVE_HEX:
         if (defender->condition & STATUS_ALL)
             movepower *= 2;
@@ -402,9 +404,6 @@ int LONG_CALL BattleAI_CalcBaseDamage(void* bw, struct BattleStruct* sp, int mov
         movepower = BattleItemDataGet(sp, attacker->item, ITEM_PARAM_FLING_POWER);
         break;
     case MOVE_NATURAL_GIFT:
-        break;
-        // Other
-    //case MOVE_BEAT_UP:
         break;
     case MOVE_ECHOED_VOICE:
         // TODO
@@ -563,6 +562,15 @@ int LONG_CALL BattleAI_CalcBaseDamage(void* bw, struct BattleStruct* sp, int mov
             basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__0_75);
     }
 
+    // handle Cute Charm - opposite of Rivalry: boost vs opposite gender, penalty vs same gender
+    if (attacker->ability == ABILITY_CUTE_CHARM)
+    {
+        if (attacker->sex != defender->sex && attacker->sex != POKEMON_GENDER_UNKNOWN && defender->sex != POKEMON_GENDER_UNKNOWN)
+            basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_25);
+        else if (attacker->sex == defender->sex && attacker->sex != POKEMON_GENDER_UNKNOWN)
+            basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__0_75);
+    }
+
     // handle Aerilate, Pixilate, etc - 20% boost if a Normal type move was changed to a xxx type move. Does not boost xxx type moves themselves
     if (MoveIsAffectedByNormalizeVariants(moveno))
     {
@@ -581,6 +589,10 @@ int LONG_CALL BattleAI_CalcBaseDamage(void* bw, struct BattleStruct* sp, int mov
         if (attacker->ability == ABILITY_NORMALIZE && movetype == TYPE_NORMAL)
             basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_2);
     }
+
+    // handle Liquid Voice - 20% boost if a sound-based move was changed to Water type
+    if (attacker->ability == ABILITY_LIQUID_VOICE && movetype == TYPE_WATER && IsMoveSoundBased(moveno))
+        basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_2);
 
     // handle Iron Fist
     if ((attacker->ability == ABILITY_IRON_FIST) && IsElementInArray(PunchingMovesTable, (u16*)&moveno, NELEMS(PunchingMovesTable), sizeof(PunchingMovesTable[0])))
@@ -608,6 +620,14 @@ int LONG_CALL BattleAI_CalcBaseDamage(void* bw, struct BattleStruct* sp, int mov
         && (movetype == TYPE_GROUND || movetype == TYPE_ROCK || movetype == TYPE_STEEL))
     {
         basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_3);
+    }
+
+    // Permafrost boosts Ice-type moves by 50% in Snow
+    if (attacker->ability == ABILITY_PERMAFROST
+        && (field_cond & WEATHER_SNOW_ANY)
+        && movetype == TYPE_ICE)
+    {
+        basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_5);
     }
 
     // handle Analytic
@@ -1275,6 +1295,9 @@ int LONG_CALL BattleAI_CalcDamage(void* bw, struct BattleStruct* sp, int moveno,
     movetype = GetAdjustedMoveTypeBasics(sp, moveno, attacker->ability, move.type);
     if (moveno == MOVE_HIDDEN_POWER)
         movetype = attacker->hiddenPowerType;
+    if (moveno == MOVE_REVELATION_DANCE)
+        movetype = (attacker->type1 != TYPE_TYPELESS) ? attacker->type1 :
+                   (attacker->type2 != TYPE_TYPELESS) ? attacker->type2 : TYPE_TYPELESS;
 
     if (!attacker->hasMoldBreaker)
     {
@@ -1332,10 +1355,13 @@ int LONG_CALL BattleAI_CalcDamage(void* bw, struct BattleStruct* sp, int moveno,
 
     if (move.effect == MOVE_EFFECT_ALWAYS_CRITICAL || move.effect == MOVE_EFFECT_HIT_THREE_TIMES_ALWAYS_CRITICAL)
     {
-        if (defender->ability != ABILITY_SHELL_ARMOR && defender->ability != ABILITY_BATTLE_ARMOR)
+        if (defender->ability != ABILITY_SHELL_ARMOR && defender->ability != ABILITY_BATTLE_ARMOR
+         && defender->ability != ABILITY_LEAF_GUARD && defender->ability != ABILITY_MAGMA_ARMOR)
             critical = 2;
     }
-    if (attacker->item == ITEM_SCOPE_LENS && attacker->ability == ABILITY_SUPER_LUCK && defender->ability != ABILITY_SHELL_ARMOR && defender->ability != ABILITY_BATTLE_ARMOR)
+    if (attacker->item == ITEM_SCOPE_LENS && attacker->ability == ABILITY_SUPER_LUCK
+     && defender->ability != ABILITY_SHELL_ARMOR && defender->ability != ABILITY_BATTLE_ARMOR
+     && defender->ability != ABILITY_LEAF_GUARD && defender->ability != ABILITY_MAGMA_ARMOR)
     {
         if (move.effect == MOVE_EFFECT_HIGH_CRITICAL)
             critical = 2;
@@ -1417,7 +1443,7 @@ int LONG_CALL BattleAI_CalcDamage(void* bw, struct BattleStruct* sp, int moveno,
     debug_printf("[CalcBaseDamage] damage: %d\n", damage);
 #endif
 
-    u32 roll = 8; //(BattleRand(bw) % 16);
+    u32 roll = BattleRand(bw) % 16;
     damages->damageRoll = damage * (100 - roll);  // 85-100% damage roll
     damages->damageRoll = damages->damageRoll / 100;
 
@@ -2158,13 +2184,13 @@ int LONG_CALL BattleAI_PostKOSwitchIn_Internal(struct BattleSystem* bsys, int at
                             damages.damageRange[u] = BattleAI_AdjustUnusualMoveDamage(attackerMon.level, attackerMon.hp, defenderMon.hp, damages.damageRange[u], attackerMove.effect, attackerMon.ability, attackerMon.item);
                         }
 
-                        if (damages.damageRoll > monDealsRolledDamage[i])
+                        if (damages.damageRange[8] > monDealsRolledDamage[i])
                         {
 							monHighestDamageMoveno = moveno;
-                            monDealsRolledDamage[i] = damages.damageRoll;
+                            monDealsRolledDamage[i] = damages.damageRange[8];
                         }
 
-                        if (attackerMove.effect == MOVE_EFFECT_HIT_BEFORE_SWITCH && damages.damageRoll >= defenderMon.hp)
+                        if (attackerMove.effect == MOVE_EFFECT_HIT_BEFORE_SWITCH && damages.damageRange[8] >= defenderMon.hp)
                             pursuitOHKOs = TRUE;
                     }
                     debug_printf("Dealing with move %d: %d deals [%d-%d], roll %d > def.HP %d\n", j, moveno, damages.damageRange[0], damages.damageRange[15], damages.damageRoll, defenderMon.hp);
@@ -2193,10 +2219,10 @@ int LONG_CALL BattleAI_PostKOSwitchIn_Internal(struct BattleSystem* bsys, int at
                         damages.damageRange[u] = BattleAI_AdjustUnusualMoveDamage(defenderMon.level, defenderMon.hp, attackerMon.hp, damages.damageRange[u], defenderMove.effect, defenderMon.ability, defenderMon.item);
                     }
 
-                    if (damages.damageRoll > monReceivesDamage[i])
+                    if (damages.damageRange[8] > monReceivesDamage[i])
                     {
                         monReceivingHighestDamageMoveno = defenderMoveno;
-                        monReceivesDamage[i] = damages.damageRoll;
+                        monReceivesDamage[i] = damages.damageRange[8];
                     }
                 }
                 debug_printf("Receiving from move %d: %d is [%d-%d], roll %d > att.HP %d\n", k, defenderMoveno, damages.damageRange[0], damages.damageRange[15], damages.damageRoll, attackerMon.hp);
