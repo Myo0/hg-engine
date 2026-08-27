@@ -3443,7 +3443,7 @@ movedata MOVE_SLEEP_TALK, "Sleep Talk"
     pp 10
     effectchance 0
     target RANGE_SINGLE_TARGET_SPECIAL
-    priority 1
+    priority 0
     flags 0
     appeal APPEAL_BASIC
     contesttype CONTEST_CUTE
