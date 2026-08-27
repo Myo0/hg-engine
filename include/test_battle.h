@@ -8,19 +8,19 @@
 
 #define AI_SCRIPT_MAX_MOVES 8
 
-#define TEST_BATTLE_MESSAGE_LEN 128
+#define TEST_BATTLE_MESSAGE_LEN     128
 #define TEST_BATTLE_MESSAGE_FILE_ID 197
 
-#define STATE_SCRIPT_IDX_MASK       0xF
-#define STATE_COMPLETE_BIT          (1 << 20)
-#define STATE_HAS_MORE_BIT          (1 << 21)
-#define STATE_TEST_INDEX_SHIFT      22
-#define STATE_TEST_INDEX_MASK       0x3FF
+#define STATE_SCRIPT_IDX_MASK  0xF
+#define STATE_COMPLETE_BIT     (1 << 20)
+#define STATE_HAS_MORE_BIT     (1 << 21)
+#define STATE_TEST_INDEX_SHIFT 22
+#define STATE_TEST_INDEX_MASK  0x3FF
 
 // Battle action for scripted tests
 struct PACKED BattleAction {
-    u8 action;  // 0-3 = move slot, 4-9 = switch to party slot (action - 4)
-    u8 target;  // Battler ID (0-3)
+    u8 action; // 0-3 = move slot, 4-9 = switch to party slot (action - 4)
+    u8 target; // Battler ID (0-3)
 };
 
 // Pokemon definition for test scenarios
@@ -31,9 +31,9 @@ struct PACKED TestBattlePokemon {
     u16 ability;
     u16 item;
     u16 moves[4];
-    u16 hp;              // 0 = full HP
-    u32 status;          // STATUS_BURN, STATUS_POISON, STATUS_SLEEP, etc.
-    u32 condition2;      // STATUS2_RECHARGE, STATUS2_CONFUSION, etc. (can be OR'd)
+    u16 hp; // 0 = full HP
+    u32 status; // STATUS_BURN, STATUS_POISON, STATUS_SLEEP, etc.
+    u32 condition2; // STATUS2_RECHARGE, STATUS2_CONFUSION, etc. (can be OR'd)
     u32 moveEffectFlags; // MOVE_EFFECT_FLAG_LEECH_SEED_ACTIVE, etc. (can be OR'd)
 };
 
@@ -62,13 +62,13 @@ struct Expectations {
 
 // Complete test scenario definition
 struct PACKED TestBattleScenario {
-    u32 battleType;                           // BATTLE_TYPE_SINGLE, BATTLE_TYPE_DOUBLE, etc.
-    u32 weather;                              // WEATHER_RAIN, WEATHER_SANDSTORM, etc.
-    u32 fieldCondition;                       // FIELD_CONDITION_TRICK_ROOM_INIT, etc.
-    u8 terrain;                               // GRASSY_TERRAIN, MISTY_TERRAIN, etc.
-    u8 _padding[3];                           // Compiler adds 3 bytes padding to align struct to 4-byte boundary
-    struct TestBattlePokemon playerParty[6];  // Player party
-    struct TestBattlePokemon enemyParty[6];   // Enemy's party
+    u32 battleType; // BATTLE_TYPE_SINGLE, BATTLE_TYPE_DOUBLE, etc.
+    u32 weather; // WEATHER_RAIN, WEATHER_SANDSTORM, etc.
+    u32 fieldCondition; // FIELD_CONDITION_TRICK_ROOM_INIT, etc.
+    u8 terrain; // GRASSY_TERRAIN, MISTY_TERRAIN, etc.
+    u8 _padding[3]; // Compiler adds 3 bytes padding to align struct to 4-byte boundary
+    struct TestBattlePokemon playerParty[6]; // Player party
+    struct TestBattlePokemon enemyParty[6]; // Enemy's party
 
     struct BattleAction playerScript[2][AI_SCRIPT_MAX_MOVES];
     struct BattleAction enemyScript[2][AI_SCRIPT_MAX_MOVES];
@@ -92,7 +92,7 @@ struct PACKED TestBattleScenario {
 #define ACTION_SWITCH_SLOT_3 7
 #define ACTION_SWITCH_SLOT_4 8
 #define ACTION_SWITCH_SLOT_5 9
-#define ACTION_NONE          0xFF  // Sentinel value to mark end of script
+#define ACTION_NONE          0xFF // Sentinel value to mark end of script
 
 // Battler position constants
 #define BATTLER_PLAYER_FIRST  0

@@ -13,7 +13,7 @@ enum AIActionChoice {
 
 enum AIFlag {
     AI_FLAG_NONE,
-    AI_FLAG_BASIC =  1 << 0,
+    AI_FLAG_BASIC = 1 << 0,
     AI_FLAG_EVAL_ATTACK = 1 << 1,
     AI_FLAG_EXPERT = 1 << 2,
     AI_FLAG_SETUP_FIRST_TURN = 1 << 3,

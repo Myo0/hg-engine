@@ -37,7 +37,7 @@
 // commenting this line out essentially disables hidden abilities to maintain default behavior, while leaving this as-is will introduce hidden abilities and all of their handling.
 // just need to set the HIDDEN_ABILITIES_FLAG from the save and then every mon should be generated with its hidden ability until the flag is cleared from another script
 #define HIDDEN_ABILITIES
-#define HIDDEN_ABILITIES_FLAG 2600
+#define HIDDEN_ABILITIES_FLAG          2600
 #define HIDDEN_ABILITIES_STARTERS_FLAG 2601
 
 // MEGA_EVOLUTIONS defines whether or not Pokémon that are able to mega evolve will be able to do so.
@@ -58,12 +58,12 @@
 
 // IMPLEMENT_TRANSPARENT_TEXTBOXES should be used if you want to implement transparent textboxes
 // uncommenting this line out will enable transparent textboxes
-//#define IMPLEMENT_TRANSPARENT_TEXTBOXES
+// #define IMPLEMENT_TRANSPARENT_TEXTBOXES
 
 // IMPLEMENT_WILD_DOUBLE_BATTLES defines whether or not grass tiles will have a 10% chance of starting a wild double battle
 // commenting this line out disables wild double battles entirely
 // NOTE:  wild double battles are currently unstable and broken.  i would not use them at this time.  see this issue for updates on this problem: https://github.com/BluRosie/hg-engine/issues/86
-//#define IMPLEMENT_WILD_DOUBLE_BATTLES
+// #define IMPLEMENT_WILD_DOUBLE_BATTLES
 
 // IMPLEMENT_CAPTURE_EXPERIENCE defines whether or not capturing wild pokemon will net experience
 // commenting this line out disables capture experience
@@ -87,17 +87,17 @@
 #define IMPLEMENT_LEVEL_CAP
 #define LEVEL_CAP_VARIABLE 0x416F
 #define UNCAP_CANDIES_FROM_LEVEL_CAP
-//#define ALLOW_LEVEL_CAP_EVOLVE
+// #define ALLOW_LEVEL_CAP_EVOLVE
 
 // System flags that need to be enabled for the player to use the gimmick. If you want to change them, remember to change them in flags.s as well for consistency
-#define FLAG_MEGA_EVOLUTION_ENABLED 2518
-#define FLAG_Z_MOVE_ENABLED 2519
-#define FLAG_DYNAMAX_ENABLED 2520
+#define FLAG_MEGA_EVOLUTION_ENABLED  2518
+#define FLAG_Z_MOVE_ENABLED          2519
+#define FLAG_DYNAMAX_ENABLED         2520
 #define FLAG_TERASTALIZATION_ENABLED 2521
 
 // UPDATE_OVERWORLD_POISON will remove overworld poison if enabled
 // comment the line out below to retain overworld poison
-//#define UPDATE_OVERWORLD_POISON
+// #define UPDATE_OVERWORLD_POISON
 
 // DISABLE_END_OF_TURN_WEATHER_MESSAGE removes the weather messages at the end of the turn.  instead the bottom screen icon can be used
 // uncomment the line out to get this functionality
@@ -134,7 +134,7 @@
 
 // RESTORE_ITEMS_AT_BATTLE_END will restore held items that are single-use at the end of battle (Gen 9)
 // comment out the line below to revert back to Gen 8- behavior
-//#define RESTORE_ITEMS_AT_BATTLE_END
+// #define RESTORE_ITEMS_AT_BATTLE_END
 
 // AI_CAN_GRAB_ITEMS allows to use Trick, Switcheroo, (Thief still todo) on the Player and actually grab items. This can result in lost items.
 #define AI_CAN_GRAB_ITEMS
@@ -169,7 +169,7 @@
 #define MART_EXPANSION
 
 // POKEATHLON_EXPANSION allows for adding and modifying items to the Pokéathlon shop inventories
-//#define POKEATHLON_SHOP_EXPANSION
+// #define POKEATHLON_SHOP_EXPANSION
 
 // STATIC_HP_BAR updates the HP bar to increase/decrease at a fixed rate like later generations
 #define STATIC_HP_BAR
@@ -208,19 +208,19 @@
 
 // Configs the ball capture ratio. 4 emulates the behaviour in HeartGold. However, due to the modernization of
 // the capture formula, it is only an estimate. Some are left as 4 to be less disruptive. Use GEN_LATEST for vanilla behaviour
-#define NEST_BALL_GENERATION    GEN_LATEST
-#define NET_BALL_GENERATION     GEN_LATEST
-#define REPEAT_BALL_GENERATION  GEN_LATEST
-#define TIMER_BALL_GENERATION   GEN_LATEST
-#define DUSK_BALL_GENERATION    GEN_LATEST
-#define QUICK_BALL_GENERATION   GEN_LATEST
-#define SAFARI_BALL_GENERATION  4
-#define LURE_BALL_GENERATION    4
-#define SPORT_BALL_GENERATION   4
-#define MOON_BALL_GENERATION    GEN_LATEST
+#define NEST_BALL_GENERATION   GEN_LATEST
+#define NET_BALL_GENERATION    GEN_LATEST
+#define REPEAT_BALL_GENERATION GEN_LATEST
+#define TIMER_BALL_GENERATION  GEN_LATEST
+#define DUSK_BALL_GENERATION   GEN_LATEST
+#define QUICK_BALL_GENERATION  GEN_LATEST
+#define SAFARI_BALL_GENERATION 4
+#define LURE_BALL_GENERATION   4
+#define SPORT_BALL_GENERATION  4
+#define MOON_BALL_GENERATION   GEN_LATEST
 
 // If caught, the Pokémon's friendship is set to 200 in Generations II through VII, or 150 in Generation VIII onwards.
-#define FRIEND_BALL_GENERATION  GEN_LATEST
+#define FRIEND_BALL_GENERATION GEN_LATEST
 
 // THUNDER_STORM_WEATHER_ELECTRIC_TERRAIN makes the Thunder & Storm map header weathers set permanent
 // Electric Terrain (and rain) in battle

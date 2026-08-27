@@ -48,9 +48,9 @@ void LONG_CALL _CreateTradeMon(struct PartyPokemon *mon, struct NPCTrade *trade_
 
 #ifdef CUSTOM_TRADES
     if (tradeno == NPC_TRADE_ROCKY_ONIX) {
-        trade_dat->hpIv    = 31;
-        trade_dat->atkIv   = 31;
-        trade_dat->defIv   = 31;
+        trade_dat->hpIv = 31;
+        trade_dat->atkIv = 31;
+        trade_dat->defIv = 31;
         trade_dat->speedIv = 31;
         trade_dat->spAtkIv = 31;
         trade_dat->spDefIv = 31;

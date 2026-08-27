@@ -27,9 +27,9 @@ BOOL MoveHitDefenderAbilityCheckInternal(void *bw, struct BattleStruct *sp, int 
     u32 move_pos;
 
     if (sp->defence_client == BATTLER_NONE
-     || CheckSubstitute(sp, sp->defence_client) == TRUE
-     || ((sp->waza_status_flag & WAZA_STATUS_FLAG_NO_OUT) != 0)
-     || ((sp->server_status_flag & SERVER_STATUS_FLAG_x20) != 0)) {
+        || CheckSubstitute(sp, sp->defence_client) == TRUE
+        || ((sp->waza_status_flag & WAZA_STATUS_FLAG_NO_OUT) != 0)
+        || ((sp->server_status_flag & SERVER_STATUS_FLAG_x20) != 0)) {
         return ret;
     }
 
@@ -46,7 +46,7 @@ BOOL MoveHitDefenderAbilityCheckInternal(void *bw, struct BattleStruct *sp, int 
             seq_no[0] = SUB_SEQ_APPLY_PARALYSIS;
             ret = TRUE;
         }
-    }  else if (MoldBreakerAbilityCheck(sp, sp->attack_client, sp->defence_client, ABILITY_ROUGH_SKIN)
+    } else if (MoldBreakerAbilityCheck(sp, sp->attack_client, sp->defence_client, ABILITY_ROUGH_SKIN)
         || MoldBreakerAbilityCheck(sp, sp->attack_client, sp->defence_client, ABILITY_IRON_BARBS)) {
         if ((sp->battlemon[sp->attack_client].hp)
             && (GetBattlerAbility(sp, sp->attack_client) != ABILITY_MAGIC_GUARD)
@@ -309,7 +309,7 @@ BOOL MoveHitDefenderAbilityCheckInternal(void *bw, struct BattleStruct *sp, int 
             seq_no[0] = SUB_SEQ_HANDLE_CURSED_BODY;
             ret = TRUE;
         }
-    }  else if (MoldBreakerAbilityCheck(sp, sp->attack_client, sp->defence_client, ABILITY_THERMAL_EXCHANGE)) {
+    } else if (MoldBreakerAbilityCheck(sp, sp->attack_client, sp->defence_client, ABILITY_THERMAL_EXCHANGE)) {
         if ((sp->battlemon[sp->defence_client].hp)
             && (sp->battlemon[sp->defence_client].states[STAT_ATTACK] < 12)
             && ((sp->battlemon[sp->defence_client].condition2 & STATUS2_SUBSTITUTE) == 0)
@@ -339,9 +339,7 @@ BOOL MoveHitDefenderAbilityCheckInternal(void *bw, struct BattleStruct *sp, int 
         }
     } else if (MoldBreakerAbilityCheck(sp, sp->attack_client, sp->defence_client, ABILITY_SEED_SOWER)) {
         if ((sp->terrainOverlay.type != GRASSY_TERRAIN)
-            && ((sp->oneSelfFlag[sp->defence_client].physical_damage) ||
-                (sp->oneSelfFlag[sp->defence_client].special_damage)))
-        {
+            && ((sp->oneSelfFlag[sp->defence_client].physical_damage) || (sp->oneSelfFlag[sp->defence_client].special_damage))) {
             sp->addeffect_type = ADD_EFFECT_ABILITY;
             UpdateTerrainOverlay(sp, sp->defence_client, GRASSY_TERRAIN);
             sp->state_client = sp->defence_client;
@@ -351,8 +349,7 @@ BOOL MoveHitDefenderAbilityCheckInternal(void *bw, struct BattleStruct *sp, int 
         }
     } else if (MoldBreakerAbilityCheck(sp, sp->attack_client, sp->defence_client, ABILITY_TOXIC_DEBRIS)) {
         if (((sp->battlemon[sp->defence_client].condition2 & STATUS2_SUBSTITUTE) == 0)
-            && (sp->oneSelfFlag[sp->defence_client].physical_damage))
-        {
+            && (sp->oneSelfFlag[sp->defence_client].physical_damage)) {
             int fieldSide = IsClientEnemy(bw, sp->attack_client);
             if (sp->scw[fieldSide].toxicSpikesLayers < 2) {
                 sp->addeffect_type = ADD_EFFECT_ABILITY;

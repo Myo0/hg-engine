@@ -2,9 +2,7 @@
 #define CUSTOM_AI_H
 #include "../battle.h"
 
-
-struct PACKED AI_sDamageCalc
-{
+struct PACKED AI_sDamageCalc {
     u16 species;
     u16 hp;
     u16 maxhp;
@@ -43,39 +41,34 @@ struct PACKED AI_sDamageCalc
     u8 furyCutterCount;
     u8 rolloutCount;
     u8 metronomeTurns;
-    //u8 lastResortCount;
+    // u8 lastResortCount;
     u32 assuranceDamage;
     u8 hiddenPowerType;
 };
 
-struct PACKED AI_damage
-{
+struct PACKED AI_damage {
     u32 damageRoll;
     u32 damageRange[16];
     u32 moveEffectiveness;
 };
 
+int LONG_CALL BattleAI_PostKOSwitchIn(struct BattleSystem *bsys, int attacker);
+int LONG_CALL BattleAI_PostKOSwitchIn_Internal(struct BattleSystem *bsys, int attacker, int *score);
 
-int LONG_CALL BattleAI_PostKOSwitchIn(struct BattleSystem* bsys, int attacker);
-int LONG_CALL BattleAI_PostKOSwitchIn_Internal(struct BattleSystem* bsys, int attacker, int* score);
+u8 LONG_CALL BattleAI_CalcSpeed(void *bw, struct BattleStruct *sp, int client1, struct PartyPokemon *partyMon, int flag);
 
-u8 LONG_CALL BattleAI_CalcSpeed(void* bw, struct BattleStruct* sp, int client1, struct PartyPokemon* partyMon, int flag);
+int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond, u32 field_cond, u16 pow, u8 type, u8 critical, u8 attackerSlot, u8 defenderSlot, struct AI_sDamageCalc *attacker, struct AI_sDamageCalc *defender);
+int LONG_CALL BattleAI_CalcDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond, u32 field_cond, u16 pow, u8 type, u8 critical, u8 attackerSlot, u8 defenderSlot, struct AI_damage *damages, struct AI_sDamageCalc *attacker, struct AI_sDamageCalc *defender);
 
-int LONG_CALL BattleAI_CalcBaseDamage(void* bw, struct BattleStruct* sp, int moveno, u32 side_cond, u32 field_cond, u16 pow, u8 type, u8 critical, u8 attackerSlot, u8 defenderSlot,                            struct AI_sDamageCalc* attacker, struct AI_sDamageCalc* defender);
-int LONG_CALL BattleAI_CalcDamage    (void* bw, struct BattleStruct* sp, int moveno, u32 side_cond, u32 field_cond, u16 pow, u8 type, u8 critical, u8 attackerSlot, u8 defenderSlot, struct AI_damage* damages, struct AI_sDamageCalc* attacker, struct AI_sDamageCalc* defender);
-
-void LONG_CALL FillDamageStructFromPartyMon(void* bw UNUSED, struct BattleStruct* sp, struct AI_sDamageCalc* monStruct, struct PartyPokemon* pp);
-void LONG_CALL FillDamageStructFromBattleMon(void* bw, struct BattleStruct* sp, struct AI_sDamageCalc* monStruct, int numSlot);
-
+void LONG_CALL FillDamageStructFromPartyMon(void *bw UNUSED, struct BattleStruct *sp, struct AI_sDamageCalc *monStruct, struct PartyPokemon *pp);
+void LONG_CALL FillDamageStructFromBattleMon(void *bw, struct BattleStruct *sp, struct AI_sDamageCalc *monStruct, int numSlot);
 
 BOOL LONG_CALL IsMoveBoostedBySheerForce(u32 moveno, u32 moveeffect);
-BOOL LONG_CALL BattleAI_IsContactBeingMade(struct BattleStruct* sp, u32 ability, u32 itemHoldEffect, u32 moveno);
-int LONG_CALL BattleAI_GetTypeEffectiveness(void* bw, struct BattleStruct* sp, int moveno, int move_type, u32* flag, struct AI_sDamageCalc* attacker, struct AI_sDamageCalc* defender);
+BOOL LONG_CALL BattleAI_IsContactBeingMade(struct BattleStruct *sp, u32 ability, u32 itemHoldEffect, u32 moveno);
+int LONG_CALL BattleAI_GetTypeEffectiveness(void *bw, struct BattleStruct *sp, int moveno, int move_type, u32 *flag, struct AI_sDamageCalc *attacker, struct AI_sDamageCalc *defender);
 
-BOOL LONG_CALL BattleAI_AttackerHasOnlyIneffectiveMoves(struct BattleStruct* ctx, u32 attacker, int knownMoves, u32 effectiveness[4]);
+BOOL LONG_CALL BattleAI_AttackerHasOnlyIneffectiveMoves(struct BattleStruct *ctx, u32 attacker, int knownMoves, u32 effectiveness[4]);
 
 int LONG_CALL BattleAI_AdjustUnusualMoveDamage(u32 attackerLevel, u32 attackerHP, u32 defenderHP, u32 damage, u32 moveEffect, u32 attackerAbility, u32 attackerItem);
 
-BOOL LONG_CALL canAttackerOneShotDefender(u32 attackerHighestDamage, u8 split, u32 moveno, struct AI_sDamageCalc* attacker, struct AI_sDamageCalc* defender);
-
-
+BOOL LONG_CALL canAttackerOneShotDefender(u32 attackerHighestDamage, u8 split, u32 moveno, struct AI_sDamageCalc *attacker, struct AI_sDamageCalc *defender);

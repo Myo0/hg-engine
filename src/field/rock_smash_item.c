@@ -12,14 +12,13 @@
 // can't change this at this time
 #define NUM_ROCK_SMASH_ITEMS_PER_TABLE 8
 
-
 /*
 this table can be expanded as you please.
 each header has a file in a253 that has 2 bytes for odds (out of 100) and 2 bytes for the item table below to use
 */
-const u16 RockSmashItemTable[][NUM_ROCK_SMASH_ITEMS_PER_TABLE] =
-{
-    { // default
+const u16 RockSmashItemTable[][NUM_ROCK_SMASH_ITEMS_PER_TABLE] = {
+    {
+        // default
         ITEM_MAX_ETHER,
         ITEM_REVIVE,
         ITEM_HEART_SCALE,
@@ -29,7 +28,8 @@ const u16 RockSmashItemTable[][NUM_ROCK_SMASH_ITEMS_PER_TABLE] =
         ITEM_YELLOW_SHARD,
         ITEM_STAR_PIECE,
     },
-    { // ruins of alph
+    {
+        // ruins of alph
         ITEM_RED_SHARD,
         ITEM_YELLOW_SHARD,
         ITEM_HELIX_FOSSIL,
@@ -39,7 +39,8 @@ const u16 RockSmashItemTable[][NUM_ROCK_SMASH_ITEMS_PER_TABLE] =
         ITEM_OLD_AMBER,
         ITEM_MAX_REVIVE,
     },
-    { // cliff cave
+    {
+        // cliff cave
         ITEM_MAX_ETHER,
         ITEM_PEARL,
         ITEM_BIG_PEARL,
@@ -53,8 +54,7 @@ const u16 RockSmashItemTable[][NUM_ROCK_SMASH_ITEMS_PER_TABLE] =
 
 u32 DetermineRockSmashItem(u32 tableIndex, u32 index)
 {
-    if (tableIndex >= NELEMS(RockSmashItemTable) || index >= NUM_ROCK_SMASH_ITEMS_PER_TABLE)
-    {
+    if (tableIndex >= NELEMS(RockSmashItemTable) || index >= NUM_ROCK_SMASH_ITEMS_PER_TABLE) {
         return ITEM_NONE;
     }
     return RockSmashItemTable[tableIndex][index];
