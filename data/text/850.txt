@@ -727,7 +727,7 @@ A rock that fell to earth from space.\nIt’s warm to the touch. It changes the\
 A record of an expedition to the\nGreat Crater of Paldea, given\nto you by Professor Sada.\rThe book has the name “Sada” written\non it in clumsy handwriting.
 A record of an expedition to the\nGreat Crater of Paldea, given\nto you by Professor Turo.\rThe book has the name “Turo” written\non it in clumsy handwriting.
 A proof copy of the\nexploration notes covering\nthe Area Zero Underdepths.\rIt’s filled with long paragraphs\ndescribing what happened,\nalong with Briar’s thoughts.
-TEMP
+A limitless candy that is packed with energy.\nIt raises the level of a single Pokémon\nby one.
 A variety of the mysterious Mega Stones.\nA Clefable holding this stone will be\nable to Mega Evolve during battle.
 A variety of the mysterious Mega Stones.\nA Victreebel holding this stone will be\nable to Mega Evolve during battle.
 A variety of the mysterious Mega Stones.\nA Starmie holding this stone will be\nable to Mega Evolve during battle.

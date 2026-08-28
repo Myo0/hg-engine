@@ -15,6 +15,22 @@
 #include "../../include/q412.h"
 #include "../../include/custom/custom_ai.h"
 
+// grafted from fork battle_script_commands.c (upstream took theirs); used by FillDamageStructFromPartyMon
+BOOL LONG_CALL IsPartyPokemonGrounded(struct BattleStruct *sp, struct PartyPokemon *pp)
+{
+    u16 item = GetMonData(pp, MON_DATA_HELD_ITEM, 0);
+    u8 holdeffect = BattleItemDataGet(sp, item, 1);
+    if ((GetMonData(pp, MON_DATA_ABILITY, 0) != ABILITY_LEVITATE
+            && holdeffect != HOLD_EFFECT_UNGROUND_DESTROYED_ON_HIT
+            && !(GetMonData(pp, MON_DATA_TYPE_1, 0) == TYPE_FLYING)
+            && !(GetMonData(pp, MON_DATA_TYPE_2, 0) == TYPE_FLYING))
+        || (holdeffect == HOLD_EFFECT_SPEED_DOWN_GROUNDED
+            || (sp->field_condition & FIELD_CONDITION_GRAVITY))) {
+        return TRUE;
+    }
+    return FALSE;
+}
+
 // Suppress all AI trace prints unless explicitly debugging damage calculations.
 #ifndef DEBUG_DAMAGE_CALC_AI
 #undef debug_printf
@@ -135,9 +151,9 @@ void LONG_CALL FillDamageStructFromBattleMon(void *bw, struct BattleStruct *sp, 
     }
 
     monStruct->states[STAT_ATTACK] = BattlePokemonParamGet(sp, numSlot, BATTLE_MON_DATA_STATE_ATK, NULL) - 6;
-    monStruct->states[STAT_SPATK] = BattlePokemonParamGet(sp, numSlot, BATTLE_MON_DATA_STATE_SPATK, NULL) - 6;
+    monStruct->states[STAT_SPECIAL_ATTACK] = BattlePokemonParamGet(sp, numSlot, BATTLE_MON_DATA_STATE_SPATK, NULL) - 6;
     monStruct->states[STAT_DEFENSE] = BattlePokemonParamGet(sp, numSlot, BATTLE_MON_DATA_STATE_DEF, NULL) - 6;
-    monStruct->states[STAT_SPDEF] = BattlePokemonParamGet(sp, numSlot, BATTLE_MON_DATA_STATE_SPDEF, NULL) - 6;
+    monStruct->states[STAT_SPECIAL_DEFENSE] = BattlePokemonParamGet(sp, numSlot, BATTLE_MON_DATA_STATE_SPDEF, NULL) - 6;
     monStruct->states[STAT_SPEED] = BattlePokemonParamGet(sp, numSlot, BATTLE_MON_DATA_STATE_SPE, NULL) - 6;
     monStruct->states[STAT_ACCURACY] = BattlePokemonParamGet(sp, numSlot, BATTLE_MON_DATA_STATE_ACCURACY, NULL) - 6;
     monStruct->states[STAT_EVASION] = BattlePokemonParamGet(sp, numSlot, BATTLE_MON_DATA_STATE_EVASIVENESS, NULL) - 6;
@@ -192,7 +208,7 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
     u32 attackModifier = UQ412__1_0;
     u32 defenseModifier = UQ412__1_0;
     u32 baseDamage = 0;
-    BOOL isDoubleBattle = (BattleTypeGet(bw) & (BATTLE_TYPE_MULTI | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TAG));
+    BOOL isDoubleBattle = (BattleTypeGet(bw) & (BATTLE_TYPE_MULTI | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TAG));
 
     /*
     if (!attacker->hasMoldBreaker && defender->ability == ABILITY_DISGUISE && defender->hp == defender->maxhp) //SPECIES_MIMIKYU
@@ -345,7 +361,7 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
     case MOVE_REVENGE:
     case MOVE_AVALANCHE: {
         // AI assumes it will be hit if slower (or faster if Trick Room is active),
-        BOOL trickRoom = field_cond & FIELD_STATUS_TRICK_ROOM;
+        BOOL trickRoom = field_cond & FIELD_CONDITION_TRICK_ROOM;
         BOOL aiIsSlower = trickRoom ? (attacker->speed > defender->speed)
                                     : (attacker->speed < defender->speed);
         if (aiIsSlower) {
@@ -359,7 +375,7 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
     case MOVE_GUST:
     case MOVE_TWISTER:
         // doubles power if target is in the invulnerable stage of Fly/Bounce/Sky Drop
-        if (defender->effect_of_moves & MOVE_EFFECT_FLAG_FLYING_IN_AIR) {
+        if (defender->effect_of_moves & MOVE_EFFECT_FLAG_SEMI_INVULNERABLE) {
             movepower *= 2;
         }
         break;
@@ -396,7 +412,7 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
         if (!CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, attackerSlot, ABILITY_CLOUD_NINE)
             && !CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, attackerSlot, ABILITY_AIR_LOCK)) {
             if ((sp->field_condition & FIELD_CONDITION_WEATHER)
-                && !(sp->field_condition & (WEATHER_STRONG_WINDS | WEATHER_SNOW_ANY))) {
+                && !(sp->field_condition & (FIELD_CONDITION_STRONG_WINDS | FIELD_CONDITION_SNOW_ALL))) {
                 movepower *= 2;
             }
         }
@@ -508,7 +524,7 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
         // case MOVE_FUSION_FLARE:
         // case MOVE_FUSION_BOLT:
     case MOVE_GRAV_APPLE:
-        if (sp->field_condition & FIELD_STATUS_GRAVITY) {
+        if (sp->field_condition & FIELD_CONDITION_GRAVITY) {
             basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_5);
         }
         break;
@@ -541,7 +557,7 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
 
     if ((CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, attackerSlot, ABILITY_CLOUD_NINE) == 0)
         && (CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, attackerSlot, ABILITY_AIR_LOCK) == 0)) {
-        if ((field_cond & (FIELD_STATUS_FOG | WEATHER_HAIL_ANY | WEATHER_SANDSTORM_ANY | WEATHER_RAIN_ANY | WEATHER_SNOW_ANY))
+        if ((field_cond & (FIELD_CONDITION_FOG | FIELD_CONDITION_HAIL_ALL | FIELD_CONDITION_SANDSTORM_ALL | FIELD_CONDITION_RAIN_ALL | FIELD_CONDITION_SNOW_ALL))
             && (moveno == MOVE_SOLAR_BEAM || moveno == MOVE_SOLAR_BLADE)) {
             basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__0_5);
         }
@@ -627,7 +643,7 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
     }
 
     // handle Iron Fist
-    if ((attacker->ability == ABILITY_IRON_FIST) && IsElementInArray(PunchingMovesTable, (u16 *)&moveno, NELEMS(PunchingMovesTable), sizeof(PunchingMovesTable[0]))) {
+    if ((attacker->ability == ABILITY_IRON_FIST) && IsElementInArray(PunchingMoveTable, (u16 *)&moveno, NELEMS(PunchingMoveTable), sizeof(PunchingMoveTable[0]))) {
         basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_2);
     }
 
@@ -649,14 +665,14 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
 
     // Sand Force boosts damage in sand for certain move types
     if ((attacker->ability == ABILITY_SAND_FORCE)
-        && (field_cond & WEATHER_SANDSTORM_ANY)
+        && (field_cond & FIELD_CONDITION_SANDSTORM_ALL)
         && (movetype == TYPE_GROUND || movetype == TYPE_ROCK || movetype == TYPE_STEEL)) {
         basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_3);
     }
 
     // Permafrost boosts Ice-type moves by 50% in Snow
     if (attacker->ability == ABILITY_PERMAFROST
-        && (field_cond & WEATHER_SNOW_ANY)
+        && (field_cond & FIELD_CONDITION_SNOW_ALL)
         && movetype == TYPE_ICE) {
         basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_5);
     }
@@ -689,17 +705,17 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
     }
 
     // handle Strong Jaw
-    if ((attacker->ability == ABILITY_STRONG_JAW) && IsElementInArray(StrongJawMovesTable, (u16 *)&moveno, NELEMS(StrongJawMovesTable), sizeof(StrongJawMovesTable[0]))) {
+    if ((attacker->ability == ABILITY_STRONG_JAW) && IsElementInArray(BitingMoveTable, (u16 *)&moveno, NELEMS(BitingMoveTable), sizeof(BitingMoveTable[0]))) {
         basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_5);
     }
 
     // handle Mega Launcher
-    if ((attacker->ability == ABILITY_MEGA_LAUNCHER) && IsElementInArray(MegaLauncherMovesTable, (u16 *)&moveno, NELEMS(MegaLauncherMovesTable), sizeof(MegaLauncherMovesTable[0]))) {
+    if ((attacker->ability == ABILITY_MEGA_LAUNCHER) && IsElementInArray(PulseMoveTable, (u16 *)&moveno, NELEMS(PulseMoveTable), sizeof(PulseMoveTable[0]))) {
         basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_5);
     }
 
     // handle Sharpness
-    if ((attacker->ability == ABILITY_SHARPNESS) && IsElementInArray(SharpnessMovesTable, (u16 *)&moveno, NELEMS(SharpnessMovesTable), sizeof(SharpnessMovesTable[0]))) {
+    if ((attacker->ability == ABILITY_SHARPNESS) && IsElementInArray(SlicingMoveTable, (u16 *)&moveno, NELEMS(SlicingMoveTable), sizeof(SlicingMoveTable[0]))) {
         basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_5);
     }
 
@@ -808,7 +824,7 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
     }
 
     // handle Punching Glove
-    if ((attacker->item_held_effect == HOLD_EFFECT_INCREASE_PUNCHING_MOVE_DMG) && IsElementInArray(PunchingMovesTable, (u16 *)&moveno, NELEMS(PunchingMovesTable), sizeof(PunchingMovesTable[0]))) {
+    if ((attacker->item_held_effect == HOLD_EFFECT_INCREASE_PUNCHING_MOVE_DMG) && IsElementInArray(PunchingMoveTable, (u16 *)&moveno, NELEMS(PunchingMoveTable), sizeof(PunchingMoveTable[0]))) {
         basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_1_BUT_HIGHER);
     }
 
@@ -847,14 +863,14 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
     // Step 3.1. handle Unaware
     if (!attacker->hasMoldBreaker && defender->ability == ABILITY_UNAWARE) {
         attacker->states[STAT_ATTACK] = 0;
-        attacker->states[STAT_SPATK] = 0;
+        attacker->states[STAT_SPECIAL_ATTACK] = 0;
     }
 
 #ifdef DEBUG_DAMAGE_CALC_AI
     debug_printf("\n=================\n");
     debug_printf("[CalcBaseDamage] Step 3.1. handle Unaware\n");
     debug_printf("[CalcBaseDamage] attacker->atkstate: %d\n", attacker->states[STAT_ATTACK]);
-    debug_printf("[CalcBaseDamage] attacker->spatkstate: %d\n", attacker->states[STAT_SPATK]);
+    debug_printf("[CalcBaseDamage] attacker->spatkstate: %d\n", attacker->states[STAT_SPECIAL_ATTACK]);
 #endif
 
     // Step 3.2. handle Foul Play / Body Press
@@ -877,14 +893,14 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
     if (critical > 1) {
         // critical hits ignore attacker attack drops
         attacker->states[STAT_ATTACK] = attacker->states[STAT_ATTACK] < 0 ? 0 : attacker->states[STAT_ATTACK];
-        attacker->states[STAT_SPATK] = attacker->states[STAT_SPATK] < 0 ? 0 : attacker->states[STAT_SPATK];
+        attacker->states[STAT_SPECIAL_ATTACK] = attacker->states[STAT_SPECIAL_ATTACK] < 0 ? 0 : attacker->states[STAT_SPECIAL_ATTACK];
     }
 
 #ifdef DEBUG_DAMAGE_CALC_AI
     debug_printf("\n=================\n");
     debug_printf("[CalcBaseDamage] Step 3.3. Critical hit\n");
     debug_printf("[CalcBaseDamage] attacker->atkstate: %d\n", attacker->states[STAT_ATTACK]);
-    debug_printf("[CalcBaseDamage] attacker->spatkstate: %d\n", attacker->states[STAT_SPATK]);
+    debug_printf("[CalcBaseDamage] attacker->spatkstate: %d\n", attacker->states[STAT_SPECIAL_ATTACK]);
 #endif
 
     // Step 3.4. Attack boosts/drops
@@ -892,8 +908,8 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
     attack /= StatBoostModifiersTemp[attacker->states[STAT_ATTACK] + 6][1];
     attack = attack % 65536;
 
-    sp_attack = attacker->sp_attack * StatBoostModifiersTemp[attacker->states[STAT_SPATK] + 6][0];
-    sp_attack /= StatBoostModifiersTemp[attacker->states[STAT_SPATK] + 6][1];
+    sp_attack = attacker->sp_attack * StatBoostModifiersTemp[attacker->states[STAT_SPECIAL_ATTACK] + 6][0];
+    sp_attack /= StatBoostModifiersTemp[attacker->states[STAT_SPECIAL_ATTACK] + 6][1];
     sp_attack = sp_attack % 65536;
 
 #ifdef DEBUG_DAMAGE_CALC_AI
@@ -956,10 +972,10 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
     // handle weather boosts
     if ((CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, attackerSlot, ABILITY_CLOUD_NINE) == 0)
         && (CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, attackerSlot, ABILITY_AIR_LOCK) == 0)) {
-        if ((field_cond & WEATHER_SUNNY_ANY) && (attacker->ability == ABILITY_SOLAR_POWER) && (movesplit == SPLIT_SPECIAL)) {
+        if ((field_cond & FIELD_CONDITION_SUN_ALL) && (attacker->ability == ABILITY_SOLAR_POWER) && (movesplit == SPLIT_SPECIAL)) {
             attackModifier = QMul_RoundUp(attackModifier, UQ412__1_5);
         }
-        if ((field_cond & WEATHER_SUNNY_ANY)
+        if ((field_cond & FIELD_CONDITION_SUN_ALL)
             && (attacker->ability == ABILITY_FLOWER_GIFT || (isDoubleBattle && GetBattlerAbility(sp, BATTLER_ALLY(attackerSlot)) == ABILITY_FLOWER_GIFT))
             && (movesplit == SPLIT_PHYSICAL)) {
             attackModifier = QMul_RoundUp(attackModifier, UQ412__1_5);
@@ -1074,7 +1090,7 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
     if ((attacker->item_held_effect == HOLD_EFFECT_CUBONE_ATK_UP)
         && ((attacker->species == SPECIES_CUBONE) || (attacker->species == SPECIES_MAROWAK))
         // it�s not a Ditto/Smeargle/Mew Transformed into the species
-        && !(attacker->condition2 & STATUS2_TRANSFORMED)
+        && !(attacker->condition2 & STATUS2_TRANSFORM)
         && (movesplit == SPLIT_PHYSICAL)) {
         attackModifier = QMul_RoundUp(attackModifier, UQ412__2_0);
     }
@@ -1083,7 +1099,7 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
     if ((attacker->item_held_effect == HOLD_EFFECT_CLAMPERL_SPATK)
         && (attacker->species == SPECIES_CLAMPERL)
         // it�s not a Ditto/Smeargle/Mew Transformed into the species
-        && !(attacker->condition2 & STATUS2_TRANSFORMED)
+        && !(attacker->condition2 & STATUS2_TRANSFORM)
         && (movesplit == SPLIT_SPECIAL)) {
         attackModifier = QMul_RoundUp(attackModifier, UQ412__2_0);
     }
@@ -1092,7 +1108,7 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
     if ((attacker->item_held_effect == HOLD_EFFECT_PIKA_SPATK_UP)
         && (attacker->species == SPECIES_PIKACHU)
         // it�s not a Ditto/Smeargle/Mew Transformed into the species
-        && !(attacker->condition2 & STATUS2_TRANSFORMED)) {
+        && !(attacker->condition2 & STATUS2_TRANSFORM)) {
         attackModifier = QMul_RoundUp(attackModifier, UQ412__2_0);
     }
 
@@ -1123,21 +1139,21 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
     if (sp->terrainOverlay.numberOfTurnsLeft > 0
         && ((sp->terrainOverlay.type == MISTY_TERRAIN && defender->item_held_effect == HOLD_EFFECT_BOOST_SPDEF_ON_PSYCHIC_TERRAIN)
             || (sp->terrainOverlay.type == PSYCHIC_TERRAIN && defender->item_held_effect == HOLD_EFFECT_BOOST_SPDEF_ON_PSYCHIC_TERRAIN))) {
-        defender->states[STAT_SPDEF] = defender->states[STAT_SPDEF] + 1;
+        defender->states[STAT_SPECIAL_DEFENSE] = defender->states[STAT_SPECIAL_DEFENSE] + 1;
     }
 
     // Step 4.1. handle Unaware
     // Step 4.2. Chip Away / Sacred Sword
     if (attacker->ability == ABILITY_UNAWARE || moveno == MOVE_CHIP_AWAY || moveno == MOVE_SACRED_SWORD) {
         defender->states[STAT_DEFENSE] = 0;
-        defender->states[STAT_SPDEF] = 0;
+        defender->states[STAT_SPECIAL_DEFENSE] = 0;
     }
 
 #ifdef DEBUG_DAMAGE_CALC_AI
     debug_printf("\n=================\n");
     debug_printf("[CalcBaseDamage] Step 4.2. Chip Away / Sacred Sword\n");
     debug_printf("[CalcBaseDamage] defender->defstate: %d\n", defender->states[STAT_DEFENSE]);
-    debug_printf("[CalcBaseDamage] defender->spdefstate: %d\n", defender->states[STAT_SPDEF]);
+    debug_printf("[CalcBaseDamage] defender->spdefstate: %d\n", defender->states[STAT_SPECIAL_DEFENSE]);
 #endif
 
     // Step 4.3. Psyshock / Psystrike / Secret Sword
@@ -1155,14 +1171,14 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
     if (critical > 1) {
         // critical hits ignore defender's stat boosts
         defender->states[STAT_DEFENSE] = defender->states[STAT_DEFENSE] > 0 ? 0 : defender->states[STAT_DEFENSE];
-        defender->states[STAT_SPDEF] = defender->states[STAT_SPDEF] > 0 ? 0 : defender->states[STAT_SPDEF];
+        defender->states[STAT_SPECIAL_DEFENSE] = defender->states[STAT_SPECIAL_DEFENSE] > 0 ? 0 : defender->states[STAT_SPECIAL_DEFENSE];
     }
 
 #ifdef DEBUG_DAMAGE_CALC_AI
     debug_printf("\n=================\n");
     debug_printf("[CalcBaseDamage] Step 4.5. Critical hit\n");
     debug_printf("[CalcBaseDamage] defender->defstate: %d\n", defender->states[STAT_DEFENSE]);
-    debug_printf("[CalcBaseDamage] defender->spdefstate: %d\n", defender->states[STAT_SPDEF]);
+    debug_printf("[CalcBaseDamage] defender->spdefstate: %d\n", defender->states[STAT_SPECIAL_DEFENSE]);
 #endif
 
     // Step 4.6. Defense boosts/drops
@@ -1170,8 +1186,8 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
     defense /= StatBoostModifiersTemp[defender->states[STAT_DEFENSE] + 6][1];
     defense = defense % 65536;
 
-    sp_defense = defender->sp_defense * StatBoostModifiersTemp[defender->states[STAT_SPDEF] + 6][0];
-    sp_defense /= StatBoostModifiersTemp[defender->states[STAT_SPDEF] + 6][1];
+    sp_defense = defender->sp_defense * StatBoostModifiersTemp[defender->states[STAT_SPECIAL_DEFENSE] + 6][0];
+    sp_defense /= StatBoostModifiersTemp[defender->states[STAT_SPECIAL_DEFENSE] + 6][1];
     sp_defense = sp_defense % 65536;
 
 #ifdef DEBUG_DAMAGE_CALC_AI
@@ -1184,10 +1200,10 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
     // Step 4.7. Sandstorm + Rock-type & Snow + Ice-type
     if ((CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, attackerSlot, ABILITY_CLOUD_NINE) == 0)
         && (CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, attackerSlot, ABILITY_AIR_LOCK) == 0)) {
-        if ((field_cond & WEATHER_SANDSTORM_ANY) && ((defender->type1 == TYPE_ROCK) || (defender->type2 == TYPE_ROCK))) {
+        if ((field_cond & FIELD_CONDITION_SANDSTORM_ALL) && ((defender->type1 == TYPE_ROCK) || (defender->type2 == TYPE_ROCK))) {
             sp_defense = QMul_RoundDown(sp_defense, UQ412__1_5);
         }
-        if ((field_cond & WEATHER_SNOW_ANY) && ((defender->type1 == TYPE_ICE) || (defender->type2 == TYPE_ICE))) {
+        if ((field_cond & FIELD_CONDITION_SNOW_ALL) && ((defender->type1 == TYPE_ICE) || (defender->type2 == TYPE_ICE))) {
             defense = QMul_RoundDown(defense, UQ412__1_5);
         }
     }
@@ -1218,7 +1234,7 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
     // handle weather boosts
     if ((CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) == 0)
         && (CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK) == 0)) {
-        if ((field_cond & WEATHER_SUNNY_ANY) && movesplit == SPLIT_SPECIAL
+        if ((field_cond & FIELD_CONDITION_SUN_ALL) && movesplit == SPLIT_SPECIAL
             && (GetBattlerAbility(sp, defenderSlot) == ABILITY_FLOWER_GIFT
                 || (isDoubleBattle && GetBattlerAbility(sp, BATTLER_ALLY(defenderSlot)) == ABILITY_FLOWER_GIFT))) {
             defenseModifier = QMul_RoundUp(defenseModifier, UQ412__1_5);
@@ -1248,7 +1264,7 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
 
         struct Evolution *evoTable;
         evoTable = sys_AllocMemory(0, MAX_EVOS_PER_POKE * sizeof(struct Evolution));
-        ArchiveDataLoad(evoTable, ARC_EVOLUTIONS, speciesWithForm);
+        ReadWholeNarcMemberByIdPair(evoTable, ARC_EVOLUTIONS, speciesWithForm);
 
         // If a Pok�mon has any evolutions, there should be an entry at the top that isn't EVO_NONE.
         // In that case, the Pok�mon is capable of evolving, and so the effect of Eviolite should apply.
@@ -1268,7 +1284,7 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
     if ((defender->item_held_effect == HOLD_EFFECT_CLAMPERL_SPDEF)
         && (defender->species == SPECIES_CLAMPERL)
         // it�s not a Ditto/Smeargle/Mew Transformed into the species
-        && !(defender->condition2 & STATUS2_TRANSFORMED)
+        && !(defender->condition2 & STATUS2_TRANSFORM)
         && (movesplit == SPLIT_SPECIAL)) {
         defenseModifier = QMul_RoundUp(defenseModifier, UQ412__2_0);
     }
@@ -1277,7 +1293,7 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
     if ((defender->item_held_effect == HOLD_EFFECT_DITTO_DEF_UP)
         && (defender->species == SPECIES_DITTO)
         // it�s not a Ditto/Smeargle/Mew Transformed into the species
-        && !(defender->condition2 & STATUS2_TRANSFORMED)
+        && !(defender->condition2 & STATUS2_TRANSFORM)
         && (movesplit == SPLIT_PHYSICAL)) {
         defenseModifier = QMul_RoundUp(defenseModifier, UQ412__2_0);
     }
@@ -1398,7 +1414,7 @@ int LONG_CALL BattleAI_CalcDamage(void *bw, struct BattleStruct *sp, int moveno,
     }
     // MIMIKYU damage = 0?
 
-    if (!attacker->hasMoldBreaker && defender->ability == ABILITY_ICE_FACE && defender->form == 0 && !(defender->condition2 & STATUS2_TRANSFORMED) && movesplit == SPLIT_PHYSICAL) { // SPECIES_EISCUE
+    if (!attacker->hasMoldBreaker && defender->ability == ABILITY_ICE_FACE && defender->form == 0 && !(defender->condition2 & STATUS2_TRANSFORM) && movesplit == SPLIT_PHYSICAL) { // SPECIES_EISCUE
         return 0;
     }
 
@@ -1420,7 +1436,7 @@ int LONG_CALL BattleAI_CalcDamage(void *bw, struct BattleStruct *sp, int moveno,
     //=====Step 6. General Damage Modifiers=====
 
     // 6.1 Spread Move Modifier
-    BOOL isDoubleBattle = (BattleTypeGet(bw) & (BATTLE_TYPE_MULTI | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TAG));
+    BOOL isDoubleBattle = (BattleTypeGet(bw) & (BATTLE_TYPE_MULTI | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TAG));
     if (isDoubleBattle) {
         if (move.target == RANGE_ADJACENT_OPPONENTS || move.target == RANGE_ALL_ADJACENT) {
             u8 defenderPartnerSlot = defenderSlot ^ 1;
@@ -1435,7 +1451,7 @@ int LONG_CALL BattleAI_CalcDamage(void *bw, struct BattleStruct *sp, int moveno,
 
     // 6.3 Weather Modifier
     if ((CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) == 0) && (CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK) == 0)) {
-        if (sp->field_condition & WEATHER_RAIN_ANY) {
+        if (sp->field_condition & FIELD_CONDITION_RAIN_ALL) {
             switch (type) {
             case TYPE_FIRE:
                 damage = QMul_RoundDown(damage, UQ412__0_5);
@@ -1446,7 +1462,7 @@ int LONG_CALL BattleAI_CalcDamage(void *bw, struct BattleStruct *sp, int moveno,
             }
         }
 
-        if (sp->field_condition & WEATHER_SUNNY_ANY) {
+        if (sp->field_condition & FIELD_CONDITION_SUN_ALL) {
             switch (type) {
             case TYPE_FIRE:
                 damage = QMul_RoundDown(damage, UQ412__1_5);
@@ -1614,17 +1630,17 @@ int LONG_CALL BattleAI_CalcDamage(void *bw, struct BattleStruct *sp, int moveno,
     // 6.9.14 Doubled-damage moves
 
     // 6.9.14.1 Minimize
-    if (defender->effect_of_moves & MOVE_EFFECT_FLAG_MINIMIZED && IsMoveInMinimizeVulnerabilityMovesList(moveno)) { // && !dynamxed
+    if (defender->effect_of_moves & MOVE_EFFECT_FLAG_MINIMIZE && IsMoveInMinimizeVulnerabilityMovesList(moveno)) { // && !dynamxed
         finalModifier = QMul_RoundUp(finalModifier, UQ412__2_0);
     }
 
     // 6.9.14.2 Dig
-    if ((defender->effect_of_moves & MOVE_EFFECT_FLAG_DIGGING) && moveno == MOVE_EARTHQUAKE) {
+    if ((defender->effect_of_moves & MOVE_EFFECT_FLAG_DIG) && moveno == MOVE_EARTHQUAKE) {
         finalModifier = QMul_RoundUp(finalModifier, UQ412__2_0);
     }
 
     // 6.9.14.3 Dive
-    if ((defender->effect_of_moves & MOVE_EFFECT_FLAG_IS_DIVING) && (moveno == MOVE_SURF || moveno == MOVE_WHIRLPOOL)) {
+    if ((defender->effect_of_moves & MOVE_EFFECT_FLAG_DIVE) && (moveno == MOVE_SURF || moveno == MOVE_WHIRLPOOL)) {
         finalModifier = QMul_RoundUp(finalModifier, UQ412__2_0);
     }
 
@@ -1876,7 +1892,7 @@ int LONG_CALL BattleAI_GetTypeEffectiveness(void *bw, struct BattleStruct *sp, i
                 if (AI_ShouldUseNormalTypeEffCalc(sp, defender->item_held_effect, i) == TRUE
                     && !(!CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE)
                         && !CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK)
-                        && sp->field_condition & WEATHER_STRONG_WINDS
+                        && sp->field_condition & FIELD_CONDITION_STRONG_WINDS
                         && (TypeEffectivenessTable[i][2] == 20)
                         && defender_type_1 == TYPE_FLYING)) {
                     type1Effectiveness = TypeEffectivenessTable[i][2];
@@ -1888,7 +1904,7 @@ int LONG_CALL BattleAI_GetTypeEffectiveness(void *bw, struct BattleStruct *sp, i
                 if (AI_ShouldUseNormalTypeEffCalc(sp, defender->item_held_effect, i) == TRUE
                     && !(!CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE)
                         && !CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK)
-                        && sp->field_condition & WEATHER_STRONG_WINDS
+                        && sp->field_condition & FIELD_CONDITION_STRONG_WINDS
                         && (TypeEffectivenessTable[i][2] == 20)
                         && defender_type_2 == TYPE_FLYING)) {
 
@@ -2147,7 +2163,7 @@ int LONG_CALL BattleAI_PostKOSwitchIn_Internal(struct BattleSystem *bsys, int at
     slot1 = attacker;
     slot2 = slot1;
 
-    if (battleType & (BATTLE_TYPE_TAG | BATTLE_TYPE_MULTI | BATTLE_TYPE_DOUBLE)) {
+    if (battleType & (BATTLE_TYPE_TAG | BATTLE_TYPE_MULTI | BATTLE_TYPE_DOUBLES)) {
         slot2 = BATTLER_ALLY(attacker);
     }
 
@@ -2164,13 +2180,13 @@ int LONG_CALL BattleAI_PostKOSwitchIn_Internal(struct BattleSystem *bsys, int at
         mon = Battle_GetClientPartyMon(bsys, attacker, i);
         attackerMon.species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0);
         debug_printf("Slot %d:%d hp:%d,\n", i, attackerMon.species, GetMonData(mon, MON_DATA_HP, 0));
-        debug_printf("sel_m1 %d, sel_m2 %d, switchSl1 %d, switchSl1 %d\n", ctx->sel_mons_no[slot1], ctx->sel_mons_no[slot2], ctx->aiSwitchedPartySlot[slot1], ctx->aiSwitchedPartySlot[slot2]);
+        debug_printf("sel_m1 %d, sel_m2 %d, switchSl1 %d, switchSl1 %d\n", ctx->sel_mons_no[slot1], ctx->sel_mons_no[slot2], ctx->ai_reshuffle_sel_mons_no[slot1], ctx->ai_reshuffle_sel_mons_no[slot2]);
 
         if (attackerMon.species != SPECIES_NONE && attackerMon.species != SPECIES_EGG && GetMonData(mon, MON_DATA_HP, 0)
             && i != ctx->sel_mons_no[slot1]
             && i != ctx->sel_mons_no[slot2]
-            && i != ctx->aiSwitchedPartySlot[slot1]
-            && i != ctx->aiSwitchedPartySlot[slot2]) {
+            && i != ctx->ai_reshuffle_sel_mons_no[slot1]
+            && i != ctx->ai_reshuffle_sel_mons_no[slot2]) {
             switchInScore[i] = 100;
 
             FillDamageStructFromPartyMon(bsys, ctx, &attackerMon, mon);

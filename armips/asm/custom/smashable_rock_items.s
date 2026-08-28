@@ -1,5 +1,6 @@
 .nds
  .thumb
+.include "asm/include/items.inc"
  
  // Aurora Crystal specific change
  // Changes items obtainable from Rock Smash

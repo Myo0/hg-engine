@@ -93,7 +93,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 15,
             .type = TYPE_NORMAL,
-            .accuracy = 85,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 0,
         },
@@ -120,7 +120,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 18,
             .type = TYPE_NORMAL,
-            .accuracy = 85,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 0,
         },
@@ -147,7 +147,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 80,
             .type = TYPE_NORMAL,
-            .accuracy = 85,
+            .accuracy = 100,
             .pp = 20,
             .effectChance = 0,
         },
@@ -413,11 +413,11 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Cut",
         },
         .data = {
-            .effect = MOVE_EFFECT_HIT,
+            .effect = MOVE_EFFECT_HIGH_CRITICAL,
             .split = SPLIT_PHYSICAL,
-            .power = 50,
-            .type = TYPE_NORMAL,
-            .accuracy = 95,
+            .power = 60,
+            .type = TYPE_GRASS,
+            .accuracy = 100,
             .pp = 30,
             .effectChance = 0,
         },
@@ -525,7 +525,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 90,
             .type = TYPE_FLYING,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 0,
         },
@@ -550,9 +550,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_BIND_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 15,
+            .power = 60,
             .type = TYPE_NORMAL,
-            .accuracy = 85,
+            .accuracy = 100,
             .pp = 20,
             .effectChance = 0,
         },
@@ -579,7 +579,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 80,
             .type = TYPE_NORMAL,
-            .accuracy = 75,
+            .accuracy = 100,
             .pp = 20,
             .effectChance = 0,
         },
@@ -658,7 +658,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_HIT_TWICE,
             .split = SPLIT_PHYSICAL,
-            .power = 30,
+            .power = 40,
             .type = TYPE_FIGHTING,
             .accuracy = 100,
             .pp = 30,
@@ -687,7 +687,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 120,
             .type = TYPE_NORMAL,
-            .accuracy = 75,
+            .accuracy = 90,
             .pp = 5,
             .effectChance = 0,
         },
@@ -741,7 +741,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 60,
             .type = TYPE_FIGHTING,
-            .accuracy = 85,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 30,
         },
@@ -847,9 +847,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_MULTI_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 15,
+            .power = 25,
             .type = TYPE_NORMAL,
-            .accuracy = 85,
+            .accuracy = 100,
             .pp = 20,
             .effectChance = 0,
         },
@@ -955,9 +955,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_BIND_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 15,
+            .power = 40,
             .type = TYPE_NORMAL,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 20,
             .effectChance = 0,
         },
@@ -984,7 +984,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 90,
             .type = TYPE_NORMAL,
-            .accuracy = 85,
+            .accuracy = 95,
             .pp = 20,
             .effectChance = 0,
         },
@@ -1090,7 +1090,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_POISON_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 15,
+            .power = 40,
             .type = TYPE_POISON,
             .accuracy = 100,
             .pp = 35,
@@ -1117,7 +1117,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_POISON_MULTI_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 25,
+            .power = 40,
             .type = TYPE_BUG,
             .accuracy = 100,
             .pp = 20,
@@ -1146,7 +1146,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 25,
             .type = TYPE_BUG,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 20,
             .effectChance = 0,
         },
@@ -1281,7 +1281,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_STATUS,
             .power = 0,
             .type = TYPE_NORMAL,
-            .accuracy = 55,
+            .accuracy = 70,
             .pp = 15,
             .effectChance = 0,
         },
@@ -1308,7 +1308,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_STATUS,
             .power = 0,
             .type = TYPE_NORMAL,
-            .accuracy = 55,
+            .accuracy = 70,
             .pp = 20,
             .effectChance = 0,
         },
@@ -1335,7 +1335,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 1,
             .type = TYPE_NORMAL,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 20,
             .effectChance = 0,
         },
@@ -1524,7 +1524,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 110,
             .type = TYPE_WATER,
-            .accuracy = 80,
+            .accuracy = 85,
             .pp = 5,
             .effectChance = 0,
         },
@@ -1605,7 +1605,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 110,
             .type = TYPE_ICE,
-            .accuracy = 70,
+            .accuracy = 85,
             .pp = 5,
             .effectChance = 10,
         },
@@ -1709,11 +1709,11 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Hyper Beam",
         },
         .data = {
-            .effect = MOVE_EFFECT_RECHARGE_AFTER,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_SPECIAL,
             .power = 150,
             .type = TYPE_NORMAL,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 5,
             .effectChance = 0,
         },
@@ -1726,7 +1726,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .appeal = APPEAL_AFTER_MAX_VOLTAGE_HEARTS,
             .contestType = CONTEST_COOL,
         },
-        .description = "The foe is attacked\\nwith a powerful beam.\\nThe user must rest\\non the next turn to\\nregain its energy.",
+        .description = "The foe is attacked\\nwith a powerful beam.\\nThis move can’t be used\\ntwice in a row.",
     },
 
     [MOVE_PECK] = {
@@ -1792,9 +1792,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_RECOIL_QUARTER,
             .split = SPLIT_PHYSICAL,
-            .power = 80,
+            .power = 95,
             .type = TYPE_FIGHTING,
-            .accuracy = 80,
+            .accuracy = 100,
             .pp = 20,
             .effectChance = 0,
         },
@@ -1901,7 +1901,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_PHYSICAL,
             .power = 80,
-            .type = TYPE_NORMAL,
+            .type = TYPE_FIGHTING,
             .accuracy = 100,
             .pp = 15,
             .effectChance = 0,
@@ -1927,7 +1927,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_RECOVER_HALF_DAMAGE_DEALT,
             .split = SPLIT_SPECIAL,
-            .power = 20,
+            .power = 40,
             .type = TYPE_GRASS,
             .accuracy = 100,
             .pp = 25,
@@ -1954,7 +1954,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_RECOVER_HALF_DAMAGE_DEALT,
             .split = SPLIT_SPECIAL,
-            .power = 40,
+            .power = 60,
             .type = TYPE_GRASS,
             .accuracy = 100,
             .pp = 15,
@@ -2009,7 +2009,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .effect = MOVE_EFFECT_SP_ATK_UP,
             .split = SPLIT_STATUS,
             .power = 0,
-            .type = ((CHAMPIONS_TYPE_CHANGES) ? (TYPE_GRASS) : (TYPE_NORMAL)),
+            .type = TYPE_NORMAL,
             .accuracy = 0,
             .pp = 20,
             .effectChance = 0,
@@ -2037,7 +2037,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 55,
             .type = TYPE_GRASS,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 25,
             .effectChance = 0,
         },
@@ -2091,7 +2091,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_STATUS,
             .power = 0,
             .type = TYPE_POISON,
-            .accuracy = 75,
+            .accuracy = 90,
             .pp = 35,
             .effectChance = 0,
         },
@@ -2118,7 +2118,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_STATUS,
             .power = 0,
             .type = TYPE_GRASS,
-            .accuracy = 75,
+            .accuracy = 90,
             .pp = 30,
             .effectChance = 0,
         },
@@ -2145,7 +2145,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_STATUS,
             .power = 0,
             .type = TYPE_GRASS,
-            .accuracy = 75,
+            .accuracy = 90,
             .pp = 15,
             .effectChance = 0,
         },
@@ -2168,13 +2168,13 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Petal Dance",
         },
         .data = {
-            .effect = MOVE_EFFECT_CONTINUE_AND_CONFUSE_SELF,
+            .effect = MOVE_EFFECT_CONFUSE_HIT,
             .split = SPLIT_SPECIAL,
-            .power = 120,
+            .power = 95,
             .type = TYPE_GRASS,
             .accuracy = 100,
             .pp = 10,
-            .effectChance = 0,
+            .effectChance = 10,
         },
         .battle = {
             .target = RANGE_RANDOM_OPPONENT,
@@ -2251,9 +2251,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_BIND_HIT,
             .split = SPLIT_SPECIAL,
-            .power = 35,
+            .power = 60,
             .type = TYPE_FIRE,
-            .accuracy = 85,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 0,
         },
@@ -2334,7 +2334,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_STATUS,
             .power = 0,
             .type = TYPE_ELECTRIC,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 20,
             .effectChance = 0,
         },
@@ -2361,7 +2361,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 110,
             .type = TYPE_ELECTRIC,
-            .accuracy = 70,
+            .accuracy = 85,
             .pp = 10,
             .effectChance = 30,
         },
@@ -2388,7 +2388,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 50,
             .type = TYPE_ROCK,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 0,
         },
@@ -2465,9 +2465,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Dig",
         },
         .data = {
-            .effect = MOVE_EFFECT_DIG,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 80,
+            .power = 70,
             .type = TYPE_GROUND,
             .accuracy = 100,
             .pp = 10,
@@ -2482,7 +2482,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .appeal = APPEAL_UNIQUE_JUDGE,
             .contestType = CONTEST_SMART,
         },
-        .description = "The user burrows,\\nthen attacks on the\\nsecond turn.\\nIt can also be used\\nto exit dungeons.",
+        .description = "The user burrows up and\\nstrikes. Can also be\\nused to exit dungeons.",
     },
 
     [MOVE_TOXIC] = {
@@ -2496,7 +2496,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_STATUS,
             .power = 0,
             .type = TYPE_POISON,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 0,
         },
@@ -2577,7 +2577,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_STATUS,
             .power = 0,
             .type = TYPE_PSYCHIC,
-            .accuracy = 60,
+            .accuracy = 70,
             .pp = 20,
             .effectChance = 0,
         },
@@ -2793,7 +2793,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_STATUS,
             .power = 0,
             .type = TYPE_NORMAL,
-            .accuracy = 85,
+            .accuracy = 100,
             .pp = 40,
             .effectChance = 0,
         },
@@ -3279,7 +3279,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 100,
             .type = TYPE_NORMAL,
-            .accuracy = 75,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 0,
         },
@@ -3304,7 +3304,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_PARALYZE_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 30,
+            .power = 40,
             .type = TYPE_GHOST,
             .accuracy = 100,
             .pp = 30,
@@ -3333,7 +3333,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 30,
             .type = TYPE_POISON,
-            .accuracy = 70,
+            .accuracy = 100,
             .pp = 20,
             .effectChance = 40,
         },
@@ -3387,7 +3387,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 65,
             .type = TYPE_GROUND,
-            .accuracy = 85,
+            .accuracy = 100,
             .pp = 20,
             .effectChance = 10,
         },
@@ -3466,9 +3466,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_BIND_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 35,
+            .power = 60,
             .type = TYPE_WATER,
-            .accuracy = 85,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 0,
         },
@@ -3684,7 +3684,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 130,
             .type = TYPE_FIGHTING,
-            .accuracy = 90,
+            .accuracy = 95,
             .pp = 10,
             .effectChance = 0,
         },
@@ -3765,7 +3765,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_STATUS,
             .power = 0,
             .type = TYPE_POISON,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 40,
             .effectChance = 0,
         },
@@ -3792,7 +3792,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 15,
             .type = TYPE_NORMAL,
-            .accuracy = 85,
+            .accuracy = 100,
             .pp = 20,
             .effectChance = 0,
         },
@@ -3846,7 +3846,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_STATUS,
             .power = 0,
             .type = TYPE_NORMAL,
-            .accuracy = 75,
+            .accuracy = 80,
             .pp = 10,
             .effectChance = 0,
         },
@@ -3873,7 +3873,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 140,
             .type = TYPE_FLYING,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 5,
             .effectChance = 30,
         },
@@ -4031,7 +4031,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Psywave",
         },
         .data = {
-            .effect = MOVE_EFFECT_RANDOM_DAMAGE_1_TO_150_LEVEL,
+            .effect = MOVE_EFFECT_LEVEL_DAMAGE_FLAT,
             .split = SPLIT_SPECIAL,
             .power = 1,
             .type = TYPE_PSYCHIC,
@@ -4116,7 +4116,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 100,
             .type = TYPE_WATER,
-            .accuracy = ((CHAMPIONS_ACC_CHANGES) ? (95) : (90)),
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 0,
         },
@@ -4168,9 +4168,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_MULTI_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 18,
+            .power = 25,
             .type = TYPE_NORMAL,
-            .accuracy = 80,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 0,
         },
@@ -4197,7 +4197,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 50,
             .type = TYPE_GROUND,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 0,
         },
@@ -4251,7 +4251,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 75,
             .type = TYPE_ROCK,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 30,
         },
@@ -4278,7 +4278,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 80,
             .type = TYPE_NORMAL,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 10,
         },
@@ -4386,7 +4386,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 1,
             .type = TYPE_NORMAL,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 0,
         },
@@ -4517,11 +4517,11 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Triple Kick",
         },
         .data = {
-            .effect = MOVE_EFFECT_HIT_THREE_TIMES_INCREMENT_BASE_POWER_10,
+            .effect = MOVE_EFFECT_HIT_THREE_TIMES_INCREMENT_BASE_POWER_20,
             .split = SPLIT_PHYSICAL,
-            .power = 10,
+            .power = 20,
             .type = TYPE_FIGHTING,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 0,
         },
@@ -4544,7 +4544,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Thief",
         },
         .data = {
-            .effect = MOVE_EFFECT_STEAL_HELD_ITEM,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_PHYSICAL,
             .power = 60,
             .type = TYPE_DARK,
@@ -4769,7 +4769,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .effectChance = 0,
         },
         .battle = {
-            .target = RANGE_ALL_ADJACENT,
+            .target = RANGE_USER,
             .priority = 0,
             .flags = 0x00,
         },
@@ -4791,7 +4791,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 100,
             .type = TYPE_FLYING,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 5,
             .effectChance = 0,
         },
@@ -4927,7 +4927,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .power = 0,
             .type = TYPE_NORMAL,
             .accuracy = 0,
-            .pp = ((CHAMPIONS_PP_CHANGES) ? (5) : (10)),
+            .pp = 10,
             .effectChance = 0,
         },
         .battle = {
@@ -5034,7 +5034,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_STATUS,
             .power = 0,
             .type = TYPE_FAIRY,
-            .accuracy = 75,
+            .accuracy = 80,
             .pp = 10,
             .effectChance = 0,
         },
@@ -5140,9 +5140,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_LOWER_ACCURACY_HIT,
             .split = SPLIT_SPECIAL,
-            .power = 65,
+            .power = 85,
             .type = TYPE_WATER,
-            .accuracy = 85,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 50,
         },
@@ -5196,7 +5196,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 120,
             .type = TYPE_ELECTRIC,
-            .accuracy = 50,
+            .accuracy = 60,
             .pp = 5,
             .effectChance = 100,
         },
@@ -5304,7 +5304,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 55,
             .type = TYPE_ICE,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 100,
         },
@@ -5356,9 +5356,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_MULTI_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = ((CHAMPIONS_POWER_CHANGES) ? (30) : (25)),
+            .power = 25,
             .type = TYPE_GROUND,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 0,
         },
@@ -5408,7 +5408,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Outrage",
         },
         .data = {
-            .effect = MOVE_EFFECT_CONTINUE_AND_CONFUSE_SELF,
+            .effect = MOVE_EFFECT_RECOIL_THIRD,
             .split = SPLIT_PHYSICAL,
             .power = 120,
             .type = TYPE_DRAGON,
@@ -5425,7 +5425,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .appeal = APPEAL_SUCCESSIVE,
             .contestType = CONTEST_COOL,
         },
-        .description = "The user rampages\\nand attacks for two\\nto three turns.\\nHowever, it then\\nbecomes confused.",
+        .description = "The user rampages\\nand attacks. This\\ndamages the\\nuser.",
     },
 
     [MOVE_SANDSTORM] = {
@@ -5440,7 +5440,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .power = 0,
             .type = TYPE_ROCK,
             .accuracy = 0,
-            .pp = ((CHAMPIONS_PP_CHANGES) ? (5) : (10)),
+            .pp = 10,
             .effectChance = 0,
         },
         .battle = {
@@ -5601,7 +5601,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_STATUS,
             .power = 0,
             .type = TYPE_NORMAL,
-            .accuracy = 85,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 0,
         },
@@ -5682,7 +5682,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 40,
             .type = TYPE_BUG,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 20,
             .effectChance = 0,
         },
@@ -5709,7 +5709,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 70,
             .type = TYPE_STEEL,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 25,
             .effectChance = 10,
         },
@@ -5796,7 +5796,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         },
         .battle = {
             .target = RANGE_SINGLE_TARGET_SPECIAL,
-            .priority = 0,
+            .priority = 1,
             .flags = 0x00,
         },
         .contest = {
@@ -5840,9 +5840,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Return",
         },
         .data = {
-            .effect = MOVE_EFFECT_POWER_BASED_ON_FRIENDSHIP,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 1,
+            .power = 102,
             .type = TYPE_NORMAL,
             .accuracy = 100,
             .pp = 20,
@@ -5871,7 +5871,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 1,
             .type = TYPE_NORMAL,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 0,
         },
@@ -5894,9 +5894,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Frustration",
         },
         .data = {
-            .effect = MOVE_EFFECT_POWER_BASED_ON_LOW_FRIENDSHIP,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 1,
+            .power = 102,
             .type = TYPE_NORMAL,
             .accuracy = 100,
             .pp = 20,
@@ -5979,7 +5979,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 100,
             .type = TYPE_FIRE,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 5,
             .effectChance = 50,
         },
@@ -6166,7 +6166,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_HIT_BEFORE_SWITCH,
             .split = SPLIT_PHYSICAL,
-            .power = 40,
+            .power = 50,
             .type = TYPE_DARK,
             .accuracy = 100,
             .pp = 20,
@@ -6249,7 +6249,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 100,
             .type = TYPE_STEEL,
-            .accuracy = 75,
+            .accuracy = 90,
             .pp = 15,
             .effectChance = 30,
         },
@@ -6276,7 +6276,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 50,
             .type = TYPE_STEEL,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 35,
             .effectChance = 10,
         },
@@ -6409,7 +6409,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_RANDOM_TYPE_BASED_ON_IVS,
             .split = SPLIT_SPECIAL,
-            .power = 60,
+            .power = 1,
             .type = TYPE_NORMAL,
             .accuracy = 100,
             .pp = 15,
@@ -6424,7 +6424,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .appeal = APPEAL_PITY_HEARTS,
             .contestType = CONTEST_SMART,
         },
-        .description = "A unique attack that\\nvaries in type\\ndepending on the\\nPokémon using it.",
+        .description = "A unique attack that\\nvaries in type and\\nintensity depending\\non the Pokémon using\\nit.",
     },
 
     [MOVE_CROSS_CHOP] = {
@@ -6438,7 +6438,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 100,
             .type = TYPE_FIGHTING,
-            .accuracy = 80,
+            .accuracy = 90,
             .pp = 5,
             .effectChance = 0,
         },
@@ -6652,7 +6652,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_RAISE_ALL_STATS_HIT,
             .split = SPLIT_SPECIAL,
-            .power = 60,
+            .power = 80,
             .type = TYPE_ROCK,
             .accuracy = 100,
             .pp = 5,
@@ -6760,9 +6760,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_WHIRLPOOL,
             .split = SPLIT_SPECIAL,
-            .power = 35,
+            .power = 60,
             .type = TYPE_WATER,
-            .accuracy = 85,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 0,
         },
@@ -6951,7 +6951,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 95,
             .type = TYPE_FIRE,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 10,
         },
@@ -7595,11 +7595,11 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Yawn",
         },
         .data = {
-            .effect = MOVE_EFFECT_STATUS_SLEEP_NEXT_TURN,
+            .effect = MOVE_EFFECT_STATUS_SLEEP,
             .split = SPLIT_STATUS,
             .power = 0,
             .type = TYPE_NORMAL,
-            .accuracy = 0,
+            .accuracy = 70,
             .pp = 10,
             .effectChance = 0,
         },
@@ -7693,7 +7693,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .appeal = APPEAL_LAST_HEARTS,
             .contestType = CONTEST_BEAUTY,
         },
-        .description = "The user attacks in\\nan explosive fury.\\nThe lower the user’s\\nHP, the less powerful\\nthis attack becomes.",
+        .description = "The user attacks in\\nan explosive fury.\\nThis damages the\\nuser as a result.",
     },
 
     [MOVE_SKILL_SWAP] = {
@@ -7865,9 +7865,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Dive",
         },
         .data = {
-            .effect = MOVE_EFFECT_DIVE,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 80,
+            .power = 70,
             .type = TYPE_WATER,
             .accuracy = 100,
             .pp = 10,
@@ -7882,7 +7882,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .appeal = APPEAL_UNIQUE_JUDGE,
             .contestType = CONTEST_BEAUTY,
         },
-        .description = "A two-turn attack.\\nThe user dives\\nunderwater on the\\nfirst turn, then hits\\non the next turn.",
+        .description = "The user lunges at the\\nfoe from underwater.",
     },
 
     [MOVE_ARM_THRUST] = {
@@ -8085,7 +8085,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 85,
             .type = TYPE_FIRE,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 10,
         },
@@ -8164,7 +8164,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_FLINCH_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 60,
+            .power = 75,
             .type = TYPE_GRASS,
             .accuracy = 100,
             .pp = 15,
@@ -8245,7 +8245,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_BADLY_POISON_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 50,
+            .power = 65,
             .type = TYPE_POISON,
             .accuracy = 100,
             .pp = 15,
@@ -8272,9 +8272,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_LOWER_DEFENSE_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 75,
+            .power = 100,
             .type = TYPE_NORMAL,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 50,
         },
@@ -8297,11 +8297,11 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Blast Burn",
         },
         .data = {
-            .effect = MOVE_EFFECT_RECHARGE_AFTER,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_SPECIAL,
             .power = 150,
             .type = TYPE_FIRE,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 5,
             .effectChance = 0,
         },
@@ -8314,7 +8314,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .appeal = APPEAL_AFTER_MAX_VOLTAGE_HEARTS,
             .contestType = CONTEST_BEAUTY,
         },
-        .description = "The foe is razed by\\na fiery explosion.\\nThe user must rest\\non the next turn,\\nhowever.",
+        .description = "The foe is razed by\\na fiery explosion.\\nThis move can’t be used\\ntwice in a row.",
     },
 
     [MOVE_HYDRO_CANNON] = {
@@ -8324,11 +8324,11 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Hydro Cannon",
         },
         .data = {
-            .effect = MOVE_EFFECT_RECHARGE_AFTER,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_SPECIAL,
             .power = 150,
             .type = TYPE_WATER,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 5,
             .effectChance = 0,
         },
@@ -8341,7 +8341,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .appeal = APPEAL_AFTER_MAX_VOLTAGE_HEARTS,
             .contestType = CONTEST_BEAUTY,
         },
-        .description = "The foe is hit with\\na watery blast.\\nThe user must rest\\non the next turn,\\nhowever.",
+        .description = "The foe is hit with\\na watery blast.\\nThis move can’t be used\\ntwice in a row.",
     },
 
     [MOVE_METEOR_MASH] = {
@@ -8353,9 +8353,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_RAISE_ATTACK_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 90,
+            .power = 100,
             .type = TYPE_STEEL,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 20,
         },
@@ -8490,7 +8490,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 60,
             .type = TYPE_FLYING,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 25,
             .effectChance = 0,
         },
@@ -8515,9 +8515,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_USER_SP_ATK_DOWN_2,
             .split = SPLIT_SPECIAL,
-            .power = 130,
+            .power = 140,
             .type = TYPE_FIRE,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 5,
             .effectChance = 100,
         },
@@ -8571,7 +8571,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 60,
             .type = TYPE_ROCK,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 100,
         },
@@ -8596,7 +8596,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_RAISE_ALL_STATS_HIT,
             .split = SPLIT_SPECIAL,
-            .power = 60,
+            .power = 80,
             .type = TYPE_BUG,
             .accuracy = 100,
             .pp = 5,
@@ -8625,7 +8625,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_STATUS,
             .power = 0,
             .type = TYPE_STEEL,
-            .accuracy = 85,
+            .accuracy = 100,
             .pp = 40,
             .effectChance = 0,
         },
@@ -8652,7 +8652,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_STATUS,
             .power = 0,
             .type = TYPE_GRASS,
-            .accuracy = 55,
+            .accuracy = 70,
             .pp = 15,
             .effectChance = 0,
         },
@@ -8746,7 +8746,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .appeal = APPEAL_AFTER_MAX_VOLTAGE_HEARTS,
             .contestType = CONTEST_BEAUTY,
         },
-        .description = "The user spouts\\nwater to damage the\\nfoe. The lower the\\nuser’s HP, the less\\npowerful it becomes.",
+        .description = "The user spouts\\nwater to damage the\\nfoe.",
     },
 
     [MOVE_SIGNAL_BEAM] = {
@@ -8783,11 +8783,11 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Shadow Punch",
         },
         .data = {
-            .effect = MOVE_EFFECT_BYPASS_ACCURACY,
+            .effect = MOVE_EFFECT_LOWER_DEFENSE_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 60,
+            .power = 80,
             .type = TYPE_GHOST,
-            .accuracy = 0,
+            .accuracy = 100,
             .pp = 20,
             .effectChance = 0,
         },
@@ -8841,7 +8841,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 85,
             .type = TYPE_FIGHTING,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 0,
         },
@@ -8866,9 +8866,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_BIND_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 35,
+            .power = 60,
             .type = TYPE_GROUND,
-            .accuracy = 85,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 0,
         },
@@ -8891,24 +8891,27 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Sheer Cold",
         },
         .data = {
-            .effect = MOVE_EFFECT_ONE_HIT_KO,
-            .split = SPLIT_SPECIAL,
-            .power = 1,
+            // Electrum: repurposed as a Will-O-Wisp-style frostbite inflictor. The dumprom mapped
+            // the fork ROM's numeric effect id to the merge's MOVE_EFFECT_RECOIL_HALF_MAX_HP (403);
+            // the intended effect is MOVE_EFFECT_STATUS_FROSTBITE.
+            .effect = MOVE_EFFECT_STATUS_FROSTBITE,
+            .split = SPLIT_STATUS,
+            .power = 0,
             .type = TYPE_ICE,
-            .accuracy = 30,
-            .pp = 5,
+            .accuracy = 85,
+            .pp = 15,
             .effectChance = 0,
         },
         .battle = {
             .target = RANGE_SINGLE_TARGET,
             .priority = 0,
-            .flags = FLAG_MIRROR_MOVE | FLAG_PROTECT,
+            .flags = FLAG_MIRROR_MOVE | FLAG_PROTECT | FLAG_MAGIC_COAT,
         },
         .contest = {
             .appeal = APPEAL_ALL_SAME_JUDGE,
             .contestType = CONTEST_BEAUTY,
         },
-        .description = "The foe is attacked\\nwith a blast of\\nabsolute-zero cold.\\nThe foe instantly\\nfaints if it hits.",
+        .description = "The foe is attacked\\nwith a blast of\\nabsolute-zero cold\\nthat inflicts\\nfrostbite on the\\ntarget.",
     },
 
     [MOVE_MUDDY_WATER] = {
@@ -8920,9 +8923,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_LOWER_ACCURACY_HIT,
             .split = SPLIT_SPECIAL,
-            .power = 90,
+            .power = 95,
             .type = TYPE_WATER,
-            .accuracy = 85,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 30,
         },
@@ -9080,7 +9083,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Howl",
         },
         .data = {
-            .effect = MOVE_EFFECT_HOWL,
+            .effect = MOVE_EFFECT_ATK_UP,
             .split = SPLIT_STATUS,
             .power = 0,
             .type = TYPE_NORMAL,
@@ -9089,7 +9092,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .effectChance = 0,
         },
         .battle = {
-            .target = RANGE_USER_SIDE,
+            .target = RANGE_USER,
             .priority = 0,
             .flags = FLAG_SNATCH,
         },
@@ -9134,11 +9137,11 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Frenzy Plant",
         },
         .data = {
-            .effect = MOVE_EFFECT_RECHARGE_AFTER,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_SPECIAL,
             .power = 150,
             .type = TYPE_GRASS,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 5,
             .effectChance = 0,
         },
@@ -9151,7 +9154,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .appeal = APPEAL_AFTER_MAX_VOLTAGE_HEARTS,
             .contestType = CONTEST_COOL,
         },
-        .description = "The foe is slammed\\nwith an enormous\\ntree.\\nThe user can’t move\\non the next turn.",
+        .description = "The foe is slammed\\nwith an enormous\\ntree.\\nThis move can’t be used\\ntwice in a row.",
     },
 
     [MOVE_BULK_UP] = {
@@ -9188,11 +9191,11 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Bounce",
         },
         .data = {
-            .effect = MOVE_EFFECT_BOUNCE,
+            .effect = MOVE_EFFECT_PARALYZE_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 85,
+            .power = 70,
             .type = TYPE_FLYING,
-            .accuracy = 85,
+            .accuracy = 100,
             .pp = 5,
             .effectChance = 30,
         },
@@ -9205,7 +9208,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .appeal = APPEAL_UNIQUE_JUDGE,
             .contestType = CONTEST_CUTE,
         },
-        .description = "The user bounces up\\nhigh, then drops on\\nthe foe on the second\\nturn. It may also\\nparalyze the foe.",
+        .description = "The user bounces up high\\nand crashes on the foe.\\nMay also paralyze.",
     },
 
     [MOVE_MUD_SHOT] = {
@@ -9219,7 +9222,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 55,
             .type = TYPE_GROUND,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 100,
         },
@@ -9244,7 +9247,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_HIGH_CRITICAL_POISON_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 50,
+            .power = 90,
             .type = TYPE_POISON,
             .accuracy = 100,
             .pp = 25,
@@ -9269,10 +9272,10 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Covet",
         },
         .data = {
-            .effect = MOVE_EFFECT_STEAL_HELD_ITEM,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_PHYSICAL,
             .power = 60,
-            .type = TYPE_NORMAL,
+            .type = TYPE_FAIRY,
             .accuracy = 100,
             .pp = 25,
             .effectChance = 0,
@@ -9286,7 +9289,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .appeal = APPEAL_STEAL_VOLTAGE,
             .contestType = CONTEST_CUTE,
         },
-        .description = "The user endearingly\\napproaches the foe,\\nthen steals the item\\nthe foe is holding.\\n",
+        .description = "The user endearingly\\napproaches the foe,\\nthen cutely attacks the\\nthe foe.\\n",
     },
 
     [MOVE_VOLT_TACKLE] = {
@@ -9462,7 +9465,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 25,
             .type = TYPE_ROCK,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 0,
         },
@@ -9570,7 +9573,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 140,
             .type = TYPE_PSYCHIC,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 5,
             .effectChance = 100,
         },
@@ -9705,7 +9708,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 100,
             .type = TYPE_FIGHTING,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 0,
         },
@@ -10359,7 +10362,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         },
         .battle = {
             .target = RANGE_SINGLE_TARGET_SPECIAL,
-            .priority = 0,
+            .priority = 1,
             .flags = 0x00,
         },
         .contest = {
@@ -10813,7 +10816,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .power = 70,
             .type = TYPE_DARK,
             .accuracy = 100,
-            .pp = ((CHAMPIONS_PP_CHANGES) ? (20) : (15)),
+            .pp = 15,
             .effectChance = 0,
         },
         .battle = {
@@ -10839,7 +10842,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 90,
             .type = TYPE_WATER,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 0,
         },
@@ -10891,9 +10894,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_FLINCH_HIT,
             .split = SPLIT_SPECIAL,
-            .power = 75,
+            .power = 80,
             .type = TYPE_FLYING,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 30,
         },
@@ -11001,7 +11004,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 100,
             .type = TYPE_DRAGON,
-            .accuracy = 75,
+            .accuracy = 90,
             .pp = 10,
             .effectChance = 20,
         },
@@ -11026,7 +11029,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_SPECIAL,
-            .power = 80,
+            .power = 90,
             .type = TYPE_ROCK,
             .accuracy = 100,
             .pp = 20,
@@ -11109,7 +11112,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 120,
             .type = TYPE_FIGHTING,
-            .accuracy = 70,
+            .accuracy = 85,
             .pp = 5,
             .effectChance = 10,
         },
@@ -11240,11 +11243,11 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Giga Impact",
         },
         .data = {
-            .effect = MOVE_EFFECT_RECHARGE_AFTER,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_PHYSICAL,
             .power = 150,
             .type = TYPE_NORMAL,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 5,
             .effectChance = 0,
         },
@@ -11257,7 +11260,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .appeal = APPEAL_AFTER_MAX_VOLTAGE_HEARTS,
             .contestType = CONTEST_BEAUTY,
         },
-        .description = "The user charges at\\nthe foe using every\\nbit of its power.\\nThe user must rest\\non the next turn.",
+        .description = "The user charges at\\nthe foe using every\\nbit of its power.\\nThis move can’t be used\\ntwice in a row.",
     },
 
     [MOVE_NASTY_PLOT] = {
@@ -11404,9 +11407,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_FLINCH_PARALYZE_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 65,
+            .power = 70,
             .type = TYPE_ELECTRIC,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 10,
         },
@@ -11431,9 +11434,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_FLINCH_FREEZE_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 65,
+            .power = 70,
             .type = TYPE_ICE,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 10,
         },
@@ -11458,9 +11461,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_FLINCH_BURN_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 65,
+            .power = 70,
             .type = TYPE_FIRE,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 10,
         },
@@ -11514,7 +11517,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 65,
             .type = TYPE_GROUND,
-            .accuracy = 85,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 30,
         },
@@ -11568,7 +11571,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 80,
             .type = TYPE_PSYCHIC,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 20,
         },
@@ -11595,7 +11598,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 65,
             .type = TYPE_STEEL,
-            .accuracy = 85,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 30,
         },
@@ -11648,8 +11651,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .effect = MOVE_EFFECT_CONFUSE_HIT,
             .split = SPLIT_PHYSICAL,
             .power = 90,
-            .type = TYPE_NORMAL,
-            .accuracy = 85,
+            .type = TYPE_ROCK,
+            .accuracy = 100,
             .pp = 20,
             .effectChance = 20,
         },
@@ -11728,9 +11731,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_USER_SP_ATK_DOWN_2,
             .split = SPLIT_SPECIAL,
-            .power = 130,
+            .power = 140,
             .type = TYPE_DRAGON,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 5,
             .effectChance = 100,
         },
@@ -11809,9 +11812,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_USER_SP_ATK_DOWN_2,
             .split = SPLIT_SPECIAL,
-            .power = 130,
+            .power = 140,
             .type = TYPE_GRASS,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 5,
             .effectChance = 100,
         },
@@ -11838,7 +11841,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 120,
             .type = TYPE_GRASS,
-            .accuracy = 85,
+            .accuracy = 90,
             .pp = 10,
             .effectChance = 0,
         },
@@ -11861,11 +11864,11 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Rock Wrecker",
         },
         .data = {
-            .effect = MOVE_EFFECT_RECHARGE_AFTER,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_PHYSICAL,
             .power = 150,
             .type = TYPE_ROCK,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 5,
             .effectChance = 0,
         },
@@ -11878,7 +11881,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .appeal = APPEAL_AFTER_MAX_VOLTAGE_HEARTS,
             .contestType = CONTEST_TOUGH,
         },
-        .description = "The user launches a\\nhuge boulder at the\\nfoe to attack.\\nIt must rest on the\\nnext turn, however.",
+        .description = "The user launches a\\nhuge boulder at the\\nfoe to attack.\\nThis move can’t be used\\ntwice in a row.",
     },
 
     [MOVE_CROSS_POISON] = {
@@ -11919,7 +11922,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 120,
             .type = TYPE_POISON,
-            .accuracy = 80,
+            .accuracy = 85,
             .pp = 5,
             .effectChance = 30,
         },
@@ -11948,7 +11951,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .type = TYPE_STEEL,
             .accuracy = 100,
             .pp = 15,
-            .effectChance = ((CHAMPIONS_EFFECT_CHANCE_CHANGES) ? (20) : (30)),
+            .effectChance = 30,
         },
         .battle = {
             .target = RANGE_SINGLE_TARGET,
@@ -12000,7 +12003,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 100,
             .type = TYPE_ROCK,
-            .accuracy = 80,
+            .accuracy = 85,
             .pp = 5,
             .effectChance = 0,
         },
@@ -12104,7 +12107,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Chatter",
         },
         .data = {
-            .effect = MOVE_EFFECT_CONFUSE_HIT,
+            .effect = MOVE_EFFECT_CHATTER,
             .split = SPLIT_SPECIAL,
             .power = 65,
             .type = TYPE_FLYING,
@@ -12189,7 +12192,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 50,
             .type = TYPE_ELECTRIC,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 70,
         },
@@ -12347,11 +12350,11 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Head Smash",
         },
         .data = {
-            .effect = MOVE_EFFECT_RECOIL_HALF,
+            .effect = MOVE_EFFECT_RECOIL_THIRD,
             .split = SPLIT_PHYSICAL,
             .power = 150,
             .type = TYPE_ROCK,
-            .accuracy = 80,
+            .accuracy = 100,
             .pp = 5,
             .effectChance = 0,
         },
@@ -12376,9 +12379,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_HIT_TWICE,
             .split = SPLIT_PHYSICAL,
-            .power = 35,
+            .power = 40,
             .type = TYPE_NORMAL,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 0,
         },
@@ -12401,11 +12404,11 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Roar of Time",
         },
         .data = {
-            .effect = MOVE_EFFECT_RECHARGE_AFTER,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_SPECIAL,
             .power = 150,
             .type = TYPE_DRAGON,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 5,
             .effectChance = 0,
         },
@@ -12418,7 +12421,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .appeal = APPEAL_AFTER_MAX_VOLTAGE_HEARTS,
             .contestType = CONTEST_COOL,
         },
-        .description = "The user blasts the\\nfoe with power that\\ndistorts even time.\\nThe user must rest\\non the next turn.",
+        .description = "The user blasts the\\nfoe with power that\\ndistorts even time.\\nThis move can’t be used\\ntwice in a row.",
     },
 
     [MOVE_SPACIAL_REND] = {
@@ -12432,7 +12435,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 100,
             .type = TYPE_DRAGON,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 5,
             .effectChance = 0,
         },
@@ -12482,9 +12485,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Crush Grip",
         },
         .data = {
-            .effect = MOVE_EFFECT_INCREASE_POWER_WITH_MORE_HP,
+            .effect = MOVE_EFFECT_BIND_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 1,
+            .power = 120,
             .type = TYPE_NORMAL,
             .accuracy = 100,
             .pp = 5,
@@ -12499,7 +12502,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .appeal = APPEAL_DOUBLE_ON_FINALE,
             .contestType = CONTEST_TOUGH,
         },
-        .description = "The foe is crushed\\nwith great force.\\nThe attack is more\\npowerful the more HP\\nthe foe has left.",
+        .description = "The foe is crushed\\nwith great force.\\nThe foe is trapped\\nwithin the grip for\\n2-5 turns.",
     },
 
     [MOVE_MAGMA_STORM] = {
@@ -12513,7 +12516,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 100,
             .type = TYPE_FIRE,
-            .accuracy = 75,
+            .accuracy = 100,
             .pp = 5,
             .effectChance = 0,
         },
@@ -12540,7 +12543,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_STATUS,
             .power = 0,
             .type = TYPE_DARK,
-            .accuracy = 50,
+            .accuracy = 80,
             .pp = 10,
             .effectChance = 0,
         },
@@ -12567,7 +12570,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 120,
             .type = TYPE_GRASS,
-            .accuracy = 85,
+            .accuracy = 100,
             .pp = 5,
             .effectChance = 40,
         },
@@ -12592,7 +12595,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_RAISE_ALL_STATS_HIT,
             .split = SPLIT_SPECIAL,
-            .power = 60,
+            .power = 80,
             .type = TYPE_GHOST,
             .accuracy = 100,
             .pp = 5,
@@ -12617,7 +12620,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Shadow Force",
         },
         .data = {
-            .effect = MOVE_EFFECT_SHADOW_FORCE,
+            .effect = MOVE_EFFECT_RECOIL_THIRD,
             .split = SPLIT_PHYSICAL,
             .power = 120,
             .type = TYPE_GHOST,
@@ -12634,7 +12637,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .appeal = APPEAL_AFTER_MAX_VOLTAGE_HEARTS,
             .contestType = CONTEST_SMART,
         },
-        .description = "The user disappears,\\nthen strikes the foe\\non the second turn.\\nIt hits even if the\\nfoe protects itself.",
+        .description = "The user vanishes and\\nstrikes, hurting itself.\\nIgnores all protection.",
     },
 
     [MOVE_468] = {
@@ -12844,7 +12847,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .battle = {
             .target = RANGE_USER,
             .priority = 0,
-            .flags = FLAG_MIRROR_MOVE | FLAG_UNUSABLE_IN_GEN_8 | FLAG_UNUSABLE_IN_GEN_9 | FLAG_UNUSABLE_UNIMPLEMENTED,
+            .flags = FLAG_MIRROR_MOVE,
         },
         .contest = {
             .appeal = 0,
@@ -12862,7 +12865,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_SPECIAL,
-            .power = 80,
+            .power = 90,
             .type = TYPE_PSYCHIC,
             .accuracy = 100,
             .pp = 10,
@@ -13024,7 +13027,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 50,
+            .power = 60,
             .type = TYPE_ROCK,
             .accuracy = 100,
             .pp = 15,
@@ -13033,7 +13036,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .battle = {
             .target = RANGE_SINGLE_TARGET,
             .priority = 0,
-            .flags = FLAG_MIRROR_MOVE | FLAG_UNUSABLE_IN_GEN_8 | FLAG_UNUSABLE_IN_GEN_9 | FLAG_UNUSABLE_UNIMPLEMENTED,
+            .flags = FLAG_MIRROR_MOVE,
         },
         .contest = {
             .appeal = 0,
@@ -13104,7 +13107,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         },
         .data = {
             .effect = MOVE_EFFECT_POISON_HIT,
-            .split = SPLIT_SPECIAL,
+            .split = SPLIT_PHYSICAL,
             .power = 95,
             .type = TYPE_POISON,
             .accuracy = 100,
@@ -13454,7 +13457,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "After You",
         },
         .data = {
-            .effect = MOVE_EFFECT_AFTER_YOU,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_STATUS,
             .power = 0,
             .type = TYPE_NORMAL,
@@ -13886,7 +13889,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Quash",
         },
         .data = {
-            .effect = MOVE_EFFECT_QUASH,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_STATUS,
             .power = 0,
             .type = TYPE_DARK,
@@ -13994,7 +13997,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Final Gambit",
         },
         .data = {
-            .effect = MOVE_EFFECT_FINAL_GAMBIT,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_SPECIAL,
             .power = 1,
             .type = TYPE_FIGHTING,
@@ -14005,7 +14008,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .battle = {
             .target = RANGE_SINGLE_TARGET,
             .priority = 0,
-            .flags = FLAG_PROTECT,
+            .flags = FLAG_UNUSABLE_IN_GEN_8 | FLAG_UNUSABLE_IN_GEN_9 | FLAG_UNUSABLE_UNIMPLEMENTED | FLAG_PROTECT,
         },
         .contest = {
             .appeal = 0,
@@ -14021,7 +14024,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Bestow",
         },
         .data = {
-            .effect = MOVE_EFFECT_GIVE_HELD_ITEM,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_STATUS,
             .power = 0,
             .type = TYPE_NORMAL,
@@ -14032,13 +14035,13 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .battle = {
             .target = RANGE_SINGLE_TARGET,
             .priority = 0,
-            .flags = FLAG_KEEP_HP_BAR | FLAG_UNUSABLE_IN_GEN_8 | FLAG_UNUSABLE_IN_GEN_9,
+            .flags = FLAG_KEEP_HP_BAR | FLAG_UNUSABLE_IN_GEN_8 | FLAG_UNUSABLE_IN_GEN_9 | FLAG_UNUSABLE_UNIMPLEMENTED,
         },
         .contest = {
             .appeal = 0,
             .contestType = CONTEST_CUTE,
         },
-        .description = "The user passes its\\nheld item to the\\ntarget when the\\ntarget isn’t holding\\nan item.",
+        .description = "The user passes its\\nheld item to the\\ntarget when the\\ntarget isn’t\\nholding an item.",
     },
 
     [MOVE_INFERNO] = {
@@ -14052,7 +14055,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 100,
             .type = TYPE_FIRE,
-            .accuracy = 50,
+            .accuracy = 60,
             .pp = 5,
             .effectChance = 100,
         },
@@ -14241,7 +14244,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 60,
             .type = TYPE_ICE,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 0,
         },
@@ -14322,7 +14325,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 55,
             .type = TYPE_ELECTRIC,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 100,
         },
@@ -14376,7 +14379,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 80,
             .type = TYPE_GROUND,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 0,
         },
@@ -14403,7 +14406,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 40,
             .type = TYPE_DRAGON,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 0,
         },
@@ -14511,7 +14514,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 75,
             .type = TYPE_WATER,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 50,
         },
@@ -14565,7 +14568,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 65,
             .type = TYPE_GRASS,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 50,
         },
@@ -14644,9 +14647,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_LOWER_ACCURACY_HIT,
             .split = SPLIT_SPECIAL,
-            .power = ((CHAMPIONS_POWER_CHANGES) ? (90) : (85)),
+            .power = 85,
             .type = TYPE_DARK,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 40,
         },
@@ -14700,7 +14703,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 25,
             .type = TYPE_NORMAL,
-            .accuracy = 85,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 0,
         },
@@ -14727,7 +14730,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 110,
             .type = TYPE_FLYING,
-            .accuracy = 70,
+            .accuracy = 85,
             .pp = 10,
             .effectChance = 30,
         },
@@ -14779,9 +14782,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_HIT_TWICE,
             .split = SPLIT_PHYSICAL,
-            .power = ((CHAMPIONS_POWER_CHANGES) ? (60) : (50)),
+            .power = 60,
             .type = TYPE_STEEL,
-            .accuracy = ((CHAMPIONS_POWER_CHANGES) ? (90) : (85)),
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 0,
         },
@@ -14831,7 +14834,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Techno Blast",
         },
         .data = {
-            .effect = MOVE_EFFECT_TECHNO_BLAST,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_SPECIAL,
             .power = 120,
             .type = TYPE_NORMAL,
@@ -14887,7 +14890,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_SPECIAL,
-            .power = 85,
+            .power = 90,
             .type = TYPE_FIGHTING,
             .accuracy = 100,
             .pp = 10,
@@ -14916,7 +14919,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 65,
             .type = TYPE_ICE,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 100,
         },
@@ -15078,7 +15081,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 55,
             .type = TYPE_DARK,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 100,
         },
@@ -15105,7 +15108,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 85,
             .type = TYPE_ICE,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 30,
         },
@@ -15220,7 +15223,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .battle = {
             .target = RANGE_SINGLE_TARGET,
             .priority = 0,
-            .flags = FLAG_KEEP_HP_BAR | FLAG_MIRROR_MOVE | FLAG_PROTECT | FLAG_CONTACT,
+            .flags = FLAG_KEEP_HP_BAR | FLAG_MIRROR_MOVE | FLAG_UNUSABLE_IN_GEN_8 | FLAG_UNUSABLE_IN_GEN_9 | FLAG_UNUSABLE_UNIMPLEMENTED | FLAG_PROTECT | FLAG_CONTACT,
         },
         .contest = {
             .appeal = 0,
@@ -15267,7 +15270,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 120,
             .type = TYPE_POISON,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 0,
         },
@@ -15328,7 +15331,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .battle = {
             .target = RANGE_OPPONENT_SIDE,
             .priority = 0,
-            .flags = FLAG_MIRROR_MOVE | FLAG_MAGIC_COAT,
+            .flags = FLAG_MIRROR_MOVE | FLAG_PROTECT | FLAG_MAGIC_COAT,
         },
         .contest = {
             .appeal = 0,
@@ -15371,7 +15374,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Phantom Force",
         },
         .data = {
-            .effect = MOVE_EFFECT_SHADOW_FORCE,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_PHYSICAL,
             .power = 90,
             .type = TYPE_GHOST,
@@ -15388,7 +15391,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .appeal = 0,
             .contestType = CONTEST_COOL,
         },
-        .description = "The user disappears,\\nthen strikes the foe\\non the second turn.\\nIt hits even if the\\nfoe protects itself.",
+        .description = "The user vanishes and\\nstrikes the foe. It hits\\neven through protection.",
     },
 
     [MOVE_TRICK_OR_TREAT] = {
@@ -15415,7 +15418,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .appeal = 0,
             .contestType = CONTEST_CUTE,
         },
-        .description = "The user takes the\\ntarget trick-or-\\ntreating.\\nThis adds Ghost type\\nto the target’s type.",
+        .description = "The user takes the\\ntarget\\ntrick-or-treating.\\nThis adds Ghost type\\nto the target’s type.",
     },
 
     [MOVE_NOBLE_ROAR] = {
@@ -15523,7 +15526,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .appeal = 0,
             .contestType = CONTEST_SMART,
         },
-        .description = "The user puts a\\nforest curse on the\\ntarget.\\nThis adds Grass type\\nto the target’s type.",
+        .description = "The user puts a forest\\ncurse on the target.\\nThis adds Grass type\\nto the target’s type.",
     },
 
     [MOVE_PETAL_BLIZZARD] = {
@@ -15560,7 +15563,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Freeze-Dry",
         },
         .data = {
-            .effect = MOVE_EFFECT_FREEZE_HIT,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_SPECIAL,
             .power = 70,
             .type = TYPE_ICE,
@@ -15589,7 +15592,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_BYPASS_ACCURACY,
             .split = SPLIT_SPECIAL,
-            .power = 40,
+            .power = 60,
             .type = TYPE_FAIRY,
             .accuracy = 0,
             .pp = 15,
@@ -15834,7 +15837,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 90,
             .type = TYPE_FAIRY,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 10,
         },
@@ -15890,7 +15893,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .type = TYPE_FAIRY,
             .accuracy = 100,
             .pp = 15,
-            .effectChance = ((CHAMPIONS_EFFECT_CHANCE_CHANGES) ? (10) : (30)),
+            .effectChance = 30,
         },
         .battle = {
             .target = RANGE_SINGLE_TARGET,
@@ -15970,7 +15973,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .power = 0,
             .type = TYPE_STEEL,
             .accuracy = 0,
-            .pp = ((CHAMPIONS_PP_CHANGES) ? (5) : (10)),
+            .pp = 10,
             .effectChance = 0,
         },
         .battle = {
@@ -16046,11 +16049,11 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Diamond Storm",
         },
         .data = {
-            .effect = MOVE_EFFECT_RAISE_DEF_2_HIT,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_PHYSICAL,
             .power = 100,
             .type = TYPE_ROCK,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 5,
             .effectChance = 50,
         },
@@ -16077,7 +16080,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 110,
             .type = TYPE_WATER,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 5,
             .effectChance = 30,
         },
@@ -16129,7 +16132,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_MULTI_HIT,
             .split = SPLIT_SPECIAL,
-            .power = 15,
+            .power = 20,
             .type = TYPE_WATER,
             .accuracy = 100,
             .pp = 20,
@@ -16186,7 +16189,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .power = 0,
             .type = TYPE_GRASS,
             .accuracy = 0,
-            .pp = ((CHAMPIONS_PP_CHANGES) ? (5) : (10)),
+            .pp = 10,
             .effectChance = 0,
         },
         .battle = {
@@ -16588,7 +16591,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_BIND_HIT,
             .split = SPLIT_SPECIAL,
-            .power = 20,
+            .power = 60,
             .type = TYPE_BUG,
             .accuracy = 100,
             .pp = 20,
@@ -16752,7 +16755,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 140,
             .type = TYPE_FAIRY,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 5,
             .effectChance = 0,
         },
@@ -16779,7 +16782,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 110,
             .type = TYPE_WATER,
-            .accuracy = 85,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 0,
         },
@@ -16806,7 +16809,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 120,
             .type = TYPE_GROUND,
-            .accuracy = 85,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 0,
         },
@@ -16932,8 +16935,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_ALL_OUT_PUMMELING_PHYSICAL] = {
         .names = {
-            .name = "All-Out Pummel",
-            .capsName = "ALL-OUT PUMMEL",
+            .name = "All-Out Pummeling",
+            .capsName = "ALL-OUT PUMMELING",
             .fullName = "All-Out Pummeling",
         },
         .data = {
@@ -16959,8 +16962,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_ALL_OUT_PUMMELING_SPECIAL] = {
         .names = {
-            .name = "All-Out Pummel",
-            .capsName = "ALL-OUT PUMMEL",
+            .name = "All-Out Pummeling",
+            .capsName = "ALL-OUT PUMMELING",
             .fullName = "All-Out Pummeling",
         },
         .data = {
@@ -16986,8 +16989,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_SUPERSONIC_SKYSTRIKE_PHYSICAL] = {
         .names = {
-            .name = "Super Skystrike",
-            .capsName = "SUPER SKYSTRIKE",
+            .name = "Supersonic Skystrike",
+            .capsName = "SUPERSONIC SKYSTRIKE",
             .fullName = "Supersonic Skystrike",
         },
         .data = {
@@ -17013,8 +17016,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_SUPERSONIC_SKYSTRIKE_SPECIAL] = {
         .names = {
-            .name = "Super Skystrike",
-            .capsName = "SUPER SKYSTRIKE",
+            .name = "Supersonic Skystrike",
+            .capsName = "SUPERSONIC SKYSTRIKE",
             .fullName = "Supersonic Skystrike",
         },
         .data = {
@@ -17148,8 +17151,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_CONTINENTAL_CRUSH_PHYSICAL] = {
         .names = {
-            .name = "Continent Crush",
-            .capsName = "CONTINENT CRUSH",
+            .name = "Continental Crush",
+            .capsName = "CONTINENTAL CRUSH",
             .fullName = "Continental Crush",
         },
         .data = {
@@ -17175,8 +17178,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_CONTINENTAL_CRUSH_SPECIAL] = {
         .names = {
-            .name = "Continent Crush",
-            .capsName = "CONTINENT CRUSH",
+            .name = "Continental Crush",
+            .capsName = "CONTINENTAL CRUSH",
             .fullName = "Continental Crush",
         },
         .data = {
@@ -17256,8 +17259,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_NEVER_ENDING_NIGHTMARE_PHYSICAL] = {
         .names = {
-            .name = "EndlessNitemare",
-            .capsName = "ENDLESSNITEMARE",
+            .name = "Never-Ending Nightmare",
+            .capsName = "NEVER-ENDING NIGHTMARE",
             .fullName = "Never-Ending Nightmare",
         },
         .data = {
@@ -17283,8 +17286,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_NEVER_ENDING_NIGHTMARE_SPECIAL] = {
         .names = {
-            .name = "EndlessNitemare",
-            .capsName = "ENDLESSNITEMARE",
+            .name = "Never-Ending Nightmare",
+            .capsName = "NEVER-ENDING NIGHTMARE",
             .fullName = "Never-Ending Nightmare",
         },
         .data = {
@@ -17364,8 +17367,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_INFERNO_OVERDRIVE_PHYSICAL] = {
         .names = {
-            .name = "Inferno Drive",
-            .capsName = "INFERNO DRIVE",
+            .name = "Inferno Overdrive",
+            .capsName = "INFERNO OVERDRIVE",
             .fullName = "Inferno Overdrive",
         },
         .data = {
@@ -17391,8 +17394,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_INFERNO_OVERDRIVE_SPECIAL] = {
         .names = {
-            .name = "Inferno Drive",
-            .capsName = "INFERNO DRIVE",
+            .name = "Inferno Overdrive",
+            .capsName = "INFERNO OVERDRIVE",
             .fullName = "Inferno Overdrive",
         },
         .data = {
@@ -17580,8 +17583,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_SHATTERED_PSYCHE_PHYSICAL] = {
         .names = {
-            .name = "ShatteredPsyche",
-            .capsName = "SHATTEREDPSYCHE",
+            .name = "Shattered Psyche",
+            .capsName = "SHATTERED PSYCHE",
             .fullName = "Shattered Psyche",
         },
         .data = {
@@ -17607,8 +17610,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_SHATTERED_PSYCHE_SPECIAL] = {
         .names = {
-            .name = "ShatteredPsyche",
-            .capsName = "SHATTEREDPSYCHE",
+            .name = "Shattered Psyche",
+            .capsName = "SHATTERED PSYCHE",
             .fullName = "Shattered Psyche",
         },
         .data = {
@@ -17688,8 +17691,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_DEVASTATING_DRAKE_PHYSICAL] = {
         .names = {
-            .name = "Ultimate Drake",
-            .capsName = "ULTIMATE DRAKE",
+            .name = "Devastating Drake",
+            .capsName = "DEVASTATING DRAKE",
             .fullName = "Devastating Drake",
         },
         .data = {
@@ -17715,8 +17718,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_DEVASTATING_DRAKE_SPECIAL] = {
         .names = {
-            .name = "Ultimate Drake",
-            .capsName = "ULTIMATE DRAKE",
+            .name = "Devastating Drake",
+            .capsName = "DEVASTATING DRAKE",
             .fullName = "Devastating Drake",
         },
         .data = {
@@ -17742,8 +17745,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_BLACK_HOLE_ECLIPSE_PHYSICAL] = {
         .names = {
-            .name = "Black Eclipse",
-            .capsName = "BLACK ECLIPSE",
+            .name = "Black Hole Eclipse",
+            .capsName = "BLACK HOLE ECLIPSE",
             .fullName = "Black Hole Eclipse",
         },
         .data = {
@@ -17769,8 +17772,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_BLACK_HOLE_ECLIPSE_SPECIAL] = {
         .names = {
-            .name = "Black Eclipse",
-            .capsName = "BLACK ECLIPSE",
+            .name = "Black Hole Eclipse",
+            .capsName = "BLACK HOLE ECLIPSE",
             .fullName = "Black Hole Eclipse",
         },
         .data = {
@@ -17911,7 +17914,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_FIRST_TURN_ONLY,
             .split = SPLIT_PHYSICAL,
-            .power = ((CHAMPIONS_POWER_CHANGES) ? (100) : (90)),
+            .power = 90,
             .type = TYPE_BUG,
             .accuracy = 100,
             .pp = 10,
@@ -17941,7 +17944,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .power = 0,
             .type = TYPE_POISON,
             .accuracy = 0,
-            .pp = ((CHAMPIONS_PP_CHANGES) ? (5) : (10)),
+            .pp = 10,
             .effectChance = 0,
         },
         .battle = {
@@ -17965,7 +17968,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_PREVENT_ESCAPE_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = ((CHAMPIONS_POWER_CHANGES) ? (90) : (80)),
+            .power = 80,
             .type = TYPE_GHOST,
             .accuracy = 100,
             .pp = 10,
@@ -18019,7 +18022,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_SPECIAL,
-            .power = 90,
+            .power = 95,
             .type = TYPE_WATER,
             .accuracy = 100,
             .pp = 10,
@@ -18048,7 +18051,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 100,
             .type = TYPE_ICE,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 100,
         },
@@ -18102,7 +18105,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 95,
             .type = TYPE_GROUND,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 0,
         },
@@ -18154,7 +18157,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_CHARGE_TURN_SUN_SKIPS,
             .split = SPLIT_PHYSICAL,
-            .power = 125,
+            .power = 120,
             .type = TYPE_GRASS,
             .accuracy = 100,
             .pp = 10,
@@ -18370,7 +18373,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_PREVENT_ESCAPE_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = ((CHAMPIONS_POWER_CHANGES) ? (90) : (80)),
+            .power = 80,
             .type = TYPE_STEEL,
             .accuracy = 100,
             .pp = 20,
@@ -18451,7 +18454,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_LOWER_DEFENSE_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = ((CHAMPIONS_POWER_CHANGES) ? (90) : (80)),
+            .power = 80,
             .type = TYPE_FIRE,
             .accuracy = 100,
             .pp = 15,
@@ -18589,7 +18592,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .power = 0,
             .type = TYPE_POISON,
             .accuracy = 0,
-            .pp = ((CHAMPIONS_PP_CHANGES) ? (5) : (20)),
+            .pp = 20,
             .effectChance = 0,
         },
         .battle = {
@@ -18606,14 +18609,14 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_REVELATION_DANCE] = {
         .names = {
-            .name = "RevelationDance",
-            .capsName = "REVELATIONDANCE",
+            .name = "Revelation Dance",
+            .capsName = "REVELATION DANCE",
             .fullName = "Revelation Dance",
         },
         .data = {
             .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_SPECIAL,
-            .power = ((CHAMPIONS_POWER_CHANGES) ? (100) : (90)),
+            .power = 90,
             .type = TYPE_NORMAL,
             .accuracy = 100,
             .pp = 15,
@@ -18667,7 +18670,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_LOWER_ATTACK_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = ((CHAMPIONS_POWER_CHANGES) ? (85) : (70)),
+            .power = 70,
             .type = TYPE_GRASS,
             .accuracy = 100,
             .pp = 15,
@@ -18721,10 +18724,10 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = ((CHAMPIONS_POWER_CHANGES) ? (120) : (100)),
+            .power = 100,
             .type = TYPE_FLYING,
             .accuracy = 100,
-            .pp = ((CHAMPIONS_PP_CHANGES) ? (5) : (15)),
+            .pp = 15,
             .effectChance = 0,
         },
         .battle = {
@@ -18775,7 +18778,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = ((CHAMPIONS_POWER_CHANGES) ? (100) : (90)),
+            .power = 90,
             .type = TYPE_DRAGON,
             .accuracy = 100,
             .pp = 15,
@@ -18849,8 +18852,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_SINISTER_ARROW_RAID] = {
         .names = {
-            .name = "Sinister Raid",
-            .capsName = "SINISTER RAID",
+            .name = "Sinister Arrow Raid",
+            .capsName = "SINISTER ARROW RAID",
             .fullName = "Sinister Arrow Raid",
         },
         .data = {
@@ -18876,8 +18879,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_MALICIOUS_MOONSAULT] = {
         .names = {
-            .name = "Moonsault",
-            .capsName = "MOONSAULT",
+            .name = "Malicious Moonsault",
+            .capsName = "MALICIOUS MOONSAULT",
             .fullName = "Malicious Moonsault",
         },
         .data = {
@@ -18903,8 +18906,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_OCEANIC_OPERETTA] = {
         .names = {
-            .name = "OceanicOperetta",
-            .capsName = "OCEANICOPERETTA",
+            .name = "Oceanic Operetta",
+            .capsName = "OCEANIC OPERETTA",
             .fullName = "Oceanic Operetta",
         },
         .data = {
@@ -18957,8 +18960,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_SOUL_STEALING_7_STAR_STRIKE] = {
         .names = {
-            .name = "7-Star Strike",
-            .capsName = "7-STAR STRIKE",
+            .name = "Soul-Stealing 7-Star Strike",
+            .capsName = "SOUL-STEALING 7-STAR STRIKE",
             .fullName = "Soul-Stealing 7-Star Strike",
         },
         .data = {
@@ -18984,8 +18987,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_STOKED_SPARKSURFER] = {
         .names = {
-            .name = "Sparksurfer",
-            .capsName = "SPARKSURFER",
+            .name = "Stoked Sparksurfer",
+            .capsName = "STOKED SPARKSURFER",
             .fullName = "Stoked Sparksurfer",
         },
         .data = {
@@ -19011,8 +19014,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_PULVERIZING_PANCAKE] = {
         .names = {
-            .name = "Pulver-Pancake",
-            .capsName = "PULVER-PANCAKE",
+            .name = "Pulverizing Pancake",
+            .capsName = "PULVERIZING PANCAKE",
             .fullName = "Pulverizing Pancake",
         },
         .data = {
@@ -19038,8 +19041,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_EXTREME_EVOBOOST] = {
         .names = {
-            .name = "ExtremeEvoboost",
-            .capsName = "EXTREMEEVOBOOST",
+            .name = "Extreme Evoboost",
+            .capsName = "EXTREME EVOBOOST",
             .fullName = "Extreme Evoboost",
         },
         .data = {
@@ -19065,8 +19068,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_GENESIS_SUPERNOVA] = {
         .names = {
-            .name = "OriginSupernova",
-            .capsName = "ORIGINSUPERNOVA",
+            .name = "Genesis Supernova",
+            .capsName = "GENESIS SUPERNOVA",
             .fullName = "Genesis Supernova",
         },
         .data = {
@@ -19102,13 +19105,13 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .power = 150,
             .type = TYPE_FIRE,
             .accuracy = 100,
-            .pp = ((CHAMPIONS_PP_CHANGES) ? (10) : (5)),
+            .pp = 5,
             .effectChance = 0,
         },
         .battle = {
             .target = RANGE_ADJACENT_OPPONENTS,
             .priority = -3,
-            .flags = FLAG_KEEP_HP_BAR | FLAG_MIRROR_MOVE | FLAG_UNUSABLE_IN_GEN_8 | FLAG_UNUSABLE_IN_GEN_9 | FLAG_UNUSABLE_UNIMPLEMENTED | FLAG_PROTECT,
+            .flags = FLAG_KEEP_HP_BAR | FLAG_MIRROR_MOVE | FLAG_PROTECT,
         },
         .contest = {
             .appeal = 0,
@@ -19126,9 +19129,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_USER_SP_ATK_DOWN_2,
             .split = SPLIT_SPECIAL,
-            .power = 130,
+            .power = 140,
             .type = TYPE_FAIRY,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 5,
             .effectChance = 100,
         },
@@ -19286,9 +19289,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Prismatic Laser",
         },
         .data = {
-            .effect = MOVE_EFFECT_RECHARGE_AFTER,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_SPECIAL,
-            .power = 160,
+            .power = 150,
             .type = TYPE_PSYCHIC,
             .accuracy = 100,
             .pp = 10,
@@ -19303,7 +19306,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .appeal = 0,
             .contestType = CONTEST_COOL,
         },
-        .description = "The user shoots\\npowerful lasers using\\nthe power of a prism.\\nThe user can’t move on\\nthe next turn.",
+        .description = "The user shoots\\npowerful lasers using\\nthe power of a prism.\\nThis move can’t be used\\ntwice in a row.",
     },
 
     [MOVE_SPECTRAL_THIEF] = {
@@ -19443,8 +19446,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_NATURES_MADNESS] = {
         .names = {
-            .name = "Nature’sMadness",
-            .capsName = "NATURE’SMADNESS",
+            .name = "Nature’s Madness",
+            .capsName = "NATURE’S MADNESS",
             .fullName = "Nature’s Madness",
         },
         .data = {
@@ -19452,7 +19455,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 0,
             .type = TYPE_FAIRY,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 0,
         },
@@ -19475,7 +19478,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Multi-Attack",
         },
         .data = {
-            .effect = MOVE_EFFECT_MULTI_ATTACK,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_PHYSICAL,
             .power = 120,
             .type = TYPE_NORMAL,
@@ -19497,8 +19500,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_10_000_000_VOLT_THUNDERBOLT] = {
         .names = {
-            .name = "10,000,000 Bolt",
-            .capsName = "10,000,000 BOLT",
+            .name = "10,000,000 Volt Thunderbolt",
+            .capsName = "10,000,000 VOLT THUNDERBOLT",
             .fullName = "10,000,000 Volt Thunderbolt",
         },
         .data = {
@@ -19632,8 +19635,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_SEARING_SUNRAZE_SMASH] = {
         .names = {
-            .name = "Sunraze Smash",
-            .capsName = "SUNRAZE SMASH",
+            .name = "Searing Sunraze Smash",
+            .capsName = "SEARING SUNRAZE SMASH",
             .fullName = "Searing Sunraze Smash",
         },
         .data = {
@@ -19659,8 +19662,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_MENACING_MOONRAZE_MAELSTROM] = {
         .names = {
-            .name = "Moonraze Storm",
-            .capsName = "MOONRAZE STORM",
+            .name = "Menacing Moonraze Maelstrom",
+            .capsName = "MENACING MOONRAZE MAELSTROM",
             .fullName = "Menacing Moonraze Maelstrom",
         },
         .data = {
@@ -19686,8 +19689,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_LETS_SNUGGLE_FOREVER] = {
         .names = {
-            .name = "Let’s Snuggle",
-            .capsName = "LET’S SNUGGLE",
+            .name = "Let’s Snuggle Forever",
+            .capsName = "LET’S SNUGGLE FOREVER",
             .fullName = "Let’s Snuggle Forever",
         },
         .data = {
@@ -19713,8 +19716,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_SPLINTERED_STORMSHARDS] = {
         .names = {
-            .name = "Stormshards",
-            .capsName = "STORMSHARDS",
+            .name = "Splintered Stormshards",
+            .capsName = "SPLINTERED STORMSHARDS",
             .fullName = "Splintered Stormshards",
         },
         .data = {
@@ -19830,7 +19833,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 90,
             .type = TYPE_FLYING,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 30,
         },
@@ -19880,7 +19883,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Bouncy Bubble",
         },
         .data = {
-            .effect = MOVE_EFFECT_RECOVER_FULL_DAMAGE_DEALT,
+            .effect = MOVE_EFFECT_RECOVER_HALF_DAMAGE_DEALT,
             .split = SPLIT_SPECIAL,
             .power = 60,
             .type = TYPE_WATER,
@@ -19934,7 +19937,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Sizzly Slide",
         },
         .data = {
-            .effect = MOVE_EFFECT_BURN_HIT,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_PHYSICAL,
             .power = 60,
             .type = TYPE_FIRE,
@@ -19965,7 +19968,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 80,
             .type = TYPE_PSYCHIC,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 100,
         },
@@ -19992,7 +19995,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 80,
             .type = TYPE_DARK,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 100,
         },
@@ -20017,9 +20020,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_LEECH_SEED_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 100,
+            .power = 90,
             .type = TYPE_GRASS,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 100,
         },
@@ -20206,7 +20209,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_HIGH_CRITICAL,
             .split = SPLIT_SPECIAL,
-            .power = ((CHAMPIONS_POWER_CHANGES) ? (85) : (80)),
+            .power = 80,
             .type = TYPE_WATER,
             .accuracy = 100,
             .pp = 15,
@@ -20233,7 +20236,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_PREVENT_ESCAPE_BOTH_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 80,
+            .power = 90,
             .type = TYPE_DARK,
             .accuracy = 100,
             .pp = 10,
@@ -20449,7 +20452,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_DOUBLE_POWER_IF_FASTER,
             .split = SPLIT_PHYSICAL,
-            .power = ((CHAMPIONS_POWER_CHANGES) ? (80) : (85)),
+            .power = 85,
             .type = TYPE_ELECTRIC,
             .accuracy = 100,
             .pp = 10,
@@ -20476,7 +20479,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_DOUBLE_POWER_IF_FASTER,
             .split = SPLIT_PHYSICAL,
-            .power = ((CHAMPIONS_POWER_CHANGES) ? (80) : (85)),
+            .power = 85,
             .type = TYPE_WATER,
             .accuracy = 100,
             .pp = 10,
@@ -21018,7 +21021,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_STATUS,
             .power = 0,
             .type = TYPE_DRAGON,
-            .accuracy = 0,
+            .accuracy = 100,
             .pp = 5,
             .effectChance = 100,
         },
@@ -21122,10 +21125,10 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Snap Trap",
         },
         .data = {
-            .effect = MOVE_EFFECT_BIND_HIT,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 35,
-            .type = ((CHAMPIONS_TYPE_CHANGES) ? (TYPE_STEEL) : (TYPE_GRASS)),
+            .power = 75,
+            .type = TYPE_GRASS,
             .accuracy = 100,
             .pp = 15,
             .effectChance = 100,
@@ -21133,7 +21136,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .battle = {
             .target = RANGE_SINGLE_TARGET,
             .priority = 0,
-            .flags = FLAG_KEEP_HP_BAR | FLAG_MIRROR_MOVE | FLAG_PROTECT | FLAG_CONTACT,
+            .flags = FLAG_KEEP_HP_BAR | FLAG_MIRROR_MOVE | FLAG_UNUSABLE_IN_GEN_8 | FLAG_UNUSABLE_IN_GEN_9 | FLAG_UNUSABLE_UNIMPLEMENTED | FLAG_PROTECT | FLAG_CONTACT,
         },
         .contest = {
             .appeal = 0,
@@ -21230,7 +21233,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Aura Wheel",
         },
         .data = {
-            .effect = MOVE_EFFECT_RAISE_SPEED_HIT,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_PHYSICAL,
             .power = 110,
             .type = TYPE_ELECTRIC,
@@ -21241,7 +21244,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .battle = {
             .target = RANGE_SINGLE_TARGET,
             .priority = 0,
-            .flags = FLAG_KEEP_HP_BAR | FLAG_MIRROR_MOVE | FLAG_PROTECT,
+            .flags = FLAG_KEEP_HP_BAR | FLAG_MIRROR_MOVE | FLAG_UNUSABLE_IN_GEN_8 | FLAG_UNUSABLE_IN_GEN_9 | FLAG_UNUSABLE_UNIMPLEMENTED | FLAG_PROTECT,
         },
         .contest = {
             .appeal = 0,
@@ -21340,7 +21343,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_LOWER_SP_DEF_HIT,
             .split = SPLIT_SPECIAL,
-            .power = ((CHAMPIONS_POWER_CHANGES) ? (90) : (80)),
+            .power = 80,
             .type = TYPE_GRASS,
             .accuracy = 100,
             .pp = 10,
@@ -21367,7 +21370,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_LOWER_DEFENSE_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = ((CHAMPIONS_POWER_CHANGES) ? (90) : (80)),
+            .power = 80,
             .type = TYPE_GRASS,
             .accuracy = 100,
             .pp = 10,
@@ -21423,7 +21426,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 90,
             .type = TYPE_FAIRY,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 20,
         },
@@ -21478,7 +21481,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .power = 0,
             .type = TYPE_DARK,
             .accuracy = 100,
-            .pp = ((CHAMPIONS_PP_CHANGES) ? (5) : (10)),
+            .pp = 10,
             .effectChance = 0,
         },
         .battle = {
@@ -21527,7 +21530,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Meteor Assault",
         },
         .data = {
-            .effect = MOVE_EFFECT_RECHARGE_AFTER,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_PHYSICAL,
             .power = 150,
             .type = TYPE_FIGHTING,
@@ -21544,7 +21547,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .appeal = 0,
             .contestType = CONTEST_COOL,
         },
-        .description = "The user attacks\\nwildly with its thick\\nleek.\\nThe user can’t move\\non the next turn.",
+        .description = "The user attacks\\nwildly with its thick\\nleek.\\nThis move can’t be used\\ntwice in a row.",
     },
 
     [MOVE_ETERNABEAM] = {
@@ -21554,11 +21557,11 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Eternabeam",
         },
         .data = {
-            .effect = MOVE_EFFECT_RECHARGE_AFTER,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_SPECIAL,
-            .power = 160,
+            .power = 150,
             .type = TYPE_DRAGON,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 5,
             .effectChance = 0,
         },
@@ -21571,7 +21574,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .appeal = 0,
             .contestType = CONTEST_COOL,
         },
-        .description = "This is Eternatus’s\\nmost powerful attack\\nin its original form.\\nThe user can’t move\\non the next turn.",
+        .description = "This is Eternatus’s\\nmost powerful attack\\nin its original form.\\nThis move can’t be used\\ntwice in a row.",
     },
 
     [MOVE_STEEL_BEAM] = {
@@ -21581,7 +21584,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Steel Beam",
         },
         .data = {
-            .effect = MOVE_EFFECT_HIT,
+            .effect = MOVE_EFFECT_FINAL_GAMBIT,
             .split = SPLIT_SPECIAL,
             .power = 140,
             .type = TYPE_STEEL,
@@ -21592,7 +21595,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .battle = {
             .target = RANGE_SINGLE_TARGET,
             .priority = 0,
-            .flags = FLAG_MIRROR_MOVE | FLAG_UNUSABLE_IN_GEN_8 | FLAG_UNUSABLE_IN_GEN_9 | FLAG_UNUSABLE_UNIMPLEMENTED | FLAG_PROTECT,
+            .flags = FLAG_MIRROR_MOVE | FLAG_PROTECT,
         },
         .contest = {
             .appeal = 0,
@@ -21666,7 +21669,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 25,
             .type = TYPE_DRAGON,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 20,
             .effectChance = 100,
         },
@@ -21693,7 +21696,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 120,
             .type = TYPE_ROCK,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 100,
         },
@@ -21745,7 +21748,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_HALVE_DEFENSE,
             .split = SPLIT_SPECIAL,
-            .power = 100,
+            .power = 250,
             .type = TYPE_FAIRY,
             .accuracy = 100,
             .pp = 5,
@@ -21772,7 +21775,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 55,
+            .power = 70,
             .type = TYPE_GRASS,
             .accuracy = 100,
             .pp = 20,
@@ -21855,7 +21858,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 70,
             .type = TYPE_BUG,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 100,
         },
@@ -21873,8 +21876,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_BURNING_JEALOUSY] = {
         .names = {
-            .name = "BurningJealousy",
-            .capsName = "BURNINGJEALOUSY",
+            .name = "Burning Jealousy",
+            .capsName = "BURNING JEALOUSY",
             .fullName = "Burning Jealousy",
         },
         .data = {
@@ -22044,7 +22047,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 20,
             .type = TYPE_ICE,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 0,
         },
@@ -22071,7 +22074,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 40,
             .type = TYPE_FLYING,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 0,
         },
@@ -22150,7 +22153,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_ALWAYS_CRITICAL,
             .split = SPLIT_PHYSICAL,
-            .power = 75,
+            .power = 80,
             .type = TYPE_DARK,
             .accuracy = 100,
             .pp = 5,
@@ -22206,20 +22209,20 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 80,
             .type = TYPE_ELECTRIC,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 100,
         },
         .battle = {
             .target = RANGE_SINGLE_TARGET,
             .priority = 0,
-            .flags = FLAG_KEEP_HP_BAR | FLAG_MIRROR_MOVE | FLAG_PROTECT,
+            .flags = FLAG_KEEP_HP_BAR | FLAG_MIRROR_MOVE | FLAG_UNUSABLE_IN_GEN_8 | FLAG_UNUSABLE_IN_GEN_9 | FLAG_UNUSABLE_UNIMPLEMENTED | FLAG_PROTECT,
         },
         .contest = {
             .appeal = 0,
             .contestType = CONTEST_COOL,
         },
-        .description = "The user traps the\\ntarget inside a cage\\nof electricity that\\ninflicts damage for\\nfour to five turns.",
+        .description = "The user traps the\\ntarget inside a cage of\\nsparking electricity\\nthat inflicts damage\\nfor four to five turns.",
     },
 
     [MOVE_DRAGON_ENERGY] = {
@@ -22339,7 +22342,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 120,
+            .power = 130,
             .type = TYPE_ICE,
             .accuracy = 100,
             .pp = 5,
@@ -22366,7 +22369,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_SPECIAL,
-            .power = ((CHAMPIONS_POWER_CHANGES) ? (110) : (120)),
+            .power = 120,
             .type = TYPE_GHOST,
             .accuracy = 100,
             .pp = 5,
@@ -22424,7 +22427,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .type = TYPE_POISON,
             .accuracy = 100,
             .pp = 15,
-            .effectChance = ((CHAMPIONS_EFFECT_CHANCE_CHANGES) ? (30) : (50)),
+            .effectChance = 30,
         },
         .battle = {
             .target = RANGE_SINGLE_TARGET,
@@ -22447,9 +22450,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_RAISE_DEF_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = ((CHAMPIONS_POWER_CHANGES) ? (90) : (70)),
+            .power = 70,
             .type = TYPE_PSYCHIC,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 100,
         },
@@ -22503,7 +22506,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 65,
             .type = TYPE_ROCK,
-            .accuracy = 90,
+            .accuracy = 95,
             .pp = 15,
             .effectChance = 0,
         },
@@ -22521,8 +22524,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_SPRINGTIDE_STORM] = {
         .names = {
-            .name = "SpringtideStorm",
-            .capsName = "SPRINGTIDESTORM",
+            .name = "Springtide Storm",
+            .capsName = "SPRINGTIDE STORM",
             .fullName = "Springtide Storm",
         },
         .data = {
@@ -22530,7 +22533,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 100,
             .type = TYPE_FAIRY,
-            .accuracy = 80,
+            .accuracy = 95,
             .pp = 5,
             .effectChance = 30,
         },
@@ -22557,7 +22560,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 70,
             .type = TYPE_PSYCHIC,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 100,
         },
@@ -22634,11 +22637,11 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Chloroblast",
         },
         .data = {
-            .effect = MOVE_EFFECT_RECOIL_HALF_MAX_HP,
+            .effect = MOVE_EFFECT_FINAL_GAMBIT,
             .split = SPLIT_SPECIAL,
             .power = 150,
             .type = TYPE_GRASS,
-            .accuracy = 95,
+            .accuracy = 100,
             .pp = 5,
             .effectChance = 0,
         },
@@ -22663,9 +22666,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_FLINCH_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = ((CHAMPIONS_POWER_CHANGES) ? (120) : (100)),
+            .power = 100,
             .type = TYPE_ICE,
-            .accuracy = 85,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 30,
         },
@@ -22879,7 +22882,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_BURN_HIT_DOUBLE_POWER_ON_STATUS,
             .split = SPLIT_SPECIAL,
-            .power = ((CHAMPIONS_POWER_CHANGES) ? (65) : (60)),
+            .power = 60,
             .type = TYPE_GHOST,
             .accuracy = 100,
             .pp = 15,
@@ -22908,7 +22911,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 65,
             .type = TYPE_DARK,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 0,
         },
@@ -22935,7 +22938,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 100,
             .type = TYPE_FLYING,
-            .accuracy = 80,
+            .accuracy = 95,
             .pp = 10,
             .effectChance = 30,
         },
@@ -22962,7 +22965,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 100,
             .type = TYPE_ELECTRIC,
-            .accuracy = 80,
+            .accuracy = 95,
             .pp = 10,
             .effectChance = 30,
         },
@@ -22989,7 +22992,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 100,
             .type = TYPE_GROUND,
-            .accuracy = 80,
+            .accuracy = 95,
             .pp = 10,
             .effectChance = 30,
         },
@@ -23124,7 +23127,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 120,
             .type = TYPE_FIGHTING,
-            .accuracy = 90,
+            .accuracy = 95,
             .pp = 10,
             .effectChance = 30,
         },
@@ -23287,7 +23290,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .power = 100,
             .type = TYPE_STEEL,
             .accuracy = 100,
-            .pp = ((CHAMPIONS_PP_CHANGES) ? (10) : (5)),
+            .pp = 5,
             .effectChance = 0,
         },
         .battle = {
@@ -23313,7 +23316,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 20,
             .type = TYPE_NORMAL,
-            .accuracy = 90,
+            .accuracy = 95,
             .pp = 10,
             .effectChance = 0,
         },
@@ -23336,7 +23339,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Ice Spinner",
         },
         .data = {
-            .effect = MOVE_EFFECT_END_TERRAIN,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_PHYSICAL,
             .power = 80,
             .type = TYPE_ICE,
@@ -23385,8 +23388,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_REVIVAL_BLESSING] = {
         .names = {
-            .name = "RevivalBlessing",
-            .capsName = "REVIVALBLESSING",
+            .name = "Revival Blessing",
+            .capsName = "REVIVAL BLESSING",
             .fullName = "Revival Blessing",
         },
         .data = {
@@ -23446,7 +23449,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_HIT_THREE_TIMES,
             .split = SPLIT_PHYSICAL,
-            .power = ((CHAMPIONS_POWER_CHANGES) ? (35) : (30)),
+            .power = 40,
             .type = TYPE_WATER,
             .accuracy = 95,
             .pp = 10,
@@ -23525,7 +23528,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Fillet Away",
         },
         .data = {
-            .effect = MOVE_EFFECT_ATK_SP_ATK_SPEED_UP_2_LOSE_HALF_MAX_HP,
+            .effect = MOVE_EFFECT_ATK_SP_ATK_SPEED_UP_2,
             .split = SPLIT_STATUS,
             .power = 0,
             .type = TYPE_NORMAL,
@@ -23691,7 +23694,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 120,
             .type = TYPE_STEEL,
-            .accuracy = ((CHAMPIONS_ACC_CHANGES) ? (95) : (100)),
+            .accuracy = 100,
             .pp = 5,
             .effectChance = 0,
         },
@@ -23772,7 +23775,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 1,
             .type = TYPE_DARK,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 0,
         },
@@ -23871,8 +23874,8 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
 
     [MOVE_CHILLY_RECEPTION] = {
         .names = {
-            .name = "ChillyReception",
-            .capsName = "CHILLYRECEPTION",
+            .name = "Chilly Reception",
+            .capsName = "CHILLY RECEPTION",
             .fullName = "Chilly Reception",
         },
         .data = {
@@ -23935,13 +23938,13 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .power = 0,
             .type = TYPE_ICE,
             .accuracy = 0,
-            .pp = ((CHAMPIONS_PP_CHANGES) ? (5) : (10)),
+            .pp = 10,
             .effectChance = 0,
         },
         .battle = {
             .target = RANGE_FIELD,
             .priority = 0,
-            .flags = 0x00,
+            .flags = FLAG_MIRROR_MOVE | FLAG_PROTECT | FLAG_MAGIC_COAT,
         },
         .contest = {
             .appeal = 0,
@@ -23959,7 +23962,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_LOWER_SPEED_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 50,
+            .power = 60,
             .type = TYPE_BUG,
             .accuracy = 100,
             .pp = 20,
@@ -24040,7 +24043,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = ((CHAMPIONS_POWER_CHANGES) ? (120) : (100)),
+            .power = 100,
             .type = TYPE_NORMAL,
             .accuracy = 100,
             .pp = 5,
@@ -24202,7 +24205,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_PHYSICAL,
-            .power = 160,
+            .power = 150,
             .type = TYPE_STEEL,
             .accuracy = 100,
             .pp = 5,
@@ -24418,7 +24421,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_SPECIAL,
-            .power = ((CHAMPIONS_POWER_CHANGES) ? (140) : (130)),
+            .power = 140,
             .type = TYPE_NORMAL,
             .accuracy = 100,
             .pp = 5,
@@ -24445,9 +24448,9 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .data = {
             .effect = MOVE_EFFECT_RECOVER_HALF_DAMAGE_DEALT_BURN_HIT,
             .split = SPLIT_SPECIAL,
-            .power = 80,
+            .power = 85,
             .type = TYPE_GRASS,
-            .accuracy = 90,
+            .accuracy = 100,
             .pp = 15,
             .effectChance = 20,
         },
@@ -24474,7 +24477,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_SPECIAL,
             .power = 60,
             .type = TYPE_GRASS,
-            .accuracy = ((CHAMPIONS_ACC_CHANGES) ? (90) : (85)),
+            .accuracy = 100,
             .pp = 10,
             .effectChance = 100,
         },
@@ -24659,7 +24662,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Mighty Cleave",
         },
         .data = {
-            .effect = MOVE_EFFECT_IGNORE_PROTECT,
+            .effect = MOVE_EFFECT_HIT,
             .split = SPLIT_PHYSICAL,
             .power = 95,
             .type = TYPE_ROCK,
@@ -24945,6 +24948,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .contest = {
             .appeal = APPEAL_LOW_VOLTAGE_BOOST,
             .contestType = CONTEST_BEAUTY,
+            .padding02 = { 0, 0 },
         },
         .description = "",
     },

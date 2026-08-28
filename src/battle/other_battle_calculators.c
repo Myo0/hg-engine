@@ -1769,6 +1769,9 @@ int CalcCritical(void *bw, struct BattleStruct *sp, int attacker, int defender, 
         || (sp->moveTbl[sp->current_move_index].effect == MOVE_EFFECT_HIT_THREE_TIMES_ALWAYS_CRITICAL)) {
         if ((MoldBreakerAbilityCheck(sp, attacker, defender, ABILITY_BATTLE_ARMOR) == FALSE)
             && (MoldBreakerAbilityCheck(sp, attacker, defender, ABILITY_SHELL_ARMOR) == FALSE)
+            // Electrum: Leaf Guard & Magma Armor also block critical hits
+            && (MoldBreakerAbilityCheck(sp, attacker, defender, ABILITY_LEAF_GUARD) == FALSE)
+            && (MoldBreakerAbilityCheck(sp, attacker, defender, ABILITY_MAGMA_ARMOR) == FALSE)
             && ((side_condition & SIDE_STATUS_LUCKY_CHANT) == 0)
             && ((move_effect & MOVE_EFFECT_FLAG_NO_CRITICAL) == 0)) {
             multiplier = 2;
@@ -3761,7 +3764,21 @@ u32 LONG_CALL StruggleCheck(struct BattleSystem *bsys, struct BattleStruct *ctx,
         if (struggleCheckFlags & STRUGGLE_CHECK_GIGATON_HAMMER) {
             // Encore allows Gigaton Hammer to be used twice in a row, but on subsequent turns of the Encore the user will be forced to Struggle.
             if (!(ctx->battlemon[battlerId].moveeffect.encoredMove && ctx->battlemon[battlerId].moveeffect.encoredTurns == 3)) {
-                if (ctx->waza_no_old[battlerId] == ctx->battlemon[battlerId].move[movePos] && ctx->waza_no_old[battlerId] == MOVE_GIGATON_HAMMER) {
+                // Electrum: the old recharge moves are now "cannot be selected twice in a row" like Gigaton Hammer
+                u16 lastMove = ctx->waza_no_old[battlerId];
+                BOOL isNoRepeatMove = lastMove == MOVE_GIGATON_HAMMER
+                    || lastMove == MOVE_BLOOD_MOON
+                    || lastMove == MOVE_HYPER_BEAM
+                    || lastMove == MOVE_GIGA_IMPACT
+                    || lastMove == MOVE_BLAST_BURN
+                    || lastMove == MOVE_HYDRO_CANNON
+                    || lastMove == MOVE_FRENZY_PLANT
+                    || lastMove == MOVE_ROCK_WRECKER
+                    || lastMove == MOVE_ROAR_OF_TIME
+                    || lastMove == MOVE_PRISMATIC_LASER
+                    || lastMove == MOVE_METEOR_ASSAULT
+                    || lastMove == MOVE_ETERNABEAM;
+                if (lastMove == ctx->battlemon[battlerId].move[movePos] && isNoRepeatMove) {
                     nonSelectableMoves |= No2Bit(movePos);
                 }
             }

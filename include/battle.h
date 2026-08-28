@@ -14,6 +14,23 @@
 #include "sprite.h"
 #include "task.h"
 
+/* Electrum: ADD_EFFECT_* kept - upstream removed these from battle.h but its own
+   SwitchInAbilityCheck.c still references ADD_EFFECT_STICKY_WEB. */
+#define ADD_STATUS_NO_ABILITY   (0x08000000)
+#define ADD_EFFECT_DIRECT       1
+#define ADD_EFFECT_INDIRECT     2
+#define ADD_EFFECT_ABILITY      3
+#define ADD_EFFECT_MOVE_EFFECT  4
+#define ADD_EFFECT_HELD_ITEM    5
+#define ADD_EFFECT_TOXIC_SPIKES 6
+#define ADD_EFFECT_VARIOUS      7
+#define ADD_EFFECT_PRINT_WORK_ABILITY 8
+#define ADD_EFFECT_STICKY_WEB         9
+
+/* Electrum: permanent Aurora Veil set by overworld weather (bypasses turn countdown) */
+#define SIDE_STATUS_AURORA_VEIL_PERMANENT (0x10000)
+
+
 #define CLIENT_MAX 4
 
 // Contest types
@@ -23,99 +40,6 @@
 #define SMART  3
 #define TOUGH  4
 
-#define SELECT_FIGHT_COMMAND   1
-#define SELECT_ITEM_COMMAND    2
-#define SELECT_POKEMON_COMMAND 3
-#define SELECT_ESCAPE_COMMAND  4
-
-// add effect defines
-#define ADD_STATUS_NO_ABILITY (0x08000000)
-
-#define ADD_EFFECT_DIRECT       1
-#define ADD_EFFECT_INDIRECT     2
-#define ADD_EFFECT_ABILITY      3
-#define ADD_EFFECT_MOVE_EFFECT  4
-#define ADD_EFFECT_HELD_ITEM    5
-#define ADD_EFFECT_TOXIC_SPIKES 6
-#define ADD_EFFECT_VARIOUS      7
-// new
-#define ADD_EFFECT_PRINT_WORK_ABILITY 8
-#define ADD_EFFECT_STICKY_WEB         9
-
-/**
- *  @brief move status flag defines for the BattleStruct's waza_status_flag field.
- *  name is left as source define if not sure what it defines
- */
-#define MOVE_STATUS_FLAG_MISS                      (0x00000001)
-#define MOVE_STATUS_FLAG_SUPER_EFFECTIVE           (0x00000002)
-#define MOVE_STATUS_FLAG_NOT_VERY_EFFECTIVE        (0x00000004)
-#define MOVE_STATUS_FLAG_NOT_EFFECTIVE             (0x00000008)
-#define WAZA_STATUS_FLAG_CRITICAL                  (0x00000010)
-#define MOVE_STATUS_FLAG_OHKO_HIT                  (0x00000020)
-#define MOVE_STATUS_FLAG_FAILED                    (0x00000040)
-#define MOVE_STATUS_FLAG_HELD_ON_ABILITY           (0x00000080)
-#define MOVE_STATUS_FLAG_HELD_ON_ITEM              (0x00000100)
-#define WAZA_STATUS_FLAG_PP_NONE                   (0x00000200)
-#define MOVE_STATUS_FLAG_LOCK_ON                   (0x00000400)
-#define MOVE_STATUS_FLAG_LEVITATE_MISS             (0x00000800)
-#define MOVE_STATUS_FLAG_OHKO_HIT_NOHIT            (0x00001000)
-#define WAZA_STATUS_FLAG_NANIMOOKORAN              (0x00002000)
-#define MOVE_STATUS_FLAG_FURY_CUTTER_MISS          (0x00004000)
-#define MOVE_STATUS_FLAG_PROTECTED                 (0x00008000)
-#define WAZA_STATUS_FLAG_KIE_NOHIT                 (0x00010000)
-#define WAZA_STATUS_FLAG_WAZA_KOYUU_NOHIT          (0x00020000)
-#define MOVE_STATUS_FLAG_MISS_WONDER_GUARD         (0x00040000)
-#define MOVE_STATUS_FLAG_NO_OHKO                   (0x00080000)
-#define MOVE_STATUS_FLAG_MAGNET_RISE_MISS          (0x00100000)
-#define MOVE_STATUS_FLAG_SUPPRESS_FOLLOWUP_MESSAGE (0x40000000)
-
-#define MOVE_STATUS_NO_MORE_WORK (0x80000000)
-
-#define WAZA_STATUS_FLAG_NOHIT_OFF      (MOVE_STATUS_FLAG_MISS ^ 0xffffffff)
-#define WAZA_STATUS_FLAG_BATSUGUN_OFF   (WAZA_STATUS_FLAG_BATSUGUN ^ 0xffffffff)
-#define WAZA_STATUS_FLAG_IMAHITOTSU_OFF (WAZA_STATUS_FLAG_IMAHITOTSU ^ 0xffffffff)
-
-#define MOVE_STATUS_FLAG_FAILURE_ANY (MOVE_STATUS_FLAG_MISS | MOVE_STATUS_FLAG_NOT_EFFECTIVE | MOVE_STATUS_FLAG_FAILED | MOVE_STATUS_FLAG_LEVITATE_MISS | MOVE_STATUS_FLAG_OHKO_HIT_NOHIT | MOVE_STATUS_FLAG_FURY_CUTTER_MISS | MOVE_STATUS_FLAG_PROTECTED | WAZA_STATUS_FLAG_KIE_NOHIT | WAZA_STATUS_FLAG_WAZA_KOYUU_NOHIT | MOVE_STATUS_FLAG_MISS_WONDER_GUARD | MOVE_STATUS_FLAG_NO_OHKO | MOVE_STATUS_FLAG_MAGNET_RISE_MISS)
-
-#define WAZA_STATUS_FLAG_NO_OUT (MOVE_STATUS_FLAG_FAILURE_ANY | WAZA_STATUS_FLAG_PP_NONE | MOVE_STATUS_NO_MORE_WORK)
-
-#define WAZA_STATUS_FLAG_SOUSAI (WAZA_STATUS_FLAG_BATSUGUN | WAZA_STATUS_FLAG_IMAHITOTSU)
-
-/**
- *  @brief stat definitions as they appear in battles.
- *  index BattleStruct's battlemon[battler].states for the stat stages
- *  of the battlemon referenced by battler
- */
-#define STAT_HP       (0x00)
-#define STAT_ATTACK   (0x01)
-#define STAT_DEFENSE  (0x02)
-#define STAT_SPEED    (0x03)
-#define STAT_SPATK    (0x04)
-#define STAT_SPDEF    (0x05)
-#define STAT_ACCURACY (0x06)
-#define STAT_EVASION  (0x07)
-#define STAT_MAX      (0x08)
-
-/**
- *  @brief battle type flags
- *  access with BattleTypeGet(bw) & BATTLE_TYPE_* to test properly
- */
-#define BATTLE_TYPE_SINGLE        0x00
-#define BATTLE_TYPE_TRAINER       0x01
-#define BATTLE_TYPE_DOUBLE        0x02
-#define BATTLE_TYPE_WIRELESS      0x04
-#define BATTLE_TYPE_MULTI         0x08
-#define BATTLE_TYPE_TAG           0x10
-#define BATTLE_TYPE_SAFARI        0x20
-#define BATTLE_TYPE_NPC_MULTI     0x40
-#define BATTLE_TYPE_BATTLE_TOWER  0x80
-#define BATTLE_TYPE_ROAMER        0x100
-#define BATTLE_TYPE_PAL_PARK      0x200
-#define BATTLE_TYPE_CATCHING_DEMO 0x400
-#define BATTLE_TYPE_CAN_LOSE      0x800
-#define BATTLE_TYPE_BUG_CONTEST   0x1000
-
-#define BATTLE_TYPE_NO_EXPERIENCE (BATTLE_TYPE_WIRELESS | BATTLE_TYPE_SAFARI | BATTLE_TYPE_BATTLE_TOWER | BATTLE_TYPE_PAL_PARK)
 #define SPREAD_MOVE_STATUS2_FLAG_MAGIC_BOUNCE (0x00000001)
 
 // change the flow of the ball callback to make sure that critical captures only shake once then succeed.  if it shakes, it succeeds, though
@@ -171,7 +95,6 @@
 #define SIDE_STATUS_STICKY_WEB   (0x800)
 #define SIDE_STATUS_LUCKY_CHANT  (0x7000)
 #define SIDE_STATUS_AURORA_VEIL  (0x8000)
-#define SIDE_STATUS_AURORA_VEIL_PERMANENT (0x10000) // set by overworld weather; bypasses turn countdown
 
 /**
  *  @brief self status flags that apply to BattleStruct's oneSelfFlag[battler].status_flag
@@ -1033,7 +956,7 @@ struct BattleStruct {
     /*0x218C*/ u32 condition2_off_req[CLIENT_MAX];
     /*0x219C*/ u8 sel_mons_no[CLIENT_MAX]; // selectedMonIndex
     /*0x21A0*/ u8 reshuffle_sel_mons_no[CLIENT_MAX];
-    /*0x21A4*/ u8 aiSwitchedPartySlot[CLIENT_MAX];
+    /*0x21A4*/ u8 ai_reshuffle_sel_mons_no[CLIENT_MAX];
     /*0x21A8*/ u32 playerActions[4][4]; // client_act_work
     /*0x21E8*/ u8 executionOrder[4]; // client_agi_work -- accounts for running, items, etc used in battler slots
     /*0x21EC*/ u8 turnOrder[4]; // turn_order -- by pokemon speed, accounting for trick room
@@ -2568,9 +2491,6 @@ int LONG_CALL AI_TypeCheckCalc(int effectiveness, u32 *flag);
  *  @return TRUE if should use normal type effectiveness calculator; FALSE otherwise
  */
 BOOL LONG_CALL AI_ShouldUseNormalTypeEffCalc(struct BattleStruct *sp, u32 held_effect, int pos);
-void LONG_CALL AITypeCalc(struct BattleStruct *sp, u32 move, u32 type, int atkAbility, int defAbility, int held_effect, int type1, int type2, u32 *flag);
-u8 LONG_CALL BattleAI_CalcSpeed(void *bw, struct BattleStruct *sp, int client1, struct PartyPokemon *partyMon, int flag);
-BOOL LONG_CALL IsPartyPokemonGrounded(struct BattleStruct *sp, struct PartyPokemon *pp);
 
 /**
  *  @brief grab trainer id of a client

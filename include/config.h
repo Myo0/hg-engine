@@ -274,11 +274,11 @@
 // #define SKIP_TUTORIAL_INFO
 
 // Champions-specific move configurations. Set to 0 to use Scarlet/Violet values.
-#define CHAMPIONS_POWER_CHANGES         1
-#define CHAMPIONS_TYPE_CHANGES          1
-#define CHAMPIONS_ACC_CHANGES           1
+#define CHAMPIONS_POWER_CHANGES         0
+#define CHAMPIONS_TYPE_CHANGES          0
+#define CHAMPIONS_ACC_CHANGES           0
 #define CHAMPIONS_PP_CHANGES            0
-#define CHAMPIONS_EFFECT_CHANCE_CHANGES 1
+#define CHAMPIONS_EFFECT_CHANCE_CHANGES 0
 
 // EXPAND_TRAINER_PRIZE_MONEY allows for additional trainers to have prize money associated.
 // Enable if you add new trainer classes or want to edit existing prize money ratios.

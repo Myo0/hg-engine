@@ -632,20 +632,24 @@ void __attribute__((section(".init"))) BattleController_BeforeMove(struct Battle
 #endif
 
         u32 type = GetAdjustedMoveType(ctx, ctx->attack_client, ctx->current_move_index);
+        // Electrum: Libero re-types every turn; Protean keeps the gen-9 once-per-switch-in limit.
+        u32 hasProtean = ctx->battlemon[ctx->attack_client].ability == ABILITY_PROTEAN;
+        u32 hasLibero = ctx->battlemon[ctx->attack_client].ability == ABILITY_LIBERO;
         if (!ctx->futureSightHitTurn
-            && (ctx->battlemon[ctx->attack_client].ability == ABILITY_PROTEAN || ctx->battlemon[ctx->attack_client].ability == ABILITY_LIBERO)
+            && (hasProtean || hasLibero)
             // If the type is not typeless (Struggle)
             && (type != TYPE_TYPELESS)
             && (!IsPureType(ctx, ctx->attack_client, type))
             // Protean cannot activate if the client is Terastallized
             && (!ctx->battlemon[ctx->attack_client].is_currently_terastallized)
-            // Protean should activate only once per switch-in if gen 9 behavior
-            && (ctx->battlemon[ctx->attack_client].ability_activated_flag == 0 || PROTEAN_GENERATION < 9)) {
+            // Protean activates only once per switch-in if gen 9 behavior; Libero always activates
+            && (ctx->battlemon[ctx->attack_client].ability_activated_flag == 0 || PROTEAN_GENERATION < 9 || hasLibero)) {
             ctx->battlemon[ctx->attack_client].type1 = type;
             ctx->battlemon[ctx->attack_client].type2 = type;
             ctx->battlemon[ctx->attack_client].type3 = TYPE_TYPELESS;
 #if PROTEAN_GENERATION >= 9
-            ctx->battlemon[ctx->attack_client].ability_activated_flag = 1;
+            if (hasProtean)
+                ctx->battlemon[ctx->attack_client].ability_activated_flag = 1;
 #endif
             LoadBattleSubSeqScript(ctx, ARC_BATTLE_SUB_SEQ, BATTLE_SUBSCRIPT_HANDLE_PROTEAN_MESSAGE);
             ctx->msg_work = ctx->battlemon[ctx->attack_client].type1;
@@ -1218,8 +1222,7 @@ void BattleController_CheckRecharge(struct BattleSystem *bsys, struct BattleStru
 
 void BattleController_CheckSleepOrFrozen(struct BattleSystem *bsys, struct BattleStruct *ctx)
 {
-    int effect = ctx->moveTbl[ctx->current_move_index].effect;
-
+    // Electrum: `effect` (used only by the removed freeze-solid check) is gone; this now only handles sleep.
     if (ctx->battlemon[ctx->attack_client].condition & STATUS_SLEEP) {
         if (ctx->field_condition & FIELD_CONDITION_UPROAR && GetBattlerAbility(ctx, ctx->attack_client) != ABILITY_SOUNDPROOF) {
             ctx->battlerIdTemp = ctx->attack_client;
@@ -1262,26 +1265,9 @@ void BattleController_CheckSleepOrFrozen(struct BattleSystem *bsys, struct Battl
         }
     }
 
-    if (ctx->battlemon[ctx->attack_client].condition & STATUS_FREEZE) {
-        if (BattleRand(bsys) % 5 != 0) {
-            if (effect != MOVE_EFFECT_THAW_AND_BURN_HIT && effect != MOVE_EFFECT_RECOIL_BURN_HIT && effect != MOVE_EFFECT_RECOVER_HALF_DAMAGE_DEALT_BURN_HIT) {
-                LoadBattleSubSeqScript(ctx, ARC_BATTLE_SUB_SEQ, BATTLE_SUBSCRIPT_FROZEN);
-                ctx->server_seq_no = CONTROLLER_COMMAND_RUN_SCRIPT;
-                ctx->next_server_seq_no = CONTROLLER_COMMAND_39;
-                ctx->wb_seq_no = BEFORE_MOVE_START;
-                CopyBattleMonToPartyMon(bsys, ctx, ctx->attack_client);
-                ctx->server_status_flag |= BATTLE_STATUS_CHECK_LOOP_ONLY_ONCE;
-                ctx->waza_status_flag |= MOVE_STATUS_NO_MORE_WORK;
-                return;
-            }
-        } else {
-            ctx->battlerIdTemp = ctx->attack_client;
-            LoadBattleSubSeqScript(ctx, ARC_BATTLE_SUB_SEQ, BATTLE_SUBSCRIPT_THAW_OUT);
-            ctx->next_server_seq_no = ctx->server_seq_no;
-            ctx->server_seq_no = CONTROLLER_COMMAND_RUN_SCRIPT;
-            return;
-        }
-    }
+    // Electrum: Frostbite replaces Freeze - it never immobilizes and there is no thaw, so the
+    // freeze-solid / thaw-on-fire-move handling that lived here is removed. Chip damage + SpAtk
+    // drop are handled in ServerFieldConditionCheck.c and battle_calc_damage.c respectively.
 }
 
 void BattleController_CheckPP(struct BattleSystem *bsys, struct BattleStruct *ctx)
@@ -1793,19 +1779,9 @@ BOOL BattlerController_DecrementPP(struct BattleSystem *bsys, struct BattleStruc
 }
 
 // TODO: handle Burn Up edge case
-void BattleController_CheckThawOut(struct BattleSystem *bsys UNUSED, struct BattleStruct *ctx)
+void BattleController_CheckThawOut(struct BattleSystem *bsys UNUSED, struct BattleStruct *ctx UNUSED)
 {
-    int effect = ctx->moveTbl[ctx->current_move_index].effect;
-
-    if (ctx->battlemon[ctx->attack_client].condition & STATUS_FREEZE) {
-        if (effect == MOVE_EFFECT_THAW_AND_BURN_HIT || effect == MOVE_EFFECT_RECOIL_BURN_HIT || effect == MOVE_EFFECT_RECOVER_HALF_DAMAGE_DEALT_BURN_HIT) {
-            ctx->battlerIdTemp = ctx->attack_client;
-            LoadBattleSubSeqScript(ctx, ARC_BATTLE_SUB_SEQ, BATTLE_SUBSCRIPT_THAW_OUT);
-            ctx->next_server_seq_no = ctx->server_seq_no;
-            ctx->server_seq_no = CONTROLLER_COMMAND_RUN_SCRIPT;
-            return;
-        }
-    }
+    // Electrum: Frostbite has no thaw mechanic, so this is a no-op (kept for the call site at ~L474).
 }
 
 // TODO: make it so that it doesn't do redundant damage calculations
@@ -2468,6 +2444,9 @@ BOOL CanHitThroughProtect(struct BattleStruct *ctx, int attacker, int defender)
     if (moveEffect == MOVE_EFFECT_REMOVE_PROTECT
         || moveEffect == MOVE_EFFECT_SHADOW_FORCE
         || moveEffect == MOVE_EFFECT_IGNORE_PROTECT
+        // Electrum: Shadow/Phantom Force are single-turn attacks now but still ignore Protect
+        || ctx->current_move_index == MOVE_SHADOW_FORCE
+        || ctx->current_move_index == MOVE_PHANTOM_FORCE
         || (ctx->current_move_index == MOVE_CURSE && HasType(ctx, attacker, TYPE_GHOST))
         || ((ability == ABILITY_UNSEEN_FIST
                 || ability == ABILITY_PIERCING_DRILL)

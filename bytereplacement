@@ -539,27 +539,23 @@ arm9 02000E54 24 00 00 00 04 5C 1E 02
 0012 0223BD3C 18 B4 05 4B 89 07 C4 5C
 #endif
 
-# honestly will not have any way to revert this because this is so much less intrusive and Just Works
-#ifdef APPLY_ANTIPIRACY
-
-# card checks return TRUE
-0001 021E662C 01 20 70 47
-# neuter dsprotect
-0123 0225F0CC E0 FC FF FF
-0123 0225F184 E0 FC FF FF
-
-#endif
-
-# make sure that the original antipiracy method is patched to vanilla
-arm9 02000A18 1E FF 2F E1
+# Electrum: b15b01c9f's DSpico-compatible antipiracy rework (build-time overlay-123
+# decompress + these bytereplacement patches + `arm9 02000A18 bx lr`) does NOT neuter
+# dsprotect on our iteratively-built base rom.nds -> ROM runs off into garbage on
+# overworld load. Reverted to the pre-b15b01c9f runtime mechanism: overlay 123 stays
+# compressed and armips/asm/antipiracy.s's patch_1 hook (installed under
+# .ifdef APPLY_ANTIPIRACY in armips/global.s) neuters it at load time.
+# (bisected 2026-08-27; also removed 123 from OVERLAYS_TO_DECOMPRESS in scripts/make.py)
 
 # restore original sItemFieldUseFunc pointers since we no longer repoint the whole thing
 arm9 020649AC 64 E2 0F 02
 arm9 020649B0 64 E2 0F 02
 arm9 020649B4 64 E2 0F 02
 
-#ifdef SKIP_TUTORIAL_INFO
-0053 080016BA D4 05
-#else
-0053 080016BA FC 00
-#endif
+# Electrum: upstream a1d783656's SKIP_TUTORIAL_INFO patches overlay 53 at file offset
+# 0x16BA assuming BluRosie's overlay-53 layout AND that 53 was build-time decompressed
+# (it added 53 to OVERLAYS_TO_DECOMPRESS). Our base rom.nds has a DSPRE-modified overlay
+# 53 with a different layout, so the patch lands on the wrong bytes -> menu/overworld-entry
+# code corrupted -> game hangs entering the overworld. Reverted to the fork behavior:
+# 53 stays compressed (removed from OVERLAYS_TO_DECOMPRESS), no byte patch, vanilla tutorial.
+# (bisected 2026-08-27)

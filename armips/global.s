@@ -25,10 +25,19 @@
 .include "armips/asm/custom/double_battle_music.s"
 .include "armips/asm/custom/encounter_rates.s"
 .include "armips/asm/custom/fishing_autohook.s"
+.include "armips/asm/custom/dspre_overlay_edits.s"
 
 .if FAIRY_TYPE_IMPLEMENTED == 1
 
 .include "armips/asm/fairy.s" // repoints all the move table defines within the structure
+
+.endif
+
+.ifdef APPLY_ANTIPIRACY
+
+// Electrum: restored from b15b01c9f^ - upstream b15b01c9f's replacement antipiracy
+// mechanism runs the ROM off into garbage on overworld load with our base rom.nds.
+.include "armips/asm/antipiracy.s" // install antipiracy into the rom
 
 .endif
 

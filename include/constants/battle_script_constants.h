@@ -528,6 +528,17 @@
 // define your custom subscripts below like this
 // #define MOVE_SUBSCRIPT_PTR_CUSTOM_1 (MAX_BASE_SUBSCRIPT_NUM + 1)
 
+// Electrum custom subscripts.
+#define BATTLE_SUBSCRIPT_OVERWORLD_GRAVITY_PERMANENT     (MAX_BASE_SUBSCRIPT_NUM + 1) // 516
+#define BATTLE_SUBSCRIPT_OVERWORLD_TAILWIND_PERMANENT    (MAX_BASE_SUBSCRIPT_NUM + 2) // 517
+#define BATTLE_SUBSCRIPT_OVERWORLD_TRICK_ROOM_TERRAIN    (MAX_BASE_SUBSCRIPT_NUM + 3) // 518
+#define BATTLE_SUBSCRIPT_OVERWORLD_SUN_TERRAIN           (MAX_BASE_SUBSCRIPT_NUM + 4) // 519
+#define BATTLE_SUBSCRIPT_OVERWORLD_RAIN_TERRAIN          (MAX_BASE_SUBSCRIPT_NUM + 5) // 520
+#define BATTLE_SUBSCRIPT_OVERWORLD_SNOW_TERRAIN          (MAX_BASE_SUBSCRIPT_NUM + 6) // 521
+#define BATTLE_SUBSCRIPT_ILLUMINATE                      (MAX_BASE_SUBSCRIPT_NUM + 7) // 522
+#define BATTLE_SUBSCRIPT_FROSTBITE_DAMAGE                (MAX_BASE_SUBSCRIPT_NUM + 8) // 523
+#define BATTLE_SUBSCRIPT_OVERWORLD_TERRAIN               (MAX_BASE_SUBSCRIPT_NUM + 9) // 524
+
 // add status effect constants--used in battle effect scripts to queue up a subscript through the table in src/moves.c
 
 #define MOVE_SUBSCRIPT_PTR_NONE                             (0)

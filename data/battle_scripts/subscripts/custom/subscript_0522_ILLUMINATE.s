@@ -1,3 +1,4 @@
+#include "constants/battle_constants.h"
 .include "asm/include/battle_commands.inc"
 
 .data

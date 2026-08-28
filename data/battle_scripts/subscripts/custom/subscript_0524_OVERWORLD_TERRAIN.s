@@ -1,4 +1,10 @@
+#include "constants/battle_constants.h"
 .include "asm/include/battle_commands.inc"
+
+// Electrum: battle-start plain terrain preset (DSPRE map-header weather values 16-19).
+// current_move_index is set to a MOVE_*_TERRAIN by SwitchInAbilityCheck.c before this runs;
+// UpdateTerrainOverlay reads it, sets the overlay, then we play the matching animation + message.
+// Terrain-only (no weather) - the 519/520/521 subscripts handle the weather+terrain combos.
 
 .data
 
@@ -45,13 +51,4 @@ _049:
     UpdateVar OPCODE_FLAG_OFF, BSCRIPT_VAR_BATTLE_STATUS, BATTLE_STATUS_MOVE_ANIMATIONS_OFF
     Wait
     WaitButtonABTime 30
-    // It started to snow!
-    PrintMessage 1439, TAG_NONE
-    Wait
-    WaitButtonABTime 30
-    UpdateVar OPCODE_FLAG_OFF, BSCRIPT_VAR_FIELD_CONDITION, FIELD_CONDITION_WEATHER
-    UpdateVar OPCODE_FLAG_ON, BSCRIPT_VAR_FIELD_CONDITION, FIELD_CONDITION_SNOW_TEMP
-    UpdateVar OPCODE_SET, BSCRIPT_VAR_WEATHER_TURNS, 99
-    GetItemEffectParam BATTLER_CATEGORY_ATTACKER, BSCRIPT_VAR_CALC_TEMP
-    UpdateVarFromVar OPCODE_ADD, BSCRIPT_VAR_WEATHER_TURNS, BSCRIPT_VAR_CALC_TEMP
-    End 
+    End

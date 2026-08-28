@@ -161471,6 +161471,9 @@ const ITEMDATA __data[] =
     },
 },
 
+// Electrum: ITEM_INFINITE_CANDY reclaims id 2558 (== ITEM_SEED_OF_MASTERY_PLZA). Disable the
+// PLZA Seed of Mastery entry so the [ITEM_INFINITE_CANDY] initializer above is the sole one for 2558.
+#if 0
 [ITEM_SEED_OF_MASTERY_PLZA] =
 {
     ITEM_PRICE(0),
@@ -161535,6 +161538,7 @@ const ITEMDATA __data[] =
         .friendship_mod_hi_param = 0,
     },
 },
+#endif // Electrum: end disabled ITEM_SEED_OF_MASTERY_PLZA
 
 [ITEM_CLEFABLITE] =
 {

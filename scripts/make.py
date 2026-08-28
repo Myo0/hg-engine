@@ -571,7 +571,7 @@ def offset():
                 rom.close()
 
 
-OVERLAYS_TO_DECOMPRESS = [1, 2, 6, 7, 8, 10, 12, 14, 15, 18, 23, 31, 53, 61, 63, 64, 68, 94, 96, 112, 123]
+OVERLAYS_TO_DECOMPRESS = [1, 2, 6, 7, 8, 10, 12, 14, 15, 18, 23, 31, 61, 63, 64, 68, 94, 96, 112]  # Electrum: 53 + 123 removed (both added by upstream) - our DSPRE-modified base rom.nds needs them left compressed; see bytereplacement + armips/asm/antipiracy.s
 
 
 def decompress():

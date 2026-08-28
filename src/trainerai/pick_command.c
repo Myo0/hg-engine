@@ -162,7 +162,7 @@ static BOOL TrainerAI_ImmunitySwitch(struct BattleSystem *battleSys, int battler
         if (GetMonData(mon, MON_DATA_HP, 0) == 0) {
             continue;
         }
-        if (i == ctx->sel_mons_no[battler] || i == ctx->aiSwitchedPartySlot[battler]) {
+        if (i == ctx->sel_mons_no[battler] || i == ctx->ai_reshuffle_sel_mons_no[battler]) {
             continue;
         }
 
@@ -260,7 +260,7 @@ BOOL TrainerAI_ShouldSwitch(struct BattleSystem *battleSys, int battler)
     struct BattleStruct *ctx = battleSys->sp;
 
     // Singles only — doubles never voluntarily switch
-    if (BattleTypeGet(battleSys) & (BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_TAG)) {
+    if (BattleTypeGet(battleSys) & (BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_TAG)) {
         return FALSE;
     }
 
@@ -270,10 +270,10 @@ BOOL TrainerAI_ShouldSwitch(struct BattleSystem *battleSys, int battler)
     }
 
     // Perish Song: counter at 1 means the mon faints end of this turn if it stays in
-    if ((ctx->battlemon[battler].effect_of_moves & MOVE_EFFECT_FLAG_PERISH_SONG_ACTIVE) && ctx->battlemon[battler].moveeffect.perishSongTurns == 1) {
+    if ((ctx->battlemon[battler].effect_of_moves & MOVE_EFFECT_FLAG_PERISH_SONG) && ctx->battlemon[battler].moveeffect.perishSongTurns == 1) {
         int partySize = Battle_GetClientPartySize(battleSys, battler);
         for (int i = 0; i < partySize; i++) {
-            if (i == ctx->sel_mons_no[battler] || i == ctx->aiSwitchedPartySlot[battler]) {
+            if (i == ctx->sel_mons_no[battler] || i == ctx->ai_reshuffle_sel_mons_no[battler]) {
                 continue;
             }
             struct PartyPokemon *mon = Battle_GetClientPartyMon(battleSys, battler, i);
@@ -325,7 +325,7 @@ BOOL TrainerAI_ShouldSwitch(struct BattleSystem *battleSys, int battler)
         if (GetMonData(mon, MON_DATA_HP, 0) == 0) {
             continue;
         }
-        if (i == ctx->sel_mons_no[battler] || i == ctx->aiSwitchedPartySlot[battler]) {
+        if (i == ctx->sel_mons_no[battler] || i == ctx->ai_reshuffle_sel_mons_no[battler]) {
             continue;
         }
 

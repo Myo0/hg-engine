@@ -1,3 +1,4 @@
+#include "constants/battle_constants.h"
 .include "asm/include/battle_commands.inc"
 
 .data
@@ -13,5 +14,5 @@ _000:
     Wait
     WaitButtonABTime 30
     UpdateVar OPCODE_FLAG_ON, BSCRIPT_VAR_FIELD_CONDITION, FIELD_CONDITION_GRAVITY_INIT
-    UpdateVar OPCODE_FLAG_ON, BSCRIPT_VAR_FIELD_CONDITION, FIELD_STATUS_GRAVITY_PERMANENT
+    UpdateVar OPCODE_FLAG_ON, BSCRIPT_VAR_FIELD_CONDITION, FIELD_CONDITION_GRAVITY_PERMANENT
     End

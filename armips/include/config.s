@@ -47,3 +47,8 @@ FAST_TEXT_PRINTING equ 0
 // NO_PARTNER_DOUBLE_BATTLES allows for setting trainers to double battles without setting up a partner trainer.  set to 0 to disable
 // note that the entry in `armips/data/trainers/trainertext.s` has to use `TEXT_DOUBLE_DEFEATED_IN_BATTLE_1`, but the overworld entries can remain the same.
 NO_PARTNER_DOUBLE_BATTLES equ 1
+
+// APPLY_ANTIPIRACY (Electrum): restored from b15b01c9f^. gates armips/asm/antipiracy.s
+// in armips/global.s. b15b01c9f removed this and replaced the mechanism; the replacement
+// bricks the ROM on overworld load with our base rom.nds (bisected 2026-08-27).
+.definelabel APPLY_ANTIPIRACY, 0

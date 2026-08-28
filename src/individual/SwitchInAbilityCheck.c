@@ -16,6 +16,7 @@
 #include "pokemon.h"
 
 static BOOL IntimidateCheckHelper(struct BattleStruct *sp, u32 client);
+static BOOL IlluminateCheckHelper(struct BattleStruct *sp, u32 client); // Electrum
 static BOOL IsValidImposterTarget(struct BattleSystem *bw, struct BattleStruct *sp, u32 client);
 
 extern struct ILLUSION_STRUCT gIllusionStruct;
@@ -55,8 +56,12 @@ int UNUSED SwitchInAbilityCheck(void *bw, struct BattleStruct *sp)
                 switch (BattleWorkWeatherGet(bw)) {
                 case WEATHER_SYS_RAIN:
                 case WEATHER_SYS_HEAVY_RAIN:
-                case WEATHER_SYS_THUNDER:
                     scriptnum = BATTLE_SUBSCRIPT_OVERWORLD_RAIN;
+                    ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                    break;
+                case WEATHER_SYS_THUNDER: // Electrum: thunderstorm -> Electric Terrain + permanent-sun preset
+                    sp->current_move_index = MOVE_ELECTRIC_TERRAIN;
+                    scriptnum = BATTLE_SUBSCRIPT_OVERWORLD_SUN_TERRAIN;
                     ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
                     break;
                 case WEATHER_SYS_SNOW:
@@ -80,6 +85,68 @@ int UNUSED SwitchInAbilityCheck(void *bw, struct BattleStruct *sp)
                     break;
                 case WEATHER_SYS_TRICK_ROOM:
                     scriptnum = BATTLE_SUBSCRIPT_OVERWORLD_TRICK_ROOM;
+                    ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                    break;
+                // Electrum: DSPRE map-header weather values 16-28 are custom battle-start field-effect presets.
+                // Each sets current_move_index (a terrain move for the terrain ones) then runs a subscript;
+                // OVERWORLD_TERRAIN / the 518-521 combos call UpdateTerrainOverlay, which reads current_move_index.
+                case 16:
+                    sp->current_move_index = MOVE_GRASSY_TERRAIN;
+                    scriptnum = BATTLE_SUBSCRIPT_OVERWORLD_TERRAIN;
+                    ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                    break;
+                case 17:
+                    sp->current_move_index = MOVE_ELECTRIC_TERRAIN;
+                    scriptnum = BATTLE_SUBSCRIPT_OVERWORLD_TERRAIN;
+                    ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                    break;
+                case 18:
+                    sp->current_move_index = MOVE_PSYCHIC_TERRAIN;
+                    scriptnum = BATTLE_SUBSCRIPT_OVERWORLD_TERRAIN;
+                    ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                    break;
+                case 19:
+                    sp->current_move_index = MOVE_MISTY_TERRAIN;
+                    scriptnum = BATTLE_SUBSCRIPT_OVERWORLD_TERRAIN;
+                    ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                    break;
+                case 20: // permanent Tailwind on the AI side
+                    sp->tailwindCount[1] = 255;
+                    scriptnum = BATTLE_SUBSCRIPT_OVERWORLD_TAILWIND_PERMANENT;
+                    ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                    break;
+                case 21: // Electric Terrain + permanent Rain
+                    sp->current_move_index = MOVE_ELECTRIC_TERRAIN;
+                    scriptnum = BATTLE_SUBSCRIPT_OVERWORLD_RAIN_TERRAIN;
+                    ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                    break;
+                case 22: // Psychic Terrain + Snow
+                    sp->current_move_index = MOVE_PSYCHIC_TERRAIN;
+                    scriptnum = BATTLE_SUBSCRIPT_OVERWORLD_SNOW_TERRAIN;
+                    ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                    break;
+                case 23: // Grassy Terrain + permanent Sun
+                    sp->current_move_index = MOVE_GRASSY_TERRAIN;
+                    scriptnum = BATTLE_SUBSCRIPT_OVERWORLD_SUN_TERRAIN;
+                    ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                    break;
+                case 26: // permanent Gravity
+                    scriptnum = BATTLE_SUBSCRIPT_OVERWORLD_GRAVITY_PERMANENT;
+                    ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                    break;
+                case 27: // permanent Aurora Veil on the AI side
+                    sp->side_condition[1] |= SIDE_STATUS_AURORA_VEIL_PERMANENT;
+                    sp->attack_client = BATTLER_ENEMY;
+                    sp->current_move_index = MOVE_AURORA_VEIL;
+                    scriptnum = BATTLE_SUBSCRIPT_AURORA_VEIL;
+                    ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                    break;
+                case 28: // auto Stealth Rock on the player's side
+                    sp->side_condition[0] |= SIDE_STATUS_STEALTH_ROCK;
+                    sp->attack_client = BATTLER_ENEMY;
+                    sp->defence_client = BATTLER_PLAYER;
+                    sp->current_move_index = MOVE_STEALTH_ROCK;
+                    scriptnum = BATTLE_SUBSCRIPT_SET_STEALTH_ROCK;
                     ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
                     break;
                 }
@@ -304,6 +371,19 @@ int UNUSED SwitchInAbilityCheck(void *bw, struct BattleStruct *sp)
                         if (IntimidateCheckHelper(sp, client_no)) {
                             sp->battlerIdTemp = client_no;
                             scriptnum = BATTLE_SUBSCRIPT_INTIMIDATE;
+                            ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                            break;
+                        }
+                    }
+                }
+
+                // Electrum: Illuminate - lowers each opposing mon's Special Attack by one stage on switch-in
+                {
+                    if ((sp->battlemon[client_no].ability_activated_flag == 0) && (sp->battlemon[client_no].hp) && (GetBattlerAbility(sp, client_no) == ABILITY_ILLUMINATE)) {
+                        sp->battlemon[client_no].ability_activated_flag = 1;
+                        if (IlluminateCheckHelper(sp, client_no)) {
+                            sp->battlerIdTemp = client_no;
+                            scriptnum = BATTLE_SUBSCRIPT_ILLUMINATE;
                             ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
                             break;
                         }
@@ -1054,6 +1134,29 @@ static BOOL IntimidateCheckHelper(struct BattleStruct *sp, u32 client)
         }
     }
     return FALSE; // neither opposing battler has an ability that intimidate can activate on
+}
+
+// Electrum: TRUE if Illuminate can drop the Special Attack of at least one opposing battler
+static BOOL IlluminateCheckHelper(struct BattleStruct *sp, u32 client)
+{
+    u32 clientCheck;
+    for (int i = 0; i < 2; i++) {
+        clientCheck = i ? BATTLER_ACROSS(client) : BATTLER_OPPONENT(client);
+        if (sp->battlemon[clientCheck].hp
+            && sp->battlemon[clientCheck].states[STAT_SPECIAL_ATTACK] > 0) {
+            u32 ability = GetBattlerAbility(sp, clientCheck);
+            switch (ability) {
+            case ABILITY_INNER_FOCUS:
+            case ABILITY_OBLIVIOUS:
+            case ABILITY_OWN_TEMPO:
+            case ABILITY_FULL_METAL_BODY:
+                break;
+            default:
+                return TRUE;
+            }
+        }
+    }
+    return FALSE;
 }
 
 /**

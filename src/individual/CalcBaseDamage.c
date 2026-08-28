@@ -638,6 +638,23 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
                 continue;
             }
 
+            // Electrum: Cute Charm is a reverse Rivalry - boost vs opposite gender, penalty vs same gender
+            if ((AttackingMon.ability == ABILITY_CUTE_CHARM)
+                && (AttackingMon.sex != DefendingMon.sex)
+                && (AttackingMon.sex != POKEMON_GENDER_UNKNOWN)
+                && (DefendingMon.sex != POKEMON_GENDER_UNKNOWN)) {
+                basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_25);
+                continue;
+            }
+
+            if ((AttackingMon.ability == ABILITY_CUTE_CHARM)
+                && (AttackingMon.sex == DefendingMon.sex)
+                && (AttackingMon.sex != POKEMON_GENDER_UNKNOWN)
+                && (DefendingMon.sex != POKEMON_GENDER_UNKNOWN)) {
+                basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__0_75);
+                continue;
+            }
+
             if (MoveIsAffectedByNormalizeVariants(moveno)) {
                 // handle Aerilate - 20% boost if a Normal type move was changed to a Flying type move. Does not boost Flying type moves themselves
                 if (AttackingMon.ability == ABILITY_AERILATE && movetype == TYPE_FLYING && originalMoveType == TYPE_NORMAL) {
@@ -676,6 +693,12 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
                 }
             }
 
+            // Electrum: Liquid Voice - 20% boost to sound-based moves it turned Water-type
+            if (AttackingMon.ability == ABILITY_LIQUID_VOICE && movetype == TYPE_WATER && IsMoveSoundBased(moveno)) {
+                basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_2);
+                continue;
+            }
+
             // handle Iron Fist
             if ((AttackingMon.ability == ABILITY_IRON_FIST)
                 && IsElementInArray(PunchingMoveTable, (u16 *)&moveno, NELEMS(PunchingMoveTable), sizeof(PunchingMoveTable[0]))) {
@@ -708,6 +731,14 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
                 && (weather & FIELD_CONDITION_SANDSTORM_ALL)
                 && (movetype == TYPE_GROUND || movetype == TYPE_ROCK || movetype == TYPE_STEEL)) {
                 basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_3);
+                continue;
+            }
+
+            // Electrum custom ability: Permafrost - +50% to Ice-type moves while snow is up
+            if ((AttackingMon.ability == ABILITY_PERMAFROST)
+                && (weather & FIELD_CONDITION_SNOW_ALL)
+                && (movetype == TYPE_ICE)) {
+                basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_5);
                 continue;
             }
 

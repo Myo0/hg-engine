@@ -762,7 +762,11 @@ $(TRAINER_GFX_DIR)/8_102-04.NCGR: $(TRAINER_GFX_DEPENDENCIES_DIR)/102-prebuilt-0
 $(TRAINER_GFX_NARC): $(TRAINER_GFX_DEPENDENCIES) $(TRAINER_GFX_OBJS)
 	$(NARCHIVE) create $@ $(TRAINER_GFX_DIR) -nf
 
-NARC_FILES += $(TRAINER_GFX_NARC)
+# Electrum: disabled - see Makefile move_narc. a/0/5/8 (trainer front sprites) - upstream's
+# trainer_gfx redump (encrypted _enc.png + reworked cell/anim json + nitrogfx bump) rebuilds
+# this NARC as garbage (scrambled in-battle trainer sprites). Preserve from hybrid base, which
+# carries the fork's vanilla + custom classes 90-94 front sprites from the last good pre-merge build.
+# NARC_FILES += $(TRAINER_GFX_NARC)
 REQUIRED_DIRECTORIES += $(TRAINER_GFX_DIR)
 
 
@@ -798,7 +802,7 @@ $(TRAINER_GFX_BACK_DIR)/6_%-04.NCGR:$(TRAINER_GFX_BACK_DEPENDENCIES_DIR)/%_enc.p
 $(TRAINER_GFX_BACK_NARC): $(TRAINER_GFX_BACK_DEPENDENCIES) $(TRAINER_GFX_BACK_OBJS)
 	$(NARCHIVE) create $@ $(TRAINER_GFX_BACK_DIR) -nf
 
-NARC_FILES += $(TRAINER_GFX_BACK_NARC)
+# Electrum: disabled - see Makefile move_narc. NARC_FILES += $(TRAINER_GFX_BACK_NARC)
 REQUIRED_DIRECTORIES += $(TRAINER_GFX_BACK_DIR)
 
 

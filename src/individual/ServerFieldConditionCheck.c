@@ -35,6 +35,7 @@ enum EndTurnResolutionOrder {
     ENDTURN_LEECH_SEED,
     ENDTURN_POISON,
     ENDTURN_BURN,
+    ENDTURN_FROSTBITE, // Electrum
     ENDTURN_NIGHTMARE,
     ENDTURN_CURSE,
     ENDTURN_TRAPPING_DAMAGE,
@@ -781,6 +782,32 @@ void ServerFieldConditionCheck(void *bw, struct BattleStruct *sp)
                 if ((sp->battlemon[battlerId].condition & STATUS_BURN) && sp->battlemon[battlerId].hp != 0) {
                     sp->battlerIdTemp = battlerId;
                     LoadBattleSubSeqScript(sp, ARC_BATTLE_SUB_SEQ, BATTLE_SUBSCRIPT_BURN_DAMAGE);
+                    sp->next_server_seq_no = sp->server_seq_no;
+                    sp->server_seq_no = 22;
+                    ret = 1;
+                }
+
+                sp->scc_work++;
+                break;
+            }
+
+            if (sp->scc_work >= client_set_max) {
+                sp->scc_work = 0;
+                sp->fcc_seq_no++;
+            }
+            break;
+        }
+        case ENDTURN_FROSTBITE: { // Electrum: 1/16 max-HP chip each turn, mirroring burn
+#ifdef DEBUG_ENDTURN_LOGIC
+            debug_printf("In ENDTURN_FROSTBITE\n");
+#endif
+
+            while (sp->scc_work < client_set_max) {
+                battlerId = sp->turnOrder[sp->scc_work];
+
+                if ((sp->battlemon[battlerId].condition & STATUS_FREEZE) && sp->battlemon[battlerId].hp != 0) {
+                    sp->battlerIdTemp = battlerId;
+                    LoadBattleSubSeqScript(sp, ARC_BATTLE_SUB_SEQ, BATTLE_SUBSCRIPT_FROSTBITE_DAMAGE);
                     sp->next_server_seq_no = sp->server_seq_no;
                     sp->server_seq_no = 22;
                     ret = 1;

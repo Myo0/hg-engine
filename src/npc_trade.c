@@ -5,37 +5,32 @@
 #include "../include/constants/species.h"
 #include "../include/pokemon.h"
 #include "../include/types.h"
+#include "../include/save.h"
 
 #define CUSTOM_TRADES
 
-static void arrayShuffle(u8 *array, int len)
-{
-    for (int i = len - 1; i > 0; i--) {
-        int j = gf_rand() % (i + 1);
-        u8 tmp = array[i];
-        array[i] = array[j];
-        array[j] = tmp;
-    }
-}
+// Electrum: the old randomIV()/arrayShuffle() (3 perfect + 3 random IVs) were removed - every
+// in-game trade now gets 6 perfect IVs directly in _CreateTradeMon.
 
-void randomIV(struct NPCTrade *trade_dat)
-{
-    u8 array[] = { 31, 31, 31, 0, 0, 0 };
-
-    int i = gf_rand();
-    array[3] = (i & (0x001f << 0)) >> 0;
-    array[4] = (i & (0x001f << 5)) >> 5;
-    array[5] = (i & (0x001f << 10)) >> 10;
-
-    arrayShuffle(array, 6);
-
-    trade_dat->hpIv = array[0];
-    trade_dat->atkIv = array[1];
-    trade_dat->defIv = array[2];
-    trade_dat->speedIv = array[3];
-    trade_dat->spAtkIv = array[4];
-    trade_dat->spDefIv = array[5];
-}
+#ifdef CUSTOM_TRADES
+// Electrum: per-trade nature. Set an entry to -1 to leave that trade's nature random.
+// Every listed trade must have an entry (an omitted one would default to 0 = NATURE_HARDY).
+static const s8 sTradeNatures[NPC_TRADE_MAX] = {
+    [NPC_TRADE_ROCKY_ONIX]        = NATURE_ADAMANT,
+    [NPC_TRADE_MUSCLE_MACHOP]     = -1,
+    [NPC_TRADE_BILLY_VOLTORB]     = -1,
+    [NPC_TRADE_DORIS_DODRIO]      = -1,
+    [NPC_TRADE_SPRINTS_RAPIDASH]  = -1,
+    [NPC_TRADE_RUSTY_STEELIX]     = -1,
+    [NPC_TRADE_SHUCKIE_SHUCKLE]   = -1,
+    [NPC_TRADE_KENYA_SPEAROW]     = -1,
+    [NPC_TRADE_MAGGIE_MAGNETON]   = -1,
+    [NPC_TRADE_PAUL_XATU]         = -1,
+    [NPC_TRADE_VOLTY_PIKACHU]     = -1,
+    [NPC_TRADE_HORNLETTE_RHYHORN] = -1,
+    [NPC_TRADE_IRON_BELDUM]       = -1,
+};
+#endif
 
 void LONG_CALL _CreateTradeMon(struct PartyPokemon *mon, struct NPCTrade *trade_dat, u32 level, u32 tradeno, u32 mapno, u32 met_level_strat, u32 heapId)
 {
@@ -44,29 +39,25 @@ void LONG_CALL _CreateTradeMon(struct PartyPokemon *mon, struct NPCTrade *trade_
     u32 mapsec;
     int heapId_2;
     int ability = -1;
-    BOOL skipRandomIV = FALSE;
+
+    // Electrum: every in-game trade Pokemon gets 6 perfect IVs.
+    trade_dat->hpIv = 31;
+    trade_dat->atkIv = 31;
+    trade_dat->defIv = 31;
+    trade_dat->speedIv = 31;
+    trade_dat->spAtkIv = 31;
+    trade_dat->spDefIv = 31;
 
 #ifdef CUSTOM_TRADES
     if (tradeno == NPC_TRADE_ROCKY_ONIX) {
-        trade_dat->hpIv = 31;
-        trade_dat->atkIv = 31;
-        trade_dat->defIv = 31;
-        trade_dat->speedIv = 31;
-        trade_dat->spAtkIv = 31;
-        trade_dat->spDefIv = 31;
         trade_dat->heldItem = ITEM_BERRY_JUICE;
-        skipRandomIV = TRUE;
     }
 #endif
 
-    if (!skipRandomIV) {
-        randomIV(trade_dat);
-    }
-
     u32 pid = gf_rand();
 #ifdef CUSTOM_TRADES
-    if (tradeno == NPC_TRADE_ROCKY_ONIX) {
-        pid = (pid - (pid % 25)) + NATURE_ADAMANT;
+    if (tradeno < NPC_TRADE_MAX && sTradeNatures[tradeno] >= 0) {
+        pid = (pid - (pid % 25)) + sTradeNatures[tradeno];
     }
 #endif
     PokeParaSet(mon, trade_dat->give_species, level, 32, FALSE, pid, OT_ID_PRESET, trade_dat->otId);

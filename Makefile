@@ -473,10 +473,14 @@ move_narc: $(NARC_FILES)
 	cp $(HEADBUTT_NARC) $(HEADBUTT_TARGET)
 
 	@echo "trainer gfx:"
-	cp $(TRAINER_GFX_NARC) $(TRAINER_GFX_TARGET)
+# Electrum: a/0/5/8 (trainer front sprites) - do NOT rebuild; upstream's trainer_gfx redump
+# corrupts it (scrambled in-battle trainer sprites). Preserve from hybrid base (has fork's
+# vanilla + custom classes 90-94).
+#	cp $(TRAINER_GFX_NARC) $(TRAINER_GFX_TARGET)
 
 	@echo "trainer back gfx:"
-	cp $(TRAINER_GFX_BACK_NARC) $(TRAINER_GFX_BACK_TARGET)
+# Electrum: a/0/0/6 (player battle back sprite) - do NOT rebuild; upstream added this from data/graphics/trainer_back_gfx which corrupts it. Preserve from base.
+#	cp $(TRAINER_GFX_BACK_NARC) $(TRAINER_GFX_BACK_TARGET)
 
 	@echo "levelup learnset:"
 	cp $(LEVELUPLEARNSET_NARC) $(LEVELUPLEARNSET_TARGET)

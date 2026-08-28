@@ -53,8 +53,8 @@ _105:
     Wait
     UpdateMonData OPCODE_FLAG_ON, BATTLER_CATEGORY_SIDE_EFFECT_MON, BMON_DATA_STATUS, STATUS_FREEZE
     UnlockMoveChoice BATTLER_CATEGORY_SIDE_EFFECT_MON
-    // {0} was frostbitten!
-    PrintMessage 1716, TAG_NICKNAME, BATTLER_CATEGORY_SIDE_EFFECT_MON
+    // {0} was frostbitten!  (Electrum: msg 1716 -> 1780; the merge inserted ~64 battle messages before it)
+    PrintMessage 1780, TAG_NICKNAME, BATTLER_CATEGORY_SIDE_EFFECT_MON
     Wait
     SetHealthbarStatus BATTLER_CATEGORY_SIDE_EFFECT_MON, BATTLE_ANIMATION_FROZEN
     WaitButtonABTime 30
