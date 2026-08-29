@@ -32970,8 +32970,8 @@ const TrainerData sTrainerData[] = {
             {
                 .ivs = 255,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_HIDDEN,
-                .level = 5,
-                .species = SPECIES_ROWLET,
+                .level = 7,
+                .species = SPECIES_CHIKORITA,
                 .ballSeal = 0,
             },
         },
@@ -33004,8 +33004,8 @@ const TrainerData sTrainerData[] = {
             {
                 .ivs = 255,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_HIDDEN,
-                .level = 5,
-                .species = SPECIES_CHIMCHAR,
+                .level = 7,
+                .species = SPECIES_FENNEKIN,
                 .ballSeal = 0,
             },
         },
@@ -33038,8 +33038,8 @@ const TrainerData sTrainerData[] = {
             {
                 .ivs = 255,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_1,
-                .level = 5,
-                .species = SPECIES_FROAKIE,
+                .level = 7,
+                .species = SPECIES_MUDKIP,
                 .ballSeal = 0,
             },
         },

@@ -332,6 +332,16 @@ const struct MegaStruct sMegaTable[] = {
         .form = 1,
     },
     {
+        .monindex = SPECIES_HEATRAN,
+        .itemindex = ITEM_HEATRANITE,
+        .form = 1,
+    },
+    {
+        .monindex = SPECIES_DARKRAI,
+        .itemindex = ITEM_DARKRANITE,
+        .form = 1,
+    },
+    {
         .monindex = SPECIES_EMBOAR,
         .itemindex = ITEM_EMBOARITE,
         .form = 1,
