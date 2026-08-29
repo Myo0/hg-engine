@@ -54,6 +54,7 @@ static BOOL IsPartyMonImmuneToMove(struct BattleSystem *battleSys, struct Battle
         }
         break;
     case ABILITY_LEVITATE:
+    case ABILITY_EELEVATE:
     case ABILITY_EARTH_EATER:
         if (moveType == TYPE_GROUND) {
             return TRUE;

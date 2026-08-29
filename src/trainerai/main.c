@@ -673,6 +673,21 @@ int BasicFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext *
     if (ctx->moveTbl[ai->attackerMove].split == SPLIT_STATUS && ai->defenderAbility == ABILITY_MAGIC_BOUNCE) {
         moveScore -= 15; // status moves that bounce back to the user
     }
+    // Doubles: a spread status move is reflected by ANY opposing Magic Bounce, not only the chosen target.
+    if (ctx->moveTbl[ai->attackerMove].split == SPLIT_STATUS
+        && ai->defenderAbility != ABILITY_MAGIC_BOUNCE
+        && (ctx->moveTbl[ai->attackerMove].target == RANGE_ADJACENT_OPPONENTS
+            || ctx->moveTbl[ai->attackerMove].target == RANGE_ALL_ADJACENT)) {
+        for (int j = 0; j < 4; j++) {
+            if (ctx->battlemon[j].hp == 0 || BATTLER_IS_ENEMY(j) == ai->attackerSide) {
+                continue;
+            }
+            if (GetBattlerAbility(ctx, j) == ABILITY_MAGIC_BOUNCE) {
+                moveScore -= 15;
+                break;
+            }
+        }
+    }
     if (ai->attackerMove == MOVE_THUNDER_WAVE && HasType(ctx, ai->defender, TYPE_GROUND)) {
         moveScore -= 25;
     }
@@ -701,7 +716,7 @@ int BasicFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext *
             moveScore -= 15;
         }
         if (ai->attackerMoveType == TYPE_GROUND && // ground
-            (ai->defenderAbility == ABILITY_LEVITATE || ai->defenderAbility == ABILITY_EARTH_EATER)) {
+            (ai->defenderAbility == ABILITY_LEVITATE || ai->defenderAbility == ABILITY_EELEVATE || ai->defenderAbility == ABILITY_EARTH_EATER)) {
             moveScore -= 15;
         }
         if (IsMoveSoundBased(ai->attackerMove) && // sound based moves
@@ -1389,6 +1404,7 @@ int EvaluateAttackFlag(struct BattleSystem *bsys, int attacker, int i, struct AI
         && ai->defenderType1 != TYPE_FLYING
         && ai->defenderType2 != TYPE_FLYING
         && ai->defenderAbility != ABILITY_LEVITATE
+        && ai->defenderAbility != ABILITY_EELEVATE
         && ai->defenderItem != ITEM_AIR_BALLOON) {
         return -20;
     }
@@ -1474,11 +1490,12 @@ int EvaluateAttackFlag(struct BattleSystem *bsys, int attacker, int i, struct AI
             moveScore += 3;
         }
 
-        // Moxie / Beast Boost / Chilling Neigh / Grim Neigh: +1 on kill
+        // Moxie / Beast Boost / Chilling Neigh / Grim Neigh / Eelevate: +1 on kill
         if (ai->attackerAbility == ABILITY_MOXIE
             || ai->attackerAbility == ABILITY_BEAST_BOOST
             || ai->attackerAbility == ABILITY_CHILLING_NEIGH
-            || ai->attackerAbility == ABILITY_GRIM_NEIGH) {
+            || ai->attackerAbility == ABILITY_GRIM_NEIGH
+            || ai->attackerAbility == ABILITY_EELEVATE) {
             moveScore += 1;
         }
     }
@@ -1520,6 +1537,29 @@ int EvaluateAttackFlag(struct BattleSystem *bsys, int attacker, int i, struct AI
         }
     }
 
+    if (ai->defenderAbility == ABILITY_SPICY_SPRAY
+        && ai->attackerAbility != ABILITY_MOLD_BREAKER
+        && ctx->moveTbl[ai->attackerMove].split != SPLIT_STATUS
+        && ai->attackerAvgRollMoveDamages[i] > 0
+        && ai->attackerAvgRollMoveDamages[i] < ai->defenderHP
+        && ctx->battlemon[attacker].condition == 0
+        && ai->attackerType1 != TYPE_FIRE && ai->attackerType2 != TYPE_FIRE
+        && ai->attackerAbility != ABILITY_MAGIC_GUARD
+        && ai->attackerAbility != ABILITY_WATER_VEIL
+        && ai->attackerAbility != ABILITY_WATER_BUBBLE
+        && ai->attackerAbility != ABILITY_THERMAL_EXCHANGE
+        && ai->attackerAbility != ABILITY_COMATOSE
+        && ai->attackerAbility != ABILITY_PURIFYING_SALT
+        && ai->attackerAbility != ABILITY_GUTS
+        && ai->attackerAbility != ABILITY_QUICK_FEET
+        && ai->attackerAbility != ABILITY_MARVEL_SCALE
+        && ai->attackerAbility != ABILITY_FLARE_BOOST
+        && !(ctx->side_condition[ai->attackerSide] & SIDE_STATUS_SAFEGUARD)
+        && !(ai->attackerAbility == ABILITY_LEAF_GUARD && (ctx->field_condition & FIELD_CONDITION_SUN_ALL))
+        && !(IsClientGrounded(ctx, attacker) && ctx->terrainOverlay.type == MISTY_TERRAIN)) {
+        moveScore -= (ctx->moveTbl[ai->attackerMove].split == SPLIT_PHYSICAL) ? 2 : 1;
+    }
+
     debug_printf("Move score returned from evaluate attack flag: %d\n", moveScore);
     return moveScore;
 }
@@ -1539,6 +1579,7 @@ int ExpertFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext 
     BOOL defenderIsGrounded = (ai->defenderType1 != TYPE_FLYING
         && ai->defenderType2 != TYPE_FLYING
         && ai->defenderAbility != ABILITY_LEVITATE
+        && ai->defenderAbility != ABILITY_EELEVATE
         && ai->defenderItem != ITEM_AIR_BALLOON);
     if (ctx->terrainOverlay.type == MISTY_TERRAIN
         && ctx->terrainOverlay.numberOfTurnsLeft > 0
@@ -2258,6 +2299,14 @@ int ExpertFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext 
         || ai->attackerMoveEffect == MOVE_EFFECT_STRENGTH_SAP
         || ai->attackerMoveEffect == MOVE_EFFECT_HEAL_HALF_DIFFERENT_IN_WEATHER
         || ai->attackerMoveEffect == MOVE_EFFECT_RECOVER_HEALTH_AND_SLEEP) {
+        // Heal Block stops all HP recovery. Strength Sap still lands its Attack drop, so
+        // it stays usable (just worse); everything else here just fails outright.
+        if (ctx->battlemon[attacker].effect_of_moves & MOVE_EFFECT_FLAG_HEAL_BLOCK) {
+            if (ai->attackerMoveEffect == MOVE_EFFECT_STRENGTH_SAP) {
+                return ctx->battlemon[ai->defender].states[STAT_ATTACK] > 0 ? -6 : -20;
+            }
+            return -20;
+        }
         if (ai->attackerMoveEffect == MOVE_EFFECT_RECOVER_HEALTH_AND_SLEEP) {
             // Rest: 100% heal, no full-HP or ≥85% gates
             if (ShouldRecover(bsys, attacker, ai, ai->attackerMaxHP)) {
@@ -2927,11 +2976,12 @@ int ExpertFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext 
     else if (ai->attackerMoveEffect == MOVE_EFFECT_GRAVITY) {
         if (ctx->field_condition & FIELD_CONDITION_GRAVITY) {
             moveScore -= 20;
-        } else if (HasType(ctx, attacker, TYPE_FLYING) || ai->attackerAbility == ABILITY_LEVITATE) {
+        } else if (HasType(ctx, attacker, TYPE_FLYING) || ai->attackerAbility == ABILITY_LEVITATE || ai->attackerAbility == ABILITY_EELEVATE) {
             moveScore -= 20;
         } else {
             BOOL defenderGroundImmune = HasType(ctx, ai->defender, TYPE_FLYING)
                 || ai->defenderAbility == ABILITY_LEVITATE
+                || ai->defenderAbility == ABILITY_EELEVATE
                 || (ctx->battlemon[ai->defender].effect_of_moves & MOVE_EFFECT_FLAG_MAGNET_RISE);
             BOOL aiHasGroundMove = FALSE;
             for (int j = 0; j < 4; j++) {
@@ -3337,6 +3387,32 @@ int ExpertFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext 
         moveScore += 1;
     }
 
+    // Dancer: a living opposing Dancer instantly copies any Dance move the AI uses — a full
+    // free setup for boosting dances, or a free extra hit / status for the rest. Only a foe's
+    // Dancer is a problem (an ally copying is neutral-to-good), so disfavor dancing into one.
+    if (IsDanceMove(ai->attackerMove)) {
+        for (int j = 0; j < 4; j++) {
+            if (ctx->battlemon[j].hp == 0 || BATTLER_IS_ENEMY(j) == ai->attackerSide) {
+                continue;
+            }
+            if (GetBattlerAbility(ctx, j) == ABILITY_DANCER) {
+                switch (ai->attackerMove) {
+                case MOVE_SWORDS_DANCE:
+                case MOVE_DRAGON_DANCE:
+                case MOVE_QUIVER_DANCE:
+                case MOVE_VICTORY_DANCE:
+                case MOVE_CLANGOROUS_SOUL:
+                    moveScore -= 8;
+                    break;
+                default:
+                    moveScore -= 3;
+                    break;
+                }
+                break;
+            }
+        }
+    }
+
     debug_printf("end of expert flag\n");
     return moveScore;
 }
@@ -3498,7 +3574,7 @@ int TagStrategyFlag(struct BattleSystem *bsys, int attacker, int i, struct AICon
         /*Earthquake and Magnitude*/
         else if ((ai->attackerMoveEffect == MOVE_EFFECT_RANDOM_POWER_10_CASES || ai->attackerMoveEffect == MOVE_EFFECT_DOUBLE_DAMAGE_DIG) && ai->partnerHP != 0) {
             AITypeCalc(ctx, MOVE_EARTHQUAKE, TYPE_GROUND, ai->attackerAbility, ai->partnerAbility, BattleItemDataGet(ctx, ai->partnerItem, 1), ctx->battlemon[ai->partner].type1, ctx->battlemon[ai->partner].type2, &effectivenessOnPartner);
-            if (ai->partnerAbility == ABILITY_LEVITATE || HasType(ctx, ai->partner, TYPE_FLYING) || ctx->battlemon[ai->partner].effect_of_moves & MOVE_EFFECT_FLAG_MAGNET_RISE) {
+            if (ai->partnerAbility == ABILITY_LEVITATE || ai->partnerAbility == ABILITY_EELEVATE || HasType(ctx, ai->partner, TYPE_FLYING) || ctx->battlemon[ai->partner].effect_of_moves & MOVE_EFFECT_FLAG_MAGNET_RISE) {
                 moveScore += 2;
             } else if (effectivenessOnPartner == MOVE_STATUS_SUPER_EFFECTIVE
                 && (HasType(ctx, ai->partner, TYPE_FIRE)
@@ -3535,11 +3611,11 @@ int TagStrategyFlag(struct BattleSystem *bsys, int attacker, int i, struct AICon
                 for (int j = 0; j < 4; j++) {
                     if (ctx->battlemon[j].hp != 0) {
                         if (BATTLER_IS_ENEMY(j) == ai->attackerSide) {
-                            if (ctx->battlemon[j].ability == ABILITY_LEVITATE || ctx->battlemon[j].effect_of_moves & MOVE_EFFECT_FLAG_MAGNET_RISE || HasType(ctx, j, TYPE_FLYING)) {
+                            if (ctx->battlemon[j].ability == ABILITY_LEVITATE || ctx->battlemon[j].ability == ABILITY_EELEVATE || ctx->battlemon[j].effect_of_moves & MOVE_EFFECT_FLAG_MAGNET_RISE || HasType(ctx, j, TYPE_FLYING)) {
                                 moveScore -= 5;
                             }
                         } else {
-                            if (ctx->battlemon[j].ability == ABILITY_LEVITATE || ctx->battlemon[j].effect_of_moves & MOVE_EFFECT_FLAG_MAGNET_RISE) {
+                            if (ctx->battlemon[j].ability == ABILITY_LEVITATE || ctx->battlemon[j].ability == ABILITY_EELEVATE || ctx->battlemon[j].effect_of_moves & MOVE_EFFECT_FLAG_MAGNET_RISE) {
                                 if (BattleRand(bsys) % 4 < 3) {
                                     moveScore += 3;
                                 }

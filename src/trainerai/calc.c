@@ -21,6 +21,7 @@ BOOL LONG_CALL IsPartyPokemonGrounded(struct BattleStruct *sp, struct PartyPokem
     u16 item = GetMonData(pp, MON_DATA_HELD_ITEM, 0);
     u8 holdeffect = BattleItemDataGet(sp, item, 1);
     if ((GetMonData(pp, MON_DATA_ABILITY, 0) != ABILITY_LEVITATE
+            && GetMonData(pp, MON_DATA_ABILITY, 0) != ABILITY_EELEVATE
             && holdeffect != HOLD_EFFECT_UNGROUND_DESTROYED_ON_HIT
             && !(GetMonData(pp, MON_DATA_TYPE_1, 0) == TYPE_FLYING)
             && !(GetMonData(pp, MON_DATA_TYPE_2, 0) == TYPE_FLYING))
@@ -210,6 +211,13 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
     u32 baseDamage = 0;
     BOOL isDoubleBattle = (BattleTypeGet(bw) & (BATTLE_TYPE_MULTI | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TAG));
 
+    // Mega Sol: the holder calculates its own moves as if it were permanently Sunny
+    // (personal Drought, unaffected by Cloud Nine / Air Lock). Mirrors engine
+    // GetWeather(bw, sp, attacker) returning FIELD_CONDITION_SUN for the holder.
+    if (attacker->ability == ABILITY_MEGA_SOL) {
+        field_cond = (field_cond & ~FIELD_CONDITION_WEATHER) | FIELD_CONDITION_SUN;
+    }
+
     /*
     if (!attacker->hasMoldBreaker && defender->ability == ABILITY_DISGUISE && defender->hp == defender->maxhp) //SPECIES_MIMIKYU
         return 0;
@@ -357,10 +365,11 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
             movepower *= 2;
         }
         break;
-    case MOVE_ASSURANCE:
     case MOVE_REVENGE:
     case MOVE_AVALANCHE: {
-        // AI assumes it will be hit if slower (or faster if Trick Room is active),
+        // Revenge/Avalanche double if the user was hit this turn before acting (vanilla ov12
+        // CalcRevengePowerMul, run from effect_script_0185). Approximate "got hit first" as
+        // "AI is slower" — or faster under Trick Room.
         BOOL trickRoom = field_cond & FIELD_CONDITION_TRICK_ROOM;
         BOOL aiIsSlower = trickRoom ? (attacker->speed > defender->speed)
                                     : (attacker->speed < defender->speed);
@@ -369,6 +378,8 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
         }
         break;
     }
+    case MOVE_ASSURANCE:
+        break;
         // case MOVE_WATER_PLEDGE:
         // case MOVE_FIRE_PLEDGE:
         // case MOVE_GRASS_PLEDGE:
@@ -380,15 +391,23 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
         }
         break;
     case MOVE_HEX:
-        if (defender->condition & STATUS_ALL) {
+        // Electrum Tier-2: Comatose counts as a status for Hex
+        if ((defender->condition & STATUS_ALL) || defender->ability == ABILITY_COMATOSE) {
             movepower *= 2;
         }
         break;
-    case MOVE_PAYBACK:
-        if (attacker->speed <= defender->speed) {
+    case MOVE_PAYBACK: {
+        // Payback doubles if the user moves after the target (engine: IsMovingAfterClient;
+        // no longer doubles on a switch as of Gen 5). Mirror the Revenge slower/Trick Room
+        // proxy so both stay consistent.
+        BOOL trickRoom = field_cond & FIELD_CONDITION_TRICK_ROOM;
+        BOOL aiMovesAfter = trickRoom ? (attacker->speed > defender->speed)
+                                      : (attacker->speed < defender->speed);
+        if (aiMovesAfter) {
             movepower *= 2;
         }
         break;
+    }
         // case MOVE_PURSUIT:
     case MOVE_ROUND:
         // TODO: Implement Round
@@ -404,7 +423,8 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
         }
         break;
     case MOVE_WAKE_UP_SLAP:
-        if (defender->condition & STATUS_SLEEP) {
+        // Electrum Tier-2: Comatose counts as asleep for Wake-Up Slap
+        if ((defender->condition & STATUS_SLEEP) || defender->ability == ABILITY_COMATOSE) {
             movepower *= 2;
         }
         break;
@@ -594,7 +614,23 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
         }
     }
 
-    /* Not considered in AI:  Mud Sport, Water Sport, Dark Aura, Fairy Aura, Aura Beak  */
+    /* Not considered in AI:  Mud Sport, Water Sport  */
+    {
+        BOOL fieldHasDarkAura = CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_DARK_AURA);
+        BOOL fieldHasFairyAura = CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_FAIRY_AURA);
+        BOOL fieldHasAuraBreak = CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_AURA_BREAK);
+        if (movetype == TYPE_DARK) {
+            if (fieldHasDarkAura && !fieldHasAuraBreak) {
+                basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_33);
+            } else if (fieldHasAuraBreak && fieldHasDarkAura) {
+                basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__0_75);
+            } else if (fieldHasFairyAura && !fieldHasAuraBreak) {
+                basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_33);
+            } else if (fieldHasAuraBreak && fieldHasFairyAura) {
+                basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__0_75);
+            }
+        }
+    }
 
     // handle Rivalry
     if (attacker->ability == ABILITY_RIVALRY) {
@@ -633,6 +669,11 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
         }
 
         if (attacker->ability == ABILITY_NORMALIZE && movetype == TYPE_NORMAL) {
+            basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_2);
+        }
+
+        // Electrum Tier-2: Dragonize (Normal->Dragon -ate), mirroring CalcBaseDamage.c
+        if (attacker->ability == ABILITY_DRAGONIZE && movetype == TYPE_DRAGON && move.type == TYPE_NORMAL) {
             basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_2);
         }
     }
@@ -682,6 +723,10 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
         if (attacker->speed < defender->speed) {
             basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_3);
         }
+    }
+
+    if (attacker->ability == ABILITY_STAKEOUT && sp->playerActions[defenderSlot][3] == CONTROLLER_COMMAND_40) {
+        basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__2_0);
     }
 
     // handle Tough Claws
@@ -1112,6 +1157,28 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
         attackModifier = QMul_RoundUp(attackModifier, UQ412__2_0);
     }
 
+    if (attacker->ability == ABILITY_FIRE_MANE && movetype == TYPE_FIRE) {
+        attackModifier = QMul_RoundUp(attackModifier, UQ412__1_5);
+    }
+
+    if ((attacker->ability == ABILITY_PROTOSYNTHESIS || attacker->ability == ABILITY_QUARK_DRIVE)
+        && ((movesplit == SPLIT_PHYSICAL && sp->paradoxBoostedStat[attackerSlot] == STAT_ATTACK)
+            || (movesplit == SPLIT_SPECIAL && sp->paradoxBoostedStat[attackerSlot] == STAT_SPECIAL_ATTACK))) {
+        attackModifier = QMul_RoundUp(attackModifier, UQ412__1_3);
+    }
+    if ((attacker->ability == ABILITY_ORICHALCUM_PULSE)
+        && (field_cond & FIELD_CONDITION_SUN_ALL)
+        && !(attacker->item_held_effect == HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN)
+        && (movesplit == SPLIT_PHYSICAL)) {
+        attackModifier = QMul_RoundUp(attackModifier, UQ412__1_3333);
+    }
+    if ((attacker->ability == ABILITY_HADRON_ENGINE)
+        && (movesplit == SPLIT_SPECIAL)
+        && (sp->terrainOverlay.type == ELECTRIC_TERRAIN)
+        && (sp->terrainOverlay.numberOfTurnsLeft > 0)) {
+        attackModifier = QMul_RoundUp(attackModifier, UQ412__1_3333);
+    }
+
     // Apply the chained modifier to the current attack. That is, multiply the current attack by the chained attack modifiers, divide by 4096, and pokeRound the result. If the current attack would now be less than 1, make it 1. Finally, if the attack is greater than 65,535, make it the attack modulo 65,536 (attack % 65536).
     calculatedAttack = QMul_RoundDown(calculatedAttack, attackModifier);
     calculatedAttack = calculatedAttack < 1 ? 1 : calculatedAttack;
@@ -1124,9 +1191,29 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
     debug_printf("[CalcBaseDamage] calculatedAttack: %d\n", calculatedAttack);
 #endif
 
-    // TODO
-    //  Handle Tablets of Ruin
-    //  Handle Vessel of Ruin
+    // Electrum Tier-2: Tablets of Ruin (x0.75 physical Atk) / Vessel of Ruin (x0.75 SpAtk), mirroring CalcBaseDamage.c
+    switch (movesplit) {
+    case SPLIT_PHYSICAL:
+        if (CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_TABLETS_OF_RUIN) && (defender->ability != ABILITY_TABLETS_OF_RUIN)) {
+            if (((calculatedAttack * UQ412__0_75) & 0xFFFu) <= 0x800) {
+                calculatedAttack = (calculatedAttack * UQ412__0_75) >> 12;
+            } else {
+                calculatedAttack = ((calculatedAttack * UQ412__0_75) >> 12) + 1;
+            }
+        }
+        break;
+    case SPLIT_SPECIAL:
+        if (CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_VESSEL_OF_RUIN) && (defender->ability != ABILITY_VESSEL_OF_RUIN)) {
+            if (((calculatedAttack * UQ412__0_75) & 0xFFFu) <= 0x800) {
+                calculatedAttack = (calculatedAttack * UQ412__0_75) >> 12;
+            } else {
+                calculatedAttack = ((calculatedAttack * UQ412__0_75) >> 12) + 1;
+            }
+        }
+        break;
+    default:
+        break;
+    }
 
     //=====Step 4. Defense Modifiers=====
 
@@ -1298,6 +1385,12 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
         defenseModifier = QMul_RoundUp(defenseModifier, UQ412__2_0);
     }
 
+    if ((defender->ability == ABILITY_PROTOSYNTHESIS || defender->ability == ABILITY_QUARK_DRIVE)
+        && ((movesplit == SPLIT_PHYSICAL && sp->paradoxBoostedStat[defenderSlot] == STAT_DEFENSE)
+            || (movesplit == SPLIT_SPECIAL && sp->paradoxBoostedStat[defenderSlot] == STAT_SPECIAL_DEFENSE))) {
+        defenseModifier = QMul_RoundUp(defenseModifier, UQ412__1_3);
+    }
+
     // Apply the chained modifier to the starting defense. That is, multiply the starting defense by the chained defense modifiers, divide by 4096, and pokeRound the result. If the current defense would now be less than 1, make it 1. Finally, if the defense is greater than 65,535, make it the defense modulo 65,536 (defense % 65536). If the defense stat is 0 because of this modifier, the result of base damage will always be 2.
     calculatedDefense = QMul_RoundDown(calculatedDefense, defenseModifier);
     calculatedDefense = calculatedDefense < 1 ? 1 : calculatedDefense;
@@ -1309,9 +1402,29 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
     debug_printf("[CalcBaseDamage] defenseModifier: %d\n", defenseModifier);
     debug_printf("[CalcBaseDamage] calculatedDefense: %d\n", calculatedDefense);
 #endif
-    // TODO
-    //  Handle Sword of Ruin
-    //  Handle Beads of Ruin
+
+    switch (movesplit) {
+    case SPLIT_PHYSICAL:
+        if (CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_SWORD_OF_RUIN) && (defender->ability != ABILITY_SWORD_OF_RUIN)) {
+            if (((calculatedDefense * UQ412__0_75) & 0xFFFu) <= 0x800) {
+                calculatedDefense = (calculatedDefense * UQ412__0_75) >> 12;
+            } else {
+                calculatedDefense = ((calculatedDefense * UQ412__0_75) >> 12) + 1;
+            }
+        }
+        break;
+    case SPLIT_SPECIAL:
+        if (CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_BEADS_OF_RUIN) && (defender->ability != ABILITY_BEADS_OF_RUIN)) {
+            if (((calculatedDefense * UQ412__0_75) & 0xFFFu) <= 0x800) {
+                calculatedDefense = (calculatedDefense * UQ412__0_75) >> 12;
+            } else {
+                calculatedDefense = ((calculatedDefense * UQ412__0_75) >> 12) + 1;
+            }
+        }
+        break;
+    default:
+        break;
+    }
 
     //=====End of Step 4=====
 
@@ -1347,6 +1460,13 @@ int LONG_CALL BattleAI_CalcDamage(void *bw, struct BattleStruct *sp, int moveno,
     u32 damage = 0;
     u32 moveEffectiveness;
     u32 finalModifier = UQ412__1_0;
+
+
+    u32 aiWeather = sp->field_condition;
+    if (attacker->ability == ABILITY_MEGA_SOL) {
+        field_cond = (field_cond & ~FIELD_CONDITION_WEATHER) | FIELD_CONDITION_SUN;
+        aiWeather = (aiWeather & ~FIELD_CONDITION_WEATHER) | FIELD_CONDITION_SUN;
+    }
 
     struct BattleMove move = sp->moveTbl[moveno];
     movetype = GetAdjustedMoveTypeBasics(sp, moveno, attacker->ability, move.type);
@@ -1386,6 +1506,7 @@ int LONG_CALL BattleAI_CalcDamage(void *bw, struct BattleStruct *sp, int moveno,
             }
             break;
         case ABILITY_LEVITATE:
+        case ABILITY_EELEVATE:
         case ABILITY_EARTH_EATER:
             if (movetype == TYPE_GROUND) {
                 return 0;
@@ -1446,12 +1567,22 @@ int LONG_CALL BattleAI_CalcDamage(void *bw, struct BattleStruct *sp, int moveno,
         }
     }
     debug_printf("after is double battle\n");
-    // TODO
-    // handle parental bond
 
-    // 6.3 Weather Modifier
-    if ((CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) == 0) && (CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK) == 0)) {
-        if (sp->field_condition & FIELD_CONDITION_RAIN_ALL) {
+    // 6.2 Parental Bond - Electrum Tier-2: the engine runs a second hit at 0.25x power, so approximate
+    // the combined output as x1.25 for single-target damaging moves that aren't multi-hit.
+    if (attacker->ability == ABILITY_PARENTAL_BOND
+        && (move.target == RANGE_SINGLE_TARGET || move.target == RANGE_SINGLE_TARGET_SPECIAL || move.target == RANGE_RANDOM_OPPONENT)
+        && move.effect != MOVE_EFFECT_MULTI_HIT
+        && move.effect != MOVE_EFFECT_HIT_TWICE
+        && move.effect != MOVE_EFFECT_HIT_THREE_TIMES
+        && movesplit != SPLIT_STATUS) {
+        damage = QMul_RoundDown(damage, UQ412__1_25);
+    }
+
+    // 6.3 Weather Modifier — Mega Sol's personal Sun ignores Cloud Nine / Air Lock.
+    if (attacker->ability == ABILITY_MEGA_SOL
+        || ((CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) == 0) && (CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK) == 0))) {
+        if (aiWeather & FIELD_CONDITION_RAIN_ALL) {
             switch (type) {
             case TYPE_FIRE:
                 damage = QMul_RoundDown(damage, UQ412__0_5);
@@ -1462,14 +1593,14 @@ int LONG_CALL BattleAI_CalcDamage(void *bw, struct BattleStruct *sp, int moveno,
             }
         }
 
-        if (sp->field_condition & FIELD_CONDITION_SUN_ALL) {
+        if (aiWeather & FIELD_CONDITION_SUN_ALL) {
             switch (type) {
             case TYPE_FIRE:
                 damage = QMul_RoundDown(damage, UQ412__1_5);
                 break;
             case TYPE_WATER:
                 // If the current weather is Sunny Day and the user is not holding Utility Umbrella, this move's damage is multiplied by 1.5 instead of halved for being Water type.
-                if (moveno == MOVE_HYDRO_STEAM && attacker->item != ITEM_UTILITY_UMBRELLA) {
+                if (moveno == MOVE_HYDRO_STEAM && attacker->item_held_effect != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN) {
                     damage = QMul_RoundDown(damage, UQ412__1_5);
                 } else {
                     damage = QMul_RoundDown(damage, UQ412__0_5);

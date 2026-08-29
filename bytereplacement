@@ -552,10 +552,4 @@ arm9 020649AC 64 E2 0F 02
 arm9 020649B0 64 E2 0F 02
 arm9 020649B4 64 E2 0F 02
 
-# Electrum: upstream a1d783656's SKIP_TUTORIAL_INFO patches overlay 53 at file offset
-# 0x16BA assuming BluRosie's overlay-53 layout AND that 53 was build-time decompressed
-# (it added 53 to OVERLAYS_TO_DECOMPRESS). Our base rom.nds has a DSPRE-modified overlay
-# 53 with a different layout, so the patch lands on the wrong bytes -> menu/overworld-entry
-# code corrupted -> game hangs entering the overworld. Reverted to the fork behavior:
-# 53 stays compressed (removed from OVERLAYS_TO_DECOMPRESS), no byte patch, vanilla tutorial.
-# (bisected 2026-08-27)
+

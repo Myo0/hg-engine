@@ -21584,7 +21584,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Steel Beam",
         },
         .data = {
-            .effect = MOVE_EFFECT_FINAL_GAMBIT,
+            .effect = MOVE_EFFECT_RECOIL_HALF_MAX_HP,
             .split = SPLIT_SPECIAL,
             .power = 140,
             .type = TYPE_STEEL,
@@ -22637,7 +22637,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Chloroblast",
         },
         .data = {
-            .effect = MOVE_EFFECT_FINAL_GAMBIT,
+            .effect = MOVE_EFFECT_RECOIL_HALF_MAX_HP,
             .split = SPLIT_SPECIAL,
             .power = 150,
             .type = TYPE_GRASS,
