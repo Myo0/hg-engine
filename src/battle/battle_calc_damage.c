@@ -915,16 +915,16 @@ void CalcDamageOverall(void *bw, struct BattleStruct *sp)
 
     // Todo Z-Move + Unseen Fist?
     // Step 10.1 Unseen Fist / Piercing Drill
-    // 0.25x damage into protect
+    // Electrum: 0.5x damage when a contact move hits through Protect
     if (((attackerAbility == ABILITY_PIERCING_DRILL)
 #if UNSEEN_FIST_GENERATION >= GEN_CHAMPIONS
             || (attackerAbility == ABILITY_UNSEEN_FIST))
 #endif
         && sp->oneTurnFlag[defender].protectFlag) {
-        damage = QMul_RoundDown(damage, UQ412__0_25);
+        damage = QMul_RoundDown(damage, UQ412__0_5);
 #ifdef DEBUG_DAMAGE_ROLLS
         for (int u = 0; u < 16; u++) {
-            predamage[u] = QMul_RoundDown(predamage[u], UQ412__0_25);
+            predamage[u] = QMul_RoundDown(predamage[u], UQ412__0_5);
         }
 #endif // DEBUG_DAMAGE_ROLLS
     }

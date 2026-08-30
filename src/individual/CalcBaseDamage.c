@@ -1450,6 +1450,16 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
         break;
     }
 
+    // Electrum: Gen 4 mechanic - Explosion / Self-Destruct halve the defender's Defense,
+    // Misty Explosion halves its Sp. Def. All three share MOVE_EFFECT_HALVE_DEFENSE, and
+    // the split switch above already selected the correct defensive stat.
+    if (moveEffect == MOVE_EFFECT_HALVE_DEFENSE) {
+        calculatedDefense = calculatedDefense / 2;
+        if (calculatedDefense < 1) {
+            calculatedDefense = 1;
+        }
+    }
+
     // Step 4.8. Remaining defense modifiers
 
     // Abilities
