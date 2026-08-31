@@ -827,6 +827,31 @@ bx r1
 
 .pool
 
+.thumb_func
+.global PlayBGM_Original
+PlayBGM_Original:
+push {r4, r5, r6, lr}
+add r4, r0, #0
+bl 0x020054D4 | 1
+ldr r3, =0x02005D50 | 1
+bx r3
+
+.pool
+
+
+.thumb_func
+.global GF_SndHandleMoveVolume_Original
+GF_SndHandleMoveVolume_Original:
+push {r4, r5, r6, lr}
+add r5, r1, #0
+add r4, r2, #0
+add r6, r0, #0
+ldr r3, =0x02005410 | 1
+bx r3
+
+.pool
+
+
 
 .data
 

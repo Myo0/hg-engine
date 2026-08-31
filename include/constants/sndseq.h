@@ -1422,6 +1422,7 @@ enum {
     ANIM_MUSIC_COMBO_JOHTO_WILD_THEME,
     ANIM_MUSIC_COMBO_KIMONO_GIRL,
     ANIM_MUSIC_COMBO_RED,
+    ANIM_MUSIC_COMBO_LYRA_ETHAN,   // custom: streamed NWAV battle theme for Lyra & Ethan (index 45)
 };
 
 #endif // POKEHEARTGOLD_CONSTANTS_SNDSEQ_H

@@ -54,6 +54,7 @@ u16 MainMusicComboTable[][2] = {
     [ANIM_MUSIC_COMBO_KIMONO_GIRL] = { 0x2D, SEQ_GS_VS_TRAINER },
     [ANIM_MUSIC_COMBO_RED] = { 0x2E, SEQ_GS_VS_CHAMP },
     // (***END OF VANILLA ENTRIES***)
+    [ANIM_MUSIC_COMBO_LYRA_ETHAN] = { 0xFFFF, 9001 }, // custom: seq 9001 is a sentinel caught by sNwavOverrides[] in src/sound.c -> streamed NWAV
 };
 
 // format is one byte for trainer class, then one byte for combo (combo increments by 4 because each combo is four bytes long)
@@ -92,6 +93,12 @@ u8 TrainerClassToMusicCombo[][2] = {
     { TRAINERCLASS_KIMONO_GIRL, ANIM_MUSIC_COMBO_KIMONO_GIRL * 4 },
     { TRAINERCLASS_PKMN_TRAINER_RED, ANIM_MUSIC_COMBO_RED * 4 },
     // (***END OF VANILLA ENTRIES***)
+    { TRAINERCLASS_PKMN_TRAINER_LYRA,  ANIM_MUSIC_COMBO_LYRA_ETHAN * 4 }, // custom
+    { TRAINERCLASS_PKMN_TRAINER_ETHAN, ANIM_MUSIC_COMBO_LYRA_ETHAN * 4 }, // custom (ETHAN = class 0; keep it the last non-zero row so the counted loop matches it before any {0,0} pad)
+    { 0, 0 }, // pad rows 34-37 to the 38-entry loop count (bytereplacement: arm9 08051886 26)
+    { 0, 0 },
+    { 0, 0 },
+    { 0, 0 },
 };
 
 struct MonBattleMusic {

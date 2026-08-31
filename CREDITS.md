@@ -28,7 +28,7 @@ Zedakae
 
 [AdAstra](https://github.com/AdAstra-LD/) - `debugsyscall` implementation,  Music tables (trainerclassbattle, maintablescombo, and pokemonbattle)
 
-Sauceyatta - Custom AI that I can build off of
+Sauceyatta - Custom AI that I can build off of, [streamed custom music (NWAV) hg-engine port](https://github.com/MichaelFacci/hg-engine/tree/streamed-music-dev)
 
 Adcroc1 - helping significantly with sprite formatting
 
@@ -57,6 +57,8 @@ RH-Hideout Team - cries from gen 9
 Senate - Prize Money, Music tables (trainerclassbattle, maintablescombo, and pokemonbattle) 
 
 Shy - platinum Battle BG Insertion tutorial
+
+TheGameratorT - [NitroWAV-Player](https://github.com/TheGameratorT/NitroWAV-Player) (NWAV streamed-audio format + player core)
 
 Smogon Sprite Project, TraviS, LennyBitao, MyMarshlands, DarkusShadow, CarmaNekko, kiriaura, Gnomowladny, Krune, n-kin, JaegerLucciano23, joshr691, Jefelin, MultiDiegoDani, onigin_pixelart, Prodigal96, zerudez, leparagon, arinoelle, diegotoon20, gardow, greyenna, conyjams, kingofthe-x-roads, RayquazaFlygon, metalflygon08 on DeviantArt, and MaMe, maple, Layell, SelenaFF, Sopita Yorita, zlolxd - Pokémon Sprites
 

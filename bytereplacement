@@ -410,9 +410,9 @@ arm9 0204B94C FC
 0012 02246560 FC
 
 #ifdef EXPAND_MUSIC_TABLES
-# MainMusicComboTable combo range
-arm9 080517AA 2D
-arm9 080517D4 2D
+# MainMusicComboTable combo range (2D=45 vanilla; 2E=46 to allow custom combo 45 ANIM_MUSIC_COMBO_LYRA_ETHAN)
+arm9 080517AA 2E
+arm9 080517D4 2E
 
 # TrainerClassToMusicCombo table range
 arm9 08051886 26

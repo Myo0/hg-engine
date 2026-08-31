@@ -32,6 +32,9 @@
 // DEBUG_SOUND_SBNK_LOADS prints out sseq loads from the SDAT and the free space left after the load.
 // #define DEBUG_SOUND_SBNK_LOADS
 
+// DEBUG_NWAV prints streamed-audio (NWAV) player activity: PlayBGM_Hook seq ids, NWAV play calls, loop points.
+// #define DEBUG_NWAV
+
 // GUARANTEE_CAPTURES guarantees captures
 // #define GUARANTEE_CAPTURES
 

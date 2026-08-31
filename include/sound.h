@@ -2,6 +2,9 @@
 #define SOUND_H
 
 #include "config.h"
+#include "../include/types.h"
+#include "../include/config.h"
+#include "../include/debug.h"
 
 #define SND_HEAP_SIZE  0xBEAE0
 #define SND_HANDLE_MAX 9
