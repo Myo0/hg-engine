@@ -679,3 +679,5 @@ arm9 GF_SndHandleMoveVolume_Hook 02005408 3
 0001 VsScreen_LoadTransitionOverlay   021EFB64 1
 0001 VsScreen_UnloadTransitionOverlay 021EFC04 1
 0001 VsScreen_FrameTask               021EFB38 2
+
+arm9 FieldSystem_RestoreMapObjectsFromSave 0203B9F4 1
