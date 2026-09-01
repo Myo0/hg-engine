@@ -202,6 +202,36 @@
 // Script to apply status dynamically via porta PC menu
 #define APPLY_STATUS_BY_SCRIPT
 
+// PRIME_PARTY_EXP_BY_SCRIPT: new-script-command 0xD0 sub-command 7 sets every party mon's EXP to
+// one point short of its next level (capped by GetLevelCap()), so the next kill levels it mid-battle
+#define PRIME_PARTY_EXP_BY_SCRIPT
+
+// PLANT_BERRY_TREES: repurposes the apricorn tree objects into one-time berry harvest points.
+// new-script-command 0xD0 sub-command 8 (reached from commonscript 3 std script "berry tree",
+// callstd 2075): reads the tree's overworld sprite id (263-269 = Red..Black apricorn), picks a
+// random berry from that colour's group table (sBerryTreeGroups[] in src/script_new_cmds.c),
+// gives BERRY_TREE_QTY_MIN..MAX of it, then permanently sets BERRY_TREE_FLAG_BASE + <tree index>
+// (the tree index is passed by the object script in VAR_SPECIAL_x8009). No daily regrow.
+#define PLANT_BERRY_TREES
+
+// BERRY_PLANT_GFX_START: first overworld gfx id used by the berry-PLANT sprites (one
+// specific berry each, see sBerryPlantSprites[] in src/script_new_cmds.c). These sprites
+// live in data/graphics/overworlds/custom/ and are packed with a "9_" filename prefix
+// (narcs.mk) specifically so they sort *after* the follower-Pokémon block and never shift
+// any existing overworld gfx id -- see src/field/overworld_table.c for the full story
+// (an "insert before the followers" mistake once shifted every follower sprite by one).
+// This must stay >= 297 + MAX_SPECIES_OVERWORLD_GENDER_FORMS (the last gfx id
+// src/field/overworld_table.c can compute) or new species/forms will start colliding
+// with the berry plants. Re-check that ceiling before bumping species.h.
+#define BERRY_PLANT_GFX_START (1858)
+
+// BERRY_PLANT_TAG_START: the "OW Entry" / overworld-table tag for the first berry plant
+// (what a DSPRE object event actually stores; the engine resolves tag -> gfx via
+// gOWTagToFileNum[] in src/field/overworld_table.c). = MON_OVERWORLD_TAG_START (2500) +
+// MAX_SPECIES_OVERWORLD_GENDER_FORMS (1560) + 1, i.e. one past the last follower's tag
+// (4060). Same "bump before adding species" caveat as BERRY_PLANT_GFX_START.
+#define BERRY_PLANT_TAG_START (4061)
+
 // KANTO_LEVEL_SCALING dynamically adjusts trainer Pokemon levels based on how many Kanto badges the player has earned.
 // Badges 9-16 are Kanto badges. At 0 Kanto badges, no offset is applied.
 // Only trainers in trainers.s that are designated for scaling (via level constants) are intended to use this.

@@ -10,8 +10,8 @@ struct TrainerMoney {
 
 struct TrainerMoney PrizeMoney[] = // 0x34C04 in Overlay 12; 2 bytes for trainer class ID, 2 bytes for modifier; 516 bytes in total in vanilla
     {
-        { .class = TRAINERCLASS_PKMN_TRAINER_ETHAN, .multiplier = 0 },
-        { .class = TRAINERCLASS_PKMN_TRAINER_LYRA, .multiplier = 0 },
+        { .class = TRAINERCLASS_PKMN_TRAINER_ETHAN, .multiplier = 20 },
+        { .class = TRAINERCLASS_PKMN_TRAINER_LYRA, .multiplier = 20 },
         { .class = TRAINERCLASS_YOUNGSTER, .multiplier = 4 },
         { .class = TRAINERCLASS_LASS, .multiplier = 4 },
         { .class = TRAINERCLASS_CAMPER, .multiplier = 4 },
@@ -107,12 +107,12 @@ struct TrainerMoney PrizeMoney[] = // 0x34C04 in Overlay 12; 2 bytes for trainer
         { .class = TRAINERCLASS_PKMN_TRAINER_MARLEY, .multiplier = 30 },
         { .class = TRAINERCLASS_PKMN_TRAINER_FTR_LUCAS, .multiplier = 25 },
         { .class = TRAINERCLASS_PKMN_TRAINER_FTR_DAWN, .multiplier = 25 },
-        { .class = TRAINERCLASS_TOWER_TYCOON, .multiplier = 0 },
+        { .class = TRAINERCLASS_TOWER_TYCOON, .multiplier = 60 },
         { .class = TRAINERCLASS_LEADER_MISTY, .multiplier = 30 },
-        { .class = TRAINERCLASS_HALL_MATRON, .multiplier = 0 },
-        { .class = TRAINERCLASS_FACTORY_HEAD, .multiplier = 0 },
-        { .class = TRAINERCLASS_ARCADE_STAR, .multiplier = 0 },
-        { .class = TRAINERCLASS_CASTLE_VALET, .multiplier = 0 },
+        { .class = TRAINERCLASS_HALL_MATRON, .multiplier = 60 },
+        { .class = TRAINERCLASS_FACTORY_HEAD, .multiplier = 60 },
+        { .class = TRAINERCLASS_ARCADE_STAR, .multiplier = 60 },
+        { .class = TRAINERCLASS_CASTLE_VALET, .multiplier = 60 },
         { .class = TRAINERCLASS_LEADER_LT_SURGE, .multiplier = 30 },
         { .class = TRAINERCLASS_LEADER_ERIKA, .multiplier = 30 },
         { .class = TRAINERCLASS_LEADER_JANINE, .multiplier = 30 },

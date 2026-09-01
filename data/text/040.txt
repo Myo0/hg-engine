@@ -123,7 +123,7 @@ The Box Link has lost connection.\nLeave the area to regain connection.\r
 Infinite Repel Enabled\r
 Infinite Repel Disabled\r
 Your party has been healed.\r
-What Pokémon will get the effect?\r
+What Pokémon will get the effect?
 What status effect do you want?\r
 The status has been applied.\r
 APPLY STATUS
@@ -134,3 +134,8 @@ FROSTBITE
 PARALYSIS
 TOXIC POISON
 EXIT
+Set your party’s EXP until level-up\nto 1?\r
+Your party’s EXP has been set.
+Got {STRVAR_1 8, 0, 0} x{STRVAR_1 51, 1, 0}!
+There’s nothing left to\nharvest from this tree.
+The Bag is too full to\nhold any more berries.

@@ -687,10 +687,10 @@ void CalcDamageOverall(void *bw, struct BattleStruct *sp)
                 // 6.9.4 Tinted Lens
                 if ((sp->rawSpeedNonRNGClientOrder[i] == attacker)
                     && attackerAbility == ABILITY_TINTED_LENS) {
-                    finalModifier = QMul_RoundUp(finalModifier, UQ412__1_25);
+                    finalModifier = QMul_RoundUp(finalModifier, UQ412__2_0);
 #ifdef DEBUG_DAMAGE_CALC
                     debug_printf("\n=================\n");
-                    debug_printf("[CalcBaseDamage] 6.9.2 Neuroforce (client %d loop %d)\n", sp->rawSpeedNonRNGClientOrder[i], i);
+                    debug_printf("[CalcBaseDamage] 6.9.4 Tinted Lens (client %d loop %d)\n", sp->rawSpeedNonRNGClientOrder[i], i);
                     debug_printf("[CalcBaseDamage] finalModifier: %d\n", finalModifier);
 #endif
                 }

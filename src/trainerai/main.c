@@ -4144,6 +4144,8 @@ void SetupStateVariables(struct BattleSystem *bsys, int attacker, u32 defender, 
 
     /*Loop over defender's moves, and compute the most damage AI can take*/
     int currentReceivedDamage = 0;
+    // Focus Sash at full HP survives any single strike, but a multi-hit move still breaks it and can KO.
+    BOOL sashLive = (ai->attackerItem == ITEM_FOCUS_SASH && ai->attackerHP == ai->attackerMaxHP);
     for (int i = 0; i < 4; i++) {
         specialMovePower = 0;
         u32 defenderMoveno = ctx->battlemon[defender].move[i];
@@ -4158,6 +4160,14 @@ void SetupStateVariables(struct BattleSystem *bsys, int attacker, u32 defender, 
             // currentReceivedDamage = AdjustUnusualMoveDamage(bsys, ai->defender, ai->attacker, currentReceivedDamage, ctx->moveTbl[ctx->battlemon[ai->defender].move[i]].effect, ai);
             currentReceivedDamage = BattleAI_AdjustUnusualMoveDamage(ai->defenderMon.level, ai->defenderMon.hp, ai->attackerMon.hp, currentReceivedDamage, defenderMove.effect, ai->defenderMon.ability, ai->defenderMon.item);
             debug_printf("damage received for move index %d is: %d\n", i, currentReceivedDamage);
+
+            // Sash blocks the OHKO from a single-strike move only; multi-hit moves keep their lethal value.
+            if (sashLive
+                && !IsMultiHitMove(ctx->battlemon[ai->defender].move[i])
+                && currentReceivedDamage >= ai->attackerHP) {
+                currentReceivedDamage = ai->attackerHP - 1;
+            }
+
             ai->defenderAvgRollMoveDamages[i] = currentReceivedDamage;
             if (currentReceivedDamage > ai->maxDamageReceived) {
                 ai->maxDamageReceived = currentReceivedDamage;
@@ -4166,13 +4176,6 @@ void SetupStateVariables(struct BattleSystem *bsys, int attacker, u32 defender, 
         // debug_printf("Max damage received for move %d is: %d\n",i,currentReceivedDamage);
     }
     // debug_printf("Max damage received PERIOD is: %d\n",ai->maxDamageReceived);
-
-    // Focus Sash: if the AI is at full HP, it cannot be OHKOd — cap received damage at HP-1
-    if (ai->attackerItem == ITEM_FOCUS_SASH && ai->attackerHP == ai->attackerMaxHP) {
-        if (ai->maxDamageReceived >= ai->attackerHP) {
-            ai->maxDamageReceived = ai->attackerHP - 1;
-        }
-    }
 
     /*Loop over all moves for checking certain conditions*/
     /*Set up max roll damage calculations for all known moves.

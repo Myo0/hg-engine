@@ -56,7 +56,7 @@ void LONG_CALL GF_SndHandleMoveVolume_Hook(int param1, int volume, int frames)
 void LONG_CALL NNS_SndPlayerPauseByPlayerNo_Hook(u8 playerID, BOOL paused)
 {
     NNS_SndPlayerPauseByPlayerNo_Original(playerID, paused);
-    //debug_printf("Setting pause for player %d to %d.\n", playerID, paused);
+    NWAV_DPRINT("[Pause_Hook] player=%d paused=%d (curseq=%d nwav=%d)\n", playerID, paused, current_seq, current_is_nwav);
 
     if(playerID == 0 || playerID == 1 || playerID == 7){
         NWAVPlayer_setPaused(paused);
@@ -67,9 +67,14 @@ void LONG_CALL NNS_SndPlayerPauseByPlayerNo_Hook(u8 playerID, BOOL paused)
 void LONG_CALL NNS_SndPlayerStopSeqByPlayerNo_Hook(u8 playerID, int fadeFrame)
 {
     NNS_SndPlayerStopSeqByPlayerNo_Original(playerID, fadeFrame);
-    //debug_printf("Stop seq for p %d with fframe %d.\n", playerID, fadeFrame);
-    if(playerID == 9 && fadeFrame > 0){
-        NWAVPlayer_stop(fadeFrame);
+    NWAV_DPRINT("[StopSeq_Hook] player=%d fade=%d (curseq=%d nwav=%d)\n", playerID, fadeFrame, current_seq, current_is_nwav);
+    // Player 9 is the BGM player. If it is stopped (any fade), our current_seq
+    // tracking is now stale -- clear it so the next PlayBGM of the same seq isn't
+    // swallowed by the "already playing" guard (post-battle scripts do stop-then-replay).
+    if(playerID == 9){
+        if(current_is_nwav){
+            NWAVPlayer_stop(fadeFrame > 0 ? fadeFrame : 1);
+        }
         current_seq = 0xFFFF;
         current_is_nwav = FALSE;
     }

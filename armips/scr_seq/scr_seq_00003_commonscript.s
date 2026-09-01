@@ -89,6 +89,7 @@ scrdef scr_seq_0003_071
 scrdef scr_seq_0003_072_repels
 scrdef scr_seq_0003_073_autobattle_testing
 scrdef scr_seq_0003_074
+scrdef scr_seq_0003_075_berry_tree
 scrdef_end
 
 scr_seq_0003_002:
@@ -834,6 +835,7 @@ _0B17:
     menu_item_add 70, 79, 3
     menu_item_add 478, 255, 5
     menu_item_add 479, 255, 6
+    menu_item_add 480, 255, 8
     menu_item_add 72, 81, 7
     return
     .byte 0x46, 0x00, 0x47, 0x00, 0x50, 0x00, 0x04
@@ -848,6 +850,7 @@ _0B53:
     case 4, _0BEE
     case 5, _heal_party
     case 6, _apply_status
+    case 8, _prime_party_exp
     goto _0A2E
 
 _0BA2:
@@ -1811,6 +1814,31 @@ _heal_party:
     goto _0A2E
 
 // -------------------------------------------------------
+// PRIME PARTY EXP
+// Called from PC boxes submenu (case 8).  Asks Yes/No first (this button sits next to
+// HEAL PARTY / APPLY STATUS which get used often; it's meant for right before a boss).
+// On Yes: plays the "used an item" chime, then DummyTextTrap 7, 0 -> Script_RunNewCmd
+// sub-command SCRIPT_NEW_CMD_PRIME_PARTY_EXP (every eligible party mon -> 1 EXP short
+// of its next level).
+// Menu label: bank 191 @ 480.  Text: bank 40 @ 136 (prompt), @ 137 (result).
+// -------------------------------------------------------
+_prime_party_exp:
+    npc_msg 136
+    yesno VAR_SPECIAL_RESULT
+    compare VAR_SPECIAL_RESULT, 1
+    goto_if_eq _prime_party_exp_cancel
+    play_se SEQ_SE_DP_KAIFUKU
+    DummyTextTrap 7, 0
+    npc_msg 137
+    wait_button
+    closemsg
+    goto _0A2E
+
+_prime_party_exp_cancel:
+    closemsg
+    goto _0A2E
+
+// -------------------------------------------------------
 // APPLY STATUS
 // Called from PC boxes submenu (case 6).
 // Function 164: party select, then dispatch to status menu
@@ -1912,5 +1940,57 @@ _sleep_rng_2:
 _sleep_rng_3:
     setvar VAR_SPECIAL_x8009, 0x4
     return
+
+// -------------------------------------------------------
+// BERRY PLANT  (std script id 2075, reached via `callstd 2075`)
+// Pre-placed one-time berry harvest.  Needs PLANT_BERRY_TREES.
+// Full berry<->slot table + placement guide: Docs&Changelog/Berry Plants.md
+//
+// The plant object's map script (authored in DSPRE) should be:
+//     lock
+//     faceplayer
+//     setvar VAR_SPECIAL_x8009, <berry type>   // 0..57, which berry (repeats freely)
+//     setvar VAR_SPECIAL_x8008, <plant id>     // 0..99, unique per placed plant
+//     callstd 2075
+//     release
+//     end
+//
+// DummyTextTrap 8, 0 -> Script_RunNewCmd SCRIPT_NEW_CMD_BERRY_TREE:
+//   reads x8009 (berry type -> sBerryPlantBerry[] item + qmin..qmax) and x8008 (plant id),
+//   gives a random amount, then permanently sets flag (BERRY_TREE_FLAG_BASE - plant id).
+//   VAR_SPECIAL_RESULT: 0 = already harvested / bad params
+//                       1 = gave berries   (x8004 = berry item, x8005 = amount)
+//                       2 = Bag too full
+// Text: bank 40 @ 138 (harvested), @ 139 (nothing left), @ 140 (Bag full).
+// -------------------------------------------------------
+scr_seq_0003_075_berry_tree:
+    DummyTextTrap 8, 0
+    compare VAR_SPECIAL_RESULT, 1
+    goto_if_eq _berry_tree_got
+    compare VAR_SPECIAL_RESULT, 2
+    goto_if_eq _berry_tree_full
+    npc_msg 139
+    wait_button
+    closemsg
+    endstd
+    end
+
+_berry_tree_got:
+    buffer_int 1, VAR_SPECIAL_x8005
+    buffer_item_name 0, VAR_SPECIAL_x8004
+    play_fanfare SEQ_ME_KINOMI
+    wait_fanfare
+    npc_msg 138
+    wait_button
+    closemsg
+    endstd
+    end
+
+_berry_tree_full:
+    npc_msg 140
+    wait_button
+    closemsg
+    endstd
+    end
 
 .close

@@ -1084,3 +1084,10 @@ Gligar ✓ — clings to trees/cliffs
 Pineco ✓ (Route 29) — literally falls from trees when headbutted
 Heracross ✓ — lives in trees feeding on sap (also Bug)
 Dunsparce ✓ — hides in hollows
+
+LockAll
+FacePlayer
+SetVar 0x8009 0
+CommonScript 2075
+ReleaseAll
+End

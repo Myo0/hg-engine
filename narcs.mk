@@ -441,7 +441,13 @@ OVERWORLDS_SRCS := $(wildcard $(OVERWORLDS_DEPENDENCIES_DIR)/*.png) $(wildcard $
 OVERWORLDS_OBJS := $(patsubst $(OVERWORLDS_DEPENDENCIES_DIR)/%.png,$(OVERWORLDS_DIR)/1_%.btx0,$(OVERWORLDS_SRCS)) $(patsubst $(OVERWORLDS_DEPENDENCIES_DIR)/%.bin,$(OVERWORLDS_DIR)/1_%.bin,$(OVERWORLDS_SRCS))
 
 OVERWORLDS_CUSTOM_SRCS := $(wildcard $(OVERWORLDS_DEPENDENCIES_DIR)/custom/*.png) $(wildcard $(OVERWORLDS_DEPENDENCIES_DIR)/custom/*.json) $(wildcard $(OVERWORLDS_DEPENDENCIES_DIR)/custom/*.pal)
-OVERWORLDS_CUSTOM_OBJS := $(patsubst $(OVERWORLDS_DEPENDENCIES_DIR)/custom/%.png,$(OVERWORLDS_DIR)/2_%.btx0,$(OVERWORLDS_CUSTOM_SRCS))
+# Electrum: prefix 9_ (NOT 2_) -- narcpy packs this dir by sorted(os.listdir(...)), and
+# followers (src/field/overworld_table.c) address their sprites by a fixed formula
+# (297 + species id), not by position. A 2_ prefix sorts BEFORE the follower block (3_)
+# and silently shifts every follower's gfx id by however many custom sprites exist --
+# confirmed in-game (an Aggron follower rendered as a Meditite). 9_ sorts after 3_, so
+# custom sprites land past the end of the follower-addressable range instead.
+OVERWORLDS_CUSTOM_OBJS := $(patsubst $(OVERWORLDS_DEPENDENCIES_DIR)/custom/%.png,$(OVERWORLDS_DIR)/9_%.btx0,$(OVERWORLDS_CUSTOM_SRCS))
 
 # add your own overworld sources here
 ALL_OVERWORLDS_SRCS += $(OVERWORLDS_SRCS) $(OVERWORLDS_CUSTOM_SRCS)
@@ -453,12 +459,22 @@ $(OVERWORLDS_DIR)/1_%.btx0:$(OVERWORLDS_DEPENDENCIES_DIR)/%.png $(OVERWORLDS_DEP
 $(OVERWORLDS_DIR)/1_%.bin:$(OVERWORLDS_DEPENDENCIES_DIR)/%.bin
 	cp -f $< $@
 
-$(OVERWORLDS_DIR)/2_%.btx0:$(OVERWORLDS_DEPENDENCIES_DIR)/custom/%.png $(OVERWORLDS_DEPENDENCIES_DIR)/custom/%.json $(OVERWORLDS_DEPENDENCIES_DIR)/custom/%*.pal
+$(OVERWORLDS_DIR)/9_%.btx0:$(OVERWORLDS_DEPENDENCIES_DIR)/custom/%.png $(OVERWORLDS_DEPENDENCIES_DIR)/custom/%.json $(OVERWORLDS_DEPENDENCIES_DIR)/custom/%*.pal
 	$(BTX) $< $@
 
-# and then followers are 3_
+# and then followers are 3_ (see the 9_ comment above -- keep any further custom additions
+# past 3_ too, never between 1_ and 3_)
 
-$(OVERWORLDS_NARC): $(ALL_OVERWORLDS_SRCS) $(ALL_OVERWORLDS_OBJS)
+# Electrum: berry-plant sprites REPLACE unused follower slots in place (Unown / Silvally /
+# Arceus form btx0, which never spawn as followers in this hack). Nothing in the build
+# regenerates the 3_ block from source -- it's extracted from the base ROM's a/0/8/1 -- so a
+# manual `cp` into build/pokemonow/ does NOT survive `make clean`. Drop the replacement btx0
+# in data/graphics/overworlds/follower_override/ named EXACTLY <3_NNNN.btx0> (the target slot)
+# and this copies them over the extracted originals just before the NARC is packed.
+OVERWORLDS_FOLLOWER_OVERRIDES := $(wildcard $(OVERWORLDS_DEPENDENCIES_DIR)/follower_override/3_*.btx0)
+
+$(OVERWORLDS_NARC): $(ALL_OVERWORLDS_SRCS) $(ALL_OVERWORLDS_OBJS) $(OVERWORLDS_FOLLOWER_OVERRIDES)
+	@$(if $(OVERWORLDS_FOLLOWER_OVERRIDES),cp -f $(OVERWORLDS_FOLLOWER_OVERRIDES) $(OVERWORLDS_DIR)/ && echo "applied $(words $(OVERWORLDS_FOLLOWER_OVERRIDES)) follower-slot override(s)",:)
 	$(NARCHIVE) create $@ $(OVERWORLDS_DIR) -nf
 
 NARC_FILES += $(OVERWORLDS_NARC)

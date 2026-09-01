@@ -129,3 +129,14 @@ I can tell that you’re a Trainer\nwith considerable skill.\rIf you don’t min
 2660 -> Flag to check if player has already interacted with the legendary encounter in safari zone
 
 186 trainer for rocket grunt
+
+
+Berry Tree Script
+
+Script 10:
+    LockAll
+    FacePlayer
+    SetVar 0x8009 0
+    CommonScript 2075
+    ReleaseAll
+End

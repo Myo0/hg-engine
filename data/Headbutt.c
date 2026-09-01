@@ -5270,18 +5270,18 @@ const HeadbuttArchiveData __data =
         .specialTreeCount = 0,
         .normalSlots =
         {
-            { SPECIES_SPEWPA, 7, 7 },
+            { SPECIES_DWEBBLE, 7, 7 },
             { SPECIES_PINECO, 4, 5 },
+            { SPECIES_SIZZLIPEDE, 4, 5 },
+            { SPECIES_EXEGGCUTE, 4, 5 },
+            { SPECIES_TREECKO, 4, 5 },
+            { SPECIES_WEEDLE, 4, 5 },
+            { SPECIES_DWEBBLE, 7, 7 },
             { SPECIES_PINECO, 4, 5 },
+            { SPECIES_SIZZLIPEDE, 4, 5 },
             { SPECIES_EXEGGCUTE, 4, 5 },
-            { SPECIES_EXEGGCUTE, 4, 5 },
-            { SPECIES_EXEGGCUTE, 4, 5 },
-            { SPECIES_SPEWPA, 7, 7 },
-            { SPECIES_PINECO, 4, 5 },
-            { SPECIES_PINECO, 4, 5 },
-            { SPECIES_EXEGGCUTE, 4, 5 },
-            { SPECIES_EXEGGCUTE, 4, 5 },
-            { SPECIES_EXEGGCUTE, 4, 5 },
+            { SPECIES_TREECKO, 4, 5 },
+            { SPECIES_WEEDLE, 4, 5 },
         },
         .specialSlots =
         {

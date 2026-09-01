@@ -329,14 +329,23 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
         }
         break;
     }
-    case MOVE_FURY_CUTTER:
-        for (u32 n = 1; n < attacker->furyCutterCount; n++) {
+    case MOVE_FURY_CUTTER: {
+        // The engine bumps furyCutterCount (capped at 3) as the move executes, then doubles
+        // (count - 1) times. Mirror that pre-increment here so the AI scores the hit it is
+        // about to make, not the previous one (otherwise it lags a step: sees 40 when the
+        // second consecutive hit will land for 80, 80 when the third will land for 160).
+        u32 furyCount = attacker->furyCutterCount;
+        if (furyCount < 3) {
+            furyCount++;
+        }
+        for (u32 n = 1; n < furyCount; n++) {
             if (movepower >= 160) {
                 break;
             }
             movepower *= 2;
         }
         break;
+    }
     case MOVE_ROLLOUT:
     case MOVE_ICE_BALL:
         // rolloutCount counts down from 4 (turn 1) to 0 (turn 5); power doubles each turn
@@ -1847,7 +1856,7 @@ int LONG_CALL BattleAI_CalcDamage(void *bw, struct BattleStruct *sp, int moveno,
 
     if (moveEffectiveness == TYPE_MUL_TRIPLE_NOT_EFFECTIVE || moveEffectiveness == TYPE_MUL_DOUBLE_NOT_EFFECTIVE || moveEffectiveness == TYPE_MUL_NOT_EFFECTIVE) {
         if (attacker->ability == ABILITY_TINTED_LENS) {
-            finalModifier = QMul_RoundUp(finalModifier, UQ412__1_25);
+            finalModifier = QMul_RoundUp(finalModifier, UQ412__2_0);
         }
     }
 

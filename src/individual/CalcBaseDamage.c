@@ -210,16 +210,22 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
         movepower = (255 - AttackingMon.happiness) * 10 / 25;
         break;
     // Counter-based
-    // Fury Cutter's damage cap is handled in src/battle/battle_script_commands.c.
-    // By default, the modern cap is 3 (meaning furyCutterCount will be between 0-2).
-    case MOVE_FURY_CUTTER:
-        for (u32 n = 1; n < AttackingMon.furyCutterCount; n++) {
+    // The engine (src/battle/battle_script_commands.c) bumps furyCutterCount, capped at 3,
+    // as the move executes, then doubles (count - 1) times. furyCutterCount here still holds
+    // the pre-use value, so mirror that pre-increment or the estimate lags a hit behind.
+    case MOVE_FURY_CUTTER: {
+        u32 furyCount = AttackingMon.furyCutterCount;
+        if (furyCount < 3) {
+            furyCount++;
+        }
+        for (u32 n = 1; n < furyCount; n++) {
             if (movepower >= 160) {
                 break;
             }
             movepower *= 2;
         }
         break;
+    }
     case MOVE_ROLLOUT:
     case MOVE_ICE_BALL:
         // https://github.com/pret/pokeheartgold/blob/29282f7bb45946dee63475022a8d506092bc3748/src/battle/battle_command.c#L3391
