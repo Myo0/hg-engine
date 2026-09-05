@@ -118,6 +118,14 @@ void LONG_CALL FillDamageStructFromPartyMon(void *bw UNUSED, struct BattleStruct
         hpType++;
     }
     monStruct->hiddenPowerType = hpType;
+
+    // pre-gen-6 variable Hidden Power BP: bit 1 (value 2) of each IV, weighted, scaled to 30-70
+    monStruct->hiddenPowerPower = 30 + ((((GetMonData(pp, MON_DATA_HP_IV, 0)    & 2) >> 1) << 0)
+                                      + (((GetMonData(pp, MON_DATA_ATK_IV, 0)   & 2) >> 1) << 1)
+                                      + (((GetMonData(pp, MON_DATA_DEF_IV, 0)   & 2) >> 1) << 2)
+                                      + (((GetMonData(pp, MON_DATA_SPEED_IV, 0) & 2) >> 1) << 3)
+                                      + (((GetMonData(pp, MON_DATA_SPATK_IV, 0) & 2) >> 1) << 4)
+                                      + (((GetMonData(pp, MON_DATA_SPDEF_IV, 0) & 2) >> 1) << 5)) * 40 / 63;
 }
 
 void LONG_CALL FillDamageStructFromBattleMon(void *bw, struct BattleStruct *sp, struct AI_sDamageCalc *monStruct, int numSlot)
@@ -189,6 +197,14 @@ void LONG_CALL FillDamageStructFromBattleMon(void *bw, struct BattleStruct *sp, 
         hpType++;
     }
     monStruct->hiddenPowerType = hpType;
+
+    // pre-gen-6 variable Hidden Power BP: bit 1 (value 2) of each IV, weighted, scaled to 30-70
+    monStruct->hiddenPowerPower = 30 + ((((sp->battlemon[numSlot].hp_iv    & 2) >> 1) << 0)
+                                      + (((sp->battlemon[numSlot].atk_iv   & 2) >> 1) << 1)
+                                      + (((sp->battlemon[numSlot].def_iv   & 2) >> 1) << 2)
+                                      + (((sp->battlemon[numSlot].spe_iv   & 2) >> 1) << 3)
+                                      + (((sp->battlemon[numSlot].spatk_iv & 2) >> 1) << 4)
+                                      + (((sp->battlemon[numSlot].spdef_iv & 2) >> 1) << 5)) * 40 / 63;
 }
 
 int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond, u32 field_cond, u16 pow, u8 type, u8 critical, u8 attackerSlot, u8 defenderSlot, struct AI_sDamageCalc *attacker, struct AI_sDamageCalc *defender)
@@ -472,7 +488,7 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
         // TODO
         break;
     case MOVE_HIDDEN_POWER:
-        movepower = 60;
+        movepower = attacker->hiddenPowerPower; // pre-gen-6 variable BP (30-70)
         movetype = attacker->hiddenPowerType;
         break;
     case MOVE_MAGNITUDE:
@@ -2040,6 +2056,10 @@ int LONG_CALL BattleAI_GetTypeEffectiveness(void *bw, struct BattleStruct *sp, i
         if (TypeEffectivenessTable[i][0] == move_type) {
             if (TypeEffectivenessTable[i][1] == defender_type_1) {
                 if (AI_ShouldUseNormalTypeEffCalc(sp, defender->item_held_effect, i) == TRUE
+                    // Grounded (Smack Down / Thousand Arrows / Gravity / Iron Ball / Ingrain /
+                    // Roost) removes the Flying-type Ground immunity — mirrors the engine's
+                    // ShouldUseNormalTypeEffCalc. defender->isGrounded is IsClientGrounded().
+                    && !(defender->isGrounded && defender_type_1 == TYPE_FLYING && TypeEffectivenessTable[i][2] == TYPE_MUL_NO_EFFECT)
                     && !(!CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE)
                         && !CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK)
                         && sp->field_condition & FIELD_CONDITION_STRONG_WINDS
@@ -2052,6 +2072,7 @@ int LONG_CALL BattleAI_GetTypeEffectiveness(void *bw, struct BattleStruct *sp, i
             }
             if ((TypeEffectivenessTable[i][1] == defender_type_2) && (defender_type_1 != defender_type_2)) {
                 if (AI_ShouldUseNormalTypeEffCalc(sp, defender->item_held_effect, i) == TRUE
+                    && !(defender->isGrounded && defender_type_2 == TYPE_FLYING && TypeEffectivenessTable[i][2] == TYPE_MUL_NO_EFFECT)
                     && !(!CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE)
                         && !CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK)
                         && sp->field_condition & FIELD_CONDITION_STRONG_WINDS

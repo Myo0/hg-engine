@@ -44,6 +44,7 @@ struct PACKED AI_sDamageCalc {
     // u8 lastResortCount;
     u32 assuranceDamage;
     u8 hiddenPowerType;
+    u8 hiddenPowerPower; // pre-gen-6 variable Hidden Power BP (30-70), from IV bit 1s
 };
 
 struct PACKED AI_damage {

@@ -1726,7 +1726,8 @@ void ServerFieldConditionCheck(void *bw, struct BattleStruct *sp)
                         break;
                     }
                     case ABILITY_SLOW_START: {
-                        if ((sp->battlemon[battlerId].slow_start_end_flag == 0) && (sp->battlemon[battlerId].hp) && (GetBattlerAbility(sp, battlerId) == ABILITY_SLOW_START) && ((sp->total_turn - sp->battlemon[battlerId].moveeffect.slowStartTurns) == 5)) {
+                        // graduated rework ends at elapsed==3, not 5
+                        if ((sp->battlemon[battlerId].slow_start_end_flag == 0) && (sp->battlemon[battlerId].hp) && (GetBattlerAbility(sp, battlerId) == ABILITY_SLOW_START) && ((sp->total_turn - sp->battlemon[battlerId].moveeffect.slowStartTurns) == 3)) {
                             sp->battlemon[battlerId].slow_start_end_flag = 1;
                             sp->battlerIdTemp = battlerId;
                             seq_no = BATTLE_SUBSCRIPT_SLOW_START_END;

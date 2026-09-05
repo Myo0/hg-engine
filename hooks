@@ -670,3 +670,12 @@ arm9 EncounterSlot_WildMonSlotRoll_Headbutt 022477C0 0
 #Streamed Audio
 arm9 PlayBGM_Hook 02005D48 1
 arm9 GF_SndHandleMoveVolume_Hook 02005408 3
+
+# Custom Lyra/Ethan Gym-Leader-style VS screens (src/vs_screen.c).
+# Entry-replace the three overlay-1 VS-transition dispatch points, each
+# reimplemented 1:1 in C with effect ids 0x2F (Lyra) / 0x30 (Ethan) folded in.
+# Register = a scratch reg the C entry does not need (r0/r1 hold live args).
+# overlay 1 loads at 0x021E5900.
+0001 VsScreen_LoadTransitionOverlay   021EFB64 1
+0001 VsScreen_UnloadTransitionOverlay 021EFC04 1
+0001 VsScreen_FrameTask               021EFB38 2

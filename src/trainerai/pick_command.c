@@ -241,7 +241,9 @@ static BOOL TrainerAI_ImmunitySwitch(struct BattleSystem *battleSys, int battler
     // Single roll for the best candidate: 50% if it qualifies on last-used-move, else 25%
     u32 roll = bestUse50Pct ? 2 : 4;
     if (BattleRand(battleSys) % roll == 0) {
-        gImmunitySwitchTargetSlot = bestSlot;
+        // The candidate scan above only gates WHETHER to switch. The replacement itself is
+        // chosen by BattleAI_PostKOSwitchIn_Internal (the same picker used after any KO), so
+        // leave gImmunitySwitchTargetSlot unset (-1) and let TrainerAI_Main fall through to it.
         return TRUE;
     }
 
@@ -284,6 +286,61 @@ BOOL TrainerAI_ShouldSwitch(struct BattleSystem *battleSys, int battler)
             }
             if (GetMonData(mon, MON_DATA_HP, 0) > 0) {
                 return TRUE;
+            }
+        }
+    }
+
+    // Palafin (Zero to Hero) only, nothing else: guaranteed manual switch so it reaches Hero
+    // Form, bypassing the move-quality / HP / RNG gates below. Fires when Palafin is slower
+    // than the player's mon, or is faster but its pivot move is walled by an immunity (so a
+    // U-turn / Flip Turn wouldn't switch it out). If Palafin is trapped a manual switch is
+    // impossible, so we defer to the move scorer (ExpertFlag favors the pivot in that case).
+    // Returns without setting a target slot, so BattleAI_PostKOSwitchIn_Internal picks the
+    // replacement -- same picker used after any KO.
+    {
+        int activeSlot = ctx->sel_mons_no[battler];
+        struct PartyPokemon *activeMon = Battle_GetClientPartyMon(battleSys, battler, activeSlot);
+        if (GetMonData(activeMon, MON_DATA_SPECIES, NULL) == SPECIES_PALAFIN
+            && ctx->battlemon[battler].ability == ABILITY_ZERO_TO_HERO
+            && ctx->battlemon[battler].form_no == 0
+            && CanSwitchMon(battleSys, ctx, battler)) {
+            u32 defender = BATTLER_OPPONENT(battler);
+
+            BOOL hasBench = FALSE;
+            int partySize = Battle_GetClientPartySize(battleSys, battler);
+            for (int i = 0; i < partySize; i++) {
+                if (i == activeSlot || i == ctx->ai_reshuffle_sel_mons_no[battler]) {
+                    continue;
+                }
+                struct PartyPokemon *mon = Battle_GetClientPartyMon(battleSys, battler, i);
+                u16 sp = GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0);
+                if (sp != SPECIES_NONE && sp != SPECIES_EGG && GetMonData(mon, MON_DATA_HP, 0) > 0) {
+                    hasBench = TRUE;
+                    break;
+                }
+            }
+
+            if (hasBench) {
+                // ret == 0 -> player moves first -> Palafin is slower
+                BOOL palafinSlower = (BattleAI_CalcSpeed(battleSys, ctx, defender, activeMon, CALCSPEED_FLAG_NO_PRIORITY) == 0);
+
+                BOOL pivotWalled = FALSE;
+                if (!palafinSlower) {
+                    struct AI_sDamageCalc defenderMon = { 0 };
+                    FillDamageStructFromBattleMon(battleSys, ctx, &defenderMon, defender);
+                    for (int k = 0; k < 4; k++) {
+                        u16 moveno = ctx->battlemon[battler].move[k];
+                        if (moveno == MOVE_NONE || ctx->moveTbl[moveno].effect != MOVE_EFFECT_SWITCH_HIT) {
+                            continue;
+                        }
+                        pivotWalled = IsPartyMonImmuneToMove(battleSys, ctx, &defenderMon, moveno);
+                        break;
+                    }
+                }
+
+                if (palafinSlower || pivotWalled) {
+                    return TRUE;
+                }
             }
         }
     }

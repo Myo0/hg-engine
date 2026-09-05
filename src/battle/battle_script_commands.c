@@ -1449,9 +1449,9 @@ void Task_DistributeExp_Extend(void *arg0, void *work)
                 }
             }
         }
-        // multiply by 255/390 (map audino to 255) to not get massively inflated experience rates
-        totalexp = 255 * GetSpeciesBaseExp(sp->battlemon[sp->fainting_client].species, sp->battlemon[sp->fainting_client].form_no) / 390; // PokePersonalParaGet(sp->battlemon[sp->fainting_client].species, PERSONAL_EXP_YIELD);
-        totalexp = (totalexp * sp->battlemon[sp->fainting_client].level) / 7;
+        // Vanilla HGSS flat rate: floor(baseExp * level / 7).  (No 255/390 compression — the
+        // modern BaseExperienceTable.c values are used as-is.)
+        totalexp = (GetSpeciesBaseExp(sp->battlemon[sp->fainting_client].species, sp->battlemon[sp->fainting_client].form_no) * sp->battlemon[sp->fainting_client].level) / 7;
         if (monCountFromItem) {
             sp->obtained_exp = (totalexp / 2) / monCount;
             if (sp->obtained_exp == 0) {
@@ -1468,6 +1468,8 @@ void Task_DistributeExp_Extend(void *arg0, void *work)
             }
             sp->exp_share_obtained_exp = 0;
         }
+        // Note: the vanilla "a" term (1.5x when the fainted mon belongs to a Trainer)
+        // is applied downstream by Task_DistributeExp, so it is NOT applied here.
     }
 
 #ifdef DEBUG_PRINT_EXPERIENCE_VALUES

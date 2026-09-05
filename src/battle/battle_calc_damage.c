@@ -122,6 +122,14 @@ int CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond 
         client.paradoxBoostedStat = sp->paradoxBoostedStat[i];
         client.boosterEnergyActivated = sp->boosterEnergyActivated[i];
 
+        // pre-gen-6 variable Hidden Power BP: bit 1 (value 2) of each IV, weighted, scaled to 30-70
+        client.hiddenPowerPower = 30 + ((((sp->battlemon[i].hp_iv    & 2) >> 1) << 0)
+                                      + (((sp->battlemon[i].atk_iv   & 2) >> 1) << 1)
+                                      + (((sp->battlemon[i].def_iv   & 2) >> 1) << 2)
+                                      + (((sp->battlemon[i].spe_iv   & 2) >> 1) << 3)
+                                      + (((sp->battlemon[i].spatk_iv & 2) >> 1) << 4)
+                                      + (((sp->battlemon[i].spdef_iv & 2) >> 1) << 5)) * 40 / 63;
+
         damageCalc.clients[i] = client;
     }
 

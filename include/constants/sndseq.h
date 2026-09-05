@@ -1422,7 +1422,13 @@ enum {
     ANIM_MUSIC_COMBO_JOHTO_WILD_THEME,
     ANIM_MUSIC_COMBO_KIMONO_GIRL,
     ANIM_MUSIC_COMBO_RED,
-    ANIM_MUSIC_COMBO_LYRA_ETHAN,   // custom: streamed NWAV battle theme for Lyra & Ethan (index 45)
+    ANIM_MUSIC_COMBO_LYRA,   // custom: Lyra  -> VS effect id 0x2F + streamed NWAV seq 9001 (index 45)
+    ANIM_MUSIC_COMBO_ETHAN,  // custom: Ethan -> VS effect id 0x30 + streamed NWAV seq 9001 (index 46)
+    ANIM_MUSIC_COMBO_PALMER,  // custom: Frontier Brain -> VS effect id 0x31 + SEQ_GS_BA_BRAIN (index 47)
+    ANIM_MUSIC_COMBO_ARGENTA, // custom: Frontier Brain -> VS effect id 0x32 + SEQ_GS_BA_BRAIN (index 48)
+    ANIM_MUSIC_COMBO_THORTON, // custom: Frontier Brain -> VS effect id 0x33 + SEQ_GS_BA_BRAIN (index 49)
+    ANIM_MUSIC_COMBO_DAHLIA,  // custom: Frontier Brain -> VS effect id 0x34 + SEQ_GS_BA_BRAIN (index 50)
+    ANIM_MUSIC_COMBO_DARACH,  // custom: Frontier Brain -> VS effect id 0x35 + SEQ_GS_BA_BRAIN (index 51)
 };
 
 #endif // POKEHEARTGOLD_CONSTANTS_SNDSEQ_H

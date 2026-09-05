@@ -365,7 +365,7 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
         // TODO
         break;
     case MOVE_HIDDEN_POWER:
-        movepower = 60;
+        movepower = AttackingMon.hiddenPowerPower; // pre-gen-6 variable BP (30-70)
         break;
     case MOVE_MAGNITUDE:
         movepower = damage_power;
@@ -1091,11 +1091,18 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
     // Abilities
     for (i = 0; i < maxBattlers; i++) {
         if (attacker == damageCalc->rawSpeedNonRNGClientOrder[i]) {
-            // handle Slow Start
+            // handle Slow Start (graduated: 50% → 62.5% → 75% → 87.5% over 4 turns)
             if ((AttackingMon.ability == ABILITY_SLOW_START)
-                && ((BattleWorkMonDataGet(bw, sp, 3, 0) - BattlePokemonParamGet(sp, attacker, BATTLE_MON_DATA_SLOW_START_COUNTER, NULL)) < 5)
                 && (movesplit == SPLIT_PHYSICAL || MoveIsZMove(moveno))) {
-                attackModifier = QMul_RoundUp(attackModifier, UQ412__0_5);
+                int slowStartElapsed = (int)(BattleWorkMonDataGet(bw, sp, 3, 0) - BattlePokemonParamGet(sp, attacker, BATTLE_MON_DATA_SLOW_START_COUNTER, NULL));
+                u32 slowStartModifier;
+                if (slowStartElapsed < 0)       slowStartModifier = UQ412__0_5;
+                else if (slowStartElapsed == 0) slowStartModifier = UQ412__0_625;
+                else if (slowStartElapsed == 1) slowStartModifier = UQ412__0_75;
+                else if (slowStartElapsed == 2) slowStartModifier = UQ412__0_875;
+                else                            slowStartModifier = 0;
+                if (slowStartModifier)
+                    attackModifier = QMul_RoundUp(attackModifier, slowStartModifier);
             }
 
             // handle Defeatist

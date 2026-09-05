@@ -410,12 +410,13 @@ arm9 0204B94C FC
 0012 02246560 FC
 
 #ifdef EXPAND_MUSIC_TABLES
-# MainMusicComboTable combo range (2D=45 vanilla; 2E=46 to allow custom combo 45 ANIM_MUSIC_COMBO_LYRA_ETHAN)
-arm9 080517AA 2E
-arm9 080517D4 2E
+# MainMusicComboTable combo range (2D=45 vanilla; 34=52 to allow custom combos 45..51:
+# LYRA, ETHAN, PALMER, ARGENTA, THORTON, DAHLIA, DARACH)
+arm9 080517AA 34
+arm9 080517D4 34
 
-# TrainerClassToMusicCombo table range
-arm9 08051886 26
+# TrainerClassToMusicCombo table range (20=32 vanilla; 2B=43 = +LYRA +5 Frontier Brains +ETHAN +4 pad)
+arm9 08051886 2B
 
 # PokemonBattleMusic table range
 arm9 080518CA 0B

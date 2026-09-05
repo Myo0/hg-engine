@@ -315,6 +315,8 @@ all: $(OUTPUT) $(OVERLAY_OUTPUTS) $(TOOLS) $(BASE)/arm9.bin
 	$(NARCHIVE) create $(FILESYS)/a/0/2/8 $(BUILD)/a028/ -nf
 	@# stage streamed-audio NWAV masters into base/root/waves (base/ is wiped on make clean)
 	@if [ -d waves ] && ls waves/*.nwav >/dev/null 2>&1; then mkdir -p $(FILESYS)/waves && cp -f waves/*.nwav $(FILESYS)/waves/; fi
+	@# retarget the Frontier Brain VS busts to the Gym-Leader OBJ mapping (src/vs_screen.c)
+	$(PYTHON) scripts/patch_vs_brain_sprites.py $(FILESYS)/a/1/0/9
 	@echo "Making ROM..."
 	$(NDSTOOL) -c $(BUILDROM) -9 $(BASE)/arm9.bin -7 $(BASE)/arm7.bin -y9 $(BASE)/overarm9.bin -y7 $(BASE)/overarm7.bin -d $(FILESYS) -y $(BASE)/overlay -t $(BASE)/banner.bin -h $(BASE)/header.bin
 	@echo "Done.  See output $(BUILDROM)."

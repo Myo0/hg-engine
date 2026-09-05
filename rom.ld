@@ -944,3 +944,9 @@ DC_FlushRange =     0x020D2894;
 DC_InvalidateRange = 0x020D285C;
 
 MI_CpuFill8 =       0x020D4994;
+
+/* Custom Lyra/Ethan VS screens (src/vs_screen.c) */
+OS_GetTick =        0x020D34B0;  /* ARM; decoded from overlay-1 blx @ 0x021EFB4E */
+OS_SetTick =        0x020D3560;  /* ARM; decoded from overlay-1 blx @ 0x021EFB56 */
+ov115_0225F220 =   0x0225F220 | 1;  /* OVY_115 16-state Gym-Leader VS render machine */
+ov01_021EFCDC =    0x021EFCDC | 1;  /* overlay 1: VS transition task teardown */

@@ -8596,7 +8596,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
 
     [SPECIES_BLITZLE] = {
         .entries = {
-            { EVO_LEVEL, 27, SPECIES_ZEBSTRIKA },
+            { EVO_LEVEL, 26, SPECIES_ZEBSTRIKA },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
@@ -8866,7 +8866,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
 
     [SPECIES_SEWADDLE] = {
         .entries = {
-            { EVO_LEVEL, 20, SPECIES_SWADLOON },
+            { EVO_LEVEL, 12, SPECIES_SWADLOON },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },

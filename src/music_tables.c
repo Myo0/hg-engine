@@ -54,7 +54,19 @@ u16 MainMusicComboTable[][2] = {
     [ANIM_MUSIC_COMBO_KIMONO_GIRL] = { 0x2D, SEQ_GS_VS_TRAINER },
     [ANIM_MUSIC_COMBO_RED] = { 0x2E, SEQ_GS_VS_CHAMP },
     // (***END OF VANILLA ENTRIES***)
-    [ANIM_MUSIC_COMBO_LYRA_ETHAN] = { 0xFFFF, 9001 }, // custom: seq 9001 is a sentinel caught by sNwavOverrides[] in src/sound.c -> streamed NWAV
+    // custom: effect ids 0x2F/0x30 are handled in src/vs_screen.c (new Gym-Leader-style
+    // VS screens reusing OVY_115 with Lyra's / Ethan's busts from NARC 109). seq 9001 is
+    // the streamed-NWAV sentinel caught by sNwavOverrides[] in src/sound.c.
+    [ANIM_MUSIC_COMBO_LYRA]  = { 0x2F, 9001 },
+    [ANIM_MUSIC_COMBO_ETHAN] = { 0x30, 9001 },
+    // custom: effect ids 0x31..0x35 are handled in src/vs_screen.c (Gym-Leader-style
+    // VS screens reusing OVY_115 with the Frontier Brain busts from NARC 109).
+    // SEQ_GS_BA_BRAIN (1147) is the vanilla Frontier Brain battle theme.
+    [ANIM_MUSIC_COMBO_PALMER]  = { 0x31, SEQ_GS_BA_BRAIN },
+    [ANIM_MUSIC_COMBO_ARGENTA] = { 0x32, SEQ_GS_BA_BRAIN },
+    [ANIM_MUSIC_COMBO_THORTON] = { 0x33, SEQ_GS_BA_BRAIN },
+    [ANIM_MUSIC_COMBO_DAHLIA]  = { 0x34, SEQ_GS_BA_BRAIN },
+    [ANIM_MUSIC_COMBO_DARACH]  = { 0x35, SEQ_GS_BA_BRAIN },
 };
 
 // format is one byte for trainer class, then one byte for combo (combo increments by 4 because each combo is four bytes long)
@@ -93,9 +105,14 @@ u8 TrainerClassToMusicCombo[][2] = {
     { TRAINERCLASS_KIMONO_GIRL, ANIM_MUSIC_COMBO_KIMONO_GIRL * 4 },
     { TRAINERCLASS_PKMN_TRAINER_RED, ANIM_MUSIC_COMBO_RED * 4 },
     // (***END OF VANILLA ENTRIES***)
-    { TRAINERCLASS_PKMN_TRAINER_LYRA,  ANIM_MUSIC_COMBO_LYRA_ETHAN * 4 }, // custom
-    { TRAINERCLASS_PKMN_TRAINER_ETHAN, ANIM_MUSIC_COMBO_LYRA_ETHAN * 4 }, // custom (ETHAN = class 0; keep it the last non-zero row so the counted loop matches it before any {0,0} pad)
-    { 0, 0 }, // pad rows 34-37 to the 38-entry loop count (bytereplacement: arm9 08051886 26)
+    { TRAINERCLASS_PKMN_TRAINER_LYRA,  ANIM_MUSIC_COMBO_LYRA    * 4 }, // custom
+    { TRAINERCLASS_TOWER_TYCOON,       ANIM_MUSIC_COMBO_PALMER  * 4 }, // custom: Frontier Brain
+    { TRAINERCLASS_HALL_MATRON,        ANIM_MUSIC_COMBO_ARGENTA * 4 }, // custom: Frontier Brain
+    { TRAINERCLASS_FACTORY_HEAD,       ANIM_MUSIC_COMBO_THORTON * 4 }, // custom: Frontier Brain
+    { TRAINERCLASS_ARCADE_STAR,        ANIM_MUSIC_COMBO_DAHLIA  * 4 }, // custom: Frontier Brain
+    { TRAINERCLASS_CASTLE_VALET,       ANIM_MUSIC_COMBO_DARACH  * 4 }, // custom: Frontier Brain
+    { TRAINERCLASS_PKMN_TRAINER_ETHAN, ANIM_MUSIC_COMBO_ETHAN   * 4 }, // custom (ETHAN = class 0; keep it the last non-zero row so the counted loop matches it before any {0,0} pad)
+    { 0, 0 }, // pad to the 43-entry loop count (bytereplacement: arm9 08051886 2B)
     { 0, 0 },
     { 0, 0 },
     { 0, 0 },

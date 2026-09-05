@@ -716,7 +716,11 @@ int BasicFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext *
             moveScore -= 15;
         }
         if (ai->attackerMoveType == TYPE_GROUND && // ground
-            (ai->defenderAbility == ABILITY_LEVITATE || ai->defenderAbility == ABILITY_EELEVATE || ai->defenderAbility == ABILITY_EARTH_EATER)) {
+            // Levitate / Eelevate lose the Ground immunity once grounded (Smack Down / Thousand
+            // Arrows / Gravity / Iron Ball / Ingrain); Earth Eater's absorption is not removed
+            // by grounding (engine GetBattlerAbility only nulls Levitate/Eelevate).
+            (((ai->defenderAbility == ABILITY_LEVITATE || ai->defenderAbility == ABILITY_EELEVATE) && !IsClientGrounded(ctx, ai->defender))
+                || ai->defenderAbility == ABILITY_EARTH_EATER)) {
             moveScore -= 15;
         }
         if (IsMoveSoundBased(ai->attackerMove) && // sound based moves
@@ -3373,6 +3377,33 @@ int ExpertFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext 
             }
             if (!defenderHasPriority) {
                 moveScore += 8;
+            }
+        }
+
+        // Palafin (Zero to Hero): a pivot move is how it reaches Hero Form. Strongly prefer it
+        // when Palafin moves first (pivots before taking a hit) or is trapped (a manual switch
+        // is impossible, so the pivot is the only way out) -- but only if the pivot actually
+        // connects. An immune target means U-turn / Flip Turn wouldn't switch Palafin out.
+        if (ctx->battlemon[attacker].species == SPECIES_PALAFIN
+            && ctx->battlemon[attacker].ability == ABILITY_ZERO_TO_HERO
+            && ctx->battlemon[attacker].form_no == 0) {
+            BOOL pivotImmune = (ai->attackerMoveEffectiveness[i] == TYPE_MUL_NO_EFFECT);
+            if (!pivotImmune && ai->attackerAbility != ABILITY_MOLD_BREAKER) {
+                if (ai->attackerMoveType == TYPE_ELECTRIC
+                    && (ai->defenderAbility == ABILITY_VOLT_ABSORB
+                        || ai->defenderAbility == ABILITY_LIGHTNING_ROD
+                        || ai->defenderAbility == ABILITY_MOTOR_DRIVE)) {
+                    pivotImmune = TRUE;
+                }
+                if (ai->attackerMoveType == TYPE_WATER
+                    && (ai->defenderAbility == ABILITY_WATER_ABSORB
+                        || ai->defenderAbility == ABILITY_STORM_DRAIN
+                        || ai->defenderAbility == ABILITY_DRY_SKIN)) {
+                    pivotImmune = TRUE;
+                }
+            }
+            if (!pivotImmune && (ai->attackerMovesFirst || !CanSwitchMon(bsys, ctx, attacker))) {
+                moveScore += 15;
             }
         }
     }
