@@ -10,6 +10,12 @@
 #include "../../include/constants/battle_script_constants.h"
 #include "../../include/constants/battle_message_constants.h"
 #include "../../include/custom/custom_ai.h"
+#include "../../include/debug.h"
+
+#ifndef DEBUG_TRAINER_AI_LOGS
+#undef debug_printf
+#define debug_printf(...) ((void)0)
+#endif
 
 // Defined in main.c — computes all 4 move scores for a singles attacker
 void TrainerAI_ComputeAllMoveScores(struct BattleSystem *bsys, int attacker, unsigned int outScores[4]);
@@ -119,10 +125,14 @@ static BOOL TrainerAI_ImmunitySwitch(struct BattleSystem *battleSys, int battler
             highestDmgMove = moveno;
         }
     }
+    debug_printf("[ImmSwitch] battler=%d def=%d aiHP=%d plHP=%d highestDmgMove=%d (dmg=%d)\n",
+        battler, defender, aiMon.hp, playerMon.hp, highestDmgMove, highestDmg);
 
-    // Condition 1: if active AI mon can OHKO player, suppress switch unless AI is slower AND
-    // the player also OHKOs the AI (i.e., AI dies before getting to act).
-    u32 aiMaxDmg = 0;
+    // Condition 1: if the active AI mon is GUARANTEED to OHKO the player (min damage roll), and
+    // it isn't about to be OHKOd itself before it acts, just stay in and take the KO. Uses the
+    // min roll so a lucky-high-roll "maybe OHKO" (e.g. a resisted Choice-boosted hit) does not
+    // count -- otherwise the AI passes up a free immunity pivot on a coin flip.
+    u32 aiGuaranteedDmg = 0;
     for (int k = 0; k < 4; k++) {
         u16 moveno = ctx->battlemon[battler].move[k];
         if (moveno == MOVE_NONE) {
@@ -134,20 +144,24 @@ static BOOL TrainerAI_ImmunitySwitch(struct BattleSystem *battleSys, int battler
         }
         struct AI_damage damages = { 0 };
         damages.damageRoll = BattleAI_CalcDamage(battleSys, ctx, moveno, ctx->side_condition[BATTLER_IS_ENEMY(battler)], ctx->field_condition, mv.power, mv.type, 0, battler, defender, &damages, &aiMon, &playerMon);
-        if (damages.damageRange[15] > aiMaxDmg) {
-            aiMaxDmg = damages.damageRange[15];
+        if (damages.damageRange[0] > aiGuaranteedDmg) {
+            aiGuaranteedDmg = damages.damageRange[0];
         }
     }
-    if (aiMaxDmg >= playerMon.hp) {
+    if (aiGuaranteedDmg >= playerMon.hp) {
         BOOL aiFaster = (aiMon.speed >= playerMon.speed);
         BOOL playerOHKOsAI = (highestDmg >= aiMon.hp);
+        debug_printf("[ImmSwitch] Cond1: aiGuaranteedDmg=%d >= plHP -> aiFaster=%d playerOHKOsAI=%d\n",
+            aiGuaranteedDmg, aiFaster, playerOHKOsAI);
         if (aiFaster || !playerOHKOsAI) {
+            debug_printf("[ImmSwitch] -> suppressed by Cond1, return FALSE\n");
             return FALSE;
         }
     }
 
     u16 playerLastMove = ctx->waza_no_old[defender];
     int partySize = Battle_GetClientPartySize(battleSys, battler);
+    debug_printf("[ImmSwitch] playerLastMove=%d partySize=%d\n", playerLastMove, partySize);
 
     int bestSlot = -1;
     u32 bestDamage = 0;
@@ -192,13 +206,15 @@ static BOOL TrainerAI_ImmunitySwitch(struct BattleSystem *battleSys, int battler
         BOOL survives = (speedCalc > 0)
             ? (maxDmgReceived < partyMonData.hp)
             : (maxDmgReceived * 2 < partyMonData.hp);
-        if (!survives) {
-            continue;
-        }
 
         BOOL qualifies25 = highestDmgMove != MOVE_NONE && IsPartyMonImmuneToMove(battleSys, ctx, &partyMonData, highestDmgMove);
         BOOL qualifies50 = playerLastMove != MOVE_NONE && IsPartyMonImmuneToMove(battleSys, ctx, &partyMonData, playerLastMove);
+        debug_printf("[ImmSwitch]  cand[%d] sp=%d abil=%d hp=%d recv=%d spd=%d surv=%d q25=%d q50=%d\n",
+            i, species, partyMonData.ability, partyMonData.hp, maxDmgReceived, speedCalc, survives, qualifies25, qualifies50);
 
+        if (!survives) {
+            continue;
+        }
         if (!qualifies25 && !qualifies50) {
             continue;
         }
@@ -222,8 +238,15 @@ static BOOL TrainerAI_ImmunitySwitch(struct BattleSystem *battleSys, int battler
             }
         }
 
-        // Require candidate to deal at least 35% of the player's HP — no point switching in a wallmon
-        if (playerMon.hp == 0 || maxDmgDealt * 100 / playerMon.hp < 35) {
+        // The candidate must be able to make *some* progress against the player. An immunity
+        // pivot doesn't need to hit hard though — the payoff is absorbing the opponent's
+        // biggest move for free, not the chip it deals back — so a moderate floor (25%),
+        // not the old 35% which vetoed clearly-correct pivots (e.g. a Lightning Rod mon vs a
+        // Shock Wave spammer whose only unresisted move just can't quite hit 35%).
+        u32 pctDealt = playerMon.hp ? (maxDmgDealt * 100 / playerMon.hp) : 0;
+        debug_printf("[ImmSwitch]  cand[%d] maxDmgDealt=%d (%d%% of plHP) floor25=%d\n",
+            i, maxDmgDealt, pctDealt, pctDealt >= 25);
+        if (playerMon.hp == 0 || pctDealt < 25) {
             continue;
         }
 
@@ -235,12 +258,16 @@ static BOOL TrainerAI_ImmunitySwitch(struct BattleSystem *battleSys, int battler
     }
 
     if (bestSlot == -1) {
+        debug_printf("[ImmSwitch] no qualifying candidate -> return FALSE\n");
         return FALSE;
     }
 
     // Single roll for the best candidate: 50% if it qualifies on last-used-move, else 25%
     u32 roll = bestUse50Pct ? 2 : 4;
-    if (BattleRand(battleSys) % roll == 0) {
+    u32 rollVal = BattleRand(battleSys);
+    debug_printf("[ImmSwitch] bestSlot=%d use50=%d roll=1/%d rand=%d -> %s\n",
+        bestSlot, bestUse50Pct, roll, rollVal, (rollVal % roll == 0) ? "SWITCH" : "stay");
+    if (rollVal % roll == 0) {
         // The candidate scan above only gates WHETHER to switch. The replacement itself is
         // chosen by BattleAI_PostKOSwitchIn_Internal (the same picker used after any KO), so
         // leave gImmunitySwitchTargetSlot unset (-1) and let TrainerAI_Main fall through to it.
@@ -252,7 +279,9 @@ static BOOL TrainerAI_ImmunitySwitch(struct BattleSystem *battleSys, int battler
 
 int TrainerAI_PickCommand(struct BattleSystem *battleSys, int battler)
 {
+    debug_printf("[PickCmd] TrainerAI_PickCommand battler=%d\n", battler);
     if (TrainerAI_ShouldSwitch(battleSys, battler)) {
+        debug_printf("[PickCmd] -> PARTY (switch)\n");
         return PLAYER_INPUT_PARTY;
     }
     return PLAYER_INPUT_FIGHT;

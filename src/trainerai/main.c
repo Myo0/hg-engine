@@ -160,6 +160,15 @@ void TrainerAI_ComputeAllMoveScores(struct BattleSystem *bsys, int attacker, uns
 int AdjustUnusualMoveDamage(struct BattleSystem *bsys, int attacker, u32 defender, int damage, int moveEffect, struct AIContext *ai);
 int AdjustUnusualMovePower(struct BattleSystem *bsys, int attacker, u32 defender, int moveEffect, struct AIContext *ai);
 
+/*Natural Gift takes the held berry's type; without a usable berry it stays Normal (move-table).*/
+static u8 NaturalGiftMoveType(struct BattleStruct *ctx, u32 item)
+{
+    if (IS_ITEM_BERRY(item)) {
+        return (u8)BattleItemDataGet(ctx, item, ITEM_PARAM_NATURAL_GIFT_TYPE);
+    }
+    return TYPE_NORMAL;
+}
+
 unsigned int __attribute__((section(".init"))) TrainerAI_Main(struct BattleSystem *bsys, int attacker)
 {
     debug_printf("In TrainerAI_Main:\n");
@@ -222,7 +231,9 @@ unsigned int __attribute__((section(".init"))) TrainerAI_Main(struct BattleSyste
                     // ai->attackerMoveEffectiveness = 0;
                     ai->attackerMoveType = (ai->attackerMove == MOVE_HIDDEN_POWER)
                         ? ai->attackerMon.hiddenPowerType
-                        : ctx->moveTbl[ai->attackerMove].type;
+                        : (ai->attackerMove == MOVE_NATURAL_GIFT)
+                            ? NaturalGiftMoveType(ctx, ctx->battlemon[ai->attacker].item)
+                            : ctx->moveTbl[ai->attackerMove].type;
                     ai->attackerMovePPRemaining = ctx->battlemon[ai->attacker].pp[i];
                     // BattleAI_GetTypeEffectiveness(bsys, ctx, ai->attackerMoveType,  &(ai->attackerMoveEffectiveness), &ai->attackerMon, &ai->defenderMon);
                     // AITypeCalc(ctx, ai->attackerMove, ai->attackerMoveType, ai->attackerAbility, ai->defenderAbility, ai->holdEffect, ai->defenderType1, ai->defenderType2, & ai->attackerMoveEffectiveness);
@@ -299,7 +310,9 @@ unsigned int __attribute__((section(".init"))) TrainerAI_Main(struct BattleSyste
             // ai->attackerMoveEffectiveness = 0;
             ai->attackerMoveType = (ai->attackerMove == MOVE_HIDDEN_POWER)
                 ? ai->attackerMon.hiddenPowerType
-                : ctx->moveTbl[ai->attackerMove].type;
+                : (ai->attackerMove == MOVE_NATURAL_GIFT)
+                    ? NaturalGiftMoveType(ctx, ctx->battlemon[ai->attacker].item)
+                    : ctx->moveTbl[ai->attackerMove].type;
             ai->attackerMovePPRemaining = ctx->battlemon[ai->attacker].pp[i];
             // AITypeCalc(ctx, ai->attackerMove, ai->attackerMoveType, ai->attackerAbility, ai->defenderAbility, ai->holdEffect, ai->defenderType1, ai->defenderType2, & ai->attackerMoveEffectiveness);
             if (ai->attackerMove != MOVE_NONE && (ai->attackerMove == ctx->battlemon[ai->attacker].moveeffect.moveNoChoice || ai->attackerMove == ctx->battlemon[ai->attacker].moveeffect.encoredMove)) {
@@ -1568,6 +1581,100 @@ int EvaluateAttackFlag(struct BattleSystem *bsys, int attacker, int i, struct AI
     return moveScore;
 }
 
+/*Rates the best offensive pivot switch-in and returns the ExpertFlag points to add. A bench mon
+must keep > 20% HP and take < 25% of its max HP from the player's best move; it then scores
+8 (faster and OHKOs the target), 7 (deals >= 50% of the target's HP), or 6 (deals more than it
+takes). 0 if no bench mon qualifies.*/
+static int BestPivotSwitchInReward(struct BattleSystem *bsys, int attacker, struct AIContext *ai)
+{
+    struct BattleStruct *ctx = bsys->sp;
+    int defender = ai->defender;
+    int partySize = Battle_GetClientPartySize(bsys, attacker);
+    int best = 0;
+
+    struct AI_sDamageCalc defenderMon = { 0 };
+    FillDamageStructFromBattleMon(bsys, ctx, &defenderMon, defender);
+    if (defenderMon.hp == 0) {
+        return 0;
+    }
+
+    for (int p = 0; p < partySize; p++) {
+        struct PartyPokemon *mon = Battle_GetClientPartyMon(bsys, attacker, p);
+        u16 species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL);
+
+        if (species == SPECIES_NONE || species == SPECIES_EGG) {
+            continue;
+        }
+        if (GetMonData(mon, MON_DATA_HP, NULL) == 0) {
+            continue;
+        }
+        if (p == ctx->sel_mons_no[attacker]) {
+            continue;
+        }
+
+        struct AI_sDamageCalc benchMon = { 0 };
+        FillDamageStructFromPartyMon(bsys, ctx, &benchMon, mon);
+
+        u32 worstIncoming = 0;
+        for (int k = 0; k < 4; k++) {
+            u16 pMove = ctx->battlemon[defender].move[k];
+            if (pMove == MOVE_NONE || ctx->moveTbl[pMove].split == SPLIT_STATUS || ctx->moveTbl[pMove].power == 0) {
+                continue;
+            }
+            struct AI_damage dmg = { 0 };
+            BattleAI_CalcDamage(bsys, ctx, pMove, ctx->side_condition[BATTLER_IS_ENEMY(defender)], ctx->field_condition,
+                ctx->moveTbl[pMove].power, ctx->moveTbl[pMove].type, 0, defender, attacker, &dmg, &defenderMon, &benchMon);
+            if (dmg.damageRange[8] > worstIncoming) {
+                worstIncoming = dmg.damageRange[8];
+            }
+        }
+
+        u32 bestOutgoing = 0;
+        for (int j = 0; j < 4; j++) {
+            u16 bMove = GetMonData(mon, MON_DATA_MOVE1 + j, NULL);
+            if (bMove == MOVE_NONE || ctx->moveTbl[bMove].split == SPLIT_STATUS || ctx->moveTbl[bMove].power == 0) {
+                continue;
+            }
+            struct AI_damage dmg = { 0 };
+            BattleAI_CalcDamage(bsys, ctx, bMove, ctx->side_condition[BATTLER_IS_ENEMY(attacker)], ctx->field_condition,
+                ctx->moveTbl[bMove].power, ctx->moveTbl[bMove].type, 0, attacker, defender, &dmg, &benchMon, &defenderMon);
+            if (dmg.damageRange[8] > bestOutgoing) {
+                bestOutgoing = dmg.damageRange[8];
+            }
+        }
+
+        u8 speedCalc = BattleAI_CalcSpeed(bsys, ctx, defender, mon, CALCSPEED_FLAG_NO_PRIORITY);
+        BOOL faster = (speedCalc > 0); // speed ties count as faster
+        u32 takesPct = worstIncoming * 100 / benchMon.maxhp;
+        u32 dealsPct = bestOutgoing * 100 / defenderMon.hp;
+        s32 hpLeftPct = ((s32)benchMon.hp - (s32)worstIncoming) * 100 / benchMon.maxhp;
+
+        if (hpLeftPct <= 20 || takesPct >= 25) {
+            continue;
+        }
+
+        int reward;
+        if (faster && bestOutgoing >= defenderMon.hp) {
+            reward = 8;
+        } else if (dealsPct >= 50) {
+            reward = 7;
+        } else if (dealsPct > takesPct) {
+            reward = 6;
+        } else {
+            continue; // tanks the hit but does not threaten back
+        }
+
+        if (reward > best) {
+            best = reward;
+        }
+        if (best == 8) {
+            break;
+        }
+    }
+
+    return best;
+}
+
 /*In the case of custom ai hacks, this should probably where edits happen.
 A lot of this logic adds in probability.*/
 
@@ -2270,6 +2377,11 @@ int ExpertFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext 
             || ai->defenderAbility == ABILITY_MAGMA_ARMOR) {
             return -20;
         }
+        // I move first but the player can KO me this turn: the crit boost is spent on a
+        // dead mon. Go for the highest-damage move instead.
+        if (ai->attackerMovesFirst && ai->maxDamageReceived >= ai->attackerHP) {
+            return -20;
+        }
         if (ai->attackerAbility == ABILITY_SUPER_LUCK
             || ai->attackerAbility == ABILITY_SNIPER
             || ai->attackerItem == ITEM_SCOPE_LENS
@@ -2856,6 +2968,13 @@ int ExpertFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext 
         if (ctx->protectSuccessTurns[ai->attacker] >= 1) {
             moveScore -= 20;
         } else if (ai->maxDamageReceived > ai->attackerHP) {
+            // Endure leaves the user at 1 HP; end-of-turn residual damage then finishes it, so
+            // don't endure while poisoned / burned / frostbitten / cursed / nightmared / seeded / perishing
+            if ((ctx->battlemon[attacker].condition & (STATUS_POISON_ALL | STATUS_BURN | STATUS_FREEZE))
+                || (ctx->battlemon[attacker].condition2 & (STATUS2_CURSE | STATUS2_NIGHTMARE))
+                || (ctx->battlemon[attacker].effect_of_moves & (MOVE_EFFECT_FLAG_LEECH_SEED | MOVE_EFFECT_FLAG_PERISH_SONG))) {
+                return -20;
+            }
             BOOL hasComboMove = BattlerHasMoveEffect(bsys, attacker, MOVE_EFFECT_SET_HP_EQUAL_TO_USER, ai)
                 || BattlerHasMoveEffect(bsys, attacker, MOVE_EFFECT_INCREASE_POWER_WITH_LESS_HP, ai);
             BOOL defenderHasPriority = FALSE;
@@ -3353,9 +3472,11 @@ int ExpertFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext 
             moveScore -= 10;
         }
 
+        int pivotReward = canKO ? 0 : BestPivotSwitchInReward(bsys, attacker, ai);
+
         // Matchup is bad - AI's best damage is low relative to opponent's HP
         if (bestDamage * 100 / ctx->battlemon[ai->defender].maxhp < 30) {
-            moveScore += 8;
+            moveScore += pivotReward;
         }
         // AI moves first but is threatened with a KO - ideal pivot scenario
         // Also check opponent has no priority move to intercept the switch
@@ -3376,7 +3497,7 @@ int ExpertFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext 
                 }
             }
             if (!defenderHasPriority) {
-                moveScore += 8;
+                moveScore += pivotReward;
             }
         }
 
@@ -4230,6 +4351,8 @@ void SetupStateVariables(struct BattleSystem *bsys, int attacker, u32 defender, 
             u8 moveTypeForCalc;
             if (attackerMoveno == MOVE_HIDDEN_POWER) {
                 moveTypeForCalc = ai->attackerMon.hiddenPowerType;
+            } else if (attackerMoveno == MOVE_NATURAL_GIFT) {
+                moveTypeForCalc = NaturalGiftMoveType(ctx, ai->attackerMon.item);
             } else if (attackerMoveno == MOVE_WEATHER_BALL
                 && (ctx->field_condition & FIELD_CONDITION_WEATHER)
                 && !CheckSideAbility(bsys, ctx, CHECK_ABILITY_ALL_HP, attacker, ABILITY_CLOUD_NINE)
@@ -4268,7 +4391,9 @@ void SetupStateVariables(struct BattleSystem *bsys, int attacker, u32 defender, 
         }
         u8 moveTypeForEffectiveness = (attackerMoveno == MOVE_HIDDEN_POWER)
             ? ai->attackerMon.hiddenPowerType
-            : attackerMove.type;
+            : (attackerMoveno == MOVE_NATURAL_GIFT)
+                ? NaturalGiftMoveType(ctx, ai->attackerMon.item)
+                : attackerMove.type;
         ai->attackerMoveEffectiveness[i] = BattleAI_GetTypeEffectiveness(bsys, ctx, attackerMoveno, moveTypeForEffectiveness, &effectivenessFlag, &ai->attackerMon, &ai->defenderMon);
         // AITypeCalc(ctx, attackerMoveCheck, attackerMoveTypeCheck, ai->attackerAbility, ai->defenderAbility, ai->holdEffect, ai->defenderType1, ai->defenderType2, & ai->attackerMoveEffectiveness);
         if (ai->attackerMoveEffectiveness[i] == TYPE_MUL_SUPER_EFFECTIVE) {
@@ -4379,7 +4504,9 @@ void TrainerAI_ComputeAllMoveScores(struct BattleSystem *bsys, int attacker, uns
             continue;
         }
         ai->attackerMoveEffect = ctx->moveTbl[ai->attackerMove].effect;
-        ai->attackerMoveType = ctx->moveTbl[ai->attackerMove].type;
+        ai->attackerMoveType = (ai->attackerMove == MOVE_NATURAL_GIFT)
+            ? NaturalGiftMoveType(ctx, ctx->battlemon[attacker].item)
+            : ctx->moveTbl[ai->attackerMove].type;
         ai->attackerMovePPRemaining = ctx->battlemon[attacker].pp[i];
 
         if (ai->attackerMove == ctx->battlemon[attacker].moveeffect.moveNoChoice || ai->attackerMove == ctx->battlemon[attacker].moveeffect.encoredMove) {

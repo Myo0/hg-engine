@@ -483,6 +483,10 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
         movepower = BattleItemDataGet(sp, attacker->item, ITEM_PARAM_FLING_POWER);
         break;
     case MOVE_NATURAL_GIFT:
+        if (IS_ITEM_BERRY(attacker->item)) {
+            movepower = BattleItemDataGet(sp, attacker->item, ITEM_PARAM_NATURAL_GIFT_POWER);
+            movetype = BattleItemDataGet(sp, attacker->item, ITEM_PARAM_NATURAL_GIFT_TYPE);
+        }
         break;
     case MOVE_ECHOED_VOICE:
         // TODO
@@ -1487,6 +1491,30 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
     return baseDamage;
 }
 
+// A resist berry (Chople etc.) / Chilan Berry is eaten after the first hit it
+// weakens, so on a multi-hit move only that one hit gets the 0.5x. The damage
+// here is per-hit and BattleAI_AdjustUnusualMoveDamage multiplies it by the hit
+// count afterwards, so soften the per-hit reduction to land near the real
+// (N - 0.5)/N total instead of a flat 0.5 on every hit.
+static u32 BerryPerHitReduction(u32 moveEffect)
+{
+    switch (moveEffect) {
+    case MOVE_EFFECT_HIT_TWICE:            // Double Kick, Dual Wingbeat, Double Hit, ...
+    case MOVE_EFFECT_HIT_TWICE_AND_FLINCH: // Double Iron Bash
+    case MOVE_EFFECT_POISON_MULTI_HIT:     // Twineedle
+        return UQ412__0_75;               // 2 hits -> 1.5/2
+    case MOVE_EFFECT_MULTI_HIT:            // 2-5 hit moves (AI models as 3)
+    case MOVE_EFFECT_UP_TO_10_HITS:
+    case MOVE_EFFECT_HIT_THREE_TIMES:
+    case MOVE_EFFECT_HIT_THREE_TIMES_ALWAYS_CRITICAL:
+    case MOVE_EFFECT_HIT_THREE_TIMES_INCREMENT_BASE_POWER_10:
+    case MOVE_EFFECT_HIT_THREE_TIMES_INCREMENT_BASE_POWER_20:
+        return UQ412__0_8;                // ~3 hits -> ~2.5/3
+    default:
+        return UQ412__0_5;               // single hit
+    }
+}
+
 int LONG_CALL BattleAI_CalcDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond, u32 field_cond, u16 pow, u8 type, u8 critical, u8 attackerSlot, u8 defenderSlot, struct AI_damage *damages, struct AI_sDamageCalc *attacker, struct AI_sDamageCalc *defender)
 {
 
@@ -1511,6 +1539,9 @@ int LONG_CALL BattleAI_CalcDamage(void *bw, struct BattleStruct *sp, int moveno,
     if (moveno == MOVE_REVELATION_DANCE) {
         movetype = (attacker->type1 != TYPE_TYPELESS) ? attacker->type1 : (attacker->type2 != TYPE_TYPELESS) ? attacker->type2
                                                                                                              : TYPE_TYPELESS;
+    }
+    if (moveno == MOVE_NATURAL_GIFT && IS_ITEM_BERRY(attacker->item)) {
+        movetype = BattleItemDataGet(sp, attacker->item, ITEM_PARAM_NATURAL_GIFT_TYPE);
     }
 
     if (!attacker->hasMoldBreaker) {
@@ -1955,7 +1986,7 @@ int LONG_CALL BattleAI_CalcDamage(void *bw, struct BattleStruct *sp, int moveno,
         break;
     case TYPE_MUL_NORMAL:
         if (movetype == TYPE_NORMAL && defender->item == ITEM_CHILAN_BERRY) {
-            finalModifier = QMul_RoundUp(finalModifier, UQ412__0_5);
+            finalModifier = QMul_RoundUp(finalModifier, BerryPerHitReduction(move.effect));
         }
         break;
     case TYPE_MUL_SUPER_EFFECTIVE:
@@ -1968,7 +1999,7 @@ int LONG_CALL BattleAI_CalcDamage(void *bw, struct BattleStruct *sp, int moveno,
 
         // 6.9.13 Resist Berries
         if ((u32)typeToBerryMapping[movetype] == defender->item) {
-            finalModifier = QMul_RoundUp(finalModifier, UQ412__0_5);
+            finalModifier = QMul_RoundUp(finalModifier, BerryPerHitReduction(move.effect));
         }
         break;
     default:
@@ -2346,6 +2377,12 @@ int LONG_CALL BattleAI_PostKOSwitchIn_Internal(struct BattleSystem *bsys, int at
         defenderMon.hp = defenderMon.maxhp;
     }
 
+    // Voluntary switch (U-turn / Volt Switch / Flip Turn / immunity / Perish Song): the AI's active
+    // mon is still alive, so the incoming mon eats one unanswered hit before it can act -- being
+    // faster does not save it from that hit. On a true post-KO switch the slot is empty and the
+    // incoming mon gets a clean turn.
+    BOOL incomingEatsFreeHit = (ctx->battlemon[attacker].hp > 0);
+
     partySize = Battle_GetClientPartySize(bsys, attacker);
     for (int i = 0; i < partySize; i++) {
         mon = Battle_GetClientPartyMon(bsys, attacker, i);
@@ -2437,7 +2474,9 @@ int LONG_CALL BattleAI_PostKOSwitchIn_Internal(struct BattleSystem *bsys, int at
             }
 
             if (speedCalc > 0) {
-                if (pursuitOHKOs) {
+                if (incomingEatsFreeHit && playerCanOneShotAiMon) {
+                    switchInScore[i] -= 2; // KO'd by the free switch-in hit before its speed matters
+                } else if (pursuitOHKOs) {
                     switchInScore[i] += 6;
                 } else if (aiMonCanOneshotPlayer) {
                     switchInScore[i] += 5;
@@ -2453,7 +2492,7 @@ int LONG_CALL BattleAI_PostKOSwitchIn_Internal(struct BattleSystem *bsys, int at
             } else {
                 if (aiMonCanOneshotPlayer && !playerCanOneShotAiMon) {
                     switchInScore[i] += 4;
-                } else if (partyMonPercentDamageDealt > partyMonPercentDamageReceived) {
+                } else if (!playerCanOneShotAiMon && partyMonPercentDamageDealt > partyMonPercentDamageReceived) {
                     switchInScore[i] += 2;
                 } else if (playerCanOneShotAiMon) {
                     switchInScore[i] -= 1;

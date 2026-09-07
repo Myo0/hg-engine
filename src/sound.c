@@ -25,6 +25,7 @@ static const NWAV_Override sNwavOverrides[] = {
     //{1008, 2},  // Title screen -> iris network
     //{1004, 31}, // Opening  -> feelings risen
     { 9001, 0 }, // Lyra & Ethan battles (via ANIM_MUSIC_COMBO_LYRA / _ETHAN in music_tables.c) -> waves/0_vs_lyra_ethan.nwav
+    { 9002, 1 }, // Team Rocket Executives (ARCHER/ARIANA/PROTON/PETREL)
 };
 
 

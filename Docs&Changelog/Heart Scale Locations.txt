@@ -217,3 +217,34 @@ Victory Road 3F
 One-Time Use:
 
 White Herb - Route 32
+
+Berry Tree Script:
+
+Script 11:
+	LockAll 
+	FacePlayer 
+	SetVar 0x8009 7
+	SetVar 0x8008 4
+	CommonScript 2075
+	FadeScreen 6 1 0 0
+	WaitFadeScreen 
+	RemoveOW Overworld.19
+	FadeScreen 6 1 1 0
+	WaitFadeScreen 
+	ReleaseAll 
+End 
+
+
+Berry Tree Locations:
+
+Oran Berry (Route 31) Flag 2700 0x8008 - 0
+Cheri Berry (Route 31) Flag 2699 0x8008 - 1
+Pecha Berry (Route 31) Flag 2698 0x8008 - 2
+Chesto Berry (Route 31) Flag 2697 0x8008 - 3
+Persim Berry (Route 32) Flag 2696 0x8008 - 4
+Rawst Berry (Route 32) Flag 2695 0x8008 - 5
+Oran Berry (Route 33) Flag 2694 0x8008 - 6
+Leppa Berry (Route 33) Flag 2693 0x8008 - 7
+
+584488
+2371036

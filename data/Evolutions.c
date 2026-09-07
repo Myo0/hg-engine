@@ -13516,7 +13516,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
 
     [SPECIES_SIZZLIPEDE] = {
         .entries = {
-            { EVO_LEVEL, 28, SPECIES_CENTISKORCH },
+            { EVO_LEVEL, 25, SPECIES_CENTISKORCH },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
