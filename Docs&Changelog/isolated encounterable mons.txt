@@ -1091,3 +1091,10 @@ SetVar 0x8009 0
 CommonScript 2075
 ReleaseAll
 End
+
+
+Mega Heatran custom ability:
+
+Phreatic Eruption
+
+While Mega Heatran is on the field, all water type attacks targeted at itself or an ally trigger a steam explosion, damaging the user of the water type attack & its ally for 20% of their HP and has a 50% chance to inflict a burn.

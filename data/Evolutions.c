@@ -271,7 +271,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
 
     [SPECIES_PIDGEOTTO] = {
         .entries = {
-            { EVO_LEVEL, 36, SPECIES_PIDGEOT },
+            { EVO_LEVEL, 33, SPECIES_PIDGEOT },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
@@ -1096,7 +1096,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
 
     [SPECIES_TENTACOOL] = {
         .entries = {
-            { EVO_LEVEL, 30, SPECIES_TENTACRUEL },
+            { EVO_LEVEL, 29, SPECIES_TENTACRUEL },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
@@ -1247,7 +1247,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
     [SPECIES_MAGNETON] = {
         .entries = {
             { EVO_MAGNETIC_FIELD, 0, SPECIES_MAGNEZONE },
-            { EVO_STONE, ITEM_THUNDER_STONE, SPECIES_MAGNEZONE },
+            { EVO_LEVEL, 48, SPECIES_MAGNEZONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
@@ -2716,7 +2716,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
 
     [SPECIES_FLAAFFY] = {
         .entries = {
-            { EVO_LEVEL, 30, SPECIES_AMPHAROS },
+            { EVO_LEVEL, 29, SPECIES_AMPHAROS },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
@@ -3256,7 +3256,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
 
     [SPECIES_TEDDIURSA] = {
         .entries = {
-            { EVO_LEVEL, 30, SPECIES_URSARING },
+            { EVO_LEVEL, 29, SPECIES_URSARING },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
@@ -3601,7 +3601,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
 
     [SPECIES_ELEKID] = {
         .entries = {
-            { EVO_LEVEL, 30, SPECIES_ELECTABUZZ },
+            { EVO_LEVEL, 28, SPECIES_ELECTABUZZ },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
@@ -3616,7 +3616,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
 
     [SPECIES_MAGBY] = {
         .entries = {
-            { EVO_LEVEL, 30, SPECIES_MAGMAR },
+            { EVO_LEVEL, 28, SPECIES_MAGMAR },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
@@ -4621,7 +4621,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
 
     [SPECIES_MEDITITE] = {
         .entries = {
-            { EVO_LEVEL, 30, SPECIES_MEDICHAM },
+            { EVO_LEVEL, 27, SPECIES_MEDICHAM },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
@@ -6076,7 +6076,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
 
     [SPECIES_LUXIO] = {
         .entries = {
-            { EVO_LEVEL, 30, SPECIES_LUXRAY },
+            { EVO_LEVEL, 32, SPECIES_LUXRAY },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
@@ -6346,7 +6346,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
 
     [SPECIES_SHELLOS] = {
         .entries = {
-            { EVO_LEVEL, 30, SPECIES_GASTRODON },
+            { EVO_LEVEL, 28, SPECIES_GASTRODON },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
@@ -6511,7 +6511,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
 
     [SPECIES_CHINGLING] = {
         .entries = {
-            { EVO_LEVEL, 18, SPECIES_CHIMECHO },
+            { EVO_LEVEL, 16, SPECIES_CHIMECHO },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
@@ -6721,7 +6721,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
 
     [SPECIES_RIOLU] = {
         .entries = {
-            { EVO_LEVEL, 33, SPECIES_LUCARIO },
+            { EVO_LEVEL, 29, SPECIES_LUCARIO },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
@@ -9541,7 +9541,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
 
     [SPECIES_DEERLING] = {
         .entries = {
-            { EVO_LEVEL, 30, SPECIES_SAWSBUCK },
+            { EVO_LEVEL, 28, SPECIES_SAWSBUCK },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },

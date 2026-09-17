@@ -16,6 +16,18 @@
 #include "pokemon.h"
 #include "save.h"
 
+// Gen 8+: these abilities block Intimidate specifically (not general Attack drops such as
+// Growl). Singles is already handled by IntimidateCheckHelper() in SwitchInAbilityCheck.c,
+// which never loads the subscript; doubles reaches the per-target stat drop, so it is
+// re-checked here.
+static BOOL AbilityIsIntimidateImmune(u32 ability)
+{
+    return ability == ABILITY_OBLIVIOUS
+        || ability == ABILITY_OWN_TEMPO
+        || ability == ABILITY_INNER_FOCUS
+        || ability == ABILITY_SCRAPPY;
+}
+
 /**
  *  @brief script command to set up the stat boost animation/message
  *
@@ -246,6 +258,14 @@ BOOL btl_scr_cmd_33_statbuffchange(void *bw, struct BattleStruct *sp)
                     sp->mp.tag = TAG_NICKNAME;
                     sp->mp.param[0] = CreateNicknameTag(sp, sp->state_client);
                     flag = 3;
+                } else if (sp->addeffect_type == SIDE_EFFECT_TYPE_ABILITY
+                    && sp->attack_client != sp->state_client
+                    && GetBattlerAbility(sp, sp->attack_client) == ABILITY_INTIMIDATE
+                    && AbilityIsIntimidateImmune(GetBattlerAbility(sp, sp->state_client))) {
+                    sp->mp.id = BATTLE_MSG_ATTACK_NOT_LOWERED;
+                    sp->mp.tag = TAG_NICKNAME;
+                    sp->mp.param[0] = CreateNicknameTag(sp, sp->state_client);
+                    flag = 3;
                 } else if (HeldItemHoldEffectGet(sp, sp->state_client) == HOLD_EFFECT_PREVENT_STAT_DROPS && sp->temp_work == STATUS_EFF_DOWN) {
                     statchange = 0;
                     sp->mp.id = BATTLE_MSG_ITEM_PREVENTS_STAT_LOSS;
@@ -356,6 +376,14 @@ BOOL btl_scr_cmd_33_statbuffchange(void *bw, struct BattleStruct *sp)
                     || (GetBattlerAbility(sp, sp->state_client) == ABILITY_WHITE_SMOKE)
                     || (GetBattlerAbility(sp, sp->state_client) == ABILITY_FULL_METAL_BODY)) {
                     sp->mp.id = BATTLE_MSG_STATS_NOT_LOWERED;
+                    sp->mp.tag = TAG_NICKNAME;
+                    sp->mp.param[0] = CreateNicknameTag(sp, sp->state_client);
+                    prevented = TRUE;
+                } else if (sp->addeffect_type == SIDE_EFFECT_TYPE_ABILITY
+                    && sp->attack_client != sp->state_client
+                    && GetBattlerAbility(sp, sp->attack_client) == ABILITY_INTIMIDATE
+                    && AbilityIsIntimidateImmune(GetBattlerAbility(sp, sp->state_client))) {
+                    sp->mp.id = BATTLE_MSG_ATTACK_NOT_LOWERED;
                     sp->mp.tag = TAG_NICKNAME;
                     sp->mp.param[0] = CreateNicknameTag(sp, sp->state_client);
                     prevented = TRUE;

@@ -917,6 +917,13 @@ int UNUSED SwitchInAbilityCheck(void *bw, struct BattleStruct *sp)
             for (i = 0; i < client_set_max; i++) {
                 client_no = sp->turnOrder[i];
 
+                // Alternate-form mons (Alolan/Galarian/Hisuian/etc.) enter battle carrying their
+                // base form's weight from vanilla mon setup, which throws off Low Kick/Grass Knot/
+                // Heavy Slam/Heat Crash/Heavy Ball. Re-derive it from the dex table here, once per
+                // switch-in -- mirrors the same lookup BattleFormChange() does on a real form change.
+                ReadFromNarcMemberByIdPair(&sp->battlemon[client_no].weight, ARC_DEX_LISTS, 1,
+                    PokeOtherFormMonsNoGet(sp->battlemon[client_no].species, sp->battlemon[client_no].form_no) * sizeof(s32), sizeof(s32));
+
                 // Primal Reversion
                 {
 #ifdef PRIMAL_REVERSION

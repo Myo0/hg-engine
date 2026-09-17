@@ -3974,7 +3974,8 @@ int LONG_CALL GetClientActionPriority(struct BattleSystem *bsys UNUSED, struct B
         return ctx->moveTbl[move].priority + 1;
     }
 
-    if ((GetBattlerAbility(ctx, battlerId) == ABILITY_GALE_WINGS) && (ctx->moveTbl[move].type == TYPE_FLYING)) {
+    if ((GetBattlerAbility(ctx, battlerId) == ABILITY_GALE_WINGS) && (ctx->moveTbl[move].type == TYPE_FLYING)
+        && ctx->battlemon[battlerId].hp == (s32)ctx->battlemon[battlerId].maxhp) {
         return ctx->moveTbl[move].priority + 1;
     }
 

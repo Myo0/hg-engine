@@ -80,7 +80,6 @@ void LONG_CALL FillDamageStructFromPartyMon(void *bw UNUSED, struct BattleStruct
     monStruct->isGrounded = IsPartyPokemonGrounded(sp, pp);
 
     monStruct->speed = GetMonData(pp, MON_DATA_SPEED, 0);
-    monStruct->weight = 1;
 
     monStruct->attack = GetMonData(pp, MON_DATA_ATTACK, 0);
     monStruct->defense = GetMonData(pp, MON_DATA_DEFENSE, 0);
@@ -93,7 +92,7 @@ void LONG_CALL FillDamageStructFromPartyMon(void *bw UNUSED, struct BattleStruct
 
     monStruct->level = GetMonData(pp, MON_DATA_LEVEL, 0);
     monStruct->form = GetMonData(pp, MON_DATA_FORM, 0);
-    // ArchiveDataLoadOfs(&monStruct->weight, ARC_DEX_LISTS, 1, PokeOtherFormMonsNoGet(monStruct->species, monStruct->form) * sizeof(s32), sizeof(s32));
+    ReadFromNarcMemberByIdPair(&monStruct->weight, ARC_DEX_LISTS, 1, PokeOtherFormMonsNoGet(monStruct->species, monStruct->form) * sizeof(s32), sizeof(s32));
 
     monStruct->hasMoldBreaker = FALSE;
     if (monStruct->ability == ABILITY_MOLD_BREAKER || monStruct->ability == ABILITY_TERAVOLT || monStruct->ability == ABILITY_TURBOBLAZE) {
@@ -1956,7 +1955,9 @@ int LONG_CALL BattleAI_CalcDamage(void *bw, struct BattleStruct *sp, int moveno,
     // items
     //  6.9.9 Metronome (item)
     if (attacker->item_held_effect == HOLD_EFFECT_BOOST_REPEATED) {
-        switch (attacker->metronomeTurns) {
+        // see battle_calc_damage.c: raw counter has a +1 baseline offset and steps by 2 per
+        // genuine consecutive repeat -- always odd, so /2 recovers the intended tier exactly
+        switch (attacker->metronomeTurns / 2) {
         case 0:
             break;
         case 1:

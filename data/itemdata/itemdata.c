@@ -26013,7 +26013,7 @@ const ITEMDATA __data[] =
 
 [ITEM_TM073] =
 {
-    ITEM_PRICE(32000),
+    ITEM_PRICE(12000),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -26663,7 +26663,7 @@ const ITEMDATA __data[] =
 
 [ITEM_TM083] =
 {
-    ITEM_PRICE(20000),
+    ITEM_PRICE(2000),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -148018,7 +148018,7 @@ const ITEMDATA __data[] =
 
 [ITEM_TM217] =
 {
-    ITEM_PRICE(0),
+    ITEM_PRICE(8000),
     .holdEffect = SOUBI_NONE,
     .holdEffectParam = 0,
     .pluckEffect = TUIBAMU_NONE,

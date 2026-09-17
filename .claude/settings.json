@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:rotomlabs.net)",
+      "WebFetch(domain:www.serebii.net)"
+    ]
+  }
+}

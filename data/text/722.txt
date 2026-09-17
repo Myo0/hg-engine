@@ -10,7 +10,7 @@ Boosts the Pokémon’s\nevasion in a sandstorm.
 Contact with the Pokémon\nmay cause paralysis.
 Restores HP if hit by an\nElectric-type move.
 Restores HP if hit by a\nWater-type move.
-Prevents it from\nbecoming infatuated.
+Prevents infatuation, Taunt,\nand Intimidate.
 Eliminates the effects of\nweather.
 The Pokémon’s accuracy\nis boosted.
 Prevents the Pokémon\nfrom falling asleep.

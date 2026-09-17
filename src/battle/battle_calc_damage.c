@@ -821,7 +821,10 @@ void CalcDamageOverall(void *bw, struct BattleStruct *sp)
         // 6.9.9 Metronome (item)
         if ((sp->rawSpeedNonRNGClientOrder[i] == attacker)
             && attackerItemHeldEffect == HOLD_EFFECT_BOOST_REPEATED) {
-            switch (sp->battlemon[attacker].moveeffect.metronomeTurns) {
+            // raw counter has a +1 baseline offset and steps by 2 per genuine consecutive
+            // repeat (base-ROM behavior, not decompiled) -- always odd, so /2 recovers the
+            // intended 0/1/2/3/4/5+ tier exactly
+            switch (sp->battlemon[attacker].moveeffect.metronomeTurns / 2) {
             case 0:
                 break;
             case 1:

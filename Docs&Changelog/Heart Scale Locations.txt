@@ -24,6 +24,7 @@ Heart Scale Locations:
 Route 30 among the group of pink flowers
 Union Cave First Pokéball on the left
 Slowpoke Well
+Route 34
 Route 35
 Olivine Lighthouse 5F
 Route 40 at the center of the grass island
@@ -43,6 +44,7 @@ Muscle Band - Union Cave
 Wide Lens - Azalea Town
 Wise Glasses - Ilex Forest
 Protective Pads - National Park
+Shell Bell - National Park (given by Dahlia)
 Eviolite - Ecruteak City
 Lagging Tail - Route 47 South of Double Team Thom & Kae
 Heavy-Duty Boots - Union Cave Lapras Floor
@@ -82,6 +84,12 @@ Water Gem - Victory Road 2F
 Electric Gem - Victory Road 3F
 
 
+Real Mega Stone Chronological Order (OLD LIST BELOW FOR REFERENCE AND CHANGES):
+Earliest Mega Availability is after Jasmine.
+
+Audinite - Route 35 (Requires Surf)
+Mawilite - Route 36
+
 Mega Stones: (EVERSTONE'S IN DSPRE ARE Z/A MEGA STONE PLACEHOLDERS)
 
 Barbaracite - Cherrygrove City (Requires Surf)
@@ -97,7 +105,7 @@ Sablenite - Mt. Mortar after Veteran Osvaldo
 Lopunnite - Mt. Mortar given by Black Belt Kiyo
 Blastoisite - Given by Argenta
 Pidgeotite - Goldenrod Tunnel B2F
-Audinite - Rocket Warehouse
+Audinite - Rocket Warehouse (CHANGED TO Route 35 (Requires Surf))
 Aggronite - Rocket Warehouse
 Galladite - Whirl Islands B1F
 Banettite - Whirl Islands B1F

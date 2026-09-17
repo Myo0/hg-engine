@@ -139,3 +139,16 @@ of that berry.
 |     56 | Jaboca | `ITEM_JABOCA_BERRY` |     1-2 |      1853 |     4117 | `3_1556.btx0` |
 |     57 | Rowap  | `ITEM_ROWAP_BERRY`  |     1-2 |      1854 |     4118 | `3_1557.btx0` |
 
+Oran Berry (Route 31) Flag 2700 0x8008 - 0
+Cheri Berry (Route 31) Flag 2699 0x8008 - 1
+Pecha Berry (Route 31) Flag 2698 0x8008 - 2
+Chesto Berry (Route 31) Flag 2697 0x8008 - 3
+Persim Berry (Route 32) Flag 2696 0x8008 - 4
+Rawst Berry (Route 32) Flag 2695 0x8008 - 5
+Oran Berry (Route 33) Flag 2694 0x8008 - 6
+Leppa Berry (Route 33) Flag 2693 0x8008 - 7
+Sitrus Berry (Route 34) Flag 2692 0x8008 - 8
+Oran Berry (Route 34) Flag 2691 0x8008 - 9
+Aspear Berry (Route 34) Flag 2690 0x8008 - 10
+Pecha Berry (Route 36) Flag 2689 0x8008 - 11
+Chesto Berry (Route 36) Flag 2688 0x8008 - 12
