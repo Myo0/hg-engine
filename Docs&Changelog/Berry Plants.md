@@ -152,3 +152,5 @@ Oran Berry (Route 34) Flag 2691 0x8008 - 9
 Aspear Berry (Route 34) Flag 2690 0x8008 - 10
 Pecha Berry (Route 36) Flag 2689 0x8008 - 11
 Chesto Berry (Route 36) Flag 2688 0x8008 - 12
+Sitrus Berry (Route 38) Flag 2687 0x8008 - 13
+Sitrus Berry (Route 38) Flag 2686 0x8008 - 14

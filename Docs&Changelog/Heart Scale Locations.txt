@@ -44,8 +44,11 @@ Muscle Band - Union Cave
 Wide Lens - Azalea Town
 Wise Glasses - Ilex Forest
 Protective Pads - National Park
+Shed Shell - Bug Catching Contest (1 only)
 Shell Bell - National Park (given by Dahlia)
 Eviolite - Ecruteak City
+Bright Powder - Burned Tower 1F
+Quick Claw - Burned Tower B1F
 Lagging Tail - Route 47 South of Double Team Thom & Kae
 Heavy-Duty Boots - Union Cave Lapras Floor
 Shed Shell - Mt. Mortar
@@ -89,6 +92,10 @@ Earliest Mega Availability is after Jasmine.
 
 Audinite - Route 35 (Requires Surf)
 Mawilite - Route 36
+Manectite - Route 34 (Requires Surf)
+Houndoominite - Burned Tower 1F (REPLACE HOUNDOOM ON THE MEGA STONE ROUTE TRAINER LATER)
+Victreebelite - Bellchime Trail (Can be obtained after morty)
+Pidgeotite - Ruins of Alph (Requires Surf)
 
 Mega Stones: (EVERSTONE'S IN DSPRE ARE Z/A MEGA STONE PLACEHOLDERS)
 

@@ -13107,7 +13107,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         },
         .data = {
             .effect = MOVE_EFFECT_POISON_HIT,
-            .split = SPLIT_PHYSICAL,
+            .split = SPLIT_SPECIAL,
             .power = 95,
             .type = TYPE_POISON,
             .accuracy = 100,
@@ -21244,7 +21244,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .battle = {
             .target = RANGE_SINGLE_TARGET,
             .priority = 0,
-            .flags = FLAG_KEEP_HP_BAR | FLAG_MIRROR_MOVE | FLAG_UNUSABLE_IN_GEN_8 | FLAG_UNUSABLE_IN_GEN_9 | FLAG_UNUSABLE_UNIMPLEMENTED | FLAG_PROTECT,
+            .flags = FLAG_KEEP_HP_BAR | FLAG_MIRROR_MOVE | FLAG_PROTECT,
         },
         .contest = {
             .appeal = 0,
@@ -22047,7 +22047,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .split = SPLIT_PHYSICAL,
             .power = 20,
             .type = TYPE_ICE,
-            .accuracy = 100,
+            .accuracy = 95,
             .pp = 10,
             .effectChance = 0,
         },

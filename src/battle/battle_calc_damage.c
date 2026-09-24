@@ -255,6 +255,7 @@ void CalcDamageOverall(void *bw, struct BattleStruct *sp)
         attackerItemHeldEffect = HeldItemHoldEffectGet(sp, attacker);
     }
     u32 defenderAbility = GetBattlerAbility(sp, defender);
+    u32 defenderItemHeldEffect = HeldItemHoldEffectGet(sp, defender);
     u32 weather = GetWeather(bw, sp, attacker);
 
     u32 damage = 0;
@@ -377,8 +378,11 @@ void CalcDamageOverall(void *bw, struct BattleStruct *sp)
 #endif
 
     // 6.3 Weather Modifier
+    // Utility Umbrella: Water/Fire moves TARGETING the holder aren't power-modified by rain/sun
+    // (Bulbapedia: "these weather effects are applied as normal to the holder's [own] moves" --
+    // this is purely a defensive effect, gated on the defender's item, not the attacker's).
 
-    if (weather & FIELD_CONDITION_RAIN_ALL) {
+    if ((weather & FIELD_CONDITION_RAIN_ALL) && (defenderItemHeldEffect != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN)) {
         switch (type) {
         case TYPE_FIRE:
             damage = QMul_RoundDown(damage, UQ412__0_5);
@@ -392,13 +396,16 @@ void CalcDamageOverall(void *bw, struct BattleStruct *sp)
     if (weather & FIELD_CONDITION_SUN_ALL) {
         switch (type) {
         case TYPE_FIRE:
-            damage = QMul_RoundDown(damage, UQ412__1_5);
+            if (defenderItemHeldEffect != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN) {
+                damage = QMul_RoundDown(damage, UQ412__1_5);
+            }
             break;
         case TYPE_WATER:
-            // If the current weather is Sunny Day and the user is not holding Utility Umbrella, this move's damage is multiplied by 1.5 instead of halved for being Water type.
+            // Hydro Steam is a user-side exception (see Bulbapedia): its own boost is removed only
+            // if the ATTACKER holds Utility Umbrella, regardless of the defender's item.
             if (moveno == MOVE_HYDRO_STEAM && attackerItemHeldEffect != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN) {
                 damage = QMul_RoundDown(damage, UQ412__1_5);
-            } else {
+            } else if (defenderItemHeldEffect != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN) {
                 damage = QMul_RoundDown(damage, UQ412__0_5);
             }
             break;
@@ -493,6 +500,20 @@ void CalcDamageOverall(void *bw, struct BattleStruct *sp)
     // 6.7 Type Effectiveness Modifier
     // TODO: need to factor in Tera Shell
     moveEffectiveness = GetTypeEffectiveness(bw, sp, attacker, defender, type, &flag);
+    // Electrum: flag is a purely local accumulator above, and was never written back to
+    // sp->waza_status_flag -- so anything reading sp->waza_status_flag / its per-defender
+    // snapshot sp->moveStatusFlagForSpreadMoves[] (e.g. CanActivateDamageReductionBerry's
+    // resist-berry check just below) only ever saw a stale value from a previous hit against
+    // this defender, never this hit's real type effectiveness. Mirrors the explicit clear the
+    // two early-return special cases above already do to these same bits.
+    sp->waza_status_flag &= ~(MOVE_STATUS_SUPER_EFFECTIVE | MOVE_STATUS_NOT_VERY_EFFECTIVE | MOVE_STATUS_NO_EFFECT);
+    sp->waza_status_flag |= flag;
+    // CanActivateDamageReductionBerry (used just below, for Resist Berries, and by
+    // Incinerate/Knock Off/the berry-eat trigger elsewhere) reads THIS per-defender snapshot,
+    // not sp->waza_status_flag directly -- it's normally only refreshed after the whole move
+    // finishes, one step too late for anything checked during this same damage calc.
+    sp->moveStatusFlagForSpreadMoves[defender] &= ~(MOVE_STATUS_SUPER_EFFECTIVE | MOVE_STATUS_NOT_VERY_EFFECTIVE | MOVE_STATUS_NO_EFFECT);
+    sp->moveStatusFlagForSpreadMoves[defender] |= flag;
     switch (moveEffectiveness) {
     case TYPE_MUL_NO_EFFECT:
         damage = 0;

@@ -344,6 +344,9 @@ BOOL LONG_CALL TryUseHeldItem(void *bw, struct BattleStruct *ctx, int battlerId)
     itemHeldEffect = HeldItemHoldEffectGet(ctx, battlerId);
     boost = HeldItemAtkGet(ctx, battlerId, ATK_CHECK_NORMAL);
     BOOL hpLowerThan50 = (ctx->battlemon[battlerId].hp <= (s32)(ctx->battlemon[battlerId].maxhp) / 2);
+    // Flavor berries (Figy/Wiki/Mago/Aguav/Iapapa) activate at 25% HP instead of the
+    // shared 50% threshold above -- Electrum rebalance, see hpLowerThan25 users below.
+    BOOL hpLowerThan25 = (ctx->battlemon[battlerId].hp <= (s32)(ctx->battlemon[battlerId].maxhp) / 4);
 
     if (ctx->battlemon[battlerId].hp) {
         switch (itemHeldEffect) {
@@ -388,7 +391,10 @@ BOOL LONG_CALL TryUseHeldItem(void *bw, struct BattleStruct *ctx, int battlerId)
             ret = GetHeldItemStatusRecoverySubscript(ctx, battlerId, &script);
             break;
         case HOLD_EFFECT_HP_RESTORE_SPICY: // figy berry
-            if (hpLowerThan50) {
+            if (hpLowerThan25) {
+                if (GetBattlerAbility(ctx, battlerId) == ABILITY_RIPEN) {
+                    boost /= 2;
+                }
                 ctx->hp_calc_work = BattleDamageDivide(ctx->battlemon[battlerId].maxhp, boost);
                 ctx->msg_work = 0;
                 if (GetFlavorPreferenceFromPID(ctx->battlemon[battlerId].personal_rnd, FLAVOR_SPICY) == -1) {
@@ -400,7 +406,10 @@ BOOL LONG_CALL TryUseHeldItem(void *bw, struct BattleStruct *ctx, int battlerId)
             }
             break;
         case HOLD_EFFECT_HP_RESTORE_DRY: // wiki berry
-            if (hpLowerThan50) {
+            if (hpLowerThan25) {
+                if (GetBattlerAbility(ctx, battlerId) == ABILITY_RIPEN) {
+                    boost /= 2;
+                }
                 ctx->hp_calc_work = BattleDamageDivide(ctx->battlemon[battlerId].maxhp, boost);
                 ctx->msg_work = 1;
                 if (GetFlavorPreferenceFromPID(ctx->battlemon[battlerId].personal_rnd, FLAVOR_DRY) == -1) {
@@ -412,7 +421,10 @@ BOOL LONG_CALL TryUseHeldItem(void *bw, struct BattleStruct *ctx, int battlerId)
             }
             break;
         case HOLD_EFFECT_HP_RESTORE_SWEET: // mago berry
-            if (hpLowerThan50) {
+            if (hpLowerThan25) {
+                if (GetBattlerAbility(ctx, battlerId) == ABILITY_RIPEN) {
+                    boost /= 2;
+                }
                 ctx->hp_calc_work = BattleDamageDivide(ctx->battlemon[battlerId].maxhp, boost);
                 ctx->msg_work = 2;
                 if (GetFlavorPreferenceFromPID(ctx->battlemon[battlerId].personal_rnd, FLAVOR_SWEET) == -1) {
@@ -424,7 +436,10 @@ BOOL LONG_CALL TryUseHeldItem(void *bw, struct BattleStruct *ctx, int battlerId)
             }
             break;
         case HOLD_EFFECT_HP_RESTORE_BITTER: // aguav berry
-            if (hpLowerThan50) {
+            if (hpLowerThan25) {
+                if (GetBattlerAbility(ctx, battlerId) == ABILITY_RIPEN) {
+                    boost /= 2;
+                }
                 ctx->hp_calc_work = BattleDamageDivide(ctx->battlemon[battlerId].maxhp, boost);
                 ctx->msg_work = 3;
                 if (GetFlavorPreferenceFromPID(ctx->battlemon[battlerId].personal_rnd, FLAVOR_BITTER) == -1) {
@@ -436,7 +451,10 @@ BOOL LONG_CALL TryUseHeldItem(void *bw, struct BattleStruct *ctx, int battlerId)
             }
             break;
         case HOLD_EFFECT_HP_RESTORE_SOUR: // iapapa berry
-            if (hpLowerThan50) {
+            if (hpLowerThan25) {
+                if (GetBattlerAbility(ctx, battlerId) == ABILITY_RIPEN) {
+                    boost /= 2;
+                }
                 ctx->hp_calc_work = BattleDamageDivide(ctx->battlemon[battlerId].maxhp, boost);
                 ctx->msg_work = 4;
                 if (GetFlavorPreferenceFromPID(ctx->battlemon[battlerId].personal_rnd, FLAVOR_SOUR) == -1) {

@@ -517,6 +517,7 @@ void ServerFieldConditionCheck(void *bw, struct BattleStruct *sp)
                                 && (BattleRand(bw) % 3 == 0)) // Generation V onward: Shed Skin has a 1/3 chance of curing the Pokémon.
                             || (GetBattlerAbility(sp, battlerId) == ABILITY_HYDRATION
                                 && GetWeather(bw, sp, 0xFF) & FIELD_CONDITION_RAIN_ALL
+                                && HeldItemHoldEffectGet(sp, battlerId) != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN
                                 && sp->battlemon[battlerId].hp
                                 && (u8)sp->battlemon[battlerId].condition)) {
                             seq_no = BATTLE_SUBSCRIPT_ABILITY_RESTORE_STATUS;
@@ -1679,7 +1680,8 @@ void ServerFieldConditionCheck(void *bw, struct BattleStruct *sp)
                     case ABILITY_HARVEST: {
                         if ((sp->battlemon[battlerId].hp)
                             && IS_ITEM_BERRY(sp->recycle_item[battlerId])
-                            && ((GetWeather(bw, sp, 0xFF) & FIELD_CONDITION_SUN_ALL) /* OR sun is active + abilities are not fucking it */
+                            && (((GetWeather(bw, sp, 0xFF) & FIELD_CONDITION_SUN_ALL) /* OR sun is active + abilities are not fucking it */
+                                    && HeldItemHoldEffectGet(sp, battlerId) != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN)
                                 || (BattleRand(bw) % 2 == 0) /* 50% chance */)) {
                             sp->item_work = sp->recycle_item[battlerId];
                             sp->recycle_item[battlerId] = 0;

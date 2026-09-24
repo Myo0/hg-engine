@@ -680,4 +680,17 @@ arm9 GF_SndHandleMoveVolume_Hook 02005408 3
 0001 VsScreen_UnloadTransitionOverlay 021EFC04 1
 0001 VsScreen_FrameTask               021EFB38 2
 
+# Bug-Catching Contest prize changes (src/BugContestJudge.c).
+# Entry-replace BugContest_Judge (overlay 24 loads at 0x022598C0); register 2
+# is free at function entry (r0 holds the only live arg, the BugContest*).
+0024 BugContest_Judge 02259940 2
+
+# BugContest_InitEncounters hook ABANDONED 2026-09-22: confirmed via an empty-body
+# test that 0x02259DF0 crashes the game even when the replacement does nothing at
+# all ("ARM9: Undefined instruction: 0xEA000095 PC=0x02259B10") -- something else
+# reads that address range as shared data, not just a call target. Switched to
+# editing base/root/data/mushi/mushi_encount.bin directly instead (the plain file
+# the untouched vanilla BugContest_InitEncounters already reads).
+#0024 BugContest_InitEncounters 02259DF0 2
+
 arm9 FieldSystem_RestoreMapObjectsFromSave 0203B9F4 1

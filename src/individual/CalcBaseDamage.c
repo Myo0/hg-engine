@@ -313,12 +313,19 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
             movepower *= 2;
         }
         break;
-    case MOVE_WEATHER_BALL:
-        if ((weather & FIELD_CONDITION_WEATHER)
+    case MOVE_WEATHER_BALL: {
+        u32 castformType;
+        BOOL castformDoublePower;
+        if (GetCastformWeatherBallOverride(sp, attacker, &castformType, &castformDoublePower)) {
+            if (castformDoublePower) {
+                movepower *= 2;
+            }
+        } else if ((weather & FIELD_CONDITION_WEATHER)
             && !(weather & (FIELD_CONDITION_STRONG_WINDS | FIELD_CONDITION_SNOW_ALL))) {
             movepower *= 2;
         }
         break;
+    }
     case MOVE_WATER_SHURIKEN:
         if (AttackingMon.species == SPECIES_GRENINJA
             && AttackingMon.form == 1) {
@@ -537,9 +544,16 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
 
     // Field effects (weather conditions, Terrains, Imprison, Ion Deluge, Magic Room, Gravity, etc.):
 
-    if ((weather & (FIELD_CONDITION_FOG | FIELD_CONDITION_HAIL_ALL | FIELD_CONDITION_SANDSTORM_ALL | FIELD_CONDITION_RAIN_ALL | FIELD_CONDITION_SNOW_ALL))
-        && (moveno == MOVE_SOLAR_BEAM || moveno == MOVE_SOLAR_BLADE)) {
-        basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__0_5);
+    // Utility Umbrella only shields Solar Beam/Blade from Rain's halving (a rain/sun effect);
+    // Fog/Hail/Sandstorm/Snow still halve it regardless of the attacker's item.
+    {
+        u32 solarBeamHalvingWeather = weather & (FIELD_CONDITION_FOG | FIELD_CONDITION_HAIL_ALL | FIELD_CONDITION_SANDSTORM_ALL | FIELD_CONDITION_SNOW_ALL);
+        if (AttackingMon.item_held_effect != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN) {
+            solarBeamHalvingWeather |= (weather & FIELD_CONDITION_RAIN_ALL);
+        }
+        if (solarBeamHalvingWeather && (moveno == MOVE_SOLAR_BEAM || moveno == MOVE_SOLAR_BLADE)) {
+            basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__0_5);
+        }
     }
 
     // handle Terrain overlays
@@ -819,7 +833,7 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
 
             // handle Power Spot
             // TODO: confirm location
-            if (AttackingMonAlly.ability == ABILITY_POWER_SPOT) {
+            if ((AttackingMonAlly.ability == ABILITY_POWER_SPOT) && (AttackingMonAlly.hp > 0)) {
                 basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_3);
             }
 
@@ -845,13 +859,14 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
         if (BATTLER_ALLY(attacker) == damageCalc->rawSpeedNonRNGClientOrder[i]) {
             // Handle Battery
             if ((AttackingMonAlly.ability == ABILITY_BATTERY)
+                && (AttackingMonAlly.hp > 0)
                 && (movesplit == SPLIT_SPECIAL)) {
                 basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_33);
                 continue;
             }
 
             // handle Steely Spirit for the ally
-            if (movetype == TYPE_STEEL && AttackingMonAlly.ability == ABILITY_STEELY_SPIRIT) {
+            if (movetype == TYPE_STEEL && AttackingMonAlly.ability == ABILITY_STEELY_SPIRIT && AttackingMonAlly.hp > 0) {
                 basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_5);
             }
         }
@@ -946,9 +961,9 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
                 continue;
             }
 
-            // handle Gems
+            // handle Gems -- Electrum: restored to Gen 5's 1.5x (gen 6+ nerfed this to 1.3x)
             if (gemBoostingMove) {
-                basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_3);
+                basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_5);
                 continue;
             }
 
@@ -1111,25 +1126,26 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
             }
 
             // handle weather boosts
+            // Utility Umbrella suppresses the holder's OWN weather-tied abilities (self-gated).
             if ((weather & FIELD_CONDITION_SUN_ALL)
                 && (AttackingMon.ability == ABILITY_SOLAR_POWER)
-                && (movesplit == SPLIT_SPECIAL)) {
+                && (movesplit == SPLIT_SPECIAL)
+                && (AttackingMon.item_held_effect != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN)) {
                 attackModifier = QMul_RoundUp(attackModifier, UQ412__1_5);
             }
             if ((!flowerGiftAppliedForAttackModifier)
                 && (weather & FIELD_CONDITION_SUN_ALL)
                 && (AttackingMon.ability == ABILITY_FLOWER_GIFT)
-                && (movesplit == SPLIT_PHYSICAL)) {
+                && (movesplit == SPLIT_PHYSICAL)
+                && (AttackingMon.item_held_effect != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN)) {
                 flowerGiftAppliedForAttackModifier = TRUE;
                 attackModifier = QMul_RoundUp(attackModifier, UQ412__1_5);
             }
-            // handle Orichalcum Pulse
+            // handle Orichalcum Pulse -- an explicit Bulbapedia exception, still boosts even if
+            // the attacker holds Utility Umbrella (unlike ordinary weather-tied abilities).
             // https://www.smogon.com/forums/threads/scarlet-violet-battle-mechanics-research.3709545/page-20#post-9423025
             if ((AttackingMon.ability == ABILITY_ORICHALCUM_PULSE)
                 && (weather & FIELD_CONDITION_SUN_ALL)
-                // https://www.smogon.com/forums/threads/scarlet-violet-battle-mechanics-research.3709545/post-9426805
-                // TODO: For Orichalcum Pulse itself - still shows "sending its ancient pulse into a frenzy!" message even with Utility Umbrella disabling the attack boost.
-                && !(AttackingMon.item_held_effect == HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN)
                 && (movesplit == SPLIT_PHYSICAL)) {
                 attackModifier = QMul_RoundUp(attackModifier, UQ412__1_3333);
             }
@@ -1168,6 +1184,7 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
             // handle Plus/Minus
             if (((AttackingMon.ability == ABILITY_PLUS) || (AttackingMon.ability == ABILITY_MINUS))
                 && ((AttackingMonAlly.ability == ABILITY_PLUS) || (AttackingMonAlly.ability == ABILITY_MINUS))
+                && (AttackingMonAlly.hp > 0)
                 && (movesplit == SPLIT_SPECIAL)) {
                 attackModifier = QMul_RoundUp(attackModifier, UQ412__1_5);
             }
@@ -1241,6 +1258,7 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
             if ((!flowerGiftAppliedForAttackModifier)
                 && (weather & FIELD_CONDITION_SUN_ALL)
                 && (AttackingMonAlly.ability == ABILITY_FLOWER_GIFT)
+                && (AttackingMonAlly.hp > 0)
                 && (movesplit == SPLIT_PHYSICAL)) {
                 flowerGiftAppliedForAttackModifier = TRUE;
                 attackModifier = QMul_RoundUp(attackModifier, UQ412__1_5);
@@ -1483,11 +1501,12 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
     // Abilities
     for (i = 0; i < maxBattlers; i++) {
         if (defender == damageCalc->rawSpeedNonRNGClientOrder[i]) {
-            // handle weather boosts
+            // handle weather boosts -- Utility Umbrella self-gate (the defender's own Flower Gift)
             if ((!flowerGiftAppliedForDefenseModifier)
                 && (weather & FIELD_CONDITION_SUN_ALL)
                 && (MoldBreakerAbilityCheck(sp, attack, defender, ABILITY_FLOWER_GIFT))
-                && (movesplit == SPLIT_SPECIAL)) {
+                && (movesplit == SPLIT_SPECIAL)
+                && (DefendingMon.item_held_effect != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN)) {
                 flowerGiftAppliedForDefenseModifier = TRUE;
                 defenseModifier = QMul_RoundUp(defenseModifier, UQ412__1_5);
             }

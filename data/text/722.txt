@@ -57,7 +57,7 @@ Boosts the Attack stat,\nbut lowers accuracy.
 25% more damage vs opposite\ngender, 25% less vs same.
 Ups Sp. Atk if another\nPokémon has Minus.
 Ups Sp. Atk if another\nPokémon has Plus.
-CASTFORM transforms with\nthe weather.
+CASTFORM transforms with\nweather or a held Rock.
 Protects the Pokémon\nfrom item theft.
 The Pokémon may heal its\nown status problems.
 Boosts Attack if there is\na status problem.
@@ -318,3 +318,4 @@ Powers up the Pokémon’s\nFire-type moves by 50%.
 Placeholder
 Burns the attacker upon\ntaking damage.
 Boosts ice type moves\nin the snow.
+Water/Ice moves turn to\nsteam, burning the attacker.

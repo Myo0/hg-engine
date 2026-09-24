@@ -542,6 +542,7 @@
 #define BATTLE_SUBSCRIPT_ILLUMINATE                      (MAX_BASE_SUBSCRIPT_NUM + 7) // 522
 #define BATTLE_SUBSCRIPT_FROSTBITE_DAMAGE                (MAX_BASE_SUBSCRIPT_NUM + 8) // 523
 #define BATTLE_SUBSCRIPT_OVERWORLD_TERRAIN               (MAX_BASE_SUBSCRIPT_NUM + 9) // 524
+#define BATTLE_SUBSCRIPT_PHREATIC_ERUPTION                (MAX_BASE_SUBSCRIPT_NUM + 10) // 525
 
 // add status effect constants--used in battle effect scripts to queue up a subscript through the table in src/moves.c
 

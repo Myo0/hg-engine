@@ -43,6 +43,7 @@ BOOL btl_scr_cmd_33_statbuffchange(void *bw, struct BattleStruct *sp)
     int address3;
     int abilityBlockAddress;
     int abilityBlockAbilityAddress;
+    int itemOrOtherBlockAbilityAddress;
     int stattochange;
     int statchange;
     int flag;
@@ -55,6 +56,7 @@ BOOL btl_scr_cmd_33_statbuffchange(void *bw, struct BattleStruct *sp)
     address3 = read_battle_script_param(sp);
     abilityBlockAddress = read_battle_script_param(sp);
     abilityBlockAbilityAddress = read_battle_script_param(sp);
+    itemOrOtherBlockAbilityAddress = read_battle_script_param(sp);
 
     flag = 0;
 
@@ -361,6 +363,7 @@ BOOL btl_scr_cmd_33_statbuffchange(void *bw, struct BattleStruct *sp)
 
             if (sp->addeffect_type == SIDE_EFFECT_TYPE_ABILITY || sp->addeffect_type == SIDE_EFFECT_TYPE_PRINT_WORK_ABILITY) {
                 BOOL prevented = FALSE;
+                BOOL preventedByOwnAbility = FALSE;
                 if (sp->scw[IsClientEnemy(bw, sp->state_client)].mistCount) {
                     sp->mp.id = BATTLE_MSG_PROTECTED_BY_MIST;
                     sp->mp.tag = TAG_NICKNAME;
@@ -379,6 +382,7 @@ BOOL btl_scr_cmd_33_statbuffchange(void *bw, struct BattleStruct *sp)
                     sp->mp.tag = TAG_NICKNAME;
                     sp->mp.param[0] = CreateNicknameTag(sp, sp->state_client);
                     prevented = TRUE;
+                    preventedByOwnAbility = TRUE;
                 } else if (sp->addeffect_type == SIDE_EFFECT_TYPE_ABILITY
                     && sp->attack_client != sp->state_client
                     && GetBattlerAbility(sp, sp->attack_client) == ABILITY_INTIMIDATE
@@ -387,6 +391,7 @@ BOOL btl_scr_cmd_33_statbuffchange(void *bw, struct BattleStruct *sp)
                     sp->mp.tag = TAG_NICKNAME;
                     sp->mp.param[0] = CreateNicknameTag(sp, sp->state_client);
                     prevented = TRUE;
+                    preventedByOwnAbility = TRUE;
                 } else if (HeldItemHoldEffectGet(sp, sp->state_client) == HOLD_EFFECT_PREVENT_STAT_DROPS) {
                     sp->mp.id = BATTLE_MSG_ITEM_PREVENTS_STAT_LOSS;
                     sp->mp.tag = TAG_NICKNAME_ITEM_STAT;
@@ -399,11 +404,13 @@ BOOL btl_scr_cmd_33_statbuffchange(void *bw, struct BattleStruct *sp)
                     sp->mp.tag = TAG_NICKNAME;
                     sp->mp.param[0] = CreateNicknameTag(sp, sp->state_client);
                     prevented = TRUE;
+                    preventedByOwnAbility = TRUE;
                 } else if ((GetBattlerAbility(sp, sp->state_client) == ABILITY_BIG_PECKS) && ((STAT_ATTACK + stattochange) == STAT_DEFENSE)) {
                     sp->mp.id = BATTLE_MSG_DEFENSE_NOT_LOWERED;
                     sp->mp.tag = TAG_NICKNAME;
                     sp->mp.param[0] = CreateNicknameTag(sp, sp->state_client);
                     prevented = TRUE;
+                    preventedByOwnAbility = TRUE;
                 } else if (((GetBattlerAbility(sp, sp->state_client) == ABILITY_KEEN_EYE)
                                || (GetBattlerAbility(sp, sp->state_client) == ABILITY_MINDS_EYE)
                                || (GetBattlerAbility(sp, sp->state_client) == ABILITY_ILLUMINATE))
@@ -412,11 +419,12 @@ BOOL btl_scr_cmd_33_statbuffchange(void *bw, struct BattleStruct *sp)
                     sp->mp.tag = TAG_NICKNAME;
                     sp->mp.param[0] = CreateNicknameTag(sp, sp->state_client);
                     prevented = TRUE;
+                    preventedByOwnAbility = TRUE;
                 }
 
                 if (prevented) {
                     sp->oneSelfFlag[sp->state_client].defiant_flag = 0;
-                    IncrementBattleScriptPtr(sp, abilityBlockAbilityAddress);
+                    IncrementBattleScriptPtr(sp, preventedByOwnAbility ? abilityBlockAbilityAddress : itemOrOtherBlockAbilityAddress);
                     return FALSE;
                 }
             }

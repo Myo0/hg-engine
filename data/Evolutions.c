@@ -931,8 +931,8 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
 
     [SPECIES_POLIWHIRL] = {
         .entries = {
-            { EVO_LEVEL, 35, SPECIES_POLIWRATH },
-            { EVO_STONE, ITEM_WATER_STONE, SPECIES_POLITOED },
+            { EVO_LEVEL, 30, SPECIES_POLIWRATH },
+            { EVO_STONE, ITEM_WATER_STONE, SPECIES_POLIWRATH },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },

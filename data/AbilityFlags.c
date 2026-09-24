@@ -323,4 +323,5 @@ const AbilityFlags UNUSED sAbilityFlags[] = {
     [ABILITY_TEMP4] = { .disabledByNeutralizingGas = TRUE },
     [ABILITY_SPICY_SPRAY] = { .disabledByNeutralizingGas = TRUE },
     [ABILITY_PERMAFROST] = { .disabledByNeutralizingGas = TRUE }, // Electrum custom (+50% Ice in snow); offensive boost, not Mold-Breaker-ignored
+    [ABILITY_PHREATIC_ERUPTION] = { .ignoredByMoldBreaker = TRUE, .disabledByNeutralizingGas = TRUE }, // Electrum custom (Mega Heatran); Water/Ice immunity + retaliation, same flags as Water Absorb
 };

@@ -2253,7 +2253,10 @@ BOOL BattleController_CheckChargeMoves(struct BattleSystem *bsys, struct BattleS
             needToRunScript = TRUE;
             break;
         case MOVE_EFFECT_CHARGE_TURN_SUN_SKIPS:
-            if (weatherConsideringMegaSol & FIELD_CONDITION_SUN_ALL) {
+            // Utility Umbrella: Solar Beam/Blade's charge is unaffected by weather if the user
+            // holds it (Bulbapedia user-side exception) -- still needs the charge turn in Sun.
+            if ((weatherConsideringMegaSol & FIELD_CONDITION_SUN_ALL)
+                && (HeldItemHoldEffectGet(ctx, ctx->attack_client) != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN)) {
                 needToRunScript = FALSE;
                 continueMoveExecution = TRUE;
             } else {

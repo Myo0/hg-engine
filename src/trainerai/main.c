@@ -1137,10 +1137,17 @@ int BasicFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext *
     else if (ai->attackerMoveEffect == MOVE_EFFECT_ALWAYS_FLINCH_FIRST_TURN_ONLY) {
         if (ai->attackerTurnsOnField > 0) {
             moveScore -= 25; // after turn 1: never use
-        } else if (ai->defenderAbility != ABILITY_SHIELD_DUST && ai->defenderAbility != ABILITY_INNER_FOCUS) {
-            moveScore += 9; // first turn, target not immune
+        } else if (ai->attackerAbility == ABILITY_SHEER_FORCE // strips its own move's flinch effect
+            || ai->holdEffect == HOLD_EFFECT_PREVENT_SECONDARY_EFFECTS // defender's Covert Cloak
+            || ai->defenderAbility == ABILITY_INNER_FOCUS
+            || (ctx->battlemon[ai->defender].condition2 & STATUS2_SUBSTITUTE)) {
+            // flinch won't land for one of several reasons: no bonus, but not discouraged either.
+            // Shield Dust is deliberately NOT checked here -- per subscript_0014_FLINCH_MON.s it
+            // only blocks SIDE_EFFECT_TYPE_INDIRECT flinch chances (King's Rock/Fling-style), and
+            // Fake Out's own built-in effect never dispatches as indirect.
+        } else {
+            moveScore += 9; // first turn, flinch will actually land
         }
-        // else first turn but target immune: no extra bonus
     }
     /*First Impression*/
     else if (ai->attackerMoveEffect == MOVE_EFFECT_FIRST_TURN_ONLY) {
@@ -1673,6 +1680,30 @@ static int BestPivotSwitchInReward(struct BattleSystem *bsys, int attacker, stru
     }
 
     return best;
+}
+
+/*Finds the target's highest-damaging known move (via the already-computed, per-decision-stable
+defenderAvgRollMoveDamages[]) and returns whether THAT move would make contact against us.
+FALSE if the target has no damaging move at all. Shared by the Spiky Shield / Baneful Bunker /
+Obstruct / Silk Trap / Burning Bulwark contact-punish bonuses below.*/
+static BOOL TargetHighestDamagingMoveIsContact(struct BattleStruct *ctx, struct AIContext *ai)
+{
+    int bestIndex = -1;
+    int bestDamage = 0;
+    for (int j = 0; j < 4; j++) {
+        if (ai->defenderAvgRollMoveDamages[j] > bestDamage) {
+            bestDamage = ai->defenderAvgRollMoveDamages[j];
+            bestIndex = j;
+        }
+    }
+    if (bestIndex < 0) {
+        return FALSE;
+    }
+    u16 targetMove = ctx->battlemon[ai->defender].move[bestIndex];
+    if (targetMove == MOVE_NONE) {
+        return FALSE;
+    }
+    return BattleAI_IsContactBeingMade(ctx, ai->defenderAbility, ai->defenderMon.item_held_effect, targetMove);
 }
 
 /*In the case of custom ai hacks, this should probably where edits happen.
@@ -2959,6 +2990,154 @@ int ExpertFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext 
         } else if (ctx->protectSuccessTurns[ai->attacker] >= 1) {
             if (BattleRand(bsys) % 2 == 0) {
                 moveScore -= 20;
+            }
+        }
+
+        // Electrum: per-move bonuses for the Protect variants with an extra on-contact effect.
+        // Additive on top of everything above.
+        if (ai->attackerMove == MOVE_SPIKY_SHIELD) {
+            // +1 if the target's best move would make contact (and so take the 1/8 max HP chip)
+            if (TargetHighestDamagingMoveIsContact(ctx, ai)) {
+                moveScore += 1;
+            }
+        } else if (ai->attackerMove == MOVE_KINGS_SHIELD) {
+            // Stance Change only reverts Aegislash to Shield forme (tanky) once King's Shield is
+            // actually chosen -- at scoring time it's still sitting in whichever form it's
+            // currently in, so this only makes sense to evaluate while it's still in Blade forme.
+            if (ctx->battlemon[attacker].species == SPECIES_AEGISLASH && ctx->battlemon[attacker].form_no == 1) {
+                BOOL aegislashSlower = ai->defenderMovesFirst;
+
+                // Does ANY of the opponent's damaging moves guarantee a kill even on the worst
+                // (85%) roll, Focus Sash respected? (Aegislash has no Sturdy, so that's the only
+                // survival item that matters here.)
+                BOOL anyRollKills = FALSE;
+                for (int j = 0; j < 4; j++) {
+                    u32 oppMoveno = ctx->battlemon[ai->defender].move[j];
+                    if (oppMoveno == MOVE_NONE || ctx->moveTbl[oppMoveno].split == SPLIT_STATUS) {
+                        continue;
+                    }
+                    struct BattleMove oppMove = ctx->moveTbl[oppMoveno];
+                    struct AI_damage oppDamages = { 0 };
+                    BattleAI_CalcDamage(bsys, ctx, oppMoveno, ctx->side_condition[BATTLER_IS_ENEMY(attacker)], ctx->field_condition,
+                        oppMove.power, oppMove.type, 0, ai->defender, attacker, &oppDamages, &ai->defenderMon, &ai->attackerMon);
+                    int minRollDamage = BattleAI_AdjustUnusualMoveDamage(ai->defenderMon.level, ai->defenderMon.hp, ai->attackerMon.hp,
+                        oppDamages.damageRange[0], oppMove.effect, ai->defenderMon.ability, ai->defenderMon.item);
+                    if (canAttackerOneShotDefender(minRollDamage, oppMove.split, oppMoveno, &ai->defenderMon, &ai->attackerMon)) {
+                        anyRollKills = TRUE;
+                        break;
+                    }
+                }
+
+                if (aegislashSlower && anyRollKills) {
+                    moveScore += 2;
+                } else {
+                    // Aegislash's own highest-damaging move -- used both to know whether it can
+                    // already win the trade outright, and (per its split) whether baiting an
+                    // Attack drop is even useful to it.
+                    int bestOwnIndex = -1;
+                    int bestOwnDamage = 0;
+                    for (int j = 0; j < 4; j++) {
+                        if (ai->attackerAvgRollMoveDamages[j] > bestOwnDamage) {
+                            bestOwnDamage = ai->attackerAvgRollMoveDamages[j];
+                            bestOwnIndex = j;
+                        }
+                    }
+                    BOOL ownBestMoveIsSpecial = FALSE;
+                    if (bestOwnIndex >= 0) {
+                        u16 ownMove = ctx->battlemon[attacker].move[bestOwnIndex];
+                        ownBestMoveIsSpecial = (ctx->moveTbl[ownMove].split == SPLIT_SPECIAL);
+                    }
+
+                    if (ai->maxDamageReceived > ai->attackerMaxDamageOutputMinRoll
+                        && ai->attackerMaxDamageOutputMinRoll < ai->defenderHP
+                        && !ownBestMoveIsSpecial) {
+                        moveScore += 1;
+                    }
+                }
+            }
+        } else if (ai->attackerMove == MOVE_BANEFUL_BUNKER) {
+            if (TargetHighestDamagingMoveIsContact(ctx, ai)) {
+                BOOL hasPoisonSynergy = (ai->attackerAbility == ABILITY_MERCILESS)
+                    || BattlerHasMoveEffect(bsys, attacker, MOVE_EFFECT_DOUBLE_DAMAGE_ON_STATUS, ai) // Hex
+                    || BattlerHasMoveEffect(bsys, attacker, MOVE_EFFECT_DOUBLE_POWER_ON_POISONED, ai) // Venoshock
+                    || BattlerHasMoveEffect(bsys, attacker, MOVE_EFFECT_POISON_HIT_DOUBLE_POWER_ON_POISONED, ai); // Barb Barrage
+                if (hasPoisonSynergy) {
+                    moveScore += 2;
+                } else if (!ai->defenderImmuneToPoison) { // already folds in "no current status"
+                    moveScore += 1;
+                }
+            }
+        } else if (ai->attackerMove == MOVE_OBSTRUCT) {
+            if (TargetHighestDamagingMoveIsContact(ctx, ai)) {
+                // Obstruct drops the CONTACT ATTACKER's Defense by 2 -- simulate that on a copy
+                // of the target's damage-calc struct and see if our own best move would now KO.
+                struct AI_sDamageCalc weakenedDefender = ai->defenderMon;
+                weakenedDefender.states[STAT_DEFENSE] -= 2;
+                if (weakenedDefender.states[STAT_DEFENSE] < -6) {
+                    weakenedDefender.states[STAT_DEFENSE] = -6;
+                }
+
+                int bestOwnIndex = -1;
+                int bestOwnDamage = 0;
+                for (int j = 0; j < 4; j++) {
+                    if (ai->attackerAvgRollMoveDamages[j] > bestOwnDamage) {
+                        bestOwnDamage = ai->attackerAvgRollMoveDamages[j];
+                        bestOwnIndex = j;
+                    }
+                }
+
+                BOOL wouldKOAfterDrop = FALSE;
+                if (bestOwnIndex >= 0) {
+                    u16 ownMove = ctx->battlemon[attacker].move[bestOwnIndex];
+                    struct BattleMove ownMoveData = ctx->moveTbl[ownMove];
+                    struct AI_damage ownDamages = { 0 };
+                    BattleAI_CalcDamage(bsys, ctx, ownMove, ctx->side_condition[BATTLER_IS_ENEMY(attacker)], ctx->field_condition,
+                        ownMoveData.power, ownMoveData.type, 0, attacker, ai->defender, &ownDamages, &ai->attackerMon, &weakenedDefender);
+                    int rolledDamage = BattleAI_AdjustUnusualMoveDamage(ai->attackerMon.level, ai->attackerMon.hp, weakenedDefender.hp,
+                        ownDamages.damageRange[8], ownMoveData.effect, ai->attackerMon.ability, ai->attackerMon.item);
+                    if (rolledDamage >= (int)weakenedDefender.hp) {
+                        wouldKOAfterDrop = TRUE;
+                    }
+                }
+
+                if (wouldKOAfterDrop) {
+                    moveScore += 2;
+                } else {
+                    moveScore += 1;
+                }
+            }
+        } else if (ai->attackerMove == MOVE_SILK_TRAP) {
+            if (TargetHighestDamagingMoveIsContact(ctx, ai) && ai->defenderMovesFirst) {
+                moveScore += 1;
+            }
+        } else if (ai->attackerMove == MOVE_BURNING_BULWARK) {
+            if (TargetHighestDamagingMoveIsContact(ctx, ai)) {
+                BOOL defenderHasPhysical = FALSE;
+                for (int j = 0; j < 4; j++) {
+                    u16 defMove = ctx->battlemon[ai->defender].move[j];
+                    if (defMove == MOVE_NONE) {
+                        continue;
+                    }
+                    if (ctx->moveTbl[defMove].split == SPLIT_PHYSICAL) {
+                        defenderHasPhysical = TRUE;
+                        break;
+                    }
+                }
+                // Abilities that actively want a status condition (defenderImmuneToBurn already
+                // covers abilities that outright block it, e.g. Water Veil/Water Bubble).
+                // Synchronize included: a target that lost its Fire typing (e.g. via Burn Up)
+                // isn't immune, but reflects the burn back onto us.
+                BOOL defenderWantsStatus = (ai->defenderAbility == ABILITY_GUTS)
+                    || (ai->defenderAbility == ABILITY_QUICK_FEET)
+                    || (ai->defenderAbility == ABILITY_MARVEL_SCALE)
+                    || (ai->defenderAbility == ABILITY_FLARE_BOOST)
+                    || (ai->defenderAbility == ABILITY_TOXIC_BOOST)
+                    || (ai->defenderAbility == ABILITY_SYNCHRONIZE);
+                if (!ai->defenderImmuneToBurn && defenderHasPhysical && !defenderWantsStatus) {
+                    moveScore += 2;
+                } else if (!ai->defenderImmuneToBurn) { // already folds in "no current status"
+                    moveScore += 1;
+                }
             }
         }
     }
@@ -4356,7 +4535,8 @@ void SetupStateVariables(struct BattleSystem *bsys, int attacker, u32 defender, 
             } else if (attackerMoveno == MOVE_WEATHER_BALL
                 && (ctx->field_condition & FIELD_CONDITION_WEATHER)
                 && !CheckSideAbility(bsys, ctx, CHECK_ABILITY_ALL_HP, attacker, ABILITY_CLOUD_NINE)
-                && !CheckSideAbility(bsys, ctx, CHECK_ABILITY_ALL_HP, attacker, ABILITY_AIR_LOCK)) {
+                && !CheckSideAbility(bsys, ctx, CHECK_ABILITY_ALL_HP, attacker, ABILITY_AIR_LOCK)
+                && BattleItemDataGet(ctx, ai->attackerMon.item, 1) != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN) {
                 if (ctx->field_condition & FIELD_CONDITION_RAIN_ALL) {
                     moveTypeForCalc = TYPE_WATER;
                 } else if (ctx->field_condition & FIELD_CONDITION_SUN_ALL) {

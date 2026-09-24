@@ -1788,3 +1788,4 @@ The opposing {STRVAR_1 1, 0, 0}\nfell straight down!
 {STRVAR_1 1, 0, 0} was frostbitten!
 The wild {STRVAR_1 1, 0, 0}\nwas frostbitten!
 The opposing {STRVAR_1 1, 0, 0}\nwas frostbitten!
+The attack turned to steam\nin an explosion!

@@ -72,6 +72,21 @@ int MoveCheckDamageNegatingAbilities(struct BattleStruct *sp, int attacker, int 
         }
     }
 
+    // Electrum: Phreatic Eruption (Mega Heatran) -- Water/Ice moves targeting Heatran or its ally
+    // are fully negated; the attacker and its ally (if any) each take 20% max HP damage with an
+    // independent 50% chance to burn -- see subscript_0525_PHREATIC_ERUPTION.s for the rest.
+    if (movetype == TYPE_WATER || movetype == TYPE_ICE) {
+        BOOL phreaticOnDefender = (MoldBreakerAbilityCheck(sp, attacker, defender, ABILITY_PHREATIC_ERUPTION) == TRUE);
+        BOOL phreaticOnAlly = !phreaticOnDefender
+            && (MoldBreakerAbilityCheck(sp, attacker, BATTLER_ALLY(defender), ABILITY_PHREATIC_ERUPTION) == TRUE);
+        if ((attacker != defender) && (phreaticOnDefender || phreaticOnAlly)) {
+            sp->battlerIdTemp = phreaticOnDefender ? defender : BATTLER_ALLY(defender);
+            // bit0 = attacker's independent 50% burn roll, bit1 = its ally's (irrelevant if no ally)
+            sp->calc_work = (BattleRand(gBattleSystem) % 2 == 0 ? 1 : 0) | (BattleRand(gBattleSystem) % 2 == 0 ? 2 : 0);
+            scriptnum = BATTLE_SUBSCRIPT_PHREATIC_ERUPTION;
+        }
+    }
+
     // 02252F6A
     if (MoldBreakerAbilityCheck(sp, attacker, defender, ABILITY_FLASH_FIRE) == TRUE) {
         if ((movetype == TYPE_FIRE)

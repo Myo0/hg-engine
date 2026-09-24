@@ -189,15 +189,21 @@ u8 LONG_CALL BattleAI_CalcSpeed(void *bw, struct BattleStruct *sp, int client1, 
 
     if ((CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) == 0)
         && (CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK) == 0)) {
-        if (((ability1 == ABILITY_SWIFT_SWIM) && (sp->field_condition & FIELD_CONDITION_RAIN_ALL))
-            || ((ability1 == ABILITY_CHLOROPHYLL) && (sp->field_condition & FIELD_CONDITION_SUN_ALL))
-            || ((ability1 == ABILITY_SAND_RUSH) && (sp->field_condition & FIELD_CONDITION_SANDSTORM_ALL))
+        // Utility Umbrella suppresses the holder's OWN rain/sun-tied abilities (self-gated).
+        // Sand Rush / Slush Rush are unaffected -- sandstorm/hail/snow aren't touched by the item.
+        if ((((ability1 == ABILITY_SWIFT_SWIM) && (sp->field_condition & FIELD_CONDITION_RAIN_ALL))
+                || ((ability1 == ABILITY_CHLOROPHYLL) && (sp->field_condition & FIELD_CONDITION_SUN_ALL)))
+            && (hold_effect1 != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN)) {
+            speedModifier1 = QMul_RoundUp(speedModifier1, UQ412__2_0);
+        } else if (((ability1 == ABILITY_SAND_RUSH) && (sp->field_condition & FIELD_CONDITION_SANDSTORM_ALL))
             || ((ability1 == ABILITY_SLUSH_RUSH) && (sp->field_condition & (FIELD_CONDITION_HAIL_ALL | FIELD_CONDITION_SNOW_ALL)))) {
             speedModifier1 = QMul_RoundUp(speedModifier1, UQ412__2_0);
         }
-        if (((ability2 == ABILITY_SWIFT_SWIM) && (sp->field_condition & FIELD_CONDITION_RAIN_ALL))
-            || ((ability2 == ABILITY_CHLOROPHYLL) && (sp->field_condition & FIELD_CONDITION_SUN_ALL))
-            || ((ability2 == ABILITY_SAND_RUSH) && (sp->field_condition & FIELD_CONDITION_SANDSTORM_ALL))
+        if ((((ability2 == ABILITY_SWIFT_SWIM) && (sp->field_condition & FIELD_CONDITION_RAIN_ALL))
+                || ((ability2 == ABILITY_CHLOROPHYLL) && (sp->field_condition & FIELD_CONDITION_SUN_ALL)))
+            && (hold_effect2 != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN)) {
+            speedModifier2 = QMul_RoundUp(speedModifier2, UQ412__2_0);
+        } else if (((ability2 == ABILITY_SAND_RUSH) && (sp->field_condition & FIELD_CONDITION_SANDSTORM_ALL))
             || ((ability2 == ABILITY_SLUSH_RUSH) && (sp->field_condition & (FIELD_CONDITION_HAIL_ALL | FIELD_CONDITION_SNOW_ALL)))) {
             speedModifier2 = QMul_RoundUp(speedModifier2, UQ412__2_0);
         }

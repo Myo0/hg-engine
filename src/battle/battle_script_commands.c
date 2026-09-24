@@ -480,7 +480,7 @@ u32 cmdAddress = 0;
 #pragma GCC diagnostic pop
 #endif // DEBUG_BATTLE_SCRIPT_COMMANDS
 
-#define BASE_ENGINE_BTL_SCR_CMDS_MAX 0x11D
+#define BASE_ENGINE_BTL_SCR_CMDS_MAX 0x125 // was stale at 0x11D (8 commands behind); corrected 2026-09-17
 
 // clang-format off
 const btl_scr_cmd_func NewBattleScriptCmdTable[] = {
@@ -3298,6 +3298,10 @@ BOOL BtlCmd_WeatherHPRecovery(void *bw, struct BattleStruct *sp)
 
     int attacker = sp->attack_client;
     u32 weather = GetWeather(bw, sp, attacker);
+    // Utility Umbrella: these self-targeting moves heal as if there's no rain/sun for the holder.
+    if (HeldItemHoldEffectGet(sp, attacker) == HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN) {
+        weather &= ~(FIELD_CONDITION_RAIN_ALL | FIELD_CONDITION_SUN_ALL);
+    }
 
     // For Strong Winds, the moves Moonlight, Morning Sun, and Synthesis continue to recover ½ of max HP, as they do in clear weather.
     if (!(weather & FIELD_CONDITION_WEATHER) || (weather & FIELD_CONDITION_STRONG_WINDS)) {
@@ -3329,8 +3333,21 @@ BOOL BtlCmd_CalcWeatherBallParams(void *bw, struct BattleStruct *sp)
     int attacker = sp->attack_client;
     u32 weather = GetWeather(bw, sp, attacker);
 
-    if ((weather & FIELD_CONDITION_WEATHER) && !(weather & FIELD_CONDITION_STRONG_WINDS)) {
-        sp->damage_power = sp->moveTbl[sp->current_move_index].power * 2;
+    u32 castformType;
+    BOOL castformDoublePower;
+    // Utility Umbrella: Weather Ball stays Normal-type/undoubled for a holder using it, per
+    // Bulbapedia's explicit user-side exception. Gated on the ATTACKER (move user).
+    if (GetCastformWeatherBallOverride(sp, attacker, &castformType, &castformDoublePower)) {
+        sp->move_type = castformType;
+        sp->damage_power = castformDoublePower
+            ? sp->moveTbl[sp->current_move_index].power * 2
+            : sp->moveTbl[sp->current_move_index].power;
+    } else if ((weather & FIELD_CONDITION_WEATHER) && !(weather & FIELD_CONDITION_STRONG_WINDS)
+        && (HeldItemHoldEffectGet(sp, attacker) != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN)) {
+        // Snow changes Weather Ball's type same as Hail, but (like Gen 9) doesn't double its power.
+        sp->damage_power = (weather & FIELD_CONDITION_SNOW_ALL)
+            ? sp->moveTbl[sp->current_move_index].power
+            : sp->moveTbl[sp->current_move_index].power * 2;
         if (weather & FIELD_CONDITION_RAIN_ALL) {
             sp->move_type = TYPE_WATER;
         }
@@ -3340,7 +3357,7 @@ BOOL BtlCmd_CalcWeatherBallParams(void *bw, struct BattleStruct *sp)
         if (weather & FIELD_CONDITION_SUN_ALL) {
             sp->move_type = TYPE_FIRE;
         }
-        if (weather & FIELD_CONDITION_HAIL_ALL) {
+        if (weather & (FIELD_CONDITION_HAIL_ALL | FIELD_CONDITION_SNOW_ALL)) {
             sp->move_type = TYPE_ICE;
         }
         // In Pokémon XD: Gale of Darkness, when used during a shadowy aura, Weather Ball's power doubles to 100, and the move becomes a typeless physical move
@@ -3377,7 +3394,8 @@ BOOL BtlCmd_EndOfTurnWeatherEffect(struct BattleSystem *bsys, struct BattleStruc
             ctx->hp_calc_work = BattleDamageDivide(ctx->battlemon[battlerId].maxhp * -1, 16);
         }
     }
-    if (weather & FIELD_CONDITION_SUN_ALL) {
+    // Utility Umbrella suppresses the holder's OWN weather-tied abilities (self-gated).
+    if ((weather & FIELD_CONDITION_SUN_ALL) && (hold_effect != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN)) {
         if (ctx->battlemon[battlerId].hp && !(ctx->battlemon[battlerId].effect_of_moves & 0x40080)) {
             if (ability == ABILITY_DRY_SKIN || ability == ABILITY_SOLAR_POWER) {
                 ctx->hp_calc_work = BattleDamageDivide(ctx->battlemon[battlerId].maxhp * -1, 8);
@@ -3410,7 +3428,7 @@ BOOL BtlCmd_EndOfTurnWeatherEffect(struct BattleSystem *bsys, struct BattleStruc
         }
     }
 
-    if (weather & FIELD_CONDITION_RAIN_ALL) {
+    if ((weather & FIELD_CONDITION_RAIN_ALL) && (hold_effect != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN)) {
         if (ctx->battlemon[battlerId].hp && ctx->battlemon[battlerId].hp < (s32)ctx->battlemon[battlerId].maxhp && ability == ABILITY_RAIN_DISH) {
             ctx->hp_calc_work = BattleDamageDivide(ctx->battlemon[battlerId].maxhp, 16);
         }

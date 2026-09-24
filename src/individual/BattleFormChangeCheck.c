@@ -41,40 +41,50 @@ BOOL BattleFormChangeCheck(void *bw, struct BattleStruct *sp, int *seq_no)
         if ((sp->battlemon[client].species == SPECIES_CASTFORM)
             && (sp->battlemon[client].hp)
             && (GetBattlerAbility(sp, client) == ABILITY_FORECAST)) {
-            if ((CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) == 0)
-                && (CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK) == 0)) {
-                // Snow does not affect Castform in SV, since it cannot enter Paldea, Kitakami nor Blueberry Academy there is no way to confirm
-                if (((sp->field_condition & (FIELD_CONDITION_RAIN_ALL | FIELD_CONDITION_SUN_ALL | FIELD_CONDITION_HAIL_ALL)) == 0)
-                    && (sp->battlemon[client].form_no != 0)) {
-                    sp->battlemon[client].form_no = 0;
-                    BattleFormChange(client, sp->battlemon[client].form_no, bw, sp, 1);
-                    *seq_no = BATTLE_SUBSCRIPT_FORM_CHANGE;
-                    ret = TRUE;
+            // Cloud Nine / Air Lock suppress weather's influence on Castform's form as normal, but
+            // the Electrum held-item effect below (Heat/Damp/Icy Rock) intentionally overrides
+            // them -- it isn't a weather effect, so it isn't something those abilities negate.
+            // Utility Umbrella also suppresses weather's influence on the holder's own form (a
+            // named Bulbapedia exception), but does NOT override the Rock-item behavior below --
+            // holding Umbrella means it isn't holding a Rock anyway, so this falls through to form 0.
+            BOOL weatherSuppressed = (CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) != 0)
+                || (CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK) != 0)
+                || (HeldItemHoldEffectGet(sp, client) == HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN);
+            // Snow is treated the same as Hail for Castform's Snowy form (Electrum decision --
+            // unlike vanilla SV, which has no confirmed interaction since Castform can't reach
+            // Paldea/Kitakami/Blueberry Academy there).
+            u32 weather = weatherSuppressed ? 0
+                : (sp->field_condition & (FIELD_CONDITION_RAIN_ALL | FIELD_CONDITION_SUN_ALL | FIELD_CONDITION_HAIL_ALL | FIELD_CONDITION_SNOW_ALL));
+
+            int target_form;
+            if (weather & FIELD_CONDITION_SUN_ALL) {
+                target_form = 1;
+            } else if (weather & FIELD_CONDITION_RAIN_ALL) {
+                target_form = 2;
+            } else if (weather & (FIELD_CONDITION_HAIL_ALL | FIELD_CONDITION_SNOW_ALL)) {
+                target_form = 3;
+            } else {
+                // No weather driving the form (either genuinely none, or suppressed by Cloud Nine /
+                // Air Lock) -- Heat/Damp/Icy Rock take over. Klutz and Embargo are deliberately NOT
+                // checked here (Electrum decision -- this isn't treated as a "held item effect").
+                switch (sp->battlemon[client].item) {
+                case ITEM_HEAT_ROCK:
+                    target_form = 1;
                     break;
-                } else if ((sp->field_condition & FIELD_CONDITION_SUN_ALL)
-                    && (sp->battlemon[client].form_no != 1)) {
-                    sp->battlemon[client].form_no = 1;
-                    BattleFormChange(client, sp->battlemon[client].form_no, bw, sp, 1);
-                    *seq_no = BATTLE_SUBSCRIPT_FORM_CHANGE;
-                    ret = TRUE;
+                case ITEM_DAMP_ROCK:
+                    target_form = 2;
                     break;
-                } else if ((sp->field_condition & FIELD_CONDITION_RAIN_ALL)
-                    && (sp->battlemon[client].form_no != 2)) {
-                    sp->battlemon[client].form_no = 2;
-                    BattleFormChange(client, sp->battlemon[client].form_no, bw, sp, 1);
-                    *seq_no = BATTLE_SUBSCRIPT_FORM_CHANGE;
-                    ret = TRUE;
+                case ITEM_ICY_ROCK:
+                    target_form = 3;
                     break;
-                } else if ((sp->field_condition & FIELD_CONDITION_HAIL_ALL)
-                    && (sp->battlemon[client].form_no != 3)) {
-                    sp->battlemon[client].form_no = 3;
-                    BattleFormChange(client, sp->battlemon[client].form_no, bw, sp, 1);
-                    *seq_no = BATTLE_SUBSCRIPT_FORM_CHANGE;
-                    ret = TRUE;
+                default:
+                    target_form = 0;
                     break;
                 }
-            } else if (sp->battlemon[client].form_no != 0) {
-                sp->battlemon[client].form_no = 0;
+            }
+
+            if (sp->battlemon[client].form_no != target_form) {
+                sp->battlemon[client].form_no = target_form;
                 BattleFormChange(client, sp->battlemon[client].form_no, bw, sp, 1);
                 *seq_no = BATTLE_SUBSCRIPT_FORM_CHANGE;
                 ret = TRUE;
@@ -95,8 +105,11 @@ BOOL BattleFormChangeCheck(void *bw, struct BattleStruct *sp, int *seq_no)
         // handle cherrim
         if ((sp->battlemon[client].species == SPECIES_CHERRIM)
             && (sp->battlemon[client].hp)) {
+            // Utility Umbrella: named Bulbapedia exception -- an Umbrella-holding Cherrim can't
+            // reach Sunshine Form, and immediately reverts to Overcast if it already was.
             if ((CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) == 0)
-                && (CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK) == 0)) {
+                && (CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK) == 0)
+                && (HeldItemHoldEffectGet(sp, client) != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN)) {
                 // Same with Forecast, unknown interaction with Snow
                 if (((sp->field_condition & (FIELD_CONDITION_RAIN_ALL | FIELD_CONDITION_SUN_ALL | FIELD_CONDITION_HAIL_ALL)) == 0)
                     && (sp->battlemon[client].form_no == 1)) {

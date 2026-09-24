@@ -802,6 +802,39 @@ u32 LONG_CALL GetWeather(struct BattleSystem *bsys, struct BattleStruct *ctx, in
     return ctx->field_condition & FIELD_CONDITION_WEATHER;
 }
 
+// Electrum: Weather Ball reads Castform's CURRENT form directly instead of real field weather,
+// so it stays consistent whether that form came from actual weather, Cloud Nine / Air Lock
+// suppression, or the Heat/Damp/Icy Rock held-item effect (see BattleFormChangeCheck.c) -- no
+// need to re-derive "why" Castform is in that form here. Deliberately does NOT go through
+// GetWeather() -- this only affects Weather Ball itself, nothing else about weather is simulated.
+// Every non-Normal form always doubles power, including Snowy (unlike a non-Castform user's
+// Weather Ball, which only doubles under real Hail, not Snow -- Castform's Snowy form always
+// gets the boost regardless of whether Hail, Snow, or Icy Rock put it there).
+// Returns FALSE (Normal form, or not a Forecast Castform at all) to mean "no override, resolve
+// Weather Ball from real weather as normal."
+BOOL LONG_CALL GetCastformWeatherBallOverride(struct BattleStruct *ctx, int client, u32 *type, BOOL *doublePower)
+{
+    if (ctx->battlemon[client].species != SPECIES_CASTFORM || GetBattlerAbility(ctx, client) != ABILITY_FORECAST) {
+        return FALSE;
+    }
+    switch (ctx->battlemon[client].form_no) {
+    case 1: // Sunny
+        *type = TYPE_FIRE;
+        *doublePower = TRUE;
+        return TRUE;
+    case 2: // Rainy
+        *type = TYPE_WATER;
+        *doublePower = TRUE;
+        return TRUE;
+    case 3: // Snowy -- always boosted, regardless of whether Hail, Snow, or Icy Rock triggered it
+        *type = TYPE_ICE;
+        *doublePower = TRUE;
+        return TRUE;
+    default: // Normal form
+        return FALSE;
+    }
+}
+
 // set sp->waza_status_flag |= MOVE_STATUS_MISSED if a miss
 BOOL LONG_CALL CalcAccuracy(void *bw, struct BattleStruct *sp, int attacker, int defender, int move_no)
 {
@@ -1143,16 +1176,22 @@ u8 LONG_CALL CalcSpeed(void *bw, struct BattleStruct *sp, int client1, int clien
 #endif
 
     // Step 1: 2x Abilities
+    // Utility Umbrella suppresses the holder's OWN rain/sun-tied abilities (self-gated).
+    // Sand Rush / Slush Rush are unaffected -- sandstorm/hail/snow aren't touched by the item.
 
-    if (((ability1 == ABILITY_SWIFT_SWIM) && (weather & FIELD_CONDITION_RAIN_ALL))
-        || ((ability1 == ABILITY_CHLOROPHYLL) && (weather & FIELD_CONDITION_SUN_ALL))
-        || ((ability1 == ABILITY_SAND_RUSH) && (weather & FIELD_CONDITION_SANDSTORM_ALL))
+    if ((((ability1 == ABILITY_SWIFT_SWIM) && (weather & FIELD_CONDITION_RAIN_ALL))
+            || ((ability1 == ABILITY_CHLOROPHYLL) && (weather & FIELD_CONDITION_SUN_ALL)))
+        && (hold_effect1 != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN)) {
+        speedModifier1 = QMul_RoundUp(speedModifier1, UQ412__2_0);
+    } else if (((ability1 == ABILITY_SAND_RUSH) && (weather & FIELD_CONDITION_SANDSTORM_ALL))
         || ((ability1 == ABILITY_SLUSH_RUSH) && (weather & (FIELD_CONDITION_HAIL_ALL | FIELD_CONDITION_SNOW_ALL)))) {
         speedModifier1 = QMul_RoundUp(speedModifier1, UQ412__2_0);
     }
-    if (((ability2 == ABILITY_SWIFT_SWIM) && (weather & FIELD_CONDITION_RAIN_ALL))
-        || ((ability2 == ABILITY_CHLOROPHYLL) && (weather & FIELD_CONDITION_SUN_ALL))
-        || ((ability2 == ABILITY_SAND_RUSH) && (weather & FIELD_CONDITION_SANDSTORM_ALL))
+    if ((((ability2 == ABILITY_SWIFT_SWIM) && (weather & FIELD_CONDITION_RAIN_ALL))
+            || ((ability2 == ABILITY_CHLOROPHYLL) && (weather & FIELD_CONDITION_SUN_ALL)))
+        && (hold_effect2 != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN)) {
+        speedModifier2 = QMul_RoundUp(speedModifier2, UQ412__2_0);
+    } else if (((ability2 == ABILITY_SAND_RUSH) && (weather & FIELD_CONDITION_SANDSTORM_ALL))
         || ((ability2 == ABILITY_SLUSH_RUSH) && (weather & (FIELD_CONDITION_HAIL_ALL | FIELD_CONDITION_SNOW_ALL)))) {
         speedModifier2 = QMul_RoundUp(speedModifier2, UQ412__2_0);
     }
@@ -1731,7 +1770,7 @@ void LONG_CALL CalcPriorityAndQuickClawCustapBerry(void *bsys, struct BattleStru
 }
 
 const u8 CriticalRateTable[] = {
-    24,
+    16,
     8,
     2,
     1,
@@ -2808,6 +2847,7 @@ BOOL LONG_CALL MoveIsAffectedByNormalizeVariants(int moveno)
     case MOVE_TECHNO_BLAST:
     case MOVE_MULTI_ATTACK:
     case MOVE_TERRAIN_PULSE:
+    case MOVE_REVELATION_DANCE:
         return FALSE;
         break;
     default:
@@ -2891,7 +2931,11 @@ BOOL LONG_CALL BattleSystem_CheckMoveEffect(void *bw, struct BattleStruct *sp, i
         return TRUE;
     }
 
+    // Utility Umbrella: these accuracy boosts are a purely defensive effect -- "moves with a
+    // different accuracy in rain or harsh sunlight... have their normal accuracy when they target
+    // the holder" (Bulbapedia). Gated on the TARGET's item, not the attacker's.
     if ((weather & FIELD_CONDITION_RAIN_ALL)
+        && (HeldItemHoldEffectGet(sp, battlerIdTarget) != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN)
         && ((sp->moveTbl[move].effect == MOVE_EFFECT_THUNDER)
             || (sp->moveTbl[move].effect == MOVE_EFFECT_HURRICANE)
             || (sp->moveTbl[move].effect == MOVE_EFFECT_BLEAKWIND_STORM)
@@ -2900,7 +2944,7 @@ BOOL LONG_CALL BattleSystem_CheckMoveEffect(void *bw, struct BattleStruct *sp, i
         sp->waza_status_flag &= ~MOVE_STATUS_MISSED;
         return TRUE;
     }
-    // Blizzard is 100% accurate in Snow also
+    // Blizzard is 100% accurate in Snow also -- Hail/Snow effects are untouched by Utility Umbrella.
     if (weather & (FIELD_CONDITION_HAIL_ALL | FIELD_CONDITION_SNOW_ALL) && sp->moveTbl[move].effect == MOVE_EFFECT_BLIZZARD) {
         sp->waza_status_flag &= ~MOVE_STATUS_MISSED;
         return TRUE;
@@ -3419,8 +3463,15 @@ int LONG_CALL GetDynamicMoveType(struct BattleSystem *bsys, struct BattleStruct 
             type++;
         }
         break;
-    case MOVE_WEATHER_BALL:
-        if (weather & FIELD_CONDITION_WEATHER) {
+    case MOVE_WEATHER_BALL: {
+        u32 castformType;
+        BOOL castformDoublePower; // unused here -- power is resolved separately, see CalcBaseDamage.c
+        if (GetCastformWeatherBallOverride(ctx, battlerId, &castformType, &castformDoublePower)) {
+            type = castformType;
+            break;
+        }
+        // Utility Umbrella: Weather Ball stays Normal-type for a holder using it (user-side gate).
+        if ((weather & FIELD_CONDITION_WEATHER) && (HeldItemHoldEffectGet(ctx, battlerId) != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN)) {
             if (weather & FIELD_CONDITION_RAIN_ALL) {
                 type = TYPE_WATER;
             }
@@ -3430,7 +3481,7 @@ int LONG_CALL GetDynamicMoveType(struct BattleSystem *bsys, struct BattleStruct 
             if (weather & FIELD_CONDITION_SUN_ALL) {
                 type = TYPE_FIRE;
             }
-            if (weather & FIELD_CONDITION_HAIL_ALL) {
+            if (weather & (FIELD_CONDITION_HAIL_ALL | FIELD_CONDITION_SNOW_ALL)) {
                 type = TYPE_ICE;
             }
             // BUG: If the weather is foggy, then type doesn't get set properly before being returned
@@ -3443,6 +3494,7 @@ int LONG_CALL GetDynamicMoveType(struct BattleSystem *bsys, struct BattleStruct 
             }
         }
         break;
+    }
     case MOVE_TECHNO_BLAST:
         switch (HeldItemHoldEffectGet(ctx, battlerId)) {
         case HOLD_EFFECT_BURN_DRIVE:
@@ -3468,14 +3520,40 @@ int LONG_CALL GetDynamicMoveType(struct BattleSystem *bsys, struct BattleStruct 
             GF_ASSERT(TYPE_NORMAL <= ctx->battlemon[battlerId].tera_type && TYPE_STELLAR >= ctx->battlemon[battlerId].tera_type && TYPE_TYPELESS != ctx->battlemon[battlerId].tera_type);
 
             type = ctx->battlemon[battlerId].tera_type;
-        } else if (ctx->battlemon[battlerId].type1 != TYPE_TYPELESS) {
-            type = ctx->battlemon[battlerId].type1;
-        } else if (ctx->battlemon[battlerId].type2 != TYPE_TYPELESS) {
-            type = ctx->battlemon[battlerId].type2;
-        } else if (ctx->battlemon[battlerId].type3 != TYPE_TYPELESS) {
-            type = ctx->battlemon[battlerId].type3;
+        } else if (ctx->moveConditionsFlags[battlerId].soakFlag || ctx->moveConditionsFlags[battlerId].magicPowderFlag
+            || ctx->moveConditionsFlags[battlerId].burnUpFlag || ctx->moveConditionsFlags[battlerId].doubleShockFlag) {
+            // an active type-override effect (Soak/Magic Powder/Burn Up/Double Shock) already wrote
+            // the override directly into type1/type2 -- trust it as-is rather than re-deriving from
+            // species below, which would silently undo the override.
+            if (ctx->battlemon[battlerId].type1 != TYPE_TYPELESS) {
+                type = ctx->battlemon[battlerId].type1;
+            } else if (ctx->battlemon[battlerId].type2 != TYPE_TYPELESS) {
+                type = ctx->battlemon[battlerId].type2;
+            } else if (ctx->battlemon[battlerId].type3 != TYPE_TYPELESS) {
+                type = ctx->battlemon[battlerId].type3;
+            } else {
+                type = TYPE_TYPELESS;
+            }
         } else {
-            type = TYPE_TYPELESS;
+            // Don't trust ctx->battlemon[].type1/2 here -- for form species not in GetMonData's
+            // small native form table (e.g. Oricorio), those are populated from the BASE form's
+            // type at battle start and never get corrected. Re-derive from the mon's actual
+            // current species+form directly instead (same fix Roost's type-restore uses).
+            // type3 is untouched by this -- it's only ever written by direct type-add effects
+            // (Forest's Curse/Trick-or-Treat), never derived from species/form, so it's safe as-is.
+            u32 adjustedSpecies = PokeOtherFormMonsNoGet(species, form);
+            u32 revType1 = PokePersonalParaGet(adjustedSpecies, PERSONAL_TYPE_1);
+            u32 revType2 = PokePersonalParaGet(adjustedSpecies, PERSONAL_TYPE_2);
+
+            if (revType1 != TYPE_TYPELESS) {
+                type = revType1;
+            } else if (revType2 != TYPE_TYPELESS) {
+                type = revType2;
+            } else if (ctx->battlemon[battlerId].type3 != TYPE_TYPELESS) {
+                type = ctx->battlemon[battlerId].type3;
+            } else {
+                type = TYPE_TYPELESS;
+            }
         }
         break;
     case MOVE_MULTI_ATTACK:

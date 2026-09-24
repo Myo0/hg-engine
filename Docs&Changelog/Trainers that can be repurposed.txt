@@ -125,6 +125,10 @@ I can tell that you’re a Trainer\nwith considerable skill.\rIf you don’t min
 2579 -> Darach & Caitlin victory road
 2580 -> Crobats for Irina & Nick VR Gauntlet
 2581 -> Crobats for Ted -> McConnell Gauntlet
+2582, 2583, 2584, 2585 -> One-time reward gate for the Bug Catching Contest
+2586 -> Eviolite in Ecruteak
+2587 -> Victreebelite in Bellchime Trail
+2588 -> Audinite on Route 35
 
 2660 -> Flag to check if player has already interacted with the legendary encounter in safari zone
 
@@ -146,3 +150,37 @@ Script 10:
     WaitFadeScreen
     ReleaseAll
 End
+
+Ground Item Script for items whose ID is < 1000:
+
+Script 3:
+    LockAll
+    PlayFanfare 1500
+    RemoveOW Overworld.1 <- dynamic, depends on what it is in DSPRE
+    SetVar 0x8004 2560 <- Item ID
+    SetVar 0x8005 1 <- quantity, pretty much always 1
+    CommonScript 2033
+    SetFlag 2587 <- depends on whether or not im replacing a vanilla pokeball or adding a new one
+    CloseMessage
+    ReleaseAll
+End
+
+Script 3:
+    LockAll
+    PlayFanfare 1500
+    RemoveOW Overworld.1
+    SetVar 0x8004 2560
+    SetVar 0x8005 1
+    CommonScript 2033
+    SetFlag 2587
+    CloseMessage
+    ReleaseAll
+End
+
+Cynthia will be one of the final trainers the player faces before Red on Mt. Silver.
+
+The player will enter an area, walk to the center of the room, then blacks out.
+
+A person will start talking to them, with no music playing.
+
+After some dialogue, a battle with Cynthia will start.

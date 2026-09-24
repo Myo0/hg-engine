@@ -2392,6 +2392,7 @@ BOOL LONG_CALL ShouldDelayTurnEffectivenessChecking(struct BattleStruct *sp, u32
 BOOL LONG_CALL ShouldUseNormalTypeEffCalc(struct BattleStruct *sp, int attack_client UNUSED, int defence_client, int pos);
 
 u32 LONG_CALL GetWeather(struct BattleSystem *bsys, struct BattleStruct *ctx, int attacker);
+BOOL LONG_CALL GetCastformWeatherBallOverride(struct BattleStruct *ctx, int client, u32 *type, BOOL *doublePower);
 
 BOOL LONG_CALL CalcAccuracy(void *bw, struct BattleStruct *sp, int attacker, int defender, int move_no);
 

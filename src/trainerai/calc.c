@@ -452,15 +452,23 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
             movepower *= 2;
         }
         break;
-    case MOVE_WEATHER_BALL:
-        if (!CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, attackerSlot, ABILITY_CLOUD_NINE)
-            && !CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, attackerSlot, ABILITY_AIR_LOCK)) {
+    case MOVE_WEATHER_BALL: {
+        u32 castformType;
+        BOOL castformDoublePower;
+        if (GetCastformWeatherBallOverride(sp, attackerSlot, &castformType, &castformDoublePower)) {
+            if (castformDoublePower) {
+                movepower *= 2;
+            }
+        } else if (!CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, attackerSlot, ABILITY_CLOUD_NINE)
+            && !CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, attackerSlot, ABILITY_AIR_LOCK)
+            && attacker->item_held_effect != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN) {
             if ((sp->field_condition & FIELD_CONDITION_WEATHER)
                 && !(sp->field_condition & (FIELD_CONDITION_STRONG_WINDS | FIELD_CONDITION_SNOW_ALL))) {
                 movepower *= 2;
             }
         }
         break;
+    }
     case MOVE_WATER_SHURIKEN:
         if (attacker->species == SPECIES_GRENINJA && attacker->form == 1) {
             movepower = 20;
@@ -605,8 +613,13 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
 
     if ((CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, attackerSlot, ABILITY_CLOUD_NINE) == 0)
         && (CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, attackerSlot, ABILITY_AIR_LOCK) == 0)) {
-        if ((field_cond & (FIELD_CONDITION_FOG | FIELD_CONDITION_HAIL_ALL | FIELD_CONDITION_SANDSTORM_ALL | FIELD_CONDITION_RAIN_ALL | FIELD_CONDITION_SNOW_ALL))
-            && (moveno == MOVE_SOLAR_BEAM || moveno == MOVE_SOLAR_BLADE)) {
+        // Utility Umbrella only shields Solar Beam/Blade from Rain's halving (a rain/sun effect);
+        // Fog/Hail/Sandstorm/Snow still halve it regardless of the attacker's item.
+        u32 solarBeamHalvingWeather = field_cond & (FIELD_CONDITION_FOG | FIELD_CONDITION_HAIL_ALL | FIELD_CONDITION_SANDSTORM_ALL | FIELD_CONDITION_SNOW_ALL);
+        if (attacker->item_held_effect != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN) {
+            solarBeamHalvingWeather |= (field_cond & FIELD_CONDITION_RAIN_ALL);
+        }
+        if (solarBeamHalvingWeather && (moveno == MOVE_SOLAR_BEAM || moveno == MOVE_SOLAR_BLADE)) {
             basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__0_5);
         }
     }
@@ -825,6 +838,16 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
 
     // items
 
+#ifdef DEBUG_DAMAGE_CALC_AI
+    debug_printf("\n=================\n");
+    debug_printf("[CalcBaseDamage] Step 2.5. Item check\n");
+    debug_printf("[CalcBaseDamage] attacker->item: %d\n", attacker->item);
+    debug_printf("[CalcBaseDamage] attacker->item_held_effect: %d (POWER_UP_PHYS=%d POWER_UP_SPEC=%d)\n",
+        attacker->item_held_effect, HOLD_EFFECT_POWER_UP_PHYS, HOLD_EFFECT_POWER_UP_SPEC);
+    debug_printf("[CalcBaseDamage] movesplit: %d (PHYSICAL=%d SPECIAL=%d)\n", movesplit, SPLIT_PHYSICAL, SPLIT_SPECIAL);
+    debug_printf("[CalcBaseDamage] basePowerModifier before item check: %d\n", basePowerModifier);
+#endif
+
     if ((attacker->item_held_effect == HOLD_EFFECT_POWER_UP_PHYS) && (movesplit == SPLIT_PHYSICAL)) {
         basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_1);
     }
@@ -832,6 +855,10 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
     if ((attacker->item_held_effect == HOLD_EFFECT_POWER_UP_SPEC) && (movesplit == SPLIT_SPECIAL)) {
         basePowerModifier = QMul_RoundUp(basePowerModifier, UQ412__1_1);
     }
+
+#ifdef DEBUG_DAMAGE_CALC_AI
+    debug_printf("[CalcBaseDamage] basePowerModifier after item check: %d\n", basePowerModifier);
+#endif
 
     // type boosting held items
     {
@@ -959,7 +986,7 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
     debug_printf("\n=================\n");
     debug_printf("[CalcBaseDamage] Step 3.2. handle Foul Play\n");
     debug_printf("[CalcBaseDamage] attacker->attack: %d\n", attacker->attack);
-    debug_printf("[CalcBaseDamage] attacker->atkstate: %d\n", attacker->atkstate);
+    debug_printf("[CalcBaseDamage] attacker->atkstate: %d\n", attacker->states[STAT_ATTACK]);
 #endif
 
     // Step 3.3. Critical hit
@@ -1043,13 +1070,17 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
     }
 
     // handle weather boosts
+    // Utility Umbrella: the holder's OWN weather-tied abilities are suppressed (self-gated), but an
+    // ally's Flower Gift still boosts it normally (Bulbapedia: "still affected by its allies' Flower Gift").
     if ((CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, attackerSlot, ABILITY_CLOUD_NINE) == 0)
         && (CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, attackerSlot, ABILITY_AIR_LOCK) == 0)) {
-        if ((field_cond & FIELD_CONDITION_SUN_ALL) && (attacker->ability == ABILITY_SOLAR_POWER) && (movesplit == SPLIT_SPECIAL)) {
+        if ((field_cond & FIELD_CONDITION_SUN_ALL) && (attacker->ability == ABILITY_SOLAR_POWER) && (movesplit == SPLIT_SPECIAL)
+            && (attacker->item_held_effect != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN)) {
             attackModifier = QMul_RoundUp(attackModifier, UQ412__1_5);
         }
         if ((field_cond & FIELD_CONDITION_SUN_ALL)
-            && (attacker->ability == ABILITY_FLOWER_GIFT || (isDoubleBattle && GetBattlerAbility(sp, BATTLER_ALLY(attackerSlot)) == ABILITY_FLOWER_GIFT))
+            && ((attacker->ability == ABILITY_FLOWER_GIFT && attacker->item_held_effect != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN)
+                || (isDoubleBattle && GetBattlerAbility(sp, BATTLER_ALLY(attackerSlot)) == ABILITY_FLOWER_GIFT))
             && (movesplit == SPLIT_PHYSICAL)) {
             attackModifier = QMul_RoundUp(attackModifier, UQ412__1_5);
         }
@@ -1194,9 +1225,10 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
             || (movesplit == SPLIT_SPECIAL && sp->paradoxBoostedStat[attackerSlot] == STAT_SPECIAL_ATTACK))) {
         attackModifier = QMul_RoundUp(attackModifier, UQ412__1_3);
     }
+    // Orichalcum Pulse is an explicit Bulbapedia exception -- it still boosts even if the
+    // attacker holds Utility Umbrella (unlike ordinary weather-tied abilities).
     if ((attacker->ability == ABILITY_ORICHALCUM_PULSE)
         && (field_cond & FIELD_CONDITION_SUN_ALL)
-        && !(attacker->item_held_effect == HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN)
         && (movesplit == SPLIT_PHYSICAL)) {
         attackModifier = QMul_RoundUp(attackModifier, UQ412__1_3333);
     }
@@ -1610,10 +1642,33 @@ int LONG_CALL BattleAI_CalcDamage(void *bw, struct BattleStruct *sp, int moveno,
             critical = 2;
         }
     }
-    if (attacker->item == ITEM_SCOPE_LENS && attacker->ability == ABILITY_SUPER_LUCK
-        && defender->ability != ABILITY_SHELL_ARMOR && defender->ability != ABILITY_BATTLE_ARMOR
-        && defender->ability != ABILITY_LEAF_GUARD && defender->ability != ABILITY_MAGMA_ARMOR) {
-        if (move.effect == MOVE_EFFECT_HIGH_CRITICAL) {
+
+    // Guaranteed-crit stage check -- mirrors CalcCritical's real stage table (other_battle_calculators.c,
+    // [24, 8, 2, 1, 1]: stage 3+ is BattleRand % 1, i.e. always crits) instead of only recognizing one
+    // hardcoded Scope Lens + Super Luck pairing. Any stack of crit-ratio sources (a high-crit-ratio move,
+    // Scope Lens/Razor Claw, Super Luck, Focus Energy, Chansey's Lucky Punch, Farfetch'd/Sirfetch'd's
+    // Stick) that reaches stage 3 is just as guaranteed as that one specific pairing was.
+    {
+        BOOL moveHasHighCritRatio = (move.effect == MOVE_EFFECT_HIGH_CRITICAL
+            || move.effect == MOVE_EFFECT_HIGH_CRITICAL_BURN_HIT // Blaze Kick
+            || move.effect == MOVE_EFFECT_HIGH_CRITICAL_POISON_HIT // Cross Poison
+            || move.effect == MOVE_EFFECT_HIGH_CRITICAL_RAISE_SPEED_HIT
+            || move.effect == MOVE_EFFECT_CHARGE_TURN_HIGH_CRIT
+            || move.effect == MOVE_EFFECT_CHARGE_TURN_HIGH_CRIT_FLINCH);
+
+        int critStage = (moveHasHighCritRatio ? 1 : 0)
+            + ((attacker->condition2 & STATUS2_FOCUS_ENERGY) ? 2 : 0)
+            + (attacker->item_held_effect == HOLD_EFFECT_CRITRATE_UP ? 1 : 0)
+            + (attacker->ability == ABILITY_SUPER_LUCK ? 1 : 0)
+            + ((attacker->item_held_effect == HOLD_EFFECT_CHANSEY_CRITRATE_UP && attacker->species == SPECIES_CHANSEY) ? 2 : 0)
+            + ((attacker->item_held_effect == HOLD_EFFECT_FARFETCHD_CRITRATE_UP
+                && (attacker->species == SPECIES_FARFETCHD || attacker->species == SPECIES_SIRFETCHD)) ? 2 : 0);
+
+        if (critStage >= 3
+            && !attacker->hasMoldBreaker
+            && defender->ability != ABILITY_SHELL_ARMOR && defender->ability != ABILITY_BATTLE_ARMOR
+            && defender->ability != ABILITY_LEAF_GUARD && defender->ability != ABILITY_MAGMA_ARMOR
+            && !(defender->effect_of_moves & MOVE_EFFECT_FLAG_NO_CRITICAL)) {
             critical = 2;
         }
     }
@@ -1622,13 +1677,43 @@ int LONG_CALL BattleAI_CalcDamage(void *bw, struct BattleStruct *sp, int moveno,
     //=====Step 6. General Damage Modifiers=====
 
     // 6.1 Spread Move Modifier
+    // `defenderSlot ^ 1` is the same-column (BATTLER_OPPONENT-style) pairing -- when defenderSlot is
+    // on the opposing team that XOR actually resolves to the ATTACKER's own slot, not the defender's
+    // teammate, so the old check ("is the attacker alive") was effectively always true. Mirror the
+    // real vanilla calc's approach instead (battle_calc_damage.c ~line 299), counting live targets
+    // relative to the attacker via BATTLER_OPPONENT_SIDE_LEFT/RIGHT + BATTLER_ALLY.
     BOOL isDoubleBattle = (BattleTypeGet(bw) & (BATTLE_TYPE_MULTI | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TAG));
     if (isDoubleBattle) {
-        if (move.target == RANGE_ADJACENT_OPPONENTS || move.target == RANGE_ALL_ADJACENT) {
-            u8 defenderPartnerSlot = defenderSlot ^ 1;
-            if (sp->battlemon[defenderPartnerSlot].hp > 0) {
-                damage = QMul_RoundDown(damage, UQ412__0_75);
+        int numTargetedFoes = 0;
+        int numTargetedAll = 0;
+
+        if (IsTargetFoes(bw, sp, moveno) || IsTargetFoesAndAlly(bw, sp, moveno)) {
+            int oppLeft = BATTLER_OPPONENT_SIDE_LEFT(attackerSlot);
+            int oppRight = BATTLER_OPPONENT_SIDE_RIGHT(attackerSlot);
+
+            if (sp->battlemon[oppLeft].hp != 0) {
+                numTargetedFoes++;
+                numTargetedAll++;
             }
+            if (sp->battlemon[oppRight].hp != 0) {
+                numTargetedFoes++;
+                numTargetedAll++;
+            }
+        }
+
+        if (IsTargetFoesAndAlly(bw, sp, moveno)) {
+            int ally = BATTLER_ALLY(attackerSlot);
+
+            if (sp->battlemon[ally].hp != 0) {
+                numTargetedAll++;
+            }
+        }
+
+        if (IsTargetFoes(bw, sp, moveno) && numTargetedFoes >= 2) {
+            damage = QMul_RoundDown(damage, UQ412__0_75);
+        }
+        if (IsTargetFoesAndAlly(bw, sp, moveno) && numTargetedAll >= 2) {
+            damage = QMul_RoundDown(damage, UQ412__0_75);
         }
     }
     debug_printf("after is double battle\n");
@@ -1645,9 +1730,10 @@ int LONG_CALL BattleAI_CalcDamage(void *bw, struct BattleStruct *sp, int moveno,
     }
 
     // 6.3 Weather Modifier — Mega Sol's personal Sun ignores Cloud Nine / Air Lock.
+    // Utility Umbrella: gated on the DEFENDER's item (purely defensive, see battle_calc_damage.c).
     if (attacker->ability == ABILITY_MEGA_SOL
         || ((CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) == 0) && (CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK) == 0))) {
-        if (aiWeather & FIELD_CONDITION_RAIN_ALL) {
+        if ((aiWeather & FIELD_CONDITION_RAIN_ALL) && (defender->item_held_effect != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN)) {
             switch (type) {
             case TYPE_FIRE:
                 damage = QMul_RoundDown(damage, UQ412__0_5);
@@ -1661,13 +1747,16 @@ int LONG_CALL BattleAI_CalcDamage(void *bw, struct BattleStruct *sp, int moveno,
         if (aiWeather & FIELD_CONDITION_SUN_ALL) {
             switch (type) {
             case TYPE_FIRE:
-                damage = QMul_RoundDown(damage, UQ412__1_5);
+                if (defender->item_held_effect != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN) {
+                    damage = QMul_RoundDown(damage, UQ412__1_5);
+                }
                 break;
             case TYPE_WATER:
-                // If the current weather is Sunny Day and the user is not holding Utility Umbrella, this move's damage is multiplied by 1.5 instead of halved for being Water type.
+                // Hydro Steam is a user-side exception: its own boost is removed only if the
+                // ATTACKER holds Utility Umbrella, regardless of the defender's item.
                 if (moveno == MOVE_HYDRO_STEAM && attacker->item_held_effect != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN) {
                     damage = QMul_RoundDown(damage, UQ412__1_5);
-                } else {
+                } else if (defender->item_held_effect != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN) {
                     damage = QMul_RoundDown(damage, UQ412__0_5);
                 }
                 break;
@@ -1707,6 +1796,8 @@ int LONG_CALL BattleAI_CalcDamage(void *bw, struct BattleStruct *sp, int moveno,
     debug_printf("\n=================\n");
     debug_printf("[CalcBaseDamage] 6.5 Random Factor Modifier\n");
     debug_printf("[CalcBaseDamage] damage: %d\n", damages->damageRoll);
+    debug_printf("[CalcBaseDamage] pre-STAB/type damageRange[0](85%%): %d [3](88%%): %d [8](93%%): %d [15](100%%): %d\n",
+        damages->damageRange[0], damages->damageRange[3], damages->damageRange[8], damages->damageRange[15]);
 #endif
 
     if (attacker->type1 == movetype || attacker->type2 == movetype || attacker->ability == ABILITY_PROTEAN || attacker->ability == ABILITY_LIBERO) {
@@ -2352,13 +2443,25 @@ int LONG_CALL BattleAI_PostKOSwitchIn_Internal(struct BattleSystem *bsys, int at
     u8 critical = 0;
 
     u8 speedCalc;
-    u32 defender = BATTLER_OPPONENT(attacker); // default for singles -- updated in the doubles section
+    u32 defender = BATTLER_OPPONENT(attacker); // primary (positionally-paired) opponent -- used for the
+    // "what does this candidate deal" side, unchanged by the doubles fix below.
+    BOOL isDoublesBattle = (battleType & (BATTLE_TYPE_TAG | BATTLE_TYPE_MULTI | BATTLE_TYPE_DOUBLES)) != 0;
+    // Second opposing slot -- only used to catch threats the fixed `defender` pairing alone can't see:
+    // an independent priority kill from the OTHER opponent, or a hit that combines with `defender`'s
+    // to KO the candidate even though neither hit alone is lethal. Mirrors `defender` (no-op) in singles.
+    u32 defender2 = defender;
+    if (isDoublesBattle) {
+        u32 oppLeft = BATTLER_OPPONENT_SIDE_LEFT(attacker);
+        u32 oppRight = BATTLER_OPPONENT_SIDE_RIGHT(attacker);
+        defender2 = (defender == oppLeft) ? oppRight : oppLeft;
+    }
     u8 slot1, slot2;
     u16 moveno = 0;
     u32 monDealsRolledDamage[6] = { 0 };
     u32 monHighestDamageMoveno = 0;
     u32 monReceivingHighestDamageMoveno = 0;
     u32 monReceivesDamage[6] = { 0 };
+    u32 monReceivesDamage2[6] = { 0 }; // representative hit from the second opponent, doubles only
     u16 switchInScore[6] = { 0 };
     int partySize = 0;
     int picked = 6; // in Order
@@ -2431,6 +2534,13 @@ int LONG_CALL BattleAI_PostKOSwitchIn_Internal(struct BattleSystem *bsys, int at
             }
 
             BOOL defenderHasStatusMove = FALSE;
+            // Tracks whether ANY of the defender's moves is both priority and lethal on its own --
+            // separate from monReceivesDamage/monReceivingHighestDamageMoveno, which only remember
+            // the single highest-*damage* move. A lower-damage priority move (e.g. Mach Punch) can
+            // still be the real threat even when a stronger non-priority move (e.g. Force Palm) is
+            // what gets tracked as "highest damage" -- speedCalc alone (CALCSPEED_FLAG_NO_PRIORITY)
+            // can't see this, so it has to be checked explicitly per-move here.
+            BOOL playerHasPriorityKill = FALSE;
             for (int k = 0; k < 4; ++k) {
                 struct AI_damage damages = { 0 };
                 u32 defenderMoveno = ctx->battlemon[defender].move[k];
@@ -2454,9 +2564,56 @@ int LONG_CALL BattleAI_PostKOSwitchIn_Internal(struct BattleSystem *bsys, int at
                         monReceivingHighestDamageMoveno = defenderMoveno;
                         monReceivesDamage[i] = damages.damageRange[8];
                     }
+
+                    if (defenderMove.priority > 0
+                        && canAttackerOneShotDefender(damages.damageRange[8], defenderMove.split, defenderMoveno, &defenderMon, &attackerMon)) {
+                        playerHasPriorityKill = TRUE;
+                    }
                 }
                 debug_printf("Receiving from move %d: %d is [%d-%d], roll %d > att.HP %d\n", k, defenderMoveno, damages.damageRange[0], damages.damageRange[15], damages.damageRoll, attackerMon.hp);
             }
+
+            // Doubles: the OTHER opponent (not the positionally-paired `defender`) can also threaten
+            // this candidate -- an independent priority kill, or contribute to a combined-lethal hit
+            // (checked below). Was previously invisible: this function only ever looked at `defender`.
+            if (isDoublesBattle && defender2 != defender && ctx->battlemon[defender2].hp > 0) {
+                struct AI_sDamageCalc defenderMon2 = { 0 };
+                FillDamageStructFromBattleMon(bsys, ctx, &defenderMon2, defender2);
+
+                for (int k = 0; k < 4; ++k) {
+                    struct AI_damage damages = { 0 };
+                    u32 defenderMoveno = ctx->battlemon[defender2].move[k];
+                    struct BattleMove defenderMove = ctx->moveTbl[defenderMoveno];
+
+                    if (defenderMove.effect == MOVE_EFFECT_STATUS_BURN
+                        || defenderMove.effect == MOVE_EFFECT_STATUS_POISON
+                        || defenderMove.effect == MOVE_EFFECT_STATUS_BADLY_POISON) {
+                        defenderHasStatusMove = TRUE;
+                    }
+
+                    if (defenderMove.split != SPLIT_STATUS && defenderMove.power) {
+                        damages.damageRoll = BattleAI_CalcDamage(bsys, ctx, defenderMoveno, ctx->side_condition[BATTLER_IS_ENEMY(defender2)], ctx->field_condition, defenderMove.power, defenderMove.type, critical, defender2, attacker, &damages, &defenderMon2, &attackerMon);
+
+                        damages.damageRoll = BattleAI_AdjustUnusualMoveDamage(defenderMon2.level, defenderMon2.hp, attackerMon.hp, damages.damageRoll, defenderMove.effect, defenderMon2.ability, defenderMon2.item);
+                        for (int u = 0; u < 16; u++) {
+                            damages.damageRange[u] = BattleAI_AdjustUnusualMoveDamage(defenderMon2.level, defenderMon2.hp, attackerMon.hp, damages.damageRange[u], defenderMove.effect, defenderMon2.ability, defenderMon2.item);
+                        }
+
+                        if (damages.damageRange[8] > monReceivesDamage2[i]) {
+                            monReceivesDamage2[i] = damages.damageRange[8];
+                        }
+
+                        if (defenderMove.priority > 0
+                            && canAttackerOneShotDefender(damages.damageRange[8], defenderMove.split, defenderMoveno, &defenderMon2, &attackerMon)) {
+                            playerHasPriorityKill = TRUE;
+                        }
+                    }
+                    debug_printf("Receiving from 2nd opponent move %d: %d is [%d-%d], roll %d > att.HP %d\n", k, defenderMoveno, damages.damageRange[0], damages.damageRange[15], damages.damageRoll, attackerMon.hp);
+                }
+            }
+#ifdef DEBUG_DAMAGE_CALC_AI
+            debug_printf("playerHasPriorityKill: %d\n", playerHasPriorityKill);
+#endif
 
             // TODO stealth rocks, spikes, toxic spikes, etc...
             u8 aiMonCanOneshotPlayer = canAttackerOneShotDefender(monDealsRolledDamage[i], ctx->moveTbl[monHighestDamageMoveno].split, monHighestDamageMoveno, &attackerMon, &defenderMon);
@@ -2464,10 +2621,18 @@ int LONG_CALL BattleAI_PostKOSwitchIn_Internal(struct BattleSystem *bsys, int at
             u16 partyMonPercentDamageDealt = (100 * monDealsRolledDamage[i] / defenderMon.hp);
             u16 partyMonPercentDamageReceived = (100 * monReceivesDamage[i] / attackerMon.hp);
 
+            // Neither opponent's single hit needs to be lethal alone for the switch-in to die this turn
+            // if both hit it -- sum the two opponents' representative hits. A fresh switch-in in doubles
+            // faces incoming fire from BOTH opposing slots that turn regardless of its own speed, so this
+            // is independent of speedCalc/incomingEatsFreeHit (mirrors how playerHasPriorityKill is used).
+            BOOL combinedOpponentDamageIsLethal = isDoublesBattle && defender2 != defender
+                && ((monReceivesDamage[i] + monReceivesDamage2[i]) >= attackerMon.hp);
+            BOOL playerCanKillThisTurn = playerCanOneShotAiMon || combinedOpponentDamageIsLethal;
+
             debug_printf("SwitchScore: SpeedCalc %d. Attacker %d deals %d%% to defender %d. Receives %d%%", speedCalc, attacker, (100 * monDealsRolledDamage[i] / defenderMon.hp), defender, (100 * monReceivesDamage[i] / attackerMon.hp));
 
             if (attackerMon.species == SPECIES_WYNAUT || attackerMon.species == SPECIES_WOBBUFFET) {
-                if (defenderHasStatusMove || playerCanOneShotAiMon) {
+                if (defenderHasStatusMove || playerCanKillThisTurn) {
                     switchInScore[i] -= 1;
                 } else {
                     switchInScore[i] += 2;
@@ -2475,8 +2640,11 @@ int LONG_CALL BattleAI_PostKOSwitchIn_Internal(struct BattleSystem *bsys, int at
             }
 
             if (speedCalc > 0) {
-                if (incomingEatsFreeHit && playerCanOneShotAiMon) {
-                    switchInScore[i] -= 2; // KO'd by the free switch-in hit before its speed matters
+                if ((incomingEatsFreeHit && playerCanOneShotAiMon) || playerHasPriorityKill || combinedOpponentDamageIsLethal) {
+                    switchInScore[i] -= 2; // KO'd before it can act -- either it ate a free hit this
+                    // turn, it's "faster" only because speedCalc ignores priority and the opponent has
+                    // a priority move that kills it regardless of that speed edge, or (doubles) it takes
+                    // lethal combined fire from both opponents the moment it switches in.
                 } else if (pursuitOHKOs) {
                     switchInScore[i] += 6;
                 } else if (aiMonCanOneshotPlayer) {
@@ -2491,11 +2659,11 @@ int LONG_CALL BattleAI_PostKOSwitchIn_Internal(struct BattleSystem *bsys, int at
                     switchInScore[i] += 2;
                 }
             } else {
-                if (aiMonCanOneshotPlayer && !playerCanOneShotAiMon) {
+                if (aiMonCanOneshotPlayer && !playerCanKillThisTurn) {
                     switchInScore[i] += 4;
-                } else if (!playerCanOneShotAiMon && partyMonPercentDamageDealt > partyMonPercentDamageReceived) {
+                } else if (!playerCanKillThisTurn && partyMonPercentDamageDealt > partyMonPercentDamageReceived) {
                     switchInScore[i] += 2;
-                } else if (playerCanOneShotAiMon) {
+                } else if (playerCanKillThisTurn) {
                     switchInScore[i] -= 1;
                 }
             }
