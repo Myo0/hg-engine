@@ -1769,7 +1769,7 @@ int LONG_CALL BattleAI_CalcDamage(void *bw, struct BattleStruct *sp, int moveno,
     debug_printf("[CalcBaseDamage] damage: %d\n", damage);
 #endif
     // 6.3.5 Glaive Rush: defender takes double damage the turn after using Glaive Rush
-    if (sp->moveConditionsFlags[defenderSlot].glaiveRush) {
+    if (sp->moveConditionsFlags[defenderSlot].wideOpen) {
         damage = damage * 200 / 100;
     }
 
