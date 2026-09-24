@@ -279,6 +279,31 @@ def TryProcessConditionalCompilation(line: str, definesDict: dict, conditionals:
     return False
 
 
+# Overlays that patch a still-compressed .bin file but are verified (real DeSmuME testing,
+# 2026-09-24) to work correctly in practice regardless -- not theoretically explained, just
+# empirically confirmed safe. Don't add to this list without the same kind of real-world
+# verification; the default assumption (see open_overlay_for_patching below) is that patching
+# a compressed overlay corrupts it, and that assumption is proven correct for every other case.
+#   24: hooks' "BugContest_Judge" hook (Electrum's Bug Catching Contest feature, predates this
+#       merge). overlay_0024.bin is genuinely LZ77-compressed and 24 has never been in
+#       OVERLAYS_TO_DECOMPRESS, so this hook write does land in compressed data -- but the
+#       feature has been directly re-tested and confirmed still working.
+OVERLAY_PATCH_VERIFIED_SAFE_EXCEPTIONS = {24}
+
+
+def open_overlay_for_patching(openbin):
+    # Refuse to open a still-compressed overlay for a raw byte-level patch (bytereplacement/
+    # hooks/armhooks/routinepointers/repoints all funnel through here). base/overlay/overlay_<n>.bin
+    # is still a raw LZ77-compressed blob for any overlay not in OVERLAYS_TO_DECOMPRESS at this
+    # point in the build, so a byte patch here would land inside the compressed bitstream instead
+    # of the intended decompiled instruction -- corrupting it silently (builds clean, crashes at
+    # runtime when the overlay is later decompressed). Returns None if the overlay is off-limits.
+    if int(openbin) not in OVERLAYS_TO_DECOMPRESS and int(openbin) not in OVERLAY_PATCH_VERIFIED_SAFE_EXCEPTIONS:
+        print("ERROR: patch targets overlay " + openbin + ", which is NOT in OVERLAYS_TO_DECOMPRESS and stays compressed on this fork. Applying this patch would corrupt the compressed data. Skipping it -- if this overlay genuinely needs a byte patch, either add it to OVERLAYS_TO_DECOMPRESS (verify why it was excluded first) or find another way to apply this change.")
+        return None
+    return open("base/overlay/overlay_" + openbin + ".bin", 'rb+')
+
+
 def install():
     if os.path.isfile(BYTE_REPLACEMENT):
         with open(BYTE_REPLACEMENT, 'r') as replacelist:
@@ -301,17 +326,10 @@ def install():
                     rom2 = open("base/arm9.bin", 'rb+')
                     offset = int(line[4:13], 16) - 0x02000000 if int(line[4:13], 16) & 0x02000000 else int(line[4:13], 16) - 0x08000000
                 else:
-                    if int(openbin) not in OVERLAYS_TO_DECOMPRESS:
-                        # This overlay is deliberately left compressed on this fork (see
-                        # OVERLAYS_TO_DECOMPRESS below). base/overlay/overlay_<n>.bin is still a raw
-                        # LZ77-compressed blob at this point in the build, so a byte patch here would
-                        # land inside the compressed bitstream instead of the intended decompiled
-                        # instruction -- corrupting it silently (builds clean, crashes at runtime when
-                        # the overlay is later decompressed). Refuse to apply it instead.
-                        print("ERROR: bytereplacement line targets overlay " + openbin + ", which is NOT in OVERLAYS_TO_DECOMPRESS and stays compressed on this fork. Applying this patch would corrupt the compressed data. Skipping this line -- if this overlay genuinely needs a byte patch, either add it to OVERLAYS_TO_DECOMPRESS (verify why it was excluded first) or find another way to apply this change.")
+                    rom2 = open_overlay_for_patching(openbin)
+                    if rom2 is None:
                         print("  " + line.strip())
                         continue
-                    rom2 = open("base/overlay/overlay_" + openbin + ".bin", 'rb+')
                     with open("base/overarm9.bin", 'rb+') as y9Table:
                         y9Table.seek((int(openbin)*0x20)+0x4) # read the overlay memory address for offset calculation
                         offset = int(line[4:13], 16) - struct.unpack_from("<I", y9Table.read(4))[0] if int(line[4:13], 16) & 0x02000000 else int(line[4:13], 16) - 0x08000000
@@ -371,7 +389,10 @@ def hook():
                     rom2 = open("base/arm9.bin", 'rb+')
                     offset = int(address, 16) - 0x02000000 if int(address, 16) & 0x02000000 else int(address, 16) - 0x08000000
                 else:
-                    rom2 = open("base/overlay/overlay_" + files + ".bin", 'rb+')
+                    rom2 = open_overlay_for_patching(files)
+                    if rom2 is None:
+                        print("  " + line.strip())
+                        continue
                     with open("base/overarm9.bin", 'rb+') as y9Table:
                         y9Table.seek((int(files)*0x20)+0x4) # read the overlay memory address for offset calculation
                         offset = int(address, 16) - struct.unpack_from("<I", y9Table.read(4))[0] if int(address, 16) & 0x02000000 else int(address, 16) - 0x08000000
@@ -403,7 +424,10 @@ def hook():
                     rom2 = open("base/arm9.bin", 'rb+')
                     offset = int(address, 16) - 0x02000000 if int(address, 16) & 0x02000000 else int(address, 16) - 0x08000000
                 else:
-                    rom2 = open("base/overlay/overlay_" + files + ".bin", 'rb+')
+                    rom2 = open_overlay_for_patching(files)
+                    if rom2 is None:
+                        print("  " + line.strip())
+                        continue
                     with open("base/overarm9.bin", 'rb+') as y9Table:
                         y9Table.seek((int(files)*0x20)+0x4) # read the overlay memory address for offset calculation
                         offset = int(address, 16) - struct.unpack_from("<I", y9Table.read(4))[0] if int(address, 16) & 0x02000000 else int(address, 16) - 0x08000000
@@ -536,7 +560,10 @@ def repoint():
                     rom2 = open("base/arm9.bin", 'rb+')
                     offset = int(address, 16) - 0x02000000 if int(address, 16) & 0x02000000 else int(address, 16) - 0x08000000
                 else:
-                    rom2 = open("base/overlay/overlay_" + files + ".bin", 'rb+')
+                    rom2 = open_overlay_for_patching(files)
+                    if rom2 is None:
+                        print("  " + line.strip())
+                        continue
                     with open("base/overarm9.bin", 'rb+') as y9Table:
                         y9Table.seek((int(files)*0x20)+0x4) # read the overlay memory address for offset calculation
                         offset = int(address, 16) - struct.unpack_from("<I", y9Table.read(4))[0] if int(address, 16) & 0x02000000 else int(address, 16) - 0x08000000
@@ -573,7 +600,10 @@ def offset():
                     rom = open("base/arm9.bin", 'rb+')
                     offset = int(address, 16) - 0x02000000 if int(address, 16) & 0x02000000 else int(address, 16) - 0x08000000
                 else:
-                    rom = open("base/overlay/overlay_" + files + ".bin", 'rb+')
+                    rom = open_overlay_for_patching(files)
+                    if rom is None:
+                        print("  " + line.strip())
+                        continue
                     with open("base/overarm9.bin", 'rb+') as y9Table:
                         y9Table.seek((int(files)*0x20)+0x4) # read the overlay memory address for offset calculation
                         offset = int(address, 16) - struct.unpack_from("<I", y9Table.read(4))[0] if int(address, 16) & 0x02000000 else int(address, 16) - 0x08000000

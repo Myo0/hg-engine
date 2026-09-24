@@ -5778,7 +5778,7 @@ BOOL btl_scr_cmd_126_TryHealingWish(void *bsys UNUSED, struct BattleStruct *ctx)
     }
 
     u8 count = ctx->healingWishQueue.counter[ctx->attack_client].count;
-    int condition = ctx->healingWishQueue.queue[ctx->reshuffle_client][count];
+    int condition = ctx->healingWishQueue.queue[ctx->attack_client][count];
     if (count == 2
         || (isLunarDance && condition == HEALING_CONDITION_HEALING_LUNAR_DANCE)
         || (!isLunarDance && condition == HEALING_CONDITION_HEALING_WISH)) {

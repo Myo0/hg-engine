@@ -378,7 +378,15 @@ struct OVERWORLD_TAG gOWTagToFileNum[] = // skip down a bit to see the parts tha
         { .tag = 1043, .gfx = MON_OVERWORLD_GFX_START + SPECIES_KYOGRE, .callback_params = OVERWORLD_SIZE_LARGE },
         { .tag = 1044, .gfx = MON_OVERWORLD_GFX_START + SPECIES_GROUDON, .callback_params = OVERWORLD_SIZE_LARGE },
         { .tag = 1045, .gfx = MON_OVERWORLD_GFX_START + SPECIES_RAYQUAZA, .callback_params = OVERWORLD_SIZE_LARGE },
-        { .tag = 1046, .gfx = MON_OVERWORLD_GFX_START + SPECIES_PICHU_SPIKY_EAR, .callback_params = OVERWORLD_SIZE_SMALL },
+        // Electrum: fixed literal gfx slot, not species-derived -- SPECIES_PICHU_SPIKY_EAR now
+        // resolves to gfx 1831, which collides with BERRY_PLANT_ENTRY(34, 1831)'s chople plant
+        // (both otherpoke's legacy-form renumbering and Electrum's berry-plant gfx repurposing
+        // independently claimed the same slot; the follower-party representation of this species
+        // was correctly dropped elsewhere in this file as unobtainable, but this entry is the
+        // separate, still-active HGSS "Following Pichu" Route 34/Ilex Forest event NPC sprite).
+        // 1809 is this event's pre-merge value and sits in the verified-unused 1809-1823 gap
+        // between the berry plants' two ranges (1782-1808, 1824-1857).
+        { .tag = 1046, .gfx = 1809, .callback_params = OVERWORLD_SIZE_SMALL },
         { .tag = 1047, .gfx = MON_OVERWORLD_GFX_START + SPECIES_MEGANIUM, .callback_params = OVERWORLD_SIZE_SMALL },
         { .tag = 1048, .gfx = MON_OVERWORLD_GFX_START + SPECIES_TYPHLOSION, .callback_params = OVERWORLD_SIZE_SMALL },
         { .tag = 1049, .gfx = MON_OVERWORLD_GFX_START + SPECIES_FERALIGATR, .callback_params = OVERWORLD_SIZE_SMALL },
