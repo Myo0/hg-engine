@@ -19532,7 +19532,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Mind Blown",
         },
         .data = {
-            .effect = MOVE_EFFECT_HIT,
+            .effect = MOVE_EFFECT_STEEL_BEAM,
             .split = SPLIT_SPECIAL,
             .power = 150,
             .type = TYPE_FIRE,
@@ -19543,7 +19543,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
         .battle = {
             .target = RANGE_ALL_ADJACENT,
             .priority = 0,
-            .flags = FLAG_MIRROR_MOVE | FLAG_UNUSABLE_IN_GEN_8 | FLAG_UNUSABLE_IN_GEN_9 | FLAG_UNUSABLE_UNIMPLEMENTED | FLAG_PROTECT,
+            .flags = FLAG_MIRROR_MOVE | FLAG_PROTECT,
         },
         .contest = {
             .appeal = 0,
@@ -21584,7 +21584,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .fullName = "Steel Beam",
         },
         .data = {
-            .effect = MOVE_EFFECT_RECOIL_HALF_MAX_HP,
+            .effect = MOVE_EFFECT_STEEL_BEAM,
             .split = SPLIT_SPECIAL,
             .power = 140,
             .type = TYPE_STEEL,
