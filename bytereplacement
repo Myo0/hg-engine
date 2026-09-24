@@ -553,4 +553,14 @@ arm9 020649AC 64 E2 0F 02
 arm9 020649B0 64 E2 0F 02
 arm9 020649B4 64 E2 0F 02
 
+# Electrum: SKIP_TUTORIAL_INFO's byte patch (upstream, otherpoke PR) intentionally dropped --
+# overlay 53 is deliberately left compressed on this fork (see OVERLAYS_TO_DECOMPRESS in
+# scripts/make.py), and this patch writes raw bytes into it assuming it's decompressed, which
+# corrupts the compressed bitstream and crashes on boot when overlay 53 is later decompressed.
+# The flag is disabled by default (include/config.h) and nothing on this fork uses it.
 
+# GetBoxmonSpriteCharAndPlttNarcIds always call GetMonSpriteCharAndPlttNarcIdsEx
+arm9 020701AC 08 E0
+
+# sub_02070854 always call GetMonPicHeightBySpeciesGenderForm
+arm9 020708B0 06 E0

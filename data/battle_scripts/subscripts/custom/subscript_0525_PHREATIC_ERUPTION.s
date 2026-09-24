@@ -14,8 +14,8 @@
 
 _000:
     AbilityPopup BATTLER_CATEGORY_MSG_BATTLER_TEMP
-    // The attack turned to steam\nin an explosion!
-    PrintMessage 1790, TAG_NONE
+    // The attack turned to steam\nin an explosion!  (msg -> 1798, see 197.txt merge resolution)
+    PrintMessage 1798, TAG_NONE
     Wait
     WaitButtonABTime 30
 

@@ -301,6 +301,16 @@ def install():
                     rom2 = open("base/arm9.bin", 'rb+')
                     offset = int(line[4:13], 16) - 0x02000000 if int(line[4:13], 16) & 0x02000000 else int(line[4:13], 16) - 0x08000000
                 else:
+                    if int(openbin) not in OVERLAYS_TO_DECOMPRESS:
+                        # This overlay is deliberately left compressed on this fork (see
+                        # OVERLAYS_TO_DECOMPRESS below). base/overlay/overlay_<n>.bin is still a raw
+                        # LZ77-compressed blob at this point in the build, so a byte patch here would
+                        # land inside the compressed bitstream instead of the intended decompiled
+                        # instruction -- corrupting it silently (builds clean, crashes at runtime when
+                        # the overlay is later decompressed). Refuse to apply it instead.
+                        print("ERROR: bytereplacement line targets overlay " + openbin + ", which is NOT in OVERLAYS_TO_DECOMPRESS and stays compressed on this fork. Applying this patch would corrupt the compressed data. Skipping this line -- if this overlay genuinely needs a byte patch, either add it to OVERLAYS_TO_DECOMPRESS (verify why it was excluded first) or find another way to apply this change.")
+                        print("  " + line.strip())
+                        continue
                     rom2 = open("base/overlay/overlay_" + openbin + ".bin", 'rb+')
                     with open("base/overarm9.bin", 'rb+') as y9Table:
                         y9Table.seek((int(openbin)*0x20)+0x4) # read the overlay memory address for offset calculation

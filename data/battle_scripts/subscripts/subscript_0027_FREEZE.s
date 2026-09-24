@@ -53,8 +53,9 @@ _105:
     Wait
     UpdateMonData OPCODE_FLAG_ON, BATTLER_CATEGORY_SIDE_EFFECT_MON, BMON_DATA_STATUS, STATUS_FREEZE
     UnlockMoveChoice BATTLER_CATEGORY_SIDE_EFFECT_MON
-    // {0} was frostbitten!  (Electrum: msg 1716 -> 1787; upstream appended 7 messages at 1780-1786 first)
-    PrintMessage 1787, TAG_NICKNAME, BATTLER_CATEGORY_SIDE_EFFECT_MON
+    // {0} was frostbitten!  (Electrum: msg -> 1795; milestone-1's 8 Lunar Dance/Healing Wish/Magic
+    // Room messages now occupy 1787-1794, appended first per the 197.txt merge resolution)
+    PrintMessage 1795, TAG_NICKNAME, BATTLER_CATEGORY_SIDE_EFFECT_MON
     Wait
     SetHealthbarStatus BATTLER_CATEGORY_SIDE_EFFECT_MON, BATTLE_ANIMATION_FROZEN
     WaitButtonABTime 30
