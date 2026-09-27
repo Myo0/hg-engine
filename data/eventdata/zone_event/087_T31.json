@@ -1,0 +1,74 @@
+{
+  "header": "data/scr_seq/include/event_T31.inc",
+  "eventId": "087",
+  "bg_events": [
+    {
+      "script": "std_hiddenitem_t31_full_restore",
+      "type": 2,
+      "x": 827,
+      "z": 263,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_T31_002 + 1",
+      "type": 1,
+      "x": 810,
+      "z": 262,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_T31_monstarball",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_T31_REAPER_CLOTH",
+      "script": 7325,
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 808,
+      "z": 277,
+      "y": 0
+    },
+    {
+      "id": "obj_T31_gsmiddleman1",
+      "graphics_id": "SPRITE_GSMIDDLEMAN1",
+      "movement_type": 14,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_CAMERON",
+      "script": "_EV_scr_seq_T31_000 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 820,
+      "z": 271,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 811,
+      "z": 260,
+      "dest_header_id": "MAP_D41R0101",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 820,
+      "z": 265,
+      "dest_header_id": "MAP_T31PC0101",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ]
+}

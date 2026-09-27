@@ -1,0 +1,124 @@
+{
+  "header": "data/scr_seq/include/event_T25R1005.inc",
+  "eventId": "188",
+  "bg_events": [
+    {
+      "script": "_EV_scr_seq_T25R1005_004 + 1",
+      "type": 0,
+      "x": 17,
+      "z": 2,
+      "y": 0,
+      "player_facing_dir": 0
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_T25R1005_shopm1_2",
+      "graphics_id": "SPRITE_SHOPM1_2",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T25R1005_000 + 1",
+      "initial_dir": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 23,
+      "z": 7,
+      "y": 0
+    },
+    {
+      "id": "obj_T25R1005_gsmiddleman1",
+      "graphics_id": "SPRITE_GSMIDDLEMAN1",
+      "movement_type": 3,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T25R1005_001 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 19,
+      "z": 11,
+      "y": 0
+    },
+    {
+      "id": "obj_T25R1005_gsbigman",
+      "graphics_id": "SPRITE_GSBIGMAN",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T25R1005_003 + 1",
+      "initial_dir": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 2,
+      "z": 6,
+      "y": 0
+    },
+    {
+      "id": "obj_T25R1005_gsgirl3",
+      "graphics_id": "SPRITE_GSGIRL3",
+      "movement_type": 3,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T25R1005_002 + 1",
+      "initial_dir": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 2,
+      "movement_range_z": 0,
+      "x": 12,
+      "z": 3,
+      "y": 0
+    },
+    {
+      "id": "obj_T25R1005_gswoman1",
+      "graphics_id": "SPRITE_GSWOMAN1",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_GOLDENROD_DEPT_STORE_5F_RETURN_FRUSTRATION_LADY",
+      "script": "_EV_scr_seq_T25R1005_006 + 1",
+      "initial_dir": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 23,
+      "z": 5,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 18,
+      "z": 7,
+      "dest_header_id": "MAP_T25R1004",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 13,
+      "z": 7,
+      "dest_header_id": "MAP_T25R1006",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 19,
+      "z": 2,
+      "dest_header_id": "MAP_T25R1007",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ]
+}

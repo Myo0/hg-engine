@@ -1,0 +1,189 @@
+{
+  "header": "data/scr_seq/include/event_R26.inc",
+  "eventId": "027",
+  "bg_events": [
+    {
+      "script": "_EV_scr_seq_R26_002 + 1",
+      "type": 1,
+      "x": 911,
+      "z": 298,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "std_hiddenitem_r26_r27_nugget",
+      "type": 2,
+      "x": 890,
+      "z": 408,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "std_hiddenitem_r26_tinymushroom",
+      "type": 2,
+      "x": 923,
+      "z": 316,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_R26_003 + 1",
+      "type": 1,
+      "x": 916,
+      "z": 341,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_R26_fishing_2",
+      "graphics_id": "SPRITE_FISHING_2",
+      "movement_type": 15,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "TRAINER_FISHERMAN_SCOTT - 1 + _std_npc_trainer",
+      "initial_dir": 1,
+      "param0": 2,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 913,
+      "z": 403,
+      "y": 0
+    },
+    {
+      "id": "obj_R26_gsman3",
+      "graphics_id": "SPRITE_GSMAN3",
+      "movement_type": 15,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "TRAINER_ACE_TRAINER_M_JAKE - 1 + _std_npc_trainer",
+      "initial_dir": 1,
+      "param0": 3,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 915,
+      "z": 330,
+      "y": 0
+    },
+    {
+      "id": "obj_R26_gswoman3",
+      "graphics_id": "SPRITE_GSWOMAN3",
+      "movement_type": 15,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "TRAINER_ACE_TRAINER_F_JAMIE - 1 + _std_npc_trainer",
+      "initial_dir": 1,
+      "param0": 3,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 913,
+      "z": 302,
+      "y": 0
+    },
+    {
+      "id": "obj_R26_monstarball",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_R26_MAX_ELIXIR",
+      "script": "std_itemball_w19_tm55",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 910,
+      "z": 314,
+      "y": 0
+    },
+    {
+      "id": "obj_R26_bonguri",
+      "graphics_id": "SPRITE_BONGURI",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "std_apricorn_tree",
+      "initial_dir": 0,
+      "param0": 4,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 920,
+      "z": 342,
+      "y": 0
+    },
+    {
+      "id": "obj_R26_gsmiddleman1",
+      "graphics_id": "SPRITE_GSMIDDLEMAN1",
+      "movement_type": 14,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_CAMERON",
+      "script": "_EV_scr_seq_R26_000 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 914,
+      "z": 390,
+      "y": 196608
+    },
+    {
+      "id": "obj_R26_monstarball_2",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 3,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": 7560,
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 891,
+      "z": 408,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 923,
+      "z": 345,
+      "dest_header_id": "MAP_R26R0101",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 907,
+      "z": 365,
+      "dest_header_id": "MAP_R26R0201",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 909,
+      "z": 296,
+      "dest_header_id": "MAP_R22R0101",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 910,
+      "z": 296,
+      "dest_header_id": "MAP_R22R0101",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ]
+}

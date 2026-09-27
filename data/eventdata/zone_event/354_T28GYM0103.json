@@ -1,0 +1,108 @@
+{
+  "header": "data/scr_seq/include/event_T28GYM0103.inc",
+  "eventId": "354",
+  "bg_events": [
+    {
+      "script": "_EV_scr_seq_T28GYM0103_001 + 1",
+      "type": 0,
+      "x": 2,
+      "z": 18,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_T28GYM0103_001 + 1",
+      "type": 0,
+      "x": 6,
+      "z": 18,
+      "y": 0,
+      "player_facing_dir": 0
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_T28GYM0103_ice",
+      "graphics_id": "SPRITE_ICE",
+      "movement_type": 15,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": 0,
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 4,
+      "z": 12,
+      "y": 0
+    },
+    {
+      "id": "obj_T28GYM0103_ice_2",
+      "graphics_id": "SPRITE_ICE",
+      "movement_type": 15,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": 0,
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 4,
+      "z": 8,
+      "y": 0
+    },
+    {
+      "id": "obj_T28GYM0103_sunglasses",
+      "graphics_id": "SPRITE_SUNGLASSES",
+      "movement_type": 15,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T28GYM0103_000 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 5,
+      "z": 17,
+      "y": 0
+    },
+    {
+      "id": "obj_T28GYM0103_skierw",
+      "graphics_id": "SPRITE_SKIERW",
+      "movement_type": 0,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "TRAINER_TEAM_ROCKET_MICKEY_7 - 1 + _std_npc_trainer",
+      "initial_dir": 2,
+      "param0": 4,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 6,
+      "z": 4,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 4,
+      "z": 19,
+      "dest_header_id": "MAP_T28",
+      "dest_warp_id": 2,
+      "y": 0
+    },
+    {
+      "x": 3,
+      "z": 2,
+      "dest_header_id": "MAP_T28GYM0102",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ]
+}

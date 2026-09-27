@@ -1,0 +1,85 @@
+{
+  "header": "data/scr_seq/include/event_P01R0303.inc",
+  "eventId": "280",
+  "object_events": [
+    {
+      "id": "obj_P01R0303_seaman_2",
+      "graphics_id": "SPRITE_SEAMAN_2",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_UNK_21A",
+      "script": "_EV_scr_seq_P01R0303_000 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 7,
+      "z": 10,
+      "y": 0
+    },
+    {
+      "id": "obj_P01R0303_gsgentleman",
+      "graphics_id": "SPRITE_GSGENTLEMAN",
+      "movement_type": 0,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_UNK_22B",
+      "script": "TRAINER_GENTLEMAN_EDWARD - 1 + _std_npc_trainer",
+      "initial_dir": 3,
+      "param0": 4,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 1,
+      "z": 9,
+      "y": 0
+    },
+    {
+      "id": "obj_P01R0303_thief",
+      "graphics_id": "SPRITE_THIEF",
+      "movement_type": 0,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_UNK_22C",
+      "script": "TRAINER_BURGLAR_COREY - 1 + _std_npc_trainer",
+      "initial_dir": 0,
+      "param0": 3,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 9,
+      "z": 7,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 9,
+      "z": 2,
+      "dest_header_id": "MAP_P01R0301",
+      "dest_warp_id": 3,
+      "y": 0
+    },
+    {
+      "x": 23,
+      "z": 2,
+      "dest_header_id": "MAP_P01R0301",
+      "dest_warp_id": 4,
+      "y": 0
+    }
+  ],
+  "coord_events": [
+    {
+      "script": "_EV_scr_seq_P01R0303_001 + 1",
+      "x": 16,
+      "z": 4,
+      "width": 1,
+      "length": 1,
+      "y": 0,
+      "value": 0,
+      "var": "VAR_UNK_4112"
+    }
+  ]
+}

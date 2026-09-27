@@ -1,0 +1,111 @@
+{
+  "header": "data/scr_seq/include/event_D17R0108.inc",
+  "eventId": "309",
+  "bg_events": [
+    {
+      "script": "std_hiddenitem_d17r0108_carbos",
+      "type": 2,
+      "x": 21,
+      "z": 6,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_EVERYWHERE_monstarball",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D17R0108_FULL_RESTORE",
+      "script": 7295,
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 6,
+      "z": 6,
+      "y": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_monstarball_2",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 3,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D17R0108_MAX_ELIXIR",
+      "script": 8884,
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 17,
+      "z": 14,
+      "y": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_monstarball_3",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D17R0108_NUGGET",
+      "script": "std_itemball_d40r0101_ultra_ball",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 19,
+      "z": 24,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 7,
+      "z": 12,
+      "dest_header_id": "MAP_D17R0107",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 7,
+      "z": 20,
+      "dest_header_id": "MAP_D17R0109",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 16,
+      "z": 9,
+      "dest_header_id": "MAP_D17R0109",
+      "dest_warp_id": 2,
+      "y": 0
+    },
+    {
+      "x": 11,
+      "z": 18,
+      "dest_header_id": "MAP_D17R0109",
+      "dest_warp_id": 5,
+      "y": 0
+    },
+    {
+      "x": 23,
+      "z": 17,
+      "dest_header_id": "MAP_D17R0109",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 24,
+      "z": 24,
+      "dest_header_id": "MAP_D17R0109",
+      "dest_warp_id": 4,
+      "y": 0
+    }
+  ]
+}

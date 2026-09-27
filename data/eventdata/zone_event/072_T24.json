@@ -1,0 +1,363 @@
+{
+  "header": "data/scr_seq/include/event_T24.inc",
+  "eventId": "072",
+  "bg_events": [
+    {
+      "script": "_EV_scr_seq_T24_008 + 1",
+      "type": 1,
+      "x": 176,
+      "z": 362,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_T24_009 + 1",
+      "type": 1,
+      "x": 175,
+      "z": 358,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_T24_010 + 1",
+      "type": 1,
+      "x": 182,
+      "z": 370,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_T24_011 + 1",
+      "type": 1,
+      "x": 179,
+      "z": 354,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_T24_004 + 1",
+      "type": 1,
+      "x": 172,
+      "z": 344,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "std_hiddenitem_t24_revive",
+      "type": 2,
+      "x": 170,
+      "z": 332,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "std_hiddenitem_t24_stardust",
+      "type": 2,
+      "x": 189,
+      "z": 357,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_T24_007 + 1",
+      "type": 0,
+      "x": 185,
+      "z": 354,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_T24_middlewoman1_2",
+      "graphics_id": "SPRITE_MIDDLEWOMAN1_2",
+      "movement_type": 2,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T24_000 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 1,
+      "x": 173,
+      "z": 360,
+      "y": 0
+    },
+    {
+      "id": "obj_T24_gsboy1",
+      "graphics_id": "SPRITE_GSBOY1",
+      "movement_type": 4,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T24_012 + 1",
+      "initial_dir": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 1,
+      "x": 178,
+      "z": 352,
+      "y": 0
+    },
+    {
+      "id": "obj_T24_gsmiddleman1",
+      "graphics_id": "SPRITE_GSMIDDLEMAN1",
+      "movement_type": 3,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T24_013 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 1,
+      "movement_range_z": 1,
+      "x": 177,
+      "z": 346,
+      "y": 0
+    },
+    {
+      "id": "obj_T24_gsgirl1",
+      "graphics_id": "SPRITE_GSGIRL1",
+      "movement_type": 5,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T24_014 + 1",
+      "initial_dir": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 1,
+      "movement_range_z": 0,
+      "x": 173,
+      "z": 371,
+      "y": 0
+    },
+    {
+      "id": "obj_T24_middlewoman1_2_2",
+      "graphics_id": "SPRITE_MIDDLEWOMAN1_2",
+      "movement_type": 3,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T24_015 + 1",
+      "initial_dir": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 1,
+      "movement_range_z": 1,
+      "x": 181,
+      "z": 373,
+      "y": 0
+    },
+    {
+      "id": "obj_T24_follower_mon_static_suicune",
+      "graphics_id": "SPRITE_FOLLOWER_MON_STATIC_SUICUNE",
+      "movement_type": 15,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_CIANWOOD_SUICUNE",
+      "script": "_EV_scr_seq_T24_001 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 174,
+      "z": 330,
+      "y": 0
+    },
+    {
+      "id": "obj_T24_minaki",
+      "graphics_id": "SPRITE_MINAKI",
+      "movement_type": 14,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_CIANWOOD_EUSINE",
+      "script": "_EV_scr_seq_T24_003 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 176,
+      "z": 343,
+      "y": 0
+    },
+    {
+      "id": "obj_T24_breakrock",
+      "graphics_id": "SPRITE_BREAKROCK",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_MAPTEMP_010",
+      "script": "std_field_rock_smash",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 170,
+      "z": 333,
+      "y": 0
+    },
+    {
+      "id": "obj_T24_breakrock_2",
+      "graphics_id": "SPRITE_BREAKROCK",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_MAPTEMP_011",
+      "script": "std_field_rock_smash",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 169,
+      "z": 341,
+      "y": 0
+    },
+    {
+      "id": "obj_T24_breakrock_3",
+      "graphics_id": "SPRITE_BREAKROCK",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_MAPTEMP_013",
+      "script": "std_field_rock_smash",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 171,
+      "z": 335,
+      "y": 0
+    },
+    {
+      "id": "obj_T24_breakrock_4",
+      "graphics_id": "SPRITE_BREAKROCK",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_MAPTEMP_014",
+      "script": "std_field_rock_smash",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 166,
+      "z": 338,
+      "y": 0
+    },
+    {
+      "id": "obj_T24_breakrock_5",
+      "graphics_id": "SPRITE_BREAKROCK",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_MAPTEMP_015",
+      "script": "std_field_rock_smash",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 170,
+      "z": 342,
+      "y": 0
+    },
+    {
+      "id": "obj_T24_gsbabyboy1",
+      "graphics_id": "SPRITE_GSBABYBOY1",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_UNK_A01",
+      "script": "_EV_scr_seq_T24_016 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 172,
+      "z": 358,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 172,
+      "z": 357,
+      "dest_header_id": "MAP_T24GYM0101",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 187,
+      "z": 369,
+      "dest_header_id": "MAP_T24PC0101",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 179,
+      "z": 370,
+      "dest_header_id": "MAP_T24R0501",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 170,
+      "z": 367,
+      "dest_header_id": "MAP_T24R0201",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 181,
+      "z": 362,
+      "dest_header_id": "MAP_T24R0701",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 181,
+      "z": 354,
+      "dest_header_id": "MAP_T24R0601",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 171,
+      "z": 347,
+      "dest_header_id": "MAP_D48R0101",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 167,
+      "z": 335,
+      "dest_header_id": "MAP_T24R0801",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ],
+  "coord_events": [
+    {
+      "script": "_EV_scr_seq_T24_002 + 1",
+      "x": 176,
+      "z": 334,
+      "width": 1,
+      "length": 1,
+      "y": 0,
+      "value": 1,
+      "var": "VAR_UNK_4076"
+    }
+  ]
+}

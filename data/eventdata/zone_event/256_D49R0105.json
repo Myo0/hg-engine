@@ -1,0 +1,298 @@
+{
+  "header": "data/scr_seq/include/event_D49R0105.inc",
+  "eventId": "256",
+  "bg_events": [
+    {
+      "script": "_EV_scr_seq_D49R0105_008 + 1",
+      "type": 0,
+      "x": 10,
+      "z": 3,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_D49R0105_008 + 1",
+      "type": 0,
+      "x": 9,
+      "z": 3,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_D49R0105_009 + 1",
+      "type": 0,
+      "x": 13,
+      "z": 3,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_D49R0105_009 + 1",
+      "type": 0,
+      "x": 12,
+      "z": 3,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_D49R0105_010 + 1",
+      "type": 0,
+      "x": 6,
+      "z": 3,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_D49R0105_010 + 1",
+      "type": 0,
+      "x": 7,
+      "z": 3,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_D49R0105_009 + 1",
+      "type": 0,
+      "x": 14,
+      "z": 3,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_D49R0105_007 + 1",
+      "type": 0,
+      "x": 5,
+      "z": 9,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_D49R0105_007 + 1",
+      "type": 0,
+      "x": 6,
+      "z": 9,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_D49R0105_007 + 1",
+      "type": 0,
+      "x": 7,
+      "z": 9,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_D49R0105_007 + 1",
+      "type": 0,
+      "x": 8,
+      "z": 9,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_D49R0105_007 + 1",
+      "type": 0,
+      "x": 9,
+      "z": 9,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_D49R0105_013 + 1",
+      "type": 0,
+      "x": 11,
+      "z": 9,
+      "y": 0,
+      "player_facing_dir": 0
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_D49R0105_pcwoman2",
+      "graphics_id": "SPRITE_PCWOMAN2",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_D49R0105_000 + 1",
+      "initial_dir": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 1,
+      "z": 12,
+      "y": 0
+    },
+    {
+      "id": "obj_D49R0105_pcwoman2_2",
+      "graphics_id": "SPRITE_PCWOMAN2",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_D49R0105_001 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 3,
+      "z": 3,
+      "y": 0
+    },
+    {
+      "id": "obj_D49R0105_gsfighter",
+      "graphics_id": "SPRITE_GSFIGHTER",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_D49R0105_004 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 14,
+      "z": 9,
+      "y": 0
+    },
+    {
+      "id": "obj_D49R0105_gsman3",
+      "graphics_id": "SPRITE_GSMAN3",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_D49R0105_003 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 14,
+      "z": 4,
+      "y": 0
+    },
+    {
+      "id": "obj_D49R0105_gswoman3",
+      "graphics_id": "SPRITE_GSWOMAN3",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_D49R0105_002 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 11,
+      "z": 12,
+      "y": 0
+    },
+    {
+      "id": "obj_D49R0105_follower_mon_static_abra",
+      "graphics_id": "SPRITE_FOLLOWER_MON_STATIC_ABRA",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_D49R0105_005 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 10,
+      "z": 12,
+      "y": 0
+    },
+    {
+      "id": "obj_D49R0105_follower_mon_static_dratini",
+      "graphics_id": "SPRITE_FOLLOWER_MON_STATIC_DRATINI",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_D49R0105_006 + 1",
+      "initial_dir": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 15,
+      "z": 4,
+      "y": 0
+    },
+    {
+      "id": "obj_D49R0105_signshoes",
+      "graphics_id": "SPRITE_SIGNSHOES",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_POKEATHLON_SHOES_SIGN",
+      "script": 0,
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 13,
+      "z": 3,
+      "y": 0
+    },
+    {
+      "id": "obj_D49R0105_signclothes",
+      "graphics_id": "SPRITE_SIGNCLOTHES",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_POKEATHLON_CLOTHES_SIGN",
+      "script": 0,
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 9,
+      "z": 3,
+      "y": 0
+    },
+    {
+      "id": "obj_D49R0105_signflag",
+      "graphics_id": "SPRITE_SIGNFLAG",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_POKEATHLON_FLAG_SIGN",
+      "script": 0,
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 6,
+      "z": 3,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 3,
+      "z": 2,
+      "dest_header_id": "MAP_D49R0106",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 3,
+      "z": 12,
+      "dest_header_id": "MAP_D49R0104",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ]
+}

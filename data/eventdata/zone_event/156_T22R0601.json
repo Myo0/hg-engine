@@ -1,0 +1,49 @@
+{
+  "header": "data/scr_seq/include/event_T22R0601.inc",
+  "eventId": "156",
+  "object_events": [
+    {
+      "id": "obj_T22R0601_gsmiddleman1",
+      "graphics_id": "SPRITE_GSMIDDLEMAN1",
+      "movement_type": 15,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T22R0601_002 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 8,
+      "z": 6,
+      "y": 0
+    },
+    {
+      "id": "obj_T22R0601_gsboy1",
+      "graphics_id": "SPRITE_GSBOY1",
+      "movement_type": 3,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T22R0601_001 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 1,
+      "movement_range_z": 1,
+      "x": 2,
+      "z": 5,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 4,
+      "z": 8,
+      "dest_header_id": "MAP_T22",
+      "dest_warp_id": 9,
+      "y": 0
+    }
+  ]
+}

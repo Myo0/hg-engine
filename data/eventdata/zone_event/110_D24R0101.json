@@ -1,0 +1,383 @@
+{
+  "header": "data/scr_seq/include/event_D24R0101.inc",
+  "eventId": "110",
+  "bg_events": [
+    {
+      "script": "_EV_scr_seq_D24R0101_002 + 1",
+      "type": 1,
+      "x": 429,
+      "z": 266,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_D24R0101_000 + 1",
+      "type": 1,
+      "x": 429,
+      "z": 286,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_D24R0101_001 + 1",
+      "type": 1,
+      "x": 440,
+      "z": 287,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_D24R0101_003 + 1",
+      "type": 1,
+      "x": 443,
+      "z": 292,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "std_hiddenitem_d24r0101_great_ball",
+      "type": 2,
+      "x": 442,
+      "z": 296,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "std_hiddenitem_d24r0101_rare_candy",
+      "type": 2,
+      "x": 422,
+      "z": 263,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "std_hiddenitem_d24r0101_tinymushroom",
+      "type": 2,
+      "x": 424,
+      "z": 278,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "std_hiddenitem_d24r0101_big_mushroom",
+      "type": 2,
+      "x": 418,
+      "z": 314,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "std_hiddenitem_d24r0101_nugget",
+      "type": 2,
+      "x": 423,
+      "z": 311,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_D24R0101_mystery_2",
+      "graphics_id": "SPRITE_MYSTERY_2",
+      "movement_type": 17,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": 0,
+      "initial_dir": 1,
+      "param0": 3,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 425,
+      "z": 290,
+      "y": 0
+    },
+    {
+      "id": "obj_D24R0101_monstarball",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D24R0101_POTION",
+      "script": "std_itemball_d24r0213_heal_powder",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 435,
+      "z": 274,
+      "y": 0
+    },
+    {
+      "id": "obj_D24R0101_breakrock",
+      "graphics_id": "SPRITE_BREAKROCK",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_MAPTEMP_010",
+      "script": "std_field_rock_smash",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 424,
+      "z": 262,
+      "y": 0
+    },
+    {
+      "id": "obj_D24R0101_breakrock_2",
+      "graphics_id": "SPRITE_BREAKROCK",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_MAPTEMP_011",
+      "script": "std_field_rock_smash",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 423,
+      "z": 263,
+      "y": 0
+    },
+    {
+      "id": "obj_D24R0101_breakrock_3",
+      "graphics_id": "SPRITE_BREAKROCK",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_MAPTEMP_013",
+      "script": "std_field_rock_smash",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 426,
+      "z": 264,
+      "y": 0
+    },
+    {
+      "id": "obj_D24R0101_breakrock_4",
+      "graphics_id": "SPRITE_BREAKROCK",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_MAPTEMP_015",
+      "script": "std_field_rock_smash",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 417,
+      "z": 272,
+      "y": 0
+    },
+    {
+      "id": "obj_D24R0101_breakrock_5",
+      "graphics_id": "SPRITE_BREAKROCK",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_MAPTEMP_016",
+      "script": "std_field_rock_smash",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 416,
+      "z": 273,
+      "y": 0
+    },
+    {
+      "id": "obj_D24R0101_3581",
+      "graphics_id": 3581,
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D24R0101_HYPER_POTION",
+      "script": 7762,
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 418,
+      "z": 273,
+      "y": 0
+    },
+    {
+      "id": "obj_D24R0101_gsmiddleman1",
+      "graphics_id": "SPRITE_GSMIDDLEMAN1",
+      "movement_type": 14,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_CAMERON",
+      "script": "_EV_scr_seq_D24R0101_004 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 435,
+      "z": 284,
+      "y": 0
+    },
+    {
+      "id": "obj_D24R0101_suit",
+      "graphics_id": "SPRITE_SUIT",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ALPH_OUTSIDE_ARCEUS_EVENT_SUIT",
+      "script": 0,
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 441,
+      "z": 285,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 430,
+      "z": 261,
+      "dest_header_id": "MAP_R36R0101",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 431,
+      "z": 261,
+      "dest_header_id": "MAP_R36R0101",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 447,
+      "z": 293,
+      "dest_header_id": "MAP_R32R0101",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 447,
+      "z": 294,
+      "dest_header_id": "MAP_R32R0101",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 436,
+      "z": 266,
+      "dest_header_id": "MAP_D24R0202",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 436,
+      "z": 309,
+      "dest_header_id": "MAP_D24R0204",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 425,
+      "z": 309,
+      "dest_header_id": "MAP_D24R0206",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 425,
+      "z": 289,
+      "dest_header_id": "MAP_D24R0208",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 430,
+      "z": 284,
+      "dest_header_id": "MAP_D24R0211",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 431,
+      "z": 284,
+      "dest_header_id": "MAP_D24R0211",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 441,
+      "z": 285,
+      "dest_header_id": "MAP_D24R0102",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 430,
+      "z": 284,
+      "dest_header_id": "MAP_D24R0211",
+      "dest_warp_id": 2,
+      "y": 0
+    },
+    {
+      "x": 431,
+      "z": 284,
+      "dest_header_id": "MAP_D24R0211",
+      "dest_warp_id": 2,
+      "y": 0
+    },
+    {
+      "x": 430,
+      "z": 284,
+      "dest_header_id": "MAP_D24R0217",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 431,
+      "z": 284,
+      "dest_header_id": "MAP_D24R0217",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 419,
+      "z": 308,
+      "dest_header_id": "MAP_D25R0101",
+      "dest_warp_id": 6,
+      "y": 0
+    },
+    {
+      "x": 419,
+      "z": 289,
+      "dest_header_id": "MAP_D25R0101",
+      "dest_warp_id": 7,
+      "y": 0
+    }
+  ],
+  "coord_events": [
+    {
+      "script": "_EV_scr_seq_D24R0101_007 + 1",
+      "x": 441,
+      "z": 286,
+      "width": 1,
+      "length": 1,
+      "y": 0,
+      "value": 1,
+      "var": "VAR_SCENE_SINJOH_MYSTRI_ROOM"
+    }
+  ]
+}

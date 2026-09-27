@@ -1,0 +1,122 @@
+{
+  "header": "data/scr_seq/include/event_D40R0101.inc",
+  "eventId": "118",
+  "bg_events": [
+    {
+      "script": "std_hiddenitem_d40r0101_rare_candy",
+      "type": 2,
+      "x": 47,
+      "z": 44,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_EVERYWHERE_monstarball",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D40R0101_ULTRA_BALL_2",
+      "script": "std_itemball_r30_potion",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 22,
+      "z": 47,
+      "y": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_monstarball_2",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D40R0101_ULTRA_BALL",
+      "script": "std_itemball_r30_potion",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 48,
+      "z": 21,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 37,
+      "z": 25,
+      "dest_header_id": "MAP_W41",
+      "dest_warp_id": 2,
+      "y": 0
+    },
+    {
+      "x": 51,
+      "z": 22,
+      "dest_header_id": "MAP_D40R0102",
+      "dest_warp_id": 5,
+      "y": 0
+    },
+    {
+      "x": 56,
+      "z": 9,
+      "dest_header_id": "MAP_D40R0102",
+      "dest_warp_id": 7,
+      "y": 0
+    },
+    {
+      "x": 11,
+      "z": 20,
+      "dest_header_id": "MAP_W41",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 8,
+      "z": 16,
+      "dest_header_id": "MAP_D40R0102",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 8,
+      "z": 54,
+      "dest_header_id": "MAP_W41",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 6,
+      "z": 49,
+      "dest_header_id": "MAP_D40R0102",
+      "dest_warp_id": 2,
+      "y": 0
+    },
+    {
+      "x": 27,
+      "z": 49,
+      "dest_header_id": "MAP_D40R0102",
+      "dest_warp_id": 9,
+      "y": 0
+    },
+    {
+      "x": 52,
+      "z": 49,
+      "dest_header_id": "MAP_D40R0102",
+      "dest_warp_id": 12,
+      "y": 0
+    },
+    {
+      "x": 52,
+      "z": 59,
+      "dest_header_id": "MAP_W41",
+      "dest_warp_id": 3,
+      "y": 0
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+Have you met the maniac in this city?\rHe’s always bragging about his\nrare Pokémon.
+You can’t help showing off the Pokémon\nyou have, don’t you agree?\rI’d love to show mine to a friend of mine\nwho lives in Violet...
+The Pokémon at this Gym are all rough\nand tough.\rThey could blow me away in a second.\fLet me give you a piece of advice.\rThe Gym Leader uses Fighting-type\nPokémon.\rYou can try to fool them with\nPsychic-type Pokémon.\rOr simply defeat them before they\ncan demonstrate their power.\rBy the way, Chuck, the Gym Leader,\nis into his waterfall training.\rHe won’t be able to hear you unless\nyou somehow stop the pounding water.
+{STRVAR_1 3, 0, 0}! You won, didn’t you?\nYour face tells me you did.
+Huh? Do you happen to...\nhave only one Pokémon?\rThat must be hard on you.\n...\rThat’s right!\nI’ll give you a TENTACOOL!\rI just caught a little too many.\nI was going to release it,\fso take it. Go ahead!\r
+{STRVAR_1 3, 0, 0} received\nthe TENTACOOL!
+Want to give a nickname to\nthe TENTACOOL? {YESNO 0}
+How may I help you today?\r
+I see, see you next time, then.\nLet me know if you need anything.\r
+HP
+Attack
+Defense
+Sp.Atk
+Sp.Def
+Speed
+Exit
+Your Pokémon’s IV has been set to max.\r
+I cannot change anything about\na Pokémon inside an egg.\r
+Change Nature
+Your Pokémon’s Nature has been changed.\r
+
+
+Delete Move
+What Pokémon needs a move deleted?
+Relearn a Move
+
+
+Hardy (Neutral)
+Lonely (+Atk, -Def)
+Brave (+Atk, -Spe)
+Adamant (+Atk, -SpAtk)
+Naughty (+Atk, -SpDef)
+Bold (+Def, -Atk)
+Docile (Neutral)
+Relaxed (+Def, -Spe)
+Impish (+Def, -SpAtk)
+Lax (+Def, -SpDef)
+Timid (+Spe, -Atk)
+Hasty (+Spe, -Def)
+Serious (Neutral)
+Jolly (+Spe, -SpAtk)
+Naive (+Spe, -SpDef)
+Modest (+SpAtk, -Atk)
+Mild (+SpAtk, -Def)
+Quiet (+SpAtk, -Spe)
+Bashful (Neutral)
+Rash (+SpAtk, -SpDef)
+Calm (+SpDef, -Atk)
+Gentle (+SpDef, -Def)
+Sassy (+SpDef, -Spe)
+Careful (+SpDef, -SpAtk)
+Quirky (Neutral)
+That Pokémon knows only one move,\nso it can’t be forgotten...\r
+Which move should be forgotten?\r
+So, you want {STRVAR_1 6, 0, 0}\nto be forgotten?\r
+That move has been deleted.\r
+It costs 1 Heart Scale for\nme to max a Pokémon’s IV.\r 
+Sorry, request that again when\nyou have more Heart Scales.\r
+It costs 3 Heart Scales for\nme to change a Pokémon’s Nature.\r
+It costs 1 Heart Scale for\nme to reteach a move.\r
+Which Pokémon needs a move retaught?\r
+Sorry! That Pokémon has no moves\nthat I can reteach it.\r
+Which move should I make it remember?\r
+{STRVAR_1 3, 3, 0} handed over one\nHeart Scale in exchange.\r
+{STRVAR_1 3, 3, 0} handed over three\nHeart Scales in exchange.\r
+Maximize an IV

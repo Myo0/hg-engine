@@ -1,0 +1,16252 @@
+.include "asm/include/interop_macros.inc"
+
+.include "asm/include/scriptmacros.inc"
+.include "asm/include/flags.inc"
+.include "asm/include/soundeffects.inc"
+.include "asm/include/vars.inc"
+
+.include "asm/include/events.inc"
+.include "asm/include/game_stats.inc"
+.include "asm/include/maps.inc"
+.include "asm/include/map_sections.inc"
+.include "asm/include/movements.inc"
+.include "asm/include/rankings.inc"
+.include "asm/include/spawns.inc"
+.include "asm/include/std_scripts.inc"
+.include "asm/include/trainers.inc"
+
+#include "constants/item.h"
+#include "constants/moves.h"
+#include "constants/species.h"
+
+
+// text archive to grab from: 199.txt
+
+.data
+
+
+scrdef scr_seq_0141_000
+scrdef scr_seq_0141_001
+scrdef scr_seq_0141_002
+scrdef scr_seq_0141_003
+scrdef scr_seq_0141_004
+scrdef scr_seq_0141_005
+scrdef scr_seq_0141_006
+scrdef scr_seq_0141_007
+scrdef scr_seq_0141_008
+scrdef scr_seq_0141_009
+scrdef scr_seq_0141_010
+scrdef scr_seq_0141_011
+scrdef scr_seq_0141_012
+scrdef scr_seq_0141_013
+scrdef scr_seq_0141_014
+scrdef scr_seq_0141_015
+scrdef scr_seq_0141_016
+scrdef scr_seq_0141_017
+scrdef scr_seq_0141_018
+scrdef scr_seq_0141_019
+scrdef scr_seq_0141_020
+scrdef scr_seq_0141_021
+scrdef scr_seq_0141_022
+scrdef scr_seq_0141_023
+scrdef scr_seq_0141_024
+scrdef scr_seq_0141_025
+scrdef scr_seq_0141_026
+scrdef scr_seq_0141_027
+scrdef scr_seq_0141_028
+scrdef scr_seq_0141_029
+scrdef scr_seq_0141_030
+scrdef scr_seq_0141_031
+scrdef scr_seq_0141_032
+scrdef scr_seq_0141_033
+scrdef scr_seq_0141_034
+scrdef scr_seq_0141_035
+scrdef scr_seq_0141_036
+scrdef scr_seq_0141_037
+scrdef scr_seq_0141_038
+scrdef scr_seq_0141_039
+scrdef scr_seq_0141_040
+scrdef scr_seq_0141_041
+scrdef scr_seq_0141_042
+scrdef scr_seq_0141_043
+scrdef scr_seq_0141_044
+scrdef scr_seq_0141_045
+scrdef scr_seq_0141_046
+scrdef scr_seq_0141_047
+scrdef scr_seq_0141_048
+scrdef scr_seq_0141_049
+scrdef scr_seq_0141_050
+scrdef scr_seq_0141_051
+scrdef scr_seq_0141_052
+scrdef scr_seq_0141_053
+scrdef scr_seq_0141_054
+scrdef scr_seq_0141_055
+scrdef scr_seq_0141_056
+scrdef scr_seq_0141_057
+scrdef scr_seq_0141_058
+scrdef scr_seq_0141_059
+scrdef scr_seq_0141_060
+scrdef scr_seq_0141_061
+scrdef scr_seq_0141_062
+scrdef scr_seq_0141_063
+scrdef scr_seq_0141_064
+scrdef scr_seq_0141_065
+scrdef scr_seq_0141_066
+scrdef scr_seq_0141_067
+scrdef scr_seq_0141_068
+scrdef scr_seq_0141_069
+scrdef scr_seq_0141_070
+scrdef scr_seq_0141_071
+scrdef scr_seq_0141_072
+scrdef scr_seq_0141_073
+scrdef scr_seq_0141_074
+scrdef scr_seq_0141_075
+scrdef scr_seq_0141_076
+scrdef scr_seq_0141_077
+scrdef scr_seq_0141_078
+scrdef scr_seq_0141_079
+scrdef scr_seq_0141_080
+scrdef scr_seq_0141_081
+scrdef scr_seq_0141_082
+scrdef scr_seq_0141_083
+scrdef scr_seq_0141_084
+scrdef scr_seq_0141_085
+scrdef scr_seq_0141_086
+scrdef scr_seq_0141_087
+scrdef scr_seq_0141_088
+scrdef scr_seq_0141_089
+scrdef scr_seq_0141_090
+scrdef scr_seq_0141_091
+scrdef scr_seq_0141_092
+scrdef scr_seq_0141_093
+scrdef scr_seq_0141_094
+scrdef scr_seq_0141_095
+scrdef scr_seq_0141_096
+scrdef scr_seq_0141_097
+scrdef scr_seq_0141_098
+scrdef scr_seq_0141_099
+scrdef scr_seq_0141_100
+scrdef scr_seq_0141_101
+scrdef scr_seq_0141_102
+scrdef scr_seq_0141_103
+scrdef scr_seq_0141_104
+scrdef scr_seq_0141_105
+scrdef scr_seq_0141_106
+scrdef scr_seq_0141_107
+scrdef scr_seq_0141_108
+scrdef scr_seq_0141_109
+scrdef scr_seq_0141_110
+scrdef scr_seq_0141_111
+scrdef scr_seq_0141_112
+scrdef scr_seq_0141_113
+scrdef scr_seq_0141_114
+scrdef scr_seq_0141_115
+scrdef scr_seq_0141_116
+scrdef scr_seq_0141_117
+scrdef scr_seq_0141_118
+scrdef scr_seq_0141_119
+scrdef scr_seq_0141_120
+scrdef scr_seq_0141_121
+scrdef scr_seq_0141_122
+scrdef scr_seq_0141_123
+scrdef scr_seq_0141_124
+scrdef scr_seq_0141_125
+scrdef scr_seq_0141_126
+scrdef scr_seq_0141_127
+scrdef scr_seq_0141_128
+scrdef scr_seq_0141_129
+scrdef scr_seq_0141_130
+scrdef scr_seq_0141_131
+scrdef scr_seq_0141_132
+scrdef scr_seq_0141_133
+scrdef scr_seq_0141_134
+scrdef scr_seq_0141_135
+scrdef scr_seq_0141_136
+scrdef scr_seq_0141_137
+scrdef scr_seq_0141_138
+scrdef scr_seq_0141_139
+scrdef scr_seq_0141_140
+scrdef scr_seq_0141_141
+scrdef scr_seq_0141_142
+scrdef scr_seq_0141_143
+scrdef scr_seq_0141_144
+scrdef scr_seq_0141_145
+scrdef scr_seq_0141_146
+scrdef scr_seq_0141_147
+scrdef scr_seq_0141_148
+scrdef scr_seq_0141_149
+scrdef scr_seq_0141_150
+scrdef scr_seq_0141_151
+scrdef scr_seq_0141_152
+scrdef scr_seq_0141_153
+scrdef scr_seq_0141_154
+scrdef scr_seq_0141_155
+scrdef scr_seq_0141_156
+scrdef scr_seq_0141_157
+scrdef scr_seq_0141_158
+scrdef scr_seq_0141_159
+scrdef scr_seq_0141_160
+scrdef scr_seq_0141_161
+scrdef scr_seq_0141_162
+scrdef scr_seq_0141_163
+scrdef scr_seq_0141_164
+scrdef scr_seq_0141_165
+scrdef scr_seq_0141_166
+scrdef scr_seq_0141_167
+scrdef scr_seq_0141_168
+scrdef scr_seq_0141_169
+scrdef scr_seq_0141_170
+scrdef scr_seq_0141_171
+scrdef scr_seq_0141_172
+scrdef scr_seq_0141_173
+scrdef scr_seq_0141_174
+scrdef scr_seq_0141_175
+scrdef scr_seq_0141_176
+scrdef scr_seq_0141_177
+scrdef scr_seq_0141_178
+scrdef scr_seq_0141_179
+scrdef scr_seq_0141_180
+scrdef scr_seq_0141_181
+scrdef scr_seq_0141_182
+scrdef scr_seq_0141_183
+scrdef scr_seq_0141_184
+scrdef scr_seq_0141_185
+scrdef scr_seq_0141_186
+scrdef scr_seq_0141_187
+scrdef scr_seq_0141_188
+scrdef scr_seq_0141_189
+scrdef scr_seq_0141_190
+scrdef scr_seq_0141_191
+scrdef scr_seq_0141_192
+scrdef scr_seq_0141_193
+scrdef scr_seq_0141_194
+scrdef scr_seq_0141_195
+scrdef scr_seq_0141_196
+scrdef scr_seq_0141_197
+scrdef scr_seq_0141_198
+scrdef scr_seq_0141_199
+scrdef scr_seq_0141_200
+scrdef scr_seq_0141_201
+scrdef scr_seq_0141_202
+scrdef scr_seq_0141_203
+scrdef scr_seq_0141_204
+scrdef scr_seq_0141_205
+scrdef scr_seq_0141_206
+scrdef scr_seq_0141_207
+scrdef scr_seq_0141_208
+scrdef scr_seq_0141_209
+scrdef scr_seq_0141_210
+scrdef scr_seq_0141_211
+scrdef scr_seq_0141_212
+scrdef scr_seq_0141_213
+scrdef scr_seq_0141_214
+scrdef scr_seq_0141_215
+scrdef scr_seq_0141_216
+scrdef scr_seq_0141_217
+scrdef scr_seq_0141_218
+scrdef scr_seq_0141_219
+scrdef scr_seq_0141_220
+scrdef scr_seq_0141_221
+scrdef scr_seq_0141_222
+scrdef scr_seq_0141_223
+scrdef scr_seq_0141_224
+scrdef scr_seq_0141_225
+scrdef scr_seq_0141_226
+scrdef scr_seq_0141_227
+scrdef scr_seq_0141_228
+scrdef scr_seq_0141_229
+scrdef scr_seq_0141_230
+scrdef scr_seq_0141_231
+scrdef scr_seq_0141_232
+scrdef scr_seq_0141_233
+scrdef scr_seq_0141_234
+scrdef scr_seq_0141_235
+scrdef scr_seq_0141_236
+scrdef scr_seq_0141_237
+scrdef scr_seq_0141_238
+scrdef scr_seq_0141_239
+scrdef scr_seq_0141_240
+scrdef scr_seq_0141_241
+scrdef scr_seq_0141_242
+scrdef scr_seq_0141_243
+scrdef scr_seq_0141_244
+scrdef scr_seq_0141_245
+scrdef scr_seq_0141_246
+scrdef scr_seq_0141_247
+scrdef scr_seq_0141_248
+scrdef scr_seq_0141_249
+scrdef scr_seq_0141_250
+scrdef scr_seq_0141_251
+scrdef scr_seq_0141_252
+scrdef scr_seq_0141_253
+scrdef scr_seq_0141_254
+scrdef scr_seq_0141_255
+scrdef scr_seq_0141_256
+scrdef scr_seq_0141_257
+scrdef scr_seq_0141_258
+scrdef scr_seq_0141_259
+scrdef scr_seq_0141_260
+scrdef scr_seq_0141_261
+scrdef scr_seq_0141_262
+scrdef scr_seq_0141_263
+scrdef scr_seq_0141_264
+scrdef scr_seq_0141_265
+scrdef scr_seq_0141_266
+scrdef scr_seq_0141_267
+scrdef scr_seq_0141_268
+scrdef scr_seq_0141_269
+scrdef scr_seq_0141_270
+scrdef scr_seq_0141_271
+scrdef scr_seq_0141_272
+scrdef scr_seq_0141_273
+scrdef scr_seq_0141_274
+scrdef scr_seq_0141_275
+scrdef scr_seq_0141_276
+scrdef scr_seq_0141_277
+scrdef scr_seq_0141_278
+scrdef scr_seq_0141_279
+scrdef scr_seq_0141_280
+scrdef scr_seq_0141_281
+scrdef scr_seq_0141_282
+scrdef scr_seq_0141_283
+scrdef scr_seq_0141_284
+scrdef scr_seq_0141_285
+scrdef scr_seq_0141_286
+scrdef scr_seq_0141_287
+scrdef scr_seq_0141_288
+scrdef scr_seq_0141_289
+scrdef scr_seq_0141_290
+scrdef scr_seq_0141_291
+scrdef scr_seq_0141_292
+scrdef scr_seq_0141_293
+scrdef scr_seq_0141_294
+scrdef scr_seq_0141_295
+scrdef scr_seq_0141_296
+scrdef scr_seq_0141_297
+scrdef scr_seq_0141_298
+scrdef scr_seq_0141_299
+scrdef scr_seq_0141_300
+scrdef scr_seq_0141_301
+scrdef scr_seq_0141_302
+scrdef scr_seq_0141_303
+scrdef scr_seq_0141_304
+scrdef scr_seq_0141_305
+scrdef scr_seq_0141_306
+scrdef scr_seq_0141_307
+scrdef scr_seq_0141_308
+scrdef scr_seq_0141_309
+scrdef scr_seq_0141_310
+scrdef scr_seq_0141_311
+scrdef scr_seq_0141_312
+scrdef scr_seq_0141_313
+scrdef scr_seq_0141_314
+scrdef scr_seq_0141_315
+scrdef scr_seq_0141_316
+scrdef scr_seq_0141_317
+scrdef scr_seq_0141_318
+scrdef scr_seq_0141_319
+scrdef scr_seq_0141_320
+scrdef scr_seq_0141_321
+scrdef scr_seq_0141_322
+scrdef scr_seq_0141_323
+scrdef scr_seq_0141_324
+scrdef scr_seq_0141_325
+scrdef scr_seq_0141_326
+scrdef scr_seq_0141_327
+scrdef scr_seq_0141_328
+scrdef scr_seq_0141_329
+scrdef scr_seq_0141_330
+scrdef scr_seq_0141_331
+scrdef scr_seq_0141_332
+scrdef scr_seq_0141_333
+scrdef scr_seq_0141_334
+scrdef scr_seq_0141_335
+scrdef scr_seq_0141_336
+scrdef scr_seq_0141_337
+scrdef scr_seq_0141_338
+scrdef scr_seq_0141_339
+scrdef scr_seq_0141_340
+scrdef scr_seq_0141_341
+scrdef scr_seq_0141_342
+scrdef scr_seq_0141_343
+scrdef scr_seq_0141_344
+scrdef scr_seq_0141_345
+scrdef scr_seq_0141_346
+scrdef scr_seq_0141_347
+scrdef scr_seq_0141_348
+scrdef scr_seq_0141_349
+scrdef scr_seq_0141_350
+scrdef scr_seq_0141_351
+scrdef scr_seq_0141_352
+scrdef scr_seq_0141_353
+scrdef scr_seq_0141_354
+scrdef scr_seq_0141_355
+scrdef scr_seq_0141_356
+scrdef scr_seq_0141_357
+scrdef scr_seq_0141_358
+scrdef scr_seq_0141_359
+scrdef scr_seq_0141_360
+scrdef scr_seq_0141_361
+scrdef scr_seq_0141_362
+scrdef scr_seq_0141_363
+scrdef scr_seq_0141_364
+scrdef scr_seq_0141_365
+scrdef scr_seq_0141_366
+scrdef scr_seq_0141_367
+scrdef scr_seq_0141_368
+scrdef scr_seq_0141_369
+scrdef scr_seq_0141_370
+scrdef scr_seq_0141_371
+scrdef scr_seq_0141_372
+scrdef scr_seq_0141_373
+scrdef scr_seq_0141_374
+scrdef scr_seq_0141_375
+scrdef scr_seq_0141_376
+scrdef scr_seq_0141_377
+scrdef scr_seq_0141_378
+scrdef scr_seq_0141_379
+scrdef scr_seq_0141_380
+scrdef scr_seq_0141_381
+scrdef scr_seq_0141_382
+scrdef scr_seq_0141_383
+scrdef scr_seq_0141_384
+scrdef scr_seq_0141_385
+scrdef scr_seq_0141_386
+scrdef scr_seq_0141_387
+scrdef scr_seq_0141_388
+scrdef scr_seq_0141_389
+scrdef scr_seq_0141_390
+scrdef scr_seq_0141_391
+scrdef scr_seq_0141_392
+scrdef scr_seq_0141_393
+scrdef scr_seq_0141_394
+scrdef scr_seq_0141_395
+scrdef scr_seq_0141_396
+scrdef scr_seq_0141_397
+scrdef scr_seq_0141_398
+scrdef scr_seq_0141_399
+scrdef scr_seq_0141_400
+scrdef scr_seq_0141_401
+scrdef scr_seq_0141_402
+scrdef scr_seq_0141_403
+scrdef scr_seq_0141_404
+scrdef scr_seq_0141_405
+scrdef scr_seq_0141_406
+scrdef scr_seq_0141_407
+scrdef scr_seq_0141_408
+scrdef scr_seq_0141_409
+scrdef scr_seq_0141_410
+scrdef scr_seq_0141_411
+scrdef scr_seq_0141_412
+scrdef scr_seq_0141_413
+scrdef scr_seq_0141_414
+scrdef scr_seq_0141_415
+scrdef scr_seq_0141_416
+scrdef scr_seq_0141_417
+scrdef scr_seq_0141_418
+scrdef scr_seq_0141_419
+scrdef scr_seq_0141_420
+scrdef scr_seq_0141_421
+scrdef scr_seq_0141_422
+scrdef scr_seq_0141_423
+scrdef scr_seq_0141_424
+scrdef scr_seq_0141_425
+scrdef scr_seq_0141_426
+scrdef scr_seq_0141_427
+scrdef scr_seq_0141_428
+scrdef scr_seq_0141_429
+scrdef scr_seq_0141_430
+scrdef scr_seq_0141_431
+scrdef scr_seq_0141_432
+scrdef scr_seq_0141_433
+scrdef scr_seq_0141_434
+scrdef scr_seq_0141_435
+scrdef scr_seq_0141_436
+scrdef scr_seq_0141_437
+scrdef scr_seq_0141_438
+scrdef scr_seq_0141_439
+scrdef scr_seq_0141_440
+scrdef scr_seq_0141_441
+scrdef scr_seq_0141_442
+scrdef scr_seq_0141_443
+scrdef scr_seq_0141_444
+scrdef scr_seq_0141_445
+scrdef scr_seq_0141_446
+scrdef scr_seq_0141_447
+scrdef scr_seq_0141_448
+scrdef scr_seq_0141_449
+scrdef scr_seq_0141_450
+scrdef scr_seq_0141_451
+scrdef scr_seq_0141_452
+scrdef scr_seq_0141_453
+scrdef scr_seq_0141_454
+scrdef scr_seq_0141_455
+scrdef scr_seq_0141_456
+scrdef scr_seq_0141_457
+scrdef scr_seq_0141_458
+scrdef scr_seq_0141_459
+scrdef scr_seq_0141_460
+scrdef scr_seq_0141_461
+scrdef scr_seq_0141_462
+scrdef scr_seq_0141_463
+scrdef scr_seq_0141_464
+scrdef scr_seq_0141_465
+scrdef scr_seq_0141_466
+scrdef scr_seq_0141_467
+scrdef scr_seq_0141_468
+scrdef scr_seq_0141_469
+scrdef scr_seq_0141_470
+scrdef scr_seq_0141_471
+scrdef scr_seq_0141_472
+scrdef scr_seq_0141_473
+scrdef scr_seq_0141_474
+scrdef scr_seq_0141_475
+scrdef scr_seq_0141_476
+scrdef scr_seq_0141_477
+scrdef scr_seq_0141_478
+scrdef scr_seq_0141_479
+scrdef scr_seq_0141_480
+scrdef scr_seq_0141_481
+scrdef scr_seq_0141_482
+scrdef scr_seq_0141_483
+scrdef scr_seq_0141_484
+scrdef scr_seq_0141_485
+scrdef scr_seq_0141_486
+scrdef scr_seq_0141_487
+scrdef scr_seq_0141_488
+scrdef scr_seq_0141_489
+scrdef scr_seq_0141_490
+scrdef scr_seq_0141_491
+scrdef scr_seq_0141_492
+scrdef scr_seq_0141_493
+scrdef scr_seq_0141_494
+scrdef scr_seq_0141_495
+scrdef scr_seq_0141_496
+scrdef scr_seq_0141_497
+scrdef scr_seq_0141_498
+scrdef scr_seq_0141_499
+scrdef scr_seq_0141_500
+scrdef scr_seq_0141_501
+scrdef scr_seq_0141_502
+scrdef scr_seq_0141_503
+scrdef scr_seq_0141_504
+scrdef scr_seq_0141_505
+scrdef scr_seq_0141_506
+scrdef scr_seq_0141_507
+scrdef scr_seq_0141_508
+scrdef scr_seq_0141_509
+scrdef scr_seq_0141_510
+scrdef scr_seq_0141_511
+scrdef scr_seq_0141_512
+scrdef scr_seq_0141_513
+scrdef scr_seq_0141_514
+scrdef scr_seq_0141_515
+scrdef scr_seq_0141_516
+scrdef scr_seq_0141_517
+scrdef scr_seq_0141_518
+scrdef scr_seq_0141_519
+scrdef scr_seq_0141_520
+scrdef scr_seq_0141_521
+scrdef scr_seq_0141_522
+scrdef scr_seq_0141_523
+scrdef scr_seq_0141_524
+scrdef scr_seq_0141_525
+scrdef scr_seq_0141_526
+scrdef scr_seq_0141_527
+scrdef scr_seq_0141_528
+scrdef scr_seq_0141_529
+scrdef scr_seq_0141_530
+scrdef scr_seq_0141_531
+scrdef scr_seq_0141_532
+scrdef scr_seq_0141_533
+scrdef scr_seq_0141_534
+scrdef scr_seq_0141_535
+scrdef scr_seq_0141_536
+scrdef scr_seq_0141_537
+scrdef scr_seq_0141_538
+scrdef scr_seq_0141_539
+scrdef scr_seq_0141_540
+scrdef scr_seq_0141_541
+scrdef scr_seq_0141_542
+scrdef scr_seq_0141_543
+scrdef scr_seq_0141_544
+scrdef scr_seq_0141_545
+scrdef scr_seq_0141_546
+scrdef scr_seq_0141_547
+scrdef scr_seq_0141_548
+scrdef scr_seq_0141_549
+scrdef scr_seq_0141_550
+scrdef scr_seq_0141_551
+scrdef scr_seq_0141_552
+scrdef scr_seq_0141_553
+scrdef scr_seq_0141_554
+scrdef scr_seq_0141_555
+scrdef scr_seq_0141_556
+scrdef scr_seq_0141_557
+scrdef scr_seq_0141_558
+scrdef scr_seq_0141_559
+scrdef scr_seq_0141_560
+scrdef scr_seq_0141_561
+scrdef scr_seq_0141_562
+scrdef scr_seq_0141_563
+scrdef scr_seq_0141_564
+scrdef scr_seq_0141_565
+scrdef scr_seq_0141_566
+scrdef scr_seq_0141_567
+scrdef scr_seq_0141_568
+scrdef scr_seq_0141_569
+scrdef scr_seq_0141_570
+scrdef scr_seq_0141_571
+scrdef scr_seq_0141_572
+scrdef scr_seq_0141_573
+scrdef scr_seq_0141_574
+scrdef scr_seq_0141_575
+scrdef scr_seq_0141_576
+scrdef scr_seq_0141_577
+scrdef scr_seq_0141_578
+scrdef scr_seq_0141_579
+scrdef scr_seq_0141_580
+scrdef scr_seq_0141_581
+scrdef scr_seq_0141_582
+scrdef scr_seq_0141_583
+scrdef scr_seq_0141_584
+scrdef scr_seq_0141_585
+scrdef scr_seq_0141_586
+scrdef scr_seq_0141_587
+scrdef scr_seq_0141_588
+scrdef scr_seq_0141_589
+scrdef scr_seq_0141_590
+scrdef scr_seq_0141_591
+scrdef scr_seq_0141_592
+scrdef scr_seq_0141_593
+scrdef scr_seq_0141_594
+scrdef scr_seq_0141_595
+scrdef scr_seq_0141_596
+scrdef scr_seq_0141_597
+scrdef scr_seq_0141_598
+scrdef scr_seq_0141_599
+scrdef scr_seq_0141_600
+scrdef scr_seq_0141_601
+scrdef scr_seq_0141_602
+scrdef scr_seq_0141_603
+scrdef scr_seq_0141_604
+scrdef scr_seq_0141_605
+scrdef scr_seq_0141_606
+scrdef scr_seq_0141_607
+scrdef scr_seq_0141_608
+scrdef scr_seq_0141_609
+scrdef scr_seq_0141_610
+scrdef scr_seq_0141_611
+scrdef scr_seq_0141_612
+scrdef scr_seq_0141_613
+scrdef scr_seq_0141_614
+scrdef scr_seq_0141_615
+scrdef scr_seq_0141_616
+scrdef scr_seq_0141_617
+scrdef scr_seq_0141_618
+scrdef scr_seq_0141_619
+scrdef scr_seq_0141_620
+scrdef scr_seq_0141_621
+scrdef scr_seq_0141_622
+scrdef scr_seq_0141_623
+scrdef scr_seq_0141_624
+scrdef scr_seq_0141_625
+scrdef scr_seq_0141_626
+scrdef scr_seq_0141_627
+scrdef scr_seq_0141_628
+scrdef scr_seq_0141_629
+scrdef scr_seq_0141_630
+scrdef scr_seq_0141_631
+scrdef scr_seq_0141_632
+scrdef scr_seq_0141_633
+scrdef scr_seq_0141_634
+scrdef scr_seq_0141_635
+scrdef scr_seq_0141_636
+scrdef scr_seq_0141_637
+scrdef scr_seq_0141_638
+scrdef scr_seq_0141_639
+scrdef scr_seq_0141_640
+scrdef scr_seq_0141_641
+scrdef scr_seq_0141_642
+scrdef scr_seq_0141_643
+scrdef scr_seq_0141_644
+scrdef scr_seq_0141_645
+scrdef scr_seq_0141_646
+scrdef scr_seq_0141_647
+scrdef scr_seq_0141_648
+scrdef scr_seq_0141_649
+scrdef scr_seq_0141_650
+scrdef scr_seq_0141_651
+scrdef scr_seq_0141_652
+scrdef scr_seq_0141_653
+scrdef scr_seq_0141_654
+scrdef scr_seq_0141_655
+scrdef scr_seq_0141_656
+scrdef scr_seq_0141_657
+scrdef scr_seq_0141_658
+scrdef scr_seq_0141_659
+scrdef scr_seq_0141_660
+scrdef scr_seq_0141_661
+scrdef scr_seq_0141_662
+scrdef scr_seq_0141_663
+scrdef scr_seq_0141_664
+scrdef scr_seq_0141_665
+scrdef scr_seq_0141_666
+scrdef scr_seq_0141_667
+scrdef scr_seq_0141_668
+scrdef scr_seq_0141_669
+scrdef scr_seq_0141_670
+scrdef scr_seq_0141_671
+scrdef scr_seq_0141_672
+scrdef scr_seq_0141_673
+scrdef scr_seq_0141_674
+scrdef scr_seq_0141_675
+scrdef scr_seq_0141_676
+scrdef scr_seq_0141_677
+scrdef scr_seq_0141_678
+scrdef scr_seq_0141_679
+scrdef scr_seq_0141_680
+scrdef scr_seq_0141_681
+scrdef scr_seq_0141_682
+scrdef scr_seq_0141_683
+scrdef scr_seq_0141_684
+scrdef scr_seq_0141_685
+scrdef scr_seq_0141_686
+scrdef scr_seq_0141_687
+scrdef scr_seq_0141_688
+scrdef scr_seq_0141_689
+scrdef scr_seq_0141_690
+scrdef scr_seq_0141_691
+scrdef scr_seq_0141_692
+scrdef scr_seq_0141_693
+scrdef scr_seq_0141_694
+scrdef scr_seq_0141_695
+scrdef scr_seq_0141_696
+scrdef scr_seq_0141_697
+scrdef scr_seq_0141_698
+scrdef scr_seq_0141_699
+scrdef scr_seq_0141_700
+scrdef scr_seq_0141_701
+scrdef scr_seq_0141_702
+scrdef scr_seq_0141_703
+scrdef scr_seq_0141_704
+scrdef scr_seq_0141_705
+scrdef scr_seq_0141_706
+scrdef scr_seq_0141_707
+scrdef scr_seq_0141_708
+scrdef scr_seq_0141_709
+scrdef scr_seq_0141_710
+scrdef scr_seq_0141_711
+scrdef scr_seq_0141_712
+scrdef scr_seq_0141_713
+scrdef scr_seq_0141_714
+scrdef scr_seq_0141_715
+scrdef scr_seq_0141_716
+scrdef scr_seq_0141_717
+scrdef scr_seq_0141_718
+scrdef scr_seq_0141_719
+scrdef scr_seq_0141_720
+scrdef scr_seq_0141_721
+scrdef scr_seq_0141_722
+scrdef scr_seq_0141_723
+scrdef scr_seq_0141_724
+scrdef scr_seq_0141_725
+scrdef scr_seq_0141_726
+scrdef scr_seq_0141_727
+scrdef scr_seq_0141_728
+scrdef scr_seq_0141_729
+scrdef scr_seq_0141_730
+scrdef scr_seq_0141_731
+scrdef scr_seq_0141_732
+scrdef scr_seq_0141_733
+scrdef scr_seq_0141_734
+scrdef scr_seq_0141_735
+scrdef scr_seq_0141_736
+scrdef scr_seq_0141_737
+scrdef scr_seq_0141_738
+scrdef scr_seq_0141_739
+scrdef scr_seq_0141_740
+scrdef scr_seq_0141_741
+scrdef scr_seq_0141_742
+scrdef scr_seq_0141_743
+scrdef scr_seq_0141_744
+scrdef scr_seq_0141_745
+scrdef scr_seq_0141_746
+scrdef scr_seq_0141_747
+scrdef scr_seq_0141_748
+scrdef scr_seq_0141_749
+scrdef scr_seq_0141_750
+scrdef scr_seq_0141_751
+scrdef scr_seq_0141_752
+scrdef scr_seq_0141_753
+scrdef scr_seq_0141_754
+scrdef scr_seq_0141_755
+scrdef scr_seq_0141_756
+scrdef scr_seq_0141_757
+scrdef scr_seq_0141_758
+scrdef scr_seq_0141_759
+scrdef scr_seq_0141_760
+scrdef scr_seq_0141_761
+scrdef scr_seq_0141_762
+scrdef scr_seq_0141_763
+scrdef scr_seq_0141_764
+scrdef scr_seq_0141_765
+scrdef scr_seq_0141_766
+scrdef scr_seq_0141_767
+scrdef scr_seq_0141_768
+scrdef scr_seq_0141_769
+scrdef scr_seq_0141_770
+scrdef scr_seq_0141_771
+scrdef scr_seq_0141_772
+scrdef scr_seq_0141_773
+scrdef scr_seq_0141_774
+scrdef scr_seq_0141_775
+scrdef scr_seq_0141_776
+scrdef scr_seq_0141_777
+scrdef scr_seq_0141_778
+scrdef scr_seq_0141_779
+scrdef scr_seq_0141_780
+scrdef scr_seq_0141_781
+scrdef scr_seq_0141_782
+scrdef scr_seq_0141_783
+scrdef scr_seq_0141_784
+scrdef scr_seq_0141_785
+scrdef scr_seq_0141_786
+scrdef scr_seq_0141_787
+scrdef scr_seq_0141_788
+scrdef scr_seq_0141_789
+scrdef scr_seq_0141_790
+scrdef scr_seq_0141_791
+scrdef scr_seq_0141_792
+scrdef scr_seq_0141_793
+scrdef scr_seq_0141_794
+scrdef scr_seq_0141_795
+scrdef scr_seq_0141_796
+scrdef scr_seq_0141_797
+scrdef scr_seq_0141_798
+scrdef scr_seq_0141_799
+scrdef scr_seq_0141_800
+scrdef scr_seq_0141_801
+scrdef scr_seq_0141_802
+scrdef scr_seq_0141_803
+scrdef scr_seq_0141_804
+scrdef scr_seq_0141_805
+scrdef scr_seq_0141_806
+scrdef scr_seq_0141_807
+scrdef scr_seq_0141_808
+scrdef scr_seq_0141_809
+scrdef scr_seq_0141_810
+scrdef scr_seq_0141_811
+scrdef scr_seq_0141_812
+scrdef scr_seq_0141_813
+scrdef scr_seq_0141_814
+scrdef scr_seq_0141_815
+scrdef scr_seq_0141_816
+scrdef scr_seq_0141_817
+scrdef scr_seq_0141_818
+scrdef scr_seq_0141_819
+scrdef scr_seq_0141_820
+scrdef scr_seq_0141_821
+scrdef scr_seq_0141_822
+scrdef scr_seq_0141_823
+scrdef scr_seq_0141_824
+scrdef scr_seq_0141_825
+scrdef scr_seq_0141_826
+scrdef scr_seq_0141_827
+scrdef scr_seq_0141_828
+scrdef scr_seq_0141_829
+scrdef scr_seq_0141_830
+scrdef scr_seq_0141_831
+scrdef scr_seq_0141_832
+scrdef scr_seq_0141_833
+scrdef scr_seq_0141_834
+scrdef scr_seq_0141_835
+scrdef scr_seq_0141_836
+scrdef scr_seq_0141_837
+scrdef scr_seq_0141_838
+scrdef scr_seq_0141_839
+scrdef scr_seq_0141_840
+scrdef scr_seq_0141_841
+scrdef scr_seq_0141_842
+scrdef scr_seq_0141_843
+scrdef scr_seq_0141_844
+scrdef scr_seq_0141_845
+scrdef scr_seq_0141_846
+scrdef scr_seq_0141_847
+scrdef scr_seq_0141_848
+scrdef scr_seq_0141_849
+scrdef scr_seq_0141_850
+scrdef scr_seq_0141_851
+scrdef scr_seq_0141_852
+scrdef scr_seq_0141_853
+scrdef scr_seq_0141_854
+scrdef scr_seq_0141_855
+scrdef scr_seq_0141_856
+scrdef scr_seq_0141_857
+scrdef scr_seq_0141_858
+scrdef scr_seq_0141_859
+scrdef scr_seq_0141_860
+scrdef scr_seq_0141_861
+scrdef scr_seq_0141_862
+scrdef scr_seq_0141_863
+scrdef scr_seq_0141_864
+scrdef scr_seq_0141_865
+scrdef scr_seq_0141_866
+scrdef scr_seq_0141_867
+scrdef scr_seq_0141_868
+scrdef scr_seq_0141_869
+scrdef scr_seq_0141_870
+scrdef scr_seq_0141_871
+scrdef scr_seq_0141_872
+scrdef scr_seq_0141_873
+scrdef scr_seq_0141_874
+scrdef scr_seq_0141_875
+scrdef scr_seq_0141_876
+scrdef scr_seq_0141_877
+scrdef scr_seq_0141_878
+scrdef scr_seq_0141_879
+scrdef scr_seq_0141_880
+scrdef scr_seq_0141_881
+scrdef scr_seq_0141_882
+scrdef scr_seq_0141_883
+scrdef scr_seq_0141_884
+scrdef scr_seq_0141_885
+scrdef scr_seq_0141_886
+scrdef scr_seq_0141_887
+scrdef scr_seq_0141_888
+scrdef scr_seq_0141_889
+scrdef scr_seq_0141_890
+scrdef scr_seq_0141_891
+scrdef scr_seq_0141_892
+scrdef scr_seq_0141_893
+scrdef scr_seq_0141_894
+scrdef scr_seq_0141_895
+scrdef scr_seq_0141_896
+scrdef scr_seq_0141_897
+scrdef scr_seq_0141_898
+scrdef scr_seq_0141_899
+scrdef scr_seq_0141_900
+scrdef scr_seq_0141_901
+scrdef scr_seq_0141_902
+scrdef scr_seq_0141_903
+scrdef scr_seq_0141_904
+scrdef scr_seq_0141_905
+scrdef scr_seq_0141_906
+scrdef scr_seq_0141_907
+scrdef scr_seq_0141_908
+scrdef scr_seq_0141_909
+scrdef scr_seq_0141_910
+scrdef scr_seq_0141_911
+scrdef scr_seq_0141_912
+scrdef scr_seq_0141_913
+scrdef scr_seq_0141_914
+scrdef scr_seq_0141_915
+scrdef scr_seq_0141_916
+scrdef scr_seq_0141_917
+scrdef scr_seq_0141_918
+scrdef scr_seq_0141_919
+scrdef scr_seq_0141_920
+scrdef scr_seq_0141_921
+scrdef scr_seq_0141_922
+scrdef scr_seq_0141_923
+scrdef scr_seq_0141_924
+scrdef scr_seq_0141_925
+scrdef scr_seq_0141_926
+scrdef scr_seq_0141_927
+scrdef scr_seq_0141_928
+scrdef scr_seq_0141_929
+scrdef scr_seq_0141_930
+scrdef scr_seq_0141_931
+scrdef scr_seq_0141_932
+scrdef scr_seq_0141_933
+scrdef scr_seq_0141_934
+scrdef scr_seq_0141_935
+scrdef scr_seq_0141_936
+scrdef scr_seq_0141_937
+scrdef scr_seq_0141_938
+scrdef scr_seq_0141_939
+scrdef scr_seq_0141_940
+scrdef scr_seq_0141_941
+scrdef scr_seq_0141_942
+scrdef scr_seq_0141_943
+scrdef scr_seq_0141_944
+scrdef scr_seq_0141_945
+scrdef scr_seq_0141_946
+scrdef scr_seq_0141_947
+scrdef scr_seq_0141_948
+scrdef scr_seq_0141_949
+scrdef scr_seq_0141_950
+scrdef scr_seq_0141_951
+scrdef scr_seq_0141_952
+scrdef scr_seq_0141_953
+scrdef scr_seq_0141_954
+scrdef scr_seq_0141_955
+scrdef scr_seq_0141_956
+scrdef scr_seq_0141_957
+scrdef scr_seq_0141_958
+scrdef scr_seq_0141_959
+scrdef scr_seq_0141_960
+scrdef scr_seq_0141_961
+scrdef scr_seq_0141_962
+scrdef scr_seq_0141_963
+scrdef scr_seq_0141_964
+scrdef scr_seq_0141_965
+scrdef scr_seq_0141_966
+scrdef scr_seq_0141_967
+scrdef scr_seq_0141_968
+scrdef scr_seq_0141_969
+scrdef scr_seq_0141_970
+scrdef scr_seq_0141_971
+scrdef scr_seq_0141_972
+scrdef scr_seq_0141_973
+scrdef scr_seq_0141_974
+scrdef scr_seq_0141_975
+scrdef scr_seq_0141_976
+scrdef scr_seq_0141_977
+scrdef scr_seq_0141_978
+scrdef scr_seq_0141_979
+scrdef scr_seq_0141_980
+scrdef scr_seq_0141_981
+scrdef scr_seq_0141_982
+scrdef scr_seq_0141_983
+scrdef scr_seq_0141_984
+scrdef scr_seq_0141_985
+scrdef scr_seq_0141_986
+scrdef scr_seq_0141_987
+scrdef scr_seq_0141_988
+scrdef scr_seq_0141_989
+scrdef scr_seq_0141_990
+scrdef scr_seq_0141_991
+scrdef scr_seq_0141_992
+scrdef scr_seq_0141_993
+scrdef scr_seq_0141_994
+scrdef scr_seq_0141_995
+scrdef scr_seq_0141_996
+scrdef scr_seq_0141_997
+scrdef scr_seq_0141_998
+scrdef scr_seq_0141_999
+scrdef scr_seq_0141_1000
+scrdef scr_seq_0141_1001
+scrdef scr_seq_0141_1002
+scrdef scr_seq_0141_1003
+scrdef scr_seq_0141_1004
+scrdef scr_seq_0141_1005
+scrdef scr_seq_0141_1006
+scrdef scr_seq_0141_1007
+scrdef scr_seq_0141_1008
+scrdef scr_seq_0141_1009
+scrdef scr_seq_0141_1010
+scrdef scr_seq_0141_1011
+scrdef scr_seq_0141_1012
+scrdef scr_seq_0141_1013
+scrdef scr_seq_0141_1014
+scrdef scr_seq_0141_1015
+scrdef scr_seq_0141_1016
+scrdef scr_seq_0141_1017
+scrdef scr_seq_0141_1018
+scrdef scr_seq_0141_1019
+scrdef scr_seq_0141_1020
+scrdef scr_seq_0141_1021
+scrdef scr_seq_0141_1022
+scrdef scr_seq_0141_1023
+scrdef scr_seq_0141_1024
+scrdef scr_seq_0141_1025
+scrdef scr_seq_0141_1026
+scrdef scr_seq_0141_1027
+scrdef scr_seq_0141_1028
+scrdef scr_seq_0141_1029
+scrdef scr_seq_0141_1030
+scrdef scr_seq_0141_1031
+scrdef scr_seq_0141_1032
+scrdef scr_seq_0141_1033
+scrdef scr_seq_0141_1034
+scrdef scr_seq_0141_1035
+scrdef scr_seq_0141_1036
+scrdef scr_seq_0141_1037
+scrdef scr_seq_0141_1038
+scrdef scr_seq_0141_1039
+scrdef scr_seq_0141_1040
+scrdef scr_seq_0141_1041
+scrdef scr_seq_0141_1042
+scrdef scr_seq_0141_1043
+scrdef scr_seq_0141_1044
+scrdef scr_seq_0141_1045
+scrdef scr_seq_0141_1046
+scrdef scr_seq_0141_1047
+scrdef scr_seq_0141_1048
+scrdef scr_seq_0141_1049
+scrdef scr_seq_0141_1050
+scrdef scr_seq_0141_1051
+scrdef scr_seq_0141_1052
+scrdef scr_seq_0141_1053
+scrdef scr_seq_0141_1054
+scrdef scr_seq_0141_1055
+scrdef scr_seq_0141_1056
+scrdef scr_seq_0141_1057
+scrdef scr_seq_0141_1058
+scrdef scr_seq_0141_1059
+scrdef scr_seq_0141_1060
+scrdef scr_seq_0141_1061
+scrdef scr_seq_0141_1062
+scrdef scr_seq_0141_1063
+scrdef scr_seq_0141_1064
+scrdef scr_seq_0141_1065
+scrdef scr_seq_0141_1066
+scrdef scr_seq_0141_1067
+scrdef scr_seq_0141_1068
+scrdef scr_seq_0141_1069
+scrdef scr_seq_0141_1070
+scrdef scr_seq_0141_1071
+scrdef scr_seq_0141_1072
+scrdef scr_seq_0141_1073
+scrdef scr_seq_0141_1074
+scrdef scr_seq_0141_1075
+scrdef scr_seq_0141_1076
+scrdef scr_seq_0141_1077
+scrdef scr_seq_0141_1078
+scrdef scr_seq_0141_1079
+scrdef scr_seq_0141_1080
+scrdef scr_seq_0141_1081
+scrdef scr_seq_0141_1082
+scrdef scr_seq_0141_1083
+scrdef scr_seq_0141_1084
+scrdef scr_seq_0141_1085
+scrdef scr_seq_0141_1086
+scrdef scr_seq_0141_1087
+scrdef scr_seq_0141_1088
+scrdef scr_seq_0141_1089
+scrdef scr_seq_0141_1090
+scrdef scr_seq_0141_1091
+scrdef scr_seq_0141_1092
+scrdef scr_seq_0141_1093
+scrdef scr_seq_0141_1094
+scrdef scr_seq_0141_1095
+scrdef scr_seq_0141_1096
+scrdef scr_seq_0141_1097
+scrdef scr_seq_0141_1098
+scrdef scr_seq_0141_1099
+scrdef scr_seq_0141_1100
+scrdef scr_seq_0141_1101
+scrdef scr_seq_0141_1102
+scrdef scr_seq_0141_1103
+scrdef scr_seq_0141_1104
+scrdef scr_seq_0141_1105
+scrdef scr_seq_0141_1106
+scrdef scr_seq_0141_1107
+scrdef scr_seq_0141_1108
+scrdef scr_seq_0141_1109
+scrdef scr_seq_0141_1110
+scrdef scr_seq_0141_1111
+scrdef scr_seq_0141_1112
+scrdef scr_seq_0141_1113
+scrdef scr_seq_0141_1114
+scrdef scr_seq_0141_1115
+scrdef scr_seq_0141_1116
+scrdef scr_seq_0141_1117
+scrdef scr_seq_0141_1118
+scrdef scr_seq_0141_1119
+scrdef scr_seq_0141_1120
+scrdef scr_seq_0141_1121
+scrdef scr_seq_0141_1122
+scrdef scr_seq_0141_1123
+scrdef scr_seq_0141_1124
+scrdef scr_seq_0141_1125
+scrdef scr_seq_0141_1126
+scrdef scr_seq_0141_1127
+scrdef scr_seq_0141_1128
+scrdef scr_seq_0141_1129
+scrdef scr_seq_0141_1130
+scrdef scr_seq_0141_1131
+scrdef scr_seq_0141_1132
+scrdef scr_seq_0141_1133
+scrdef scr_seq_0141_1134
+scrdef scr_seq_0141_1135
+scrdef scr_seq_0141_1136
+scrdef scr_seq_0141_1137
+scrdef scr_seq_0141_1138
+scrdef scr_seq_0141_1139
+scrdef scr_seq_0141_1140
+scrdef scr_seq_0141_1141
+scrdef scr_seq_0141_1142
+scrdef scr_seq_0141_1143
+scrdef scr_seq_0141_1144
+scrdef scr_seq_0141_1145
+scrdef scr_seq_0141_1146
+scrdef scr_seq_0141_1147
+scrdef scr_seq_0141_1148
+scrdef scr_seq_0141_1149
+scrdef scr_seq_0141_1150
+scrdef scr_seq_0141_1151
+scrdef scr_seq_0141_1152
+scrdef scr_seq_0141_1153
+scrdef scr_seq_0141_1154
+scrdef scr_seq_0141_1155
+scrdef scr_seq_0141_1156
+scrdef scr_seq_0141_1157
+scrdef scr_seq_0141_1158
+scrdef scr_seq_0141_1159
+scrdef scr_seq_0141_1160
+scrdef scr_seq_0141_1161
+scrdef scr_seq_0141_1162
+scrdef scr_seq_0141_1163
+scrdef scr_seq_0141_1164
+scrdef scr_seq_0141_1165
+scrdef scr_seq_0141_1166
+scrdef scr_seq_0141_1167
+scrdef scr_seq_0141_1168
+scrdef scr_seq_0141_1169
+scrdef scr_seq_0141_1170
+scrdef scr_seq_0141_1171
+scrdef scr_seq_0141_1172
+scrdef scr_seq_0141_1173
+scrdef scr_seq_0141_1174
+scrdef scr_seq_0141_1175
+scrdef scr_seq_0141_1176
+scrdef scr_seq_0141_1177
+scrdef scr_seq_0141_1178
+scrdef scr_seq_0141_1179
+scrdef scr_seq_0141_1180
+scrdef scr_seq_0141_1181
+scrdef scr_seq_0141_1182
+scrdef scr_seq_0141_1183
+scrdef scr_seq_0141_1184
+scrdef scr_seq_0141_1185
+scrdef scr_seq_0141_1186
+scrdef scr_seq_0141_1187
+scrdef scr_seq_0141_1188
+scrdef scr_seq_0141_1189
+scrdef scr_seq_0141_1190
+scrdef scr_seq_0141_1191
+scrdef scr_seq_0141_1192
+scrdef scr_seq_0141_1193
+scrdef scr_seq_0141_1194
+scrdef scr_seq_0141_1195
+scrdef scr_seq_0141_1196
+scrdef scr_seq_0141_1197
+scrdef scr_seq_0141_1198
+scrdef scr_seq_0141_1199
+scrdef scr_seq_0141_1200
+scrdef scr_seq_0141_1201
+scrdef scr_seq_0141_1202
+scrdef scr_seq_0141_1203
+scrdef scr_seq_0141_1204
+scrdef scr_seq_0141_1205
+scrdef scr_seq_0141_1206
+scrdef scr_seq_0141_1207
+scrdef scr_seq_0141_1208
+scrdef scr_seq_0141_1209
+scrdef scr_seq_0141_1210
+scrdef scr_seq_0141_1211
+scrdef scr_seq_0141_1212
+scrdef scr_seq_0141_1213
+scrdef scr_seq_0141_1214
+scrdef scr_seq_0141_1215
+scrdef scr_seq_0141_1216
+scrdef scr_seq_0141_1217
+scrdef scr_seq_0141_1218
+scrdef scr_seq_0141_1219
+scrdef scr_seq_0141_1220
+scrdef scr_seq_0141_1221
+scrdef scr_seq_0141_1222
+scrdef scr_seq_0141_1223
+scrdef scr_seq_0141_1224
+scrdef scr_seq_0141_1225
+scrdef scr_seq_0141_1226
+scrdef scr_seq_0141_1227
+scrdef scr_seq_0141_1228
+scrdef scr_seq_0141_1229
+scrdef scr_seq_0141_1230
+scrdef scr_seq_0141_1231
+scrdef scr_seq_0141_1232
+scrdef scr_seq_0141_1233
+scrdef scr_seq_0141_1234
+scrdef scr_seq_0141_1235
+scrdef scr_seq_0141_1236
+scrdef scr_seq_0141_1237
+scrdef scr_seq_0141_1238
+scrdef scr_seq_0141_1239
+scrdef scr_seq_0141_1240
+scrdef scr_seq_0141_1241
+scrdef scr_seq_0141_1242
+scrdef scr_seq_0141_1243
+scrdef scr_seq_0141_1244
+scrdef scr_seq_0141_1245
+scrdef scr_seq_0141_1246
+scrdef scr_seq_0141_1247
+scrdef scr_seq_0141_1248
+scrdef scr_seq_0141_1249
+scrdef scr_seq_0141_1250
+scrdef scr_seq_0141_1251
+scrdef scr_seq_0141_1252
+scrdef scr_seq_0141_1253
+scrdef scr_seq_0141_1254
+scrdef scr_seq_0141_1255
+scrdef scr_seq_0141_1256
+scrdef scr_seq_0141_1257
+scrdef scr_seq_0141_1258
+scrdef scr_seq_0141_1259
+scrdef scr_seq_0141_1260
+scrdef scr_seq_0141_1261
+scrdef scr_seq_0141_1262
+scrdef scr_seq_0141_1263
+scrdef scr_seq_0141_1264
+scrdef scr_seq_0141_1265
+scrdef scr_seq_0141_1266
+scrdef scr_seq_0141_1267
+scrdef scr_seq_0141_1268
+scrdef scr_seq_0141_1269
+scrdef scr_seq_0141_1270
+scrdef scr_seq_0141_1271
+scrdef scr_seq_0141_1272
+scrdef scr_seq_0141_1273
+scrdef scr_seq_0141_1274
+scrdef scr_seq_0141_1275
+scrdef scr_seq_0141_1276
+scrdef scr_seq_0141_1277
+scrdef scr_seq_0141_1278
+scrdef scr_seq_0141_1279
+scrdef scr_seq_0141_1280
+scrdef scr_seq_0141_1281
+scrdef scr_seq_0141_1282
+scrdef scr_seq_0141_1283
+scrdef scr_seq_0141_1284
+scrdef scr_seq_0141_1285
+scrdef scr_seq_0141_1286
+scrdef scr_seq_0141_1287
+scrdef scr_seq_0141_1288
+scrdef scr_seq_0141_1289
+scrdef scr_seq_0141_1290
+scrdef scr_seq_0141_1291
+scrdef scr_seq_0141_1292
+scrdef scr_seq_0141_1293
+scrdef scr_seq_0141_1294
+scrdef scr_seq_0141_1295
+scrdef scr_seq_0141_1296
+scrdef scr_seq_0141_1297
+scrdef scr_seq_0141_1298
+scrdef scr_seq_0141_1299
+scrdef scr_seq_0141_1300
+scrdef scr_seq_0141_1301
+scrdef scr_seq_0141_1302
+scrdef scr_seq_0141_1303
+scrdef scr_seq_0141_1304
+scrdef scr_seq_0141_1305
+scrdef scr_seq_0141_1306
+scrdef scr_seq_0141_1307
+scrdef scr_seq_0141_1308
+scrdef scr_seq_0141_1309
+scrdef scr_seq_0141_1310
+scrdef scr_seq_0141_1311
+scrdef scr_seq_0141_1312
+scrdef scr_seq_0141_1313
+scrdef scr_seq_0141_1314
+scrdef scr_seq_0141_1315
+scrdef scr_seq_0141_1316
+scrdef scr_seq_0141_1317
+scrdef scr_seq_0141_1318
+scrdef scr_seq_0141_1319
+scrdef scr_seq_0141_1320
+scrdef scr_seq_0141_1321
+scrdef scr_seq_0141_1322
+scrdef scr_seq_0141_1323
+scrdef scr_seq_0141_1324
+scrdef scr_seq_0141_1325
+scrdef scr_seq_0141_1326
+scrdef scr_seq_0141_1327
+scrdef scr_seq_0141_1328
+scrdef scr_seq_0141_1329
+scrdef scr_seq_0141_1330
+scrdef scr_seq_0141_1331
+scrdef scr_seq_0141_1332
+scrdef scr_seq_0141_1333
+scrdef scr_seq_0141_1334
+scrdef scr_seq_0141_1335
+scrdef scr_seq_0141_1336
+scrdef scr_seq_0141_1337
+scrdef scr_seq_0141_1338
+scrdef scr_seq_0141_1339
+scrdef scr_seq_0141_1340
+scrdef scr_seq_0141_1341
+scrdef scr_seq_0141_1342
+scrdef scr_seq_0141_1343
+scrdef scr_seq_0141_1344
+scrdef scr_seq_0141_1345
+scrdef scr_seq_0141_1346
+scrdef scr_seq_0141_1347
+scrdef scr_seq_0141_1348
+scrdef scr_seq_0141_1349
+scrdef scr_seq_0141_1350
+scrdef scr_seq_0141_1351
+scrdef scr_seq_0141_1352
+scrdef scr_seq_0141_1353
+scrdef scr_seq_0141_1354
+scrdef scr_seq_0141_1355
+scrdef scr_seq_0141_1356
+scrdef scr_seq_0141_1357
+scrdef scr_seq_0141_1358
+scrdef scr_seq_0141_1359
+scrdef scr_seq_0141_1360
+scrdef scr_seq_0141_1361
+scrdef scr_seq_0141_1362
+scrdef scr_seq_0141_1363
+scrdef scr_seq_0141_1364
+scrdef scr_seq_0141_1365
+scrdef scr_seq_0141_1366
+scrdef scr_seq_0141_1367
+scrdef scr_seq_0141_1368
+scrdef scr_seq_0141_1369
+scrdef scr_seq_0141_1370
+scrdef scr_seq_0141_1371
+scrdef scr_seq_0141_1372
+scrdef scr_seq_0141_1373
+scrdef scr_seq_0141_1374
+scrdef scr_seq_0141_1375
+scrdef scr_seq_0141_1376
+scrdef scr_seq_0141_1377
+scrdef scr_seq_0141_1378
+scrdef scr_seq_0141_1379
+scrdef scr_seq_0141_1380
+scrdef scr_seq_0141_1381
+scrdef scr_seq_0141_1382
+scrdef scr_seq_0141_1383
+scrdef scr_seq_0141_1384
+scrdef scr_seq_0141_1385
+scrdef scr_seq_0141_1386
+scrdef scr_seq_0141_1387
+scrdef scr_seq_0141_1388
+scrdef scr_seq_0141_1389
+scrdef scr_seq_0141_1390
+scrdef scr_seq_0141_1391
+scrdef scr_seq_0141_1392
+scrdef scr_seq_0141_1393
+scrdef scr_seq_0141_1394
+scrdef scr_seq_0141_1395
+scrdef scr_seq_0141_1396
+scrdef scr_seq_0141_1397
+scrdef scr_seq_0141_1398
+scrdef scr_seq_0141_1399
+scrdef scr_seq_0141_1400
+scrdef scr_seq_0141_1401
+scrdef scr_seq_0141_1402
+scrdef scr_seq_0141_1403
+scrdef scr_seq_0141_1404
+scrdef scr_seq_0141_1405
+scrdef scr_seq_0141_1406
+scrdef scr_seq_0141_1407
+scrdef scr_seq_0141_1408
+scrdef scr_seq_0141_1409
+scrdef scr_seq_0141_1410
+scrdef scr_seq_0141_1411
+scrdef scr_seq_0141_1412
+scrdef scr_seq_0141_1413
+scrdef scr_seq_0141_1414
+scrdef scr_seq_0141_1415
+scrdef scr_seq_0141_1416
+scrdef scr_seq_0141_1417
+scrdef scr_seq_0141_1418
+scrdef scr_seq_0141_1419
+scrdef scr_seq_0141_1420
+scrdef scr_seq_0141_1421
+scrdef scr_seq_0141_1422
+scrdef scr_seq_0141_1423
+scrdef scr_seq_0141_1424
+scrdef scr_seq_0141_1425
+scrdef scr_seq_0141_1426
+scrdef scr_seq_0141_1427
+scrdef scr_seq_0141_1428
+scrdef scr_seq_0141_1429
+scrdef scr_seq_0141_1430
+scrdef scr_seq_0141_1431
+scrdef scr_seq_0141_1432
+scrdef scr_seq_0141_1433
+scrdef scr_seq_0141_1434
+scrdef scr_seq_0141_1435
+scrdef scr_seq_0141_1436
+scrdef scr_seq_0141_1437
+scrdef scr_seq_0141_1438
+scrdef scr_seq_0141_1439
+scrdef scr_seq_0141_1440
+scrdef scr_seq_0141_1441
+scrdef scr_seq_0141_1442
+scrdef scr_seq_0141_1443
+scrdef scr_seq_0141_1444
+scrdef scr_seq_0141_1445
+scrdef scr_seq_0141_1446
+scrdef scr_seq_0141_1447
+scrdef scr_seq_0141_1448
+scrdef scr_seq_0141_1449
+scrdef scr_seq_0141_1450
+scrdef scr_seq_0141_1451
+scrdef scr_seq_0141_1452
+scrdef scr_seq_0141_1453
+scrdef scr_seq_0141_1454
+scrdef scr_seq_0141_1455
+scrdef scr_seq_0141_1456
+scrdef scr_seq_0141_1457
+scrdef scr_seq_0141_1458
+scrdef scr_seq_0141_1459
+scrdef scr_seq_0141_1460
+scrdef scr_seq_0141_1461
+scrdef scr_seq_0141_1462
+scrdef scr_seq_0141_1463
+scrdef scr_seq_0141_1464
+scrdef scr_seq_0141_1465
+scrdef scr_seq_0141_1466
+scrdef scr_seq_0141_1467
+scrdef scr_seq_0141_1468
+scrdef scr_seq_0141_1469
+scrdef scr_seq_0141_1470
+scrdef scr_seq_0141_1471
+scrdef scr_seq_0141_1472
+scrdef scr_seq_0141_1473
+scrdef scr_seq_0141_1474
+scrdef scr_seq_0141_1475
+scrdef scr_seq_0141_1476
+scrdef scr_seq_0141_1477
+scrdef scr_seq_0141_1478
+scrdef scr_seq_0141_1479
+scrdef scr_seq_0141_1480
+scrdef scr_seq_0141_1481
+scrdef scr_seq_0141_1482
+scrdef scr_seq_0141_1483
+scrdef scr_seq_0141_1484
+scrdef scr_seq_0141_1485
+scrdef scr_seq_0141_1486
+scrdef scr_seq_0141_1487
+scrdef scr_seq_0141_1488
+scrdef scr_seq_0141_1489
+scrdef scr_seq_0141_1490
+scrdef scr_seq_0141_1491
+scrdef scr_seq_0141_1492
+scrdef scr_seq_0141_1493
+scrdef scr_seq_0141_1494
+scrdef scr_seq_0141_1495
+scrdef scr_seq_0141_1496
+scrdef scr_seq_0141_1497
+scrdef scr_seq_0141_1498
+scrdef scr_seq_0141_1499
+scrdef scr_seq_0141_1500
+scrdef scr_seq_0141_1501
+scrdef scr_seq_0141_1502
+scrdef scr_seq_0141_1503
+scrdef scr_seq_0141_1504
+scrdef scr_seq_0141_1505
+scrdef scr_seq_0141_1506
+scrdef scr_seq_0141_1507
+scrdef scr_seq_0141_1508
+scrdef scr_seq_0141_1509
+scrdef scr_seq_0141_1510
+scrdef scr_seq_0141_1511
+scrdef scr_seq_0141_1512
+scrdef scr_seq_0141_1513
+scrdef scr_seq_0141_1514
+scrdef scr_seq_0141_1515
+scrdef scr_seq_0141_1516
+scrdef scr_seq_0141_1517
+scrdef scr_seq_0141_1518
+scrdef scr_seq_0141_1519
+scrdef scr_seq_0141_1520
+scrdef scr_seq_0141_1521
+scrdef scr_seq_0141_1522
+scrdef scr_seq_0141_1523
+scrdef scr_seq_0141_1524
+scrdef scr_seq_0141_1525
+scrdef scr_seq_0141_1526
+scrdef scr_seq_0141_1527
+scrdef scr_seq_0141_1528
+scrdef scr_seq_0141_1529
+scrdef scr_seq_0141_1530
+scrdef scr_seq_0141_1531
+scrdef scr_seq_0141_1532
+scrdef scr_seq_0141_1533
+scrdef scr_seq_0141_1534
+scrdef scr_seq_0141_1535
+scrdef scr_seq_0141_1536
+scrdef scr_seq_0141_1537
+scrdef scr_seq_0141_1538
+scrdef scr_seq_0141_1539
+scrdef scr_seq_0141_1540
+scrdef scr_seq_0141_1541
+scrdef scr_seq_0141_1542
+scrdef scr_seq_0141_1543
+scrdef scr_seq_0141_1544
+scrdef scr_seq_0141_1545
+scrdef scr_seq_0141_1546
+scrdef scr_seq_0141_1547
+scrdef scr_seq_0141_1548
+scrdef scr_seq_0141_1549
+scrdef scr_seq_0141_1550
+scrdef scr_seq_0141_1551
+scrdef scr_seq_0141_1552
+scrdef scr_seq_0141_1553
+scrdef scr_seq_0141_1554
+scrdef scr_seq_0141_1555
+scrdef scr_seq_0141_1556
+scrdef scr_seq_0141_1557
+scrdef scr_seq_0141_1558
+scrdef scr_seq_0141_1559
+scrdef scr_seq_0141_1560
+scrdef scr_seq_0141_1561
+scrdef scr_seq_0141_1562
+scrdef scr_seq_0141_1563
+scrdef scr_seq_0141_1564
+scrdef scr_seq_0141_1565
+scrdef scr_seq_0141_1566
+scrdef scr_seq_0141_1567
+scrdef scr_seq_0141_1568
+scrdef scr_seq_0141_1569
+scrdef scr_seq_0141_1570
+scrdef scr_seq_0141_1571
+scrdef scr_seq_0141_1572
+scrdef scr_seq_0141_1573
+scrdef scr_seq_0141_1574
+scrdef scr_seq_0141_1575
+scrdef scr_seq_0141_1576
+scrdef scr_seq_0141_1577
+scrdef scr_seq_0141_1578
+scrdef scr_seq_0141_1579
+scrdef scr_seq_0141_1580
+scrdef scr_seq_0141_1581
+scrdef scr_seq_0141_1582
+scrdef scr_seq_0141_1583
+scrdef scr_seq_0141_1584
+scrdef scr_seq_0141_1585
+scrdef scr_seq_0141_1586
+scrdef scr_seq_0141_1587
+scrdef scr_seq_0141_1588
+scrdef scr_seq_0141_1589
+scrdef scr_seq_0141_1590
+scrdef scr_seq_0141_1591
+scrdef scr_seq_0141_1592
+scrdef scr_seq_0141_1593
+scrdef scr_seq_0141_1594
+scrdef scr_seq_0141_1595
+scrdef scr_seq_0141_1596
+scrdef scr_seq_0141_1597
+scrdef scr_seq_0141_1598
+scrdef scr_seq_0141_1599
+scrdef scr_seq_0141_1600
+scrdef scr_seq_0141_1601
+scrdef scr_seq_0141_1602
+scrdef scr_seq_0141_1603
+scrdef scr_seq_0141_1604
+scrdef scr_seq_0141_1605
+scrdef scr_seq_0141_1606
+scrdef scr_seq_0141_1607
+scrdef scr_seq_0141_1608
+scrdef scr_seq_0141_1609
+scrdef scr_seq_0141_1610
+scrdef scr_seq_0141_1611
+scrdef scr_seq_0141_1612
+scrdef scr_seq_0141_1613
+scrdef scr_seq_0141_1614
+scrdef scr_seq_0141_1615
+scrdef scr_seq_0141_1616
+scrdef scr_seq_0141_1617
+scrdef scr_seq_0141_1618
+scrdef scr_seq_0141_1619
+scrdef scr_seq_0141_1620
+scrdef scr_seq_0141_1621
+scrdef scr_seq_0141_1622
+scrdef scr_seq_0141_1623
+scrdef scr_seq_0141_1624
+scrdef scr_seq_0141_1625
+scrdef scr_seq_0141_1626
+scrdef scr_seq_0141_1627
+scrdef scr_seq_0141_1628
+scrdef scr_seq_0141_1629
+scrdef scr_seq_0141_1630
+scrdef scr_seq_0141_1631
+scrdef scr_seq_0141_1632
+scrdef scr_seq_0141_1633
+scrdef scr_seq_0141_1634
+scrdef scr_seq_0141_1635
+scrdef scr_seq_0141_1636
+scrdef scr_seq_0141_1637
+scrdef scr_seq_0141_1638
+scrdef scr_seq_0141_1639
+scrdef scr_seq_0141_1640
+scrdef scr_seq_0141_1641
+scrdef scr_seq_0141_1642
+scrdef scr_seq_0141_1643
+scrdef scr_seq_0141_1644
+scrdef scr_seq_0141_1645
+scrdef scr_seq_0141_1646
+scrdef scr_seq_0141_1647
+scrdef scr_seq_0141_1648
+scrdef scr_seq_0141_1649
+scrdef scr_seq_0141_1650
+scrdef scr_seq_0141_1651
+scrdef scr_seq_0141_1652
+scrdef scr_seq_0141_1653
+scrdef scr_seq_0141_1654
+scrdef scr_seq_0141_1655
+scrdef scr_seq_0141_1656
+scrdef scr_seq_0141_1657
+scrdef scr_seq_0141_1658
+scrdef scr_seq_0141_1659
+scrdef scr_seq_0141_1660
+scrdef scr_seq_0141_1661
+scrdef scr_seq_0141_1662
+scrdef scr_seq_0141_1663
+scrdef scr_seq_0141_1664
+scrdef scr_seq_0141_1665
+scrdef scr_seq_0141_1666
+scrdef scr_seq_0141_1667
+scrdef scr_seq_0141_1668
+scrdef scr_seq_0141_1669
+scrdef scr_seq_0141_1670
+scrdef scr_seq_0141_1671
+scrdef scr_seq_0141_1672
+scrdef scr_seq_0141_1673
+scrdef scr_seq_0141_1674
+scrdef scr_seq_0141_1675
+scrdef scr_seq_0141_1676
+scrdef scr_seq_0141_1677
+scrdef scr_seq_0141_1678
+scrdef scr_seq_0141_1679
+scrdef scr_seq_0141_1680
+scrdef scr_seq_0141_1681
+scrdef scr_seq_0141_1682
+scrdef scr_seq_0141_1683
+scrdef scr_seq_0141_1684
+scrdef scr_seq_0141_1685
+scrdef scr_seq_0141_1686
+scrdef scr_seq_0141_1687
+scrdef scr_seq_0141_1688
+scrdef scr_seq_0141_1689
+scrdef scr_seq_0141_1690
+scrdef scr_seq_0141_1691
+scrdef scr_seq_0141_1692
+scrdef scr_seq_0141_1693
+scrdef scr_seq_0141_1694
+scrdef scr_seq_0141_1695
+scrdef scr_seq_0141_1696
+scrdef scr_seq_0141_1697
+scrdef scr_seq_0141_1698
+scrdef scr_seq_0141_1699
+scrdef scr_seq_0141_1700
+scrdef scr_seq_0141_1701
+scrdef scr_seq_0141_1702
+scrdef scr_seq_0141_1703
+scrdef scr_seq_0141_1704
+scrdef scr_seq_0141_1705
+scrdef scr_seq_0141_1706
+scrdef scr_seq_0141_1707
+scrdef scr_seq_0141_1708
+scrdef scr_seq_0141_1709
+scrdef scr_seq_0141_1710
+scrdef scr_seq_0141_1711
+scrdef scr_seq_0141_1712
+scrdef scr_seq_0141_1713
+scrdef scr_seq_0141_1714
+scrdef scr_seq_0141_1715
+scrdef scr_seq_0141_1716
+scrdef scr_seq_0141_1717
+scrdef scr_seq_0141_1718
+scrdef scr_seq_0141_1719
+scrdef scr_seq_0141_1720
+scrdef scr_seq_0141_1721
+scrdef scr_seq_0141_1722
+scrdef scr_seq_0141_1723
+scrdef scr_seq_0141_1724
+scrdef scr_seq_0141_1725
+scrdef scr_seq_0141_1726
+scrdef scr_seq_0141_1727
+scrdef scr_seq_0141_1728
+scrdef scr_seq_0141_1729
+scrdef scr_seq_0141_1730
+scrdef scr_seq_0141_1731
+scrdef scr_seq_0141_1732
+scrdef scr_seq_0141_1733
+scrdef scr_seq_0141_1734
+scrdef scr_seq_0141_1735
+scrdef scr_seq_0141_1736
+scrdef scr_seq_0141_1737
+scrdef scr_seq_0141_1738
+scrdef scr_seq_0141_1739
+scrdef scr_seq_0141_1740
+scrdef scr_seq_0141_1741
+scrdef scr_seq_0141_1742
+scrdef scr_seq_0141_1743
+scrdef scr_seq_0141_1744
+scrdef scr_seq_0141_1745
+scrdef scr_seq_0141_1746
+scrdef scr_seq_0141_1747
+scrdef scr_seq_0141_1748
+scrdef scr_seq_0141_1749
+scrdef scr_seq_0141_1750
+scrdef scr_seq_0141_1751
+scrdef scr_seq_0141_1752
+scrdef scr_seq_0141_1753
+scrdef scr_seq_0141_1754
+scrdef scr_seq_0141_1755
+scrdef scr_seq_0141_1756
+scrdef scr_seq_0141_1757
+scrdef scr_seq_0141_1758
+scrdef scr_seq_0141_1759
+scrdef scr_seq_0141_1760
+scrdef scr_seq_0141_1761
+scrdef scr_seq_0141_1762
+scrdef scr_seq_0141_1763
+scrdef scr_seq_0141_1764
+scrdef scr_seq_0141_1765
+scrdef scr_seq_0141_1766
+scrdef scr_seq_0141_1767
+scrdef scr_seq_0141_1768
+scrdef scr_seq_0141_1769
+scrdef scr_seq_0141_1770
+scrdef scr_seq_0141_1771
+scrdef scr_seq_0141_1772
+scrdef scr_seq_0141_1773
+scrdef scr_seq_0141_1774
+scrdef scr_seq_0141_1775
+scrdef scr_seq_0141_1776
+scrdef scr_seq_0141_1777
+scrdef scr_seq_0141_1778
+scrdef scr_seq_0141_1779
+scrdef scr_seq_0141_1780
+scrdef scr_seq_0141_1781
+scrdef scr_seq_0141_1782
+scrdef scr_seq_0141_1783
+scrdef scr_seq_0141_1784
+scrdef scr_seq_0141_1785
+scrdef scr_seq_0141_1786
+scrdef scr_seq_0141_1787
+scrdef scr_seq_0141_1788
+scrdef scr_seq_0141_1789
+scrdef scr_seq_0141_1790
+scrdef scr_seq_0141_1791
+scrdef scr_seq_0141_1792
+scrdef scr_seq_0141_1793
+scrdef scr_seq_0141_1794
+scrdef scr_seq_0141_1795
+scrdef scr_seq_0141_1796
+scrdef scr_seq_0141_1797
+scrdef scr_seq_0141_1798
+scrdef scr_seq_0141_1799
+scrdef scr_seq_0141_1800
+scrdef scr_seq_0141_1801
+scrdef scr_seq_0141_1802
+scrdef scr_seq_0141_1803
+scrdef scr_seq_0141_1804
+scrdef scr_seq_0141_1805
+scrdef scr_seq_0141_1806
+scrdef scr_seq_0141_1807
+scrdef scr_seq_0141_1808
+scrdef scr_seq_0141_1809
+scrdef scr_seq_0141_1810
+scrdef scr_seq_0141_1811
+scrdef scr_seq_0141_1812
+scrdef scr_seq_0141_1813
+scrdef scr_seq_0141_1814
+scrdef scr_seq_0141_1815
+scrdef scr_seq_0141_1816
+scrdef scr_seq_0141_1817
+scrdef scr_seq_0141_1818
+scrdef scr_seq_0141_1819
+scrdef scr_seq_0141_1820
+scrdef scr_seq_0141_1821
+scrdef scr_seq_0141_1822
+scrdef scr_seq_0141_1823
+scrdef scr_seq_0141_1824
+scrdef scr_seq_0141_1825
+scrdef scr_seq_0141_1826
+scrdef scr_seq_0141_1827
+scrdef scr_seq_0141_1828
+scrdef scr_seq_0141_1829
+scrdef scr_seq_0141_1830
+scrdef scr_seq_0141_1831
+scrdef scr_seq_0141_1832
+scrdef scr_seq_0141_1833
+scrdef scr_seq_0141_1834
+scrdef scr_seq_0141_1835
+scrdef scr_seq_0141_1836
+scrdef scr_seq_0141_1837
+scrdef scr_seq_0141_1838
+scrdef scr_seq_0141_1839
+scrdef scr_seq_0141_1840
+scrdef scr_seq_0141_1841
+scrdef scr_seq_0141_1842
+scrdef scr_seq_0141_1843
+scrdef scr_seq_0141_1844
+scrdef scr_seq_0141_1845
+scrdef scr_seq_0141_1846
+scrdef scr_seq_0141_1847
+scrdef scr_seq_0141_1848
+scrdef scr_seq_0141_1849
+scrdef scr_seq_0141_1850
+scrdef scr_seq_0141_1851
+scrdef scr_seq_0141_1852
+scrdef scr_seq_0141_1853
+scrdef scr_seq_0141_1854
+scrdef scr_seq_0141_1855
+scrdef scr_seq_0141_1856
+scrdef scr_seq_0141_1857
+scrdef scr_seq_0141_1858
+scrdef scr_seq_0141_1859
+scrdef scr_seq_0141_1860
+scrdef scr_seq_0141_1861
+scrdef scr_seq_0141_1862
+scrdef scr_seq_0141_1863
+scrdef scr_seq_0141_1864
+scrdef scr_seq_0141_1865
+scrdef scr_seq_0141_1866
+scrdef scr_seq_0141_1867
+scrdef scr_seq_0141_1868
+scrdef scr_seq_0141_1869
+scrdef scr_seq_0141_1870
+scrdef scr_seq_0141_1871
+scrdef scr_seq_0141_1872
+scrdef scr_seq_0141_1873
+scrdef scr_seq_0141_1874
+scrdef scr_seq_0141_1875
+scrdef scr_seq_0141_1876
+scrdef scr_seq_0141_1877
+scrdef scr_seq_0141_1878
+scrdef scr_seq_0141_1879
+scrdef scr_seq_0141_1880
+scrdef scr_seq_0141_1881
+scrdef scr_seq_0141_1882
+scrdef scr_seq_0141_1883
+scrdef scr_seq_0141_1884
+scrdef scr_seq_0141_1885
+scrdef scr_seq_0141_1886
+scrdef scr_seq_0141_1887
+scrdef scr_seq_0141_1888
+scrdef scr_seq_0141_1889
+scrdef scr_seq_0141_1890
+scrdef scr_seq_0141_1891
+scrdef scr_seq_0141_1892
+scrdef scr_seq_0141_1893
+scrdef scr_seq_0141_1894
+scrdef scr_seq_0141_1895
+scrdef scr_seq_0141_1896
+scrdef scr_seq_0141_1897
+scrdef scr_seq_0141_1898
+scrdef scr_seq_0141_1899
+scrdef scr_seq_0141_1900
+scrdef scr_seq_0141_1901
+scrdef scr_seq_0141_1902
+scrdef scr_seq_0141_1903
+scrdef scr_seq_0141_1904
+scrdef scr_seq_0141_1905
+scrdef scr_seq_0141_1906
+scrdef scr_seq_0141_1907
+scrdef scr_seq_0141_1908
+scrdef scr_seq_0141_1909
+scrdef scr_seq_0141_1910
+scrdef scr_seq_0141_1911
+scrdef scr_seq_0141_1912
+scrdef scr_seq_0141_1913
+scrdef scr_seq_0141_1914
+scrdef scr_seq_0141_1915
+scrdef scr_seq_0141_1916
+scrdef scr_seq_0141_1917
+scrdef scr_seq_0141_1918
+scrdef scr_seq_0141_1919
+scrdef scr_seq_0141_1920
+scrdef scr_seq_0141_1921
+scrdef scr_seq_0141_1922
+scrdef scr_seq_0141_1923
+scrdef scr_seq_0141_1924
+scrdef scr_seq_0141_1925
+scrdef scr_seq_0141_1926
+scrdef scr_seq_0141_1927
+scrdef scr_seq_0141_1928
+scrdef scr_seq_0141_1929
+scrdef scr_seq_0141_1930
+scrdef scr_seq_0141_1931
+scrdef scr_seq_0141_1932
+scrdef scr_seq_0141_1933
+scrdef scr_seq_0141_1934
+scrdef scr_seq_0141_1935
+scrdef scr_seq_0141_1936
+scrdef scr_seq_0141_1937
+scrdef scr_seq_0141_1938
+scrdef scr_seq_0141_1939
+scrdef scr_seq_0141_1940
+scrdef scr_seq_0141_1941
+scrdef scr_seq_0141_1942
+scrdef scr_seq_0141_1943
+scrdef scr_seq_0141_1944
+scrdef scr_seq_0141_1945
+scrdef scr_seq_0141_1946
+scrdef scr_seq_0141_1947
+scrdef scr_seq_0141_1948
+scrdef scr_seq_0141_1949
+scrdef scr_seq_0141_1950
+scrdef scr_seq_0141_1951
+scrdef scr_seq_0141_1952
+scrdef scr_seq_0141_1953
+scrdef scr_seq_0141_1954
+scrdef scr_seq_0141_1955
+scrdef scr_seq_0141_1956
+scrdef scr_seq_0141_1957
+scrdef scr_seq_0141_1958
+scrdef scr_seq_0141_1959
+scrdef scr_seq_0141_1960
+scrdef scr_seq_0141_1961
+scrdef scr_seq_0141_1962
+scrdef scr_seq_0141_1963
+scrdef scr_seq_0141_1964
+scrdef scr_seq_0141_1965
+scrdef scr_seq_0141_1966
+scrdef scr_seq_0141_1967
+scrdef scr_seq_0141_1968
+scrdef scr_seq_0141_1969
+scrdef scr_seq_0141_1970
+scrdef scr_seq_0141_1971
+scrdef scr_seq_0141_1972
+scrdef scr_seq_0141_1973
+scrdef scr_seq_0141_1974
+scrdef scr_seq_0141_1975
+scrdef scr_seq_0141_1976
+scrdef scr_seq_0141_1977
+scrdef scr_seq_0141_1978
+scrdef scr_seq_0141_1979
+scrdef scr_seq_0141_1980
+scrdef scr_seq_0141_1981
+scrdef scr_seq_0141_1982
+scrdef scr_seq_0141_1983
+scrdef scr_seq_0141_1984
+scrdef scr_seq_0141_1985
+scrdef scr_seq_0141_1986
+scrdef scr_seq_0141_1987
+scrdef scr_seq_0141_1988
+scrdef scr_seq_0141_1989
+scrdef scr_seq_0141_1990
+scrdef scr_seq_0141_1991
+scrdef scr_seq_0141_1992
+scrdef scr_seq_0141_1993
+scrdef scr_seq_0141_1994
+scrdef scr_seq_0141_1995
+scrdef scr_seq_0141_1996
+scrdef scr_seq_0141_1997
+scrdef scr_seq_0141_1998
+scrdef scr_seq_0141_1999
+scrdef scr_seq_0141_2000
+scrdef scr_seq_0141_2001
+scrdef scr_seq_0141_2002
+scrdef scr_seq_0141_2003
+scrdef scr_seq_0141_2004
+scrdef scr_seq_0141_2005
+scrdef scr_seq_0141_2006
+scrdef scr_seq_0141_2007
+scrdef scr_seq_0141_2008
+scrdef scr_seq_0141_2009
+scrdef scr_seq_0141_2010
+scrdef scr_seq_0141_2011
+scrdef scr_seq_0141_2012
+scrdef scr_seq_0141_2013
+scrdef scr_seq_0141_2014
+scrdef scr_seq_0141_2015
+scrdef scr_seq_0141_2016
+scrdef scr_seq_0141_2017
+scrdef scr_seq_0141_2018
+scrdef scr_seq_0141_2019
+scrdef scr_seq_0141_2020
+scrdef scr_seq_0141_2021
+scrdef scr_seq_0141_2022
+scrdef scr_seq_0141_2023
+scrdef scr_seq_0141_2024
+scrdef scr_seq_0141_2025
+scrdef scr_seq_0141_2026
+scrdef scr_seq_0141_2027
+scrdef scr_seq_0141_2028
+scrdef scr_seq_0141_2029
+scrdef scr_seq_0141_2030
+scrdef scr_seq_0141_2031
+scrdef scr_seq_0141_2032
+scrdef scr_seq_0141_2033
+scrdef scr_seq_0141_2034
+scrdef scr_seq_0141_2035
+scrdef scr_seq_0141_2036
+scrdef scr_seq_0141_2037
+scrdef scr_seq_0141_2038
+scrdef scr_seq_0141_2039
+scrdef scr_seq_0141_2040
+scrdef scr_seq_0141_2041
+scrdef scr_seq_0141_2042
+scrdef scr_seq_0141_2043
+scrdef scr_seq_0141_2044
+scrdef scr_seq_0141_2045
+scrdef scr_seq_0141_2046
+scrdef scr_seq_0141_2047
+scrdef scr_seq_0141_2048
+scrdef scr_seq_0141_2049
+scrdef scr_seq_0141_2050
+scrdef scr_seq_0141_2051
+scrdef scr_seq_0141_2052
+scrdef scr_seq_0141_2053
+scrdef scr_seq_0141_2054
+scrdef scr_seq_0141_2055
+scrdef scr_seq_0141_2056
+scrdef scr_seq_0141_2057
+scrdef scr_seq_0141_2058
+scrdef scr_seq_0141_2059
+scrdef scr_seq_0141_2060
+scrdef scr_seq_0141_2061
+scrdef scr_seq_0141_2062
+scrdef scr_seq_0141_2063
+scrdef scr_seq_0141_2064
+scrdef scr_seq_0141_2065
+scrdef scr_seq_0141_2066
+scrdef scr_seq_0141_2067
+scrdef scr_seq_0141_2068
+scrdef scr_seq_0141_2069
+scrdef scr_seq_0141_2070
+scrdef scr_seq_0141_2071
+scrdef scr_seq_0141_2072
+scrdef scr_seq_0141_2073
+scrdef scr_seq_0141_2074
+scrdef scr_seq_0141_2075
+scrdef scr_seq_0141_2076
+scrdef scr_seq_0141_2077
+scrdef scr_seq_0141_2078
+scrdef scr_seq_0141_2079
+scrdef scr_seq_0141_2080
+scrdef scr_seq_0141_2081
+scrdef scr_seq_0141_2082
+scrdef scr_seq_0141_2083
+scrdef scr_seq_0141_2084
+scrdef scr_seq_0141_2085
+scrdef scr_seq_0141_2086
+scrdef scr_seq_0141_2087
+scrdef scr_seq_0141_2088
+scrdef scr_seq_0141_2089
+scrdef scr_seq_0141_2090
+scrdef scr_seq_0141_2091
+scrdef scr_seq_0141_2092
+scrdef scr_seq_0141_2093
+scrdef scr_seq_0141_2094
+scrdef scr_seq_0141_2095
+scrdef scr_seq_0141_2096
+scrdef scr_seq_0141_2097
+scrdef scr_seq_0141_2098
+scrdef scr_seq_0141_2099
+scrdef scr_seq_0141_2100
+scrdef scr_seq_0141_2101
+scrdef scr_seq_0141_2102
+scrdef scr_seq_0141_2103
+scrdef scr_seq_0141_2104
+scrdef scr_seq_0141_2105
+scrdef scr_seq_0141_2106
+scrdef scr_seq_0141_2107
+scrdef scr_seq_0141_2108
+scrdef scr_seq_0141_2109
+scrdef scr_seq_0141_2110
+scrdef scr_seq_0141_2111
+scrdef scr_seq_0141_2112
+scrdef scr_seq_0141_2113
+scrdef scr_seq_0141_2114
+scrdef scr_seq_0141_2115
+scrdef scr_seq_0141_2116
+scrdef scr_seq_0141_2117
+scrdef scr_seq_0141_2118
+scrdef scr_seq_0141_2119
+scrdef scr_seq_0141_2120
+scrdef scr_seq_0141_2121
+scrdef scr_seq_0141_2122
+scrdef scr_seq_0141_2123
+scrdef scr_seq_0141_2124
+scrdef scr_seq_0141_2125
+scrdef scr_seq_0141_2126
+scrdef scr_seq_0141_2127
+scrdef scr_seq_0141_2128
+scrdef scr_seq_0141_2129
+scrdef scr_seq_0141_2130
+scrdef scr_seq_0141_2131
+scrdef scr_seq_0141_2132
+scrdef scr_seq_0141_2133
+scrdef scr_seq_0141_2134
+scrdef scr_seq_0141_2135
+scrdef scr_seq_0141_2136
+scrdef scr_seq_0141_2137
+scrdef scr_seq_0141_2138
+scrdef scr_seq_0141_2139
+scrdef scr_seq_0141_2140
+scrdef scr_seq_0141_2141
+scrdef scr_seq_0141_2142
+scrdef scr_seq_0141_2143
+scrdef scr_seq_0141_2144
+scrdef scr_seq_0141_2145
+scrdef scr_seq_0141_2146
+scrdef scr_seq_0141_2147
+scrdef scr_seq_0141_2148
+scrdef scr_seq_0141_2149
+scrdef scr_seq_0141_2150
+scrdef scr_seq_0141_2151
+scrdef scr_seq_0141_2152
+scrdef scr_seq_0141_2153
+scrdef scr_seq_0141_2154
+scrdef scr_seq_0141_2155
+scrdef scr_seq_0141_2156
+scrdef scr_seq_0141_2157
+scrdef scr_seq_0141_2158
+scrdef scr_seq_0141_2159
+scrdef scr_seq_0141_2160
+scrdef scr_seq_0141_2161
+scrdef scr_seq_0141_2162
+scrdef scr_seq_0141_2163
+scrdef scr_seq_0141_2164
+scrdef scr_seq_0141_2165
+scrdef scr_seq_0141_2166
+scrdef scr_seq_0141_2167
+scrdef scr_seq_0141_2168
+scrdef scr_seq_0141_2169
+scrdef scr_seq_0141_2170
+scrdef scr_seq_0141_2171
+scrdef scr_seq_0141_2172
+scrdef scr_seq_0141_2173
+scrdef scr_seq_0141_2174
+scrdef scr_seq_0141_2175
+scrdef scr_seq_0141_2176
+scrdef scr_seq_0141_2177
+scrdef scr_seq_0141_2178
+scrdef scr_seq_0141_2179
+scrdef scr_seq_0141_2180
+scrdef scr_seq_0141_2181
+scrdef scr_seq_0141_2182
+scrdef scr_seq_0141_2183
+scrdef scr_seq_0141_2184
+scrdef scr_seq_0141_2185
+scrdef scr_seq_0141_2186
+scrdef scr_seq_0141_2187
+scrdef scr_seq_0141_2188
+scrdef scr_seq_0141_2189
+scrdef scr_seq_0141_2190
+scrdef scr_seq_0141_2191
+scrdef scr_seq_0141_2192
+scrdef scr_seq_0141_2193
+scrdef scr_seq_0141_2194
+scrdef scr_seq_0141_2195
+scrdef scr_seq_0141_2196
+scrdef scr_seq_0141_2197
+scrdef scr_seq_0141_2198
+scrdef scr_seq_0141_2199
+scrdef scr_seq_0141_2200
+scrdef scr_seq_0141_2201
+scrdef scr_seq_0141_2202
+scrdef scr_seq_0141_2203
+scrdef scr_seq_0141_2204
+scrdef scr_seq_0141_2205
+scrdef scr_seq_0141_2206
+scrdef scr_seq_0141_2207
+scrdef scr_seq_0141_2208
+scrdef scr_seq_0141_2209
+scrdef scr_seq_0141_2210
+scrdef scr_seq_0141_2211
+scrdef scr_seq_0141_2212
+scrdef scr_seq_0141_2213
+scrdef scr_seq_0141_2214
+scrdef scr_seq_0141_2215
+scrdef scr_seq_0141_2216
+scrdef scr_seq_0141_2217
+scrdef scr_seq_0141_2218
+scrdef scr_seq_0141_2219
+scrdef scr_seq_0141_2220
+scrdef scr_seq_0141_2221
+scrdef scr_seq_0141_2222
+scrdef scr_seq_0141_2223
+scrdef scr_seq_0141_2224
+scrdef scr_seq_0141_2225
+scrdef scr_seq_0141_2226
+scrdef scr_seq_0141_2227
+scrdef scr_seq_0141_2228
+scrdef scr_seq_0141_2229
+scrdef scr_seq_0141_2230
+scrdef scr_seq_0141_2231
+scrdef scr_seq_0141_2232
+scrdef scr_seq_0141_2233
+scrdef scr_seq_0141_2234
+scrdef scr_seq_0141_2235
+scrdef scr_seq_0141_2236
+scrdef scr_seq_0141_2237
+scrdef scr_seq_0141_2238
+scrdef scr_seq_0141_2239
+scrdef scr_seq_0141_2240
+scrdef scr_seq_0141_2241
+scrdef scr_seq_0141_2242
+scrdef scr_seq_0141_2243
+scrdef scr_seq_0141_2244
+scrdef scr_seq_0141_2245
+scrdef scr_seq_0141_2246
+scrdef scr_seq_0141_2247
+scrdef scr_seq_0141_2248
+scrdef scr_seq_0141_2249
+scrdef scr_seq_0141_2250
+scrdef scr_seq_0141_2251
+scrdef scr_seq_0141_2252
+scrdef scr_seq_0141_2253
+scrdef scr_seq_0141_2254
+scrdef scr_seq_0141_2255
+scrdef scr_seq_0141_2256
+scrdef scr_seq_0141_2257
+scrdef scr_seq_0141_2258
+scrdef scr_seq_0141_2259
+scrdef scr_seq_0141_2260
+scrdef scr_seq_0141_2261
+scrdef scr_seq_0141_2262
+scrdef scr_seq_0141_2263
+scrdef scr_seq_0141_2264
+scrdef scr_seq_0141_2265
+scrdef scr_seq_0141_2266
+scrdef scr_seq_0141_2267
+scrdef scr_seq_0141_2268
+scrdef scr_seq_0141_2269
+scrdef scr_seq_0141_2270
+scrdef scr_seq_0141_2271
+scrdef scr_seq_0141_2272
+scrdef scr_seq_0141_2273
+scrdef scr_seq_0141_2274
+scrdef scr_seq_0141_2275
+scrdef scr_seq_0141_2276
+scrdef scr_seq_0141_2277
+scrdef scr_seq_0141_2278
+scrdef scr_seq_0141_2279
+scrdef scr_seq_0141_2280
+scrdef scr_seq_0141_2281
+scrdef scr_seq_0141_2282
+scrdef scr_seq_0141_2283
+scrdef scr_seq_0141_2284
+scrdef scr_seq_0141_2285
+scrdef scr_seq_0141_2286
+scrdef scr_seq_0141_2287
+scrdef scr_seq_0141_2288
+scrdef scr_seq_0141_2289
+scrdef scr_seq_0141_2290
+scrdef scr_seq_0141_2291
+scrdef scr_seq_0141_2292
+scrdef scr_seq_0141_2293
+scrdef scr_seq_0141_2294
+scrdef scr_seq_0141_2295
+scrdef scr_seq_0141_2296
+scrdef scr_seq_0141_2297
+scrdef scr_seq_0141_2298
+scrdef scr_seq_0141_2299
+scrdef scr_seq_0141_2300
+scrdef scr_seq_0141_2301
+scrdef scr_seq_0141_2302
+scrdef scr_seq_0141_2303
+scrdef scr_seq_0141_2304
+scrdef scr_seq_0141_2305
+scrdef scr_seq_0141_2306
+scrdef scr_seq_0141_2307
+scrdef scr_seq_0141_2308
+scrdef scr_seq_0141_2309
+scrdef scr_seq_0141_2310
+scrdef scr_seq_0141_2311
+scrdef scr_seq_0141_2312
+scrdef scr_seq_0141_2313
+scrdef scr_seq_0141_2314
+scrdef scr_seq_0141_2315
+scrdef scr_seq_0141_2316
+scrdef scr_seq_0141_2317
+scrdef scr_seq_0141_2318
+scrdef scr_seq_0141_2319
+scrdef scr_seq_0141_2320
+scrdef scr_seq_0141_2321
+scrdef scr_seq_0141_2322
+scrdef scr_seq_0141_2323
+scrdef scr_seq_0141_2324
+scrdef scr_seq_0141_2325
+scrdef scr_seq_0141_2326
+scrdef scr_seq_0141_2327
+scrdef scr_seq_0141_2328
+scrdef scr_seq_0141_2329
+scrdef scr_seq_0141_2330
+scrdef scr_seq_0141_2331
+scrdef scr_seq_0141_2332
+scrdef scr_seq_0141_2333
+scrdef scr_seq_0141_2334
+scrdef scr_seq_0141_2335
+scrdef scr_seq_0141_2336
+scrdef scr_seq_0141_2337
+scrdef scr_seq_0141_2338
+scrdef scr_seq_0141_2339
+scrdef scr_seq_0141_2340
+scrdef scr_seq_0141_2341
+scrdef scr_seq_0141_2342
+scrdef scr_seq_0141_2343
+scrdef scr_seq_0141_2344
+scrdef scr_seq_0141_2345
+scrdef scr_seq_0141_2346
+scrdef scr_seq_0141_2347
+scrdef scr_seq_0141_2348
+scrdef scr_seq_0141_2349
+scrdef scr_seq_0141_2350
+scrdef scr_seq_0141_2351
+scrdef scr_seq_0141_2352
+scrdef scr_seq_0141_2353
+scrdef scr_seq_0141_2354
+scrdef scr_seq_0141_2355
+scrdef scr_seq_0141_2356
+scrdef scr_seq_0141_2357
+scrdef scr_seq_0141_2358
+scrdef scr_seq_0141_2359
+scrdef scr_seq_0141_2360
+scrdef scr_seq_0141_2361
+scrdef scr_seq_0141_2362
+scrdef scr_seq_0141_2363
+scrdef scr_seq_0141_2364
+scrdef scr_seq_0141_2365
+scrdef scr_seq_0141_2366
+scrdef scr_seq_0141_2367
+scrdef scr_seq_0141_2368
+scrdef scr_seq_0141_2369
+scrdef scr_seq_0141_2370
+scrdef scr_seq_0141_2371
+scrdef scr_seq_0141_2372
+scrdef scr_seq_0141_2373
+scrdef scr_seq_0141_2374
+scrdef scr_seq_0141_2375
+scrdef scr_seq_0141_2376
+scrdef scr_seq_0141_2377
+scrdef scr_seq_0141_2378
+scrdef scr_seq_0141_2379
+scrdef scr_seq_0141_2380
+scrdef scr_seq_0141_2381
+scrdef scr_seq_0141_2382
+scrdef scr_seq_0141_2383
+scrdef scr_seq_0141_2384
+scrdef scr_seq_0141_2385
+scrdef scr_seq_0141_2386
+scrdef scr_seq_0141_2387
+scrdef scr_seq_0141_2388
+scrdef scr_seq_0141_2389
+scrdef scr_seq_0141_2390
+scrdef scr_seq_0141_2391
+scrdef scr_seq_0141_2392
+scrdef scr_seq_0141_2393
+scrdef scr_seq_0141_2394
+scrdef scr_seq_0141_2395
+scrdef scr_seq_0141_2396
+scrdef scr_seq_0141_2397
+scrdef scr_seq_0141_2398
+scrdef scr_seq_0141_2399
+scrdef scr_seq_0141_2400
+scrdef scr_seq_0141_2401
+scrdef scr_seq_0141_2402
+scrdef scr_seq_0141_2403
+scrdef scr_seq_0141_2404
+scrdef scr_seq_0141_2405
+scrdef scr_seq_0141_2406
+scrdef scr_seq_0141_2407
+scrdef scr_seq_0141_2408
+scrdef scr_seq_0141_2409
+scrdef scr_seq_0141_2410
+scrdef scr_seq_0141_2411
+scrdef scr_seq_0141_2412
+scrdef scr_seq_0141_2413
+scrdef scr_seq_0141_2414
+scrdef scr_seq_0141_2415
+scrdef scr_seq_0141_2416
+scrdef scr_seq_0141_2417
+scrdef scr_seq_0141_2418
+scrdef scr_seq_0141_2419
+scrdef scr_seq_0141_2420
+scrdef scr_seq_0141_2421
+scrdef scr_seq_0141_2422
+scrdef scr_seq_0141_2423
+scrdef scr_seq_0141_2424
+scrdef scr_seq_0141_2425
+scrdef scr_seq_0141_2426
+scrdef scr_seq_0141_2427
+scrdef scr_seq_0141_2428
+scrdef scr_seq_0141_2429
+scrdef scr_seq_0141_2430
+scrdef scr_seq_0141_2431
+scrdef scr_seq_0141_2432
+scrdef scr_seq_0141_2433
+scrdef scr_seq_0141_2434
+scrdef scr_seq_0141_2435
+scrdef scr_seq_0141_2436
+scrdef scr_seq_0141_2437
+scrdef scr_seq_0141_2438
+scrdef scr_seq_0141_2439
+scrdef scr_seq_0141_2440
+scrdef scr_seq_0141_2441
+scrdef scr_seq_0141_2442
+scrdef scr_seq_0141_2443
+scrdef scr_seq_0141_2444
+scrdef scr_seq_0141_2445
+scrdef scr_seq_0141_2446
+scrdef scr_seq_0141_2447
+scrdef scr_seq_0141_2448
+scrdef scr_seq_0141_2449
+scrdef scr_seq_0141_2450
+scrdef scr_seq_0141_2451
+scrdef scr_seq_0141_2452
+scrdef scr_seq_0141_2453
+scrdef scr_seq_0141_2454
+scrdef scr_seq_0141_2455
+scrdef scr_seq_0141_2456
+scrdef scr_seq_0141_2457
+scrdef scr_seq_0141_2458
+scrdef scr_seq_0141_2459
+scrdef scr_seq_0141_2460
+scrdef scr_seq_0141_2461
+scrdef scr_seq_0141_2462
+scrdef scr_seq_0141_2463
+scrdef scr_seq_0141_2464
+scrdef scr_seq_0141_2465
+scrdef scr_seq_0141_2466
+scrdef scr_seq_0141_2467
+scrdef scr_seq_0141_2468
+scrdef scr_seq_0141_2469
+scrdef scr_seq_0141_2470
+scrdef scr_seq_0141_2471
+scrdef scr_seq_0141_2472
+scrdef scr_seq_0141_2473
+scrdef scr_seq_0141_2474
+scrdef scr_seq_0141_2475
+scrdef scr_seq_0141_2476
+scrdef scr_seq_0141_2477
+scrdef scr_seq_0141_2478
+scrdef scr_seq_0141_2479
+scrdef scr_seq_0141_2480
+scrdef scr_seq_0141_2481
+scrdef scr_seq_0141_2482
+scrdef scr_seq_0141_2483
+scrdef scr_seq_0141_2484
+scrdef scr_seq_0141_2485
+scrdef scr_seq_0141_2486
+scrdef scr_seq_0141_2487
+scrdef scr_seq_0141_2488
+scrdef scr_seq_0141_2489
+scrdef scr_seq_0141_2490
+scrdef scr_seq_0141_2491
+scrdef scr_seq_0141_2492
+scrdef scr_seq_0141_2493
+scrdef scr_seq_0141_2494
+scrdef scr_seq_0141_2495
+scrdef scr_seq_0141_2496
+scrdef scr_seq_0141_2497
+scrdef scr_seq_0141_2498
+scrdef scr_seq_0141_2499
+scrdef scr_seq_0141_2500
+scrdef scr_seq_0141_2501
+scrdef scr_seq_0141_2502
+scrdef scr_seq_0141_2503
+scrdef scr_seq_0141_2504
+scrdef scr_seq_0141_2505
+scrdef scr_seq_0141_2506
+scrdef scr_seq_0141_2507
+scrdef scr_seq_0141_2508
+scrdef scr_seq_0141_2509
+scrdef scr_seq_0141_2510
+scrdef scr_seq_0141_2511
+scrdef scr_seq_0141_2512
+scrdef scr_seq_0141_2513
+scrdef scr_seq_0141_2514
+scrdef scr_seq_0141_2515
+scrdef scr_seq_0141_2516
+scrdef scr_seq_0141_2517
+scrdef scr_seq_0141_2518
+scrdef scr_seq_0141_2519
+scrdef scr_seq_0141_2520
+scrdef scr_seq_0141_2521
+scrdef scr_seq_0141_2522
+scrdef scr_seq_0141_2523
+scrdef scr_seq_0141_2524
+scrdef scr_seq_0141_2525
+scrdef scr_seq_0141_2526
+scrdef scr_seq_0141_2527
+scrdef scr_seq_0141_2528
+scrdef scr_seq_0141_2529
+scrdef scr_seq_0141_2530
+scrdef scr_seq_0141_2531
+scrdef scr_seq_0141_2532
+scrdef scr_seq_0141_2533
+scrdef scr_seq_0141_2534
+scrdef scr_seq_0141_2535
+scrdef scr_seq_0141_2536
+scrdef scr_seq_0141_2537
+scrdef scr_seq_0141_2538
+scrdef scr_seq_0141_2539
+scrdef scr_seq_0141_2540
+scrdef scr_seq_0141_2541
+scrdef scr_seq_0141_2542
+scrdef scr_seq_0141_2543
+scrdef scr_seq_0141_2544
+scrdef scr_seq_0141_2545
+scrdef scr_seq_0141_2546
+scrdef scr_seq_0141_2547
+scrdef scr_seq_0141_2548
+scrdef scr_seq_0141_2549
+scrdef scr_seq_0141_2550
+scrdef scr_seq_0141_2551
+scrdef scr_seq_0141_2552
+scrdef scr_seq_0141_2553
+scrdef scr_seq_0141_2554
+scrdef scr_seq_0141_2555
+scrdef scr_seq_0141_2556
+scrdef scr_seq_0141_2557
+scrdef scr_seq_0141_2558
+scrdef scr_seq_0141_2559
+scrdef scr_seq_0141_2560
+scrdef scr_seq_0141_2561
+scrdef scr_seq_0141_2562
+scrdef scr_seq_0141_2563
+scrdef scr_seq_0141_2564
+scrdef scr_seq_0141_2565
+scrdef scr_seq_0141_2566
+scrdef scr_seq_0141_2567
+scrdef scr_seq_0141_2568
+scrdef scr_seq_0141_2569
+scrdef scr_seq_0141_2570
+scrdef scr_seq_0141_2571
+scrdef scr_seq_0141_2572
+scrdef scr_seq_0141_2573
+scrdef scr_seq_0141_2574
+scrdef scr_seq_0141_2575
+scrdef scr_seq_0141_2576
+scrdef scr_seq_0141_2577
+scrdef scr_seq_0141_2578
+scrdef scr_seq_0141_2579
+scrdef scr_seq_0141_2580
+scrdef scr_seq_0141_2581
+scrdef scr_seq_0141_2582
+scrdef scr_seq_0141_2583
+scrdef scr_seq_0141_2584
+scrdef scr_seq_0141_2585
+scrdef scr_seq_0141_2586
+scrdef scr_seq_0141_2587
+scrdef scr_seq_0141_2588
+scrdef scr_seq_0141_2589
+scrdef scr_seq_0141_2590
+scrdef scr_seq_0141_2591
+scrdef scr_seq_0141_2592
+scrdef scr_seq_0141_2593
+scrdef scr_seq_0141_2594
+scrdef scr_seq_0141_2595
+scrdef scr_seq_0141_2596
+scrdef scr_seq_0141_2597
+scrdef scr_seq_0141_2598
+scrdef scr_seq_0141_2599
+scrdef scr_seq_0141_2600
+scrdef scr_seq_0141_2601
+scrdef scr_seq_0141_2602
+scrdef scr_seq_0141_2603
+scrdef scr_seq_0141_2604
+scrdef scr_seq_0141_2605
+scrdef scr_seq_0141_2606
+scrdef scr_seq_0141_2607
+scrdef scr_seq_0141_2608
+scrdef scr_seq_0141_2609
+scrdef scr_seq_0141_2610
+scrdef scr_seq_0141_2611
+scrdef scr_seq_0141_2612
+scrdef scr_seq_0141_2613
+scrdef scr_seq_0141_2614
+scrdef scr_seq_0141_2615
+scrdef scr_seq_0141_2616
+scrdef scr_seq_0141_2617
+scrdef scr_seq_0141_2618
+scrdef scr_seq_0141_2619
+scrdef scr_seq_0141_2620
+scrdef scr_seq_0141_2621
+scrdef scr_seq_0141_2622
+scrdef scr_seq_0141_2623
+scrdef scr_seq_0141_2624
+scrdef scr_seq_0141_2625
+scrdef scr_seq_0141_2626
+scrdef scr_seq_0141_2627
+scrdef scr_seq_0141_2628
+scrdef scr_seq_0141_2629
+scrdef scr_seq_0141_2630
+scrdef scr_seq_0141_2631
+scrdef scr_seq_0141_2632
+scrdef scr_seq_0141_2633
+scrdef scr_seq_0141_2634
+scrdef scr_seq_0141_2635
+scrdef scr_seq_0141_2636
+scrdef scr_seq_0141_2637
+scrdef scr_seq_0141_2638
+scrdef scr_seq_0141_2639
+scrdef scr_seq_0141_2640
+scrdef scr_seq_0141_2641
+scrdef scr_seq_0141_2642
+scrdef scr_seq_0141_2643
+scrdef scr_seq_0141_2644
+scrdef scr_seq_0141_2645
+scrdef scr_seq_0141_2646
+scrdef scr_seq_0141_2647
+scrdef scr_seq_0141_2648
+scrdef scr_seq_0141_2649
+scrdef scr_seq_0141_2650
+scrdef scr_seq_0141_2651
+scrdef scr_seq_0141_2652
+scrdef scr_seq_0141_2653
+scrdef scr_seq_0141_2654
+scrdef scr_seq_0141_2655
+scrdef scr_seq_0141_2656
+scrdef scr_seq_0141_2657
+scrdef scr_seq_0141_2658
+scrdef scr_seq_0141_2659
+scrdef scr_seq_0141_2660
+scrdef scr_seq_0141_2661
+scrdef scr_seq_0141_2662
+scrdef scr_seq_0141_2663
+scrdef scr_seq_0141_2664
+scrdef scr_seq_0141_2665
+scrdef scr_seq_0141_2666
+scrdef scr_seq_0141_2667
+scrdef scr_seq_0141_2668
+scrdef scr_seq_0141_2669
+scrdef scr_seq_0141_2670
+scrdef scr_seq_0141_2671
+scrdef scr_seq_0141_2672
+scrdef scr_seq_0141_2673
+scrdef scr_seq_0141_2674
+scrdef scr_seq_0141_2675
+scrdef scr_seq_0141_2676
+scrdef scr_seq_0141_2677
+scrdef scr_seq_0141_2678
+scrdef scr_seq_0141_2679
+scrdef scr_seq_0141_2680
+scrdef scr_seq_0141_2681
+scrdef scr_seq_0141_2682
+scrdef scr_seq_0141_2683
+scrdef scr_seq_0141_2684
+scrdef scr_seq_0141_2685
+scrdef_end
+
+scr_seq_0141_000:
+	setvar VAR_SPECIAL_x8008, 0
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_001:
+	setvar VAR_SPECIAL_x8008, 1
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_002:
+	setvar VAR_SPECIAL_x8008, 2
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_003:
+	setvar VAR_SPECIAL_x8008, 3
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_004:
+	setvar VAR_SPECIAL_x8008, 4
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_005:
+	setvar VAR_SPECIAL_x8008, 5
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_006:
+	setvar VAR_SPECIAL_x8008, 6
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_007:
+	setvar VAR_SPECIAL_x8008, 7
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_008:
+	setvar VAR_SPECIAL_x8008, 8
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_009:
+	setvar VAR_SPECIAL_x8008, 9
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_010:
+	setvar VAR_SPECIAL_x8008, 10
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_011:
+	setvar VAR_SPECIAL_x8008, 11
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_012:
+	setvar VAR_SPECIAL_x8008, 12
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_013:
+	setvar VAR_SPECIAL_x8008, 13
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_014:
+	setvar VAR_SPECIAL_x8008, 14
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_015:
+	setvar VAR_SPECIAL_x8008, 15
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_016:
+	setvar VAR_SPECIAL_x8008, 16
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_017:
+	setvar VAR_SPECIAL_x8008, 17
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_018:
+	setvar VAR_SPECIAL_x8008, 18
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_019:
+	setvar VAR_SPECIAL_x8008, 19
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_020:
+	setvar VAR_SPECIAL_x8008, 20
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_021:
+	setvar VAR_SPECIAL_x8008, 21
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_022:
+	setvar VAR_SPECIAL_x8008, 22
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_023:
+	setvar VAR_SPECIAL_x8008, 23
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_024:
+	setvar VAR_SPECIAL_x8008, 24
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_025:
+	setvar VAR_SPECIAL_x8008, 25
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_026:
+	setvar VAR_SPECIAL_x8008, 26
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_027:
+	setvar VAR_SPECIAL_x8008, 27
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_028:
+	setvar VAR_SPECIAL_x8008, 28
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_029:
+	setvar VAR_SPECIAL_x8008, 29
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_030:
+	setvar VAR_SPECIAL_x8008, 30
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_031:
+	setvar VAR_SPECIAL_x8008, 31
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_032:
+	setvar VAR_SPECIAL_x8008, 32
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_033:
+	setvar VAR_SPECIAL_x8008, 33
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_034:
+	setvar VAR_SPECIAL_x8008, 34
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_035:
+	setvar VAR_SPECIAL_x8008, 35
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_036:
+	setvar VAR_SPECIAL_x8008, 36
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_037:
+	setvar VAR_SPECIAL_x8008, 37
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_038:
+	setvar VAR_SPECIAL_x8008, 38
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_039:
+	setvar VAR_SPECIAL_x8008, 39
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_040:
+	setvar VAR_SPECIAL_x8008, 40
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_041:
+	setvar VAR_SPECIAL_x8008, 41
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_042:
+	setvar VAR_SPECIAL_x8008, 42
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_043:
+	setvar VAR_SPECIAL_x8008, 43
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_044:
+	setvar VAR_SPECIAL_x8008, 44
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_045:
+	setvar VAR_SPECIAL_x8008, 45
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_046:
+	setvar VAR_SPECIAL_x8008, 46
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_047:
+	setvar VAR_SPECIAL_x8008, 47
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_048:
+	setvar VAR_SPECIAL_x8008, 48
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_049:
+	setvar VAR_SPECIAL_x8008, 49
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_050:
+	setvar VAR_SPECIAL_x8008, 50
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_051:
+	setvar VAR_SPECIAL_x8008, 51
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_052:
+	setvar VAR_SPECIAL_x8008, 52
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_053:
+	setvar VAR_SPECIAL_x8008, 53
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_054:
+	setvar VAR_SPECIAL_x8008, 54
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_055:
+	setvar VAR_SPECIAL_x8008, 55
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_056:
+	setvar VAR_SPECIAL_x8008, 56
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_057:
+	setvar VAR_SPECIAL_x8008, 57
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_058:
+	setvar VAR_SPECIAL_x8008, 58
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_059:
+	setvar VAR_SPECIAL_x8008, 59
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_060:
+	setvar VAR_SPECIAL_x8008, 60
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_061:
+	setvar VAR_SPECIAL_x8008, 61
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_062:
+	setvar VAR_SPECIAL_x8008, 62
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_063:
+	setvar VAR_SPECIAL_x8008, 63
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_064:
+	setvar VAR_SPECIAL_x8008, 64
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_065:
+	setvar VAR_SPECIAL_x8008, 65
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_066:
+	setvar VAR_SPECIAL_x8008, 66
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_067:
+	setvar VAR_SPECIAL_x8008, 67
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_068:
+	setvar VAR_SPECIAL_x8008, 68
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_069:
+	setvar VAR_SPECIAL_x8008, 69
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_070:
+	setvar VAR_SPECIAL_x8008, 70
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_071:
+	setvar VAR_SPECIAL_x8008, 71
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_072:
+	setvar VAR_SPECIAL_x8008, 72
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_073:
+	setvar VAR_SPECIAL_x8008, 73
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_074:
+	setvar VAR_SPECIAL_x8008, 74
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_075:
+	setvar VAR_SPECIAL_x8008, 75
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_076:
+	setvar VAR_SPECIAL_x8008, 76
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_077:
+	setvar VAR_SPECIAL_x8008, 77
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_078:
+	setvar VAR_SPECIAL_x8008, 78
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_079:
+	setvar VAR_SPECIAL_x8008, 79
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_080:
+	setvar VAR_SPECIAL_x8008, 80
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_081:
+	setvar VAR_SPECIAL_x8008, 81
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_082:
+	setvar VAR_SPECIAL_x8008, 82
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_083:
+	setvar VAR_SPECIAL_x8008, 83
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_084:
+	setvar VAR_SPECIAL_x8008, 84
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_085:
+	setvar VAR_SPECIAL_x8008, 85
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_086:
+	setvar VAR_SPECIAL_x8008, 86
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_087:
+	setvar VAR_SPECIAL_x8008, 87
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_088:
+	setvar VAR_SPECIAL_x8008, 88
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_089:
+	setvar VAR_SPECIAL_x8008, 89
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_090:
+	setvar VAR_SPECIAL_x8008, 90
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_091:
+	setvar VAR_SPECIAL_x8008, 91
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_092:
+	setvar VAR_SPECIAL_x8008, 92
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_093:
+	setvar VAR_SPECIAL_x8008, 93
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_094:
+	setvar VAR_SPECIAL_x8008, 94
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_095:
+	setvar VAR_SPECIAL_x8008, 95
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_096:
+	setvar VAR_SPECIAL_x8008, 96
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_097:
+	setvar VAR_SPECIAL_x8008, 97
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_098:
+	setvar VAR_SPECIAL_x8008, 98
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_099:
+	setvar VAR_SPECIAL_x8008, 99
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_100:
+	setvar VAR_SPECIAL_x8008, 100
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_101:
+	setvar VAR_SPECIAL_x8008, 101
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_102:
+	setvar VAR_SPECIAL_x8008, 102
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_103:
+	setvar VAR_SPECIAL_x8008, 103
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_104:
+	setvar VAR_SPECIAL_x8008, 104
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_105:
+	setvar VAR_SPECIAL_x8008, 105
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_106:
+	setvar VAR_SPECIAL_x8008, 106
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_107:
+	setvar VAR_SPECIAL_x8008, 107
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_108:
+	setvar VAR_SPECIAL_x8008, 108
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_109:
+	setvar VAR_SPECIAL_x8008, 109
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_110:
+	setvar VAR_SPECIAL_x8008, 110
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_111:
+	setvar VAR_SPECIAL_x8008, 111
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_112:
+	setvar VAR_SPECIAL_x8008, 112
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_113:
+	setvar VAR_SPECIAL_x8008, 113
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_114:
+	setvar VAR_SPECIAL_x8008, 114
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_115:
+	setvar VAR_SPECIAL_x8008, 115
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_116:
+	setvar VAR_SPECIAL_x8008, 116
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_117:
+	setvar VAR_SPECIAL_x8008, 117
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_118:
+	setvar VAR_SPECIAL_x8008, 118
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_119:
+	setvar VAR_SPECIAL_x8008, 119
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_120:
+	setvar VAR_SPECIAL_x8008, 120
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_121:
+	setvar VAR_SPECIAL_x8008, 121
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_122:
+	setvar VAR_SPECIAL_x8008, 122
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_123:
+	setvar VAR_SPECIAL_x8008, 123
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_124:
+	setvar VAR_SPECIAL_x8008, 124
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_125:
+	setvar VAR_SPECIAL_x8008, 125
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_126:
+	setvar VAR_SPECIAL_x8008, 126
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_127:
+	setvar VAR_SPECIAL_x8008, 127
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_128:
+	setvar VAR_SPECIAL_x8008, 128
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_129:
+	setvar VAR_SPECIAL_x8008, 129
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_130:
+	setvar VAR_SPECIAL_x8008, 130
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_131:
+	setvar VAR_SPECIAL_x8008, 131
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_132:
+	setvar VAR_SPECIAL_x8008, 132
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_133:
+	setvar VAR_SPECIAL_x8008, 133
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_134:
+	setvar VAR_SPECIAL_x8008, 134
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_135:
+	setvar VAR_SPECIAL_x8008, 135
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_136:
+	setvar VAR_SPECIAL_x8008, 136
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_137:
+	setvar VAR_SPECIAL_x8008, 137
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_138:
+	setvar VAR_SPECIAL_x8008, 138
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_139:
+	setvar VAR_SPECIAL_x8008, 139
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_140:
+	setvar VAR_SPECIAL_x8008, 140
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_141:
+	setvar VAR_SPECIAL_x8008, 141
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_142:
+	setvar VAR_SPECIAL_x8008, 142
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_143:
+	setvar VAR_SPECIAL_x8008, 143
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_144:
+	setvar VAR_SPECIAL_x8008, 144
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_145:
+	setvar VAR_SPECIAL_x8008, 145
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_146:
+	setvar VAR_SPECIAL_x8008, 146
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_147:
+	setvar VAR_SPECIAL_x8008, 147
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_148:
+	setvar VAR_SPECIAL_x8008, 148
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_149:
+	setvar VAR_SPECIAL_x8008, 149
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_150:
+	setvar VAR_SPECIAL_x8008, 150
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_151:
+	setvar VAR_SPECIAL_x8008, 151
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_152:
+	setvar VAR_SPECIAL_x8008, 152
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_153:
+	setvar VAR_SPECIAL_x8008, 153
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_154:
+	setvar VAR_SPECIAL_x8008, 154
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_155:
+	setvar VAR_SPECIAL_x8008, 155
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_156:
+	setvar VAR_SPECIAL_x8008, 156
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_157:
+	setvar VAR_SPECIAL_x8008, 157
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_158:
+	setvar VAR_SPECIAL_x8008, 158
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_159:
+	setvar VAR_SPECIAL_x8008, 159
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_160:
+	setvar VAR_SPECIAL_x8008, 160
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_161:
+	setvar VAR_SPECIAL_x8008, 161
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_162:
+	setvar VAR_SPECIAL_x8008, 162
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_163:
+	setvar VAR_SPECIAL_x8008, 163
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_164:
+	setvar VAR_SPECIAL_x8008, 164
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_165:
+	setvar VAR_SPECIAL_x8008, 165
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_166:
+	setvar VAR_SPECIAL_x8008, 166
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_167:
+	setvar VAR_SPECIAL_x8008, 167
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_168:
+	setvar VAR_SPECIAL_x8008, 168
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_169:
+	setvar VAR_SPECIAL_x8008, 169
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_170:
+	setvar VAR_SPECIAL_x8008, 170
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_171:
+	setvar VAR_SPECIAL_x8008, 171
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_172:
+	setvar VAR_SPECIAL_x8008, 172
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_173:
+	setvar VAR_SPECIAL_x8008, 173
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_174:
+	setvar VAR_SPECIAL_x8008, 174
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_175:
+	setvar VAR_SPECIAL_x8008, 175
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_176:
+	setvar VAR_SPECIAL_x8008, 176
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_177:
+	setvar VAR_SPECIAL_x8008, 177
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_178:
+	setvar VAR_SPECIAL_x8008, 178
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_179:
+	setvar VAR_SPECIAL_x8008, 179
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_180:
+	setvar VAR_SPECIAL_x8008, 180
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_181:
+	setvar VAR_SPECIAL_x8008, 181
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_182:
+	setvar VAR_SPECIAL_x8008, 182
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_183:
+	setvar VAR_SPECIAL_x8008, 183
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_184:
+	setvar VAR_SPECIAL_x8008, 184
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_185:
+	setvar VAR_SPECIAL_x8008, 185
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_186:
+	setvar VAR_SPECIAL_x8008, 186
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_187:
+	setvar VAR_SPECIAL_x8008, 187
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_188:
+	setvar VAR_SPECIAL_x8008, 188
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_189:
+	setvar VAR_SPECIAL_x8008, 189
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_190:
+	setvar VAR_SPECIAL_x8008, 190
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_191:
+	setvar VAR_SPECIAL_x8008, 191
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_192:
+	setvar VAR_SPECIAL_x8008, 192
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_193:
+	setvar VAR_SPECIAL_x8008, 193
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_194:
+	setvar VAR_SPECIAL_x8008, 194
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_195:
+	setvar VAR_SPECIAL_x8008, 195
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_196:
+	setvar VAR_SPECIAL_x8008, 196
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_197:
+	setvar VAR_SPECIAL_x8008, 197
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_198:
+	setvar VAR_SPECIAL_x8008, 198
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_199:
+	setvar VAR_SPECIAL_x8008, 199
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_200:
+	setvar VAR_SPECIAL_x8008, 200
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_201:
+	setvar VAR_SPECIAL_x8008, 201
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_202:
+	setvar VAR_SPECIAL_x8008, 202
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_203:
+	setvar VAR_SPECIAL_x8008, 203
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_204:
+	setvar VAR_SPECIAL_x8008, 204
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_205:
+	setvar VAR_SPECIAL_x8008, 205
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_206:
+	setvar VAR_SPECIAL_x8008, 206
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_207:
+	setvar VAR_SPECIAL_x8008, 207
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_208:
+	setvar VAR_SPECIAL_x8008, 208
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_209:
+	setvar VAR_SPECIAL_x8008, 209
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_210:
+	setvar VAR_SPECIAL_x8008, 210
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_211:
+	setvar VAR_SPECIAL_x8008, 211
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_212:
+	setvar VAR_SPECIAL_x8008, 212
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_213:
+	setvar VAR_SPECIAL_x8008, 213
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_214:
+	setvar VAR_SPECIAL_x8008, 214
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_215:
+	setvar VAR_SPECIAL_x8008, 215
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_216:
+	setvar VAR_SPECIAL_x8008, 216
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_217:
+	setvar VAR_SPECIAL_x8008, 217
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_218:
+	setvar VAR_SPECIAL_x8008, 218
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_219:
+	setvar VAR_SPECIAL_x8008, 219
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_220:
+	setvar VAR_SPECIAL_x8008, 220
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_221:
+	setvar VAR_SPECIAL_x8008, 221
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_222:
+	setvar VAR_SPECIAL_x8008, 222
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_223:
+	setvar VAR_SPECIAL_x8008, 223
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_224:
+	setvar VAR_SPECIAL_x8008, 224
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_225:
+	setvar VAR_SPECIAL_x8008, 225
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_226:
+	setvar VAR_SPECIAL_x8008, 226
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_227:
+	setvar VAR_SPECIAL_x8008, 227
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_228:
+	setvar VAR_SPECIAL_x8008, 228
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_229:
+	setvar VAR_SPECIAL_x8008, 229
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_230:
+	setvar VAR_SPECIAL_x8008, 230
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_231:
+	setvar VAR_SPECIAL_x8008, 231
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_232:
+	setvar VAR_SPECIAL_x8008, 232
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_233:
+	setvar VAR_SPECIAL_x8008, 233
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_234:
+	setvar VAR_SPECIAL_x8008, 234
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_235:
+	setvar VAR_SPECIAL_x8008, 235
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_236:
+	setvar VAR_SPECIAL_x8008, 236
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_237:
+	setvar VAR_SPECIAL_x8008, 237
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_238:
+	setvar VAR_SPECIAL_x8008, 238
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_239:
+	setvar VAR_SPECIAL_x8008, 239
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_240:
+	setvar VAR_SPECIAL_x8008, 240
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_241:
+	setvar VAR_SPECIAL_x8008, 241
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_242:
+	setvar VAR_SPECIAL_x8008, 242
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_243:
+	setvar VAR_SPECIAL_x8008, 243
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_244:
+	setvar VAR_SPECIAL_x8008, 244
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_245:
+	setvar VAR_SPECIAL_x8008, 245
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_246:
+	setvar VAR_SPECIAL_x8008, 246
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_247:
+	setvar VAR_SPECIAL_x8008, 247
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_248:
+	setvar VAR_SPECIAL_x8008, 248
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_249:
+	setvar VAR_SPECIAL_x8008, 249
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_250:
+	setvar VAR_SPECIAL_x8008, 250
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_251:
+	setvar VAR_SPECIAL_x8008, 251
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_252:
+	setvar VAR_SPECIAL_x8008, 252
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_253:
+	setvar VAR_SPECIAL_x8008, 253
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_254:
+	setvar VAR_SPECIAL_x8008, 254
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_255:
+	setvar VAR_SPECIAL_x8008, 255
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_256:
+	setvar VAR_SPECIAL_x8008, 256
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_257:
+	setvar VAR_SPECIAL_x8008, 257
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_258:
+	setvar VAR_SPECIAL_x8008, 258
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_259:
+	setvar VAR_SPECIAL_x8008, 259
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_260:
+	setvar VAR_SPECIAL_x8008, 260
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_261:
+	setvar VAR_SPECIAL_x8008, 261
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_262:
+	setvar VAR_SPECIAL_x8008, 262
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_263:
+	setvar VAR_SPECIAL_x8008, 263
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_264:
+	setvar VAR_SPECIAL_x8008, 264
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_265:
+	setvar VAR_SPECIAL_x8008, 265
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_266:
+	setvar VAR_SPECIAL_x8008, 266
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_267:
+	setvar VAR_SPECIAL_x8008, 267
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_268:
+	setvar VAR_SPECIAL_x8008, 268
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_269:
+	setvar VAR_SPECIAL_x8008, 269
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_270:
+	setvar VAR_SPECIAL_x8008, 270
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_271:
+	setvar VAR_SPECIAL_x8008, 271
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_272:
+	setvar VAR_SPECIAL_x8008, 272
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_273:
+	setvar VAR_SPECIAL_x8008, 273
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_274:
+	setvar VAR_SPECIAL_x8008, 274
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_275:
+	setvar VAR_SPECIAL_x8008, 275
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_276:
+	setvar VAR_SPECIAL_x8008, 276
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_277:
+	setvar VAR_SPECIAL_x8008, 277
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_278:
+	setvar VAR_SPECIAL_x8008, 278
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_279:
+	setvar VAR_SPECIAL_x8008, 279
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_280:
+	setvar VAR_SPECIAL_x8008, 280
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_281:
+	setvar VAR_SPECIAL_x8008, 281
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_282:
+	setvar VAR_SPECIAL_x8008, 282
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_283:
+	setvar VAR_SPECIAL_x8008, 283
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_284:
+	setvar VAR_SPECIAL_x8008, 284
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_285:
+	setvar VAR_SPECIAL_x8008, 285
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_286:
+	setvar VAR_SPECIAL_x8008, 286
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_287:
+	setvar VAR_SPECIAL_x8008, 287
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_288:
+	setvar VAR_SPECIAL_x8008, 288
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_289:
+	setvar VAR_SPECIAL_x8008, 289
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_290:
+	setvar VAR_SPECIAL_x8008, 290
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_291:
+	setvar VAR_SPECIAL_x8008, 291
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_292:
+	setvar VAR_SPECIAL_x8008, 292
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_293:
+	setvar VAR_SPECIAL_x8008, 293
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_294:
+	setvar VAR_SPECIAL_x8008, 294
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_295:
+	setvar VAR_SPECIAL_x8008, 295
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_296:
+	setvar VAR_SPECIAL_x8008, 296
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_297:
+	setvar VAR_SPECIAL_x8008, 297
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_298:
+	setvar VAR_SPECIAL_x8008, 298
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_299:
+	setvar VAR_SPECIAL_x8008, 299
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_300:
+	setvar VAR_SPECIAL_x8008, 300
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_301:
+	setvar VAR_SPECIAL_x8008, 301
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_302:
+	setvar VAR_SPECIAL_x8008, 302
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_303:
+	setvar VAR_SPECIAL_x8008, 303
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_304:
+	setvar VAR_SPECIAL_x8008, 304
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_305:
+	setvar VAR_SPECIAL_x8008, 305
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_306:
+	setvar VAR_SPECIAL_x8008, 306
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_307:
+	setvar VAR_SPECIAL_x8008, 307
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_308:
+	setvar VAR_SPECIAL_x8008, 308
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_309:
+	setvar VAR_SPECIAL_x8008, 309
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_310:
+	setvar VAR_SPECIAL_x8008, 310
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_311:
+	setvar VAR_SPECIAL_x8008, 311
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_312:
+	setvar VAR_SPECIAL_x8008, 312
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_313:
+	setvar VAR_SPECIAL_x8008, 313
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_314:
+	setvar VAR_SPECIAL_x8008, 314
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_315:
+	setvar VAR_SPECIAL_x8008, 315
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_316:
+	setvar VAR_SPECIAL_x8008, 316
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_317:
+	setvar VAR_SPECIAL_x8008, 317
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_318:
+	setvar VAR_SPECIAL_x8008, 318
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_319:
+	setvar VAR_SPECIAL_x8008, 319
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_320:
+	setvar VAR_SPECIAL_x8008, 320
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_321:
+	setvar VAR_SPECIAL_x8008, 321
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_322:
+	setvar VAR_SPECIAL_x8008, 322
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_323:
+	setvar VAR_SPECIAL_x8008, 323
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_324:
+	setvar VAR_SPECIAL_x8008, 324
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_325:
+	setvar VAR_SPECIAL_x8008, 325
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_326:
+	setvar VAR_SPECIAL_x8008, 326
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_327:
+	setvar VAR_SPECIAL_x8008, 327
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_328:
+	setvar VAR_SPECIAL_x8008, 328
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_329:
+	setvar VAR_SPECIAL_x8008, 329
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_330:
+	setvar VAR_SPECIAL_x8008, 330
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_331:
+	setvar VAR_SPECIAL_x8008, 331
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_332:
+	setvar VAR_SPECIAL_x8008, 332
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_333:
+	setvar VAR_SPECIAL_x8008, 333
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_334:
+	setvar VAR_SPECIAL_x8008, 334
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_335:
+	setvar VAR_SPECIAL_x8008, 335
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_336:
+	setvar VAR_SPECIAL_x8008, 336
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_337:
+	setvar VAR_SPECIAL_x8008, 337
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_338:
+	setvar VAR_SPECIAL_x8008, 338
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_339:
+	setvar VAR_SPECIAL_x8008, 339
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_340:
+	setvar VAR_SPECIAL_x8008, 340
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_341:
+	setvar VAR_SPECIAL_x8008, 341
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_342:
+	setvar VAR_SPECIAL_x8008, 342
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_343:
+	setvar VAR_SPECIAL_x8008, 343
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_344:
+	setvar VAR_SPECIAL_x8008, 344
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_345:
+	setvar VAR_SPECIAL_x8008, 345
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_346:
+	setvar VAR_SPECIAL_x8008, 346
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_347:
+	setvar VAR_SPECIAL_x8008, 347
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_348:
+	setvar VAR_SPECIAL_x8008, 348
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_349:
+	setvar VAR_SPECIAL_x8008, 349
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_350:
+	setvar VAR_SPECIAL_x8008, 350
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_351:
+	setvar VAR_SPECIAL_x8008, 351
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_352:
+	setvar VAR_SPECIAL_x8008, 352
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_353:
+	setvar VAR_SPECIAL_x8008, 353
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_354:
+	setvar VAR_SPECIAL_x8008, 354
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_355:
+	setvar VAR_SPECIAL_x8008, 355
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_356:
+	setvar VAR_SPECIAL_x8008, 356
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_357:
+	setvar VAR_SPECIAL_x8008, 357
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_358:
+	setvar VAR_SPECIAL_x8008, 358
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_359:
+	setvar VAR_SPECIAL_x8008, 359
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_360:
+	setvar VAR_SPECIAL_x8008, 360
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_361:
+	setvar VAR_SPECIAL_x8008, 361
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_362:
+	setvar VAR_SPECIAL_x8008, 362
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_363:
+	setvar VAR_SPECIAL_x8008, 363
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_364:
+	setvar VAR_SPECIAL_x8008, 364
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_365:
+	setvar VAR_SPECIAL_x8008, 365
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_366:
+	setvar VAR_SPECIAL_x8008, 366
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_367:
+	setvar VAR_SPECIAL_x8008, 367
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_368:
+	setvar VAR_SPECIAL_x8008, 368
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_369:
+	setvar VAR_SPECIAL_x8008, 369
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_370:
+	setvar VAR_SPECIAL_x8008, 370
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_371:
+	setvar VAR_SPECIAL_x8008, 371
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_372:
+	setvar VAR_SPECIAL_x8008, 372
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_373:
+	setvar VAR_SPECIAL_x8008, 373
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_374:
+	setvar VAR_SPECIAL_x8008, 374
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_375:
+	setvar VAR_SPECIAL_x8008, 375
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_376:
+	setvar VAR_SPECIAL_x8008, 376
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_377:
+	setvar VAR_SPECIAL_x8008, 377
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_378:
+	setvar VAR_SPECIAL_x8008, 378
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_379:
+	setvar VAR_SPECIAL_x8008, 379
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_380:
+	setvar VAR_SPECIAL_x8008, 380
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_381:
+	setvar VAR_SPECIAL_x8008, 381
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_382:
+	setvar VAR_SPECIAL_x8008, 382
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_383:
+	setvar VAR_SPECIAL_x8008, 383
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_384:
+	setvar VAR_SPECIAL_x8008, 384
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_385:
+	setvar VAR_SPECIAL_x8008, 385
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_386:
+	setvar VAR_SPECIAL_x8008, 386
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_387:
+	setvar VAR_SPECIAL_x8008, 387
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_388:
+	setvar VAR_SPECIAL_x8008, 388
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_389:
+	setvar VAR_SPECIAL_x8008, 389
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_390:
+	setvar VAR_SPECIAL_x8008, 390
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_391:
+	setvar VAR_SPECIAL_x8008, 391
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_392:
+	setvar VAR_SPECIAL_x8008, 392
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_393:
+	setvar VAR_SPECIAL_x8008, 393
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_394:
+	setvar VAR_SPECIAL_x8008, 394
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_395:
+	setvar VAR_SPECIAL_x8008, 395
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_396:
+	setvar VAR_SPECIAL_x8008, 396
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_397:
+	setvar VAR_SPECIAL_x8008, 397
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_398:
+	setvar VAR_SPECIAL_x8008, 398
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_399:
+	setvar VAR_SPECIAL_x8008, 399
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_400:
+	setvar VAR_SPECIAL_x8008, 400
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_401:
+	setvar VAR_SPECIAL_x8008, 401
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_402:
+	setvar VAR_SPECIAL_x8008, 402
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_403:
+	setvar VAR_SPECIAL_x8008, 403
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_404:
+	setvar VAR_SPECIAL_x8008, 404
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_405:
+	setvar VAR_SPECIAL_x8008, 405
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_406:
+	setvar VAR_SPECIAL_x8008, 406
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_407:
+	setvar VAR_SPECIAL_x8008, 407
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_408:
+	setvar VAR_SPECIAL_x8008, 408
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_409:
+	setvar VAR_SPECIAL_x8008, 409
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_410:
+	setvar VAR_SPECIAL_x8008, 410
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_411:
+	setvar VAR_SPECIAL_x8008, 411
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_412:
+	setvar VAR_SPECIAL_x8008, 412
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_413:
+	setvar VAR_SPECIAL_x8008, 413
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_414:
+	setvar VAR_SPECIAL_x8008, 414
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_415:
+	setvar VAR_SPECIAL_x8008, 415
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_416:
+	setvar VAR_SPECIAL_x8008, 416
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_417:
+	setvar VAR_SPECIAL_x8008, 417
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_418:
+	setvar VAR_SPECIAL_x8008, 418
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_419:
+	setvar VAR_SPECIAL_x8008, 419
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_420:
+	setvar VAR_SPECIAL_x8008, 420
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_421:
+	setvar VAR_SPECIAL_x8008, 421
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_422:
+	setvar VAR_SPECIAL_x8008, 422
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_423:
+	setvar VAR_SPECIAL_x8008, 423
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_424:
+	setvar VAR_SPECIAL_x8008, 424
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_425:
+	setvar VAR_SPECIAL_x8008, 425
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_426:
+	setvar VAR_SPECIAL_x8008, 426
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_427:
+	setvar VAR_SPECIAL_x8008, 427
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_428:
+	setvar VAR_SPECIAL_x8008, 428
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_429:
+	setvar VAR_SPECIAL_x8008, 429
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_430:
+	setvar VAR_SPECIAL_x8008, 430
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_431:
+	setvar VAR_SPECIAL_x8008, 431
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_432:
+	setvar VAR_SPECIAL_x8008, 432
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_433:
+	setvar VAR_SPECIAL_x8008, 433
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_434:
+	setvar VAR_SPECIAL_x8008, 434
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_435:
+	setvar VAR_SPECIAL_x8008, 435
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_436:
+	setvar VAR_SPECIAL_x8008, 436
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_437:
+	setvar VAR_SPECIAL_x8008, 437
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_438:
+	setvar VAR_SPECIAL_x8008, 438
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_439:
+	setvar VAR_SPECIAL_x8008, 439
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_440:
+	setvar VAR_SPECIAL_x8008, 440
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_441:
+	setvar VAR_SPECIAL_x8008, 441
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_442:
+	setvar VAR_SPECIAL_x8008, 442
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_443:
+	setvar VAR_SPECIAL_x8008, 443
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_444:
+	setvar VAR_SPECIAL_x8008, 444
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_445:
+	setvar VAR_SPECIAL_x8008, 445
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_446:
+	setvar VAR_SPECIAL_x8008, 446
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_447:
+	setvar VAR_SPECIAL_x8008, 447
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_448:
+	setvar VAR_SPECIAL_x8008, 448
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_449:
+	setvar VAR_SPECIAL_x8008, 449
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_450:
+	setvar VAR_SPECIAL_x8008, 450
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_451:
+	setvar VAR_SPECIAL_x8008, 451
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_452:
+	setvar VAR_SPECIAL_x8008, 452
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_453:
+	setvar VAR_SPECIAL_x8008, 453
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_454:
+	setvar VAR_SPECIAL_x8008, 454
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_455:
+	setvar VAR_SPECIAL_x8008, 455
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_456:
+	setvar VAR_SPECIAL_x8008, 456
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_457:
+	setvar VAR_SPECIAL_x8008, 457
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_458:
+	setvar VAR_SPECIAL_x8008, 458
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_459:
+	setvar VAR_SPECIAL_x8008, 459
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_460:
+	setvar VAR_SPECIAL_x8008, 460
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_461:
+	setvar VAR_SPECIAL_x8008, 461
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_462:
+	setvar VAR_SPECIAL_x8008, 462
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_463:
+	setvar VAR_SPECIAL_x8008, 463
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_464:
+	setvar VAR_SPECIAL_x8008, 464
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_465:
+	setvar VAR_SPECIAL_x8008, 465
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_466:
+	setvar VAR_SPECIAL_x8008, 466
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_467:
+	setvar VAR_SPECIAL_x8008, 467
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_468:
+	setvar VAR_SPECIAL_x8008, 468
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_469:
+	setvar VAR_SPECIAL_x8008, 469
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_470:
+	setvar VAR_SPECIAL_x8008, 470
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_471:
+	setvar VAR_SPECIAL_x8008, 471
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_472:
+	setvar VAR_SPECIAL_x8008, 472
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_473:
+	setvar VAR_SPECIAL_x8008, 473
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_474:
+	setvar VAR_SPECIAL_x8008, 474
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_475:
+	setvar VAR_SPECIAL_x8008, 475
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_476:
+	setvar VAR_SPECIAL_x8008, 476
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_477:
+	setvar VAR_SPECIAL_x8008, 477
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_478:
+	setvar VAR_SPECIAL_x8008, 478
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_479:
+	setvar VAR_SPECIAL_x8008, 479
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_480:
+	setvar VAR_SPECIAL_x8008, 480
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_481:
+	setvar VAR_SPECIAL_x8008, 481
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_482:
+	setvar VAR_SPECIAL_x8008, 482
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_483:
+	setvar VAR_SPECIAL_x8008, 483
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_484:
+	setvar VAR_SPECIAL_x8008, 484
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_485:
+	setvar VAR_SPECIAL_x8008, 485
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_486:
+	setvar VAR_SPECIAL_x8008, 486
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_487:
+	setvar VAR_SPECIAL_x8008, 487
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_488:
+	setvar VAR_SPECIAL_x8008, 488
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_489:
+	setvar VAR_SPECIAL_x8008, 489
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_490:
+	setvar VAR_SPECIAL_x8008, 490
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_491:
+	setvar VAR_SPECIAL_x8008, 491
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_492:
+	setvar VAR_SPECIAL_x8008, 492
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_493:
+	setvar VAR_SPECIAL_x8008, 493
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_494:
+	setvar VAR_SPECIAL_x8008, 494
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_495:
+	setvar VAR_SPECIAL_x8008, 495
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_496:
+	setvar VAR_SPECIAL_x8008, 496
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_497:
+	setvar VAR_SPECIAL_x8008, 497
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_498:
+	setvar VAR_SPECIAL_x8008, 498
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_499:
+	setvar VAR_SPECIAL_x8008, 499
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_500:
+	setvar VAR_SPECIAL_x8008, 500
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_501:
+	setvar VAR_SPECIAL_x8008, 501
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_502:
+	setvar VAR_SPECIAL_x8008, 502
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_503:
+	setvar VAR_SPECIAL_x8008, 503
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_504:
+	setvar VAR_SPECIAL_x8008, 504
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_505:
+	setvar VAR_SPECIAL_x8008, 505
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_506:
+	setvar VAR_SPECIAL_x8008, 506
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_507:
+	setvar VAR_SPECIAL_x8008, 507
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_508:
+	setvar VAR_SPECIAL_x8008, 508
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_509:
+	setvar VAR_SPECIAL_x8008, 509
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_510:
+	setvar VAR_SPECIAL_x8008, 510
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_511:
+	setvar VAR_SPECIAL_x8008, 511
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_512:
+	setvar VAR_SPECIAL_x8008, 512
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_513:
+	setvar VAR_SPECIAL_x8008, 513
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_514:
+	setvar VAR_SPECIAL_x8008, 514
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_515:
+	setvar VAR_SPECIAL_x8008, 515
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_516:
+	setvar VAR_SPECIAL_x8008, 516
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_517:
+	setvar VAR_SPECIAL_x8008, 517
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_518:
+	setvar VAR_SPECIAL_x8008, 518
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_519:
+	setvar VAR_SPECIAL_x8008, 519
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_520:
+	setvar VAR_SPECIAL_x8008, 520
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_521:
+	setvar VAR_SPECIAL_x8008, 521
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_522:
+	setvar VAR_SPECIAL_x8008, 522
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_523:
+	setvar VAR_SPECIAL_x8008, 523
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_524:
+	setvar VAR_SPECIAL_x8008, 524
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_525:
+	setvar VAR_SPECIAL_x8008, 525
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_526:
+	setvar VAR_SPECIAL_x8008, 526
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_527:
+	setvar VAR_SPECIAL_x8008, 527
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_528:
+	setvar VAR_SPECIAL_x8008, 528
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_529:
+	setvar VAR_SPECIAL_x8008, 529
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_530:
+	setvar VAR_SPECIAL_x8008, 530
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_531:
+	setvar VAR_SPECIAL_x8008, 531
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_532:
+	setvar VAR_SPECIAL_x8008, 532
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_533:
+	setvar VAR_SPECIAL_x8008, 533
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_534:
+	setvar VAR_SPECIAL_x8008, 534
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_535:
+	setvar VAR_SPECIAL_x8008, 535
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_536:
+	setvar VAR_SPECIAL_x8008, 536
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_537:
+	setvar VAR_SPECIAL_x8008, 537
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_538:
+	setvar VAR_SPECIAL_x8008, 538
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_539:
+	setvar VAR_SPECIAL_x8008, 539
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_540:
+	setvar VAR_SPECIAL_x8008, 540
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_541:
+	setvar VAR_SPECIAL_x8008, 541
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_542:
+	setvar VAR_SPECIAL_x8008, 542
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_543:
+	setvar VAR_SPECIAL_x8008, 543
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_544:
+	setvar VAR_SPECIAL_x8008, 544
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_545:
+	setvar VAR_SPECIAL_x8008, 545
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_546:
+	setvar VAR_SPECIAL_x8008, 546
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_547:
+	setvar VAR_SPECIAL_x8008, 547
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_548:
+	setvar VAR_SPECIAL_x8008, 548
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_549:
+	setvar VAR_SPECIAL_x8008, 549
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_550:
+	setvar VAR_SPECIAL_x8008, 550
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_551:
+	setvar VAR_SPECIAL_x8008, 551
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_552:
+	setvar VAR_SPECIAL_x8008, 552
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_553:
+	setvar VAR_SPECIAL_x8008, 553
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_554:
+	setvar VAR_SPECIAL_x8008, 554
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_555:
+	setvar VAR_SPECIAL_x8008, 555
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_556:
+	setvar VAR_SPECIAL_x8008, 556
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_557:
+	setvar VAR_SPECIAL_x8008, 557
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_558:
+	setvar VAR_SPECIAL_x8008, 558
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_559:
+	setvar VAR_SPECIAL_x8008, 559
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_560:
+	setvar VAR_SPECIAL_x8008, 560
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_561:
+	setvar VAR_SPECIAL_x8008, 561
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_562:
+	setvar VAR_SPECIAL_x8008, 562
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_563:
+	setvar VAR_SPECIAL_x8008, 563
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_564:
+	setvar VAR_SPECIAL_x8008, 564
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_565:
+	setvar VAR_SPECIAL_x8008, 565
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_566:
+	setvar VAR_SPECIAL_x8008, 566
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_567:
+	setvar VAR_SPECIAL_x8008, 567
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_568:
+	setvar VAR_SPECIAL_x8008, 568
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_569:
+	setvar VAR_SPECIAL_x8008, 569
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_570:
+	setvar VAR_SPECIAL_x8008, 570
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_571:
+	setvar VAR_SPECIAL_x8008, 571
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_572:
+	setvar VAR_SPECIAL_x8008, 572
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_573:
+	setvar VAR_SPECIAL_x8008, 573
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_574:
+	setvar VAR_SPECIAL_x8008, 574
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_575:
+	setvar VAR_SPECIAL_x8008, 575
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_576:
+	setvar VAR_SPECIAL_x8008, 576
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_577:
+	setvar VAR_SPECIAL_x8008, 577
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_578:
+	setvar VAR_SPECIAL_x8008, 578
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_579:
+	setvar VAR_SPECIAL_x8008, 579
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_580:
+	setvar VAR_SPECIAL_x8008, 580
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_581:
+	setvar VAR_SPECIAL_x8008, 581
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_582:
+	setvar VAR_SPECIAL_x8008, 582
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_583:
+	setvar VAR_SPECIAL_x8008, 583
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_584:
+	setvar VAR_SPECIAL_x8008, 584
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_585:
+	setvar VAR_SPECIAL_x8008, 585
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_586:
+	setvar VAR_SPECIAL_x8008, 586
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_587:
+	setvar VAR_SPECIAL_x8008, 587
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_588:
+	setvar VAR_SPECIAL_x8008, 588
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_589:
+	setvar VAR_SPECIAL_x8008, 589
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_590:
+	setvar VAR_SPECIAL_x8008, 590
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_591:
+	setvar VAR_SPECIAL_x8008, 591
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_592:
+	setvar VAR_SPECIAL_x8008, 592
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_593:
+	setvar VAR_SPECIAL_x8008, 593
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_594:
+	setvar VAR_SPECIAL_x8008, 594
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_595:
+	setvar VAR_SPECIAL_x8008, 595
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_596:
+	setvar VAR_SPECIAL_x8008, 596
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_597:
+	setvar VAR_SPECIAL_x8008, 597
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_598:
+	setvar VAR_SPECIAL_x8008, 598
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_599:
+	setvar VAR_SPECIAL_x8008, 599
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_600:
+	setvar VAR_SPECIAL_x8008, 600
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_601:
+	setvar VAR_SPECIAL_x8008, 601
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_602:
+	setvar VAR_SPECIAL_x8008, 602
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_603:
+	setvar VAR_SPECIAL_x8008, 603
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_604:
+	setvar VAR_SPECIAL_x8008, 604
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_605:
+	setvar VAR_SPECIAL_x8008, 605
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_606:
+	setvar VAR_SPECIAL_x8008, 606
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_607:
+	setvar VAR_SPECIAL_x8008, 607
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_608:
+	setvar VAR_SPECIAL_x8008, 608
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_609:
+	setvar VAR_SPECIAL_x8008, 609
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_610:
+	setvar VAR_SPECIAL_x8008, 610
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_611:
+	setvar VAR_SPECIAL_x8008, 611
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_612:
+	setvar VAR_SPECIAL_x8008, 612
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_613:
+	setvar VAR_SPECIAL_x8008, 613
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_614:
+	setvar VAR_SPECIAL_x8008, 614
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_615:
+	setvar VAR_SPECIAL_x8008, 615
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_616:
+	setvar VAR_SPECIAL_x8008, 616
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_617:
+	setvar VAR_SPECIAL_x8008, 617
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_618:
+	setvar VAR_SPECIAL_x8008, 618
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_619:
+	setvar VAR_SPECIAL_x8008, 619
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_620:
+	setvar VAR_SPECIAL_x8008, 620
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_621:
+	setvar VAR_SPECIAL_x8008, 621
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_622:
+	setvar VAR_SPECIAL_x8008, 622
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_623:
+	setvar VAR_SPECIAL_x8008, 623
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_624:
+	setvar VAR_SPECIAL_x8008, 624
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_625:
+	setvar VAR_SPECIAL_x8008, 625
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_626:
+	setvar VAR_SPECIAL_x8008, 626
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_627:
+	setvar VAR_SPECIAL_x8008, 627
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_628:
+	setvar VAR_SPECIAL_x8008, 628
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_629:
+	setvar VAR_SPECIAL_x8008, 629
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_630:
+	setvar VAR_SPECIAL_x8008, 630
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_631:
+	setvar VAR_SPECIAL_x8008, 631
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_632:
+	setvar VAR_SPECIAL_x8008, 632
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_633:
+	setvar VAR_SPECIAL_x8008, 633
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_634:
+	setvar VAR_SPECIAL_x8008, 634
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_635:
+	setvar VAR_SPECIAL_x8008, 635
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_636:
+	setvar VAR_SPECIAL_x8008, 636
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_637:
+	setvar VAR_SPECIAL_x8008, 637
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_638:
+	setvar VAR_SPECIAL_x8008, 638
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_639:
+	setvar VAR_SPECIAL_x8008, 639
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_640:
+	setvar VAR_SPECIAL_x8008, 640
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_641:
+	setvar VAR_SPECIAL_x8008, 641
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_642:
+	setvar VAR_SPECIAL_x8008, 642
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_643:
+	setvar VAR_SPECIAL_x8008, 643
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_644:
+	setvar VAR_SPECIAL_x8008, 644
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_645:
+	setvar VAR_SPECIAL_x8008, 645
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_646:
+	setvar VAR_SPECIAL_x8008, 646
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_647:
+	setvar VAR_SPECIAL_x8008, 647
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_648:
+	setvar VAR_SPECIAL_x8008, 648
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_649:
+	setvar VAR_SPECIAL_x8008, 649
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_650:
+	setvar VAR_SPECIAL_x8008, 650
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_651:
+	setvar VAR_SPECIAL_x8008, 651
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_652:
+	setvar VAR_SPECIAL_x8008, 652
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_653:
+	setvar VAR_SPECIAL_x8008, 653
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_654:
+	setvar VAR_SPECIAL_x8008, 654
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_655:
+	setvar VAR_SPECIAL_x8008, 655
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_656:
+	setvar VAR_SPECIAL_x8008, 656
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_657:
+	setvar VAR_SPECIAL_x8008, 657
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_658:
+	setvar VAR_SPECIAL_x8008, 658
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_659:
+	setvar VAR_SPECIAL_x8008, 659
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_660:
+	setvar VAR_SPECIAL_x8008, 660
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_661:
+	setvar VAR_SPECIAL_x8008, 661
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_662:
+	setvar VAR_SPECIAL_x8008, 662
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_663:
+	setvar VAR_SPECIAL_x8008, 663
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_664:
+	setvar VAR_SPECIAL_x8008, 664
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_665:
+	setvar VAR_SPECIAL_x8008, 665
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_666:
+	setvar VAR_SPECIAL_x8008, 666
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_667:
+	setvar VAR_SPECIAL_x8008, 667
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_668:
+	setvar VAR_SPECIAL_x8008, 668
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_669:
+	setvar VAR_SPECIAL_x8008, 669
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_670:
+	setvar VAR_SPECIAL_x8008, 670
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_671:
+	setvar VAR_SPECIAL_x8008, 671
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_672:
+	setvar VAR_SPECIAL_x8008, 672
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_673:
+	setvar VAR_SPECIAL_x8008, 673
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_674:
+	setvar VAR_SPECIAL_x8008, 674
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_675:
+	setvar VAR_SPECIAL_x8008, 675
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_676:
+	setvar VAR_SPECIAL_x8008, 676
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_677:
+	setvar VAR_SPECIAL_x8008, 677
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_678:
+	setvar VAR_SPECIAL_x8008, 678
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_679:
+	setvar VAR_SPECIAL_x8008, 679
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_680:
+	setvar VAR_SPECIAL_x8008, 680
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_681:
+	setvar VAR_SPECIAL_x8008, 681
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_682:
+	setvar VAR_SPECIAL_x8008, 682
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_683:
+	setvar VAR_SPECIAL_x8008, 683
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_684:
+	setvar VAR_SPECIAL_x8008, 684
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_685:
+	setvar VAR_SPECIAL_x8008, 685
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_686:
+	setvar VAR_SPECIAL_x8008, 686
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_687:
+	setvar VAR_SPECIAL_x8008, 687
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_688:
+	setvar VAR_SPECIAL_x8008, 688
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_689:
+	setvar VAR_SPECIAL_x8008, 689
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_690:
+	setvar VAR_SPECIAL_x8008, 690
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_691:
+	setvar VAR_SPECIAL_x8008, 691
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_692:
+	setvar VAR_SPECIAL_x8008, 692
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_693:
+	setvar VAR_SPECIAL_x8008, 693
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_694:
+	setvar VAR_SPECIAL_x8008, 694
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_695:
+	setvar VAR_SPECIAL_x8008, 695
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_696:
+	setvar VAR_SPECIAL_x8008, 696
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_697:
+	setvar VAR_SPECIAL_x8008, 697
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_698:
+	setvar VAR_SPECIAL_x8008, 698
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_699:
+	setvar VAR_SPECIAL_x8008, 699
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_700:
+	setvar VAR_SPECIAL_x8008, 700
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_701:
+	setvar VAR_SPECIAL_x8008, 701
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_702:
+	setvar VAR_SPECIAL_x8008, 702
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_703:
+	setvar VAR_SPECIAL_x8008, 703
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_704:
+	setvar VAR_SPECIAL_x8008, 704
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_705:
+	setvar VAR_SPECIAL_x8008, 705
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_706:
+	setvar VAR_SPECIAL_x8008, 706
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_707:
+	setvar VAR_SPECIAL_x8008, 707
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_708:
+	setvar VAR_SPECIAL_x8008, 708
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_709:
+	setvar VAR_SPECIAL_x8008, 709
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_710:
+	setvar VAR_SPECIAL_x8008, 710
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_711:
+	setvar VAR_SPECIAL_x8008, 711
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_712:
+	setvar VAR_SPECIAL_x8008, 712
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_713:
+	setvar VAR_SPECIAL_x8008, 713
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_714:
+	setvar VAR_SPECIAL_x8008, 714
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_715:
+	setvar VAR_SPECIAL_x8008, 715
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_716:
+	setvar VAR_SPECIAL_x8008, 716
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_717:
+	setvar VAR_SPECIAL_x8008, 717
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_718:
+	setvar VAR_SPECIAL_x8008, 718
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_719:
+	setvar VAR_SPECIAL_x8008, 719
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_720:
+	setvar VAR_SPECIAL_x8008, 720
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_721:
+	setvar VAR_SPECIAL_x8008, 721
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_722:
+	setvar VAR_SPECIAL_x8008, 722
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_723:
+	setvar VAR_SPECIAL_x8008, 723
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_724:
+	setvar VAR_SPECIAL_x8008, 724
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_725:
+	setvar VAR_SPECIAL_x8008, 725
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_726:
+	setvar VAR_SPECIAL_x8008, 726
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_727:
+	setvar VAR_SPECIAL_x8008, 727
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_728:
+	setvar VAR_SPECIAL_x8008, 728
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_729:
+	setvar VAR_SPECIAL_x8008, 729
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_730:
+	setvar VAR_SPECIAL_x8008, 730
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_731:
+	setvar VAR_SPECIAL_x8008, 731
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_732:
+	setvar VAR_SPECIAL_x8008, 732
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_733:
+	setvar VAR_SPECIAL_x8008, 733
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_734:
+	setvar VAR_SPECIAL_x8008, 734
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_735:
+	setvar VAR_SPECIAL_x8008, 735
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_736:
+	setvar VAR_SPECIAL_x8008, 736
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_737:
+	setvar VAR_SPECIAL_x8008, 737
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_738:
+	setvar VAR_SPECIAL_x8008, 738
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_739:
+	setvar VAR_SPECIAL_x8008, 739
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_740:
+	setvar VAR_SPECIAL_x8008, 740
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_741:
+	setvar VAR_SPECIAL_x8008, 741
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_742:
+	setvar VAR_SPECIAL_x8008, 742
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_743:
+	setvar VAR_SPECIAL_x8008, 743
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_744:
+	setvar VAR_SPECIAL_x8008, 744
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_745:
+	setvar VAR_SPECIAL_x8008, 745
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_746:
+	setvar VAR_SPECIAL_x8008, 746
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_747:
+	setvar VAR_SPECIAL_x8008, 747
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_748:
+	setvar VAR_SPECIAL_x8008, 748
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_749:
+	setvar VAR_SPECIAL_x8008, 749
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_750:
+	setvar VAR_SPECIAL_x8008, 750
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_751:
+	setvar VAR_SPECIAL_x8008, 751
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_752:
+	setvar VAR_SPECIAL_x8008, 752
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_753:
+	setvar VAR_SPECIAL_x8008, 753
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_754:
+	setvar VAR_SPECIAL_x8008, 754
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_755:
+	setvar VAR_SPECIAL_x8008, 755
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_756:
+	setvar VAR_SPECIAL_x8008, 756
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_757:
+	setvar VAR_SPECIAL_x8008, 757
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_758:
+	setvar VAR_SPECIAL_x8008, 758
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_759:
+	setvar VAR_SPECIAL_x8008, 759
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_760:
+	setvar VAR_SPECIAL_x8008, 760
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_761:
+	setvar VAR_SPECIAL_x8008, 761
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_762:
+	setvar VAR_SPECIAL_x8008, 762
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_763:
+	setvar VAR_SPECIAL_x8008, 763
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_764:
+	setvar VAR_SPECIAL_x8008, 764
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_765:
+	setvar VAR_SPECIAL_x8008, 765
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_766:
+	setvar VAR_SPECIAL_x8008, 766
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_767:
+	setvar VAR_SPECIAL_x8008, 767
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_768:
+	setvar VAR_SPECIAL_x8008, 768
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_769:
+	setvar VAR_SPECIAL_x8008, 769
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_770:
+	setvar VAR_SPECIAL_x8008, 770
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_771:
+	setvar VAR_SPECIAL_x8008, 771
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_772:
+	setvar VAR_SPECIAL_x8008, 772
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_773:
+	setvar VAR_SPECIAL_x8008, 773
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_774:
+	setvar VAR_SPECIAL_x8008, 774
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_775:
+	setvar VAR_SPECIAL_x8008, 775
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_776:
+	setvar VAR_SPECIAL_x8008, 776
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_777:
+	setvar VAR_SPECIAL_x8008, 777
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_778:
+	setvar VAR_SPECIAL_x8008, 778
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_779:
+	setvar VAR_SPECIAL_x8008, 779
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_780:
+	setvar VAR_SPECIAL_x8008, 780
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_781:
+	setvar VAR_SPECIAL_x8008, 781
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_782:
+	setvar VAR_SPECIAL_x8008, 782
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_783:
+	setvar VAR_SPECIAL_x8008, 783
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_784:
+	setvar VAR_SPECIAL_x8008, 784
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_785:
+	setvar VAR_SPECIAL_x8008, 785
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_786:
+	setvar VAR_SPECIAL_x8008, 786
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_787:
+	setvar VAR_SPECIAL_x8008, 787
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_788:
+	setvar VAR_SPECIAL_x8008, 788
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_789:
+	setvar VAR_SPECIAL_x8008, 789
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_790:
+	setvar VAR_SPECIAL_x8008, 790
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_791:
+	setvar VAR_SPECIAL_x8008, 791
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_792:
+	setvar VAR_SPECIAL_x8008, 792
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_793:
+	setvar VAR_SPECIAL_x8008, 793
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_794:
+	setvar VAR_SPECIAL_x8008, 794
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_795:
+	setvar VAR_SPECIAL_x8008, 795
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_796:
+	setvar VAR_SPECIAL_x8008, 796
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_797:
+	setvar VAR_SPECIAL_x8008, 797
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_798:
+	setvar VAR_SPECIAL_x8008, 798
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_799:
+	setvar VAR_SPECIAL_x8008, 799
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_800:
+	setvar VAR_SPECIAL_x8008, 800
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_801:
+	setvar VAR_SPECIAL_x8008, 801
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_802:
+	setvar VAR_SPECIAL_x8008, 802
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_803:
+	setvar VAR_SPECIAL_x8008, 803
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_804:
+	setvar VAR_SPECIAL_x8008, 804
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_805:
+	setvar VAR_SPECIAL_x8008, 805
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_806:
+	setvar VAR_SPECIAL_x8008, 806
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_807:
+	setvar VAR_SPECIAL_x8008, 807
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_808:
+	setvar VAR_SPECIAL_x8008, 808
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_809:
+	setvar VAR_SPECIAL_x8008, 809
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_810:
+	setvar VAR_SPECIAL_x8008, 810
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_811:
+	setvar VAR_SPECIAL_x8008, 811
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_812:
+	setvar VAR_SPECIAL_x8008, 812
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_813:
+	setvar VAR_SPECIAL_x8008, 813
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_814:
+	setvar VAR_SPECIAL_x8008, 814
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_815:
+	setvar VAR_SPECIAL_x8008, 815
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_816:
+	setvar VAR_SPECIAL_x8008, 816
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_817:
+	setvar VAR_SPECIAL_x8008, 817
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_818:
+	setvar VAR_SPECIAL_x8008, 818
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_819:
+	setvar VAR_SPECIAL_x8008, 819
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_820:
+	setvar VAR_SPECIAL_x8008, 820
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_821:
+	setvar VAR_SPECIAL_x8008, 821
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_822:
+	setvar VAR_SPECIAL_x8008, 822
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_823:
+	setvar VAR_SPECIAL_x8008, 823
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_824:
+	setvar VAR_SPECIAL_x8008, 824
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_825:
+	setvar VAR_SPECIAL_x8008, 825
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_826:
+	setvar VAR_SPECIAL_x8008, 826
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_827:
+	setvar VAR_SPECIAL_x8008, 827
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_828:
+	setvar VAR_SPECIAL_x8008, 828
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_829:
+	setvar VAR_SPECIAL_x8008, 829
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_830:
+	setvar VAR_SPECIAL_x8008, 830
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_831:
+	setvar VAR_SPECIAL_x8008, 831
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_832:
+	setvar VAR_SPECIAL_x8008, 832
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_833:
+	setvar VAR_SPECIAL_x8008, 833
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_834:
+	setvar VAR_SPECIAL_x8008, 834
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_835:
+	setvar VAR_SPECIAL_x8008, 835
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_836:
+	setvar VAR_SPECIAL_x8008, 836
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_837:
+	setvar VAR_SPECIAL_x8008, 837
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_838:
+	setvar VAR_SPECIAL_x8008, 838
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_839:
+	setvar VAR_SPECIAL_x8008, 839
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_840:
+	setvar VAR_SPECIAL_x8008, 840
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_841:
+	setvar VAR_SPECIAL_x8008, 841
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_842:
+	setvar VAR_SPECIAL_x8008, 842
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_843:
+	setvar VAR_SPECIAL_x8008, 843
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_844:
+	setvar VAR_SPECIAL_x8008, 844
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_845:
+	setvar VAR_SPECIAL_x8008, 845
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_846:
+	setvar VAR_SPECIAL_x8008, 846
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_847:
+	setvar VAR_SPECIAL_x8008, 847
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_848:
+	setvar VAR_SPECIAL_x8008, 848
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_849:
+	setvar VAR_SPECIAL_x8008, 849
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_850:
+	setvar VAR_SPECIAL_x8008, 850
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_851:
+	setvar VAR_SPECIAL_x8008, 851
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_852:
+	setvar VAR_SPECIAL_x8008, 852
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_853:
+	setvar VAR_SPECIAL_x8008, 853
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_854:
+	setvar VAR_SPECIAL_x8008, 854
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_855:
+	setvar VAR_SPECIAL_x8008, 855
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_856:
+	setvar VAR_SPECIAL_x8008, 856
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_857:
+	setvar VAR_SPECIAL_x8008, 857
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_858:
+	setvar VAR_SPECIAL_x8008, 858
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_859:
+	setvar VAR_SPECIAL_x8008, 859
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_860:
+	setvar VAR_SPECIAL_x8008, 860
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_861:
+	setvar VAR_SPECIAL_x8008, 861
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_862:
+	setvar VAR_SPECIAL_x8008, 862
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_863:
+	setvar VAR_SPECIAL_x8008, 863
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_864:
+	setvar VAR_SPECIAL_x8008, 864
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_865:
+	setvar VAR_SPECIAL_x8008, 865
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_866:
+	setvar VAR_SPECIAL_x8008, 866
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_867:
+	setvar VAR_SPECIAL_x8008, 867
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_868:
+	setvar VAR_SPECIAL_x8008, 868
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_869:
+	setvar VAR_SPECIAL_x8008, 869
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_870:
+	setvar VAR_SPECIAL_x8008, 870
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_871:
+	setvar VAR_SPECIAL_x8008, 871
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_872:
+	setvar VAR_SPECIAL_x8008, 872
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_873:
+	setvar VAR_SPECIAL_x8008, 873
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_874:
+	setvar VAR_SPECIAL_x8008, 874
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_875:
+	setvar VAR_SPECIAL_x8008, 875
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_876:
+	setvar VAR_SPECIAL_x8008, 876
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_877:
+	setvar VAR_SPECIAL_x8008, 877
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_878:
+	setvar VAR_SPECIAL_x8008, 878
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_879:
+	setvar VAR_SPECIAL_x8008, 879
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_880:
+	setvar VAR_SPECIAL_x8008, 880
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_881:
+	setvar VAR_SPECIAL_x8008, 881
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_882:
+	setvar VAR_SPECIAL_x8008, 882
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_883:
+	setvar VAR_SPECIAL_x8008, 883
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_884:
+	setvar VAR_SPECIAL_x8008, 884
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_885:
+	setvar VAR_SPECIAL_x8008, 885
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_886:
+	setvar VAR_SPECIAL_x8008, 886
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_887:
+	setvar VAR_SPECIAL_x8008, 887
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_888:
+	setvar VAR_SPECIAL_x8008, 888
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_889:
+	setvar VAR_SPECIAL_x8008, 889
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_890:
+	setvar VAR_SPECIAL_x8008, 890
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_891:
+	setvar VAR_SPECIAL_x8008, 891
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_892:
+	setvar VAR_SPECIAL_x8008, 892
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_893:
+	setvar VAR_SPECIAL_x8008, 893
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_894:
+	setvar VAR_SPECIAL_x8008, 894
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_895:
+	setvar VAR_SPECIAL_x8008, 895
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_896:
+	setvar VAR_SPECIAL_x8008, 896
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_897:
+	setvar VAR_SPECIAL_x8008, 897
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_898:
+	setvar VAR_SPECIAL_x8008, 898
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_899:
+	setvar VAR_SPECIAL_x8008, 899
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_900:
+	setvar VAR_SPECIAL_x8008, 900
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_901:
+	setvar VAR_SPECIAL_x8008, 901
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_902:
+	setvar VAR_SPECIAL_x8008, 902
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_903:
+	setvar VAR_SPECIAL_x8008, 903
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_904:
+	setvar VAR_SPECIAL_x8008, 904
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_905:
+	setvar VAR_SPECIAL_x8008, 905
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_906:
+	setvar VAR_SPECIAL_x8008, 906
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_907:
+	setvar VAR_SPECIAL_x8008, 907
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_908:
+	setvar VAR_SPECIAL_x8008, 908
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_909:
+	setvar VAR_SPECIAL_x8008, 909
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_910:
+	setvar VAR_SPECIAL_x8008, 910
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_911:
+	setvar VAR_SPECIAL_x8008, 911
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_912:
+	setvar VAR_SPECIAL_x8008, 912
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_913:
+	setvar VAR_SPECIAL_x8008, 913
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_914:
+	setvar VAR_SPECIAL_x8008, 914
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_915:
+	setvar VAR_SPECIAL_x8008, 915
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_916:
+	setvar VAR_SPECIAL_x8008, 916
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_917:
+	setvar VAR_SPECIAL_x8008, 917
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_918:
+	setvar VAR_SPECIAL_x8008, 918
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_919:
+	setvar VAR_SPECIAL_x8008, 919
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_920:
+	setvar VAR_SPECIAL_x8008, 920
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_921:
+	setvar VAR_SPECIAL_x8008, 921
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_922:
+	setvar VAR_SPECIAL_x8008, 922
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_923:
+	setvar VAR_SPECIAL_x8008, 923
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_924:
+	setvar VAR_SPECIAL_x8008, 924
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_925:
+	setvar VAR_SPECIAL_x8008, 925
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_926:
+	setvar VAR_SPECIAL_x8008, 926
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_927:
+	setvar VAR_SPECIAL_x8008, 927
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_928:
+	setvar VAR_SPECIAL_x8008, 928
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_929:
+	setvar VAR_SPECIAL_x8008, 929
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_930:
+	setvar VAR_SPECIAL_x8008, 930
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_931:
+	setvar VAR_SPECIAL_x8008, 931
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_932:
+	setvar VAR_SPECIAL_x8008, 932
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_933:
+	setvar VAR_SPECIAL_x8008, 933
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_934:
+	setvar VAR_SPECIAL_x8008, 934
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_935:
+	setvar VAR_SPECIAL_x8008, 935
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_936:
+	setvar VAR_SPECIAL_x8008, 936
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_937:
+	setvar VAR_SPECIAL_x8008, 937
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_938:
+	setvar VAR_SPECIAL_x8008, 938
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_939:
+	setvar VAR_SPECIAL_x8008, 939
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_940:
+	setvar VAR_SPECIAL_x8008, 940
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_941:
+	setvar VAR_SPECIAL_x8008, 941
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_942:
+	setvar VAR_SPECIAL_x8008, 942
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_943:
+	setvar VAR_SPECIAL_x8008, 943
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_944:
+	setvar VAR_SPECIAL_x8008, 944
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_945:
+	setvar VAR_SPECIAL_x8008, 945
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_946:
+	setvar VAR_SPECIAL_x8008, 946
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_947:
+	setvar VAR_SPECIAL_x8008, 947
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_948:
+	setvar VAR_SPECIAL_x8008, 948
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_949:
+	setvar VAR_SPECIAL_x8008, 949
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_950:
+	setvar VAR_SPECIAL_x8008, 950
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_951:
+	setvar VAR_SPECIAL_x8008, 951
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_952:
+	setvar VAR_SPECIAL_x8008, 952
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_953:
+	setvar VAR_SPECIAL_x8008, 953
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_954:
+	setvar VAR_SPECIAL_x8008, 954
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_955:
+	setvar VAR_SPECIAL_x8008, 955
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_956:
+	setvar VAR_SPECIAL_x8008, 956
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_957:
+	setvar VAR_SPECIAL_x8008, 957
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_958:
+	setvar VAR_SPECIAL_x8008, 958
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_959:
+	setvar VAR_SPECIAL_x8008, 959
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_960:
+	setvar VAR_SPECIAL_x8008, 960
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_961:
+	setvar VAR_SPECIAL_x8008, 961
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_962:
+	setvar VAR_SPECIAL_x8008, 962
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_963:
+	setvar VAR_SPECIAL_x8008, 963
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_964:
+	setvar VAR_SPECIAL_x8008, 964
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_965:
+	setvar VAR_SPECIAL_x8008, 965
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_966:
+	setvar VAR_SPECIAL_x8008, 966
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_967:
+	setvar VAR_SPECIAL_x8008, 967
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_968:
+	setvar VAR_SPECIAL_x8008, 968
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_969:
+	setvar VAR_SPECIAL_x8008, 969
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_970:
+	setvar VAR_SPECIAL_x8008, 970
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_971:
+	setvar VAR_SPECIAL_x8008, 971
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_972:
+	setvar VAR_SPECIAL_x8008, 972
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_973:
+	setvar VAR_SPECIAL_x8008, 973
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_974:
+	setvar VAR_SPECIAL_x8008, 974
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_975:
+	setvar VAR_SPECIAL_x8008, 975
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_976:
+	setvar VAR_SPECIAL_x8008, 976
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_977:
+	setvar VAR_SPECIAL_x8008, 977
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_978:
+	setvar VAR_SPECIAL_x8008, 978
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_979:
+	setvar VAR_SPECIAL_x8008, 979
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_980:
+	setvar VAR_SPECIAL_x8008, 980
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_981:
+	setvar VAR_SPECIAL_x8008, 981
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_982:
+	setvar VAR_SPECIAL_x8008, 982
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_983:
+	setvar VAR_SPECIAL_x8008, 983
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_984:
+	setvar VAR_SPECIAL_x8008, 984
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_985:
+	setvar VAR_SPECIAL_x8008, 985
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_986:
+	setvar VAR_SPECIAL_x8008, 986
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_987:
+	setvar VAR_SPECIAL_x8008, 987
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_988:
+	setvar VAR_SPECIAL_x8008, 988
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_989:
+	setvar VAR_SPECIAL_x8008, 989
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_990:
+	setvar VAR_SPECIAL_x8008, 990
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_991:
+	setvar VAR_SPECIAL_x8008, 991
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_992:
+	setvar VAR_SPECIAL_x8008, 992
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_993:
+	setvar VAR_SPECIAL_x8008, 993
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_994:
+	setvar VAR_SPECIAL_x8008, 994
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_995:
+	setvar VAR_SPECIAL_x8008, 995
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_996:
+	setvar VAR_SPECIAL_x8008, 996
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_997:
+	setvar VAR_SPECIAL_x8008, 997
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_998:
+	setvar VAR_SPECIAL_x8008, 998
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_999:
+	setvar VAR_SPECIAL_x8008, 999
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1000:
+	setvar VAR_SPECIAL_x8008, 1000
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1001:
+	setvar VAR_SPECIAL_x8008, 1001
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1002:
+	setvar VAR_SPECIAL_x8008, 1002
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1003:
+	setvar VAR_SPECIAL_x8008, 1003
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1004:
+	setvar VAR_SPECIAL_x8008, 1004
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1005:
+	setvar VAR_SPECIAL_x8008, 1005
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1006:
+	setvar VAR_SPECIAL_x8008, 1006
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1007:
+	setvar VAR_SPECIAL_x8008, 1007
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1008:
+	setvar VAR_SPECIAL_x8008, 1008
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1009:
+	setvar VAR_SPECIAL_x8008, 1009
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1010:
+	setvar VAR_SPECIAL_x8008, 1010
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1011:
+	setvar VAR_SPECIAL_x8008, 1011
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1012:
+	setvar VAR_SPECIAL_x8008, 1012
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1013:
+	setvar VAR_SPECIAL_x8008, 1013
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1014:
+	setvar VAR_SPECIAL_x8008, 1014
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1015:
+	setvar VAR_SPECIAL_x8008, 1015
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1016:
+	setvar VAR_SPECIAL_x8008, 1016
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1017:
+	setvar VAR_SPECIAL_x8008, 1017
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1018:
+	setvar VAR_SPECIAL_x8008, 1018
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1019:
+	setvar VAR_SPECIAL_x8008, 1019
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1020:
+	setvar VAR_SPECIAL_x8008, 1020
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1021:
+	setvar VAR_SPECIAL_x8008, 1021
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1022:
+	setvar VAR_SPECIAL_x8008, 1022
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1023:
+	setvar VAR_SPECIAL_x8008, 1023
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1024:
+	setvar VAR_SPECIAL_x8008, 1024
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1025:
+	setvar VAR_SPECIAL_x8008, 1025
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1026:
+	setvar VAR_SPECIAL_x8008, 1026
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1027:
+	setvar VAR_SPECIAL_x8008, 1027
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1028:
+	setvar VAR_SPECIAL_x8008, 1028
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1029:
+	setvar VAR_SPECIAL_x8008, 1029
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1030:
+	setvar VAR_SPECIAL_x8008, 1030
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1031:
+	setvar VAR_SPECIAL_x8008, 1031
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1032:
+	setvar VAR_SPECIAL_x8008, 1032
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1033:
+	setvar VAR_SPECIAL_x8008, 1033
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1034:
+	setvar VAR_SPECIAL_x8008, 1034
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1035:
+	setvar VAR_SPECIAL_x8008, 1035
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1036:
+	setvar VAR_SPECIAL_x8008, 1036
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1037:
+	setvar VAR_SPECIAL_x8008, 1037
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1038:
+	setvar VAR_SPECIAL_x8008, 1038
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1039:
+	setvar VAR_SPECIAL_x8008, 1039
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1040:
+	setvar VAR_SPECIAL_x8008, 1040
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1041:
+	setvar VAR_SPECIAL_x8008, 1041
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1042:
+	setvar VAR_SPECIAL_x8008, 1042
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1043:
+	setvar VAR_SPECIAL_x8008, 1043
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1044:
+	setvar VAR_SPECIAL_x8008, 1044
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1045:
+	setvar VAR_SPECIAL_x8008, 1045
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1046:
+	setvar VAR_SPECIAL_x8008, 1046
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1047:
+	setvar VAR_SPECIAL_x8008, 1047
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1048:
+	setvar VAR_SPECIAL_x8008, 1048
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1049:
+	setvar VAR_SPECIAL_x8008, 1049
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1050:
+	setvar VAR_SPECIAL_x8008, 1050
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1051:
+	setvar VAR_SPECIAL_x8008, 1051
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1052:
+	setvar VAR_SPECIAL_x8008, 1052
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1053:
+	setvar VAR_SPECIAL_x8008, 1053
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1054:
+	setvar VAR_SPECIAL_x8008, 1054
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1055:
+	setvar VAR_SPECIAL_x8008, 1055
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1056:
+	setvar VAR_SPECIAL_x8008, 1056
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1057:
+	setvar VAR_SPECIAL_x8008, 1057
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1058:
+	setvar VAR_SPECIAL_x8008, 1058
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1059:
+	setvar VAR_SPECIAL_x8008, 1059
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1060:
+	setvar VAR_SPECIAL_x8008, 1060
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1061:
+	setvar VAR_SPECIAL_x8008, 1061
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1062:
+	setvar VAR_SPECIAL_x8008, 1062
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1063:
+	setvar VAR_SPECIAL_x8008, 1063
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1064:
+	setvar VAR_SPECIAL_x8008, 1064
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1065:
+	setvar VAR_SPECIAL_x8008, 1065
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1066:
+	setvar VAR_SPECIAL_x8008, 1066
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1067:
+	setvar VAR_SPECIAL_x8008, 1067
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1068:
+	setvar VAR_SPECIAL_x8008, 1068
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1069:
+	setvar VAR_SPECIAL_x8008, 1069
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1070:
+	setvar VAR_SPECIAL_x8008, 1070
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1071:
+	setvar VAR_SPECIAL_x8008, 1071
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1072:
+	setvar VAR_SPECIAL_x8008, 1072
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1073:
+	setvar VAR_SPECIAL_x8008, 1073
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1074:
+	setvar VAR_SPECIAL_x8008, 1074
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1075:
+	setvar VAR_SPECIAL_x8008, 1075
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1076:
+	setvar VAR_SPECIAL_x8008, 1076
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1077:
+	setvar VAR_SPECIAL_x8008, 1077
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1078:
+	setvar VAR_SPECIAL_x8008, 1078
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1079:
+	setvar VAR_SPECIAL_x8008, 1079
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1080:
+	setvar VAR_SPECIAL_x8008, 1080
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1081:
+	setvar VAR_SPECIAL_x8008, 1081
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1082:
+	setvar VAR_SPECIAL_x8008, 1082
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1083:
+	setvar VAR_SPECIAL_x8008, 1083
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1084:
+	setvar VAR_SPECIAL_x8008, 1084
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1085:
+	setvar VAR_SPECIAL_x8008, 1085
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1086:
+	setvar VAR_SPECIAL_x8008, 1086
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1087:
+	setvar VAR_SPECIAL_x8008, 1087
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1088:
+	setvar VAR_SPECIAL_x8008, 1088
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1089:
+	setvar VAR_SPECIAL_x8008, 1089
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1090:
+	setvar VAR_SPECIAL_x8008, 1090
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1091:
+	setvar VAR_SPECIAL_x8008, 1091
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1092:
+	setvar VAR_SPECIAL_x8008, 1092
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1093:
+	setvar VAR_SPECIAL_x8008, 1093
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1094:
+	setvar VAR_SPECIAL_x8008, 1094
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1095:
+	setvar VAR_SPECIAL_x8008, 1095
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1096:
+	setvar VAR_SPECIAL_x8008, 1096
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1097:
+	setvar VAR_SPECIAL_x8008, 1097
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1098:
+	setvar VAR_SPECIAL_x8008, 1098
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1099:
+	setvar VAR_SPECIAL_x8008, 1099
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1100:
+	setvar VAR_SPECIAL_x8008, 1100
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1101:
+	setvar VAR_SPECIAL_x8008, 1101
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1102:
+	setvar VAR_SPECIAL_x8008, 1102
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1103:
+	setvar VAR_SPECIAL_x8008, 1103
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1104:
+	setvar VAR_SPECIAL_x8008, 1104
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1105:
+	setvar VAR_SPECIAL_x8008, 1105
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1106:
+	setvar VAR_SPECIAL_x8008, 1106
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1107:
+	setvar VAR_SPECIAL_x8008, 1107
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1108:
+	setvar VAR_SPECIAL_x8008, 1108
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1109:
+	setvar VAR_SPECIAL_x8008, 1109
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1110:
+	setvar VAR_SPECIAL_x8008, 1110
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1111:
+	setvar VAR_SPECIAL_x8008, 1111
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1112:
+	setvar VAR_SPECIAL_x8008, 1112
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1113:
+	setvar VAR_SPECIAL_x8008, 1113
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1114:
+	setvar VAR_SPECIAL_x8008, 1114
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1115:
+	setvar VAR_SPECIAL_x8008, 1115
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1116:
+	setvar VAR_SPECIAL_x8008, 1116
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1117:
+	setvar VAR_SPECIAL_x8008, 1117
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1118:
+	setvar VAR_SPECIAL_x8008, 1118
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1119:
+	setvar VAR_SPECIAL_x8008, 1119
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1120:
+	setvar VAR_SPECIAL_x8008, 1120
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1121:
+	setvar VAR_SPECIAL_x8008, 1121
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1122:
+	setvar VAR_SPECIAL_x8008, 1122
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1123:
+	setvar VAR_SPECIAL_x8008, 1123
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1124:
+	setvar VAR_SPECIAL_x8008, 1124
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1125:
+	setvar VAR_SPECIAL_x8008, 1125
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1126:
+	setvar VAR_SPECIAL_x8008, 1126
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1127:
+	setvar VAR_SPECIAL_x8008, 1127
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1128:
+	setvar VAR_SPECIAL_x8008, 1128
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1129:
+	setvar VAR_SPECIAL_x8008, 1129
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1130:
+	setvar VAR_SPECIAL_x8008, 1130
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1131:
+	setvar VAR_SPECIAL_x8008, 1131
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1132:
+	setvar VAR_SPECIAL_x8008, 1132
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1133:
+	setvar VAR_SPECIAL_x8008, 1133
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1134:
+	setvar VAR_SPECIAL_x8008, 1134
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1135:
+	setvar VAR_SPECIAL_x8008, 1135
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1136:
+	setvar VAR_SPECIAL_x8008, 1136
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1137:
+	setvar VAR_SPECIAL_x8008, 1137
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1138:
+	setvar VAR_SPECIAL_x8008, 1138
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1139:
+	setvar VAR_SPECIAL_x8008, 1139
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1140:
+	setvar VAR_SPECIAL_x8008, 1140
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1141:
+	setvar VAR_SPECIAL_x8008, 1141
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1142:
+	setvar VAR_SPECIAL_x8008, 1142
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1143:
+	setvar VAR_SPECIAL_x8008, 1143
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1144:
+	setvar VAR_SPECIAL_x8008, 1144
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1145:
+	setvar VAR_SPECIAL_x8008, 1145
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1146:
+	setvar VAR_SPECIAL_x8008, 1146
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1147:
+	setvar VAR_SPECIAL_x8008, 1147
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1148:
+	setvar VAR_SPECIAL_x8008, 1148
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1149:
+	setvar VAR_SPECIAL_x8008, 1149
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1150:
+	setvar VAR_SPECIAL_x8008, 1150
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1151:
+	setvar VAR_SPECIAL_x8008, 1151
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1152:
+	setvar VAR_SPECIAL_x8008, 1152
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1153:
+	setvar VAR_SPECIAL_x8008, 1153
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1154:
+	setvar VAR_SPECIAL_x8008, 1154
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1155:
+	setvar VAR_SPECIAL_x8008, 1155
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1156:
+	setvar VAR_SPECIAL_x8008, 1156
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1157:
+	setvar VAR_SPECIAL_x8008, 1157
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1158:
+	setvar VAR_SPECIAL_x8008, 1158
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1159:
+	setvar VAR_SPECIAL_x8008, 1159
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1160:
+	setvar VAR_SPECIAL_x8008, 1160
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1161:
+	setvar VAR_SPECIAL_x8008, 1161
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1162:
+	setvar VAR_SPECIAL_x8008, 1162
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1163:
+	setvar VAR_SPECIAL_x8008, 1163
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1164:
+	setvar VAR_SPECIAL_x8008, 1164
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1165:
+	setvar VAR_SPECIAL_x8008, 1165
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1166:
+	setvar VAR_SPECIAL_x8008, 1166
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1167:
+	setvar VAR_SPECIAL_x8008, 1167
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1168:
+	setvar VAR_SPECIAL_x8008, 1168
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1169:
+	setvar VAR_SPECIAL_x8008, 1169
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1170:
+	setvar VAR_SPECIAL_x8008, 1170
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1171:
+	setvar VAR_SPECIAL_x8008, 1171
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1172:
+	setvar VAR_SPECIAL_x8008, 1172
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1173:
+	setvar VAR_SPECIAL_x8008, 1173
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1174:
+	setvar VAR_SPECIAL_x8008, 1174
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1175:
+	setvar VAR_SPECIAL_x8008, 1175
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1176:
+	setvar VAR_SPECIAL_x8008, 1176
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1177:
+	setvar VAR_SPECIAL_x8008, 1177
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1178:
+	setvar VAR_SPECIAL_x8008, 1178
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1179:
+	setvar VAR_SPECIAL_x8008, 1179
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1180:
+	setvar VAR_SPECIAL_x8008, 1180
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1181:
+	setvar VAR_SPECIAL_x8008, 1181
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1182:
+	setvar VAR_SPECIAL_x8008, 1182
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1183:
+	setvar VAR_SPECIAL_x8008, 1183
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1184:
+	setvar VAR_SPECIAL_x8008, 1184
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1185:
+	setvar VAR_SPECIAL_x8008, 1185
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1186:
+	setvar VAR_SPECIAL_x8008, 1186
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1187:
+	setvar VAR_SPECIAL_x8008, 1187
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1188:
+	setvar VAR_SPECIAL_x8008, 1188
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1189:
+	setvar VAR_SPECIAL_x8008, 1189
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1190:
+	setvar VAR_SPECIAL_x8008, 1190
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1191:
+	setvar VAR_SPECIAL_x8008, 1191
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1192:
+	setvar VAR_SPECIAL_x8008, 1192
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1193:
+	setvar VAR_SPECIAL_x8008, 1193
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1194:
+	setvar VAR_SPECIAL_x8008, 1194
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1195:
+	setvar VAR_SPECIAL_x8008, 1195
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1196:
+	setvar VAR_SPECIAL_x8008, 1196
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1197:
+	setvar VAR_SPECIAL_x8008, 1197
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1198:
+	setvar VAR_SPECIAL_x8008, 1198
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1199:
+	setvar VAR_SPECIAL_x8008, 1199
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1200:
+	setvar VAR_SPECIAL_x8008, 1200
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1201:
+	setvar VAR_SPECIAL_x8008, 1201
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1202:
+	setvar VAR_SPECIAL_x8008, 1202
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1203:
+	setvar VAR_SPECIAL_x8008, 1203
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1204:
+	setvar VAR_SPECIAL_x8008, 1204
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1205:
+	setvar VAR_SPECIAL_x8008, 1205
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1206:
+	setvar VAR_SPECIAL_x8008, 1206
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1207:
+	setvar VAR_SPECIAL_x8008, 1207
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1208:
+	setvar VAR_SPECIAL_x8008, 1208
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1209:
+	setvar VAR_SPECIAL_x8008, 1209
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1210:
+	setvar VAR_SPECIAL_x8008, 1210
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1211:
+	setvar VAR_SPECIAL_x8008, 1211
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1212:
+	setvar VAR_SPECIAL_x8008, 1212
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1213:
+	setvar VAR_SPECIAL_x8008, 1213
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1214:
+	setvar VAR_SPECIAL_x8008, 1214
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1215:
+	setvar VAR_SPECIAL_x8008, 1215
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1216:
+	setvar VAR_SPECIAL_x8008, 1216
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1217:
+	setvar VAR_SPECIAL_x8008, 1217
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1218:
+	setvar VAR_SPECIAL_x8008, 1218
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1219:
+	setvar VAR_SPECIAL_x8008, 1219
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1220:
+	setvar VAR_SPECIAL_x8008, 1220
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1221:
+	setvar VAR_SPECIAL_x8008, 1221
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1222:
+	setvar VAR_SPECIAL_x8008, 1222
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1223:
+	setvar VAR_SPECIAL_x8008, 1223
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1224:
+	setvar VAR_SPECIAL_x8008, 1224
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1225:
+	setvar VAR_SPECIAL_x8008, 1225
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1226:
+	setvar VAR_SPECIAL_x8008, 1226
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1227:
+	setvar VAR_SPECIAL_x8008, 1227
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1228:
+	setvar VAR_SPECIAL_x8008, 1228
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1229:
+	setvar VAR_SPECIAL_x8008, 1229
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1230:
+	setvar VAR_SPECIAL_x8008, 1230
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1231:
+	setvar VAR_SPECIAL_x8008, 1231
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1232:
+	setvar VAR_SPECIAL_x8008, 1232
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1233:
+	setvar VAR_SPECIAL_x8008, 1233
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1234:
+	setvar VAR_SPECIAL_x8008, 1234
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1235:
+	setvar VAR_SPECIAL_x8008, 1235
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1236:
+	setvar VAR_SPECIAL_x8008, 1236
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1237:
+	setvar VAR_SPECIAL_x8008, 1237
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1238:
+	setvar VAR_SPECIAL_x8008, 1238
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1239:
+	setvar VAR_SPECIAL_x8008, 1239
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1240:
+	setvar VAR_SPECIAL_x8008, 1240
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1241:
+	setvar VAR_SPECIAL_x8008, 1241
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1242:
+	setvar VAR_SPECIAL_x8008, 1242
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1243:
+	setvar VAR_SPECIAL_x8008, 1243
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1244:
+	setvar VAR_SPECIAL_x8008, 1244
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1245:
+	setvar VAR_SPECIAL_x8008, 1245
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1246:
+	setvar VAR_SPECIAL_x8008, 1246
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1247:
+	setvar VAR_SPECIAL_x8008, 1247
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1248:
+	setvar VAR_SPECIAL_x8008, 1248
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1249:
+	setvar VAR_SPECIAL_x8008, 1249
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1250:
+	setvar VAR_SPECIAL_x8008, 1250
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1251:
+	setvar VAR_SPECIAL_x8008, 1251
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1252:
+	setvar VAR_SPECIAL_x8008, 1252
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1253:
+	setvar VAR_SPECIAL_x8008, 1253
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1254:
+	setvar VAR_SPECIAL_x8008, 1254
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1255:
+	setvar VAR_SPECIAL_x8008, 1255
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1256:
+	setvar VAR_SPECIAL_x8008, 1256
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1257:
+	setvar VAR_SPECIAL_x8008, 1257
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1258:
+	setvar VAR_SPECIAL_x8008, 1258
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1259:
+	setvar VAR_SPECIAL_x8008, 1259
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1260:
+	setvar VAR_SPECIAL_x8008, 1260
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1261:
+	setvar VAR_SPECIAL_x8008, 1261
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1262:
+	setvar VAR_SPECIAL_x8008, 1262
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1263:
+	setvar VAR_SPECIAL_x8008, 1263
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1264:
+	setvar VAR_SPECIAL_x8008, 1264
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1265:
+	setvar VAR_SPECIAL_x8008, 1265
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1266:
+	setvar VAR_SPECIAL_x8008, 1266
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1267:
+	setvar VAR_SPECIAL_x8008, 1267
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1268:
+	setvar VAR_SPECIAL_x8008, 1268
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1269:
+	setvar VAR_SPECIAL_x8008, 1269
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1270:
+	setvar VAR_SPECIAL_x8008, 1270
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1271:
+	setvar VAR_SPECIAL_x8008, 1271
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1272:
+	setvar VAR_SPECIAL_x8008, 1272
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1273:
+	setvar VAR_SPECIAL_x8008, 1273
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1274:
+	setvar VAR_SPECIAL_x8008, 1274
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1275:
+	setvar VAR_SPECIAL_x8008, 1275
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1276:
+	setvar VAR_SPECIAL_x8008, 1276
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1277:
+	setvar VAR_SPECIAL_x8008, 1277
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1278:
+	setvar VAR_SPECIAL_x8008, 1278
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1279:
+	setvar VAR_SPECIAL_x8008, 1279
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1280:
+	setvar VAR_SPECIAL_x8008, 1280
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1281:
+	setvar VAR_SPECIAL_x8008, 1281
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1282:
+	setvar VAR_SPECIAL_x8008, 1282
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1283:
+	setvar VAR_SPECIAL_x8008, 1283
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1284:
+	setvar VAR_SPECIAL_x8008, 1284
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1285:
+	setvar VAR_SPECIAL_x8008, 1285
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1286:
+	setvar VAR_SPECIAL_x8008, 1286
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1287:
+	setvar VAR_SPECIAL_x8008, 1287
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1288:
+	setvar VAR_SPECIAL_x8008, 1288
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1289:
+	setvar VAR_SPECIAL_x8008, 1289
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1290:
+	setvar VAR_SPECIAL_x8008, 1290
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1291:
+	setvar VAR_SPECIAL_x8008, 1291
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1292:
+	setvar VAR_SPECIAL_x8008, 1292
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1293:
+	setvar VAR_SPECIAL_x8008, 1293
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1294:
+	setvar VAR_SPECIAL_x8008, 1294
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1295:
+	setvar VAR_SPECIAL_x8008, 1295
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1296:
+	setvar VAR_SPECIAL_x8008, 1296
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1297:
+	setvar VAR_SPECIAL_x8008, 1297
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1298:
+	setvar VAR_SPECIAL_x8008, 1298
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1299:
+	setvar VAR_SPECIAL_x8008, 1299
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1300:
+	setvar VAR_SPECIAL_x8008, 1300
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1301:
+	setvar VAR_SPECIAL_x8008, 1301
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1302:
+	setvar VAR_SPECIAL_x8008, 1302
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1303:
+	setvar VAR_SPECIAL_x8008, 1303
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1304:
+	setvar VAR_SPECIAL_x8008, 1304
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1305:
+	setvar VAR_SPECIAL_x8008, 1305
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1306:
+	setvar VAR_SPECIAL_x8008, 1306
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1307:
+	setvar VAR_SPECIAL_x8008, 1307
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1308:
+	setvar VAR_SPECIAL_x8008, 1308
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1309:
+	setvar VAR_SPECIAL_x8008, 1309
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1310:
+	setvar VAR_SPECIAL_x8008, 1310
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1311:
+	setvar VAR_SPECIAL_x8008, 1311
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1312:
+	setvar VAR_SPECIAL_x8008, 1312
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1313:
+	setvar VAR_SPECIAL_x8008, 1313
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1314:
+	setvar VAR_SPECIAL_x8008, 1314
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1315:
+	setvar VAR_SPECIAL_x8008, 1315
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1316:
+	setvar VAR_SPECIAL_x8008, 1316
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1317:
+	setvar VAR_SPECIAL_x8008, 1317
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1318:
+	setvar VAR_SPECIAL_x8008, 1318
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1319:
+	setvar VAR_SPECIAL_x8008, 1319
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1320:
+	setvar VAR_SPECIAL_x8008, 1320
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1321:
+	setvar VAR_SPECIAL_x8008, 1321
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1322:
+	setvar VAR_SPECIAL_x8008, 1322
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1323:
+	setvar VAR_SPECIAL_x8008, 1323
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1324:
+	setvar VAR_SPECIAL_x8008, 1324
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1325:
+	setvar VAR_SPECIAL_x8008, 1325
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1326:
+	setvar VAR_SPECIAL_x8008, 1326
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1327:
+	setvar VAR_SPECIAL_x8008, 1327
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1328:
+	setvar VAR_SPECIAL_x8008, 1328
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1329:
+	setvar VAR_SPECIAL_x8008, 1329
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1330:
+	setvar VAR_SPECIAL_x8008, 1330
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1331:
+	setvar VAR_SPECIAL_x8008, 1331
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1332:
+	setvar VAR_SPECIAL_x8008, 1332
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1333:
+	setvar VAR_SPECIAL_x8008, 1333
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1334:
+	setvar VAR_SPECIAL_x8008, 1334
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1335:
+	setvar VAR_SPECIAL_x8008, 1335
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1336:
+	setvar VAR_SPECIAL_x8008, 1336
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1337:
+	setvar VAR_SPECIAL_x8008, 1337
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1338:
+	setvar VAR_SPECIAL_x8008, 1338
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1339:
+	setvar VAR_SPECIAL_x8008, 1339
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1340:
+	setvar VAR_SPECIAL_x8008, 1340
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1341:
+	setvar VAR_SPECIAL_x8008, 1341
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1342:
+	setvar VAR_SPECIAL_x8008, 1342
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1343:
+	setvar VAR_SPECIAL_x8008, 1343
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1344:
+	setvar VAR_SPECIAL_x8008, 1344
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1345:
+	setvar VAR_SPECIAL_x8008, 1345
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1346:
+	setvar VAR_SPECIAL_x8008, 1346
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1347:
+	setvar VAR_SPECIAL_x8008, 1347
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1348:
+	setvar VAR_SPECIAL_x8008, 1348
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1349:
+	setvar VAR_SPECIAL_x8008, 1349
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1350:
+	setvar VAR_SPECIAL_x8008, 1350
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1351:
+	setvar VAR_SPECIAL_x8008, 1351
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1352:
+	setvar VAR_SPECIAL_x8008, 1352
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1353:
+	setvar VAR_SPECIAL_x8008, 1353
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1354:
+	setvar VAR_SPECIAL_x8008, 1354
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1355:
+	setvar VAR_SPECIAL_x8008, 1355
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1356:
+	setvar VAR_SPECIAL_x8008, 1356
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1357:
+	setvar VAR_SPECIAL_x8008, 1357
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1358:
+	setvar VAR_SPECIAL_x8008, 1358
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1359:
+	setvar VAR_SPECIAL_x8008, 1359
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1360:
+	setvar VAR_SPECIAL_x8008, 1360
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1361:
+	setvar VAR_SPECIAL_x8008, 1361
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1362:
+	setvar VAR_SPECIAL_x8008, 1362
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1363:
+	setvar VAR_SPECIAL_x8008, 1363
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1364:
+	setvar VAR_SPECIAL_x8008, 1364
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1365:
+	setvar VAR_SPECIAL_x8008, 1365
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1366:
+	setvar VAR_SPECIAL_x8008, 1366
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1367:
+	setvar VAR_SPECIAL_x8008, 1367
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1368:
+	setvar VAR_SPECIAL_x8008, 1368
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1369:
+	setvar VAR_SPECIAL_x8008, 1369
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1370:
+	setvar VAR_SPECIAL_x8008, 1370
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1371:
+	setvar VAR_SPECIAL_x8008, 1371
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1372:
+	setvar VAR_SPECIAL_x8008, 1372
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1373:
+	setvar VAR_SPECIAL_x8008, 1373
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1374:
+	setvar VAR_SPECIAL_x8008, 1374
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1375:
+	setvar VAR_SPECIAL_x8008, 1375
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1376:
+	setvar VAR_SPECIAL_x8008, 1376
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1377:
+	setvar VAR_SPECIAL_x8008, 1377
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1378:
+	setvar VAR_SPECIAL_x8008, 1378
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1379:
+	setvar VAR_SPECIAL_x8008, 1379
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1380:
+	setvar VAR_SPECIAL_x8008, 1380
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1381:
+	setvar VAR_SPECIAL_x8008, 1381
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1382:
+	setvar VAR_SPECIAL_x8008, 1382
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1383:
+	setvar VAR_SPECIAL_x8008, 1383
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1384:
+	setvar VAR_SPECIAL_x8008, 1384
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1385:
+	setvar VAR_SPECIAL_x8008, 1385
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1386:
+	setvar VAR_SPECIAL_x8008, 1386
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1387:
+	setvar VAR_SPECIAL_x8008, 1387
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1388:
+	setvar VAR_SPECIAL_x8008, 1388
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1389:
+	setvar VAR_SPECIAL_x8008, 1389
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1390:
+	setvar VAR_SPECIAL_x8008, 1390
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1391:
+	setvar VAR_SPECIAL_x8008, 1391
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1392:
+	setvar VAR_SPECIAL_x8008, 1392
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1393:
+	setvar VAR_SPECIAL_x8008, 1393
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1394:
+	setvar VAR_SPECIAL_x8008, 1394
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1395:
+	setvar VAR_SPECIAL_x8008, 1395
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1396:
+	setvar VAR_SPECIAL_x8008, 1396
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1397:
+	setvar VAR_SPECIAL_x8008, 1397
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1398:
+	setvar VAR_SPECIAL_x8008, 1398
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1399:
+	setvar VAR_SPECIAL_x8008, 1399
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1400:
+	setvar VAR_SPECIAL_x8008, 1400
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1401:
+	setvar VAR_SPECIAL_x8008, 1401
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1402:
+	setvar VAR_SPECIAL_x8008, 1402
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1403:
+	setvar VAR_SPECIAL_x8008, 1403
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1404:
+	setvar VAR_SPECIAL_x8008, 1404
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1405:
+	setvar VAR_SPECIAL_x8008, 1405
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1406:
+	setvar VAR_SPECIAL_x8008, 1406
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1407:
+	setvar VAR_SPECIAL_x8008, 1407
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1408:
+	setvar VAR_SPECIAL_x8008, 1408
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1409:
+	setvar VAR_SPECIAL_x8008, 1409
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1410:
+	setvar VAR_SPECIAL_x8008, 1410
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1411:
+	setvar VAR_SPECIAL_x8008, 1411
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1412:
+	setvar VAR_SPECIAL_x8008, 1412
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1413:
+	setvar VAR_SPECIAL_x8008, 1413
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1414:
+	setvar VAR_SPECIAL_x8008, 1414
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1415:
+	setvar VAR_SPECIAL_x8008, 1415
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1416:
+	setvar VAR_SPECIAL_x8008, 1416
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1417:
+	setvar VAR_SPECIAL_x8008, 1417
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1418:
+	setvar VAR_SPECIAL_x8008, 1418
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1419:
+	setvar VAR_SPECIAL_x8008, 1419
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1420:
+	setvar VAR_SPECIAL_x8008, 1420
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1421:
+	setvar VAR_SPECIAL_x8008, 1421
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1422:
+	setvar VAR_SPECIAL_x8008, 1422
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1423:
+	setvar VAR_SPECIAL_x8008, 1423
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1424:
+	setvar VAR_SPECIAL_x8008, 1424
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1425:
+	setvar VAR_SPECIAL_x8008, 1425
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1426:
+	setvar VAR_SPECIAL_x8008, 1426
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1427:
+	setvar VAR_SPECIAL_x8008, 1427
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1428:
+	setvar VAR_SPECIAL_x8008, 1428
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1429:
+	setvar VAR_SPECIAL_x8008, 1429
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1430:
+	setvar VAR_SPECIAL_x8008, 1430
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1431:
+	setvar VAR_SPECIAL_x8008, 1431
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1432:
+	setvar VAR_SPECIAL_x8008, 1432
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1433:
+	setvar VAR_SPECIAL_x8008, 1433
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1434:
+	setvar VAR_SPECIAL_x8008, 1434
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1435:
+	setvar VAR_SPECIAL_x8008, 1435
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1436:
+	setvar VAR_SPECIAL_x8008, 1436
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1437:
+	setvar VAR_SPECIAL_x8008, 1437
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1438:
+	setvar VAR_SPECIAL_x8008, 1438
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1439:
+	setvar VAR_SPECIAL_x8008, 1439
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1440:
+	setvar VAR_SPECIAL_x8008, 1440
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1441:
+	setvar VAR_SPECIAL_x8008, 1441
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1442:
+	setvar VAR_SPECIAL_x8008, 1442
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1443:
+	setvar VAR_SPECIAL_x8008, 1443
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1444:
+	setvar VAR_SPECIAL_x8008, 1444
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1445:
+	setvar VAR_SPECIAL_x8008, 1445
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1446:
+	setvar VAR_SPECIAL_x8008, 1446
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1447:
+	setvar VAR_SPECIAL_x8008, 1447
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1448:
+	setvar VAR_SPECIAL_x8008, 1448
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1449:
+	setvar VAR_SPECIAL_x8008, 1449
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1450:
+	setvar VAR_SPECIAL_x8008, 1450
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1451:
+	setvar VAR_SPECIAL_x8008, 1451
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1452:
+	setvar VAR_SPECIAL_x8008, 1452
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1453:
+	setvar VAR_SPECIAL_x8008, 1453
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1454:
+	setvar VAR_SPECIAL_x8008, 1454
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1455:
+	setvar VAR_SPECIAL_x8008, 1455
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1456:
+	setvar VAR_SPECIAL_x8008, 1456
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1457:
+	setvar VAR_SPECIAL_x8008, 1457
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1458:
+	setvar VAR_SPECIAL_x8008, 1458
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1459:
+	setvar VAR_SPECIAL_x8008, 1459
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1460:
+	setvar VAR_SPECIAL_x8008, 1460
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1461:
+	setvar VAR_SPECIAL_x8008, 1461
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1462:
+	setvar VAR_SPECIAL_x8008, 1462
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1463:
+	setvar VAR_SPECIAL_x8008, 1463
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1464:
+	setvar VAR_SPECIAL_x8008, 1464
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1465:
+	setvar VAR_SPECIAL_x8008, 1465
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1466:
+	setvar VAR_SPECIAL_x8008, 1466
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1467:
+	setvar VAR_SPECIAL_x8008, 1467
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1468:
+	setvar VAR_SPECIAL_x8008, 1468
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1469:
+	setvar VAR_SPECIAL_x8008, 1469
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1470:
+	setvar VAR_SPECIAL_x8008, 1470
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1471:
+	setvar VAR_SPECIAL_x8008, 1471
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1472:
+	setvar VAR_SPECIAL_x8008, 1472
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1473:
+	setvar VAR_SPECIAL_x8008, 1473
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1474:
+	setvar VAR_SPECIAL_x8008, 1474
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1475:
+	setvar VAR_SPECIAL_x8008, 1475
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1476:
+	setvar VAR_SPECIAL_x8008, 1476
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1477:
+	setvar VAR_SPECIAL_x8008, 1477
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1478:
+	setvar VAR_SPECIAL_x8008, 1478
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1479:
+	setvar VAR_SPECIAL_x8008, 1479
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1480:
+	setvar VAR_SPECIAL_x8008, 1480
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1481:
+	setvar VAR_SPECIAL_x8008, 1481
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1482:
+	setvar VAR_SPECIAL_x8008, 1482
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1483:
+	setvar VAR_SPECIAL_x8008, 1483
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1484:
+	setvar VAR_SPECIAL_x8008, 1484
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1485:
+	setvar VAR_SPECIAL_x8008, 1485
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1486:
+	setvar VAR_SPECIAL_x8008, 1486
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1487:
+	setvar VAR_SPECIAL_x8008, 1487
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1488:
+	setvar VAR_SPECIAL_x8008, 1488
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1489:
+	setvar VAR_SPECIAL_x8008, 1489
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1490:
+	setvar VAR_SPECIAL_x8008, 1490
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1491:
+	setvar VAR_SPECIAL_x8008, 1491
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1492:
+	setvar VAR_SPECIAL_x8008, 1492
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1493:
+	setvar VAR_SPECIAL_x8008, 1493
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1494:
+	setvar VAR_SPECIAL_x8008, 1494
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1495:
+	setvar VAR_SPECIAL_x8008, 1495
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1496:
+	setvar VAR_SPECIAL_x8008, 1496
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1497:
+	setvar VAR_SPECIAL_x8008, 1497
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1498:
+	setvar VAR_SPECIAL_x8008, 1498
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1499:
+	setvar VAR_SPECIAL_x8008, 1499
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1500:
+	setvar VAR_SPECIAL_x8008, 1500
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1501:
+	setvar VAR_SPECIAL_x8008, 1501
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1502:
+	setvar VAR_SPECIAL_x8008, 1502
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1503:
+	setvar VAR_SPECIAL_x8008, 1503
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1504:
+	setvar VAR_SPECIAL_x8008, 1504
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1505:
+	setvar VAR_SPECIAL_x8008, 1505
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1506:
+	setvar VAR_SPECIAL_x8008, 1506
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1507:
+	setvar VAR_SPECIAL_x8008, 1507
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1508:
+	setvar VAR_SPECIAL_x8008, 1508
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1509:
+	setvar VAR_SPECIAL_x8008, 1509
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1510:
+	setvar VAR_SPECIAL_x8008, 1510
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1511:
+	setvar VAR_SPECIAL_x8008, 1511
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1512:
+	setvar VAR_SPECIAL_x8008, 1512
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1513:
+	setvar VAR_SPECIAL_x8008, 1513
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1514:
+	setvar VAR_SPECIAL_x8008, 1514
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1515:
+	setvar VAR_SPECIAL_x8008, 1515
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1516:
+	setvar VAR_SPECIAL_x8008, 1516
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1517:
+	setvar VAR_SPECIAL_x8008, 1517
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1518:
+	setvar VAR_SPECIAL_x8008, 1518
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1519:
+	setvar VAR_SPECIAL_x8008, 1519
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1520:
+	setvar VAR_SPECIAL_x8008, 1520
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1521:
+	setvar VAR_SPECIAL_x8008, 1521
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1522:
+	setvar VAR_SPECIAL_x8008, 1522
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1523:
+	setvar VAR_SPECIAL_x8008, 1523
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1524:
+	setvar VAR_SPECIAL_x8008, 1524
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1525:
+	setvar VAR_SPECIAL_x8008, 1525
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1526:
+	setvar VAR_SPECIAL_x8008, 1526
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1527:
+	setvar VAR_SPECIAL_x8008, 1527
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1528:
+	setvar VAR_SPECIAL_x8008, 1528
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1529:
+	setvar VAR_SPECIAL_x8008, 1529
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1530:
+	setvar VAR_SPECIAL_x8008, 1530
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1531:
+	setvar VAR_SPECIAL_x8008, 1531
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1532:
+	setvar VAR_SPECIAL_x8008, 1532
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1533:
+	setvar VAR_SPECIAL_x8008, 1533
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1534:
+	setvar VAR_SPECIAL_x8008, 1534
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1535:
+	setvar VAR_SPECIAL_x8008, 1535
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1536:
+	setvar VAR_SPECIAL_x8008, 1536
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1537:
+	setvar VAR_SPECIAL_x8008, 1537
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1538:
+	setvar VAR_SPECIAL_x8008, 1538
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1539:
+	setvar VAR_SPECIAL_x8008, 1539
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1540:
+	setvar VAR_SPECIAL_x8008, 1540
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1541:
+	setvar VAR_SPECIAL_x8008, 1541
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1542:
+	setvar VAR_SPECIAL_x8008, 1542
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1543:
+	setvar VAR_SPECIAL_x8008, 1543
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1544:
+	setvar VAR_SPECIAL_x8008, 1544
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1545:
+	setvar VAR_SPECIAL_x8008, 1545
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1546:
+	setvar VAR_SPECIAL_x8008, 1546
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1547:
+	setvar VAR_SPECIAL_x8008, 1547
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1548:
+	setvar VAR_SPECIAL_x8008, 1548
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1549:
+	setvar VAR_SPECIAL_x8008, 1549
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1550:
+	setvar VAR_SPECIAL_x8008, 1550
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1551:
+	setvar VAR_SPECIAL_x8008, 1551
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1552:
+	setvar VAR_SPECIAL_x8008, 1552
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1553:
+	setvar VAR_SPECIAL_x8008, 1553
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1554:
+	setvar VAR_SPECIAL_x8008, 1554
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1555:
+	setvar VAR_SPECIAL_x8008, 1555
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1556:
+	setvar VAR_SPECIAL_x8008, 1556
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1557:
+	setvar VAR_SPECIAL_x8008, 1557
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1558:
+	setvar VAR_SPECIAL_x8008, 1558
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1559:
+	setvar VAR_SPECIAL_x8008, 1559
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1560:
+	setvar VAR_SPECIAL_x8008, 1560
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1561:
+	setvar VAR_SPECIAL_x8008, 1561
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1562:
+	setvar VAR_SPECIAL_x8008, 1562
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1563:
+	setvar VAR_SPECIAL_x8008, 1563
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1564:
+	setvar VAR_SPECIAL_x8008, 1564
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1565:
+	setvar VAR_SPECIAL_x8008, 1565
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1566:
+	setvar VAR_SPECIAL_x8008, 1566
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1567:
+	setvar VAR_SPECIAL_x8008, 1567
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1568:
+	setvar VAR_SPECIAL_x8008, 1568
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1569:
+	setvar VAR_SPECIAL_x8008, 1569
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1570:
+	setvar VAR_SPECIAL_x8008, 1570
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1571:
+	setvar VAR_SPECIAL_x8008, 1571
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1572:
+	setvar VAR_SPECIAL_x8008, 1572
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1573:
+	setvar VAR_SPECIAL_x8008, 1573
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1574:
+	setvar VAR_SPECIAL_x8008, 1574
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1575:
+	setvar VAR_SPECIAL_x8008, 1575
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1576:
+	setvar VAR_SPECIAL_x8008, 1576
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1577:
+	setvar VAR_SPECIAL_x8008, 1577
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1578:
+	setvar VAR_SPECIAL_x8008, 1578
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1579:
+	setvar VAR_SPECIAL_x8008, 1579
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1580:
+	setvar VAR_SPECIAL_x8008, 1580
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1581:
+	setvar VAR_SPECIAL_x8008, 1581
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1582:
+	setvar VAR_SPECIAL_x8008, 1582
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1583:
+	setvar VAR_SPECIAL_x8008, 1583
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1584:
+	setvar VAR_SPECIAL_x8008, 1584
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1585:
+	setvar VAR_SPECIAL_x8008, 1585
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1586:
+	setvar VAR_SPECIAL_x8008, 1586
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1587:
+	setvar VAR_SPECIAL_x8008, 1587
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1588:
+	setvar VAR_SPECIAL_x8008, 1588
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1589:
+	setvar VAR_SPECIAL_x8008, 1589
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1590:
+	setvar VAR_SPECIAL_x8008, 1590
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1591:
+	setvar VAR_SPECIAL_x8008, 1591
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1592:
+	setvar VAR_SPECIAL_x8008, 1592
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1593:
+	setvar VAR_SPECIAL_x8008, 1593
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1594:
+	setvar VAR_SPECIAL_x8008, 1594
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1595:
+	setvar VAR_SPECIAL_x8008, 1595
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1596:
+	setvar VAR_SPECIAL_x8008, 1596
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1597:
+	setvar VAR_SPECIAL_x8008, 1597
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1598:
+	setvar VAR_SPECIAL_x8008, 1598
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1599:
+	setvar VAR_SPECIAL_x8008, 1599
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1600:
+	setvar VAR_SPECIAL_x8008, 1600
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1601:
+	setvar VAR_SPECIAL_x8008, 1601
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1602:
+	setvar VAR_SPECIAL_x8008, 1602
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1603:
+	setvar VAR_SPECIAL_x8008, 1603
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1604:
+	setvar VAR_SPECIAL_x8008, 1604
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1605:
+	setvar VAR_SPECIAL_x8008, 1605
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1606:
+	setvar VAR_SPECIAL_x8008, 1606
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1607:
+	setvar VAR_SPECIAL_x8008, 1607
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1608:
+	setvar VAR_SPECIAL_x8008, 1608
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1609:
+	setvar VAR_SPECIAL_x8008, 1609
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1610:
+	setvar VAR_SPECIAL_x8008, 1610
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1611:
+	setvar VAR_SPECIAL_x8008, 1611
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1612:
+	setvar VAR_SPECIAL_x8008, 1612
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1613:
+	setvar VAR_SPECIAL_x8008, 1613
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1614:
+	setvar VAR_SPECIAL_x8008, 1614
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1615:
+	setvar VAR_SPECIAL_x8008, 1615
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1616:
+	setvar VAR_SPECIAL_x8008, 1616
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1617:
+	setvar VAR_SPECIAL_x8008, 1617
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1618:
+	setvar VAR_SPECIAL_x8008, 1618
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1619:
+	setvar VAR_SPECIAL_x8008, 1619
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1620:
+	setvar VAR_SPECIAL_x8008, 1620
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1621:
+	setvar VAR_SPECIAL_x8008, 1621
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1622:
+	setvar VAR_SPECIAL_x8008, 1622
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1623:
+	setvar VAR_SPECIAL_x8008, 1623
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1624:
+	setvar VAR_SPECIAL_x8008, 1624
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1625:
+	setvar VAR_SPECIAL_x8008, 1625
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1626:
+	setvar VAR_SPECIAL_x8008, 1626
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1627:
+	setvar VAR_SPECIAL_x8008, 1627
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1628:
+	setvar VAR_SPECIAL_x8008, 1628
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1629:
+	setvar VAR_SPECIAL_x8008, 1629
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1630:
+	setvar VAR_SPECIAL_x8008, 1630
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1631:
+	setvar VAR_SPECIAL_x8008, 1631
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1632:
+	setvar VAR_SPECIAL_x8008, 1632
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1633:
+	setvar VAR_SPECIAL_x8008, 1633
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1634:
+	setvar VAR_SPECIAL_x8008, 1634
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1635:
+	setvar VAR_SPECIAL_x8008, 1635
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1636:
+	setvar VAR_SPECIAL_x8008, 1636
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1637:
+	setvar VAR_SPECIAL_x8008, 1637
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1638:
+	setvar VAR_SPECIAL_x8008, 1638
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1639:
+	setvar VAR_SPECIAL_x8008, 1639
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1640:
+	setvar VAR_SPECIAL_x8008, 1640
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1641:
+	setvar VAR_SPECIAL_x8008, 1641
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1642:
+	setvar VAR_SPECIAL_x8008, 1642
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1643:
+	setvar VAR_SPECIAL_x8008, 1643
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1644:
+	setvar VAR_SPECIAL_x8008, 1644
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1645:
+	setvar VAR_SPECIAL_x8008, 1645
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1646:
+	setvar VAR_SPECIAL_x8008, 1646
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1647:
+	setvar VAR_SPECIAL_x8008, 1647
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1648:
+	setvar VAR_SPECIAL_x8008, 1648
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1649:
+	setvar VAR_SPECIAL_x8008, 1649
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1650:
+	setvar VAR_SPECIAL_x8008, 1650
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1651:
+	setvar VAR_SPECIAL_x8008, 1651
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1652:
+	setvar VAR_SPECIAL_x8008, 1652
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1653:
+	setvar VAR_SPECIAL_x8008, 1653
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1654:
+	setvar VAR_SPECIAL_x8008, 1654
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1655:
+	setvar VAR_SPECIAL_x8008, 1655
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1656:
+	setvar VAR_SPECIAL_x8008, 1656
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1657:
+	setvar VAR_SPECIAL_x8008, 1657
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1658:
+	setvar VAR_SPECIAL_x8008, 1658
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1659:
+	setvar VAR_SPECIAL_x8008, 1659
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1660:
+	setvar VAR_SPECIAL_x8008, 1660
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1661:
+	setvar VAR_SPECIAL_x8008, 1661
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1662:
+	setvar VAR_SPECIAL_x8008, 1662
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1663:
+	setvar VAR_SPECIAL_x8008, 1663
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1664:
+	setvar VAR_SPECIAL_x8008, 1664
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1665:
+	setvar VAR_SPECIAL_x8008, 1665
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1666:
+	setvar VAR_SPECIAL_x8008, 1666
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1667:
+	setvar VAR_SPECIAL_x8008, 1667
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1668:
+	setvar VAR_SPECIAL_x8008, 1668
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1669:
+	setvar VAR_SPECIAL_x8008, 1669
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1670:
+	setvar VAR_SPECIAL_x8008, 1670
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1671:
+	setvar VAR_SPECIAL_x8008, 1671
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1672:
+	setvar VAR_SPECIAL_x8008, 1672
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1673:
+	setvar VAR_SPECIAL_x8008, 1673
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1674:
+	setvar VAR_SPECIAL_x8008, 1674
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1675:
+	setvar VAR_SPECIAL_x8008, 1675
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1676:
+	setvar VAR_SPECIAL_x8008, 1676
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1677:
+	setvar VAR_SPECIAL_x8008, 1677
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1678:
+	setvar VAR_SPECIAL_x8008, 1678
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1679:
+	setvar VAR_SPECIAL_x8008, 1679
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1680:
+	setvar VAR_SPECIAL_x8008, 1680
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1681:
+	setvar VAR_SPECIAL_x8008, 1681
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1682:
+	setvar VAR_SPECIAL_x8008, 1682
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1683:
+	setvar VAR_SPECIAL_x8008, 1683
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1684:
+	setvar VAR_SPECIAL_x8008, 1684
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1685:
+	setvar VAR_SPECIAL_x8008, 1685
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1686:
+	setvar VAR_SPECIAL_x8008, 1686
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1687:
+	setvar VAR_SPECIAL_x8008, 1687
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1688:
+	setvar VAR_SPECIAL_x8008, 1688
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1689:
+	setvar VAR_SPECIAL_x8008, 1689
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1690:
+	setvar VAR_SPECIAL_x8008, 1690
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1691:
+	setvar VAR_SPECIAL_x8008, 1691
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1692:
+	setvar VAR_SPECIAL_x8008, 1692
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1693:
+	setvar VAR_SPECIAL_x8008, 1693
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1694:
+	setvar VAR_SPECIAL_x8008, 1694
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1695:
+	setvar VAR_SPECIAL_x8008, 1695
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1696:
+	setvar VAR_SPECIAL_x8008, 1696
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1697:
+	setvar VAR_SPECIAL_x8008, 1697
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1698:
+	setvar VAR_SPECIAL_x8008, 1698
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1699:
+	setvar VAR_SPECIAL_x8008, 1699
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1700:
+	setvar VAR_SPECIAL_x8008, 1700
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1701:
+	setvar VAR_SPECIAL_x8008, 1701
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1702:
+	setvar VAR_SPECIAL_x8008, 1702
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1703:
+	setvar VAR_SPECIAL_x8008, 1703
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1704:
+	setvar VAR_SPECIAL_x8008, 1704
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1705:
+	setvar VAR_SPECIAL_x8008, 1705
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1706:
+	setvar VAR_SPECIAL_x8008, 1706
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1707:
+	setvar VAR_SPECIAL_x8008, 1707
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1708:
+	setvar VAR_SPECIAL_x8008, 1708
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1709:
+	setvar VAR_SPECIAL_x8008, 1709
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1710:
+	setvar VAR_SPECIAL_x8008, 1710
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1711:
+	setvar VAR_SPECIAL_x8008, 1711
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1712:
+	setvar VAR_SPECIAL_x8008, 1712
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1713:
+	setvar VAR_SPECIAL_x8008, 1713
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1714:
+	setvar VAR_SPECIAL_x8008, 1714
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1715:
+	setvar VAR_SPECIAL_x8008, 1715
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1716:
+	setvar VAR_SPECIAL_x8008, 1716
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1717:
+	setvar VAR_SPECIAL_x8008, 1717
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1718:
+	setvar VAR_SPECIAL_x8008, 1718
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1719:
+	setvar VAR_SPECIAL_x8008, 1719
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1720:
+	setvar VAR_SPECIAL_x8008, 1720
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1721:
+	setvar VAR_SPECIAL_x8008, 1721
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1722:
+	setvar VAR_SPECIAL_x8008, 1722
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1723:
+	setvar VAR_SPECIAL_x8008, 1723
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1724:
+	setvar VAR_SPECIAL_x8008, 1724
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1725:
+	setvar VAR_SPECIAL_x8008, 1725
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1726:
+	setvar VAR_SPECIAL_x8008, 1726
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1727:
+	setvar VAR_SPECIAL_x8008, 1727
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1728:
+	setvar VAR_SPECIAL_x8008, 1728
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1729:
+	setvar VAR_SPECIAL_x8008, 1729
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1730:
+	setvar VAR_SPECIAL_x8008, 1730
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1731:
+	setvar VAR_SPECIAL_x8008, 1731
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1732:
+	setvar VAR_SPECIAL_x8008, 1732
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1733:
+	setvar VAR_SPECIAL_x8008, 1733
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1734:
+	setvar VAR_SPECIAL_x8008, 1734
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1735:
+	setvar VAR_SPECIAL_x8008, 1735
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1736:
+	setvar VAR_SPECIAL_x8008, 1736
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1737:
+	setvar VAR_SPECIAL_x8008, 1737
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1738:
+	setvar VAR_SPECIAL_x8008, 1738
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1739:
+	setvar VAR_SPECIAL_x8008, 1739
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1740:
+	setvar VAR_SPECIAL_x8008, 1740
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1741:
+	setvar VAR_SPECIAL_x8008, 1741
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1742:
+	setvar VAR_SPECIAL_x8008, 1742
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1743:
+	setvar VAR_SPECIAL_x8008, 1743
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1744:
+	setvar VAR_SPECIAL_x8008, 1744
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1745:
+	setvar VAR_SPECIAL_x8008, 1745
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1746:
+	setvar VAR_SPECIAL_x8008, 1746
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1747:
+	setvar VAR_SPECIAL_x8008, 1747
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1748:
+	setvar VAR_SPECIAL_x8008, 1748
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1749:
+	setvar VAR_SPECIAL_x8008, 1749
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1750:
+	setvar VAR_SPECIAL_x8008, 1750
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1751:
+	setvar VAR_SPECIAL_x8008, 1751
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1752:
+	setvar VAR_SPECIAL_x8008, 1752
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1753:
+	setvar VAR_SPECIAL_x8008, 1753
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1754:
+	setvar VAR_SPECIAL_x8008, 1754
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1755:
+	setvar VAR_SPECIAL_x8008, 1755
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1756:
+	setvar VAR_SPECIAL_x8008, 1756
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1757:
+	setvar VAR_SPECIAL_x8008, 1757
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1758:
+	setvar VAR_SPECIAL_x8008, 1758
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1759:
+	setvar VAR_SPECIAL_x8008, 1759
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1760:
+	setvar VAR_SPECIAL_x8008, 1760
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1761:
+	setvar VAR_SPECIAL_x8008, 1761
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1762:
+	setvar VAR_SPECIAL_x8008, 1762
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1763:
+	setvar VAR_SPECIAL_x8008, 1763
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1764:
+	setvar VAR_SPECIAL_x8008, 1764
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1765:
+	setvar VAR_SPECIAL_x8008, 1765
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1766:
+	setvar VAR_SPECIAL_x8008, 1766
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1767:
+	setvar VAR_SPECIAL_x8008, 1767
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1768:
+	setvar VAR_SPECIAL_x8008, 1768
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1769:
+	setvar VAR_SPECIAL_x8008, 1769
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1770:
+	setvar VAR_SPECIAL_x8008, 1770
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1771:
+	setvar VAR_SPECIAL_x8008, 1771
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1772:
+	setvar VAR_SPECIAL_x8008, 1772
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1773:
+	setvar VAR_SPECIAL_x8008, 1773
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1774:
+	setvar VAR_SPECIAL_x8008, 1774
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1775:
+	setvar VAR_SPECIAL_x8008, 1775
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1776:
+	setvar VAR_SPECIAL_x8008, 1776
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1777:
+	setvar VAR_SPECIAL_x8008, 1777
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1778:
+	setvar VAR_SPECIAL_x8008, 1778
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1779:
+	setvar VAR_SPECIAL_x8008, 1779
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1780:
+	setvar VAR_SPECIAL_x8008, 1780
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1781:
+	setvar VAR_SPECIAL_x8008, 1781
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1782:
+	setvar VAR_SPECIAL_x8008, 1782
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1783:
+	setvar VAR_SPECIAL_x8008, 1783
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1784:
+	setvar VAR_SPECIAL_x8008, 1784
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1785:
+	setvar VAR_SPECIAL_x8008, 1785
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1786:
+	setvar VAR_SPECIAL_x8008, 1786
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1787:
+	setvar VAR_SPECIAL_x8008, 1787
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1788:
+	setvar VAR_SPECIAL_x8008, 1788
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1789:
+	setvar VAR_SPECIAL_x8008, 1789
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1790:
+	setvar VAR_SPECIAL_x8008, 1790
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1791:
+	setvar VAR_SPECIAL_x8008, 1791
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1792:
+	setvar VAR_SPECIAL_x8008, 1792
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1793:
+	setvar VAR_SPECIAL_x8008, 1793
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1794:
+	setvar VAR_SPECIAL_x8008, 1794
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1795:
+	setvar VAR_SPECIAL_x8008, 1795
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1796:
+	setvar VAR_SPECIAL_x8008, 1796
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1797:
+	setvar VAR_SPECIAL_x8008, 1797
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1798:
+	setvar VAR_SPECIAL_x8008, 1798
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1799:
+	setvar VAR_SPECIAL_x8008, 1799
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1800:
+	setvar VAR_SPECIAL_x8008, 1800
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1801:
+	setvar VAR_SPECIAL_x8008, 1801
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1802:
+	setvar VAR_SPECIAL_x8008, 1802
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1803:
+	setvar VAR_SPECIAL_x8008, 1803
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1804:
+	setvar VAR_SPECIAL_x8008, 1804
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1805:
+	setvar VAR_SPECIAL_x8008, 1805
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1806:
+	setvar VAR_SPECIAL_x8008, 1806
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1807:
+	setvar VAR_SPECIAL_x8008, 1807
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1808:
+	setvar VAR_SPECIAL_x8008, 1808
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1809:
+	setvar VAR_SPECIAL_x8008, 1809
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1810:
+	setvar VAR_SPECIAL_x8008, 1810
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1811:
+	setvar VAR_SPECIAL_x8008, 1811
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1812:
+	setvar VAR_SPECIAL_x8008, 1812
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1813:
+	setvar VAR_SPECIAL_x8008, 1813
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1814:
+	setvar VAR_SPECIAL_x8008, 1814
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1815:
+	setvar VAR_SPECIAL_x8008, 1815
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1816:
+	setvar VAR_SPECIAL_x8008, 1816
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1817:
+	setvar VAR_SPECIAL_x8008, 1817
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1818:
+	setvar VAR_SPECIAL_x8008, 1818
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1819:
+	setvar VAR_SPECIAL_x8008, 1819
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1820:
+	setvar VAR_SPECIAL_x8008, 1820
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1821:
+	setvar VAR_SPECIAL_x8008, 1821
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1822:
+	setvar VAR_SPECIAL_x8008, 1822
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1823:
+	setvar VAR_SPECIAL_x8008, 1823
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1824:
+	setvar VAR_SPECIAL_x8008, 1824
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1825:
+	setvar VAR_SPECIAL_x8008, 1825
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1826:
+	setvar VAR_SPECIAL_x8008, 1826
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1827:
+	setvar VAR_SPECIAL_x8008, 1827
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1828:
+	setvar VAR_SPECIAL_x8008, 1828
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1829:
+	setvar VAR_SPECIAL_x8008, 1829
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1830:
+	setvar VAR_SPECIAL_x8008, 1830
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1831:
+	setvar VAR_SPECIAL_x8008, 1831
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1832:
+	setvar VAR_SPECIAL_x8008, 1832
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1833:
+	setvar VAR_SPECIAL_x8008, 1833
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1834:
+	setvar VAR_SPECIAL_x8008, 1834
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1835:
+	setvar VAR_SPECIAL_x8008, 1835
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1836:
+	setvar VAR_SPECIAL_x8008, 1836
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1837:
+	setvar VAR_SPECIAL_x8008, 1837
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1838:
+	setvar VAR_SPECIAL_x8008, 1838
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1839:
+	setvar VAR_SPECIAL_x8008, 1839
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1840:
+	setvar VAR_SPECIAL_x8008, 1840
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1841:
+	setvar VAR_SPECIAL_x8008, 1841
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1842:
+	setvar VAR_SPECIAL_x8008, 1842
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1843:
+	setvar VAR_SPECIAL_x8008, 1843
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1844:
+	setvar VAR_SPECIAL_x8008, 1844
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1845:
+	setvar VAR_SPECIAL_x8008, 1845
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1846:
+	setvar VAR_SPECIAL_x8008, 1846
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1847:
+	setvar VAR_SPECIAL_x8008, 1847
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1848:
+	setvar VAR_SPECIAL_x8008, 1848
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1849:
+	setvar VAR_SPECIAL_x8008, 1849
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1850:
+	setvar VAR_SPECIAL_x8008, 1850
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1851:
+	setvar VAR_SPECIAL_x8008, 1851
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1852:
+	setvar VAR_SPECIAL_x8008, 1852
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1853:
+	setvar VAR_SPECIAL_x8008, 1853
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1854:
+	setvar VAR_SPECIAL_x8008, 1854
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1855:
+	setvar VAR_SPECIAL_x8008, 1855
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1856:
+	setvar VAR_SPECIAL_x8008, 1856
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1857:
+	setvar VAR_SPECIAL_x8008, 1857
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1858:
+	setvar VAR_SPECIAL_x8008, 1858
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1859:
+	setvar VAR_SPECIAL_x8008, 1859
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1860:
+	setvar VAR_SPECIAL_x8008, 1860
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1861:
+	setvar VAR_SPECIAL_x8008, 1861
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1862:
+	setvar VAR_SPECIAL_x8008, 1862
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1863:
+	setvar VAR_SPECIAL_x8008, 1863
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1864:
+	setvar VAR_SPECIAL_x8008, 1864
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1865:
+	setvar VAR_SPECIAL_x8008, 1865
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1866:
+	setvar VAR_SPECIAL_x8008, 1866
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1867:
+	setvar VAR_SPECIAL_x8008, 1867
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1868:
+	setvar VAR_SPECIAL_x8008, 1868
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1869:
+	setvar VAR_SPECIAL_x8008, 1869
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1870:
+	setvar VAR_SPECIAL_x8008, 1870
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1871:
+	setvar VAR_SPECIAL_x8008, 1871
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1872:
+	setvar VAR_SPECIAL_x8008, 1872
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1873:
+	setvar VAR_SPECIAL_x8008, 1873
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1874:
+	setvar VAR_SPECIAL_x8008, 1874
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1875:
+	setvar VAR_SPECIAL_x8008, 1875
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1876:
+	setvar VAR_SPECIAL_x8008, 1876
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1877:
+	setvar VAR_SPECIAL_x8008, 1877
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1878:
+	setvar VAR_SPECIAL_x8008, 1878
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1879:
+	setvar VAR_SPECIAL_x8008, 1879
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1880:
+	setvar VAR_SPECIAL_x8008, 1880
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1881:
+	setvar VAR_SPECIAL_x8008, 1881
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1882:
+	setvar VAR_SPECIAL_x8008, 1882
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1883:
+	setvar VAR_SPECIAL_x8008, 1883
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1884:
+	setvar VAR_SPECIAL_x8008, 1884
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1885:
+	setvar VAR_SPECIAL_x8008, 1885
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1886:
+	setvar VAR_SPECIAL_x8008, 1886
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1887:
+	setvar VAR_SPECIAL_x8008, 1887
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1888:
+	setvar VAR_SPECIAL_x8008, 1888
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1889:
+	setvar VAR_SPECIAL_x8008, 1889
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1890:
+	setvar VAR_SPECIAL_x8008, 1890
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1891:
+	setvar VAR_SPECIAL_x8008, 1891
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1892:
+	setvar VAR_SPECIAL_x8008, 1892
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1893:
+	setvar VAR_SPECIAL_x8008, 1893
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1894:
+	setvar VAR_SPECIAL_x8008, 1894
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1895:
+	setvar VAR_SPECIAL_x8008, 1895
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1896:
+	setvar VAR_SPECIAL_x8008, 1896
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1897:
+	setvar VAR_SPECIAL_x8008, 1897
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1898:
+	setvar VAR_SPECIAL_x8008, 1898
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1899:
+	setvar VAR_SPECIAL_x8008, 1899
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1900:
+	setvar VAR_SPECIAL_x8008, 1900
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1901:
+	setvar VAR_SPECIAL_x8008, 1901
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1902:
+	setvar VAR_SPECIAL_x8008, 1902
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1903:
+	setvar VAR_SPECIAL_x8008, 1903
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1904:
+	setvar VAR_SPECIAL_x8008, 1904
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1905:
+	setvar VAR_SPECIAL_x8008, 1905
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1906:
+	setvar VAR_SPECIAL_x8008, 1906
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1907:
+	setvar VAR_SPECIAL_x8008, 1907
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1908:
+	setvar VAR_SPECIAL_x8008, 1908
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1909:
+	setvar VAR_SPECIAL_x8008, 1909
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1910:
+	setvar VAR_SPECIAL_x8008, 1910
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1911:
+	setvar VAR_SPECIAL_x8008, 1911
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1912:
+	setvar VAR_SPECIAL_x8008, 1912
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1913:
+	setvar VAR_SPECIAL_x8008, 1913
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1914:
+	setvar VAR_SPECIAL_x8008, 1914
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1915:
+	setvar VAR_SPECIAL_x8008, 1915
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1916:
+	setvar VAR_SPECIAL_x8008, 1916
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1917:
+	setvar VAR_SPECIAL_x8008, 1917
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1918:
+	setvar VAR_SPECIAL_x8008, 1918
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1919:
+	setvar VAR_SPECIAL_x8008, 1919
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1920:
+	setvar VAR_SPECIAL_x8008, 1920
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1921:
+	setvar VAR_SPECIAL_x8008, 1921
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1922:
+	setvar VAR_SPECIAL_x8008, 1922
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1923:
+	setvar VAR_SPECIAL_x8008, 1923
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1924:
+	setvar VAR_SPECIAL_x8008, 1924
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1925:
+	setvar VAR_SPECIAL_x8008, 1925
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1926:
+	setvar VAR_SPECIAL_x8008, 1926
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1927:
+	setvar VAR_SPECIAL_x8008, 1927
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1928:
+	setvar VAR_SPECIAL_x8008, 1928
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1929:
+	setvar VAR_SPECIAL_x8008, 1929
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1930:
+	setvar VAR_SPECIAL_x8008, 1930
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1931:
+	setvar VAR_SPECIAL_x8008, 1931
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1932:
+	setvar VAR_SPECIAL_x8008, 1932
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1933:
+	setvar VAR_SPECIAL_x8008, 1933
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1934:
+	setvar VAR_SPECIAL_x8008, 1934
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1935:
+	setvar VAR_SPECIAL_x8008, 1935
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1936:
+	setvar VAR_SPECIAL_x8008, 1936
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1937:
+	setvar VAR_SPECIAL_x8008, 1937
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1938:
+	setvar VAR_SPECIAL_x8008, 1938
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1939:
+	setvar VAR_SPECIAL_x8008, 1939
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1940:
+	setvar VAR_SPECIAL_x8008, 1940
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1941:
+	setvar VAR_SPECIAL_x8008, 1941
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1942:
+	setvar VAR_SPECIAL_x8008, 1942
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1943:
+	setvar VAR_SPECIAL_x8008, 1943
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1944:
+	setvar VAR_SPECIAL_x8008, 1944
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1945:
+	setvar VAR_SPECIAL_x8008, 1945
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1946:
+	setvar VAR_SPECIAL_x8008, 1946
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1947:
+	setvar VAR_SPECIAL_x8008, 1947
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1948:
+	setvar VAR_SPECIAL_x8008, 1948
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1949:
+	setvar VAR_SPECIAL_x8008, 1949
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1950:
+	setvar VAR_SPECIAL_x8008, 1950
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1951:
+	setvar VAR_SPECIAL_x8008, 1951
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1952:
+	setvar VAR_SPECIAL_x8008, 1952
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1953:
+	setvar VAR_SPECIAL_x8008, 1953
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1954:
+	setvar VAR_SPECIAL_x8008, 1954
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1955:
+	setvar VAR_SPECIAL_x8008, 1955
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1956:
+	setvar VAR_SPECIAL_x8008, 1956
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1957:
+	setvar VAR_SPECIAL_x8008, 1957
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1958:
+	setvar VAR_SPECIAL_x8008, 1958
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1959:
+	setvar VAR_SPECIAL_x8008, 1959
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1960:
+	setvar VAR_SPECIAL_x8008, 1960
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1961:
+	setvar VAR_SPECIAL_x8008, 1961
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1962:
+	setvar VAR_SPECIAL_x8008, 1962
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1963:
+	setvar VAR_SPECIAL_x8008, 1963
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1964:
+	setvar VAR_SPECIAL_x8008, 1964
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1965:
+	setvar VAR_SPECIAL_x8008, 1965
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1966:
+	setvar VAR_SPECIAL_x8008, 1966
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1967:
+	setvar VAR_SPECIAL_x8008, 1967
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1968:
+	setvar VAR_SPECIAL_x8008, 1968
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1969:
+	setvar VAR_SPECIAL_x8008, 1969
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1970:
+	setvar VAR_SPECIAL_x8008, 1970
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1971:
+	setvar VAR_SPECIAL_x8008, 1971
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1972:
+	setvar VAR_SPECIAL_x8008, 1972
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1973:
+	setvar VAR_SPECIAL_x8008, 1973
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1974:
+	setvar VAR_SPECIAL_x8008, 1974
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1975:
+	setvar VAR_SPECIAL_x8008, 1975
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1976:
+	setvar VAR_SPECIAL_x8008, 1976
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1977:
+	setvar VAR_SPECIAL_x8008, 1977
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1978:
+	setvar VAR_SPECIAL_x8008, 1978
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1979:
+	setvar VAR_SPECIAL_x8008, 1979
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1980:
+	setvar VAR_SPECIAL_x8008, 1980
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1981:
+	setvar VAR_SPECIAL_x8008, 1981
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1982:
+	setvar VAR_SPECIAL_x8008, 1982
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1983:
+	setvar VAR_SPECIAL_x8008, 1983
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1984:
+	setvar VAR_SPECIAL_x8008, 1984
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1985:
+	setvar VAR_SPECIAL_x8008, 1985
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1986:
+	setvar VAR_SPECIAL_x8008, 1986
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1987:
+	setvar VAR_SPECIAL_x8008, 1987
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1988:
+	setvar VAR_SPECIAL_x8008, 1988
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1989:
+	setvar VAR_SPECIAL_x8008, 1989
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1990:
+	setvar VAR_SPECIAL_x8008, 1990
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1991:
+	setvar VAR_SPECIAL_x8008, 1991
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1992:
+	setvar VAR_SPECIAL_x8008, 1992
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1993:
+	setvar VAR_SPECIAL_x8008, 1993
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1994:
+	setvar VAR_SPECIAL_x8008, 1994
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1995:
+	setvar VAR_SPECIAL_x8008, 1995
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1996:
+	setvar VAR_SPECIAL_x8008, 1996
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1997:
+	setvar VAR_SPECIAL_x8008, 1997
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1998:
+	setvar VAR_SPECIAL_x8008, 1998
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_1999:
+	setvar VAR_SPECIAL_x8008, 1999
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2000:
+	setvar VAR_SPECIAL_x8008, 2000
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2001:
+	setvar VAR_SPECIAL_x8008, 2001
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2002:
+	setvar VAR_SPECIAL_x8008, 2002
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2003:
+	setvar VAR_SPECIAL_x8008, 2003
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2004:
+	setvar VAR_SPECIAL_x8008, 2004
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2005:
+	setvar VAR_SPECIAL_x8008, 2005
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2006:
+	setvar VAR_SPECIAL_x8008, 2006
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2007:
+	setvar VAR_SPECIAL_x8008, 2007
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2008:
+	setvar VAR_SPECIAL_x8008, 2008
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2009:
+	setvar VAR_SPECIAL_x8008, 2009
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2010:
+	setvar VAR_SPECIAL_x8008, 2010
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2011:
+	setvar VAR_SPECIAL_x8008, 2011
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2012:
+	setvar VAR_SPECIAL_x8008, 2012
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2013:
+	setvar VAR_SPECIAL_x8008, 2013
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2014:
+	setvar VAR_SPECIAL_x8008, 2014
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2015:
+	setvar VAR_SPECIAL_x8008, 2015
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2016:
+	setvar VAR_SPECIAL_x8008, 2016
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2017:
+	setvar VAR_SPECIAL_x8008, 2017
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2018:
+	setvar VAR_SPECIAL_x8008, 2018
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2019:
+	setvar VAR_SPECIAL_x8008, 2019
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2020:
+	setvar VAR_SPECIAL_x8008, 2020
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2021:
+	setvar VAR_SPECIAL_x8008, 2021
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2022:
+	setvar VAR_SPECIAL_x8008, 2022
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2023:
+	setvar VAR_SPECIAL_x8008, 2023
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2024:
+	setvar VAR_SPECIAL_x8008, 2024
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2025:
+	setvar VAR_SPECIAL_x8008, 2025
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2026:
+	setvar VAR_SPECIAL_x8008, 2026
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2027:
+	setvar VAR_SPECIAL_x8008, 2027
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2028:
+	setvar VAR_SPECIAL_x8008, 2028
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2029:
+	setvar VAR_SPECIAL_x8008, 2029
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2030:
+	setvar VAR_SPECIAL_x8008, 2030
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2031:
+	setvar VAR_SPECIAL_x8008, 2031
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2032:
+	setvar VAR_SPECIAL_x8008, 2032
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2033:
+	setvar VAR_SPECIAL_x8008, 2033
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2034:
+	setvar VAR_SPECIAL_x8008, 2034
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2035:
+	setvar VAR_SPECIAL_x8008, 2035
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2036:
+	setvar VAR_SPECIAL_x8008, 2036
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2037:
+	setvar VAR_SPECIAL_x8008, 2037
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2038:
+	setvar VAR_SPECIAL_x8008, 2038
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2039:
+	setvar VAR_SPECIAL_x8008, 2039
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2040:
+	setvar VAR_SPECIAL_x8008, 2040
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2041:
+	setvar VAR_SPECIAL_x8008, 2041
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2042:
+	setvar VAR_SPECIAL_x8008, 2042
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2043:
+	setvar VAR_SPECIAL_x8008, 2043
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2044:
+	setvar VAR_SPECIAL_x8008, 2044
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2045:
+	setvar VAR_SPECIAL_x8008, 2045
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2046:
+	setvar VAR_SPECIAL_x8008, 2046
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2047:
+	setvar VAR_SPECIAL_x8008, 2047
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2048:
+	setvar VAR_SPECIAL_x8008, 2048
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2049:
+	setvar VAR_SPECIAL_x8008, 2049
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2050:
+	setvar VAR_SPECIAL_x8008, 2050
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2051:
+	setvar VAR_SPECIAL_x8008, 2051
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2052:
+	setvar VAR_SPECIAL_x8008, 2052
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2053:
+	setvar VAR_SPECIAL_x8008, 2053
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2054:
+	setvar VAR_SPECIAL_x8008, 2054
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2055:
+	setvar VAR_SPECIAL_x8008, 2055
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2056:
+	setvar VAR_SPECIAL_x8008, 2056
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2057:
+	setvar VAR_SPECIAL_x8008, 2057
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2058:
+	setvar VAR_SPECIAL_x8008, 2058
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2059:
+	setvar VAR_SPECIAL_x8008, 2059
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2060:
+	setvar VAR_SPECIAL_x8008, 2060
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2061:
+	setvar VAR_SPECIAL_x8008, 2061
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2062:
+	setvar VAR_SPECIAL_x8008, 2062
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2063:
+	setvar VAR_SPECIAL_x8008, 2063
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2064:
+	setvar VAR_SPECIAL_x8008, 2064
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2065:
+	setvar VAR_SPECIAL_x8008, 2065
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2066:
+	setvar VAR_SPECIAL_x8008, 2066
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2067:
+	setvar VAR_SPECIAL_x8008, 2067
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2068:
+	setvar VAR_SPECIAL_x8008, 2068
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2069:
+	setvar VAR_SPECIAL_x8008, 2069
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2070:
+	setvar VAR_SPECIAL_x8008, 2070
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2071:
+	setvar VAR_SPECIAL_x8008, 2071
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2072:
+	setvar VAR_SPECIAL_x8008, 2072
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2073:
+	setvar VAR_SPECIAL_x8008, 2073
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2074:
+	setvar VAR_SPECIAL_x8008, 2074
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2075:
+	setvar VAR_SPECIAL_x8008, 2075
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2076:
+	setvar VAR_SPECIAL_x8008, 2076
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2077:
+	setvar VAR_SPECIAL_x8008, 2077
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2078:
+	setvar VAR_SPECIAL_x8008, 2078
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2079:
+	setvar VAR_SPECIAL_x8008, 2079
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2080:
+	setvar VAR_SPECIAL_x8008, 2080
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2081:
+	setvar VAR_SPECIAL_x8008, 2081
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2082:
+	setvar VAR_SPECIAL_x8008, 2082
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2083:
+	setvar VAR_SPECIAL_x8008, 2083
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2084:
+	setvar VAR_SPECIAL_x8008, 2084
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2085:
+	setvar VAR_SPECIAL_x8008, 2085
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2086:
+	setvar VAR_SPECIAL_x8008, 2086
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2087:
+	setvar VAR_SPECIAL_x8008, 2087
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2088:
+	setvar VAR_SPECIAL_x8008, 2088
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2089:
+	setvar VAR_SPECIAL_x8008, 2089
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2090:
+	setvar VAR_SPECIAL_x8008, 2090
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2091:
+	setvar VAR_SPECIAL_x8008, 2091
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2092:
+	setvar VAR_SPECIAL_x8008, 2092
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2093:
+	setvar VAR_SPECIAL_x8008, 2093
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2094:
+	setvar VAR_SPECIAL_x8008, 2094
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2095:
+	setvar VAR_SPECIAL_x8008, 2095
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2096:
+	setvar VAR_SPECIAL_x8008, 2096
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2097:
+	setvar VAR_SPECIAL_x8008, 2097
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2098:
+	setvar VAR_SPECIAL_x8008, 2098
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2099:
+	setvar VAR_SPECIAL_x8008, 2099
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2100:
+	setvar VAR_SPECIAL_x8008, 2100
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2101:
+	setvar VAR_SPECIAL_x8008, 2101
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2102:
+	setvar VAR_SPECIAL_x8008, 2102
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2103:
+	setvar VAR_SPECIAL_x8008, 2103
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2104:
+	setvar VAR_SPECIAL_x8008, 2104
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2105:
+	setvar VAR_SPECIAL_x8008, 2105
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2106:
+	setvar VAR_SPECIAL_x8008, 2106
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2107:
+	setvar VAR_SPECIAL_x8008, 2107
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2108:
+	setvar VAR_SPECIAL_x8008, 2108
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2109:
+	setvar VAR_SPECIAL_x8008, 2109
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2110:
+	setvar VAR_SPECIAL_x8008, 2110
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2111:
+	setvar VAR_SPECIAL_x8008, 2111
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2112:
+	setvar VAR_SPECIAL_x8008, 2112
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2113:
+	setvar VAR_SPECIAL_x8008, 2113
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2114:
+	setvar VAR_SPECIAL_x8008, 2114
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2115:
+	setvar VAR_SPECIAL_x8008, 2115
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2116:
+	setvar VAR_SPECIAL_x8008, 2116
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2117:
+	setvar VAR_SPECIAL_x8008, 2117
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2118:
+	setvar VAR_SPECIAL_x8008, 2118
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2119:
+	setvar VAR_SPECIAL_x8008, 2119
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2120:
+	setvar VAR_SPECIAL_x8008, 2120
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2121:
+	setvar VAR_SPECIAL_x8008, 2121
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2122:
+	setvar VAR_SPECIAL_x8008, 2122
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2123:
+	setvar VAR_SPECIAL_x8008, 2123
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2124:
+	setvar VAR_SPECIAL_x8008, 2124
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2125:
+	setvar VAR_SPECIAL_x8008, 2125
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2126:
+	setvar VAR_SPECIAL_x8008, 2126
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2127:
+	setvar VAR_SPECIAL_x8008, 2127
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2128:
+	setvar VAR_SPECIAL_x8008, 2128
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2129:
+	setvar VAR_SPECIAL_x8008, 2129
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2130:
+	setvar VAR_SPECIAL_x8008, 2130
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2131:
+	setvar VAR_SPECIAL_x8008, 2131
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2132:
+	setvar VAR_SPECIAL_x8008, 2132
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2133:
+	setvar VAR_SPECIAL_x8008, 2133
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2134:
+	setvar VAR_SPECIAL_x8008, 2134
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2135:
+	setvar VAR_SPECIAL_x8008, 2135
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2136:
+	setvar VAR_SPECIAL_x8008, 2136
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2137:
+	setvar VAR_SPECIAL_x8008, 2137
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2138:
+	setvar VAR_SPECIAL_x8008, 2138
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2139:
+	setvar VAR_SPECIAL_x8008, 2139
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2140:
+	setvar VAR_SPECIAL_x8008, 2140
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2141:
+	setvar VAR_SPECIAL_x8008, 2141
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2142:
+	setvar VAR_SPECIAL_x8008, 2142
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2143:
+	setvar VAR_SPECIAL_x8008, 2143
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2144:
+	setvar VAR_SPECIAL_x8008, 2144
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2145:
+	setvar VAR_SPECIAL_x8008, 2145
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2146:
+	setvar VAR_SPECIAL_x8008, 2146
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2147:
+	setvar VAR_SPECIAL_x8008, 2147
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2148:
+	setvar VAR_SPECIAL_x8008, 2148
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2149:
+	setvar VAR_SPECIAL_x8008, 2149
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2150:
+	setvar VAR_SPECIAL_x8008, 2150
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2151:
+	setvar VAR_SPECIAL_x8008, 2151
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2152:
+	setvar VAR_SPECIAL_x8008, 2152
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2153:
+	setvar VAR_SPECIAL_x8008, 2153
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2154:
+	setvar VAR_SPECIAL_x8008, 2154
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2155:
+	setvar VAR_SPECIAL_x8008, 2155
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2156:
+	setvar VAR_SPECIAL_x8008, 2156
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2157:
+	setvar VAR_SPECIAL_x8008, 2157
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2158:
+	setvar VAR_SPECIAL_x8008, 2158
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2159:
+	setvar VAR_SPECIAL_x8008, 2159
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2160:
+	setvar VAR_SPECIAL_x8008, 2160
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2161:
+	setvar VAR_SPECIAL_x8008, 2161
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2162:
+	setvar VAR_SPECIAL_x8008, 2162
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2163:
+	setvar VAR_SPECIAL_x8008, 2163
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2164:
+	setvar VAR_SPECIAL_x8008, 2164
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2165:
+	setvar VAR_SPECIAL_x8008, 2165
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2166:
+	setvar VAR_SPECIAL_x8008, 2166
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2167:
+	setvar VAR_SPECIAL_x8008, 2167
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2168:
+	setvar VAR_SPECIAL_x8008, 2168
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2169:
+	setvar VAR_SPECIAL_x8008, 2169
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2170:
+	setvar VAR_SPECIAL_x8008, 2170
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2171:
+	setvar VAR_SPECIAL_x8008, 2171
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2172:
+	setvar VAR_SPECIAL_x8008, 2172
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2173:
+	setvar VAR_SPECIAL_x8008, 2173
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2174:
+	setvar VAR_SPECIAL_x8008, 2174
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2175:
+	setvar VAR_SPECIAL_x8008, 2175
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2176:
+	setvar VAR_SPECIAL_x8008, 2176
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2177:
+	setvar VAR_SPECIAL_x8008, 2177
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2178:
+	setvar VAR_SPECIAL_x8008, 2178
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2179:
+	setvar VAR_SPECIAL_x8008, 2179
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2180:
+	setvar VAR_SPECIAL_x8008, 2180
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2181:
+	setvar VAR_SPECIAL_x8008, 2181
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2182:
+	setvar VAR_SPECIAL_x8008, 2182
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2183:
+	setvar VAR_SPECIAL_x8008, 2183
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2184:
+	setvar VAR_SPECIAL_x8008, 2184
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2185:
+	setvar VAR_SPECIAL_x8008, 2185
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2186:
+	setvar VAR_SPECIAL_x8008, 2186
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2187:
+	setvar VAR_SPECIAL_x8008, 2187
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2188:
+	setvar VAR_SPECIAL_x8008, 2188
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2189:
+	setvar VAR_SPECIAL_x8008, 2189
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2190:
+	setvar VAR_SPECIAL_x8008, 2190
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2191:
+	setvar VAR_SPECIAL_x8008, 2191
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2192:
+	setvar VAR_SPECIAL_x8008, 2192
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2193:
+	setvar VAR_SPECIAL_x8008, 2193
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2194:
+	setvar VAR_SPECIAL_x8008, 2194
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2195:
+	setvar VAR_SPECIAL_x8008, 2195
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2196:
+	setvar VAR_SPECIAL_x8008, 2196
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2197:
+	setvar VAR_SPECIAL_x8008, 2197
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2198:
+	setvar VAR_SPECIAL_x8008, 2198
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2199:
+	setvar VAR_SPECIAL_x8008, 2199
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2200:
+	setvar VAR_SPECIAL_x8008, 2200
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2201:
+	setvar VAR_SPECIAL_x8008, 2201
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2202:
+	setvar VAR_SPECIAL_x8008, 2202
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2203:
+	setvar VAR_SPECIAL_x8008, 2203
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2204:
+	setvar VAR_SPECIAL_x8008, 2204
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2205:
+	setvar VAR_SPECIAL_x8008, 2205
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2206:
+	setvar VAR_SPECIAL_x8008, 2206
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2207:
+	setvar VAR_SPECIAL_x8008, 2207
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2208:
+	setvar VAR_SPECIAL_x8008, 2208
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2209:
+	setvar VAR_SPECIAL_x8008, 2209
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2210:
+	setvar VAR_SPECIAL_x8008, 2210
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2211:
+	setvar VAR_SPECIAL_x8008, 2211
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2212:
+	setvar VAR_SPECIAL_x8008, 2212
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2213:
+	setvar VAR_SPECIAL_x8008, 2213
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2214:
+	setvar VAR_SPECIAL_x8008, 2214
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2215:
+	setvar VAR_SPECIAL_x8008, 2215
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2216:
+	setvar VAR_SPECIAL_x8008, 2216
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2217:
+	setvar VAR_SPECIAL_x8008, 2217
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2218:
+	setvar VAR_SPECIAL_x8008, 2218
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2219:
+	setvar VAR_SPECIAL_x8008, 2219
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2220:
+	setvar VAR_SPECIAL_x8008, 2220
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2221:
+	setvar VAR_SPECIAL_x8008, 2221
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2222:
+	setvar VAR_SPECIAL_x8008, 2222
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2223:
+	setvar VAR_SPECIAL_x8008, 2223
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2224:
+	setvar VAR_SPECIAL_x8008, 2224
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2225:
+	setvar VAR_SPECIAL_x8008, 2225
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2226:
+	setvar VAR_SPECIAL_x8008, 2226
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2227:
+	setvar VAR_SPECIAL_x8008, 2227
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2228:
+	setvar VAR_SPECIAL_x8008, 2228
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2229:
+	setvar VAR_SPECIAL_x8008, 2229
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2230:
+	setvar VAR_SPECIAL_x8008, 2230
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2231:
+	setvar VAR_SPECIAL_x8008, 2231
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2232:
+	setvar VAR_SPECIAL_x8008, 2232
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2233:
+	setvar VAR_SPECIAL_x8008, 2233
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2234:
+	setvar VAR_SPECIAL_x8008, 2234
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2235:
+	setvar VAR_SPECIAL_x8008, 2235
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2236:
+	setvar VAR_SPECIAL_x8008, 2236
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2237:
+	setvar VAR_SPECIAL_x8008, 2237
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2238:
+	setvar VAR_SPECIAL_x8008, 2238
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2239:
+	setvar VAR_SPECIAL_x8008, 2239
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2240:
+	setvar VAR_SPECIAL_x8008, 2240
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2241:
+	setvar VAR_SPECIAL_x8008, 2241
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2242:
+	setvar VAR_SPECIAL_x8008, 2242
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2243:
+	setvar VAR_SPECIAL_x8008, 2243
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2244:
+	setvar VAR_SPECIAL_x8008, 2244
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2245:
+	setvar VAR_SPECIAL_x8008, 2245
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2246:
+	setvar VAR_SPECIAL_x8008, 2246
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2247:
+	setvar VAR_SPECIAL_x8008, 2247
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2248:
+	setvar VAR_SPECIAL_x8008, 2248
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2249:
+	setvar VAR_SPECIAL_x8008, 2249
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2250:
+	setvar VAR_SPECIAL_x8008, 2250
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2251:
+	setvar VAR_SPECIAL_x8008, 2251
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2252:
+	setvar VAR_SPECIAL_x8008, 2252
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2253:
+	setvar VAR_SPECIAL_x8008, 2253
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2254:
+	setvar VAR_SPECIAL_x8008, 2254
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2255:
+	setvar VAR_SPECIAL_x8008, 2255
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2256:
+	setvar VAR_SPECIAL_x8008, 2256
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2257:
+	setvar VAR_SPECIAL_x8008, 2257
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2258:
+	setvar VAR_SPECIAL_x8008, 2258
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2259:
+	setvar VAR_SPECIAL_x8008, 2259
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2260:
+	setvar VAR_SPECIAL_x8008, 2260
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2261:
+	setvar VAR_SPECIAL_x8008, 2261
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2262:
+	setvar VAR_SPECIAL_x8008, 2262
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2263:
+	setvar VAR_SPECIAL_x8008, 2263
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2264:
+	setvar VAR_SPECIAL_x8008, 2264
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2265:
+	setvar VAR_SPECIAL_x8008, 2265
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2266:
+	setvar VAR_SPECIAL_x8008, 2266
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2267:
+	setvar VAR_SPECIAL_x8008, 2267
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2268:
+	setvar VAR_SPECIAL_x8008, 2268
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2269:
+	setvar VAR_SPECIAL_x8008, 2269
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2270:
+	setvar VAR_SPECIAL_x8008, 2270
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2271:
+	setvar VAR_SPECIAL_x8008, 2271
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2272:
+	setvar VAR_SPECIAL_x8008, 2272
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2273:
+	setvar VAR_SPECIAL_x8008, 2273
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2274:
+	setvar VAR_SPECIAL_x8008, 2274
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2275:
+	setvar VAR_SPECIAL_x8008, 2275
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2276:
+	setvar VAR_SPECIAL_x8008, 2276
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2277:
+	setvar VAR_SPECIAL_x8008, 2277
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2278:
+	setvar VAR_SPECIAL_x8008, 2278
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2279:
+	setvar VAR_SPECIAL_x8008, 2279
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2280:
+	setvar VAR_SPECIAL_x8008, 2280
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2281:
+	setvar VAR_SPECIAL_x8008, 2281
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2282:
+	setvar VAR_SPECIAL_x8008, 2282
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2283:
+	setvar VAR_SPECIAL_x8008, 2283
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2284:
+	setvar VAR_SPECIAL_x8008, 2284
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2285:
+	setvar VAR_SPECIAL_x8008, 2285
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2286:
+	setvar VAR_SPECIAL_x8008, 2286
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2287:
+	setvar VAR_SPECIAL_x8008, 2287
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2288:
+	setvar VAR_SPECIAL_x8008, 2288
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2289:
+	setvar VAR_SPECIAL_x8008, 2289
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2290:
+	setvar VAR_SPECIAL_x8008, 2290
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2291:
+	setvar VAR_SPECIAL_x8008, 2291
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2292:
+	setvar VAR_SPECIAL_x8008, 2292
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2293:
+	setvar VAR_SPECIAL_x8008, 2293
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2294:
+	setvar VAR_SPECIAL_x8008, 2294
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2295:
+	setvar VAR_SPECIAL_x8008, 2295
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2296:
+	setvar VAR_SPECIAL_x8008, 2296
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2297:
+	setvar VAR_SPECIAL_x8008, 2297
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2298:
+	setvar VAR_SPECIAL_x8008, 2298
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2299:
+	setvar VAR_SPECIAL_x8008, 2299
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2300:
+	setvar VAR_SPECIAL_x8008, 2300
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2301:
+	setvar VAR_SPECIAL_x8008, 2301
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2302:
+	setvar VAR_SPECIAL_x8008, 2302
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2303:
+	setvar VAR_SPECIAL_x8008, 2303
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2304:
+	setvar VAR_SPECIAL_x8008, 2304
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2305:
+	setvar VAR_SPECIAL_x8008, 2305
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2306:
+	setvar VAR_SPECIAL_x8008, 2306
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2307:
+	setvar VAR_SPECIAL_x8008, 2307
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2308:
+	setvar VAR_SPECIAL_x8008, 2308
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2309:
+	setvar VAR_SPECIAL_x8008, 2309
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2310:
+	setvar VAR_SPECIAL_x8008, 2310
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2311:
+	setvar VAR_SPECIAL_x8008, 2311
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2312:
+	setvar VAR_SPECIAL_x8008, 2312
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2313:
+	setvar VAR_SPECIAL_x8008, 2313
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2314:
+	setvar VAR_SPECIAL_x8008, 2314
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2315:
+	setvar VAR_SPECIAL_x8008, 2315
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2316:
+	setvar VAR_SPECIAL_x8008, 2316
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2317:
+	setvar VAR_SPECIAL_x8008, 2317
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2318:
+	setvar VAR_SPECIAL_x8008, 2318
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2319:
+	setvar VAR_SPECIAL_x8008, 2319
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2320:
+	setvar VAR_SPECIAL_x8008, 2320
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2321:
+	setvar VAR_SPECIAL_x8008, 2321
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2322:
+	setvar VAR_SPECIAL_x8008, 2322
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2323:
+	setvar VAR_SPECIAL_x8008, 2323
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2324:
+	setvar VAR_SPECIAL_x8008, 2324
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2325:
+	setvar VAR_SPECIAL_x8008, 2325
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2326:
+	setvar VAR_SPECIAL_x8008, 2326
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2327:
+	setvar VAR_SPECIAL_x8008, 2327
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2328:
+	setvar VAR_SPECIAL_x8008, 2328
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2329:
+	setvar VAR_SPECIAL_x8008, 2329
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2330:
+	setvar VAR_SPECIAL_x8008, 2330
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2331:
+	setvar VAR_SPECIAL_x8008, 2331
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2332:
+	setvar VAR_SPECIAL_x8008, 2332
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2333:
+	setvar VAR_SPECIAL_x8008, 2333
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2334:
+	setvar VAR_SPECIAL_x8008, 2334
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2335:
+	setvar VAR_SPECIAL_x8008, 2335
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2336:
+	setvar VAR_SPECIAL_x8008, 2336
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2337:
+	setvar VAR_SPECIAL_x8008, 2337
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2338:
+	setvar VAR_SPECIAL_x8008, 2338
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2339:
+	setvar VAR_SPECIAL_x8008, 2339
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2340:
+	setvar VAR_SPECIAL_x8008, 2340
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2341:
+	setvar VAR_SPECIAL_x8008, 2341
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2342:
+	setvar VAR_SPECIAL_x8008, 2342
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2343:
+	setvar VAR_SPECIAL_x8008, 2343
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2344:
+	setvar VAR_SPECIAL_x8008, 2344
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2345:
+	setvar VAR_SPECIAL_x8008, 2345
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2346:
+	setvar VAR_SPECIAL_x8008, 2346
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2347:
+	setvar VAR_SPECIAL_x8008, 2347
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2348:
+	setvar VAR_SPECIAL_x8008, 2348
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2349:
+	setvar VAR_SPECIAL_x8008, 2349
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2350:
+	setvar VAR_SPECIAL_x8008, 2350
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2351:
+	setvar VAR_SPECIAL_x8008, 2351
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2352:
+	setvar VAR_SPECIAL_x8008, 2352
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2353:
+	setvar VAR_SPECIAL_x8008, 2353
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2354:
+	setvar VAR_SPECIAL_x8008, 2354
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2355:
+	setvar VAR_SPECIAL_x8008, 2355
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2356:
+	setvar VAR_SPECIAL_x8008, 2356
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2357:
+	setvar VAR_SPECIAL_x8008, 2357
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2358:
+	setvar VAR_SPECIAL_x8008, 2358
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2359:
+	setvar VAR_SPECIAL_x8008, 2359
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2360:
+	setvar VAR_SPECIAL_x8008, 2360
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2361:
+	setvar VAR_SPECIAL_x8008, 2361
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2362:
+	setvar VAR_SPECIAL_x8008, 2362
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2363:
+	setvar VAR_SPECIAL_x8008, 2363
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2364:
+	setvar VAR_SPECIAL_x8008, 2364
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2365:
+	setvar VAR_SPECIAL_x8008, 2365
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2366:
+	setvar VAR_SPECIAL_x8008, 2366
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2367:
+	setvar VAR_SPECIAL_x8008, 2367
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2368:
+	setvar VAR_SPECIAL_x8008, 2368
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2369:
+	setvar VAR_SPECIAL_x8008, 2369
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2370:
+	setvar VAR_SPECIAL_x8008, 2370
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2371:
+	setvar VAR_SPECIAL_x8008, 2371
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2372:
+	setvar VAR_SPECIAL_x8008, 2372
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2373:
+	setvar VAR_SPECIAL_x8008, 2373
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2374:
+	setvar VAR_SPECIAL_x8008, 2374
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2375:
+	setvar VAR_SPECIAL_x8008, 2375
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2376:
+	setvar VAR_SPECIAL_x8008, 2376
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2377:
+	setvar VAR_SPECIAL_x8008, 2377
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2378:
+	setvar VAR_SPECIAL_x8008, 2378
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2379:
+	setvar VAR_SPECIAL_x8008, 2379
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2380:
+	setvar VAR_SPECIAL_x8008, 2380
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2381:
+	setvar VAR_SPECIAL_x8008, 2381
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2382:
+	setvar VAR_SPECIAL_x8008, 2382
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2383:
+	setvar VAR_SPECIAL_x8008, 2383
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2384:
+	setvar VAR_SPECIAL_x8008, 2384
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2385:
+	setvar VAR_SPECIAL_x8008, 2385
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2386:
+	setvar VAR_SPECIAL_x8008, 2386
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2387:
+	setvar VAR_SPECIAL_x8008, 2387
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2388:
+	setvar VAR_SPECIAL_x8008, 2388
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2389:
+	setvar VAR_SPECIAL_x8008, 2389
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2390:
+	setvar VAR_SPECIAL_x8008, 2390
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2391:
+	setvar VAR_SPECIAL_x8008, 2391
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2392:
+	setvar VAR_SPECIAL_x8008, 2392
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2393:
+	setvar VAR_SPECIAL_x8008, 2393
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2394:
+	setvar VAR_SPECIAL_x8008, 2394
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2395:
+	setvar VAR_SPECIAL_x8008, 2395
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2396:
+	setvar VAR_SPECIAL_x8008, 2396
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2397:
+	setvar VAR_SPECIAL_x8008, 2397
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2398:
+	setvar VAR_SPECIAL_x8008, 2398
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2399:
+	setvar VAR_SPECIAL_x8008, 2399
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2400:
+	setvar VAR_SPECIAL_x8008, 2400
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2401:
+	setvar VAR_SPECIAL_x8008, 2401
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2402:
+	setvar VAR_SPECIAL_x8008, 2402
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2403:
+	setvar VAR_SPECIAL_x8008, 2403
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2404:
+	setvar VAR_SPECIAL_x8008, 2404
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2405:
+	setvar VAR_SPECIAL_x8008, 2405
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2406:
+	setvar VAR_SPECIAL_x8008, 2406
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2407:
+	setvar VAR_SPECIAL_x8008, 2407
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2408:
+	setvar VAR_SPECIAL_x8008, 2408
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2409:
+	setvar VAR_SPECIAL_x8008, 2409
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2410:
+	setvar VAR_SPECIAL_x8008, 2410
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2411:
+	setvar VAR_SPECIAL_x8008, 2411
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2412:
+	setvar VAR_SPECIAL_x8008, 2412
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2413:
+	setvar VAR_SPECIAL_x8008, 2413
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2414:
+	setvar VAR_SPECIAL_x8008, 2414
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2415:
+	setvar VAR_SPECIAL_x8008, 2415
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2416:
+	setvar VAR_SPECIAL_x8008, 2416
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2417:
+	setvar VAR_SPECIAL_x8008, 2417
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2418:
+	setvar VAR_SPECIAL_x8008, 2418
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2419:
+	setvar VAR_SPECIAL_x8008, 2419
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2420:
+	setvar VAR_SPECIAL_x8008, 2420
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2421:
+	setvar VAR_SPECIAL_x8008, 2421
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2422:
+	setvar VAR_SPECIAL_x8008, 2422
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2423:
+	setvar VAR_SPECIAL_x8008, 2423
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2424:
+	setvar VAR_SPECIAL_x8008, 2424
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2425:
+	setvar VAR_SPECIAL_x8008, 2425
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2426:
+	setvar VAR_SPECIAL_x8008, 2426
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2427:
+	setvar VAR_SPECIAL_x8008, 2427
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2428:
+	setvar VAR_SPECIAL_x8008, 2428
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2429:
+	setvar VAR_SPECIAL_x8008, 2429
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2430:
+	setvar VAR_SPECIAL_x8008, 2430
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2431:
+	setvar VAR_SPECIAL_x8008, 2431
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2432:
+	setvar VAR_SPECIAL_x8008, 2432
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2433:
+	setvar VAR_SPECIAL_x8008, 2433
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2434:
+	setvar VAR_SPECIAL_x8008, 2434
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2435:
+	setvar VAR_SPECIAL_x8008, 2435
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2436:
+	setvar VAR_SPECIAL_x8008, 2436
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2437:
+	setvar VAR_SPECIAL_x8008, 2437
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2438:
+	setvar VAR_SPECIAL_x8008, 2438
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2439:
+	setvar VAR_SPECIAL_x8008, 2439
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2440:
+	setvar VAR_SPECIAL_x8008, 2440
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2441:
+	setvar VAR_SPECIAL_x8008, 2441
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2442:
+	setvar VAR_SPECIAL_x8008, 2442
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2443:
+	setvar VAR_SPECIAL_x8008, 2443
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2444:
+	setvar VAR_SPECIAL_x8008, 2444
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2445:
+	setvar VAR_SPECIAL_x8008, 2445
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2446:
+	setvar VAR_SPECIAL_x8008, 2446
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2447:
+	setvar VAR_SPECIAL_x8008, 2447
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2448:
+	setvar VAR_SPECIAL_x8008, 2448
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2449:
+	setvar VAR_SPECIAL_x8008, 2449
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2450:
+	setvar VAR_SPECIAL_x8008, 2450
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2451:
+	setvar VAR_SPECIAL_x8008, 2451
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2452:
+	setvar VAR_SPECIAL_x8008, 2452
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2453:
+	setvar VAR_SPECIAL_x8008, 2453
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2454:
+	setvar VAR_SPECIAL_x8008, 2454
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2455:
+	setvar VAR_SPECIAL_x8008, 2455
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2456:
+	setvar VAR_SPECIAL_x8008, 2456
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2457:
+	setvar VAR_SPECIAL_x8008, 2457
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2458:
+	setvar VAR_SPECIAL_x8008, 2458
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2459:
+	setvar VAR_SPECIAL_x8008, 2459
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2460:
+	setvar VAR_SPECIAL_x8008, 2460
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2461:
+	setvar VAR_SPECIAL_x8008, 2461
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2462:
+	setvar VAR_SPECIAL_x8008, 2462
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2463:
+	setvar VAR_SPECIAL_x8008, 2463
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2464:
+	setvar VAR_SPECIAL_x8008, 2464
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2465:
+	setvar VAR_SPECIAL_x8008, 2465
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2466:
+	setvar VAR_SPECIAL_x8008, 2466
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2467:
+	setvar VAR_SPECIAL_x8008, 2467
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2468:
+	setvar VAR_SPECIAL_x8008, 2468
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2469:
+	setvar VAR_SPECIAL_x8008, 2469
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2470:
+	setvar VAR_SPECIAL_x8008, 2470
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2471:
+	setvar VAR_SPECIAL_x8008, 2471
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2472:
+	setvar VAR_SPECIAL_x8008, 2472
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2473:
+	setvar VAR_SPECIAL_x8008, 2473
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2474:
+	setvar VAR_SPECIAL_x8008, 2474
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2475:
+	setvar VAR_SPECIAL_x8008, 2475
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2476:
+	setvar VAR_SPECIAL_x8008, 2476
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2477:
+	setvar VAR_SPECIAL_x8008, 2477
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2478:
+	setvar VAR_SPECIAL_x8008, 2478
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2479:
+	setvar VAR_SPECIAL_x8008, 2479
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2480:
+	setvar VAR_SPECIAL_x8008, 2480
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2481:
+	setvar VAR_SPECIAL_x8008, 2481
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2482:
+	setvar VAR_SPECIAL_x8008, 2482
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2483:
+	setvar VAR_SPECIAL_x8008, 2483
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2484:
+	setvar VAR_SPECIAL_x8008, 2484
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2485:
+	setvar VAR_SPECIAL_x8008, 2485
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2486:
+	setvar VAR_SPECIAL_x8008, 2486
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2487:
+	setvar VAR_SPECIAL_x8008, 2487
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2488:
+	setvar VAR_SPECIAL_x8008, 2488
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2489:
+	setvar VAR_SPECIAL_x8008, 2489
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2490:
+	setvar VAR_SPECIAL_x8008, 2490
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2491:
+	setvar VAR_SPECIAL_x8008, 2491
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2492:
+	setvar VAR_SPECIAL_x8008, 2492
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2493:
+	setvar VAR_SPECIAL_x8008, 2493
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2494:
+	setvar VAR_SPECIAL_x8008, 2494
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2495:
+	setvar VAR_SPECIAL_x8008, 2495
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2496:
+	setvar VAR_SPECIAL_x8008, 2496
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2497:
+	setvar VAR_SPECIAL_x8008, 2497
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2498:
+	setvar VAR_SPECIAL_x8008, 2498
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2499:
+	setvar VAR_SPECIAL_x8008, 2499
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2500:
+	setvar VAR_SPECIAL_x8008, 2500
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2501:
+	setvar VAR_SPECIAL_x8008, 2501
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2502:
+	setvar VAR_SPECIAL_x8008, 2502
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2503:
+	setvar VAR_SPECIAL_x8008, 2503
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2504:
+	setvar VAR_SPECIAL_x8008, 2504
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2505:
+	setvar VAR_SPECIAL_x8008, 2505
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2506:
+	setvar VAR_SPECIAL_x8008, 2506
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2507:
+	setvar VAR_SPECIAL_x8008, 2507
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2508:
+	setvar VAR_SPECIAL_x8008, 2508
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2509:
+	setvar VAR_SPECIAL_x8008, 2509
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2510:
+	setvar VAR_SPECIAL_x8008, 2510
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2511:
+	setvar VAR_SPECIAL_x8008, 2511
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2512:
+	setvar VAR_SPECIAL_x8008, 2512
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2513:
+	setvar VAR_SPECIAL_x8008, 2513
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2514:
+	setvar VAR_SPECIAL_x8008, 2514
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2515:
+	setvar VAR_SPECIAL_x8008, 2515
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2516:
+	setvar VAR_SPECIAL_x8008, 2516
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2517:
+	setvar VAR_SPECIAL_x8008, 2517
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2518:
+	setvar VAR_SPECIAL_x8008, 2518
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2519:
+	setvar VAR_SPECIAL_x8008, 2519
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2520:
+	setvar VAR_SPECIAL_x8008, 2520
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2521:
+	setvar VAR_SPECIAL_x8008, 2521
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2522:
+	setvar VAR_SPECIAL_x8008, 2522
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2523:
+	setvar VAR_SPECIAL_x8008, 2523
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2524:
+	setvar VAR_SPECIAL_x8008, 2524
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2525:
+	setvar VAR_SPECIAL_x8008, 2525
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2526:
+	setvar VAR_SPECIAL_x8008, 2526
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2527:
+	setvar VAR_SPECIAL_x8008, 2527
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2528:
+	setvar VAR_SPECIAL_x8008, 2528
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2529:
+	setvar VAR_SPECIAL_x8008, 2529
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2530:
+	setvar VAR_SPECIAL_x8008, 2530
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2531:
+	setvar VAR_SPECIAL_x8008, 2531
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2532:
+	setvar VAR_SPECIAL_x8008, 2532
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2533:
+	setvar VAR_SPECIAL_x8008, 2533
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2534:
+	setvar VAR_SPECIAL_x8008, 2534
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2535:
+	setvar VAR_SPECIAL_x8008, 2535
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2536:
+	setvar VAR_SPECIAL_x8008, 2536
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2537:
+	setvar VAR_SPECIAL_x8008, 2537
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2538:
+	setvar VAR_SPECIAL_x8008, 2538
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2539:
+	setvar VAR_SPECIAL_x8008, 2539
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2540:
+	setvar VAR_SPECIAL_x8008, 2540
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2541:
+	setvar VAR_SPECIAL_x8008, 2541
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2542:
+	setvar VAR_SPECIAL_x8008, 2542
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2543:
+	setvar VAR_SPECIAL_x8008, 2543
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2544:
+	setvar VAR_SPECIAL_x8008, 2544
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2545:
+	setvar VAR_SPECIAL_x8008, 2545
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2546:
+	setvar VAR_SPECIAL_x8008, 2546
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2547:
+	setvar VAR_SPECIAL_x8008, 2547
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2548:
+	setvar VAR_SPECIAL_x8008, 2548
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2549:
+	setvar VAR_SPECIAL_x8008, 2549
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2550:
+	setvar VAR_SPECIAL_x8008, 2550
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2551:
+	setvar VAR_SPECIAL_x8008, 2551
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2552:
+	setvar VAR_SPECIAL_x8008, 2552
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2553:
+	setvar VAR_SPECIAL_x8008, 2553
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2554:
+	setvar VAR_SPECIAL_x8008, 2554
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2555:
+	setvar VAR_SPECIAL_x8008, 2555
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2556:
+	setvar VAR_SPECIAL_x8008, 2556
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2557:
+	setvar VAR_SPECIAL_x8008, 2557
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2558:
+	setvar VAR_SPECIAL_x8008, 2558
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2559:
+	setvar VAR_SPECIAL_x8008, 2559
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2560:
+	setvar VAR_SPECIAL_x8008, 2560
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2561:
+	setvar VAR_SPECIAL_x8008, 2561
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2562:
+	setvar VAR_SPECIAL_x8008, 2562
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2563:
+	setvar VAR_SPECIAL_x8008, 2563
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2564:
+	setvar VAR_SPECIAL_x8008, 2564
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2565:
+	setvar VAR_SPECIAL_x8008, 2565
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2566:
+	setvar VAR_SPECIAL_x8008, 2566
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2567:
+	setvar VAR_SPECIAL_x8008, 2567
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2568:
+	setvar VAR_SPECIAL_x8008, 2568
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2569:
+	setvar VAR_SPECIAL_x8008, 2569
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2570:
+	setvar VAR_SPECIAL_x8008, 2570
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2571:
+	setvar VAR_SPECIAL_x8008, 2571
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2572:
+	setvar VAR_SPECIAL_x8008, 2572
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2573:
+	setvar VAR_SPECIAL_x8008, 2573
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2574:
+	setvar VAR_SPECIAL_x8008, 2574
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2575:
+	setvar VAR_SPECIAL_x8008, 2575
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2576:
+	setvar VAR_SPECIAL_x8008, 2576
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2577:
+	setvar VAR_SPECIAL_x8008, 2577
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2578:
+	setvar VAR_SPECIAL_x8008, 2578
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2579:
+	setvar VAR_SPECIAL_x8008, 2579
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2580:
+	setvar VAR_SPECIAL_x8008, 2580
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2581:
+	setvar VAR_SPECIAL_x8008, 2581
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2582:
+	setvar VAR_SPECIAL_x8008, 2582
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2583:
+	setvar VAR_SPECIAL_x8008, 2583
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2584:
+	setvar VAR_SPECIAL_x8008, 2584
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2585:
+	setvar VAR_SPECIAL_x8008, 2585
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2586:
+	setvar VAR_SPECIAL_x8008, 2586
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2587:
+	setvar VAR_SPECIAL_x8008, 2587
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2588:
+	setvar VAR_SPECIAL_x8008, 2588
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2589:
+	setvar VAR_SPECIAL_x8008, 2589
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2590:
+	setvar VAR_SPECIAL_x8008, 2590
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2591:
+	setvar VAR_SPECIAL_x8008, 2591
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2592:
+	setvar VAR_SPECIAL_x8008, 2592
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2593:
+	setvar VAR_SPECIAL_x8008, 2593
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2594:
+	setvar VAR_SPECIAL_x8008, 2594
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2595:
+	setvar VAR_SPECIAL_x8008, 2595
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2596:
+	setvar VAR_SPECIAL_x8008, 2596
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2597:
+	setvar VAR_SPECIAL_x8008, 2597
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2598:
+	setvar VAR_SPECIAL_x8008, 2598
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2599:
+	setvar VAR_SPECIAL_x8008, 2599
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2600:
+	setvar VAR_SPECIAL_x8008, 2600
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2601:
+	setvar VAR_SPECIAL_x8008, 2601
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2602:
+	setvar VAR_SPECIAL_x8008, 2602
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2603:
+	setvar VAR_SPECIAL_x8008, 2603
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2604:
+	setvar VAR_SPECIAL_x8008, 2604
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2605:
+	setvar VAR_SPECIAL_x8008, 2605
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2606:
+	setvar VAR_SPECIAL_x8008, 2606
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2607:
+	setvar VAR_SPECIAL_x8008, 2607
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2608:
+	setvar VAR_SPECIAL_x8008, 2608
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2609:
+	setvar VAR_SPECIAL_x8008, 2609
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2610:
+	setvar VAR_SPECIAL_x8008, 2610
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2611:
+	setvar VAR_SPECIAL_x8008, 2611
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2612:
+	setvar VAR_SPECIAL_x8008, 2612
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2613:
+	setvar VAR_SPECIAL_x8008, 2613
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2614:
+	setvar VAR_SPECIAL_x8008, 2614
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2615:
+	setvar VAR_SPECIAL_x8008, 2615
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2616:
+	setvar VAR_SPECIAL_x8008, 2616
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2617:
+	setvar VAR_SPECIAL_x8008, 2617
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2618:
+	setvar VAR_SPECIAL_x8008, 2618
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2619:
+	setvar VAR_SPECIAL_x8008, 2619
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2620:
+	setvar VAR_SPECIAL_x8008, 2620
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2621:
+	setvar VAR_SPECIAL_x8008, 2621
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2622:
+	setvar VAR_SPECIAL_x8008, 2622
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2623:
+	setvar VAR_SPECIAL_x8008, 2623
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2624:
+	setvar VAR_SPECIAL_x8008, 2624
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2625:
+	setvar VAR_SPECIAL_x8008, 2625
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2626:
+	setvar VAR_SPECIAL_x8008, 2626
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2627:
+	setvar VAR_SPECIAL_x8008, 2627
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2628:
+	setvar VAR_SPECIAL_x8008, 2628
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2629:
+	setvar VAR_SPECIAL_x8008, 2629
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2630:
+	setvar VAR_SPECIAL_x8008, 2630
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2631:
+	setvar VAR_SPECIAL_x8008, 2631
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2632:
+	setvar VAR_SPECIAL_x8008, 2632
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2633:
+	setvar VAR_SPECIAL_x8008, 2633
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2634:
+	setvar VAR_SPECIAL_x8008, 2634
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2635:
+	setvar VAR_SPECIAL_x8008, 2635
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2636:
+	setvar VAR_SPECIAL_x8008, 2636
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2637:
+	setvar VAR_SPECIAL_x8008, 2637
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2638:
+	setvar VAR_SPECIAL_x8008, 2638
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2639:
+	setvar VAR_SPECIAL_x8008, 2639
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2640:
+	setvar VAR_SPECIAL_x8008, 2640
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2641:
+	setvar VAR_SPECIAL_x8008, 2641
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2642:
+	setvar VAR_SPECIAL_x8008, 2642
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2643:
+	setvar VAR_SPECIAL_x8008, 2643
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2644:
+	setvar VAR_SPECIAL_x8008, 2644
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2645:
+	setvar VAR_SPECIAL_x8008, 2645
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2646:
+	setvar VAR_SPECIAL_x8008, 2646
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2647:
+	setvar VAR_SPECIAL_x8008, 2647
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2648:
+	setvar VAR_SPECIAL_x8008, 2648
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2649:
+	setvar VAR_SPECIAL_x8008, 2649
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2650:
+	setvar VAR_SPECIAL_x8008, 2650
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2651:
+	setvar VAR_SPECIAL_x8008, 2651
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2652:
+	setvar VAR_SPECIAL_x8008, 2652
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2653:
+	setvar VAR_SPECIAL_x8008, 2653
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2654:
+	setvar VAR_SPECIAL_x8008, 2654
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2655:
+	setvar VAR_SPECIAL_x8008, 2655
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2656:
+	setvar VAR_SPECIAL_x8008, 2656
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2657:
+	setvar VAR_SPECIAL_x8008, 2657
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2658:
+	setvar VAR_SPECIAL_x8008, 2658
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2659:
+	setvar VAR_SPECIAL_x8008, 2659
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2660:
+	setvar VAR_SPECIAL_x8008, 2660
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2661:
+	setvar VAR_SPECIAL_x8008, 2661
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2662:
+	setvar VAR_SPECIAL_x8008, 2662
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2663:
+	setvar VAR_SPECIAL_x8008, 2663
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2664:
+	setvar VAR_SPECIAL_x8008, 2664
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2665:
+	setvar VAR_SPECIAL_x8008, 2665
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2666:
+	setvar VAR_SPECIAL_x8008, 2666
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2667:
+	setvar VAR_SPECIAL_x8008, 2667
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2668:
+	setvar VAR_SPECIAL_x8008, 2668
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2669:
+	setvar VAR_SPECIAL_x8008, 2669
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2670:
+	setvar VAR_SPECIAL_x8008, 2670
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2671:
+	setvar VAR_SPECIAL_x8008, 2671
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2672:
+	setvar VAR_SPECIAL_x8008, 2672
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2673:
+	setvar VAR_SPECIAL_x8008, 2673
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2674:
+	setvar VAR_SPECIAL_x8008, 2674
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2675:
+	setvar VAR_SPECIAL_x8008, 2675
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2676:
+	setvar VAR_SPECIAL_x8008, 2676
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2677:
+	setvar VAR_SPECIAL_x8008, 2677
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2678:
+	setvar VAR_SPECIAL_x8008, 2678
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2679:
+	setvar VAR_SPECIAL_x8008, 2679
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2680:
+	setvar VAR_SPECIAL_x8008, 2680
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2681:
+	setvar VAR_SPECIAL_x8008, 2681
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2682:
+	setvar VAR_SPECIAL_x8008, 2682
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2683:
+	setvar VAR_SPECIAL_x8008, 2683
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2684:
+	setvar VAR_SPECIAL_x8008, 2684
+	setvar VAR_SPECIAL_x8009, 1
+	goto scr_seq_0141_2685
+
+scr_seq_0141_2685:
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	wait_se SEQ_SE_DP_SELECT
+	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8008
+	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x8009
+	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
+	goto_if_eq _E700
+	compare VAR_SPECIAL_RESULT, 0
+	goto_if_eq _E732
+	end
+
+_E700:
+	callstd std_hidden_item_fanfare
+	hide_person VAR_SPECIAL_LAST_TALKED
+	giveitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	itemistmorhm VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
+	goto_if_eq _E748
+	compare VAR_SPECIAL_RESULT, 0
+	goto_if_eq _E75E
+	end
+
+_E732:
+	buffer_item_name 0, VAR_SPECIAL_x8004
+	npc_msg 4
+	wait_button
+	setvar VAR_SPECIAL_RESULT, 0
+	goto _E76F
+
+_E748:
+	buffer_players_name 0
+	buffer_item_name_indef 1, VAR_SPECIAL_x8004
+	buffer_tmhm_move_name 2, VAR_SPECIAL_x8004
+	npc_msg 6
+	goto _E775
+
+_E75E:
+	buffer_players_name 0
+	buffer_item_name_indef 1, VAR_SPECIAL_x8004
+	npc_msg 3
+	goto _E775
+
+_E76F:
+	closemsg
+	releaseall
+	end
+
+_E775:
+	wait_fanfare
+	buffer_players_name 0
+	buffer_item_name 1, VAR_SPECIAL_x8004
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	switch VAR_SPECIAL_RESULT
+	case 7, _E7F5
+	case 0, _E806
+	case 4, _E817
+	case 1, _E828
+	case 2, _E839
+	case 6, _E84A
+	case 5, _E85B
+	case 3, _E86C
+	end
+
+_E7F5:
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	buffer_pocket_name 2, VAR_SPECIAL_RESULT
+	goto _E87D
+
+_E806:
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	buffer_pocket_name 2, VAR_SPECIAL_RESULT
+	goto _E87D
+
+_E817:
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	buffer_pocket_name 2, VAR_SPECIAL_RESULT
+	goto _E87D
+
+_E828:
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	buffer_pocket_name 2, VAR_SPECIAL_RESULT
+	goto _E87D
+
+_E839:
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	buffer_pocket_name 2, VAR_SPECIAL_RESULT
+	goto _E87D
+
+_E84A:
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	buffer_pocket_name 2, VAR_SPECIAL_RESULT
+	goto _E87D
+
+_E85B:
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	buffer_pocket_name 2, VAR_SPECIAL_RESULT
+	goto _E87D
+
+_E86C:
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	buffer_pocket_name 2, VAR_SPECIAL_RESULT
+	goto _E87D
+
+_E87D:
+	npc_msg 9
+	wait_button
+	setvar VAR_SPECIAL_RESULT, 1
+	goto _E76F
+	.balign 4

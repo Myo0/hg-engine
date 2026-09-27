@@ -1,0 +1,30 @@
+{
+  "header": "data/scr_seq/include/event_D41R0107.inc",
+  "eventId": "418",
+  "bg_events": [
+    {
+      "script": "std_hiddenitem_d41r0107_max_revive",
+      "type": 2,
+      "x": 24,
+      "z": 2,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 34,
+      "z": 18,
+      "dest_header_id": "MAP_D41R0102",
+      "dest_warp_id": 6,
+      "y": 0
+    },
+    {
+      "x": 13,
+      "z": 1,
+      "dest_header_id": "MAP_D41R0108",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ]
+}

@@ -713,8 +713,13 @@ SCR_SEQ_DEPS := $(SCRIPT_INCLUDES) $(wildcard $(SCR_SEQ_DEPENDENCIES_DIR)/*.inc)
 # keep in sync with ENGINE_MANAGED_SCRIPTS in tools/source/dumptools/dump_event_scripts.py
 SCR_SEQ_ENGINE_SRCS := $(sort $(wildcard $(SCR_SEQ_DEPENDENCIES_DIR)/scr_seq_[0-9][0-9][0-9][0-9][0-9]_*.s))
 
-# the four digit scripts are the vanilla dump, only built when BUILD_DUMPED_SCR_SEQ is enabled
-SCR_SEQ_VANILLA_SRCS := $(filter-out $(SCR_SEQ_ENGINE_SRCS) $(SCR_SEQ_DEPENDENCIES_DIR)/backup.s,$(sort $(wildcard $(SCR_SEQ_DEPENDENCIES_DIR)/*.s)))
+# the four digit scripts are the vanilla dump, only built when BUILD_DUMPED_SCR_SEQ is enabled.
+# scr_seq_0141.s is excluded too: it's orphaned narc content (no map's script_file_idx points to
+# it, and it isn't in dump_event_scripts.py's own leftoverUnmappedScripts list either) that's far
+# larger than every real script -- 2686 scrdef entries, ~59KB compiled -- and blows the fixed
+# ~32KB per-script budget src/linker.ld allocates for Overlay 129. Left on disk as reference, kept
+# out of the actual build the same way backup.s already is.
+SCR_SEQ_VANILLA_SRCS := $(filter-out $(SCR_SEQ_ENGINE_SRCS) $(SCR_SEQ_DEPENDENCIES_DIR)/backup.s $(SCR_SEQ_DEPENDENCIES_DIR)/scr_seq_0141.s,$(sort $(wildcard $(SCR_SEQ_DEPENDENCIES_DIR)/*.s)))
 
 ifeq ($(BUILD_DUMPED_SCR_SEQ),1)
 SCR_SEQ_SRCS := $(SCR_SEQ_ENGINE_SRCS) $(SCR_SEQ_VANILLA_SRCS)

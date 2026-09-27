@@ -1,0 +1,124 @@
+{
+  "header": "data/scr_seq/include/event_T07R0103.inc",
+  "eventId": "329",
+  "bg_events": [
+    {
+      "script": "_EV_scr_seq_T07R0103_005 + 1",
+      "type": 0,
+      "x": 7,
+      "z": 2,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_T07R0103_shopm1_2",
+      "graphics_id": "SPRITE_SHOPM1_2",
+      "movement_type": 15,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T07R0103_000 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 17,
+      "z": 4,
+      "y": 0
+    },
+    {
+      "id": "obj_T07R0103_gsdsboy",
+      "graphics_id": "SPRITE_GSDSBOY",
+      "movement_type": 15,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T07R0103_003 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 13,
+      "z": 3,
+      "y": 0
+    },
+    {
+      "id": "obj_T07R0103_gsdsboy_2",
+      "graphics_id": "SPRITE_GSDSBOY",
+      "movement_type": 15,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T07R0103_002 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 12,
+      "z": 3,
+      "y": 0
+    },
+    {
+      "id": "obj_T07R0103_gsboy1",
+      "graphics_id": "SPRITE_GSBOY1",
+      "movement_type": 3,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T07R0103_001 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 1,
+      "x": 17,
+      "z": 8,
+      "y": 0
+    },
+    {
+      "id": "obj_T07R0103_gsman1",
+      "graphics_id": "SPRITE_GSMAN1",
+      "movement_type": 5,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T07R0103_004 + 1",
+      "initial_dir": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 1,
+      "movement_range_z": 0,
+      "x": 7,
+      "z": 5,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 11,
+      "z": 8,
+      "dest_header_id": "MAP_T07R0102",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 6,
+      "z": 8,
+      "dest_header_id": "MAP_T07R0104",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 5,
+      "z": 2,
+      "dest_header_id": "MAP_T07R0107",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ]
+}

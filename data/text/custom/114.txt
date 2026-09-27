@@ -1,0 +1,28 @@
+Lance: {STRVAR_1 3, 0, 0}!\nIn order to unlock the door to the\fradio transmitter, you need the voice\fof a certain person.\rThe name of the person is Petrel,\nthe Team Rocket Executive!\rI have found out he is hiding in their\nleader’s office!\rUnfortunately though, that room is\nalso protected with a password...\r{STRVAR_1 3, 0, 0}!\nWe need the password to their leader’s\foffice first!\r
+Lance: {STRVAR_1 3, 0, 0}!\nIn order to unlock the door to the\fradio transmitter, you need the voice\fof a certain person.\rThe name of the person is Petrel,\nthe Team Rocket Executive!\rI have found out he is hiding in their\nleader’s office!\rUnfortunately though, that room is\nalso protected with a password...\r{STRVAR_1 3, 0, 0}!\nWe need the password to their leader’s\foffice first!\r
+Urrggh...\nThe guy in the cape is incredibly\ftough...and I had no choice\fbut to tell him all the secrets about\fthis hideout...\rExcept that our leader’s office is\nprotected with two passwords!\n
+{STRVAR_1 3, 0, 0}: ...\rSo you are messing with them again.\rHumph, you must really like Team Rocket\nso much.\r...Tell me, who was the guy in the cape\nwho used Dragon-type Pokémon?\rMy Pokémon were no match at all.\rI don’t care that I lost. I can beat\nhim by getting stronger Pokémon.\rIt’s what he said that bothers me...\nHe told me that I don’t love and\ftrust my Pokémon enough.\rI’m furious that I lost to a bleeding\nheart like him.\r...Humph! I don’t have the time for the\nlikes of you!\r
+Muhahaha, we’ve been waiting for you.\nSo, you are {STRVAR_1 3, 0, 0}...\rMe?\nYou don’t know who I am?\rIt is me, Giovanni.\nThe majestic Giovanni himself!\fWahahaha!\r
+...Huh?\nI don’t sound anything like Giovanni?\rI don’t even look like Giovanni?\nHow come? I’ve worked so hard\fto mimic him!\r
+Petrel: I am a Team Rocket Executive!\rYou must be trying to sneak into the\nradio-transmitter room.\fWell, that’s not going to happen.\rThat room is protected with a special\npassword. The password is\f“Hail Giovanni.”\fSurprised to hear it from me?\rKnowing the password won’t help\nyou though.\rThe door won’t open unless I say the\npassword. It only reacts to my voice.\r
+Petrel: Since disbanding Team Rocket\nthree years ago, our Giovanni has\fbeen missing.\rBut we’re certain he’s been waiting\nfor the right time for our revival...\rWahahaha!\rLosing to you won’t change the fact\nthat you are unable to get in the\fradio-transmitter room!\rYou need my voice to unlock it!\r
+MURKROW: Hail Giovanni.\r
+MURKROW is mimicking\nthe voice of Petrel!\rYou may be able to...!?\r
+MURKROW: Hail Giovanni.\r
+The door’s closed...\rIt needs two passwords\nto open it.
+The door’s closed...\r{STRVAR_1 3, 0, 0} entered the\ntwo passwords.\rThe door opened!\r
+You have no chance against\nthe rest of us!\r
+I used to work for Silph, but now I run\nresearch for Team Rocket.\rA meddlesome child like you needs to be\npunished.\r
+A radio signal that drives Pokémon\nmad... My experiment is a complete\fsuccess. My promotion is assured.\fThis loss means absolutely nothing.\n
+Do I know the password?\rMaybe.\rBut no weakling’s going to get it!\r
+The password to the boss’s room is\nSLOWPOKETAIL.\rBut it’s useless unless you have two\npasswords.\n
+Tsk...\nI already gave you the password, brat!\rGet lost!\r
+I don’t care that Pokémon are hurt by\nour experiment.\r
+If we turn up the power of our radio\nsignal for broadcast nationwide...\rThe very thought excites me!\n
+Our plan is foolproof!\nYou will never stop the signal!\r
+Hyuck-hyuck-hyuck!\rYou’re challenging me to a battle?\nHah! You’re nuts, but you have guts!\rI like that! If you can beat me, I’ll\ntell you a password to the boss’s room!\r
+The password for the boss’s door--\nRATICATETAIL.\rBut if you don’t have both passwords...\nHa ha ha!\n
+It doesn’t matter if you have them!\nYou still have no hope!\r
+In order to pass me, you must\ndefeat everyone in this room!\rLooks like I have nothing to\nworry about brat!\r
+In order to pass me, you must\ndefeat everyone in this roo-...\r
+W-Wh-What?!\nYou beat them all?!\r...I have no chance!\r

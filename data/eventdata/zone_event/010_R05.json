@@ -1,0 +1,63 @@
+{
+  "header": "data/scr_seq/include/event_R05.inc",
+  "eventId": "010",
+  "bg_events": [
+    {
+      "script": "_EV_scr_seq_R05_001 + 1",
+      "type": 1,
+      "x": 1308,
+      "z": 186,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_R05_gsmiddleman1",
+      "graphics_id": "SPRITE_GSMIDDLEMAN1",
+      "movement_type": 15,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_UNK_258",
+      "script": "_EV_scr_seq_R05_000 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 1306,
+      "z": 186,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 1300,
+      "z": 189,
+      "dest_header_id": "MAP_R05R0301",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 1301,
+      "z": 189,
+      "dest_header_id": "MAP_R05R0301",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 1306,
+      "z": 185,
+      "dest_header_id": "MAP_R05R0201",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 1297,
+      "z": 171,
+      "dest_header_id": "MAP_R05R0401",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ]
+}

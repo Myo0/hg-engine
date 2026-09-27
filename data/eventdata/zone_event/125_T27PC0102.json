@@ -1,0 +1,16 @@
+{
+  "header": "data/scr_seq/include/event_T27PC0102.inc",
+  "eventId": "125",
+  "coord_events": [
+    {
+      "script": 0,
+      "x": 8,
+      "z": 14,
+      "width": 1,
+      "length": 1,
+      "y": 0,
+      "value": 1,
+      "var": "VAR_TEMP_x4001"
+    }
+  ]
+}

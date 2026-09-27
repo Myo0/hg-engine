@@ -15,6 +15,7 @@
 .include "asm/include/spawns.inc"
 .include "asm/include/std_scripts.inc"
 .include "asm/include/trainers.inc"
+.include "asm/include/electrum_scrcmd_extra.inc"
 
 #include "constants/item.h"
 #include "constants/moves.h"
@@ -2004,5 +2005,3 @@ _berry_tree_full:
     closemsg
     endstd
     end
-
-.close

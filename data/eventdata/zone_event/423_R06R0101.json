@@ -1,0 +1,34 @@
+{
+  "header": "data/scr_seq/include/event_R06R0101.inc",
+  "eventId": "423",
+  "warp_events": [
+    {
+      "x": 5,
+      "z": 9,
+      "dest_header_id": "MAP_R06",
+      "dest_warp_id": 2,
+      "y": 0
+    },
+    {
+      "x": 8,
+      "z": 3,
+      "dest_header_id": "MAP_R05R0202",
+      "dest_warp_id": 3,
+      "y": 0
+    },
+    {
+      "x": 8,
+      "z": 4,
+      "dest_header_id": "MAP_R05R0202",
+      "dest_warp_id": 3,
+      "y": 0
+    },
+    {
+      "x": 8,
+      "z": 5,
+      "dest_header_id": "MAP_R05R0202",
+      "dest_warp_id": 3,
+      "y": 0
+    }
+  ]
+}

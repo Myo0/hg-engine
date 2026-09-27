@@ -1,0 +1,130 @@
+{
+  "header": "data/scr_seq/include/event_T22GYM0101.inc",
+  "eventId": "131",
+  "bg_events": [
+    {
+      "script": "_EV_scr_seq_T22GYM0101_003 + 1",
+      "type": 0,
+      "x": 12,
+      "z": 26,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_T22GYM0101_003 + 1",
+      "type": 0,
+      "x": 18,
+      "z": 26,
+      "y": 0,
+      "player_facing_dir": 0
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_T22GYM0101_gsleader1",
+      "graphics_id": "SPRITE_GSLEADER1",
+      "movement_type": 15,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_UNK_2E9",
+      "script": "_EV_scr_seq_T22GYM0101_001 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 15,
+      "z": 4,
+      "y": 0
+    },
+    {
+      "id": "obj_T22GYM0101_gsman2",
+      "graphics_id": "SPRITE_GSMAN2",
+      "movement_type": 0,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "TRAINER_BIRD_KEEPER_GS_ABE - 1 + _std_npc_trainer",
+      "initial_dir": 3,
+      "param0": 3,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 12,
+      "z": 18,
+      "y": 0
+    },
+    {
+      "id": "obj_T22GYM0101_gsman2_2",
+      "graphics_id": "SPRITE_GSMAN2",
+      "movement_type": 16,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "TRAINER_BIRD_KEEPER_GS_ROD - 1 + _std_npc_trainer",
+      "initial_dir": 2,
+      "param0": 6,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 18,
+      "z": 7,
+      "y": 0
+    },
+    {
+      "id": "obj_T22GYM0101_sunglasses",
+      "graphics_id": "SPRITE_SUNGLASSES",
+      "movement_type": 15,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_VIOLET_GYM_GYM_GUY_BEFORE_SPROUT",
+      "script": "_EV_scr_seq_T22GYM0101_002 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 17,
+      "z": 26,
+      "y": 0
+    },
+    {
+      "id": "obj_T22GYM0101_sunglasses_2",
+      "graphics_id": "SPRITE_SUNGLASSES",
+      "movement_type": 15,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT",
+      "script": "_EV_scr_seq_T22GYM0101_005 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 15,
+      "z": 20,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 15,
+      "z": 28,
+      "dest_header_id": "MAP_T22",
+      "dest_warp_id": 2,
+      "y": 0
+    }
+  ],
+  "coord_events": [
+    {
+      "script": "_EV_scr_seq_T22GYM0101_004 + 1",
+      "x": 15,
+      "z": 20,
+      "width": 1,
+      "length": 1,
+      "y": 0,
+      "value": 0,
+      "var": "VAR_TEMP_x4000"
+    }
+  ]
+}

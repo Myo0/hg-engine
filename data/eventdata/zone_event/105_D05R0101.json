@@ -1,0 +1,102 @@
+{
+  "header": "data/scr_seq/include/event_D05R0101.inc",
+  "eventId": "105",
+  "bg_events": [
+    {
+      "script": "std_hiddenitem_d05r0101_x_defense",
+      "type": 2,
+      "x": 38,
+      "z": 31,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "std_hiddenitem_d05r0101_x_accuracy",
+      "type": 2,
+      "x": 16,
+      "z": 8,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_EVERYWHERE_monstarball",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D05R0101_ELIXIR",
+      "script": "std_itemball_d25r0103_hyper_potion",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 7,
+      "z": 27,
+      "y": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_monstarball_2",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D05R0101_TM56",
+      "script": 7383,
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 24,
+      "z": 20,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 23,
+      "z": 36,
+      "dest_header_id": "MAP_R10R0101",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 46,
+      "z": 10,
+      "dest_header_id": "MAP_R10",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 8,
+      "z": 34,
+      "dest_header_id": "MAP_D05R0102",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 10,
+      "z": 18,
+      "dest_header_id": "MAP_D05R0102",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 8,
+      "z": 7,
+      "dest_header_id": "MAP_D05R0102",
+      "dest_warp_id": 2,
+      "y": 0
+    },
+    {
+      "x": 37,
+      "z": 17,
+      "dest_header_id": "MAP_D05R0102",
+      "dest_warp_id": 3,
+      "y": 0
+    }
+  ]
+}

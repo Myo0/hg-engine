@@ -1,0 +1,90 @@
+{
+  "header": "data/scr_seq/include/event_P01R0305.inc",
+  "eventId": "282",
+  "object_events": [
+    {
+      "id": "obj_P01R0305_fire",
+      "graphics_id": "SPRITE_FIRE",
+      "movement_type": 18,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_UNK_22A",
+      "script": "TRAINER_FIREBREATHER_LYLE - 1 + _std_npc_trainer",
+      "initial_dir": 2,
+      "param0": 3,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 24,
+      "z": 6,
+      "y": 0
+    },
+    {
+      "id": "obj_P01R0305_gswoman2",
+      "graphics_id": "SPRITE_GSWOMAN2",
+      "movement_type": 0,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_UNK_22B",
+      "script": "TRAINER_BEAUTY_CASSIE - 1 + _std_npc_trainer",
+      "initial_dir": 1,
+      "param0": 4,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 9,
+      "z": 6,
+      "y": 0
+    },
+    {
+      "id": "obj_P01R0305_gsman2",
+      "graphics_id": "SPRITE_GSMAN2",
+      "movement_type": 0,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_UNK_22C",
+      "script": "TRAINER_GUITARIST_CLYDE - 1 + _std_npc_trainer",
+      "initial_dir": 1,
+      "param0": 5,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 7,
+      "z": 6,
+      "y": 0
+    },
+    {
+      "id": "obj_P01R0305_gsboy3",
+      "graphics_id": "SPRITE_GSBOY3",
+      "movement_type": 0,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_UNK_22C",
+      "script": "TRAINER_BUG_CATCHER_KEN - 1 + _std_npc_trainer",
+      "initial_dir": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 19,
+      "z": 7,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 9,
+      "z": 11,
+      "dest_header_id": "MAP_P01R0301",
+      "dest_warp_id": 7,
+      "y": 0
+    },
+    {
+      "x": 23,
+      "z": 11,
+      "dest_header_id": "MAP_P01R0301",
+      "dest_warp_id": 8,
+      "y": 0
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "header": "data/scr_seq/include/event_D02R0102.inc",
+  "eventId": "403",
+  "warp_events": [
+    {
+      "x": 5,
+      "z": 4,
+      "dest_header_id": "MAP_D02R0101",
+      "dest_warp_id": 2,
+      "y": 0
+    },
+    {
+      "x": 5,
+      "z": 6,
+      "dest_header_id": "MAP_D02R0103",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 5,
+      "z": 25,
+      "dest_header_id": "MAP_D02R0103",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 5,
+      "z": 23,
+      "dest_header_id": "MAP_D02R0101",
+      "dest_warp_id": 3,
+      "y": 0
+    },
+    {
+      "x": 9,
+      "z": 7,
+      "dest_header_id": "MAP_D02R0104",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 9,
+      "z": 26,
+      "dest_header_id": "MAP_D02R0104",
+      "dest_warp_id": 1,
+      "y": 0
+    }
+  ]
+}

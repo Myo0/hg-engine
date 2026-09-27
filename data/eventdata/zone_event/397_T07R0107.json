@@ -1,0 +1,32 @@
+{
+  "header": "data/scr_seq/include/event_T07R0107.inc",
+  "eventId": "397",
+  "object_events": [
+    {
+      "id": "obj_T07R0107_gswoman6",
+      "graphics_id": "SPRITE_GSWOMAN6",
+      "movement_type": 17,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T07R0107_000 + 1",
+      "initial_dir": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 1,
+      "z": 6,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 3,
+      "z": 6,
+      "dest_header_id": 4095,
+      "dest_warp_id": 256,
+      "y": 0
+    }
+  ]
+}

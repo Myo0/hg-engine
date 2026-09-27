@@ -1,0 +1,39 @@
+{
+  "header": "data/scr_seq/include/event_R02R0501.inc",
+  "eventId": "375",
+  "object_events": [
+    {
+      "id": "obj_R02R0501_counterm",
+      "graphics_id": "SPRITE_COUNTERM",
+      "movement_type": 17,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_R02R0501_000 + 1",
+      "initial_dir": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 1,
+      "z": 8,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 5,
+      "z": 12,
+      "dest_header_id": "MAP_D46R0101",
+      "dest_warp_id": 4,
+      "y": 0
+    },
+    {
+      "x": 5,
+      "z": 2,
+      "dest_header_id": "MAP_R02R0101",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "header": "data/scr_seq/include/event_D27R0108.inc",
+  "eventId": "401",
+  "warp_events": [
+    {
+      "x": 3,
+      "z": 6,
+      "dest_header_id": 4095,
+      "dest_warp_id": 256,
+      "y": 0
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "header": "data/scr_seq/include/event_W40R0101.inc",
+  "eventId": "323",
+  "object_events": [
+    {
+      "id": "obj_W40R0101_gsmiddleman1",
+      "graphics_id": "SPRITE_GSMIDDLEMAN1",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_UNK_25B",
+      "script": "_EV_scr_seq_W40R0101_000 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 5,
+      "z": 3,
+      "y": 0
+    },
+    {
+      "id": "obj_W40R0101_counterm",
+      "graphics_id": "SPRITE_COUNTERM",
+      "movement_type": 17,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_W40R0101_002 + 1",
+      "initial_dir": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 1,
+      "z": 8,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 5,
+      "z": 12,
+      "dest_header_id": "MAP_W40",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 5,
+      "z": 2,
+      "dest_header_id": "MAP_D32R0102",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "header": "data/scr_seq/include/event_D41R0103.inc",
+  "eventId": "414",
+  "object_events": [
+    {
+      "id": "obj_EVERYWHERE_monstarball",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D41R0103_ESCAPE_ROPE",
+      "script": "std_itemball_d17r0108_full_restore",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 27,
+      "z": 46,
+      "y": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_monstarball_2",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D41R0103_TM76",
+      "script": 7403,
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 15,
+      "z": 45,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 19,
+      "z": 20,
+      "dest_header_id": "MAP_D41R0101",
+      "dest_warp_id": 5,
+      "y": 0
+    },
+    {
+      "x": 23,
+      "z": 37,
+      "dest_header_id": "MAP_D41R0101",
+      "dest_warp_id": 4,
+      "y": 0
+    },
+    {
+      "x": 27,
+      "z": 42,
+      "dest_header_id": "MAP_D41R0101",
+      "dest_warp_id": 3,
+      "y": 0
+    }
+  ]
+}

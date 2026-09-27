@@ -1,0 +1,51 @@
+{
+  "header": "data/scr_seq/include/event_R38R0101.inc",
+  "eventId": "166",
+  "object_events": [
+    {
+      "id": "obj_R38R0101_counterm",
+      "graphics_id": "SPRITE_COUNTERM",
+      "movement_type": 15,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_R38R0101_001 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 6,
+      "z": 4,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 10,
+      "z": 7,
+      "dest_header_id": "MAP_T27",
+      "dest_warp_id": 8,
+      "y": 0
+    },
+    {
+      "x": 1,
+      "z": 7,
+      "dest_header_id": "MAP_R38",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ],
+  "coord_events": [
+    {
+      "script": "_EV_scr_seq_R38R0101_002 + 1",
+      "x": 6,
+      "z": 6,
+      "width": 1,
+      "length": 3,
+      "y": 0,
+      "value": 0,
+      "var": "VAR_UNK_415C"
+    }
+  ]
+}

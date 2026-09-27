@@ -1,0 +1,162 @@
+{
+  "header": "data/scr_seq/include/event_W40.inc",
+  "eventId": "091",
+  "bg_events": [
+    {
+      "script": "_EV_scr_seq_W40_002 + 1",
+      "type": 1,
+      "x": 245,
+      "z": 272,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "std_hiddenitem_r32_heart_scale",
+      "type": 2,
+      "x": 250,
+      "z": 291,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_W40_009 + 1",
+      "type": 1,
+      "x": 240,
+      "z": 267,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_W40_gsswimmerm",
+      "graphics_id": "SPRITE_GSSWIMMERM",
+      "movement_type": 17,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "TRAINER_SWIMMER_M_RANDALL - 1 + _std_npc_trainer",
+      "initial_dir": 3,
+      "param0": 7,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 229,
+      "z": 311,
+      "y": 0
+    },
+    {
+      "id": "obj_W40_gsswimmerw",
+      "graphics_id": "SPRITE_GSSWIMMERW",
+      "movement_type": 16,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "TRAINER_SWIMMER_F_PAULA - 1 + _std_npc_trainer",
+      "initial_dir": 2,
+      "param0": 11,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 244,
+      "z": 294,
+      "y": 0
+    },
+    {
+      "id": "obj_W40_gswoman1",
+      "graphics_id": "SPRITE_GSWOMAN1",
+      "movement_type": 2,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_UNK_206",
+      "script": "_EV_scr_seq_W40_001 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 238,
+      "z": 273,
+      "y": 0
+    },
+    {
+      "id": "obj_W40_gsmiddleman1",
+      "graphics_id": "SPRITE_GSMIDDLEMAN1",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_W40_007 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 252,
+      "z": 271,
+      "y": 0
+    },
+    {
+      "id": "obj_W40_monstarball",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_W40_TM88",
+      "script": 7415,
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 252,
+      "z": 300,
+      "y": 0
+    },
+    {
+      "id": "obj_W40_monstarball_2",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 3,
+      "hidden_flag": "FLAG_UNK_A0F",
+      "script": "std_itemball_d40r0101_ultra_ball_2",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 243,
+      "z": 310,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 237,
+      "z": 266,
+      "dest_header_id": "MAP_W40R0101",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 238,
+      "z": 266,
+      "dest_header_id": "MAP_W40R0101",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ],
+  "coord_events": [
+    {
+      "script": "_EV_scr_seq_W40_008 + 1",
+      "x": 252,
+      "z": 265,
+      "width": 4,
+      "length": 1,
+      "y": 0,
+      "value": 0,
+      "var": "VAR_UNK_4090"
+    }
+  ]
+}

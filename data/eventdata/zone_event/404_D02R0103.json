@@ -1,0 +1,64 @@
+{
+  "header": "data/scr_seq/include/event_D02R0103.inc",
+  "eventId": "404",
+  "bg_events": [
+    {
+      "script": "std_hiddenitem_d02r0103_max_revive",
+      "type": 2,
+      "x": 36,
+      "z": 2,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_D02R0103_000 + 1",
+      "type": 1,
+      "x": 22,
+      "z": 10,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_D02R0103_stop",
+      "graphics_id": "SPRITE_STOP",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_D02R0103_001 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 19,
+      "z": 4,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 28,
+      "z": 8,
+      "dest_header_id": "MAP_D02R0102",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 32,
+      "z": 20,
+      "dest_header_id": "MAP_D02R0102",
+      "dest_warp_id": 2,
+      "y": 0
+    },
+    {
+      "x": 18,
+      "z": 10,
+      "dest_header_id": "MAP_D02FS0101",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ]
+}

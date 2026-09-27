@@ -1,0 +1,83 @@
+{
+  "header": "data/scr_seq/include/event_T23R0201.inc",
+  "eventId": "157",
+  "object_events": [
+    {
+      "id": "obj_T23R0201_gsfighter",
+      "graphics_id": "SPRITE_GSFIGHTER",
+      "movement_type": 9,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_UNK_1AE",
+      "script": "_EV_scr_seq_T23R0201_000 + 1",
+      "initial_dir": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 2,
+      "z": 6,
+      "y": 0
+    },
+    {
+      "id": "obj_T23R0201_gsboy1",
+      "graphics_id": "SPRITE_GSBOY1",
+      "movement_type": 2,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_UNK_1AC",
+      "script": "_EV_scr_seq_T23R0201_001 + 1",
+      "initial_dir": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 5,
+      "z": 5,
+      "y": 0
+    },
+    {
+      "id": "obj_T23R0201_follower_mon_static_farfetchd",
+      "graphics_id": "SPRITE_FOLLOWER_MON_STATIC_FARFETCHD",
+      "movement_type": 3,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_UNK_1AC",
+      "script": "_EV_scr_seq_T23R0201_002 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 1,
+      "movement_range_z": 1,
+      "x": 8,
+      "z": 7,
+      "y": 0
+    },
+    {
+      "id": "obj_T23R0201_follower_mon_static_farfetchd_2",
+      "graphics_id": "SPRITE_FOLLOWER_MON_STATIC_FARFETCHD",
+      "movement_type": 2,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_UNK_1AC",
+      "script": "_EV_scr_seq_T23R0201_002 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 9,
+      "z": 5,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 4,
+      "z": 9,
+      "dest_header_id": "MAP_T23",
+      "dest_warp_id": 4,
+      "y": 0
+    }
+  ]
+}

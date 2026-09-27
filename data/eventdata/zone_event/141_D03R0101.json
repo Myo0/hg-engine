@@ -1,0 +1,326 @@
+{
+  "header": "data/scr_seq/include/event_D03R0101.inc",
+  "eventId": "141",
+  "bg_events": [
+    {
+      "script": "std_hiddenitem_d03r0101_hyper_potion",
+      "type": 2,
+      "x": 4,
+      "z": 40,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "std_hiddenitem_d03r0101_rare_candy",
+      "type": 2,
+      "x": 60,
+      "z": 44,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "std_hiddenitem_d03r0101_revive",
+      "type": 2,
+      "x": 24,
+      "z": 36,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_EVERYWHERE_monstarball",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D03R0101_MAX_ELIXIR",
+      "script": "std_itemball_d26r0102_super_potion",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 43,
+      "z": 18,
+      "y": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_monstarball_2",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D03R0101_NUGGET",
+      "script": "std_itemball_d40r0101_ultra_ball",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 9,
+      "z": 18,
+      "y": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_monstarball_3",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D03R0101_FULL_RESTORE",
+      "script": "std_itemball_d24r0215_leppa_berry",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 21,
+      "z": 43,
+      "y": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_monstarball_4",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D03R0101_SEA_INCENSE",
+      "script": "std_itemball_d03r0103_black_sludge",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 24,
+      "z": 6,
+      "y": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_breakrock",
+      "graphics_id": "SPRITE_BREAKROCK",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_MAPTEMP_010",
+      "script": "std_field_rock_smash",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 6,
+      "z": 40,
+      "y": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_breakrock_2",
+      "graphics_id": "SPRITE_BREAKROCK",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_MAPTEMP_011",
+      "script": "std_field_rock_smash",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 5,
+      "z": 41,
+      "y": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_breakrock_3",
+      "graphics_id": "SPRITE_BREAKROCK",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_MAPTEMP_012",
+      "script": "std_field_rock_smash",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 5,
+      "z": 39,
+      "y": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_breakrock_4",
+      "graphics_id": "SPRITE_BREAKROCK",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_MAPTEMP_013",
+      "script": "std_field_rock_smash",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 7,
+      "z": 42,
+      "y": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_breakrock_5",
+      "graphics_id": "SPRITE_BREAKROCK",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_MAPTEMP_014",
+      "script": "std_field_rock_smash",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 11,
+      "z": 39,
+      "y": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_breakrock_6",
+      "graphics_id": "SPRITE_BREAKROCK",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_MAPTEMP_015",
+      "script": "std_field_rock_smash",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 10,
+      "z": 42,
+      "y": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_breakrock_7",
+      "graphics_id": "SPRITE_BREAKROCK",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_MAPTEMP_010",
+      "script": "std_field_rock_smash",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 11,
+      "z": 37,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 49,
+      "z": 42,
+      "dest_header_id": "MAP_T04",
+      "dest_warp_id": 7,
+      "y": 0
+    },
+    {
+      "x": 55,
+      "z": 11,
+      "dest_header_id": "MAP_D03R0102",
+      "dest_warp_id": 3,
+      "y": 0
+    },
+    {
+      "x": 55,
+      "z": 22,
+      "dest_header_id": "MAP_D03R0103",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 45,
+      "z": 25,
+      "dest_header_id": "MAP_D03R0102",
+      "dest_warp_id": 4,
+      "y": 0
+    },
+    {
+      "x": 34,
+      "z": 31,
+      "dest_header_id": "MAP_D03R0102",
+      "dest_warp_id": 5,
+      "y": 0
+    },
+    {
+      "x": 9,
+      "z": 11,
+      "dest_header_id": "MAP_D03R0102",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 14,
+      "z": 17,
+      "dest_header_id": "MAP_D03R0102",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 6,
+      "z": 19,
+      "dest_header_id": "MAP_D03R0103",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 7,
+      "z": 27,
+      "dest_header_id": "MAP_D03R0102",
+      "dest_warp_id": 2,
+      "y": 0
+    },
+    {
+      "x": 55,
+      "z": 10,
+      "dest_header_id": "MAP_D03R0102",
+      "dest_warp_id": 3,
+      "y": 0
+    },
+    {
+      "x": 45,
+      "z": 24,
+      "dest_header_id": "MAP_D03R0102",
+      "dest_warp_id": 4,
+      "y": 0
+    },
+    {
+      "x": 34,
+      "z": 30,
+      "dest_header_id": "MAP_D03R0102",
+      "dest_warp_id": 5,
+      "y": 0
+    },
+    {
+      "x": 9,
+      "z": 10,
+      "dest_header_id": "MAP_D03R0102",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 14,
+      "z": 16,
+      "dest_header_id": "MAP_D03R0102",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 7,
+      "z": 26,
+      "dest_header_id": "MAP_D03R0102",
+      "dest_warp_id": 2,
+      "y": 0
+    }
+  ]
+}

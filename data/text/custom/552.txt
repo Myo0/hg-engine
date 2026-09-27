@@ -1,0 +1,63 @@
+It’s great. I can store any number\nof Pokémon, and it’s all free.
+That PC is free for any Trainer to use.
+The Communication Center upstairs\nwas just built.\rBut they’re still finishing it up.
+The Communication Center upstairs\nwas just built.\rI traded Pokémon there already!
+Welcome to the Pokémon Wireless\nClub Union Room.\r...Oh, I was just trying to learn that\nline by heart.\rIt’ll take a little longer before\nwe open the Union Room.
+Welcome to the Pokémon\nCommunication Club Colosseum.\r...Oh, I was just trying to learn that\nline by heart.\rIt’ll take a little longer before\nwe open the Colosseum.
+How may I help you today?
+Maximize an IV
+I see, see you next time, then.\nLet me know if you need anything.\r
+HP
+Attack
+Defense
+Sp.Atk
+Sp.Def
+Speed
+Exit
+Your Pokémon’s IV has been set to max.
+I cannot change anything about\na Pokémon inside an egg.
+Change Nature
+Your Pokémon’s Nature has been changed.
+Delete Move
+What Pokémon needs a move deleted?
+Relearn a Move
+
+
+Hardy (Neutral)
+Lonely (+Atk, -Def)
+Brave (+Atk, -Spe)
+Adamant (+Atk, -SpAtk)
+Naughty (+Atk, -SpDef)
+Bold (+Def, -Atk)
+Docile (Neutral)
+Relaxed (+Def, -Spe)
+Impish (+Def, -SpAtk)
+Lax (+Def, -SpDef)
+Timid (+Spe, -Atk)
+Hasty (+Spe, -Def)
+Serious (Neutral)
+Jolly (+Spe, -SpAtk)
+Naive (+Spe, -SpDef)
+Modest (+SpAtk, -Atk)
+Mild (+SpAtk, -Def)
+Quiet (+SpAtk, -Spe)
+Bashful (Neutral)
+Rash (+SpAtk, -SpDef)
+Calm (+SpDef, -Atk)
+Gentle (+SpDef, -Def)
+Sassy (+SpDef, -Spe)
+Careful (+SpDef, -SpAtk)
+Quirky (Neutral)
+That Pokémon knows only one move,\nso it can’t be forgotten...\r
+Which move should be forgotten?
+So, you want {STRVAR_1 6, 0, 0}\nto be forgotten?
+That move has been deleted.
+It costs 1 Heart Scale for\nme to max a Pokémon’s IV.\r 
+Sorry, request that again when\nyou have more Heart Scales.\r
+It costs 3 Heart Scales for\nme to change a Pokémon’s Nature.\r
+It costs 1 Heart Scale for\nme to reteach a move.\r
+Which Pokémon needs a move retaught?
+Sorry! That Pokémon has no moves\nthat I can reteach it.\r
+Which move should I make it remember?
+{STRVAR_1 3, 3, 0} handed over one\nHeart Scale in exchange.
+{STRVAR_1 3, 3, 0} handed over three\nHeart Scales in exchange.

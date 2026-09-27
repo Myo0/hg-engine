@@ -1,0 +1,168 @@
+{
+  "header": "data/scr_seq/include/event_T22R0301.inc",
+  "eventId": "154",
+  "bg_events": [
+    {
+      "script": "_EV_scr_seq_T22R0301_001 + 1",
+      "type": 0,
+      "x": 6,
+      "z": 2,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_T22R0301_001 + 1",
+      "type": 0,
+      "x": 5,
+      "z": 2,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_T22R0301_001 + 1",
+      "type": 0,
+      "x": 7,
+      "z": 2,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_T22R0301_002 + 1",
+      "type": 0,
+      "x": 9,
+      "z": 6,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_T22R0301_gsbigman",
+      "graphics_id": "SPRITE_GSBIGMAN",
+      "movement_type": 15,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_EARL_IN_SCHOOL",
+      "script": "_EV_scr_seq_T22R0301_000 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 4,
+      "z": 4,
+      "y": 0
+    },
+    {
+      "id": "obj_T22R0301_gsboy1",
+      "graphics_id": "SPRITE_GSBOY1",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T22R0301_004 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 9,
+      "z": 7,
+      "y": 0
+    },
+    {
+      "id": "obj_T22R0301_gsboy1_2",
+      "graphics_id": "SPRITE_GSBOY1",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T22R0301_005 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 4,
+      "z": 7,
+      "y": 0
+    },
+    {
+      "id": "obj_T22R0301_gsdsboy",
+      "graphics_id": "SPRITE_GSDSBOY",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T22R0301_006 + 1",
+      "initial_dir": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 8,
+      "z": 9,
+      "y": 0
+    },
+    {
+      "id": "obj_T22R0301_gsdsboy_2",
+      "graphics_id": "SPRITE_GSDSBOY",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T22R0301_007 + 1",
+      "initial_dir": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 7,
+      "z": 9,
+      "y": 0
+    },
+    {
+      "id": "obj_T22R0301_gsman2",
+      "graphics_id": "SPRITE_GSMAN2",
+      "movement_type": 2,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "std_group",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 13,
+      "z": 8,
+      "y": 0
+    },
+    {
+      "id": "obj_T22R0301_gsgirl2",
+      "graphics_id": "SPRITE_GSGIRL2",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T22R0301_003 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 3,
+      "z": 9,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 6,
+      "z": 11,
+      "dest_header_id": "MAP_T22",
+      "dest_warp_id": 6,
+      "y": 0
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "header": "data/scr_seq/include/event_T11R0603.inc",
+  "eventId": "472",
+  "warp_events": [
+    {
+      "x": 21,
+      "z": 14,
+      "dest_header_id": "MAP_T11R0601",
+      "dest_warp_id": 2,
+      "y": 0
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "header": "data/scr_seq/include/event_D49R0107.inc",
+  "eventId": "258",
+  "bg_events": [
+    {
+      "script": "_EV_scr_seq_D49R0107_001 + 1",
+      "type": 0,
+      "x": 7,
+      "z": 8,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_D49R0107_002 + 1",
+      "type": 0,
+      "x": 7,
+      "z": 5,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_D49R0107_003 + 1",
+      "type": 0,
+      "x": 10,
+      "z": 10,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_D49R0107_004 + 1",
+      "type": 0,
+      "x": 4,
+      "z": 10,
+      "y": 0,
+      "player_facing_dir": 0
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_D49R0107_thlonowner",
+      "graphics_id": "SPRITE_THLONOWNER",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_D49R0107_000 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 7,
+      "z": 10,
+      "y": 0
+    },
+    {
+      "id": "obj_D49R0107_statuehero",
+      "graphics_id": "SPRITE_STATUEHERO",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": 0,
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 7,
+      "z": 8,
+      "y": 0
+    },
+    {
+      "id": "obj_D49R0107_statueheroine",
+      "graphics_id": "SPRITE_STATUEHEROINE",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": 0,
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 7,
+      "z": 8,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 7,
+      "z": 14,
+      "dest_header_id": "MAP_D49R0106",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ]
+}

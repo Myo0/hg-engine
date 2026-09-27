@@ -1,0 +1,264 @@
+{
+  "header": "data/scr_seq/include/event_T01R0301.inc",
+  "eventId": "457",
+  "bg_events": [
+    {
+      "script": "_EV_scr_seq_T01R0301_005 + 1",
+      "type": 0,
+      "x": 5,
+      "z": 3,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_T01R0301_004 + 1",
+      "type": 0,
+      "x": 1,
+      "z": 11,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_T01R0301_004 + 1",
+      "type": 0,
+      "x": 2,
+      "z": 11,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_T01R0301_004 + 1",
+      "type": 0,
+      "x": 3,
+      "z": 11,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_T01R0301_004 + 1",
+      "type": 0,
+      "x": 4,
+      "z": 11,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_T01R0301_004 + 1",
+      "type": 0,
+      "x": 11,
+      "z": 11,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_T01R0301_004 + 1",
+      "type": 0,
+      "x": 12,
+      "z": 11,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_T01R0301_004 + 1",
+      "type": 0,
+      "x": 13,
+      "z": 11,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_T01R0301_004 + 1",
+      "type": 0,
+      "x": 14,
+      "z": 11,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_T01R0301_007 + 1",
+      "type": 0,
+      "x": 9,
+      "z": 3,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_T01R0301_009 + 1",
+      "type": 0,
+      "x": 7,
+      "z": 3,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_T01R0301_008 + 1",
+      "type": 0,
+      "x": 8,
+      "z": 3,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_T01R0301_004 + 1",
+      "type": 0,
+      "x": 11,
+      "z": 3,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_T01R0301_004 + 1",
+      "type": 0,
+      "x": 12,
+      "z": 3,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_T01R0301_004 + 1",
+      "type": 0,
+      "x": 13,
+      "z": 3,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_T01R0301_004 + 1",
+      "type": 0,
+      "x": 14,
+      "z": 3,
+      "y": 0,
+      "player_facing_dir": 0
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_T01R0301_ookido",
+      "graphics_id": "SPRITE_OOKIDO",
+      "movement_type": 15,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T01R0301_000 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 8,
+      "z": 6,
+      "y": 0
+    },
+    {
+      "id": "obj_T01R0301_assistantm",
+      "graphics_id": "SPRITE_ASSISTANTM",
+      "movement_type": 2,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T01R0301_001 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 6,
+      "z": 10,
+      "y": 0
+    },
+    {
+      "id": "obj_T01R0301_assistantm_2",
+      "graphics_id": "SPRITE_ASSISTANTM",
+      "movement_type": 16,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T01R0301_002 + 1",
+      "initial_dir": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 11,
+      "z": 8,
+      "y": 0
+    },
+    {
+      "id": "obj_T01R0301_assistantm_3",
+      "graphics_id": "SPRITE_ASSISTANTM",
+      "movement_type": 14,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T01R0301_003 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 12,
+      "z": 12,
+      "y": 0
+    },
+    {
+      "id": "obj_T01R0301_monstarball",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_OAKS_LAB_CHARMANDER_BALL",
+      "script": 0,
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 7,
+      "z": 3,
+      "y": 0
+    },
+    {
+      "id": "obj_T01R0301_monstarball_2",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_OAKS_LAB_SQUIRTLE_BALL",
+      "script": 0,
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 8,
+      "z": 3,
+      "y": 0
+    },
+    {
+      "id": "obj_T01R0301_monstarball_3",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_OAKS_LAB_BULBASAUR_BALL",
+      "script": 0,
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 9,
+      "z": 3,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 8,
+      "z": 13,
+      "dest_header_id": "MAP_T01",
+      "dest_warp_id": 2,
+      "y": 0
+    }
+  ]
+}

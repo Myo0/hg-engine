@@ -1,0 +1,13 @@
+{
+  "header": "data/scr_seq/include/event_T25R0503.inc",
+  "eventId": "471",
+  "warp_events": [
+    {
+      "x": 10,
+      "z": 14,
+      "dest_header_id": "MAP_T25R0501",
+      "dest_warp_id": 1,
+      "y": 0
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+Mt. Mortar is like a maze inside.\fBe careful. Don’t get lost in there.
+Hey, wait!\nYou’re not ready to go this way.\fCome back when you get 6 badges.\r

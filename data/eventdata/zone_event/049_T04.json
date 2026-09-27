@@ -1,0 +1,250 @@
+{
+  "header": "data/scr_seq/include/event_T04.inc",
+  "eventId": "049",
+  "bg_events": [
+    {
+      "script": "_EV_scr_seq_T04_010 + 1",
+      "type": 1,
+      "x": 1324,
+      "z": 106,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_T04_007 + 1",
+      "type": 1,
+      "x": 1321,
+      "z": 135,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_T04_006 + 1",
+      "type": 1,
+      "x": 1309,
+      "z": 137,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_T04_009 + 1",
+      "type": 1,
+      "x": 1317,
+      "z": 123,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_T04_008 + 1",
+      "type": 1,
+      "x": 1295,
+      "z": 144,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "std_hiddenitem_t04_nugget",
+      "type": 2,
+      "x": 1298,
+      "z": 110,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_T04_gsman1",
+      "graphics_id": "SPRITE_GSMAN1",
+      "movement_type": 3,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T04_000 + 1",
+      "initial_dir": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 3,
+      "movement_range_z": 1,
+      "x": 1307,
+      "z": 119,
+      "y": 0
+    },
+    {
+      "id": "obj_T04_gswoman1",
+      "graphics_id": "SPRITE_GSWOMAN1",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T04_002 + 1",
+      "initial_dir": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 1297,
+      "z": 127,
+      "y": 0
+    },
+    {
+      "id": "obj_T04_follower_mon_static_slowbro",
+      "graphics_id": "SPRITE_FOLLOWER_MON_STATIC_SLOWBRO",
+      "movement_type": 2,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T04_003 + 1",
+      "initial_dir": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 1296,
+      "z": 127,
+      "y": 0
+    },
+    {
+      "id": "obj_T04_gsbigman",
+      "graphics_id": "SPRITE_GSBIGMAN",
+      "movement_type": 3,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T04_004 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 2,
+      "movement_range_z": 1,
+      "x": 1314,
+      "z": 136,
+      "y": 0
+    },
+    {
+      "id": "obj_T04_gsman2",
+      "graphics_id": "SPRITE_GSMAN2",
+      "movement_type": 3,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T04_001 + 1",
+      "initial_dir": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 2,
+      "movement_range_z": 3,
+      "x": 1326,
+      "z": 116,
+      "y": 0
+    },
+    {
+      "id": "obj_T04_gsboy1",
+      "graphics_id": "SPRITE_GSBOY1",
+      "movement_type": 2,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T04_005 + 1",
+      "initial_dir": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 1300,
+      "z": 110,
+      "y": 0
+    },
+    {
+      "id": "obj_T04_gsmiddleman1",
+      "graphics_id": "SPRITE_GSMIDDLEMAN1",
+      "movement_type": 14,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_CAMERON",
+      "script": "_EV_scr_seq_T04_011 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 1325,
+      "z": 108,
+      "y": 0
+    },
+    {
+      "id": "obj_T04_gsman1_2",
+      "graphics_id": "SPRITE_GSMAN1",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_UNK_30F",
+      "script": "_EV_scr_seq_T04_013 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 1290,
+      "z": 108,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 1305,
+      "z": 116,
+      "dest_header_id": "MAP_T04R0101",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 1319,
+      "z": 123,
+      "dest_header_id": "MAP_T04R0201",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 1304,
+      "z": 131,
+      "dest_header_id": "MAP_T04R0301",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 1309,
+      "z": 131,
+      "dest_header_id": "MAP_T04PC0101",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 1318,
+      "z": 134,
+      "dest_header_id": "MAP_T04GYM0101",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 1308,
+      "z": 144,
+      "dest_header_id": "MAP_T04FS0101",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 1298,
+      "z": 144,
+      "dest_header_id": "MAP_T04R0401",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 1290,
+      "z": 107,
+      "dest_header_id": "MAP_D03R0101",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ]
+}

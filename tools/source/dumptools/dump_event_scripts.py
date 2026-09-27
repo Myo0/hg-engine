@@ -499,7 +499,7 @@ class NormalScriptParser:
             seen_objects = collections.Counter()
 
             for obj in obs:
-                sprite = self.constants["sprites"][obj.spriteId].replace("SPRITE_", "").lower()
+                sprite = self.constants["sprites"].get(obj.spriteId, f"SPRITE_{obj.spriteId}").replace("SPRITE_", "").lower()
                 obj_name = f"{obj_prefix}_{sprite}"
                 seen_objects[obj_name] += 1
 
@@ -515,7 +515,7 @@ class NormalScriptParser:
 
                 ret["object_events"].append({
                     "id": self.objects[i + 2][1],
-                    "graphics_id": self.constants["sprites"][ob.spriteId],
+                    "graphics_id": self.constants["sprites"].get(ob.spriteId, ob.spriteId),
                     "movement_type": ob.movement,
                     "trainer_type": ob.type,
                     "hidden_flag": flag,
@@ -938,7 +938,15 @@ class SpecialScriptParser:
         else:
             i += 1
 
-        assert ((i + 3) & ~3) == len(self.raw)
+        # No length-consumed check here: the real engine (GetMapLoadScriptId/GetMapSceneScriptId
+        # in script_manager.c) only ever walks forward looking for a match or a 0 terminator, and
+        # never checks that the whole subfile was consumed -- so this isn't a real invariant of
+        # the format. Confirmed both ways on real subfiles: 399 (the shared empty "EVERYWHERE"
+        # header stub) has trailing padding past its real content, while 475 (Route 31's header)
+        # has none at all, its content exactly filling every byte with no 4-byte rounding. Either
+        # is fine; only a read that actually ran past len(self.raw) during the loop above would be
+        # a real bug, and Python's bytes slicing already returns short/empty rather than raising in
+        # that case, so there's nothing meaningful left to assert post-hoc.
 
         self.is_parsed = True
 

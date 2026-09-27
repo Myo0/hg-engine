@@ -1,0 +1,50 @@
+{
+  "header": "data/scr_seq/include/event_D41R0105.inc",
+  "eventId": "416",
+  "bg_events": [
+    {
+      "script": "std_hiddenitem_d41r0105_ultra_ball",
+      "type": 2,
+      "x": 18,
+      "z": 1,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "std_hiddenitem_d41r0105_hyper_potion",
+      "type": 2,
+      "x": 2,
+      "z": 1,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_D41R0105_follower_mon_static_moltres",
+      "graphics_id": "SPRITE_FOLLOWER_MON_STATIC_MOLTRES",
+      "movement_type": 15,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_MT_SILVER_CAVE_MOLTRES",
+      "script": "_EV_scr_seq_D41R0105_000 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 10,
+      "z": 9,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 10,
+      "z": 22,
+      "dest_header_id": "MAP_D41R0101",
+      "dest_warp_id": 1,
+      "y": 0
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "header": "data/scr_seq/include/event_D17R0102.inc",
+  "eventId": "303",
+  "warp_events": [
+    {
+      "x": 9,
+      "z": 8,
+      "dest_header_id": "MAP_D17R0101",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 15,
+      "z": 25,
+      "dest_header_id": "MAP_D17R0103",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 15,
+      "z": 24,
+      "dest_header_id": "MAP_D17R0103",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ]
+}

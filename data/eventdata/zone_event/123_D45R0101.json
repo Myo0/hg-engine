@@ -1,0 +1,63 @@
+{
+  "header": "data/scr_seq/include/event_D45R0101.inc",
+  "eventId": "123",
+  "object_events": [
+    {
+      "id": "obj_D45R0101_stop",
+      "graphics_id": "SPRITE_STOP",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": 0,
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 27,
+      "z": 11,
+      "y": 589824
+    },
+    {
+      "id": "obj_D45R0101_monstarball",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D45R0101_MOON_STONE",
+      "script": "std_itemball_d17r0109_hp_up",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 23,
+      "z": 12,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 30,
+      "z": 22,
+      "dest_header_id": "MAP_R27",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 45,
+      "z": 20,
+      "dest_header_id": "MAP_R27",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 27,
+      "z": 11,
+      "dest_header_id": "MAP_D45R0102",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ]
+}

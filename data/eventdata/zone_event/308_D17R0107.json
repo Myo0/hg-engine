@@ -1,0 +1,60 @@
+{
+  "header": "data/scr_seq/include/event_D17R0107.inc",
+  "eventId": "308",
+  "object_events": [
+    {
+      "id": "obj_D17R0107_monstarball",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D17R0107_MAX_REVIVE",
+      "script": "std_itemball_d40r0101_ultra_ball_2",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 23,
+      "z": 7,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 6,
+      "z": 19,
+      "dest_header_id": "MAP_D17R0106",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 15,
+      "z": 26,
+      "dest_header_id": "MAP_D17R0108",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 12,
+      "z": 16,
+      "dest_header_id": "MAP_D17R0109",
+      "dest_warp_id": 3,
+      "y": 0
+    },
+    {
+      "x": 18,
+      "z": 16,
+      "dest_header_id": "MAP_D17R0107",
+      "dest_warp_id": 4,
+      "y": 0
+    },
+    {
+      "x": 9,
+      "z": 10,
+      "dest_header_id": "MAP_D17R0107",
+      "dest_warp_id": 3,
+      "y": 0
+    }
+  ]
+}

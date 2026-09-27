@@ -1,0 +1,109 @@
+{
+  "header": "data/scr_seq/include/event_R04.inc",
+  "eventId": "009",
+  "bg_events": [
+    {
+      "script": "_EV_scr_seq_R04_000 + 1",
+      "type": 1,
+      "x": 1197,
+      "z": 114,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "std_hiddenitem_r04_ultra_ball",
+      "type": 2,
+      "x": 1219,
+      "z": 109,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "std_hiddenitem_r04_big_mushroom",
+      "type": 2,
+      "x": 1251,
+      "z": 123,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_R04_picnicgirl_2",
+      "graphics_id": "SPRITE_PICNICGIRL_2",
+      "movement_type": 0,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "TRAINER_PICNICKER_HOPE - 1 + _std_npc_trainer",
+      "initial_dir": 2,
+      "param0": 4,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 1214,
+      "z": 115,
+      "y": 0
+    },
+    {
+      "id": "obj_R04_picnicgirl_2_2",
+      "graphics_id": "SPRITE_PICNICGIRL_2",
+      "movement_type": 0,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "TRAINER_PICNICKER_SHARON - 1 + _std_npc_trainer",
+      "initial_dir": 3,
+      "param0": 5,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 1250,
+      "z": 112,
+      "y": 0
+    },
+    {
+      "id": "obj_R04_gsman2",
+      "graphics_id": "SPRITE_GSMAN2",
+      "movement_type": 0,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "TRAINER_BIRD_KEEPER_GS_HANK - 1 + _std_npc_trainer",
+      "initial_dir": 1,
+      "param0": 3,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 1236,
+      "z": 116,
+      "y": 0
+    },
+    {
+      "id": "obj_R04_monstarball",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_R04_HP_UP",
+      "script": "std_itemball_d36r0101_antidote",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 1254,
+      "z": 107,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 1195,
+      "z": 112,
+      "dest_header_id": "MAP_D02R0101",
+      "dest_warp_id": 1,
+      "y": 0
+    }
+  ]
+}

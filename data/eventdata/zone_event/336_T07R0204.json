@@ -1,0 +1,46 @@
+{
+  "header": "data/scr_seq/include/event_T07R0204.inc",
+  "eventId": "336",
+  "object_events": [
+    {
+      "id": "obj_T07R0204_gsbigman",
+      "graphics_id": "SPRITE_GSBIGMAN",
+      "movement_type": 17,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T07R0204_000 + 1",
+      "initial_dir": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 14,
+      "z": 11,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 12,
+      "z": 7,
+      "dest_header_id": "MAP_T07R0205",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 2,
+      "z": 4,
+      "dest_header_id": "MAP_T07R0206",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 6,
+      "z": 4,
+      "dest_header_id": "MAP_T07R0207",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ]
+}

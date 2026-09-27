@@ -1,0 +1,136 @@
+{
+  "header": "data/scr_seq/include/event_D27R0107.inc",
+  "eventId": "211",
+  "object_events": [
+    {
+      "id": "obj_D27R0107_babyboy1_8",
+      "graphics_id": "SPRITE_BABYBOY1_8",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_UNK_1D8",
+      "script": "_EV_scr_seq_D27R0107_002 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 8,
+      "z": 13,
+      "y": 0
+    },
+    {
+      "id": "obj_D27R0107_gsleader6",
+      "graphics_id": "SPRITE_GSLEADER6",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_UNK_1D7",
+      "script": "_EV_scr_seq_D27R0107_000 + 1",
+      "initial_dir": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 7,
+      "z": 8,
+      "y": 0
+    },
+    {
+      "id": "obj_D27R0107_follower_mon_static_ampharos",
+      "graphics_id": "SPRITE_FOLLOWER_MON_STATIC_AMPHAROS",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_D27R0107_001 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 8,
+      "z": 8,
+      "y": 0
+    },
+    {
+      "id": "obj_D27R0107_3591",
+      "graphics_id": 3591,
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D27R0107_SUPER_POTION",
+      "script": 7658,
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 14,
+      "z": 8,
+      "y": 0
+    },
+    {
+      "id": "obj_D27R0107_stop",
+      "graphics_id": "SPRITE_STOP",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_UNK_1D8",
+      "script": 0,
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 8,
+      "z": 12,
+      "y": 0
+    },
+    {
+      "id": "obj_D27R0107_towerboss",
+      "graphics_id": "SPRITE_TOWERBOSS",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_UNK_A6B",
+      "script": 0,
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 8,
+      "z": 3,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 9,
+      "z": 10,
+      "dest_header_id": "MAP_D27R0106",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 8,
+      "z": 4,
+      "dest_header_id": "MAP_D27R0108",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ],
+  "coord_events": [
+    {
+      "script": "_EV_scr_seq_D27R0107_005 + 1",
+      "x": 7,
+      "z": 14,
+      "width": 3,
+      "length": 1,
+      "y": 0,
+      "value": 1,
+      "var": "VAR_UNK_4160"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "header": "data/scr_seq/include/event_D47R0102.inc",
+  "eventId": "314",
+  "warp_events": [
+    {
+      "x": 79,
+      "z": 100,
+      "dest_header_id": 4095,
+      "dest_warp_id": 256,
+      "y": 0
+    },
+    {
+      "x": 80,
+      "z": 100,
+      "dest_header_id": 4095,
+      "dest_warp_id": 256,
+      "y": 0
+    }
+  ]
+}

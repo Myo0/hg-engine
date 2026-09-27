@@ -1,0 +1,59 @@
+{
+  "header": "data/scr_seq/include/event_D24R0213.inc",
+  "eventId": "296",
+  "bg_events": [
+    {
+      "script": "_EV_scr_seq_D24R0213_001 + 1",
+      "type": 0,
+      "x": 4,
+      "z": 4,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_D24R0213_001 + 1",
+      "type": 0,
+      "x": 8,
+      "z": 4,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_D24R0213_001 + 1",
+      "type": 0,
+      "x": 4,
+      "z": 3,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_D24R0213_001 + 1",
+      "type": 0,
+      "x": 8,
+      "z": 3,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 6,
+      "z": 17,
+      "dest_header_id": "MAP_D24R0204",
+      "dest_warp_id": 1,
+      "y": 0
+    }
+  ],
+  "coord_events": [
+    {
+      "script": "_EV_scr_seq_D24R0213_000 + 1",
+      "x": 6,
+      "z": 3,
+      "width": 1,
+      "length": 1,
+      "y": 0,
+      "value": 0,
+      "var": "VAR_UNK_40D0"
+    }
+  ]
+}

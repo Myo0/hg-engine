@@ -1,0 +1,49 @@
+{
+  "header": "data/scr_seq/include/event_T25R0801.inc",
+  "eventId": "198",
+  "object_events": [
+    {
+      "id": "obj_T25R0801_gsbigman",
+      "graphics_id": "SPRITE_GSBIGMAN",
+      "movement_type": 16,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T25R0801_000 + 1",
+      "initial_dir": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 1,
+      "movement_range_z": 1,
+      "x": 8,
+      "z": 6,
+      "y": 0
+    },
+    {
+      "id": "obj_T25R0801_gsgirl1",
+      "graphics_id": "SPRITE_GSGIRL1",
+      "movement_type": 3,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T25R0801_001 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 1,
+      "movement_range_z": 1,
+      "x": 2,
+      "z": 5,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 4,
+      "z": 8,
+      "dest_header_id": "MAP_T25",
+      "dest_warp_id": 14,
+      "y": 0
+    }
+  ]
+}

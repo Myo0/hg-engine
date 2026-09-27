@@ -1,0 +1,64 @@
+Bill: Hi, I’m Bill. And who are you?\rHmm, {STRVAR_1 3, 0, 0}, huh?\r
+You know what?\nI’m the one who developed\fthe system to transfer Pokémon.\rBut it couldn’t have been done by\nme alone.\rFor example, do you know the Hoenn\nregion? This girl Lanette from Hoenn\fmade the Pokémon Storage System\feasier to use.\rMy friends all over the world are\nworking together to improve\fthe Pokémon trade and\fstorage systems.\rI have to hurry on back to Goldenrod\nand see my folks.\fBuh-bye!\r
+Kimono Girls are so pretty.\rThe way the Kimono Girls dance and\nthe way they use their Pokémon are\fboth marvels.
+Morty, the Gym Leader, is soooo cool.\rHis Pokémon are really tough, too.
+Lake of Rage...\nThe appearance of a red GYARADOS...\fI smell a conspiracy. I know it!
+How may I help you today?\r
+I see, see you next time, then.\nLet me know if you need anything.\r
+HP
+Attack
+Defense
+Sp.Atk
+Sp.Def
+Speed
+Exit
+Your Pokémon’s IV has been set to max.\r
+I cannot change anything about\na Pokémon inside an egg.\r
+Change Nature
+Your Pokémon’s Nature has been changed.\r
+
+
+Delete Move
+What Pokémon needs a move deleted?
+Relearn a Move
+
+
+Hardy (Neutral)
+Lonely (+Atk, -Def)
+Brave (+Atk, -Spe)
+Adamant (+Atk, -SpAtk)
+Naughty (+Atk, -SpDef)
+Bold (+Def, -Atk)
+Docile (Neutral)
+Relaxed (+Def, -Spe)
+Impish (+Def, -SpAtk)
+Lax (+Def, -SpDef)
+Timid (+Spe, -Atk)
+Hasty (+Spe, -Def)
+Serious (Neutral)
+Jolly (+Spe, -SpAtk)
+Naive (+Spe, -SpDef)
+Modest (+SpAtk, -Atk)
+Mild (+SpAtk, -Def)
+Quiet (+SpAtk, -Spe)
+Bashful (Neutral)
+Rash (+SpAtk, -SpDef)
+Calm (+SpDef, -Atk)
+Gentle (+SpDef, -Def)
+Sassy (+SpDef, -Spe)
+Careful (+SpDef, -SpAtk)
+Quirky (Neutral)
+That Pokémon knows only one move,\nso it can’t be forgotten...\r
+Which move should be forgotten?\r
+So, you want {STRVAR_1 6, 0, 0}\nto be forgotten?\r
+That move has been deleted.\r
+It costs 1 Heart Scale for\nme to max a Pokémon’s IV.\r 
+Sorry, request that again when\nyou have more Heart Scales.\r
+It costs 3 Heart Scales for\nme to change a Pokémon’s Nature.\r
+It costs 1 Heart Scale for\nme to reteach a move.\r
+Which Pokémon needs a move retaught?\r
+Sorry! That Pokémon has no moves\nthat I can reteach it.\r
+Which move should I make it remember?\r
+{STRVAR_1 3, 3, 0} handed over one\nHeart Scale in exchange.\r
+{STRVAR_1 3, 3, 0} handed over three\nHeart Scales in exchange.\r
+Maximize an IV

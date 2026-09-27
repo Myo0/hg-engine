@@ -1,0 +1,32 @@
+{
+  "header": "data/scr_seq/include/event_D40R0106.inc",
+  "eventId": "439",
+  "object_events": [
+    {
+      "id": "obj_EVERYWHERE_monstarball",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D40R0106_RARE_CANDY",
+      "script": "std_itemball_d37r0105_max_ether",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 14,
+      "z": 27,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 16,
+      "z": 29,
+      "dest_header_id": "MAP_D40R0104",
+      "dest_warp_id": 4,
+      "y": 0
+    }
+  ]
+}

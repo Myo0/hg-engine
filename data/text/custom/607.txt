@@ -1,0 +1,68 @@
+Pokémon get more friendly if you\nspend time with them.
+They can shine like a bright light--\nlike a beacon at night to guide us...\rThey can take us across the water on\ntheir backs when we are without\fa boat...\rPokémon are helping us everywhere.\fI can’t imagine a life without them!
+There’s a person in Cianwood City\nacross the sea.\rI heard him bragging about his\nrare Pokémon.
+...There!\nAll done!\fIt’s sure to surprise anyone!\r
+Oh, are you a Trainer?\rYou came at just the right time!\nI just finished putting my Ball Capsule\fon my Poké Ball.\rDo you want to battle and be\namazed by my decoration? {YESNO 0}
+All right!\nHere I come!\r
+You can turn your Poké Balls into your\nown special creations by adding Seals.\rHow cool is it to have a Poké Ball that\nonly you have in the entire world?\fGive it a whirl!\rOh, remember to put the Ball Capsule\non a Poké Ball once it’s ready!
+Oh, really?\rTalk to me if you want to see my\nBall Capsule sometime!
+Now you want to see my Ball Capsule?\rBattle me so I can show it to you! {YESNO 0}
+How may I help you today?\r
+I see, see you next time, then.\nLet me know if you need anything.\r
+HP
+Attack
+Defense
+Sp.Atk
+Sp.Def
+Speed
+Exit
+Your Pokémon’s IV has been set to max.\r
+I cannot change anything about\na Pokémon inside an egg.\r
+Change Nature
+Your Pokémon’s Nature has been changed.\r
+
+
+Delete Move
+What Pokémon needs a move deleted?
+Relearn a Move
+
+
+Hardy (Neutral)
+Lonely (+Atk, -Def)
+Brave (+Atk, -Spe)
+Adamant (+Atk, -SpAtk)
+Naughty (+Atk, -SpDef)
+Bold (+Def, -Atk)
+Docile (Neutral)
+Relaxed (+Def, -Spe)
+Impish (+Def, -SpAtk)
+Lax (+Def, -SpDef)
+Timid (+Spe, -Atk)
+Hasty (+Spe, -Def)
+Serious (Neutral)
+Jolly (+Spe, -SpAtk)
+Naive (+Spe, -SpDef)
+Modest (+SpAtk, -Atk)
+Mild (+SpAtk, -Def)
+Quiet (+SpAtk, -Spe)
+Bashful (Neutral)
+Rash (+SpAtk, -SpDef)
+Calm (+SpDef, -Atk)
+Gentle (+SpDef, -Def)
+Sassy (+SpDef, -Spe)
+Careful (+SpDef, -SpAtk)
+Quirky (Neutral)
+That Pokémon knows only one move,\nso it can’t be forgotten...\r
+Which move should be forgotten?\r
+So, you want {STRVAR_1 6, 0, 0}\nto be forgotten?\r
+That move has been deleted.\r
+It costs 1 Heart Scale for\nme to max a Pokémon’s IV.\r 
+Sorry, request that again when\nyou have more Heart Scales.\r
+It costs 3 Heart Scales for\nme to change a Pokémon’s Nature.\r
+It costs 1 Heart Scale for\nme to reteach a move.\r
+Which Pokémon needs a move retaught?\r
+Sorry! That Pokémon has no moves\nthat I can reteach it.\r
+Which move should I make it remember?\r
+{STRVAR_1 3, 3, 0} handed over one\nHeart Scale in exchange.\r
+{STRVAR_1 3, 3, 0} handed over three\nHeart Scales in exchange.\r
+Maximize an IV

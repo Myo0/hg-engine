@@ -1,0 +1,23 @@
+{
+  "header": "data/scr_seq/include/event_DIRECT4.inc",
+  "eventId": "003",
+  "object_events": [
+    {
+      "id": "obj_DIRECT4_pcwoman3",
+      "graphics_id": "SPRITE_PCWOMAN3",
+      "movement_type": 16,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "std_colosseum_pcwoman3",
+      "initial_dir": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 12,
+      "z": 4,
+      "y": 0
+    }
+  ]
+}

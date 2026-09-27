@@ -1,0 +1,20 @@
+{
+  "header": "data/scr_seq/include/event_T27R0202.inc",
+  "eventId": "203",
+  "warp_events": [
+    {
+      "x": 3,
+      "z": 19,
+      "dest_header_id": "MAP_T27R0201",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 6,
+      "z": 3,
+      "dest_header_id": "MAP_D17R1101",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ]
+}

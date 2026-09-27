@@ -1,0 +1,128 @@
+{
+  "header": "data/scr_seq/include/event_R02R0101.inc",
+  "eventId": "370",
+  "bg_events": [
+    {
+      "script": "_EV_scr_seq_R02R0101_000 + 1",
+      "type": 1,
+      "x": 1047,
+      "z": 139,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_R02R0101_gsboy3",
+      "graphics_id": "SPRITE_GSBOY3",
+      "movement_type": 8,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "TRAINER_BUG_CATCHER_ED - 1 + _std_npc_trainer",
+      "initial_dir": 1,
+      "param0": 3,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 1029,
+      "z": 131,
+      "y": 0
+    },
+    {
+      "id": "obj_R02R0101_tree",
+      "graphics_id": "SPRITE_TREE",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_MAPTEMP_010",
+      "script": "std_field_cut",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 1034,
+      "z": 137,
+      "y": 0
+    },
+    {
+      "id": "obj_R02R0101_monstarball",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_R02R0101_CARBOS",
+      "script": "std_itemball_r34_tm63",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 1053,
+      "z": 129,
+      "y": 0
+    },
+    {
+      "id": "obj_R02R0101_bonguri",
+      "graphics_id": "SPRITE_BONGURI",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "std_apricorn_tree",
+      "initial_dir": 0,
+      "param0": 1,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 1052,
+      "z": 157,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 1028,
+      "z": 138,
+      "dest_header_id": "MAP_R02R0501",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 1029,
+      "z": 138,
+      "dest_header_id": "MAP_R02R0501",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 1050,
+      "z": 183,
+      "dest_header_id": "MAP_R02R0301",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 1051,
+      "z": 183,
+      "dest_header_id": "MAP_R02R0301",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 1048,
+      "z": 137,
+      "dest_header_id": "MAP_D01R0101",
+      "dest_warp_id": 7,
+      "y": 0
+    },
+    {
+      "x": 1047,
+      "z": 155,
+      "dest_header_id": "MAP_R02R0201",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "header": "data/scr_seq/include/event_D52R0102.inc",
+  "eventId": "477",
+  "object_events": [
+    {
+      "id": "obj_D52R0102_follower_mon_static_kyogre",
+      "graphics_id": "SPRITE_FOLLOWER_MON_STATIC_KYOGRE",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_EMBEDDED_TOWER_KYOGRE",
+      "script": "_EV_scr_seq_D52R0102_000 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 16,
+      "z": 11,
+      "y": 0
+    },
+    {
+      "id": "obj_D52R0102_mount_2",
+      "graphics_id": "SPRITE_MOUNT_2",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_EMBEDDED_TOWER_KYOGRE_HIKER",
+      "script": 0,
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 16,
+      "z": 23,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 16,
+      "z": 29,
+      "dest_header_id": "MAP_R47",
+      "dest_warp_id": 5,
+      "y": 0
+    }
+  ]
+}

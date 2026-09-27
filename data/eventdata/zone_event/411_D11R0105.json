@@ -1,0 +1,153 @@
+{
+  "header": "data/scr_seq/include/event_D11R0105.inc",
+  "eventId": "411",
+  "bg_events": [
+    {
+      "script": "std_hiddenitem_d11r0105_zinc",
+      "type": 2,
+      "x": 27,
+      "z": 22,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_D11R0105_monstarball",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D11R0105_ULTRA_BALL",
+      "script": "std_itemball_r30_potion",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 29,
+      "z": 4,
+      "y": 0
+    },
+    {
+      "id": "obj_D11R0105_monstarball_2",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D11R0105_TM13",
+      "script": 7340,
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 42,
+      "z": 8,
+      "y": 0
+    },
+    {
+      "id": "obj_D11R0105_follower_mon_static_articuno",
+      "graphics_id": "SPRITE_FOLLOWER_MON_STATIC_ARTICUNO",
+      "movement_type": 15,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_SEAFOAM_ISLAND_ARTICUNO",
+      "script": "_EV_scr_seq_D11R0105_000 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 27,
+      "z": 22,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 45,
+      "z": 22,
+      "dest_header_id": "MAP_D11R0104",
+      "dest_warp_id": 4,
+      "y": 0
+    },
+    {
+      "x": 38,
+      "z": 23,
+      "dest_header_id": "MAP_D11R0104",
+      "dest_warp_id": 5,
+      "y": 0
+    },
+    {
+      "x": 33,
+      "z": 4,
+      "dest_header_id": "MAP_D11R0104",
+      "dest_warp_id": 6,
+      "y": 0
+    },
+    {
+      "x": 28,
+      "z": 13,
+      "dest_header_id": "MAP_D11R0104",
+      "dest_warp_id": 7,
+      "y": 0
+    },
+    {
+      "x": 12,
+      "z": 19,
+      "dest_header_id": "MAP_D11R0104",
+      "dest_warp_id": 8,
+      "y": 0
+    },
+    {
+      "x": 6,
+      "z": 5,
+      "dest_header_id": "MAP_D11R0104",
+      "dest_warp_id": 9,
+      "y": 0
+    },
+    {
+      "x": 38,
+      "z": 22,
+      "dest_header_id": "MAP_D11R0104",
+      "dest_warp_id": 5,
+      "y": 0
+    },
+    {
+      "x": 33,
+      "z": 3,
+      "dest_header_id": "MAP_D11R0104",
+      "dest_warp_id": 6,
+      "y": 0
+    },
+    {
+      "x": 28,
+      "z": 12,
+      "dest_header_id": "MAP_D11R0104",
+      "dest_warp_id": 7,
+      "y": 0
+    },
+    {
+      "x": 12,
+      "z": 18,
+      "dest_header_id": "MAP_D11R0104",
+      "dest_warp_id": 8,
+      "y": 0
+    },
+    {
+      "x": 6,
+      "z": 4,
+      "dest_header_id": "MAP_D11R0104",
+      "dest_warp_id": 9,
+      "y": 0
+    },
+    {
+      "x": 45,
+      "z": 21,
+      "dest_header_id": "MAP_D11R0104",
+      "dest_warp_id": 4,
+      "y": 0
+    }
+  ]
+}

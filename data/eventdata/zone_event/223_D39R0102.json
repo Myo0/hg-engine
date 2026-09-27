@@ -1,0 +1,221 @@
+{
+  "header": "data/scr_seq/include/event_D39R0102.inc",
+  "eventId": "223",
+  "bg_events": [
+    {
+      "script": "std_hiddenitem_d39r0102_revive",
+      "type": 2,
+      "x": 15,
+      "z": 47,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_D39R0102_rock",
+      "graphics_id": "SPRITE_ROCK",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ICE_PATH_BOULDER_1_INIT",
+      "script": "std_field_strength",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 10,
+      "z": 13,
+      "y": 0
+    },
+    {
+      "id": "obj_D39R0102_rock_2",
+      "graphics_id": "SPRITE_ROCK",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ICE_PATH_BOULDER_2_INIT",
+      "script": "std_field_strength",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 13,
+      "z": 14,
+      "y": 0
+    },
+    {
+      "id": "obj_D39R0102_rock_3",
+      "graphics_id": "SPRITE_ROCK",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ICE_PATH_BOULDER_3_INIT",
+      "script": "std_field_strength",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 18,
+      "z": 12,
+      "y": 0
+    },
+    {
+      "id": "obj_D39R0102_rock_4",
+      "graphics_id": "SPRITE_ROCK",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ICE_PATH_BOULDER_4_INIT",
+      "script": "std_field_strength",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 25,
+      "z": 12,
+      "y": 0
+    },
+    {
+      "id": "obj_D39R0102_rock_5",
+      "graphics_id": "SPRITE_ROCK",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "std_field_strength",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 12,
+      "z": 44,
+      "y": 0
+    },
+    {
+      "id": "obj_D39R0102_monstarball",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D39R0102_IRON",
+      "script": "std_itemball_d37r0105_max_ether",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 13,
+      "z": 48,
+      "y": 0
+    },
+    {
+      "id": "obj_D39R0102_skierw",
+      "graphics_id": "SPRITE_SKIERW",
+      "movement_type": 0,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "TRAINER_CAMPER_MICKEY_4 - 1 + _std_npc_trainer",
+      "initial_dir": 0,
+      "param0": 1,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 11,
+      "z": 20,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 6,
+      "z": 21,
+      "dest_header_id": "MAP_D39R0101",
+      "dest_warp_id": 2,
+      "y": 0
+    },
+    {
+      "x": 6,
+      "z": 20,
+      "dest_header_id": "MAP_D39R0101",
+      "dest_warp_id": 2,
+      "y": 0
+    },
+    {
+      "x": 25,
+      "z": 8,
+      "dest_header_id": "MAP_D39R0103",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 27,
+      "z": 40,
+      "dest_header_id": "MAP_D39R0103",
+      "dest_warp_id": 4,
+      "y": 0
+    },
+    {
+      "x": 6,
+      "z": 42,
+      "dest_header_id": "MAP_D39R0101",
+      "dest_warp_id": 3,
+      "y": 0
+    },
+    {
+      "x": 6,
+      "z": 41,
+      "dest_header_id": "MAP_D39R0101",
+      "dest_warp_id": 3,
+      "y": 0
+    }
+  ],
+  "coord_events": [
+    {
+      "script": "_EV_scr_seq_D39R0102_000 + 1",
+      "x": 11,
+      "z": 10,
+      "width": 1,
+      "length": 1,
+      "y": 0,
+      "value": 0,
+      "var": "VAR_UNK_40AA"
+    },
+    {
+      "script": "_EV_scr_seq_D39R0102_001 + 1",
+      "x": 10,
+      "z": 18,
+      "width": 1,
+      "length": 1,
+      "y": 0,
+      "value": 0,
+      "var": "VAR_UNK_40AA"
+    },
+    {
+      "script": "_EV_scr_seq_D39R0102_002 + 1",
+      "x": 18,
+      "z": 7,
+      "width": 1,
+      "length": 1,
+      "y": 0,
+      "value": 0,
+      "var": "VAR_UNK_40AA"
+    },
+    {
+      "script": "_EV_scr_seq_D39R0102_003 + 1",
+      "x": 19,
+      "z": 19,
+      "width": 1,
+      "length": 1,
+      "y": 0,
+      "value": 0,
+      "var": "VAR_UNK_40AA"
+    }
+  ]
+}

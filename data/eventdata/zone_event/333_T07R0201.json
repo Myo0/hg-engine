@@ -1,0 +1,107 @@
+{
+  "header": "data/scr_seq/include/event_T07R0201.inc",
+  "eventId": "333",
+  "bg_events": [
+    {
+      "script": "_EV_scr_seq_T07R0201_004 + 1",
+      "type": 0,
+      "x": 5,
+      "z": 2,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_T07R0201_gsoldwoman1",
+      "graphics_id": "SPRITE_GSOLDWOMAN1",
+      "movement_type": 8,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T07R0201_000 + 1",
+      "initial_dir": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 13,
+      "z": 4,
+      "y": 0
+    },
+    {
+      "id": "obj_T07R0201_follower_mon_static_meowth",
+      "graphics_id": "SPRITE_FOLLOWER_MON_STATIC_MEOWTH",
+      "movement_type": 2,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T07R0201_001 + 1",
+      "initial_dir": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 11,
+      "z": 6,
+      "y": 0
+    },
+    {
+      "id": "obj_T07R0201_follower_mon_static_clefairy",
+      "graphics_id": "SPRITE_FOLLOWER_MON_STATIC_CLEFAIRY",
+      "movement_type": 15,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T07R0201_002 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 12,
+      "z": 3,
+      "y": 0
+    },
+    {
+      "id": "obj_T07R0201_follower_mon_static_nidoran_f",
+      "graphics_id": "SPRITE_FOLLOWER_MON_STATIC_NIDORAN_F",
+      "movement_type": 3,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T07R0201_003 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 1,
+      "movement_range_z": 1,
+      "x": 7,
+      "z": 4,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 7,
+      "z": 13,
+      "dest_header_id": "MAP_T07",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 13,
+      "z": 10,
+      "dest_header_id": "MAP_T07R0202",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 3,
+      "z": 2,
+      "dest_header_id": "MAP_T07R0206",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ]
+}

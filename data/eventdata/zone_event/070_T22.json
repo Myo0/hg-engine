@@ -1,0 +1,368 @@
+{
+  "header": "data/scr_seq/include/event_T22.inc",
+  "eventId": "070",
+  "bg_events": [
+    {
+      "script": "_EV_scr_seq_T22_007 + 1",
+      "type": 1,
+      "x": 491,
+      "z": 257,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_T22_008 + 1",
+      "type": 1,
+      "x": 488,
+      "z": 263,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_T22_009 + 1",
+      "type": 1,
+      "x": 475,
+      "z": 257,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_T22_010 + 1",
+      "type": 1,
+      "x": 485,
+      "z": 230,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "std_hiddenitem_t22_hyper_potion",
+      "type": 2,
+      "x": 505,
+      "z": 254,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "std_hiddenitem_t22_poke_ball",
+      "type": 2,
+      "x": 481,
+      "z": 241,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_T22_gsgirl3",
+      "graphics_id": "SPRITE_GSGIRL3",
+      "movement_type": 3,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T22_011 + 1",
+      "initial_dir": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 1,
+      "movement_range_z": 1,
+      "x": 492,
+      "z": 275,
+      "y": 0
+    },
+    {
+      "id": "obj_T22_gsman1",
+      "graphics_id": "SPRITE_GSMAN1",
+      "movement_type": 3,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T22_012 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 1,
+      "movement_range_z": 2,
+      "x": 489,
+      "z": 254,
+      "y": 0
+    },
+    {
+      "id": "obj_T22_gsbigman",
+      "graphics_id": "SPRITE_GSBIGMAN",
+      "movement_type": 2,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_UNK_19A",
+      "script": "_EV_scr_seq_T22_001 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 474,
+      "z": 252,
+      "y": 0
+    },
+    {
+      "id": "obj_T22_gsoldwoman1",
+      "graphics_id": "SPRITE_GSOLDWOMAN1",
+      "movement_type": 5,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T22_013 + 1",
+      "initial_dir": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 1,
+      "movement_range_z": 0,
+      "x": 479,
+      "z": 263,
+      "y": 0
+    },
+    {
+      "id": "obj_T22_gsboy2",
+      "graphics_id": "SPRITE_GSBOY2",
+      "movement_type": 2,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T22_014 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 462,
+      "z": 259,
+      "y": 0
+    },
+    {
+      "id": "obj_T22_3608",
+      "graphics_id": 3608,
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_T22_RARE_CANDY",
+      "script": 7755,
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 504,
+      "z": 237,
+      "y": 0
+    },
+    {
+      "id": "obj_T22_monstarball",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_T22_PP_UP",
+      "script": "std_itemball_r42_super_potion",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 459,
+      "z": 229,
+      "y": 0
+    },
+    {
+      "id": "obj_T22_dancer",
+      "graphics_id": "SPRITE_DANCER",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_VIOLET_KIMONO_GIRL",
+      "script": 0,
+      "initial_dir": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 474,
+      "z": 261,
+      "y": 0
+    },
+    {
+      "id": "obj_T22_bonguri",
+      "graphics_id": "SPRITE_BONGURI",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "std_apricorn_tree",
+      "initial_dir": 0,
+      "param0": 29,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 472,
+      "z": 275,
+      "y": 0
+    },
+    {
+      "id": "obj_T22_breakrock",
+      "graphics_id": "SPRITE_BREAKROCK",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_MAPTEMP_010",
+      "script": "std_field_rock_smash",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 503,
+      "z": 261,
+      "y": 0
+    },
+    {
+      "id": "obj_T22_juggrer",
+      "graphics_id": "SPRITE_JUGGRER",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T22_003 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 500,
+      "z": 272,
+      "y": 0
+    },
+    {
+      "id": "obj_T22_gswoman3",
+      "graphics_id": "SPRITE_GSWOMAN3",
+      "movement_type": 3,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T22_005 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 1,
+      "movement_range_z": 1,
+      "x": 506,
+      "z": 268,
+      "y": 0
+    },
+    {
+      "id": "obj_T22_gsbabyboy1",
+      "graphics_id": "SPRITE_GSBABYBOY1",
+      "movement_type": 3,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T22_006 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 1,
+      "movement_range_z": 1,
+      "x": 482,
+      "z": 241,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 511,
+      "z": 269,
+      "dest_header_id": "MAP_R31R0101",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 511,
+      "z": 270,
+      "dest_header_id": "MAP_R31R0101",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 479,
+      "z": 257,
+      "dest_header_id": "MAP_T22GYM0101",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 454,
+      "z": 246,
+      "dest_header_id": "MAP_T22R0701",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 454,
+      "z": 247,
+      "dest_header_id": "MAP_T22R0701",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 487,
+      "z": 228,
+      "dest_header_id": "MAP_D15R0101",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 495,
+      "z": 257,
+      "dest_header_id": "MAP_T22R0301",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 497,
+      "z": 271,
+      "dest_header_id": "MAP_T22PC0101",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 459,
+      "z": 254,
+      "dest_header_id": "MAP_T22R0401",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 484,
+      "z": 277,
+      "dest_header_id": "MAP_T22R0601",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 469,
+      "z": 257,
+      "dest_header_id": "MAP_T22FS0101",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ],
+  "coord_events": [
+    {
+      "script": "_EV_scr_seq_T22_002 + 1",
+      "x": 486,
+      "z": 234,
+      "width": 3,
+      "length": 1,
+      "y": 0,
+      "value": 0,
+      "var": "VAR_SCENE_VIOLET_CITY_OW"
+    }
+  ]
+}

@@ -1,0 +1,228 @@
+{
+  "header": "data/scr_seq/include/event_T21.inc",
+  "eventId": "064",
+  "bg_events": [
+    {
+      "script": "_EV_scr_seq_T21_005 + 1",
+      "type": 1,
+      "x": 556,
+      "z": 401,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_T21_006 + 1",
+      "type": 1,
+      "x": 554,
+      "z": 396,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "std_hiddenitem_r29_r30_t21_nugget",
+      "type": 2,
+      "x": 572,
+      "z": 390,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "std_hiddenitem_t21_nugget",
+      "type": 2,
+      "x": 522,
+      "z": 388,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_T21_gsoldman1",
+      "graphics_id": "SPRITE_GSOLDMAN1",
+      "movement_type": 15,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_CHERRYGROVE_GUIDE_GENT",
+      "script": "_EV_scr_seq_T21_000 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 566,
+      "z": 396,
+      "y": 0
+    },
+    {
+      "id": "obj_T21_gsboy1",
+      "graphics_id": "SPRITE_GSBOY1",
+      "movement_type": 3,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T21_007 + 1",
+      "initial_dir": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 1,
+      "x": 554,
+      "z": 399,
+      "y": 0
+    },
+    {
+      "id": "obj_T21_gswoman1",
+      "graphics_id": "SPRITE_GSWOMAN1",
+      "movement_type": 5,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T21_008 + 1",
+      "initial_dir": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 1,
+      "movement_range_z": 0,
+      "x": 561,
+      "z": 407,
+      "y": 0
+    },
+    {
+      "id": "obj_T21_gsbigman",
+      "graphics_id": "SPRITE_GSBIGMAN",
+      "movement_type": 17,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T21_004 + 1",
+      "initial_dir": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 530,
+      "z": 406,
+      "y": 0
+    },
+    {
+      "id": "obj_T21_gsrivel",
+      "graphics_id": "SPRITE_GSRIVEL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_CHERRYGROVE_RIVAL",
+      "script": 0,
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 575,
+      "z": 384,
+      "y": 0
+    },
+    {
+      "id": "obj_T21_gsmiddleman1",
+      "graphics_id": "SPRITE_GSMIDDLEMAN1",
+      "movement_type": 14,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_CAMERON",
+      "script": "_EV_scr_seq_T21_009 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 562,
+      "z": 402,
+      "y": 0
+    },
+    {
+      "id": "obj_T21_3612",
+      "graphics_id": 3612,
+      "movement_type": 0,
+      "trainer_type": 3,
+      "hidden_flag": "FLAG_UNK_A1E",
+      "script": 7769,
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 524,
+      "z": 388,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 564,
+      "z": 391,
+      "dest_header_id": "MAP_T21PC0101",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 555,
+      "z": 391,
+      "dest_header_id": "MAP_T21FS0101",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 547,
+      "z": 399,
+      "dest_header_id": "MAP_T21R0301",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 558,
+      "z": 401,
+      "dest_header_id": "MAP_T21R0401",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 567,
+      "z": 405,
+      "dest_header_id": "MAP_T21R0501",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ],
+  "coord_events": [
+    {
+      "script": "_EV_scr_seq_T21_001 + 1",
+      "x": 566,
+      "z": 397,
+      "width": 1,
+      "length": 4,
+      "y": 0,
+      "value": 0,
+      "var": "VAR_SCENE_CHERRYGROVE_CITY_OW"
+    },
+    {
+      "script": "_EV_scr_seq_T21_003 + 1",
+      "x": 575,
+      "z": 398,
+      "width": 1,
+      "length": 4,
+      "y": 0,
+      "value": 3,
+      "var": "VAR_SCENE_CHERRYGROVE_CITY_OW"
+    },
+    {
+      "script": "_EV_scr_seq_T21_002 + 1",
+      "x": 547,
+      "z": 385,
+      "width": 4,
+      "length": 1,
+      "y": 0,
+      "value": 1,
+      "var": "VAR_SCENE_CHERRYGROVE_CITY_OW"
+    }
+  ]
+}

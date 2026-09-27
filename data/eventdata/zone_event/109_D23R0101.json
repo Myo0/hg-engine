@@ -1,0 +1,188 @@
+{
+  "header": "data/scr_seq/include/event_D23R0101.inc",
+  "eventId": "109",
+  "bg_events": [
+    {
+      "script": "_EV_scr_seq_D23R0101_006 + 1",
+      "type": 0,
+      "x": 3,
+      "z": 4,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_D23R0101_007 + 1",
+      "type": 0,
+      "x": 21,
+      "z": 4,
+      "y": 0,
+      "player_facing_dir": 0
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_D23R0101_gswoman6",
+      "graphics_id": "SPRITE_GSWOMAN6",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_D23R0101_000 + 1",
+      "initial_dir": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 5,
+      "z": 12,
+      "y": 0
+    },
+    {
+      "id": "obj_D23R0101_gswoman6_2",
+      "graphics_id": "SPRITE_GSWOMAN6",
+      "movement_type": 14,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ROCKET_TAKEOVER_2",
+      "script": "_EV_scr_seq_D23R0101_001 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 8,
+      "z": 12,
+      "y": 0
+    },
+    {
+      "id": "obj_D23R0101_gswoman6_3",
+      "graphics_id": "SPRITE_GSWOMAN6",
+      "movement_type": 14,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ROCKET_TAKEOVER_2",
+      "script": "_EV_scr_seq_D23R0101_002 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 13,
+      "z": 12,
+      "y": 0
+    },
+    {
+      "id": "obj_D23R0101_gsman1",
+      "graphics_id": "SPRITE_GSMAN1",
+      "movement_type": 17,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ROCKET_TAKEOVER_2",
+      "script": "_EV_scr_seq_D23R0101_004 + 1",
+      "initial_dir": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 18,
+      "z": 8,
+      "y": 0
+    },
+    {
+      "id": "obj_D23R0101_gsgirl2",
+      "graphics_id": "SPRITE_GSGIRL2",
+      "movement_type": 16,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ROCKET_TAKEOVER_2",
+      "script": "_EV_scr_seq_D23R0101_003 + 1",
+      "initial_dir": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 21,
+      "z": 8,
+      "y": 0
+    },
+    {
+      "id": "obj_D23R0101_gsrivel",
+      "graphics_id": "SPRITE_GSRIVEL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_RADIO_TOWER_RIVAL",
+      "script": 0,
+      "initial_dir": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 26,
+      "z": 25,
+      "y": 0
+    },
+    {
+      "id": "obj_D23R0101_rocketm",
+      "graphics_id": "SPRITE_ROCKETM",
+      "movement_type": 16,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ROCKET_TAKEOVER_6",
+      "script": "_EV_scr_seq_D23R0101_005 + 1",
+      "initial_dir": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 23,
+      "z": 5,
+      "y": 0
+    },
+    {
+      "id": "obj_D23R0101_gsleader3",
+      "graphics_id": "SPRITE_GSLEADER3",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_UNK_318",
+      "script": "_EV_scr_seq_D23R0101_010 + 1",
+      "initial_dir": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 15,
+      "z": 12,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 2,
+      "z": 14,
+      "dest_header_id": "MAP_T25",
+      "dest_warp_id": 7,
+      "y": 0
+    },
+    {
+      "x": 23,
+      "z": 5,
+      "dest_header_id": "MAP_D23R0102",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ],
+  "coord_events": [
+    {
+      "script": "_EV_scr_seq_D23R0101_009 + 1",
+      "x": 23,
+      "z": 5,
+      "width": 1,
+      "length": 1,
+      "y": 0,
+      "value": 3,
+      "var": "VAR_SCENE_ROCKET_TAKEOVER"
+    }
+  ]
+}

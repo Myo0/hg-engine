@@ -1,0 +1,289 @@
+{
+  "header": "data/scr_seq/include/event_T07R0401.inc",
+  "eventId": "338",
+  "bg_events": [
+    {
+      "script": "_EV_scr_seq_T07R0401_009 + 1",
+      "type": 0,
+      "x": 4,
+      "z": 6,
+      "y": 0,
+      "player_facing_dir": 2
+    },
+    {
+      "script": "_EV_scr_seq_T07R0401_022 + 1",
+      "type": 0,
+      "x": 17,
+      "z": 8,
+      "y": 0,
+      "player_facing_dir": 2
+    },
+    {
+      "script": "_EV_scr_seq_T07R0401_008 + 1",
+      "type": 0,
+      "x": 5,
+      "z": 14,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_T07R0401_008 + 1",
+      "type": 0,
+      "x": 15,
+      "z": 14,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_T07R0401_013 + 1",
+      "type": 0,
+      "x": 3,
+      "z": 10,
+      "y": 0,
+      "player_facing_dir": 1
+    },
+    {
+      "script": "_EV_scr_seq_T07R0401_012 + 1",
+      "type": 0,
+      "x": 3,
+      "z": 9,
+      "y": 0,
+      "player_facing_dir": 1
+    },
+    {
+      "script": "_EV_scr_seq_T07R0401_011 + 1",
+      "type": 0,
+      "x": 3,
+      "z": 7,
+      "y": 0,
+      "player_facing_dir": 1
+    },
+    {
+      "script": "_EV_scr_seq_T07R0401_010 + 1",
+      "type": 0,
+      "x": 3,
+      "z": 6,
+      "y": 0,
+      "player_facing_dir": 1
+    },
+    {
+      "script": "_EV_scr_seq_T07R0401_019 + 1",
+      "type": 0,
+      "x": 16,
+      "z": 10,
+      "y": 0,
+      "player_facing_dir": 1
+    },
+    {
+      "script": "_EV_scr_seq_T07R0401_018 + 1",
+      "type": 0,
+      "x": 16,
+      "z": 8,
+      "y": 0,
+      "player_facing_dir": 1
+    },
+    {
+      "script": "_EV_scr_seq_T07R0401_017 + 1",
+      "type": 0,
+      "x": 16,
+      "z": 7,
+      "y": 0,
+      "player_facing_dir": 1
+    },
+    {
+      "script": "_EV_scr_seq_T07R0401_016 + 1",
+      "type": 0,
+      "x": 4,
+      "z": 10,
+      "y": 0,
+      "player_facing_dir": 2
+    },
+    {
+      "script": "_EV_scr_seq_T07R0401_015 + 1",
+      "type": 0,
+      "x": 4,
+      "z": 8,
+      "y": 0,
+      "player_facing_dir": 2
+    },
+    {
+      "script": "_EV_scr_seq_T07R0401_014 + 1",
+      "type": 0,
+      "x": 4,
+      "z": 7,
+      "y": 0,
+      "player_facing_dir": 2
+    },
+    {
+      "script": "_EV_scr_seq_T07R0401_023 + 1",
+      "type": 0,
+      "x": 17,
+      "z": 10,
+      "y": 0,
+      "player_facing_dir": 2
+    },
+    {
+      "script": "_EV_scr_seq_T07R0401_021 + 1",
+      "type": 0,
+      "x": 17,
+      "z": 7,
+      "y": 0,
+      "player_facing_dir": 2
+    },
+    {
+      "script": "_EV_scr_seq_T07R0401_020 + 1",
+      "type": 0,
+      "x": 17,
+      "z": 6,
+      "y": 0,
+      "player_facing_dir": 2
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_T07R0401_shopm1_2",
+      "graphics_id": "SPRITE_SHOPM1_2",
+      "movement_type": 15,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T07R0401_000 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 10,
+      "z": 9,
+      "y": 0
+    },
+    {
+      "id": "obj_T07R0401_gswoman6",
+      "graphics_id": "SPRITE_GSWOMAN6",
+      "movement_type": 17,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T07R0401_001 + 1",
+      "initial_dir": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 11,
+      "z": 7,
+      "y": 0
+    },
+    {
+      "id": "obj_T07R0401_sunglasses",
+      "graphics_id": "SPRITE_SUNGLASSES",
+      "movement_type": 15,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T07R0401_006 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 3,
+      "z": 15,
+      "y": 0
+    },
+    {
+      "id": "obj_T07R0401_gsbigman",
+      "graphics_id": "SPRITE_GSBIGMAN",
+      "movement_type": 16,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T07R0401_005 + 1",
+      "initial_dir": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 5,
+      "z": 9,
+      "y": 0
+    },
+    {
+      "id": "obj_T07R0401_gsoldman1",
+      "graphics_id": "SPRITE_GSOLDMAN1",
+      "movement_type": 17,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T07R0401_007 + 1",
+      "initial_dir": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 2,
+      "z": 8,
+      "y": 0
+    },
+    {
+      "id": "obj_T07R0401_fishing_2",
+      "graphics_id": "SPRITE_FISHING_2",
+      "movement_type": 17,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T07R0401_004 + 1",
+      "initial_dir": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 15,
+      "z": 6,
+      "y": 0
+    },
+    {
+      "id": "obj_T07R0401_gsmiddleman1",
+      "graphics_id": "SPRITE_GSMIDDLEMAN1",
+      "movement_type": 17,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T07R0401_002 + 1",
+      "initial_dir": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 15,
+      "z": 9,
+      "y": 0
+    },
+    {
+      "id": "obj_T07R0401_gswoman1",
+      "graphics_id": "SPRITE_GSWOMAN1",
+      "movement_type": 16,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T07R0401_003 + 1",
+      "initial_dir": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 18,
+      "z": 9,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 10,
+      "z": 16,
+      "dest_header_id": "MAP_T07",
+      "dest_warp_id": 3,
+      "y": 0
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "header": "data/scr_seq/include/event_D39R0103.inc",
+  "eventId": "224",
+  "bg_events": [
+    {
+      "script": "std_hiddenitem_d39r0103_carbos",
+      "type": 2,
+      "x": 26,
+      "z": 26,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_D39R0103_rock",
+      "graphics_id": "SPRITE_ROCK",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ICE_PATH_BOULDER_1_FALLEN",
+      "script": "_EV_scr_seq_D39R0103_002 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 12,
+      "z": 13,
+      "y": 0
+    },
+    {
+      "id": "obj_D39R0103_rock_2",
+      "graphics_id": "SPRITE_ROCK",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ICE_PATH_BOULDER_2_FALLEN",
+      "script": "_EV_scr_seq_D39R0103_002 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 11,
+      "z": 21,
+      "y": 0
+    },
+    {
+      "id": "obj_D39R0103_rock_3",
+      "graphics_id": "SPRITE_ROCK",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ICE_PATH_BOULDER_3_FALLEN",
+      "script": "_EV_scr_seq_D39R0103_002 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 19,
+      "z": 10,
+      "y": 0
+    },
+    {
+      "id": "obj_D39R0103_rock_4",
+      "graphics_id": "SPRITE_ROCK",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ICE_PATH_BOULDER_4_FALLEN",
+      "script": "_EV_scr_seq_D39R0103_002 + 1",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 20,
+      "z": 22,
+      "y": 0
+    },
+    {
+      "id": "obj_D39R0103_monstarball",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D39R0103_TM72",
+      "script": 7399,
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 57,
+      "z": 24,
+      "y": 0
+    },
+    {
+      "id": "obj_D39R0103_monstarball_2",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D39R0103_FULL_HEAL",
+      "script": 7674,
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 15,
+      "z": 15,
+      "y": 0
+    },
+    {
+      "id": "obj_D39R0103_monstarball_3",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D39R0103_MAX_POTION",
+      "script": 7650,
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 5,
+      "z": 12,
+      "y": 0
+    },
+    {
+      "id": "obj_D39R0103_boarder",
+      "graphics_id": "SPRITE_BOARDER",
+      "movement_type": 0,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "TRAINER_CAMPER_MICKEY_5 - 1 + _std_npc_trainer",
+      "initial_dir": 3,
+      "param0": 3,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 42,
+      "z": 11,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 26,
+      "z": 11,
+      "dest_header_id": "MAP_D39R0102",
+      "dest_warp_id": 2,
+      "y": 0
+    },
+    {
+      "x": 26,
+      "z": 10,
+      "dest_header_id": "MAP_D39R0102",
+      "dest_warp_id": 2,
+      "y": 0
+    },
+    {
+      "x": 16,
+      "z": 17,
+      "dest_header_id": "MAP_D39R0104",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 50,
+      "z": 5,
+      "dest_header_id": "MAP_D39R0104",
+      "dest_warp_id": 2,
+      "y": 0
+    },
+    {
+      "x": 43,
+      "z": 22,
+      "dest_header_id": "MAP_D39R0102",
+      "dest_warp_id": 3,
+      "y": 0
+    },
+    {
+      "x": 43,
+      "z": 21,
+      "dest_header_id": "MAP_D39R0102",
+      "dest_warp_id": 3,
+      "y": 0
+    }
+  ]
+}

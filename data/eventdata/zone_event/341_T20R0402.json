@@ -1,0 +1,67 @@
+{
+  "header": "data/scr_seq/include/event_T20R0402.inc",
+  "eventId": "341",
+  "bg_events": [
+    {
+      "script": "_EV_scr_seq_T20R0402_003 + 1",
+      "type": 0,
+      "x": 8,
+      "z": 4,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_T20R0402_004 + 1",
+      "type": 0,
+      "x": 6,
+      "z": 4,
+      "y": 0,
+      "player_facing_dir": 0
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_T20R0402_var_1",
+      "graphics_id": "SPRITE_VAR_1",
+      "movement_type": 16,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_NEW_BARK_FRIENDS_ROOM_FRIEND",
+      "script": "_EV_scr_seq_T20R0402_000 + 1",
+      "initial_dir": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 7,
+      "z": 7,
+      "y": 0
+    },
+    {
+      "id": "obj_T20R0402_follower_mon_static_marill",
+      "graphics_id": "SPRITE_FOLLOWER_MON_STATIC_MARILL",
+      "movement_type": 44,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_NEW_BARK_FRIENDS_ROOM_FRIEND",
+      "script": "_EV_scr_seq_T20R0402_001 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 2,
+      "movement_range_z": 2,
+      "x": 4,
+      "z": 6,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 3,
+      "z": 4,
+      "dest_header_id": "MAP_T20R0401",
+      "dest_warp_id": 1,
+      "y": 0
+    }
+  ]
+}

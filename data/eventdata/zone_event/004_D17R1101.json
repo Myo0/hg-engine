@@ -1,0 +1,105 @@
+{
+  "header": "data/scr_seq/include/event_D17R1101.inc",
+  "eventId": "004",
+  "bg_events": [
+    {
+      "script": "std_hiddenitem_d17r1101_tinymushroom",
+      "type": 2,
+      "x": 33,
+      "z": 10,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "std_hiddenitem_d17r1101_big_mushroom",
+      "type": 2,
+      "x": 39,
+      "z": 20,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "std_hiddenitem_d17r1101_tinymushroom_2",
+      "type": 2,
+      "x": 14,
+      "z": 7,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "std_hiddenitem_d17r1101_big_mushroom_2",
+      "type": 2,
+      "x": 23,
+      "z": 7,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "std_hiddenitem_d17r1101_tinymushroom_3",
+      "type": 2,
+      "x": 17,
+      "z": 7,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_D17R1101_gsleader4",
+      "graphics_id": "SPRITE_GSLEADER4",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_UNK_2CA",
+      "script": "_EV_scr_seq_D17R1101_001 + 1",
+      "initial_dir": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 30,
+      "z": 11,
+      "y": 0
+    },
+    {
+      "id": "obj_D17R1101_3930",
+      "graphics_id": 3930,
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_UNK_A1B",
+      "script": "_EV_scr_seq_D17R1101_002 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 33,
+      "z": 11,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 9,
+      "z": 9,
+      "dest_header_id": "MAP_T27R0202",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 9,
+      "z": 10,
+      "dest_header_id": "MAP_T27R0202",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 37,
+      "z": 16,
+      "dest_header_id": "MAP_D17R0101",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "header": "data/scr_seq/include/event_T26GYM0101.inc",
+  "eventId": "134",
+  "bg_events": [
+    {
+      "script": "_EV_scr_seq_T26GYM0101_006 + 1",
+      "type": 0,
+      "x": 4,
+      "z": 25,
+      "y": 0,
+      "player_facing_dir": 0
+    },
+    {
+      "script": "_EV_scr_seq_T26GYM0101_006 + 1",
+      "type": 0,
+      "x": 8,
+      "z": 25,
+      "y": 0,
+      "player_facing_dir": 0
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_T26GYM0101_gsleader6",
+      "graphics_id": "SPRITE_GSLEADER6",
+      "movement_type": 15,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_JASMINE_IN_GYM",
+      "script": "_EV_scr_seq_T26GYM0101_000 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 6,
+      "z": 5,
+      "y": 0
+    },
+    {
+      "id": "obj_T26GYM0101_workman",
+      "graphics_id": "SPRITE_WORKMAN",
+      "movement_type": 0,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_HIDE_OLIVINE_GYM_GIRL",
+      "script": "TRAINER_SWIMMER_F_MICKEY - 1 + _std_npc_trainer_2",
+      "initial_dir": 2,
+      "param0": 4,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 9,
+      "z": 15,
+      "y": 0
+    },
+    {
+      "id": "obj_T26GYM0101_assistantm",
+      "graphics_id": "SPRITE_ASSISTANTM",
+      "movement_type": 0,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_HIDE_OLIVINE_GYM_GENTLEMAN",
+      "script": "TRAINER_CAMPER_MICKEY_2 - 1 + _std_npc_trainer",
+      "initial_dir": 3,
+      "param0": 4,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 3,
+      "z": 23,
+      "y": 0
+    },
+    {
+      "id": "obj_T26GYM0101_sunglasses",
+      "graphics_id": "SPRITE_SUNGLASSES",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_T26GYM0101_005 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 9,
+      "z": 25,
+      "y": 0
+    },
+    {
+      "id": "obj_T26GYM0101_workman_2",
+      "graphics_id": "SPRITE_WORKMAN",
+      "movement_type": 0,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_HIDE_OLIVINE_GYM_GIRL",
+      "script": "TRAINER_SWIMMER_F_MICKEY_2 - 1 + _std_npc_trainer",
+      "initial_dir": 3,
+      "param0": 4,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 3,
+      "z": 15,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 6,
+      "z": 27,
+      "dest_header_id": "MAP_T26",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ]
+}

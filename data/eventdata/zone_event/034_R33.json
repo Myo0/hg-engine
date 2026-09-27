@@ -1,0 +1,127 @@
+{
+  "header": "data/scr_seq/include/event_R33.inc",
+  "eventId": "034",
+  "bg_events": [
+    {
+      "script": "_EV_scr_seq_R33_001 + 1",
+      "type": 1,
+      "x": 466,
+      "z": 464,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_R33_mount_2",
+      "graphics_id": "SPRITE_MOUNT_2",
+      "movement_type": 15,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "TRAINER_HIKER_ANTHONY - 1 + _std_npc_trainer",
+      "initial_dir": 1,
+      "param0": 6,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 454,
+      "z": 467,
+      "y": 0
+    },
+    {
+      "id": "obj_R33_bonguri",
+      "graphics_id": "SPRITE_BONGURI",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "std_apricorn_tree",
+      "initial_dir": 0,
+      "param0": 9,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 471,
+      "z": 474,
+      "y": 0
+    },
+    {
+      "id": "obj_R33_bonguri_2",
+      "graphics_id": "SPRITE_BONGURI",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "std_apricorn_tree",
+      "initial_dir": 0,
+      "param0": 10,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 472,
+      "z": 474,
+      "y": 0
+    },
+    {
+      "id": "obj_R33_gsgirl1",
+      "graphics_id": "SPRITE_GSGIRL1",
+      "movement_type": 3,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_R33_000 + 1",
+      "initial_dir": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 1,
+      "movement_range_z": 1,
+      "x": 469,
+      "z": 473,
+      "y": 0
+    },
+    {
+      "id": "obj_R33_4067",
+      "graphics_id": 4067,
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_UNK_A86",
+      "script": "_EV_scr_seq_R33_002 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 470,
+      "z": 476,
+      "y": 0
+    },
+    {
+      "id": "obj_R33_4066",
+      "graphics_id": 4066,
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_UNK_A85",
+      "script": "_EV_scr_seq_R33_003 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 469,
+      "z": 476,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 467,
+      "z": 461,
+      "dest_header_id": "MAP_D25R0101",
+      "dest_warp_id": 2,
+      "y": 0
+    }
+  ]
+}

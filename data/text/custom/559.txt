@@ -1,0 +1,84 @@
+                                                                                    
+                                                                                    
+                         
+                                                                                                                                                
+                                                                                                                                                
+                                               
+                          
+                              
+                              
+A guy named Bill made the Pokémon\nPC storage system.\rYou can access the Pokémon storage\nsystem using the PC at the reception\fthere. Why don’t you try it once?
+It was about three years ago.\nThis group of thugs called Team Rocket\fwas involved in wrongdoing. They were\fabusing Pokémon.\rBut!\nBad things never last!\rA boy did a wonderful job and\nTeam Rocket was disbanded!\n\n
+Pokémon are really smart.\nTraded Pokémon might not listen to you\fright away. For example, high-level\fPokémon sometimes refuse to obey\fwhen you don’t have enough Gym Badges.
+Primo: Hello!\nI should be a familiar face to every\fPokémon fan. I’m from the TV show,\f“The Show Me Show!”\rI am Primo, the big brother!\rToday, would you, one of my fans,\ntell me what you think of me? {YESNO 0}
+Primo: Oh my...!\nIs that how you feel about me?!\rI never thought of it that way before.\nBy the way, how do you like the\fway I am so exciting and fun?\r
+Primo: Truly?\rThat gives me all-new energy so\nI can work even harder!\rGreat feedback! It’ll help me a lot.\nThank you for your continued support!
+You cannot possibly mean that you are\nnot interested in the big brother...?\rArrgh, that cannot be true!\nYou are just busy right now,\faren’t you? That must be it!\rWhy don’t you answer my questions\nwhen you’ve got time for me?\rSee you!
+Primo: ...!\rYou are no ordinary fan, knowing such\na thing!\rYou’re a Trainer, right?\nI’ll pull some strings for you.\rI think I can swing a deal to get you\na new wallpaper for your PC Boxes.\rMake sure you keep your channel\ntuned to “The Show Me Show!”\rAnd don’t forget about me, the\nbig brother!
+Primo: ...!\rYou are no ordinary fan, knowing such\na thing!\rYou are a Trainer, right?\nI’ll pull some strings for you.\rI think I can swing a deal so you\ncan receive a Mystery Gift.\rMake sure you keep your channel\ntuned to “The Show Me Show!”\rAnd don’t forget about me, the\nbig brother!
+Primo: ...!\rYou are no ordinary fan, knowing such\na thing!\rYou are a Trainer, right?\nI’ll pull some strings for you.\rI think I can swing a deal and\ngive you this Egg.\fYou take good care of it!\r
+{STRVAR_1 3, 0, 0} received the\n{STRVAR_1 0, 1, 0} Egg from Primo!
+Primo: ...!\rYou are no ordinary fan, knowing such\na thing!\rYou are a Trainer, right?\nI’ll pull some strings for you.\rI think I can swing a deal and\ngive you this Egg.\fYou take good care of it!\r...\rYour party is full, and I can’t\ngive it to you!
+Hmm...\rCan you tell me what kind of Trainer\nyou like best?\r
+Which kind of Trainer would you like\nto be? {YESNO 0}
+{STRVAR_1 14, 0, 0} is the kind of Trainer\nyou want to be? {YESNO 0}
+I see! So {STRVAR_1 14, 0, 0} is the kind\nof Trainer you like.\rIf that’s the case, others may\ncome to see you in the same way.\r
+Talk to me again if you want to\nlet me know what kind of Trainer\fyou like best.
+Hello! You’ve been mistaken for\n{STRVAR_1 14, 0, 0}, haven’t you?\rBut I think you can also pass for\na different kind of Trainer.\rSo, how about telling me what kind of\nTrainer you like?\r
+Maximize an IV
+I see, see you next time, then.\nLet me know if you need anything.\r
+HP
+Attack
+Defense
+Sp.Atk
+Sp.Def
+Speed
+Exit
+Your Pokémon’s IV has been set to max.
+I cannot change anything about\na Pokémon inside an egg.
+Change Nature
+Your Pokémon’s Nature has been changed.
+Delete Move
+What Pokémon needs a move deleted?
+Relearn a Move
+
+
+Hardy (Neutral)
+Lonely (+Atk, -Def)
+Brave (+Atk, -Spe)
+Adamant (+Atk, -SpAtk)
+Naughty (+Atk, -SpDef)
+Bold (+Def, -Atk)
+Docile (Neutral)
+Relaxed (+Def, -Spe)
+Impish (+Def, -SpAtk)
+Lax (+Def, -SpDef)
+Timid (+Spe, -Atk)
+Hasty (+Spe, -Def)
+Serious (Neutral)
+Jolly (+Spe, -SpAtk)
+Naive (+Spe, -SpDef)
+Modest (+SpAtk, -Atk)
+Mild (+SpAtk, -Def)
+Quiet (+SpAtk, -Spe)
+Bashful (Neutral)
+Rash (+SpAtk, -SpDef)
+Calm (+SpDef, -Atk)
+Gentle (+SpDef, -Def)
+Sassy (+SpDef, -Spe)
+Careful (+SpDef, -SpAtk)
+Quirky (Neutral)
+That Pokémon knows only one move,\nso it can’t be forgotten...\r
+Which move should be forgotten?
+So, you want {STRVAR_1 6, 0, 0}\nto be forgotten?
+That move has been deleted.
+It costs 1 Heart Scale for\nme to max a Pokémon’s IV.\r 
+Sorry, request that again when\nyou have more Heart Scales.\r
+It costs 3 Heart Scales for\nme to change a Pokémon’s Nature.\r
+It costs 1 Heart Scale for\nme to reteach a move.\r
+Which Pokémon needs a move retaught?
+Sorry! That Pokémon has no moves\nthat I can reteach it.\r
+Which move should I make it remember?
+{STRVAR_1 3, 3, 0} handed over one\nHeart Scale in exchange.
+{STRVAR_1 3, 3, 0} handed over three\nHeart Scales in exchange.
+How may I help you today?

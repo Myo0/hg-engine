@@ -1,0 +1,90 @@
+{
+  "header": "data/scr_seq/include/event_P01R0304.inc",
+  "eventId": "281",
+  "object_events": [
+    {
+      "id": "obj_P01R0304_mount_2",
+      "graphics_id": "SPRITE_MOUNT_2",
+      "movement_type": 14,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_UNK_22A",
+      "script": "TRAINER_HIKER_NOLAND - 1 + _std_npc_trainer",
+      "initial_dir": 0,
+      "param0": 4,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 21,
+      "z": 8,
+      "y": 0
+    },
+    {
+      "id": "obj_P01R0304_gsman3",
+      "graphics_id": "SPRITE_GSMAN3",
+      "movement_type": 0,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_UNK_22B",
+      "script": "TRAINER_ACE_TRAINER_M_SHAYE - 1 + _std_npc_trainer",
+      "initial_dir": 3,
+      "param0": 4,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 5,
+      "z": 4,
+      "y": 0
+    },
+    {
+      "id": "obj_P01R0304_gswoman3",
+      "graphics_id": "SPRITE_GSWOMAN3",
+      "movement_type": 0,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_UNK_22B",
+      "script": "TRAINER_ACE_TRAINER_F_CAROL - 1 + _std_npc_trainer",
+      "initial_dir": 0,
+      "param0": 5,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 10,
+      "z": 8,
+      "y": 0
+    },
+    {
+      "id": "obj_P01R0304_mania",
+      "graphics_id": "SPRITE_MANIA",
+      "movement_type": 0,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_UNK_22C",
+      "script": "TRAINER_POKE_MANIAC_MORGAN - 1 + _std_npc_trainer",
+      "initial_dir": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 10,
+      "z": 9,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 9,
+      "z": 2,
+      "dest_header_id": "MAP_P01R0301",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 23,
+      "z": 2,
+      "dest_header_id": "MAP_P01R0301",
+      "dest_warp_id": 2,
+      "y": 0
+    }
+  ]
+}

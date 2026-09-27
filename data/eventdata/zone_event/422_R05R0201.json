@@ -1,0 +1,53 @@
+{
+  "header": "data/scr_seq/include/event_R05R0201.inc",
+  "eventId": "422",
+  "object_events": [
+    {
+      "id": "obj_R05R0201_gswoman1",
+      "graphics_id": "SPRITE_GSWOMAN1",
+      "movement_type": 3,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_R05R0201_000 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 1,
+      "movement_range_z": 1,
+      "x": 3,
+      "z": 5,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 5,
+      "z": 9,
+      "dest_header_id": "MAP_R05",
+      "dest_warp_id": 2,
+      "y": 0
+    },
+    {
+      "x": 8,
+      "z": 3,
+      "dest_header_id": "MAP_R05R0202",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 8,
+      "z": 4,
+      "dest_header_id": "MAP_R05R0202",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 8,
+      "z": 5,
+      "dest_header_id": "MAP_R05R0202",
+      "dest_warp_id": 1,
+      "y": 0
+    }
+  ]
+}

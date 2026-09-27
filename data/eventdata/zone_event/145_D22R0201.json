@@ -1,0 +1,13 @@
+{
+  "header": "data/scr_seq/include/event_D22R0201.inc",
+  "eventId": "145",
+  "warp_events": [
+    {
+      "x": 5,
+      "z": 12,
+      "dest_header_id": "MAP_D22R0101",
+      "dest_warp_id": 5,
+      "y": 0
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "header": "data/scr_seq/include/event_D24R0207.inc",
+  "eventId": "288",
+  "coord_events": [
+    {
+      "script": "_EV_scr_seq_D24R0207_002 + 1",
+      "x": 20,
+      "z": 13,
+      "width": 1,
+      "length": 1,
+      "y": 0,
+      "value": 0,
+      "var": "VAR_UNK_40D6"
+    }
+  ]
+}

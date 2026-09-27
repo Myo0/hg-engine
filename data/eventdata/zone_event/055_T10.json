@@ -1,0 +1,38 @@
+{
+  "header": "data/scr_seq/include/event_T10.inc",
+  "eventId": "055",
+  "bg_events": [
+    {
+      "script": "_EV_scr_seq_T10_000 + 1",
+      "type": 1,
+      "x": 914,
+      "z": 202,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "std_hiddenitem_t10_rare_candy",
+      "type": 2,
+      "x": 910,
+      "z": 209,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 912,
+      "z": 218,
+      "dest_header_id": "MAP_D43R0103",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 912,
+      "z": 200,
+      "dest_header_id": "MAP_T10R0101",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ]
+}

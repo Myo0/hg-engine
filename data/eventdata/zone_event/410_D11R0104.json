@@ -1,0 +1,277 @@
+{
+  "header": "data/scr_seq/include/event_D11R0104.inc",
+  "eventId": "410",
+  "bg_events": [
+    {
+      "script": "std_hiddenitem_d11r0104_max_revive",
+      "type": 2,
+      "x": 38,
+      "z": 27,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "std_hiddenitem_d11r0104_rare_candy",
+      "type": 2,
+      "x": 10,
+      "z": 9,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_EVERYWHERE_rock",
+      "graphics_id": "SPRITE_ROCK",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_MAPTEMP_010",
+      "script": "std_field_strength",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 30,
+      "z": 12,
+      "y": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_ice",
+      "graphics_id": "SPRITE_ICE",
+      "movement_type": 15,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": 0,
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 28,
+      "z": 23,
+      "y": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_ice_2",
+      "graphics_id": "SPRITE_ICE",
+      "movement_type": 15,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": 0,
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 30,
+      "z": 23,
+      "y": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_ice_3",
+      "graphics_id": "SPRITE_ICE",
+      "movement_type": 15,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": 0,
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 32,
+      "z": 23,
+      "y": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_ice_4",
+      "graphics_id": "SPRITE_ICE",
+      "movement_type": 15,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": 0,
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 12,
+      "z": 12,
+      "y": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_ice_5",
+      "graphics_id": "SPRITE_ICE",
+      "movement_type": 15,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": 0,
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 15,
+      "z": 12,
+      "y": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_ice_6",
+      "graphics_id": "SPRITE_ICE",
+      "movement_type": 15,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": 0,
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 14,
+      "z": 15,
+      "y": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_monstarball",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D11R0104_REVIVE",
+      "script": "std_itemball_d24r0214_leppa_berry",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 21,
+      "z": 22,
+      "y": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_monstarball_2",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D11R0104_BIG_PEARL",
+      "script": "std_itemball_d27r0106_super_repel",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 21,
+      "z": 11,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 43,
+      "z": 13,
+      "dest_header_id": "MAP_D11R0103",
+      "dest_warp_id": 4,
+      "y": 0
+    },
+    {
+      "x": 42,
+      "z": 25,
+      "dest_header_id": "MAP_D11R0103",
+      "dest_warp_id": 5,
+      "y": 0
+    },
+    {
+      "x": 23,
+      "z": 15,
+      "dest_header_id": "MAP_D11R0103",
+      "dest_warp_id": 6,
+      "y": 0
+    },
+    {
+      "x": 4,
+      "z": 25,
+      "dest_header_id": "MAP_D11R0103",
+      "dest_warp_id": 7,
+      "y": 0
+    },
+    {
+      "x": 44,
+      "z": 22,
+      "dest_header_id": "MAP_D11R0105",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 37,
+      "z": 23,
+      "dest_header_id": "MAP_D11R0105",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 32,
+      "z": 4,
+      "dest_header_id": "MAP_D11R0105",
+      "dest_warp_id": 2,
+      "y": 0
+    },
+    {
+      "x": 27,
+      "z": 13,
+      "dest_header_id": "MAP_D11R0105",
+      "dest_warp_id": 3,
+      "y": 0
+    },
+    {
+      "x": 11,
+      "z": 20,
+      "dest_header_id": "MAP_D11R0105",
+      "dest_warp_id": 4,
+      "y": 0
+    },
+    {
+      "x": 5,
+      "z": 5,
+      "dest_header_id": "MAP_D11R0105",
+      "dest_warp_id": 5,
+      "y": 0
+    },
+    {
+      "x": 42,
+      "z": 24,
+      "dest_header_id": "MAP_D11R0103",
+      "dest_warp_id": 5,
+      "y": 0
+    },
+    {
+      "x": 43,
+      "z": 12,
+      "dest_header_id": "MAP_D11R0103",
+      "dest_warp_id": 4,
+      "y": 0
+    },
+    {
+      "x": 23,
+      "z": 14,
+      "dest_header_id": "MAP_D11R0103",
+      "dest_warp_id": 6,
+      "y": 0
+    },
+    {
+      "x": 4,
+      "z": 24,
+      "dest_header_id": "MAP_D11R0103",
+      "dest_warp_id": 7,
+      "y": 0
+    }
+  ]
+}

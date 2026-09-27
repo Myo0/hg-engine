@@ -1,0 +1,142 @@
+{
+  "header": "data/scr_seq/include/event_D37R0105.inc",
+  "eventId": "195",
+  "bg_events": [
+    {
+      "script": "std_hiddenitem_d37r0105_max_potion",
+      "type": 2,
+      "x": 12,
+      "z": 11,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "std_hiddenitem_d37r0105_revive",
+      "type": 2,
+      "x": 27,
+      "z": 13,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_D37R0105_rocketm",
+      "graphics_id": "SPRITE_ROCKETM",
+      "movement_type": 16,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_HIDE_ROCKET_TAKEOVER_1",
+      "script": "TRAINER_TEAM_ROCKET_GRUNT_13 - 1 + _std_npc_trainer",
+      "initial_dir": 2,
+      "param0": 4,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 16,
+      "z": 20,
+      "y": 0
+    },
+    {
+      "id": "obj_D37R0105_rocketm_2",
+      "graphics_id": "SPRITE_ROCKETM",
+      "movement_type": 17,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_HIDE_ROCKET_TAKEOVER_1",
+      "script": "TRAINER_TEAM_ROCKET_GRUNT_22 - 1 + _std_npc_trainer",
+      "initial_dir": 3,
+      "param0": 3,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 17,
+      "z": 5,
+      "y": 0
+    },
+    {
+      "id": "obj_D37R0105_gsgentleman",
+      "graphics_id": "SPRITE_GSGENTLEMAN",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ROCKET_TAKEOVER_2",
+      "script": "_EV_scr_seq_D37R0105_001 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 20,
+      "z": 13,
+      "y": 0
+    },
+    {
+      "id": "obj_D37R0105_monstarball",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D37R0105_TM82",
+      "script": 0,
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 21,
+      "z": 15,
+      "y": 0
+    },
+    {
+      "id": "obj_D37R0105_monstarball_2",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D37R0105_MAX_ETHER",
+      "script": 7667,
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 28,
+      "z": 23,
+      "y": 0
+    },
+    {
+      "id": "obj_D37R0105_3586",
+      "graphics_id": 3586,
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D37R0105_ULTRA_BALL",
+      "script": 7671,
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 6,
+      "z": 7,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 3,
+      "z": 18,
+      "dest_header_id": "MAP_D37R0104",
+      "dest_warp_id": 1,
+      "y": 0
+    },
+    {
+      "x": 28,
+      "z": 4,
+      "dest_header_id": "MAP_D37R0103",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+Giovanni: Hmm...\rEven Archer could not stop you?\nI have been training for 3 years.\rI did not return to Team Rocket just\nto immediately be defeated by another\fchild.\rHistory must not repeat itself...\n...\fYou will not leave this tower.\r
+Giovanni: It can’t be...\rEven after 3 years...\nit’s still not enough?!\rWhat else must I do?!\nI swear on my name and the entirety\rof Team Rocket...\nYou will pay for your actions today.\rFarewell.\r
+Director: Oh...!\rYou have already defeated them?\nThank you!\rYour courageous actions have saved\nPokémon nationwide.\rYou are well worth this.\nPlease take it!\r
+{STRVAR_1 3, 0, 0} received\nthe Rainbow Wing!
+{STRVAR_1 3, 0, 0} received\nthe Silver Wing!
+There used to be a tower right here.\rWhen the tower was replaced with the\nRadio Tower, that Rainbow Wing was\ffound at the top of the tower.\rI heard from a friend from Cianwood City\nthat you can climb the Bell Tower in \fEcruteak City when you have a\fRainbow Wing.\rI have to get back to my office.\nSee you!\r
+There used to be a tower right here.\rWhen the tower was replaced with the\nRadio Tower, that Silver Wing was found\fat the top of the tower.\rI heard from a friend from Cianwood City\nthat you can go down the cave at Whirl\fIslands when you have a Silver Wing.\rI have to get back to my office.\nSee you!\r
+Oh, I almost forgot!\rAccording to my friend from Cianwood\nCity, the legendary Pokémon will not\fappear if you just go up to the top of\fthe Bell Tower with only that\fRainbow Wing.\rApparently there is something else\nyou need... Or something like that.\rI wonder what it was...\rI can’t remember.\r
+Oh, I almost forgot!\rAccording to my friend from Cianwood\nCity, the legendary Pokémon will not\fappear if you just go down the cave at\fWhirl Islands with only that\fSilver Wing.\rApparently there is something else\nyou need... Or something like that.\rI wonder what it was...\rI can’t remember.\r
+Are you expecting something?\nThis is what they call Fake Out.\rI really must go back to my office this\ntime. See ya!\r

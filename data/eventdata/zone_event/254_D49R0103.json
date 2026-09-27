@@ -1,0 +1,20 @@
+{
+  "header": "data/scr_seq/include/event_D49R0103.inc",
+  "eventId": "254",
+  "warp_events": [
+    {
+      "x": 4,
+      "z": 18,
+      "dest_header_id": "MAP_D49R0101",
+      "dest_warp_id": 2,
+      "y": 0
+    },
+    {
+      "x": 3,
+      "z": 2,
+      "dest_header_id": "MAP_D49R0102",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ]
+}

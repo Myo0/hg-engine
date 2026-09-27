@@ -1,0 +1,68 @@
+{
+  "header": "data/scr_seq/include/event_D17R0101.inc",
+  "eventId": "108",
+  "object_events": [
+    {
+      "id": "obj_D17R0101_bozu",
+      "graphics_id": "SPRITE_BOZU",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "_EV_scr_seq_D17R0101_000 + 1",
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 8,
+      "z": 8,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 15,
+      "z": 26,
+      "dest_header_id": "MAP_D17R1101",
+      "dest_warp_id": 2,
+      "y": 0
+    },
+    {
+      "x": 9,
+      "z": 8,
+      "dest_header_id": "MAP_D17R0102",
+      "dest_warp_id": 0,
+      "y": 0
+    },
+    {
+      "x": 9,
+      "z": 7,
+      "dest_header_id": "MAP_D17R0102",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ],
+  "coord_events": [
+    {
+      "script": "_EV_scr_seq_D17R0101_001 + 1",
+      "x": 7,
+      "z": 12,
+      "width": 3,
+      "length": 1,
+      "y": 0,
+      "value": 0,
+      "var": "VAR_UNK_40F3"
+    },
+    {
+      "script": "_EV_scr_seq_D17R0101_001 + 1",
+      "x": 12,
+      "z": 7,
+      "width": 1,
+      "length": 4,
+      "y": 0,
+      "value": 0,
+      "var": "VAR_UNK_40F3"
+    }
+  ]
+}
