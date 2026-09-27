@@ -11,7 +11,7 @@ Silver Powder - Ilex Forest
 Poison Barb - Ilex Forest
 Sharp Beak - Route 38
 Metal Coat - Olivine Lighthouse 3F
-Mystic Water - Route 41 at the furthest north island
+Mystic Water - Route 41 at the furthest north island (Second one is available in Cherrygrove (requires surf)
 Dragon Fang - Route 47
 Black Belt - Mt. Mortar back room just before the first gauntlet.
 Never-Melt Ice - Mt. Mortar B1F, central most Poke Ball.
@@ -26,6 +26,9 @@ Union Cave First Pokéball on the left
 Slowpoke Well
 Route 34
 Route 35
+Dark Cave (Route 31 entrance; requires surf)
+Route 32 (Require surf)
+Olivine Lighthouse 2F/Outside
 Olivine Lighthouse 5F
 Route 40 at the center of the grass island
 Route 40 top right tile of northern-most sand island
@@ -48,7 +51,7 @@ Shed Shell - Bug Catching Contest (1 only)
 Shell Bell - National Park (given by Dahlia)
 Eviolite - Ecruteak City
 Bright Powder - Burned Tower 1F
-Quick Claw - Burned Tower B1F
+Quick Claw - Burned Tower B1F & National Park
 Lagging Tail - Route 47 South of Double Team Thom & Kae
 Heavy-Duty Boots - Union Cave Lapras Floor
 Shed Shell - Mt. Mortar
@@ -78,7 +81,7 @@ Steel Gem - Ice Path 1F
 Dragon Gem - Dragon's Den
 Fairy Gem - Dragon's Den
 Psychic Gem - Held by Latias given in The Dragon Shrine
-Fire Gem - Dark Cave (Route 31/46 Requires Surf)
+Fire Gem - Route 46
 Grass Gem - Bell Tower 6F
 Flying Gem - Bell Tower Roof
 Ghost Gem - Route 26
@@ -96,6 +99,10 @@ Manectite - Route 34 (Requires Surf)
 Houndoominite - Burned Tower 1F (REPLACE HOUNDOOM ON THE MEGA STONE ROUTE TRAINER LATER)
 Victreebelite - Bellchime Trail (Can be obtained after morty)
 Pidgeotite - Ruins of Alph (Requires Surf)
+Ampharosite - Olivine Lighthouse (Lantern Room)
+Altarianite - Violet City (Requires Surf)
+
+Salamencite - Cherrygrove City (Requires Surf & Rock Climb)
 
 Mega Stones: (EVERSTONE'S IN DSPRE ARE Z/A MEGA STONE PLACEHOLDERS)
 

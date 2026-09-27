@@ -5117,7 +5117,7 @@
       },
       {
         "Level": 50,
-        "Move": "MOVE_CROSS_POISON"
+        "Move": "MOVE_POISON_JAB"
       },
       {
         "Level": 53,
@@ -5295,7 +5295,7 @@
       },
       {
         "Level": 50,
-        "Move": "MOVE_CROSS_POISON"
+        "Move": "MOVE_POISON_JAB"
       },
       {
         "Level": 53,
@@ -8779,14 +8779,6 @@
   },
   "SPECIES_BELLSPROUT": {
     "LevelMoves": [
-      {
-        "Level": 0,
-        "Move": "MOVE_GIGA_DRAIN"
-      },
-      {
-        "Level": 1,
-        "Move": "MOVE_STRENGTH_SAP"
-      },
       {
         "Level": 1,
         "Move": "MOVE_VINE_WHIP"
@@ -18947,6 +18939,10 @@
       {
         "Level": 80,
         "Move": "MOVE_REST"
+      },
+      {
+        "Level": 85,
+        "Move": "MOVE_SLACK_OFF"
       }
     ],
     "MachineMoves": [
@@ -22420,7 +22416,7 @@
       },
       {
         "Level": 50,
-        "Move": "MOVE_CROSS_POISON"
+        "Move": "MOVE_POISON_JAB"
       },
       {
         "Level": 53,
@@ -38357,7 +38353,7 @@
       },
       {
         "Level": 90,
-        "Move": "MOVE_CRUSH_CLAW"
+        "Move": "MOVE_CRUSH_GRIP"
       }
     ],
     "MachineMoves": [
@@ -61690,36 +61686,96 @@
         "Move": "MOVE_ATTRACT"
       },
       {
-        "Level": 15,
+        "Level": 13,
         "Move": "MOVE_WATER_PULSE"
       },
       {
-        "Level": 20,
+        "Level": 15,
+        "Move": "MOVE_GUST"
+      },
+      {
+        "Level": 17,
         "Move": "MOVE_AURORA_BEAM"
       },
       {
-        "Level": 24,
+        "Level": 20,
         "Move": "MOVE_SAFEGUARD"
       },
       {
-        "Level": 27,
+        "Level": 23,
+        "Move": "MOVE_CAPTIVATE"
+      },
+      {
+        "Level": 25,
+        "Move": "MOVE_AIR_CUTTER"
+      },
+      {
+        "Level": 28,
         "Move": "MOVE_AQUA_RING"
       },
       {
-        "Level": 30,
-        "Move": "MOVE_BOUNCE"
+        "Level": 31,
+        "Move": "MOVE_WHIRLPOOL"
       },
       {
         "Level": 34,
-        "Move": "MOVE_AQUA_TAIL"
+        "Move": "MOVE_ICY_WIND"
       },
       {
-        "Level": 37,
-        "Move": "MOVE_ICE_BEAM"
+        "Level": 36,
+        "Move": "MOVE_SCALD"
       },
       {
         "Level": 39,
-        "Move": "MOVE_FLAIL"
+        "Move": "MOVE_FLIP_TURN"
+      },
+      {
+        "Level": 41,
+        "Move": "MOVE_SILVER_WIND"
+      },
+      {
+        "Level": 43,
+        "Move": "MOVE_SOAK"
+      },
+      {
+        "Level": 45,
+        "Move": "MOVE_SURF"
+      },
+      {
+        "Level": 48,
+        "Move": "MOVE_AIR_SLASH"
+      },
+      {
+        "Level": 52,
+        "Move": "MOVE_ICE_BEAM"
+      },
+      {
+        "Level": 55,
+        "Move": "MOVE_TICKLE"
+      },
+      {
+        "Level": 59,
+        "Move": "MOVE_HYDRO_PUMP"
+      },
+      {
+        "Level": 63,
+        "Move": "MOVE_LIFE_DEW"
+      },
+      {
+        "Level": 66,
+        "Move": "MOVE_SPOTLIGHT"
+      },
+      {
+        "Level": 69,
+        "Move": "MOVE_AEROBLAST"
+      },
+      {
+        "Level": 73,
+        "Move": "MOVE_HYDRO_CANNON"
+      },
+      {
+        "Level": 76,
+        "Move": "MOVE_TAILWIND"
       }
     ],
     "MachineMoves": [
@@ -61806,40 +61862,96 @@
         "Move": "MOVE_ATTRACT"
       },
       {
-        "Level": 19,
+        "Level": 13,
         "Move": "MOVE_WATER_PULSE"
       },
       {
-        "Level": 23,
+        "Level": 15,
+        "Move": "MOVE_GUST"
+      },
+      {
+        "Level": 17,
         "Move": "MOVE_AURORA_BEAM"
       },
       {
-        "Level": 27,
+        "Level": 20,
         "Move": "MOVE_SAFEGUARD"
       },
       {
-        "Level": 30,
+        "Level": 23,
+        "Move": "MOVE_CAPTIVATE"
+      },
+      {
+        "Level": 25,
+        "Move": "MOVE_AIR_CUTTER"
+      },
+      {
+        "Level": 28,
         "Move": "MOVE_AQUA_RING"
       },
       {
-        "Level": 32,
-        "Move": "MOVE_DAZZLING_GLEAM"
+        "Level": 31,
+        "Move": "MOVE_WHIRLPOOL"
+      },
+      {
+        "Level": 34,
+        "Move": "MOVE_ICY_WIND"
       },
       {
         "Level": 36,
-        "Move": "MOVE_BOUNCE"
+        "Move": "MOVE_SCALD"
       },
       {
         "Level": 39,
-        "Move": "MOVE_AQUA_TAIL"
+        "Move": "MOVE_FLIP_TURN"
       },
       {
-        "Level": 42,
+        "Level": 41,
+        "Move": "MOVE_SILVER_WIND"
+      },
+      {
+        "Level": 43,
+        "Move": "MOVE_SOAK"
+      },
+      {
+        "Level": 45,
+        "Move": "MOVE_SURF"
+      },
+      {
+        "Level": 48,
+        "Move": "MOVE_AIR_SLASH"
+      },
+      {
+        "Level": 52,
         "Move": "MOVE_ICE_BEAM"
       },
       {
-        "Level": 44,
-        "Move": "MOVE_FLAIL"
+        "Level": 55,
+        "Move": "MOVE_TICKLE"
+      },
+      {
+        "Level": 59,
+        "Move": "MOVE_HYDRO_PUMP"
+      },
+      {
+        "Level": 63,
+        "Move": "MOVE_LIFE_DEW"
+      },
+      {
+        "Level": 66,
+        "Move": "MOVE_SPOTLIGHT"
+      },
+      {
+        "Level": 69,
+        "Move": "MOVE_AEROBLAST"
+      },
+      {
+        "Level": 73,
+        "Move": "MOVE_HYDRO_CANNON"
+      },
+      {
+        "Level": 76,
+        "Move": "MOVE_TAILWIND"
       }
     ],
     "MachineMoves": [
@@ -87951,7 +88063,7 @@
     "LevelMoves": [
       {
         "Level": 0,
-        "Move": "MOVE_FIRE_SPIN"
+        "Move": "MOVE_FLAME_BURST"
       },
       {
         "Level": 1,
@@ -87987,7 +88099,7 @@
       },
       {
         "Level": 23,
-        "Move": "MOVE_FLAME_BURST"
+        "Move": "MOVE_FIRE_SPIN"
       },
       {
         "Level": 26,
@@ -101556,7 +101668,7 @@
       },
       {
         "Level": 35,
-        "Move": "MOVE_TRIPLE_AXEL"
+        "Move": "MOVE_MEGA_KICK"
       },
       {
         "Level": 38,
@@ -106776,6 +106888,10 @@
       },
       {
         "Level": 1,
+        "Move": "MOVE_HYPER_VOICE"
+      },
+      {
+        "Level": 1,
         "Move": "MOVE_POWDER_SNOW"
       },
       {
@@ -106827,6 +106943,10 @@
         "Move": "MOVE_NATURE_POWER"
       },
       {
+        "Level": 47,
+        "Move": "MOVE_SHEER_COLD"
+      },
+      {
         "Level": 50,
         "Move": "MOVE_ICY_WIND"
       },
@@ -106864,7 +106984,7 @@
       },
       {
         "Level": 86,
-        "Move": "MOVE_SHEER_COLD"
+        "Move": "MOVE_GLACIATE"
       }
     ],
     "MachineMoves": [
@@ -116739,11 +116859,11 @@
       },
       {
         "Level": 47,
-        "Move": "MOVE_SCARY_FACE"
+        "Move": "MOVE_IRON_HEAD"
       },
       {
         "Level": 50,
-        "Move": "MOVE_SCREECH"
+        "Move": "MOVE_SCARY_FACE"
       },
       {
         "Level": 54,

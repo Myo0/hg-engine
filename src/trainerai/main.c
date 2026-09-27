@@ -2744,6 +2744,15 @@ int ExpertFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext 
         }
     }
 
+    /*Life Dew: user and/or ally below 75% max HP → +6*/
+    else if (ai->attackerMove == MOVE_LIFE_DEW) {
+        if (ai->attackerPercentHP < 75
+            || ((BattleTypeGet(bsys) & (BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_TAG))
+                && ai->partnerHP > 0 && ai->partnerPercentHP < 75)) {
+            moveScore += 6;
+        }
+    }
+
     /*Final Gambit*/
     else if (ai->attackerMove == MOVE_FINAL_GAMBIT) {
         if (ai->attackerMovesFirst && ai->attackerHP > ai->defenderHP) {

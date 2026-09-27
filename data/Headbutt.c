@@ -5373,18 +5373,18 @@ const HeadbuttArchiveData __data =
         .specialTreeCount = 1,
         .normalSlots =
         {
-            { SPECIES_XATU, 26, 34 },
+            { SPECIES_RUFFLET, 26, 34 },
             { SPECIES_FORRETRESS, 26, 34 },
+            { SPECIES_LEDYBA, 10, 10 },
+            { SPECIES_AIPOM, 26, 34 },
+            { SPECIES_SCYTHER, 26, 34 },
+            { SPECIES_GALVANTULA, 26, 34 },
+            { SPECIES_RUFFLET, 26, 34 },
             { SPECIES_FORRETRESS, 26, 34 },
+            { SPECIES_LEDYBA, 10, 10 },
             { SPECIES_AIPOM, 26, 34 },
-            { SPECIES_AIPOM, 26, 34 },
-            { SPECIES_AIPOM, 26, 34 },
-            { SPECIES_XATU, 26, 34 },
-            { SPECIES_FORRETRESS, 26, 34 },
-            { SPECIES_FORRETRESS, 26, 34 },
-            { SPECIES_AIPOM, 26, 34 },
-            { SPECIES_AIPOM, 26, 34 },
-            { SPECIES_AIPOM, 26, 34 },
+            { SPECIES_SCYTHER, 26, 34 },
+            { SPECIES_GALVANTULA, 26, 34 },
         },
         .specialSlots =
         {
@@ -6126,12 +6126,12 @@ const HeadbuttArchiveData __data =
         },
         .specialSlots =
         {
-            { SPECIES_LEDYBA, 3, 5 },
-            { SPECIES_JOLTIK, 5, 7 },
-            { SPECIES_JOLTIK, 5, 7 },
-            { SPECIES_WEEDLE, 3, 4 },
-            { SPECIES_WEEDLE, 3, 4 },
-            { SPECIES_WEEDLE, 3, 4 },
+            { SPECIES_NONE, 0, 0 },
+            { SPECIES_NONE, 0, 0 },
+            { SPECIES_NONE, 0, 0 },
+            { SPECIES_NONE, 0, 0 },
+            { SPECIES_NONE, 0, 0 },
+            { SPECIES_NONE, 0, 0 },
         },
         .treeCoords =
         {
