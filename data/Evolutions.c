@@ -931,7 +931,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
 
     [SPECIES_POLIWHIRL] = {
         .entries = {
-            { EVO_LEVEL, 30, SPECIES_POLIWRATH },
+            { EVO_LEVEL, 30, SPECIES_POLITOED },
             { EVO_STONE, ITEM_WATER_STONE, SPECIES_POLIWRATH },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
@@ -2926,7 +2926,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
 
     [SPECIES_WOOPER] = {
         .entries = {
-            { EVO_LEVEL, 20, SPECIES_QUAGSIRE },
+            { EVO_LEVEL, 25, SPECIES_QUAGSIRE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
@@ -3076,7 +3076,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
 
     [SPECIES_PINECO] = {
         .entries = {
-            { EVO_LEVEL, 31, SPECIES_FORRETRESS },
+            { EVO_LEVEL, 25, SPECIES_FORRETRESS },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
@@ -4216,7 +4216,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
 
     [SPECIES_RALTS] = {
         .entries = {
-            { EVO_LEVEL, 20, SPECIES_KIRLIA },
+            { EVO_LEVEL, 16, SPECIES_KIRLIA },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
@@ -4846,7 +4846,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
 
     [SPECIES_NUMEL] = {
         .entries = {
-            { EVO_LEVEL, 33, SPECIES_CAMERUPT },
+            { EVO_LEVEL, 30, SPECIES_CAMERUPT },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
@@ -6856,7 +6856,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
 
     [SPECIES_FINNEON] = {
         .entries = {
-            { EVO_LEVEL, 24, SPECIES_LUMINEON },
+            { EVO_LEVEL, 16, SPECIES_LUMINEON },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
@@ -20461,7 +20461,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
 
     [SPECIES_WOOPER_PALDEAN] = {
         .entries = {
-            { EVO_LEVEL, 20, SPECIES_CLODSIRE },
+            { EVO_LEVEL, 25, SPECIES_CLODSIRE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },

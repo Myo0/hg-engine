@@ -49,7 +49,7 @@ const HiddenItemData sHiddenItemParam[] = {
     { ITEM_BIG_MUSHROOM  , 1, 0, 0, 213 },
     { ITEM_TINY_MUSHROOM , 1, 0, 0, 214 },
     { ITEM_TINY_MUSHROOM , 1, 0, 0, 215 },
-    { ITEM_RARE_CANDY    , 1, 0, 0, 7   },
+    { ITEM_POWER_HERB    , 1, 0, 0, 7   },
     { ITEM_SUPER_POTION  , 1, 0, 0, 8   },
     { ITEM_SUPER_POTION  , 1, 0, 0, 9   },
     { ITEM_PARALYZE_HEAL , 1, 0, 0, 52  },
@@ -65,9 +65,9 @@ const HiddenItemData sHiddenItemParam[] = {
     { ITEM_PROTEIN       , 1, 0, 0, 160 },
     { ITEM_HYPER_POTION  , 1, 0, 0, 12  },
     { ITEM_ETHER         , 1, 0, 0, 13  },
-    { ITEM_RARE_CANDY    , 1, 0, 0, 132 },
+    { ITEM_LUMINOUS_MOSS , 1, 0, 0, 132 },
     { ITEM_ULTRA_BALL    , 1, 0, 0, 133 },
-    { ITEM_ETHER         , 1, 0, 0, 19  },
+    { ITEM_DUSK_BALL     , 1, 0, 0, 19  },
     { ITEM_ULTRA_BALL    , 1, 0, 0, 20  },
     { ITEM_ANTIDOTE      , 1, 0, 0, 65  },
     { ITEM_REVIVE        , 1, 0, 0, 21  },
@@ -240,6 +240,6 @@ const HiddenItemData sHiddenItemParam[] = {
     { ITEM_NUGGET        , 1, 0, 0, 124 },
     { ITEM_DEEP_SEA_TOOTH, 1, 0, 0, 38  },
     { ITEM_DEEP_SEA_SCALE, 1, 0, 0, 229 },
-    { ITEM_PP_MAX        , 1, 0, 0, 230 },
+    { ITEM_HEART_SCALE   , 1, 0, 0, 230 },
 };
 

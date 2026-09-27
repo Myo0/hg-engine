@@ -129,6 +129,9 @@ I can tell that you’re a Trainer\nwith considerable skill.\rIf you don’t min
 2586 -> Eviolite in Ecruteak
 2587 -> Victreebelite in Bellchime Trail
 2588 -> Audinite on Route 35
+2589 -> Eject Button on Route 46
+2590 -> Salamencite in Cherrygrove City
+2591 -> Route 34 Heart Scale
 
 2660 -> Flag to check if player has already interacted with the legendary encounter in safari zone
 
