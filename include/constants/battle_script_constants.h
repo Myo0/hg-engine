@@ -546,6 +546,16 @@
 #define BATTLE_SUBSCRIPT_FROSTBITE_DAMAGE                (MAX_BASE_SUBSCRIPT_NUM + 8) // 523
 #define BATTLE_SUBSCRIPT_OVERWORLD_TERRAIN               (MAX_BASE_SUBSCRIPT_NUM + 9) // 524
 #define BATTLE_SUBSCRIPT_PHREATIC_ERUPTION                (MAX_BASE_SUBSCRIPT_NUM + 10) // 525
+#define BATTLE_SUBSCRIPT_HANDLE_STAT_GENES                (MAX_BASE_SUBSCRIPT_NUM + 11) // 526
+// Electrum: weather set by an ability (Drizzle/Drought/Sand Stream/Snow Warning/Orichalcum
+// Pulse) is now permanent (lasts until replaced, matching Gen 3-5 ability behavior), unlike
+// weather set by a move (Rain Dance etc.), which stays temporary -- mirrors the terrain-side
+// TERRAIN_TURNS_INFINITE handling in UpdateTerrainOverlay().
+#define BATTLE_SUBSCRIPT_HANDLE_RAIN_PERMANENT            (MAX_BASE_SUBSCRIPT_NUM + 12) // 527
+#define BATTLE_SUBSCRIPT_HANDLE_SUN_PERMANENT             (MAX_BASE_SUBSCRIPT_NUM + 13) // 528
+#define BATTLE_SUBSCRIPT_HANDLE_SANDSTORM_PERMANENT       (MAX_BASE_SUBSCRIPT_NUM + 14) // 529
+#define BATTLE_SUBSCRIPT_HANDLE_SNOW_PERMANENT            (MAX_BASE_SUBSCRIPT_NUM + 15) // 530
+#define BATTLE_SUBSCRIPT_HANDLE_HAIL_PERMANENT            (MAX_BASE_SUBSCRIPT_NUM + 16) // 531
 
 // add status effect constants--used in battle effect scripts to queue up a subscript through the table in src/moves.c
 

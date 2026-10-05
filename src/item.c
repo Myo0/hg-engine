@@ -546,7 +546,7 @@ BOOL MoveIsHM(u16 moveId)
 {
     for (u8 i = 0; i < NUM_HMS; i++) {
         if (sMachineMoves[i + ITEM_HM01 - ITEM_TM001] == moveId) {
-#if defined(REUSABLE_TMS) && defined(DELETABLE_HMS)
+#if defined(DELETABLE_HMS)
             return FALSE;
 #else
             return TRUE;

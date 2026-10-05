@@ -125,6 +125,9 @@ void LONG_CALL BattleController_MoveEndInternal(struct BattleSystem *bsys, struc
     ctx->futureSightHitTurn = FALSE;
     ctx->futureSightNoAttacker = FALSE;
     ctx->futureSightSTAB = 0;
+#ifdef DEBUG_SWITCH_HIT_LOGS
+    debug_printf("[SwitchHit] MoveEnd resets currentMoveSwitchStatus %d -> 0 (attack_client=%d)\n", ctx->currentMoveSwitchStatus, ctx->attack_client);
+#endif
     ctx->currentMoveSwitchStatus = CURRENT_MOVE_NO_SWITCH;
     ctx->moveConditionsFlags[ctx->attack_client].mindBlownOrSteelBeam = FALSE;
 

@@ -123,7 +123,18 @@
 // DEBUG_DAMAGE_CALC_AI enables per-step damage calc traces in trainerai/calc.c (very verbose)
 // #define DEBUG_DAMAGE_CALC_AI
 
+// DEBUG_SWITCHIN_AI_LOGS enables just BattleAI_PostKOSwitchIn_Internal's candidate-by-candidate
+// switch-in scoring trace (trainerai/calc.c) -- the function that actually picks which mon comes
+// in on any switch (post-KO, immunity switch, Perish Song, U-turn/Volt Switch, etc.), independent
+// of the noisier DEBUG_DAMAGE_CALC_AI trace above.
+#define DEBUG_SWITCHIN_AI_LOGS
+
 // DEBUG_TRAINER_AI_LOGS enables trace prints throughout trainerai/main.c (scoring, state setup)
-// #define DEBUG_TRAINER_AI_LOGS
+#define DEBUG_TRAINER_AI_LOGS
+
+// DEBUG_SWITCH_HIT_LOGS traces Activate_Switch's MOVE_EFFECT_SWITCH_HIT branch
+// (ServerDoPostMoveEffects.c) -- whether a U-turn/Flip Turn hit actually requests the post-move
+// switch, or gets silently skipped by the currentMoveSwitchStatus guard.
+#define DEBUG_SWITCH_HIT_LOGS
 
 #endif // DEBUG_H

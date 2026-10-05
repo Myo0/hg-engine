@@ -2966,6 +2966,7 @@ u8 LONG_CALL ParadoxGreatestStatHelper(struct BattleStruct *ctx, u32 client);
 u16 LONG_CALL GetStatValueWithStages(struct BattleStruct *ctx, u32 client, u8 stat);
 u16 LONG_CALL ActivateParadoxAbility(void *bsys, struct BattleStruct *ctx, u8 client);
 void LONG_CALL UpdateTerrainOverlay(struct BattleStruct *ctx, u8 client, enum TerrainOverlayType terrainType);
+void LONG_CALL UpdateTerrainOverlayPermanent(struct BattleStruct *ctx, u8 client, enum TerrainOverlayType terrainType);
 
 // defined in other_battle_calculators.c
 /**

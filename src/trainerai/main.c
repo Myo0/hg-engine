@@ -115,6 +115,12 @@ struct PACKED AIContext {
     int attackerAvgRollMoveDamages[4];
     int attackerMaxDamageOutputMinRoll;
     int defenderAvgRollMoveDamages[4];
+    // TRUE for the one move-slot evaluation pass where attackerMove/attackerMoveEffect were
+    // substituted to Copycat's copied move -- ctx->moveTbl[attackerMove].priority then reads the
+    // COPIED move's own priority, not Copycat's real (always +1) priority, so any check that cares
+    // whether the move being used has priority needs to also check this flag. Reset every move-slot
+    // iteration, same lifetime as attackerMove itself.
+    BOOL attackerMoveIsCopycat;
 };
 
 typedef struct {
@@ -126,7 +132,6 @@ typedef struct {
 int BasicFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext *ai);
 int EvaluateAttackFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext *ai);
 int ExpertFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext *ai);
-int BatonPassFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext *ai);
 int TagStrategyFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext *ai);
 
 /*Add your own custom flags to this list*/
@@ -134,7 +139,6 @@ const MoveEvaluator moveEvaluators[] = {
     { AI_FLAG_BASIC, BasicFlag },
     { AI_FLAG_EVAL_ATTACK, EvaluateAttackFlag },
     { AI_FLAG_EXPERT, ExpertFlag },
-    { AI_FLAG_BATON_PASS, BatonPassFlag },
     { AI_FLAG_TAG_STRATEGY, TagStrategyFlag },
 };
 
@@ -147,6 +151,12 @@ BOOL BattlerKnowsMove(struct BattleSystem *bsys, u32 battler, u32 move, struct A
 BOOL BattlerHasMoveSplit(struct BattleSystem *bsys, u32 battler, u32 move_split, struct AIContext *ai);
 BOOL BattlerHasMoveEffect(struct BattleSystem *bsys, u32 battler, u32 move_effect, struct AIContext *ai);
 BOOL BattlerHasTypeDamagingMove(struct BattleSystem *bsys, u32 battler, u32 type, struct AIContext *ai);
+BOOL AttackerHasExploitableTypeMove(struct BattleSystem *bsys, u32 attacker, u32 type, struct AIContext *ai);
+BOOL AttackerHasReliableTypeMove(struct BattleSystem *bsys, u32 attacker, u32 type, struct AIContext *ai);
+u16 GetNaturePowerResultMove(struct BattleSystem *bsys);
+u16 GetCopycatResultMove(struct BattleSystem *bsys, u32 attacker);
+BOOL StatusMoveEffectBlockedByAbility(u32 moveEffect, u32 ability);
+BOOL StatDropMoveEffectBlockedByAbility(u32 moveEffect, u32 ability);
 BOOL ItemIsBadToTrade(u32 item, struct AIContext *ai);
 BOOL ItemIsDisruptive(u32 item, struct AIContext *ai);
 BOOL IsDesirableAbility(u32 ability);
@@ -183,7 +193,14 @@ unsigned int __attribute__((section(".init"))) TrainerAI_Main(struct BattleSyste
         int realBattler = attacker - 10;
         extern int gImmunitySwitchTargetSlot;
         if (ctx->battlemon[realBattler].hp > 0 && gImmunitySwitchTargetSlot >= 0) {
-            int slot = gImmunitySwitchTargetSlot + 1;
+            // No +1 here: BattleAI_PostKOSwitchIn_Internal below returns its picked party slot
+            // raw (0-indexed, `picked = i` from a 0-based loop) straight back to the vanilla
+            // engine hook (src/battle/ai.c BattleAI_PostKOSwitchIn), which has worked correctly
+            // for every switch until now. This path was dead code (gImmunitySwitchTargetSlot was
+            // never set >=0) until today, so the +1 that used to be here was never exercised --
+            // it would have handed the engine an out-of-bounds slot (e.g. slot 4 in a 4-mon
+            // party) the first time this path actually ran.
+            int slot = gImmunitySwitchTargetSlot;
             gImmunitySwitchTargetSlot = -1;
             return slot;
         }
@@ -228,6 +245,28 @@ unsigned int __attribute__((section(".init"))) TrainerAI_Main(struct BattleSyste
                     /*Move-relevant variables*/
                     ai->attackerMove = ctx->battlemon[ai->attacker].move[i];
                     ai->attackerMoveEffect = ctx->moveTbl[ai->attackerMove].effect;
+                    ai->attackerMoveIsCopycat = FALSE;
+                    // Nature Power: score it as whatever move it actually becomes given the
+                    // current terrain, not as the status move it's defined as -- lets the normal
+                    // damage/kill-bonus scoring treat it like a real attack.
+                    if (ai->attackerMoveEffect == MOVE_EFFECT_NATURE_POWER) {
+                        ai->attackerMove = GetNaturePowerResultMove(bsys);
+                        ai->attackerMoveEffect = ctx->moveTbl[ai->attackerMove].effect;
+                    } else if (ai->attackerMoveEffect == MOVE_EFFECT_USE_LAST_USED_MOVE) {
+                        // Copycat: score it as whatever was actually last used in the battle, same
+                        // reasoning as Nature Power above -- but leave it as the unscored status
+                        // move if there's nothing valid to copy (GetCopycatResultMove returns
+                        // MOVE_NONE). attackerMoveIsCopycat stays TRUE even after the substitution
+                        // because Copycat's own priority (+1, always, regardless of what it copies)
+                        // is lost once attackerMove becomes the copied move's id -- see the struct
+                        // field comment.
+                        u16 copycatMove = GetCopycatResultMove(bsys, ai->attacker);
+                        if (copycatMove != MOVE_NONE) {
+                            ai->attackerMove = copycatMove;
+                            ai->attackerMoveEffect = ctx->moveTbl[ai->attackerMove].effect;
+                            ai->attackerMoveIsCopycat = TRUE;
+                        }
+                    }
                     // ai->attackerMoveEffectiveness = 0;
                     ai->attackerMoveType = (ai->attackerMove == MOVE_HIDDEN_POWER)
                         ? ai->attackerMon.hiddenPowerType
@@ -307,6 +346,27 @@ unsigned int __attribute__((section(".init"))) TrainerAI_Main(struct BattleSyste
             /*Move-relevant variables*/
             ai->attackerMove = ctx->battlemon[ai->attacker].move[i];
             ai->attackerMoveEffect = ctx->moveTbl[ai->attackerMove].effect;
+            ai->attackerMoveIsCopycat = FALSE;
+            // Nature Power: score it as whatever move it actually becomes given the current
+            // terrain, not as the status move it's defined as -- lets the normal damage/kill-bonus
+            // scoring treat it like a real attack.
+            if (ai->attackerMoveEffect == MOVE_EFFECT_NATURE_POWER) {
+                ai->attackerMove = GetNaturePowerResultMove(bsys);
+                ai->attackerMoveEffect = ctx->moveTbl[ai->attackerMove].effect;
+            } else if (ai->attackerMoveEffect == MOVE_EFFECT_USE_LAST_USED_MOVE) {
+                // Copycat: score it as whatever was actually last used in the battle, same
+                // reasoning as Nature Power above -- but leave it as the unscored status move if
+                // there's nothing valid to copy (GetCopycatResultMove returns MOVE_NONE).
+                // attackerMoveIsCopycat stays TRUE even after the substitution because Copycat's
+                // own priority (+1, always, regardless of what it copies) is lost once attackerMove
+                // becomes the copied move's id -- see the struct field comment.
+                u16 copycatMove = GetCopycatResultMove(bsys, ai->attacker);
+                if (copycatMove != MOVE_NONE) {
+                    ai->attackerMove = copycatMove;
+                    ai->attackerMoveEffect = ctx->moveTbl[ai->attackerMove].effect;
+                    ai->attackerMoveIsCopycat = TRUE;
+                }
+            }
             // ai->attackerMoveEffectiveness = 0;
             ai->attackerMoveType = (ai->attackerMove == MOVE_HIDDEN_POWER)
                 ? ai->attackerMon.hiddenPowerType
@@ -359,6 +419,22 @@ unsigned int __attribute__((section(".init"))) TrainerAI_Main(struct BattleSyste
             u16 tieMove = ctx->battlemon[ai->attacker].move[moveno];
             if (ctx->moveTbl[tieMove].priority > 0
                 || (tieMove == MOVE_GRASSY_GLIDE && ctx->terrainOverlay.type == GRASSY_TERRAIN && ctx->terrainOverlay.numberOfTurnsLeft > 0)) {
+                result = moveno;
+                goto ai_move_chosen;
+            }
+        }
+    }
+    // Tiebreak: Copycat's own +1 priority (data/Moves.c) wins any exact-score tie while slower --
+    // closes the gap the +2 ExpertFlag nudge can't fully guarantee on its own (the +6/+8 highest-
+    // damage roll is drawn independently per move slot, so Copycat and the move it copied can still
+    // land on identical totals despite the nudge). Deterministic, not scored, so it can never bleed
+    // into the kill-bonus totals the way a bigger flat nudge would.
+    if (num_move_score_ties > 1
+        && !ai->attackerMovesFirst
+        && !ai->isSpeedTie) {
+        for (unsigned int t = 0; t < num_move_score_ties; t++) {
+            unsigned int moveno = move_tie_indices[t];
+            if (ctx->battlemon[ai->attacker].move[moveno] == MOVE_COPYCAT) {
                 result = moveno;
                 goto ai_move_chosen;
             }
@@ -577,7 +653,8 @@ const u16 SpeedDropList[] = {
     MOVE_EFFECT_SPEED_DOWN,
     MOVE_EFFECT_SPEED_DOWN_2,
     MOVE_EFFECT_SPEED_DOWN_3,
-    MOVE_EFFECT_VENOM_DRENCH
+    MOVE_EFFECT_VENOM_DRENCH,
+    MOVE_EFFECT_TOXIC_THREAD
 };
 
 const u16 AccDropList[] = {
@@ -592,6 +669,37 @@ const u16 EvaDropList[] = {
     MOVE_EFFECT_EVA_DOWN_3
 };
 
+// Secondary-chance stat drops attached to damaging moves (Shadow Ball, Mud Bomb, Icy Wind, etc.) --
+// separate from the pure-status Drop lists above since those only cover standalone status moves.
+// Used by Mist to recognize a threat "including secondary effects" per the move's own HIT-suffixed
+// effect, not just dedicated stat-lowering status moves.
+const u16 StatDropSecondaryList[] = {
+    MOVE_EFFECT_LOWER_ATTACK_HIT,
+    MOVE_EFFECT_LOWER_DEFENSE_HIT,
+    MOVE_EFFECT_LOWER_SPEED_HIT,
+    MOVE_EFFECT_LOWER_SP_ATK_HIT,
+    MOVE_EFFECT_LOWER_SP_DEF_HIT,
+    MOVE_EFFECT_LOWER_SP_DEF_2_HIT,
+    MOVE_EFFECT_LOWER_ACCURACY_HIT,
+    MOVE_EFFECT_LOWER_EVASION_HIT,
+};
+
+// Moves that can inflict a non-volatile status condition, standalone or as a secondary chance on a
+// damaging move (Flamethrower's burn chance, Tri Attack's random status, etc.). Scoped to exactly
+// the five conditions SIDE_STATUS_SAFEGUARD actually blocks in this engine (see the
+// defenderImmuneToPoison/Paralysis/Burn/Frostbite/Sleep checks in SetupStateVariables) --
+// confusion isn't included since Safeguard doesn't block it here.
+const u16 StatusInflictingList[] = {
+    MOVE_EFFECT_STATUS_SLEEP,
+    MOVE_EFFECT_STATUS_SLEEP_NEXT_TURN,
+    MOVE_EFFECT_STATUS_POISON,
+    MOVE_EFFECT_STATUS_BADLY_POISON,
+    MOVE_EFFECT_STATUS_PARALYZE,
+    MOVE_EFFECT_STATUS_BURN,
+    MOVE_EFFECT_STATUS_FROSTBITE,
+    MOVE_EFFECT_RANDOM_PRIMARY_STATUS_HIT,
+};
+
 // Non-attacking moves that always score +6 with no additional bonuses from ExpertFlag.
 const u16 FlatSixStatusList[] = {
     MOVE_EFFECT_PREVENT_ESCAPE, // Mean Look
@@ -600,6 +708,7 @@ const u16 FlatSixStatusList[] = {
     MOVE_EFFECT_INFATUATE, // Attract
     MOVE_EFFECT_GROUND_TRAP_USER_CONTINUOUS_HEAL, // Ingrain
     MOVE_EFFECT_RESTORE_HP_EVERY_TURN, // Aqua Ring
+    MOVE_EFFECT_TRANSFORM, // Transform
 };
 
 // Moves that self-lower stats, turning into self-boosts for Contrary users.
@@ -888,7 +997,7 @@ int BasicFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext *
         }
     }
     /*Priority moves on Psychic Terrain*/
-    else if (ctx->terrainOverlay.type == PSYCHIC_TERRAIN && ctx->terrainOverlay.numberOfTurnsLeft > 0 && IsClientGrounded(ctx, ai->defender) && (ctx->moveTbl[ai->attackerMove].priority > 0 || (ctx->moveTbl[ai->attackerMove].split == SPLIT_STATUS && ai->attackerAbility == ABILITY_PRANKSTER && ctx->moveTbl[ai->attackerMove].target != RANGE_USER))) {
+    else if (ctx->terrainOverlay.type == PSYCHIC_TERRAIN && ctx->terrainOverlay.numberOfTurnsLeft > 0 && IsClientGrounded(ctx, ai->defender) && (ctx->moveTbl[ai->attackerMove].priority > 0 || ai->attackerMoveIsCopycat || (ctx->moveTbl[ai->attackerMove].split == SPLIT_STATUS && ai->attackerAbility == ABILITY_PRANKSTER && ctx->moveTbl[ai->attackerMove].target != RANGE_USER))) {
         moveScore -= 20; // priority moves are negated by psychic terrain
     }
     /*Check for consecutive destiny bonds*/
@@ -1315,12 +1424,6 @@ int BasicFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext *
         }
     }
 
-    /*Copycat*/
-    else if (ai->attackerMoveEffect == MOVE_EFFECT_USE_LAST_USED_MOVE) {
-        if (ai->attackerMovesFirst && ctx->total_turn == 0 && ai->attackerMovesFirst) {
-            moveScore -= 15;
-        }
-    }
 
     /*Power Swap / Guard Swap*/
     else if (ai->attackerMoveEffect == MOVE_EFFECT_SWAP_ATK_SP_ATK_STAT_CHANGES && (ctx->battlemon[attacker].states[STAT_ATTACK] > ctx->battlemon[ai->defender].states[STAT_ATTACK] && ctx->battlemon[attacker].states[STAT_SPECIAL_ATTACK] > ctx->battlemon[ai->defender].states[STAT_SPECIAL_ATTACK])) {
@@ -1424,7 +1527,7 @@ int EvaluateAttackFlag(struct BattleSystem *bsys, int attacker, int i, struct AI
     // Psychic Terrain: priority moves targeting grounded defenders fail
     if (ctx->terrainOverlay.type == PSYCHIC_TERRAIN
         && ctx->terrainOverlay.numberOfTurnsLeft > 0
-        && ctx->moveTbl[ai->attackerMove].priority > 0
+        && (ctx->moveTbl[ai->attackerMove].priority > 0 || ai->attackerMoveIsCopycat)
         && ai->defenderType1 != TYPE_FLYING
         && ai->defenderType2 != TYPE_FLYING
         && ai->defenderAbility != ABILITY_LEVITATE
@@ -1507,6 +1610,7 @@ int EvaluateAttackFlag(struct BattleSystem *bsys, int attacker, int i, struct AI
         // Priority move while slower also qualifies as a fast kill
         BOOL isFastKill = (ai->attackerMovesFirst || ai->isSpeedTie
             || ctx->moveTbl[ai->attackerMove].priority > 0
+            || ai->attackerMoveIsCopycat
             || (ai->attackerMove == MOVE_GRASSY_GLIDE && ctx->terrainOverlay.type == GRASSY_TERRAIN && ctx->terrainOverlay.numberOfTurnsLeft > 0));
         if (isFastKill) {
             moveScore += 6;
@@ -1528,6 +1632,7 @@ int EvaluateAttackFlag(struct BattleSystem *bsys, int attacker, int i, struct AI
     // OR dying and faster but player has a priority move of their own
     if (ai->maxDamageReceived > ai->attackerHP
         && (ctx->moveTbl[ai->attackerMove].priority > 0
+            || ai->attackerMoveIsCopycat
             || (ai->attackerMove == MOVE_GRASSY_GLIDE && ctx->terrainOverlay.type == GRASSY_TERRAIN && ctx->terrainOverlay.numberOfTurnsLeft > 0))) {
         if (!ai->attackerMovesFirst && !ai->isSpeedTie) {
             moveScore += 11;
@@ -1538,7 +1643,19 @@ int EvaluateAttackFlag(struct BattleSystem *bsys, int attacker, int i, struct AI
                 if (defMove == MOVE_NONE) {
                     continue;
                 }
-                if (ctx->moveTbl[defMove].priority > 0 || (defMove == MOVE_GRASSY_GLIDE && ctx->terrainOverlay.type == GRASSY_TERRAIN && ctx->terrainOverlay.numberOfTurnsLeft > 0)) {
+                // Only a priority move that can actually deal damage counts here -- Protect and
+                // other non-damaging priority moves (Detect, King's Shield, Wide Guard, etc.)
+                // can't threaten to hit the AI first, so they shouldn't justify "burn my own
+                // priority move for safety" the way a real priority attack would.
+                // The AI is already faster here, so the defender's non-priority moves can never
+                // go before it regardless of how much damage they deal -- ai->maxDamageReceived
+                // (used in the outer if) is the worst case across ALL of the defender's moves,
+                // which can come from a slower, harder-hitting move that could never actually
+                // threaten a faster attacker first. Only this specific priority move being lethal
+                // on its own makes it a real danger, so check its own damage roll, not the
+                // defender's overall worst case.
+                if (((ctx->moveTbl[defMove].priority > 0 && ctx->moveTbl[defMove].power > 0) || (defMove == MOVE_GRASSY_GLIDE && ctx->terrainOverlay.type == GRASSY_TERRAIN && ctx->terrainOverlay.numberOfTurnsLeft > 0))
+                    && ai->defenderAvgRollMoveDamages[j] >= ai->attackerHP) {
                     defenderHasPriority = TRUE;
                     break;
                 }
@@ -1653,10 +1770,13 @@ static int BestPivotSwitchInReward(struct BattleSystem *bsys, int attacker, stru
         u8 speedCalc = BattleAI_CalcSpeed(bsys, ctx, defender, mon, CALCSPEED_FLAG_NO_PRIORITY);
         BOOL faster = (speedCalc > 0); // speed ties count as faster
         u32 takesPct = worstIncoming * 100 / benchMon.maxhp;
-        u32 dealsPct = bestOutgoing * 100 / defenderMon.hp;
+        u32 dealsPct = bestOutgoing * 100 / defenderMon.maxhp;
         s32 hpLeftPct = ((s32)benchMon.hp - (s32)worstIncoming) * 100 / benchMon.maxhp;
+        debug_printf("[PivotReward]  cand[%d] sp=%d faster=%d takesPct=%d dealsPct=%d hpLeftPct=%d\n",
+            p, species, faster, takesPct, dealsPct, hpLeftPct);
 
         if (hpLeftPct <= 20 || takesPct >= 25) {
+            debug_printf("[PivotReward]  cand[%d] -> gated out (hpLeftPct<=20 or takesPct>=25)\n", p);
             continue;
         }
 
@@ -1668,8 +1788,10 @@ static int BestPivotSwitchInReward(struct BattleSystem *bsys, int attacker, stru
         } else if (dealsPct > takesPct) {
             reward = 6;
         } else {
+            debug_printf("[PivotReward]  cand[%d] -> survives but no offensive threat, reward=0\n", p);
             continue; // tanks the hit but does not threaten back
         }
+        debug_printf("[PivotReward]  cand[%d] -> reward=%d\n", p, reward);
 
         if (reward > best) {
             best = reward;
@@ -1679,6 +1801,7 @@ static int BestPivotSwitchInReward(struct BattleSystem *bsys, int attacker, stru
         }
     }
 
+    debug_printf("[PivotReward] attacker=%d defender=%d -> best=%d\n", attacker, defender, best);
     return best;
 }
 
@@ -1977,7 +2100,9 @@ int ExpertFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext 
         }
         // Already faster or max speed: let highest-damage calc stand, no extra bonus
     }
-    /*Pure speed-drop status moves (Scary Face, String Shot, Cotton Spore, Venom Drench)*/
+    /*Pure speed-drop status moves (Scary Face, String Shot, Cotton Spore, Venom Drench, Toxic
+      Thread). Toxic Thread is scored identically to the rest -- it still lowers Speed even
+      against a Poison-type target, so no type-immunity gate belongs here.*/
     else if (IsInList(ai->attackerMoveEffect, SpeedDropList, NELEMS(SpeedDropList))) {
         // Venom Drench does nothing if target is not poisoned
         if (ai->attackerMoveEffect == MOVE_EFFECT_VENOM_DRENCH
@@ -1989,6 +2114,18 @@ int ExpertFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext 
             moveScore += 6;
         } else {
             moveScore -= 20;
+        }
+
+        // Toxic Thread also poisons the target on top of the Speed drop -- extra value if the AI
+        // can actually capitalize on that poison.
+        if (ai->attackerMove == MOVE_TOXIC_THREAD
+            && (ai->attackerAbility == ABILITY_MERCILESS
+                || BattlerKnowsMove(bsys, attacker, MOVE_VENOSHOCK, ai)
+                || BattlerKnowsMove(bsys, attacker, MOVE_BARB_BARRAGE, ai)
+                || BattlerKnowsMove(bsys, attacker, MOVE_HEX, ai)
+                || BattlerKnowsMove(bsys, attacker, MOVE_INFERNAL_PARADE, ai)
+                || BattlerKnowsMove(bsys, attacker, MOVE_VENOM_DRENCH, ai))) {
+            moveScore += 1;
         }
     }
 
@@ -2066,6 +2203,35 @@ int ExpertFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext 
             }
 
             if (damageAfterSmash < ai->attackerHP) {
+                moveScore += 2;
+            } else {
+                moveScore -= 2;
+            }
+        }
+        // ---- Fillet Away ---- (same Atk/Sp. Atk/Speed +2 as Shell Smash, but the cost is a direct
+        // half-max-HP loss instead of a Def/Sp. Def drop -- use Belly Drum's HP-cost survival check
+        // above instead of Shell Smash's incoming-damage-multiplier estimate.)
+        else if (ai->attackerMoveEffect == MOVE_EFFECT_ATK_SP_ATK_SPEED_UP_2) {
+            // Never if Atk already +1 or higher, or either attacking stat at +6
+            if (ctx->battlemon[attacker].states[STAT_ATTACK] >= 7
+                || ctx->battlemon[attacker].states[STAT_SPECIAL_ATTACK] == 12) {
+                return -20;
+            }
+
+            moveScore += 6;
+            if (defIncapacitated) {
+                moveScore += 3;
+            }
+
+            int hpAfterFilletAway = ai->attackerHP - ai->attackerMaxHP / 2;
+            if (ai->attackerItem == ITEM_SITRUS_BERRY) {
+                hpAfterFilletAway += ai->attackerMaxHP / 4;
+            }
+            if (hpAfterFilletAway < 0) {
+                hpAfterFilletAway = 0;
+            }
+
+            if (ai->maxDamageReceived < hpAfterFilletAway) {
                 moveScore += 2;
             } else {
                 moveScore -= 2;
@@ -2445,7 +2611,14 @@ int ExpertFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext 
         || ai->attackerMoveEffect == MOVE_EFFECT_HEAL_HALF_REMOVE_FLYING_TYPE
         || ai->attackerMoveEffect == MOVE_EFFECT_STRENGTH_SAP
         || ai->attackerMoveEffect == MOVE_EFFECT_HEAL_HALF_DIFFERENT_IN_WEATHER
-        || ai->attackerMoveEffect == MOVE_EFFECT_RECOVER_HEALTH_AND_SLEEP) {
+        || ai->attackerMoveEffect == MOVE_EFFECT_RECOVER_HEALTH_AND_SLEEP
+        || ai->attackerMoveEffect == MOVE_EFFECT_HEAL_IN_3_TURNS) {
+        // Wish: unlike the rest of this group it doesn't heal the user this turn, so a Wish
+        // already pending on our side is just a wasted turn regardless of HP -- check that first.
+        if (ai->attackerMoveEffect == MOVE_EFFECT_HEAL_IN_3_TURNS
+            && (ctx->side_condition[ai->attackerSide] & SIDE_STATUS_WISH)) {
+            return -20;
+        }
         // Heal Block stops all HP recovery. Strength Sap still lands its Attack drop, so
         // it stays usable (just worse); everything else here just fails outright.
         if (ctx->battlemon[attacker].effect_of_moves & MOVE_EFFECT_FLAG_HEAL_BLOCK) {
@@ -2744,12 +2917,19 @@ int ExpertFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext 
         }
     }
 
-    /*Life Dew: user and/or ally below 75% max HP → +6*/
+    /*Life Dew: heals the user and ally together, so it's worthless outside doubles -- restricted
+      to Doubles/Multi/Tag. +6 if both the AI's mons are below full HP; 50% chance to bump to +7
+      if both are below 50%.*/
     else if (ai->attackerMove == MOVE_LIFE_DEW) {
-        if (ai->attackerPercentHP < 75
-            || ((BattleTypeGet(bsys) & (BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_TAG))
-                && ai->partnerHP > 0 && ai->partnerPercentHP < 75)) {
-            moveScore += 6;
+        if ((BattleTypeGet(bsys) & (BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_TAG))
+            && ai->partnerHP > 0
+            && ai->attackerPercentHP < 100
+            && ai->partnerPercentHP < 100) {
+            if (ai->attackerPercentHP < 50 && ai->partnerPercentHP < 50 && BattleRand(bsys) % 2 == 0) {
+                moveScore += 7;
+            } else {
+                moveScore += 6;
+            }
         }
     }
 
@@ -3171,7 +3351,9 @@ int ExpertFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext 
                 if (defMove == MOVE_NONE) {
                     continue;
                 }
-                if (ctx->moveTbl[defMove].priority > 0 || (defMove == MOVE_GRASSY_GLIDE && ctx->terrainOverlay.type == GRASSY_TERRAIN && ctx->terrainOverlay.numberOfTurnsLeft > 0)) {
+                // Only a damaging priority move can actually threaten here (see the identical
+                // fix/comment in the +11 priority-kill block above).
+                if ((ctx->moveTbl[defMove].priority > 0 && ctx->moveTbl[defMove].power > 0) || (defMove == MOVE_GRASSY_GLIDE && ctx->terrainOverlay.type == GRASSY_TERRAIN && ctx->terrainOverlay.numberOfTurnsLeft > 0)) {
                     defenderHasPriority = TRUE;
                     break;
                 }
@@ -3503,6 +3685,7 @@ int ExpertFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext 
             && ai->attackerAvgRollMoveDamages[i] >= ai->defenderHP) {
             BOOL isFast = (ai->attackerMovesFirst || ai->isSpeedTie
                 || ctx->moveTbl[ai->attackerMove].priority > 0
+                || ai->attackerMoveIsCopycat
                 || (ai->attackerMove == MOVE_GRASSY_GLIDE && ctx->terrainOverlay.type == GRASSY_TERRAIN && ctx->terrainOverlay.numberOfTurnsLeft > 0));
             if (isFast) {
                 moveScore += 9;
@@ -3587,6 +3770,153 @@ int ExpertFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext 
         }
     }
 
+    /*Trick-or-Treat: adds Ghost as a third type to the defender.*/
+    else if (ai->attackerMoveEffect == MOVE_EFFECT_ADD_TYPE_GHOST) {
+        if (ai->defenderType1 == TYPE_GHOST || ai->defenderType2 == TYPE_GHOST || ctx->battlemon[ai->defender].type3 == TYPE_GHOST) {
+            // already Ghost-type, the move does nothing
+            moveScore -= 15;
+        } else if (AttackerHasReliableTypeMove(bsys, attacker, TYPE_NORMAL, ai) || AttackerHasReliableTypeMove(bsys, attacker, TYPE_FIGHTING, ai)) {
+            // Ghost grants immunity to Normal and Fighting -- don't wall off our own reliable attacks
+            moveScore -= 10;
+        } else if (AttackerHasExploitableTypeMove(bsys, attacker, TYPE_GHOST, ai)) {
+            moveScore += 6;
+        }
+    }
+
+    /*Forest's Curse: adds Grass as a third type to the defender. Grass has no immunities to worry
+      about handing out, so this just needs the exploitability check.*/
+    else if (ai->attackerMoveEffect == MOVE_EFFECT_ADD_TYPE_GRASS) {
+        if (ai->defenderType1 == TYPE_GRASS || ai->defenderType2 == TYPE_GRASS || ctx->battlemon[ai->defender].type3 == TYPE_GRASS) {
+            // already Grass-type, the move does nothing
+            moveScore -= 15;
+        } else if (AttackerHasExploitableTypeMove(bsys, attacker, TYPE_GRASS, ai)) {
+            moveScore += 6;
+        }
+    }
+
+    /*Wide Guard: doubles only. Only worth clicking if an opponent actually has a spread move that
+      would hit both of the AI's mons in one shot (targets all adjacent opponents or everyone
+      adjacent) -- otherwise it should not be used at all.*/
+    else if (ai->attackerMove == MOVE_WIDE_GUARD) {
+        BOOL opponentHasSpreadMove = FALSE;
+        if (BattleTypeGet(bsys) & (BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_TAG)) {
+            for (int j = 0; j < 4 && !opponentHasSpreadMove; j++) {
+                if (ctx->battlemon[j].hp == 0 || BATTLER_IS_ENEMY(j) == ai->attackerSide) {
+                    continue;
+                }
+                for (int k = 0; k < 4; k++) {
+                    u16 oppMove = ctx->battlemon[j].move[k];
+                    if (oppMove == MOVE_NONE) {
+                        continue;
+                    }
+                    if (ctx->moveTbl[oppMove].target & (RANGE_ADJACENT_OPPONENTS | RANGE_ALL_ADJACENT)) {
+                        opponentHasSpreadMove = TRUE;
+                        break;
+                    }
+                }
+            }
+        }
+        if (opponentHasSpreadMove) {
+            moveScore += 6;
+        } else {
+            moveScore -= 20;
+        }
+    }
+
+    /*Powder: scored off the player's own moveset, not the attacker's -- it punishes the player for
+      using a Fire move, so it's only worth it if they actually have one.*/
+    else if (ai->attackerMoveEffect == MOVE_EFFECT_POWDER) {
+        BOOL canKillWithFire = FALSE;
+        BOOL hasFireDamagingMove = FALSE;
+        int highestDamage = -1;
+        int highestDamageIndex = -1;
+        for (int j = 0; j < 4; j++) {
+            u16 defMove = ctx->battlemon[ai->defender].move[j];
+            if (defMove == MOVE_NONE || ctx->moveTbl[defMove].split == SPLIT_STATUS) {
+                continue;
+            }
+            if (ai->defenderAvgRollMoveDamages[j] > highestDamage) {
+                highestDamage = ai->defenderAvgRollMoveDamages[j];
+                highestDamageIndex = j;
+            }
+            if (ctx->moveTbl[defMove].type == TYPE_FIRE) {
+                hasFireDamagingMove = TRUE;
+                if (ai->defenderAvgRollMoveDamages[j] >= ai->attackerHP) {
+                    canKillWithFire = TRUE;
+                }
+            }
+        }
+        BOOL highestIsFire = (highestDamageIndex >= 0
+            && ctx->moveTbl[ctx->battlemon[ai->defender].move[highestDamageIndex]].type == TYPE_FIRE);
+
+        if (canKillWithFire) {
+            moveScore += 8;
+        } else if (highestIsFire) {
+            moveScore += (BattleRand(bsys) % 2 == 0) ? 7 : 6;
+        } else if (hasFireDamagingMove) {
+            moveScore += 6;
+        }
+    }
+
+    /*Safeguard: protects the attacker's side from status conditions this turn onward. Worth it
+      only if the player actually threatens a status Safeguard covers here, and the attacker's own
+      ability doesn't already neutralize every one of those threats on its own.*/
+    else if (ai->attackerMoveEffect == MOVE_EFFECT_PREVENT_STATUS) {
+        BOOL hasUnblockedStatusThreat = FALSE;
+        BOOL hasAnyStatusThreat = FALSE;
+        for (int j = 0; j < 4; j++) {
+            u16 defMove = ctx->battlemon[ai->defender].move[j];
+            if (defMove == MOVE_NONE) {
+                continue;
+            }
+            u32 defEffect = ctx->moveTbl[defMove].effect;
+            if (IsInList(defEffect, StatusInflictingList, NELEMS(StatusInflictingList))) {
+                hasAnyStatusThreat = TRUE;
+                if (!StatusMoveEffectBlockedByAbility(defEffect, ai->attackerAbility)) {
+                    hasUnblockedStatusThreat = TRUE;
+                }
+            }
+        }
+        if (hasAnyStatusThreat && !hasUnblockedStatusThreat) {
+            moveScore -= 20; // attacker's own ability already covers every status threat here
+        } else if (hasUnblockedStatusThreat) {
+            moveScore += 6;
+        }
+    }
+
+    /*Mist: protects the attacker's side from stat drops this turn onward. Same shape as Safeguard
+      above, just for stat-lowering moves (including secondary-chance ones) instead of status.*/
+    else if (ai->attackerMoveEffect == MOVE_EFFECT_PREVENT_STAT_REDUCTION) {
+        BOOL hasUnblockedDropThreat = FALSE;
+        BOOL hasAnyDropThreat = FALSE;
+        for (int j = 0; j < 4; j++) {
+            u16 defMove = ctx->battlemon[ai->defender].move[j];
+            if (defMove == MOVE_NONE) {
+                continue;
+            }
+            u32 defEffect = ctx->moveTbl[defMove].effect;
+            BOOL isDropEffect = IsInList(defEffect, AttackDropList, NELEMS(AttackDropList))
+                || IsInList(defEffect, DefenseDropList, NELEMS(DefenseDropList))
+                || IsInList(defEffect, SpAtkDropList, NELEMS(SpAtkDropList))
+                || IsInList(defEffect, SpDefDropList, NELEMS(SpDefDropList))
+                || IsInList(defEffect, SpeedDropList, NELEMS(SpeedDropList))
+                || IsInList(defEffect, AccDropList, NELEMS(AccDropList))
+                || IsInList(defEffect, EvaDropList, NELEMS(EvaDropList))
+                || IsInList(defEffect, StatDropSecondaryList, NELEMS(StatDropSecondaryList));
+            if (isDropEffect) {
+                hasAnyDropThreat = TRUE;
+                if (!StatDropMoveEffectBlockedByAbility(defEffect, ai->attackerAbility)) {
+                    hasUnblockedDropThreat = TRUE;
+                }
+            }
+        }
+        if (hasAnyDropThreat && !hasUnblockedDropThreat) {
+            moveScore -= 20; // attacker's own ability already covers every stat-drop threat here
+        } else if (hasUnblockedDropThreat) {
+            moveScore += 6;
+        }
+    }
+
     /*Flat +6 status moves — no additional bonuses*/
     else if (IsInList(ai->attackerMoveEffect, FlatSixStatusList, NELEMS(FlatSixStatusList))) {
         moveScore += 6;
@@ -3661,9 +3991,13 @@ int ExpertFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext 
         }
 
         int pivotReward = canKO ? 0 : BestPivotSwitchInReward(bsys, attacker, ai);
+        debug_printf("[PivotReward] canKO=%d pivotReward=%d bestDamagePct=%d attackerMovesFirst=%d maxDmgRecv=%d attackerHP=%d livingMembers=%d\n",
+            canKO, pivotReward, bestDamage * 100 / ctx->battlemon[ai->defender].maxhp,
+            ai->attackerMovesFirst, ai->maxDamageReceived, ai->attackerHP, ai->livingMembersAttacker);
 
         // Matchup is bad - AI's best damage is low relative to opponent's HP
         if (bestDamage * 100 / ctx->battlemon[ai->defender].maxhp < 30) {
+            debug_printf("[PivotReward] -> bad matchup branch, moveScore += %d\n", pivotReward);
             moveScore += pivotReward;
         }
         // AI moves first but is threatened with a KO - ideal pivot scenario
@@ -3676,17 +4010,28 @@ int ExpertFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext 
                 if (defMove == MOVE_NONE) {
                     continue;
                 }
-                if (ctx->moveTbl[defMove].priority > 0
-                    || (defMove == MOVE_GRASSY_GLIDE
-                        && ctx->terrainOverlay.type == GRASSY_TERRAIN
-                        && ctx->terrainOverlay.numberOfTurnsLeft > 0)) {
+                // Only a damaging priority move can actually intercept the switch (see the
+                // identical fix/comment on the +11 priority-kill block earlier in this file).
+                // AI is already faster here (attackerMovesFirst), so a non-priority defender move
+                // can never go before it regardless of damage -- only this specific priority move
+                // being lethal on its own (not just "any of the defender's moves could KO") can
+                // actually intercept the pivot.
+                if (((ctx->moveTbl[defMove].priority > 0 && ctx->moveTbl[defMove].power > 0)
+                        || (defMove == MOVE_GRASSY_GLIDE
+                            && ctx->terrainOverlay.type == GRASSY_TERRAIN
+                            && ctx->terrainOverlay.numberOfTurnsLeft > 0))
+                    && ai->defenderAvgRollMoveDamages[j] >= ai->attackerHP) {
                     defenderHasPriority = TRUE;
                     break;
                 }
             }
+            debug_printf("[PivotReward] -> about-to-be-KO'd branch, defenderHasPriority=%d, moveScore += %d\n",
+                defenderHasPriority, defenderHasPriority ? 0 : pivotReward);
             if (!defenderHasPriority) {
                 moveScore += pivotReward;
             }
+        } else {
+            debug_printf("[PivotReward] -> neither branch fired, pivotReward not applied\n");
         }
 
         // Palafin (Zero to Hero): a pivot move is how it reaches Hero Form. Strongly prefer it
@@ -3727,6 +4072,49 @@ int ExpertFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext 
         moveScore += 1;
     }
 
+    // Baton Pass / Shed Tail: reward when there's a Substitute or a stat boost worth handing
+    // off, veto as the last mon (folded in from the former standalone Baton Pass AI flag --
+    // always evaluated now, no separate opt-in flag needed).
+    if (ai->attackerMoveEffect == MOVE_EFFECT_PASS_STATS_AND_STATUS) {
+        if (ai->livingMembersAttacker == 1) {
+            moveScore -= 20; // last mon: never pass
+        } else {
+            BOOL hasBoost = (ctx->battlemon[attacker].condition2 & STATUS2_SUBSTITUTE) != 0;
+            if (!hasBoost) {
+                for (int s = STAT_ATTACK; s <= STAT_EVASION; s++) {
+                    if (ctx->battlemon[attacker].states[s] > 6) {
+                        hasBoost = TRUE;
+                        break;
+                    }
+                }
+            }
+            if (hasBoost) {
+                moveScore += 14;
+            }
+            // else: alive target but nothing to pass — no bonus, no penalty
+        }
+    }
+
+    // Copycat, slower: if the copied move ties (or beats) the AI's own best damaging move, Copycat
+    // is strictly better -- same damage, but with priority, so it goes before the opponent instead
+    // of after. Both options already get the same highest-damage bonus above, so this just needs
+    // to be a small, deliberate edge to consistently win the tie rather than leaving it to the
+    // random tiebreak used for genuinely equal-score moves.
+    if (ai->attackerMoveIsCopycat && !ai->attackerMovesFirst && !ai->isSpeedTie) {
+        int bestOtherDamage = 0;
+        for (int j = 0; j < 4; j++) {
+            if (j == i) {
+                continue;
+            }
+            if (ai->attackerAvgRollMoveDamages[j] > bestOtherDamage) {
+                bestOtherDamage = ai->attackerAvgRollMoveDamages[j];
+            }
+        }
+        if (ai->attackerAvgRollMoveDamages[i] >= bestOtherDamage) {
+            moveScore += 2;
+        }
+    }
+
     // Dancer: a living opposing Dancer instantly copies any Dance move the AI uses — a full
     // free setup for boosting dances, or a free extra hit / status for the rest. Only a foe's
     // Dancer is a problem (an ally copying is neutral-to-good), so disfavor dancing into one.
@@ -3757,40 +4145,6 @@ int ExpertFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext 
     return moveScore;
 }
 
-int BatonPassFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext *ai)
-{
-    int moveScore = 0;
-    struct BattleStruct *ctx = bsys->sp;
-
-    if (ai->attackerMoveEffect != MOVE_EFFECT_PASS_STATS_AND_STATUS) {
-        return 0;
-    }
-
-    // Last mon: never Baton Pass
-    if (ai->livingMembersAttacker == 1) {
-        return -20;
-    }
-
-    // Check if AI has a Substitute or any raised stat to pass
-    BOOL hasBoost = FALSE;
-    if (ctx->battlemon[attacker].condition2 & STATUS2_SUBSTITUTE) {
-        hasBoost = TRUE;
-    } else {
-        for (int s = STAT_ATTACK; s <= STAT_EVASION; s++) {
-            if (ctx->battlemon[attacker].states[s] > 6) {
-                hasBoost = TRUE;
-                break;
-            }
-        }
-    }
-
-    if (hasBoost) {
-        moveScore += 14;
-    }
-    // else: alive target but nothing to pass — no bonus, no penalty
-
-    return moveScore;
-}
 int TagStrategyFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext *ai)
 {
     debug_printf("entering tag strategy\n");
@@ -3871,6 +4225,15 @@ int TagStrategyFlag(struct BattleSystem *bsys, int attacker, int i, struct AICon
                     }
                 }
 
+            }
+            /*Decorate: raises the partner's Attack and Sp. Atk by 2 stages each.*/
+            else if (ai->attackerMoveEffect == MOVE_EFFECT_DECORATE) {
+                if (ctx->battlemon[ai->partner].states[STAT_ATTACK] > 6
+                    || ctx->battlemon[ai->partner].states[STAT_SPECIAL_ATTACK] > 6) {
+                    moveScore -= 30;
+                } else {
+                    moveScore += 6;
+                }
             }
             /*Gastro Acid*/
             else if (ai->attackerMoveEffect == MOVE_EFFECT_SUPRESS_ABILITY) {
@@ -4170,6 +4533,182 @@ BOOL BattlerHasTypeDamagingMove(struct BattleSystem *bsys, u32 battler, u32 type
         }
     }
     return hasMove;
+}
+
+/*For Trick-or-Treat / Forest's Curse style type-adding moves: TRUE if the attacker (must be the
+  current AI attacker -- this reads the precomputed ai->attackerMoveEffectiveness[] array, which is
+  only valid for the attacker's own 4 moves against the current defender) has a damaging move of
+  the given type that is NOT already super effective. Adding the type to the defender is only worth
+  the turn if it would actually improve a move that's currently resisted or merely neutral --
+  spending a turn to push an already-super-effective move higher isn't worth it compared to just
+  attacking now.*/
+BOOL AttackerHasExploitableTypeMove(struct BattleSystem *bsys, u32 attacker, u32 type, struct AIContext *ai)
+{
+    struct BattleStruct *ctx = bsys->sp;
+    for (int i = 0; i < 4; i++) {
+        u16 moveId = ctx->battlemon[attacker].move[i];
+        if (moveId == MOVE_NONE) {
+            continue;
+        }
+        if (ctx->moveTbl[moveId].type == type
+            && ctx->moveTbl[moveId].split != SPLIT_STATUS
+            && ai->attackerMoveEffectiveness[i] < TYPE_MUL_SUPER_EFFECTIVE) {
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
+/*Companion to AttackerHasExploitableTypeMove: TRUE if the attacker has a damaging move of the
+  given type that currently connects (not already a 0x immunity) against the defender. Used to
+  guard against moves like Trick-or-Treat handing the defender a new immunity (Ghost blocks Normal
+  and Fighting) that would wall off the attacker's own reliable options.*/
+BOOL AttackerHasReliableTypeMove(struct BattleSystem *bsys, u32 attacker, u32 type, struct AIContext *ai)
+{
+    struct BattleStruct *ctx = bsys->sp;
+    for (int i = 0; i < 4; i++) {
+        u16 moveId = ctx->battlemon[attacker].move[i];
+        if (moveId == MOVE_NONE) {
+            continue;
+        }
+        if (ctx->moveTbl[moveId].type == type
+            && ctx->moveTbl[moveId].split != SPLIT_STATUS
+            && ai->attackerMoveEffectiveness[i] != TYPE_MUL_NO_EFFECT) {
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
+/*What move Nature Power actually becomes right now. An active Gen 6+ terrain move takes priority
+  over the map's natural environment, matching modern (Gen 8/9) Nature Power behavior -- checked
+  against ctx->terrainOverlay directly (the live, authoritative terrain-move state this AI already
+  reads everywhere else) rather than bsys->terrain, which only mirrors it via a background-graphics
+  callback and isn't guaranteed to be fresh at AI-scoring time. Falls back to the classic Gen 4
+  map-environment table (bsys->terrain) when no terrain move is active; anything not an outdoor
+  environment (buildings, Distortion World, link battles, Elite Four rooms, battle facilities)
+  defaults to Tri Attack.*/
+u16 GetNaturePowerResultMove(struct BattleSystem *bsys)
+{
+    struct BattleStruct *ctx = bsys->sp;
+
+    if (ctx->terrainOverlay.numberOfTurnsLeft > 0) {
+        switch (ctx->terrainOverlay.type) {
+        case ELECTRIC_TERRAIN:
+            return MOVE_THUNDERBOLT;
+        case GRASSY_TERRAIN:
+            return MOVE_ENERGY_BALL;
+        case MISTY_TERRAIN:
+            return MOVE_MOONBLAST;
+        case PSYCHIC_TERRAIN:
+            return MOVE_PSYCHIC;
+        default:
+            break;
+        }
+    }
+
+    switch (bsys->terrain) {
+    case TERRAIN_PLAIN:
+    case TERRAIN_SAND:
+        return MOVE_EARTHQUAKE;
+    case TERRAIN_CAVE:
+    case TERRAIN_MOUNTAIN:
+        return MOVE_ROCK_SLIDE;
+    case TERRAIN_GRASS:
+    case TERRAIN_PUDDLE:
+        return MOVE_SEED_BOMB;
+    case TERRAIN_WATER:
+        return MOVE_HYDRO_PUMP;
+    case TERRAIN_SNOW:
+        return MOVE_BLIZZARD;
+    case TERRAIN_ICE:
+        return MOVE_ICE_BEAM;
+    case TERRAIN_GREAT_MARSH:
+        return MOVE_MUD_BOMB;
+    case TERRAIN_BUILDING:
+    default:
+        return MOVE_TRI_ATTACK;
+    }
+}
+
+/*What move Copycat actually becomes right now: the real last move used anywhere in the battle
+  (ctx->waza_no_last -- a genuine, already-determined fact, not a prediction), validated with the
+  same legality the real engine itself uses (BtlCmd_TryCopycat: CheckMoveCallsOtherMove +
+  CheckLegalMetronomeMove), further restricted to damaging moves only per design. Returns MOVE_NONE
+  if nothing has been used yet, the last move isn't legal to copy, or it's a status move -- callers
+  should leave the attacker's move as the real (status, unscored) Copycat in that case.*/
+u16 GetCopycatResultMove(struct BattleSystem *bsys, u32 attacker)
+{
+    struct BattleStruct *ctx = bsys->sp;
+    u16 lastMove = ctx->waza_no_last;
+
+    if (lastMove == MOVE_NONE
+        || CheckMoveCallsOtherMove(lastMove)
+        || !CheckLegalMetronomeMove(bsys, ctx, attacker, lastMove)
+        || ctx->moveTbl[lastMove].split == SPLIT_STATUS) {
+        return MOVE_NONE;
+    }
+    return lastMove;
+}
+
+/*For Safeguard: TRUE if the given status-inflicting move effect is already fully neutralized by
+  the attacker's own ability, making Safeguard redundant against that specific threat. Scoped to
+  unconditional abilities only (no sun/rain-gated Leaf Guard/Hydration) -- Purifying Salt and
+  Comatose block every condition Safeguard covers, the rest are single-status.*/
+BOOL StatusMoveEffectBlockedByAbility(u32 moveEffect, u32 ability)
+{
+    if (ability == ABILITY_PURIFYING_SALT || ability == ABILITY_COMATOSE) {
+        return TRUE;
+    }
+    switch (moveEffect) {
+    case MOVE_EFFECT_STATUS_BURN:
+        return ability == ABILITY_WATER_VEIL || ability == ABILITY_WATER_BUBBLE || ability == ABILITY_THERMAL_EXCHANGE;
+    case MOVE_EFFECT_STATUS_PARALYZE:
+        return ability == ABILITY_LIMBER;
+    case MOVE_EFFECT_STATUS_POISON:
+    case MOVE_EFFECT_STATUS_BADLY_POISON:
+        return ability == ABILITY_IMMUNITY || ability == ABILITY_POISON_HEAL;
+    case MOVE_EFFECT_STATUS_SLEEP:
+    case MOVE_EFFECT_STATUS_SLEEP_NEXT_TURN:
+        return ability == ABILITY_INSOMNIA || ability == ABILITY_VITAL_SPIRIT;
+    case MOVE_EFFECT_STATUS_FROSTBITE:
+        return ability == ABILITY_MAGMA_ARMOR;
+    default:
+        // MOVE_EFFECT_RANDOM_PRIMARY_STATUS_HIT (Tri Attack) can roll any of the above --
+        // only a blanket immunity (already checked above) fully neutralizes it.
+        return FALSE;
+    }
+}
+
+/*For Mist: TRUE if the given stat-drop move effect is already fully neutralized by the attacker's
+  own ability. Clear Body / White Smoke / Full Metal Body block every stat; the rest only block the
+  one stat they name.*/
+BOOL StatDropMoveEffectBlockedByAbility(u32 moveEffect, u32 ability)
+{
+    if (ability == ABILITY_CLEAR_BODY || ability == ABILITY_WHITE_SMOKE || ability == ABILITY_FULL_METAL_BODY) {
+        return TRUE;
+    }
+    switch (moveEffect) {
+    case MOVE_EFFECT_ATK_DOWN:
+    case MOVE_EFFECT_ATK_DOWN_2:
+    case MOVE_EFFECT_ATK_DOWN_3:
+    case MOVE_EFFECT_LOWER_ATTACK_HIT:
+        return ability == ABILITY_HYPER_CUTTER;
+    case MOVE_EFFECT_ACC_DOWN:
+    case MOVE_EFFECT_ACC_DOWN_2:
+    case MOVE_EFFECT_ACC_DOWN_3:
+    case MOVE_EFFECT_LOWER_ACCURACY_HIT:
+        return ability == ABILITY_KEEN_EYE;
+    case MOVE_EFFECT_DEF_DOWN:
+    case MOVE_EFFECT_DEF_DOWN_2:
+    case MOVE_EFFECT_DEF_DOWN_3:
+    case MOVE_EFFECT_LOWER_DEFENSE_HIT:
+        return ability == ABILITY_BIG_PECKS;
+    default:
+        // Combo (ATK_DEF_DOWN, ATK_SP_ATK_DOWN), Sp. Atk, Sp. Def, Speed, and Evasion drops have no
+        // single-stat immunity ability in this engine -- only the blanket abilities above cover them.
+        return FALSE;
+    }
 }
 
 /*Returns true if user has a particular move split (physical, special, or status) in their 4 move slots.*/
@@ -4524,6 +5063,19 @@ void SetupStateVariables(struct BattleSystem *bsys, int attacker, u32 defender, 
         struct AI_damage damages = { 0 };
         int attackerMoveno = ctx->battlemon[attacker].move[i];
         struct BattleMove attackerMove = ctx->moveTbl[attackerMoveno];
+        // Nature Power: precompute damage/effectiveness for whatever move it actually becomes,
+        // not the 0-power status move it's defined as (see the identical substitution in the main
+        // per-move scoring loops).
+        if (attackerMove.effect == MOVE_EFFECT_NATURE_POWER) {
+            attackerMoveno = GetNaturePowerResultMove(bsys);
+            attackerMove = ctx->moveTbl[attackerMoveno];
+        } else if (attackerMove.effect == MOVE_EFFECT_USE_LAST_USED_MOVE) {
+            u16 copycatMove = GetCopycatResultMove(bsys, attacker);
+            if (copycatMove != MOVE_NONE) {
+                attackerMoveno = copycatMove;
+                attackerMove = ctx->moveTbl[attackerMoveno];
+            }
+        }
         // attackerMoveCheck = ctx->battlemon[attacker].move[i];
         // attackerEffectCheck = ctx->moveTbl[attackerMoveCheck].effect;
         // attackerMoveTypeCheck = ctx->moveTbl[attackerMoveCheck].type;

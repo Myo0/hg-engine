@@ -745,22 +745,22 @@ int UNUSED SwitchInAbilityCheck(void *bw, struct BattleStruct *sp)
                         switch (GetBattlerAbility(sp, client_no)) {
                         case ABILITY_GRASSY_SURGE:
                             sp->addeffect_type = SIDE_EFFECT_TYPE_ABILITY;
-                            UpdateTerrainOverlay(sp, client_no, GRASSY_TERRAIN);
+                            UpdateTerrainOverlayPermanent(sp, client_no, GRASSY_TERRAIN);
                             ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
                             break;
                         case ABILITY_MISTY_SURGE:
                             sp->addeffect_type = SIDE_EFFECT_TYPE_ABILITY;
-                            UpdateTerrainOverlay(sp, client_no, MISTY_TERRAIN);
+                            UpdateTerrainOverlayPermanent(sp, client_no, MISTY_TERRAIN);
                             ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
                             break;
                         case ABILITY_ELECTRIC_SURGE:
                             sp->addeffect_type = SIDE_EFFECT_TYPE_ABILITY;
-                            UpdateTerrainOverlay(sp, client_no, ELECTRIC_TERRAIN);
+                            UpdateTerrainOverlayPermanent(sp, client_no, ELECTRIC_TERRAIN);
                             ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
                             break;
                         case ABILITY_PSYCHIC_SURGE:
                             sp->addeffect_type = SIDE_EFFECT_TYPE_ABILITY;
-                            UpdateTerrainOverlay(sp, client_no, PSYCHIC_TERRAIN);
+                            UpdateTerrainOverlayPermanent(sp, client_no, PSYCHIC_TERRAIN);
                             ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
                             break;
                         default:
@@ -872,7 +872,7 @@ int UNUSED SwitchInAbilityCheck(void *bw, struct BattleStruct *sp)
                             && sp->terrainOverlay.numberOfTurnsLeft > 0) {
                             scriptnum = BATTLE_SUBSCRIPT_HADRON_ENGINE_NO_TERRAIN_SETUP;
                         } else {
-                            UpdateTerrainOverlay(sp, client_no, ELECTRIC_TERRAIN);
+                            UpdateTerrainOverlayPermanent(sp, client_no, ELECTRIC_TERRAIN);
                             scriptnum = BATTLE_SUBSCRIPT_CREATE_TERRAIN_OVERLAY;
                         }
                         ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
@@ -944,6 +944,20 @@ int UNUSED SwitchInAbilityCheck(void *bw, struct BattleStruct *sp)
                     if (IS_ITEM_TERRAIN_SEED(heldItem) && TerrainSeedShouldActivate(sp, heldItem)) {
                         sp->state_client = client_no;
                         scriptnum = BATTLE_SUBSCRIPT_HANDLE_TERRAIN_SEEDS;
+                        ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                        break;
+                    }
+                }
+
+                // Electrum: Stat Genes (Berserk/Juggernaut/Resonance/Catalyst/Overdrive) -- same
+                // switch-in slot as Terrain Seeds, but unconditional (no terrain requirement).
+                {
+                    u16 heldItem;
+
+                    heldItem = GetBattleMonItem(sp, client_no);
+                    if (IS_ITEM_STAT_GENE(heldItem)) {
+                        sp->state_client = client_no;
+                        scriptnum = BATTLE_SUBSCRIPT_HANDLE_STAT_GENES;
                         ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
                         break;
                     }

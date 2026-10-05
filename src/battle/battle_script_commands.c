@@ -490,7 +490,7 @@ u32 cmdAddress = 0;
 #pragma GCC diagnostic pop
 #endif // DEBUG_BATTLE_SCRIPT_COMMANDS
 
-#define BASE_ENGINE_BTL_SCR_CMDS_MAX 0x125 // was stale at 0x11D (8 commands behind); corrected 2026-09-17
+#define BASE_ENGINE_BTL_SCR_CMDS_MAX 0x12B // was stale at 0x125 (5 commands behind); corrected 2026-09-28
 
 // clang-format off
 const btl_scr_cmd_func NewBattleScriptCmdTable[] = {
@@ -5199,6 +5199,10 @@ BOOL btl_scr_cmd_119_SetCurrentMoveDoneSwitchingFlag(void *bsys UNUSED, struct B
 {
     IncrementBattleScriptPtr(ctx, 1);
     u32 status = read_battle_script_param(ctx);
+#ifdef DEBUG_SWITCH_HIT_LOGS
+    debug_printf("[SwitchHit] scrcmd_119 sets currentMoveSwitchStatus %d -> %d (attack_client=%d, current_move_index=%d)\n",
+        ctx->currentMoveSwitchStatus, status, ctx->attack_client, ctx->current_move_index);
+#endif
     ctx->currentMoveSwitchStatus = status;
     return FALSE;
 }

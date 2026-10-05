@@ -55,12 +55,50 @@ Raising the ceiling past 100 plants = bump `BERRY_TREE_FLAG_MAX` in `script_new_
 ## Sprite-slot blocks
 
 - Berry types 0-26  -> Unown overworld letter forms (Sprite ID 1782-1808, `3_1485`-`3_1511`)
-- Berry types 27-57 -> Arceus + Silvally overworld type-forms (Sprite ID 1824-1854, `3_1527`-`3_1557`)
-- Sprite IDs 1855-1857 (`3_1558`-`3_1560`, 3 Silvally type-forms) are left untouched = spare.
+- Berry types 27-34 -> Sprite ID 1824-1831, `3_1527`-`3_1534` (verified unused; see
+  `BERRY_PLANT_ENTRY` comments in `overworld_table.c` for the gap at 1809-1823, previously
+  used to re-home a Chople-berry collision with the "Following Pichu" event NPC sprite)
+- Berry types 35-57 -> `SPECIES_GIGANTAMAX_*` overworld slots (Sprite ID 1690-1712,
+  `3_1393`-`3_1415`). **Corrected 2026-10-01** - these were originally Sprite ID 1832-1854,
+  which this doc mislabeled "Arceus + Silvally overworld type-forms." There is no Arceus
+  entry in that range at all: 1832-1840 actually belong to the 9 `_OVERWORLD_FEMALE` /
+  gender-difference species (Venusaur, Pikachu, Meganium, Wobbuffet, Steelix, Heracross,
+  **Combee**, Hippopotas, Hippowdon), and 1841-1854 to 14 of the 17 Silvally type-forms.
+  Any of those 9 species (or those 14 Silvally forms) rendered as a berry bush whenever used
+  as a follower, not just near a placed plant - the override replaces the shared texture
+  file, so it was a global collision, not a per-object one. Moved to Gigantamax forms
+  instead, which can never be an active follower in any supported game mechanic (same
+  rationale as the Unown/Silvally slots above).
+- Sprite IDs 1855-1857 (`3_1558`-`3_1560`, Silvally Ice/Dragon/Dark) are left untouched =
+  spare.
 
-**Caveat:** these follower slots are borrowed on the assumption that the player never walks
-with an Unown / Arceus / Silvally follower. If any of those ever becomes an active follower
-Pokemon in Electrum, it will render as a berry bush - re-home those types first.
+**Caveat:** these follower slots are borrowed on the assumption that the borrowed species
+form can never become an active follower Pokemon in Electrum. If that assumption is ever
+broken for Gigantamax, Unown, or the remaining Silvally type-forms, re-home those types
+first - see the 2026-10-01 correction above for exactly how this bites.
+
+**Recovering the 9 gender-form species' real sprites (2026-10-01):** `base/root/a/0/8/1`
+(and the project's own `rom.nds`) had the Kasib-berry bush permanently baked over Combee-F's
+slot by a previous build - this NARC is both the extraction source and the install target
+for every build, so once a stale override got packed in there was nothing to revert it back.
+
+First recovery attempt pulled data from `rom - Copy (9).nds` (2026-09-01, the last repo
+backup before contamination). That data was structurally valid (real BTX0/TEX0, legitimate
+`tsure_poke` internal texture naming) but never rendered in-game even in isolation - it was
+some non-standard asset from this project's own history, not genuine baseline hg-engine data
+(confirmed because its 9 gender-form entries were a different, inconsistent size from every
+neighboring real species, while a true vanilla build gives all of them - and the 14 Silvally
+entries, which matched the Sep-1 data exactly - a uniform size and structure).
+
+The real fix: built `~/hg-engine-vanilla` (a pristine clone of `BluRosie/hg-engine` upstream,
+maintained going forward at `/home/hgengine/hg-engine-vanilla` for exactly this kind of
+recovery) against `rom_default2.nds`/`rom_vanilla.nds` - genuine pre-build 2010 commercial
+ROM dumps, never touched by any hg-engine or Electrum build. Extracted species 1535-1557
+(Sprite ID 1832-1854) from that build's own `base/root/a/0/8/1` and committed them as
+permanent `follower_override/3_1535.btx0`-`3_1557.btx0` files, restoring the real art instead
+of relying on `base/root` rather than removing the override block, so this survives
+`make clean` and any future re-extraction regardless of whether this repo's own base ROM is
+ever fixed. User-confirmed working in-game 2026-10-01.
 
 ## Harvest-amount tiers (tune `qmin`/`qmax` in `sBerryPlantBerry[]`, `src/script_new_cmds.c`)
 
@@ -115,29 +153,29 @@ of that berry.
 |     32 | Rindo  | `ITEM_RINDO_BERRY`  |     1-3 |      1829 |     4093 | `3_1532.btx0` |
 |     33 | Yache  | `ITEM_YACHE_BERRY`  |     1-3 |      1830 |     4094 | `3_1533.btx0` |
 |     34 | Chople | `ITEM_CHOPLE_BERRY` |     1-3 |      1831 |     4095 | `3_1534.btx0` |
-|     35 | Kebia  | `ITEM_KEBIA_BERRY`  |     1-3 |      1832 |     4096 | `3_1535.btx0` |
-|     36 | Shuca  | `ITEM_SHUCA_BERRY`  |     1-3 |      1833 |     4097 | `3_1536.btx0` |
-|     37 | Coba   | `ITEM_COBA_BERRY`   |     1-3 |      1834 |     4098 | `3_1537.btx0` |
-|     38 | Payapa | `ITEM_PAYAPA_BERRY` |     1-3 |      1835 |     4099 | `3_1538.btx0` |
-|     39 | Tanga  | `ITEM_TANGA_BERRY`  |     1-3 |      1836 |     4100 | `3_1539.btx0` |
-|     40 | Charti | `ITEM_CHARTI_BERRY` |     1-3 |      1837 |     4101 | `3_1540.btx0` |
-|     41 | Kasib  | `ITEM_KASIB_BERRY`  |     1-3 |      1838 |     4102 | `3_1541.btx0` |
-|     42 | Haban  | `ITEM_HABAN_BERRY`  |     1-3 |      1839 |     4103 | `3_1542.btx0` |
-|     43 | Colbur | `ITEM_COLBUR_BERRY` |     1-3 |      1840 |     4104 | `3_1543.btx0` |
-|     44 | Babiri | `ITEM_BABIRI_BERRY` |     1-3 |      1841 |     4105 | `3_1544.btx0` |
-|     45 | Chilan | `ITEM_CHILAN_BERRY` |     1-3 |      1842 |     4106 | `3_1545.btx0` |
-|     46 | Liechi | `ITEM_LIECHI_BERRY` |     1-2 |      1843 |     4107 | `3_1546.btx0` |
-|     47 | Ganlon | `ITEM_GANLON_BERRY` |     1-2 |      1844 |     4108 | `3_1547.btx0` |
-|     48 | Salac  | `ITEM_SALAC_BERRY`  |     1-2 |      1845 |     4109 | `3_1548.btx0` |
-|     49 | Petaya | `ITEM_PETAYA_BERRY` |     1-2 |      1846 |     4110 | `3_1549.btx0` |
-|     50 | Apicot | `ITEM_APICOT_BERRY` |     1-2 |      1847 |     4111 | `3_1550.btx0` |
-|     51 | Lansat | `ITEM_LANSAT_BERRY` |     1-2 |      1848 |     4112 | `3_1551.btx0` |
-|     52 | Starf  | `ITEM_STARF_BERRY`  |     1-2 |      1849 |     4113 | `3_1552.btx0` |
-|     53 | Enigma | `ITEM_ENIGMA_BERRY` |     3-6 |      1850 |     4114 | `3_1553.btx0` |
-|     54 | Micle  | `ITEM_MICLE_BERRY`  |     3-6 |      1851 |     4115 | `3_1554.btx0` |
-|     55 | Custap | `ITEM_CUSTAP_BERRY` |     1-2 |      1852 |     4116 | `3_1555.btx0` |
-|     56 | Jaboca | `ITEM_JABOCA_BERRY` |     1-2 |      1853 |     4117 | `3_1556.btx0` |
-|     57 | Rowap  | `ITEM_ROWAP_BERRY`  |     1-2 |      1854 |     4118 | `3_1557.btx0` |
+|     35 | Kebia  | `ITEM_KEBIA_BERRY`  |     1-3 |      1690 |     4096 | `3_1393.btx0` |
+|     36 | Shuca  | `ITEM_SHUCA_BERRY`  |     1-3 |      1691 |     4097 | `3_1394.btx0` |
+|     37 | Coba   | `ITEM_COBA_BERRY`   |     1-3 |      1692 |     4098 | `3_1395.btx0` |
+|     38 | Payapa | `ITEM_PAYAPA_BERRY` |     1-3 |      1693 |     4099 | `3_1396.btx0` |
+|     39 | Tanga  | `ITEM_TANGA_BERRY`  |     1-3 |      1694 |     4100 | `3_1397.btx0` |
+|     40 | Charti | `ITEM_CHARTI_BERRY` |     1-3 |      1695 |     4101 | `3_1398.btx0` |
+|     41 | Kasib  | `ITEM_KASIB_BERRY`  |     1-3 |      1696 |     4102 | `3_1399.btx0` |
+|     42 | Haban  | `ITEM_HABAN_BERRY`  |     1-3 |      1697 |     4103 | `3_1400.btx0` |
+|     43 | Colbur | `ITEM_COLBUR_BERRY` |     1-3 |      1698 |     4104 | `3_1401.btx0` |
+|     44 | Babiri | `ITEM_BABIRI_BERRY` |     1-3 |      1699 |     4105 | `3_1402.btx0` |
+|     45 | Chilan | `ITEM_CHILAN_BERRY` |     1-3 |      1700 |     4106 | `3_1403.btx0` |
+|     46 | Liechi | `ITEM_LIECHI_BERRY` |     1-2 |      1701 |     4107 | `3_1404.btx0` |
+|     47 | Ganlon | `ITEM_GANLON_BERRY` |     1-2 |      1702 |     4108 | `3_1405.btx0` |
+|     48 | Salac  | `ITEM_SALAC_BERRY`  |     1-2 |      1703 |     4109 | `3_1406.btx0` |
+|     49 | Petaya | `ITEM_PETAYA_BERRY` |     1-2 |      1704 |     4110 | `3_1407.btx0` |
+|     50 | Apicot | `ITEM_APICOT_BERRY` |     1-2 |      1705 |     4111 | `3_1408.btx0` |
+|     51 | Lansat | `ITEM_LANSAT_BERRY` |     1-2 |      1706 |     4112 | `3_1409.btx0` |
+|     52 | Starf  | `ITEM_STARF_BERRY`  |     1-2 |      1707 |     4113 | `3_1410.btx0` |
+|     53 | Enigma | `ITEM_ENIGMA_BERRY` |     3-6 |      1708 |     4114 | `3_1411.btx0` |
+|     54 | Micle  | `ITEM_MICLE_BERRY`  |     3-6 |      1709 |     4115 | `3_1412.btx0` |
+|     55 | Custap | `ITEM_CUSTAP_BERRY` |     1-2 |      1710 |     4116 | `3_1413.btx0` |
+|     56 | Jaboca | `ITEM_JABOCA_BERRY` |     1-2 |      1711 |     4117 | `3_1414.btx0` |
+|     57 | Rowap  | `ITEM_ROWAP_BERRY`  |     1-2 |      1712 |     4118 | `3_1415.btx0` |
 
 Oran Berry (Route 31) Flag 2700 0x8008 - 0
 Cheri Berry (Route 31) Flag 2699 0x8008 - 1

@@ -14,7 +14,7 @@ _Start:
     PlayBattleAnimation BATTLER_CATEGORY_PLAYER, BATTLE_ANIMATION_WEATHER_SUN
     Wait
     // Orichalcum Pulse will still show the "The sunlight is harsh!" message before showing the unique message
-    Call BATTLE_SUBSCRIPT_HANDLE_SUN_TEMPORARY
+    Call BATTLE_SUBSCRIPT_HANDLE_SUN_PERMANENT
     // {0} turned the sunlight harsh, sending its ancient pulse into a frenzy!
     PrintMessage 1695, TAG_NICKNAME, BATTLER_CATEGORY_ABILITY_MON
     Wait

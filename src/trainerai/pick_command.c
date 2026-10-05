@@ -23,6 +23,11 @@ void TrainerAI_ComputeAllMoveScores(struct BattleSystem *bsys, int attacker, uns
 // Defined in calc.c — adjusts raw damage for multi-hit, fixed-damage, etc.
 int BattleAI_AdjustUnusualMoveDamage(u32 attackerLevel, u32 attackerHP, u32 defenderHP, u32 damage, u32 moveEffect, u32 attackerAbility, u32 attackerItem);
 
+// Defined in calc.c — scores one switch-in candidate the same way BattleAI_PostKOSwitchIn_Internal
+// ranks its whole party. Shared so TrainerAI_ImmunitySwitch can restrict evaluation to just its own
+// immune-qualifying candidates using the identical ladder.
+int BattleAI_ScoreSwitchInCandidate(struct BattleSystem *bsys, struct BattleStruct *ctx, int attacker, u32 defender, u32 defender2, BOOL isDoublesBattle, BOOL incomingEatsFreeHit, struct PartyPokemon *mon, struct AI_sDamageCalc *defenderMon);
+
 // Written by TrainerAI_ImmunitySwitch when it decides to switch; read by TrainerAI_Main
 // to override PostKO slot selection. -1 means no immunity switch pending.
 int gImmunitySwitchTargetSlot = -1;
@@ -93,7 +98,9 @@ static BOOL IsPartyMonImmuneToMove(struct BattleSystem *battleSys, struct Battle
 // Immunity-based proactive switch. Runs every turn, independent of move quality / HP thresholds.
 //   25% trigger: player's highest-damage move against current AI mon hits a party mon's immunity.
 //   50% trigger: player's last used move hits a party mon's immunity.
-// Among all qualifying candidates, picks the one with the highest damage output against the player.
+// Among all qualifying (immune) candidates, ranks by BattleAI_ScoreSwitchInCandidate (the same
+// ladder BattleAI_PostKOSwitchIn_Internal uses) and picks the highest-scoring one that clears a
+// +2 floor; if none do, no switch happens at all.
 // Survivability check applies to each candidate: not OHKOd if faster, not 2HKOd if slower.
 static BOOL TrainerAI_ImmunitySwitch(struct BattleSystem *battleSys, int battler)
 {
@@ -164,7 +171,7 @@ static BOOL TrainerAI_ImmunitySwitch(struct BattleSystem *battleSys, int battler
     debug_printf("[ImmSwitch] playerLastMove=%d partySize=%d\n", playerLastMove, partySize);
 
     int bestSlot = -1;
-    u32 bestDamage = 0;
+    int bestScore = 0;
     BOOL bestUse50Pct = FALSE;
 
     for (int i = 0; i < partySize; i++) {
@@ -208,7 +215,14 @@ static BOOL TrainerAI_ImmunitySwitch(struct BattleSystem *battleSys, int battler
             : (maxDmgReceived * 2 < partyMonData.hp);
 
         BOOL qualifies25 = highestDmgMove != MOVE_NONE && IsPartyMonImmuneToMove(battleSys, ctx, &partyMonData, highestDmgMove);
-        BOOL qualifies50 = playerLastMove != MOVE_NONE && IsPartyMonImmuneToMove(battleSys, ctx, &partyMonData, playerLastMove);
+        // Status moves (Recover, etc.) carry a type but deal no damage -- "immune" to one is
+        // meaningless and shouldn't trigger a defensive switch. highestDmgMove is already
+        // naturally damage-only (see the loop that sets it above), but playerLastMove is
+        // whatever the player's previous move was, status or not, so it needs its own check.
+        BOOL playerLastMoveIsDamaging = playerLastMove != MOVE_NONE
+            && ctx->moveTbl[playerLastMove].split != SPLIT_STATUS
+            && ctx->moveTbl[playerLastMove].power;
+        BOOL qualifies50 = playerLastMoveIsDamaging && IsPartyMonImmuneToMove(battleSys, ctx, &partyMonData, playerLastMove);
         debug_printf("[ImmSwitch]  cand[%d] sp=%d abil=%d hp=%d recv=%d spd=%d surv=%d q25=%d q50=%d\n",
             i, species, partyMonData.ability, partyMonData.hp, maxDmgReceived, speedCalc, survives, qualifies25, qualifies50);
 
@@ -219,46 +233,27 @@ static BOOL TrainerAI_ImmunitySwitch(struct BattleSystem *battleSys, int battler
             continue;
         }
 
-        // Score: best move this candidate can deal to the player's current mon
-        u32 maxDmgDealt = 0;
-        for (int k = 0; k < 4; k++) {
-            u16 moveno = GetMonData(mon, MON_DATA_MOVE1 + k, NULL);
-            if (moveno == MOVE_NONE) {
-                continue;
-            }
-            struct BattleMove mv = ctx->moveTbl[moveno];
-            if (mv.split == SPLIT_STATUS || !mv.power) {
-                continue;
-            }
-            struct AI_damage damages = { 0 };
-            damages.damageRoll = BattleAI_CalcDamage(battleSys, ctx, moveno, ctx->side_condition[BATTLER_IS_ENEMY(battler)], ctx->field_condition, mv.power, mv.type, 0, battler, defender, &damages, &partyMonData, &playerMon);
-            damages.damageRange[15] = BattleAI_AdjustUnusualMoveDamage(partyMonData.level, partyMonData.hp, playerMon.hp, damages.damageRange[15], mv.effect, partyMonData.ability, partyMonData.item);
-            if (damages.damageRange[15] > maxDmgDealt) {
-                maxDmgDealt = damages.damageRange[15];
-            }
-        }
-
-        // The candidate must be able to make *some* progress against the player. An immunity
-        // pivot doesn't need to hit hard though — the payoff is absorbing the opponent's
-        // biggest move for free, not the chip it deals back — so a moderate floor (25%),
-        // not the old 35% which vetoed clearly-correct pivots (e.g. a Lightning Rod mon vs a
-        // Shock Wave spammer whose only unresisted move just can't quite hit 35%).
-        u32 pctDealt = playerMon.hp ? (maxDmgDealt * 100 / playerMon.hp) : 0;
-        debug_printf("[ImmSwitch]  cand[%d] maxDmgDealt=%d (%d%% of plHP) floor25=%d\n",
-            i, maxDmgDealt, pctDealt, pctDealt >= 25);
-        if (playerMon.hp == 0 || pctDealt < 25) {
+        // Score this candidate the same way BattleAI_PostKOSwitchIn_Internal ranks any switch-in,
+        // restricted here to just the immune-qualifying candidates found above. The point of this
+        // switch is to go into an immunity — a candidate that's technically immune to the trigger
+        // move but is a mediocre-or-worse matchup overall (weighed against the opponent's whole
+        // kit, not just the trigger move) shouldn't get forced in. Only the "+2 or better" tiers
+        // (deals more than it takes, or stronger) clear that bar; +1/-1/-2 do not.
+        int candidateScore = BattleAI_ScoreSwitchInCandidate(battleSys, ctx, battler, defender, defender, FALSE, TRUE, mon, &playerMon);
+        debug_printf("[ImmSwitch]  cand[%d] switchInScore=%d floor102=%d\n", i, candidateScore, candidateScore >= 102);
+        if (candidateScore < 102) {
             continue;
         }
 
-        if (bestSlot == -1 || maxDmgDealt > bestDamage) {
-            bestDamage = maxDmgDealt;
+        if (bestSlot == -1 || candidateScore > bestScore) {
+            bestScore = candidateScore;
             bestSlot = i;
             bestUse50Pct = qualifies50;
         }
     }
 
     if (bestSlot == -1) {
-        debug_printf("[ImmSwitch] no qualifying candidate -> return FALSE\n");
+        debug_printf("[ImmSwitch] no qualifying candidate at +2 or better -> return FALSE (no switch)\n");
         return FALSE;
     }
 
@@ -268,9 +263,13 @@ static BOOL TrainerAI_ImmunitySwitch(struct BattleSystem *battleSys, int battler
     debug_printf("[ImmSwitch] bestSlot=%d use50=%d roll=1/%d rand=%d -> %s\n",
         bestSlot, bestUse50Pct, roll, rollVal, (rollVal % roll == 0) ? "SWITCH" : "stay");
     if (rollVal % roll == 0) {
-        // The candidate scan above only gates WHETHER to switch. The replacement itself is
-        // chosen by BattleAI_PostKOSwitchIn_Internal (the same picker used after any KO), so
-        // leave gImmunitySwitchTargetSlot unset (-1) and let TrainerAI_Main fall through to it.
+        // Unlike a post-KO switch, the whole point here is to go into an immunity -- the general
+        // picker (BattleAI_PostKOSwitchIn_Internal) considers the entire party and has no idea
+        // WHY this switch is happening, so it can (and did, in practice) pick a non-immune mon
+        // over the immune one on a tie. bestSlot already passed the identical scoring ladder,
+        // restricted to just the candidates that actually qualify as immune, so commit to it
+        // directly instead of falling through to the unrestricted picker.
+        gImmunitySwitchTargetSlot = bestSlot;
         return TRUE;
     }
 
@@ -303,6 +302,7 @@ BOOL TrainerAI_ShouldSwitch(struct BattleSystem *battleSys, int battler)
 
     // Perish Song: counter at 1 means the mon faints end of this turn if it stays in
     if ((ctx->battlemon[battler].effect_of_moves & MOVE_EFFECT_FLAG_PERISH_SONG) && ctx->battlemon[battler].moveeffect.perishSongTurns == 1) {
+        debug_printf("[PerishSwitch] battler=%d perishTurns=1, scanning for a live bench mon\n", battler);
         int partySize = Battle_GetClientPartySize(battleSys, battler);
         for (int i = 0; i < partySize; i++) {
             if (i == ctx->sel_mons_no[battler] || i == ctx->ai_reshuffle_sel_mons_no[battler]) {
@@ -314,9 +314,11 @@ BOOL TrainerAI_ShouldSwitch(struct BattleSystem *battleSys, int battler)
                 continue;
             }
             if (GetMonData(mon, MON_DATA_HP, 0) > 0) {
+                debug_printf("[PerishSwitch] -> slot %d is alive, SWITCH\n", i);
                 return TRUE;
             }
         }
+        debug_printf("[PerishSwitch] -> no live bench mon, staying in to faint\n");
     }
 
     // Palafin (Zero to Hero) only, nothing else: guaranteed manual switch so it reaches Hero
@@ -367,9 +369,13 @@ BOOL TrainerAI_ShouldSwitch(struct BattleSystem *battleSys, int battler)
                     }
                 }
 
+                debug_printf("[PalafinSwitch] battler=%d slower=%d pivotWalled=%d -> %s\n",
+                    battler, palafinSlower, pivotWalled, (palafinSlower || pivotWalled) ? "SWITCH" : "no");
                 if (palafinSlower || pivotWalled) {
                     return TRUE;
                 }
+            } else {
+                debug_printf("[PalafinSwitch] battler=%d no bench, deferring to move scorer\n", battler);
             }
         }
     }
@@ -377,17 +383,21 @@ BOOL TrainerAI_ShouldSwitch(struct BattleSystem *battleSys, int battler)
     // Condition 1: All available moves must score <= 95 (i.e., net -5 or worse from baseline 100)
     unsigned int moveScores[4] = { 0 };
     TrainerAI_ComputeAllMoveScores(battleSys, battler, moveScores);
+    debug_printf("[ShouldSwitch] battler=%d moveScores=%d,%d,%d,%d\n",
+        battler, moveScores[0], moveScores[1], moveScores[2], moveScores[3]);
     for (int i = 0; i < 4; i++) {
         if (ctx->battlemon[battler].move[i] == MOVE_NONE) {
             continue;
         }
         if (moveScores[i] > 95) {
+            debug_printf("[ShouldSwitch] -> move[%d] scored %d > 95, staying in\n", i, moveScores[i]);
             return FALSE;
         }
     }
 
     // Condition 3: AI mon must be above 50% HP
     if (ctx->battlemon[battler].hp * 2 < ctx->battlemon[battler].maxhp) {
+        debug_printf("[ShouldSwitch] -> hp=%d/%d <= 50%%, staying in\n", ctx->battlemon[battler].hp, ctx->battlemon[battler].maxhp);
         return FALSE;
     }
 
@@ -445,12 +455,16 @@ BOOL TrainerAI_ShouldSwitch(struct BattleSystem *battleSys, int battler)
 
         if (speedCalc > 0) {
             // Faster: viable if not OHKOd
+            debug_printf("[ShouldSwitch]  cand[%d] faster, maxDmgReceived=%d hp=%d -> %s\n",
+                i, maxDmgReceived, partyMon.hp, (maxDmgReceived < partyMon.hp) ? "viable" : "no");
             if (maxDmgReceived < partyMon.hp) {
                 hasViableSwitch = TRUE;
                 break;
             }
         } else {
             // Slower: viable if not 2HKOd
+            debug_printf("[ShouldSwitch]  cand[%d] slower, maxDmgReceived=%d (x2=%d) hp=%d -> %s\n",
+                i, maxDmgReceived, maxDmgReceived * 2, partyMon.hp, (maxDmgReceived * 2 < partyMon.hp) ? "viable" : "no");
             if (maxDmgReceived * 2 < partyMon.hp) {
                 hasViableSwitch = TRUE;
                 break;
@@ -459,9 +473,12 @@ BOOL TrainerAI_ShouldSwitch(struct BattleSystem *battleSys, int battler)
     }
 
     if (!hasViableSwitch) {
+        debug_printf("[ShouldSwitch] -> no viable switch-in candidate, staying in\n");
         return FALSE;
     }
 
     // 50% chance to actually switch
-    return BattleRand(battleSys) % 2 == 0;
+    u32 roll = BattleRand(battleSys);
+    debug_printf("[ShouldSwitch] -> viable candidate found, roll=%d %%2=%d -> %s\n", roll, roll % 2, (roll % 2 == 0) ? "SWITCH" : "stay");
+    return roll % 2 == 0;
 }

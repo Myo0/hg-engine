@@ -178,12 +178,15 @@ BOOL Script_RunNewCmd(SCRIPTCONTEXT *ctx)
 #endif
 
     case SCRIPT_NEW_CMD_SET_NATURE:;
+#ifdef SET_POKEMON_NATURE
         fsys = ctx->fsys;
         party = SaveData_GetPlayerPartyPtr(fsys->savedata);
         pos = GetScriptVar(0x8008);
         pp = Party_GetMonByIndex(party, pos);
         SET_MON_NATURE_OVERRIDE(pp, (u8)GetScriptVar(0x8009));
         RecalcPartyPokemonStats(pp);
+        break;
+#endif
 
     default:
         break;
@@ -341,7 +344,13 @@ BOOL Script_RunNewCmd(SCRIPTCONTEXT *ctx)
             fsys = ctx->fsys;
             party = SaveData_GetPlayerPartyPtr(fsys->savedata);
             pos = GetScriptVar(0x8008);
-            u8 status = GetScriptVar(0x8009);
+            // MON_DATA_STATUS's real field is a u32 (pokeheartgold src/pokemon.c:910-912,
+            // `mon->party.status = VALUE(u32)` -- SetMonData always reads 4 bytes from this
+            // pointer regardless of what type we declare). A narrower type here left the upper
+            // 3 bytes as uninitialized stack garbage, which went unnoticed for single-bit
+            // statuses but corrupted Badly Poisoned's turn-counter bits (0x100-0x800),
+            // producing wildly wrong overworld/in-battle toxic damage.
+            u32 status = GetScriptVar(0x8009);
 
             pp = Party_GetMonByIndex(party, pos);
             u16 species = GetMonData(pp, MON_DATA_SPECIES, NULL);

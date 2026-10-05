@@ -3,6 +3,7 @@
 #include "../include/bag.h"
 #include "../include/battle.h"
 #include "../include/config.h"
+#include "../include/constants/buttons.h"
 #include "../include/constants/file.h"
 #include "../include/constants/item.h"
 #include "../include/constants/moves.h"
@@ -10,6 +11,10 @@
 #include "../include/message.h"
 #include "../include/overlay.h"
 #include "../include/pokemon.h"
+#include "../include/save.h"
+#include "../include/script.h"
+#include "../include/system.h"
+#include "../include/task.h"
 #include "../include/types.h"
 #include "../include/window.h"
 
@@ -18,12 +23,24 @@ extern const u8 sButtonRects[][4];
 extern const WindowTemplate sButtonWindowTemplates[];
 extern const s8 sButtonWindowIDs[][2][8];
 
+// Vanilla action-function dispatch table consumed by GetPartyMenuContextMenuActionFunc
+// (0x0207F42C) -- see rom.ld for how this address was confirmed. Index PARTY_MON_CONTEXT_MENU_UNUSED
+// is vanilla-inert (LIST_CANCEL), repurposed below for a custom debug button.
+extern u32 sPartyContextMenuActionFuncs[];
+
+// Already bound (rom.ld, right after PartyMenu_DisableMainScreenBlend_AfterYesNo) but not declared
+// anywhere. Redraws a party slot's whole panel (nickname/level/HP text/HP bar) straight from
+// monsDrawState -- pokeheartgold src/party_context_menu.c:606, the same real function the game
+// calls after an item changes a mon's HP.
+void LONG_CALL sub_0207D5DC(struct PartyMenu *partyMenu, u8 partySlot);
+
 // mirrors the button layout
 static const u8 sPartyMenuRotomCatalogFormOrder[] = { 3, 4, 5, /*quit*/ 0, 0, 1, 2 };
 
 u32 LONG_CALL getButtonColorDepressed(int selection);
 u32 LONG_CALL getButtonColorRaised(int selection);
 void PartyMenu_ShowRotomCatalogList(struct PartyMenu *partyMenu);
+void LONG_CALL PartyMonContextMenuAction_SetHP(struct PartyMenu *partyMenu, int *pState);
 
 u8 LONG_CALL sub_0207B0B0(struct PartyMenu *wk, u8 *buf)
 {
@@ -53,6 +70,15 @@ u8 LONG_CALL sub_0207B0B0(struct PartyMenu *wk, u8 *buf)
             ++count;
 
             // here is where a custom check would go.  replace the below for loop with your own checks
+
+            // Porta PC HP debug button -- flag 397 clear means the Porta PC is active (same gate
+            // field_request.c's R-button handler uses). Patching the vanilla action-func table is
+            // idempotent, so just redoing it every time this menu opens is fine.
+            if (CheckScriptFlag(397) == FALSE) {
+                sPartyContextMenuActionFuncs[PARTY_MON_CONTEXT_MENU_UNUSED] = (u32)PartyMonContextMenuAction_SetHP;
+                buf[count] = PARTY_MON_CONTEXT_MENU_UNUSED;
+                ++count;
+            }
 
             for (i = 0; i < MAX_MON_MOVES; ++i) {
                 move = GetMonData(pp, MON_DATA_MOVE1 + i, NULL);
@@ -207,6 +233,144 @@ void LONG_CALL PartyMonContextMenuAction_QuitToBag(struct PartyMenu *partyMenu, 
     // fully quit out rather than just quitting the submenu
     partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
     *pState = PARTY_MENU_STATE_BEGIN_EXIT;
+}
+
+// --- HP pre-damage live scroller (Phase 2) --------------------------------------------------
+//
+// Phase 2 previously tried to borrow the field system's own persistent dialogue window
+// (SCRIPTENV_WINDOW) from a detached SysTask after fully closing PartyMenu -- see
+// project_party_menu_hp_debug_button.md for the full saga (hang, then black screen, then a crash,
+// each from a different missing piece of that window's lifecycle). The actual problem was
+// architectural: outside of an active dialogue/script session, nothing currently owns or has
+// correctly bound that window, so every attempt to use it from a cold context fought unknown
+// engine state one layer at a time.
+//
+// This rewrite instead stays inside PartyMenu entirely, using two things that are already
+// correctly initialized the whole time the player is looking at the context menu:
+// 1. `partyMenu->itemUseCallback` + PARTY_MENU_STATE_ITEM_USE_CB (pokeheartgold src/party_menu.c:
+//    310) -- a real, intentional per-frame extension seam already in PartyMenu's own vanilla
+//    switch (PartyMenuApp_Main). Setting the callback and jumping to this state calls our function
+//    every frame with no SysTask, no binary patching of the vanilla switch, and no need to exit
+//    PartyMenu at all. PartyMonContextMenuAction_RotomCatalog (above) already proves "clean up the
+//    context popup, then transition to a different PartyMenu state" is a safe, shipped pattern.
+// 2. sub_0207D5DC (pokeheartgold src/party_context_menu.c:606) -- the real vanilla "redraw this
+//    party slot's whole panel from monsDrawState" call, the same one the game uses after an item
+//    changes a mon's HP. No AddWindow, no AddWindowParameterized, no font/printer lifecycle to get
+//    right: write our live-edited value into monsDrawState[partySlot].hp and call this, and the HP
+//    text AND the HP bar (color + length) redraw correctly together, live, every tick it changes.
+// Classic "tap to step once, hold to auto-repeat, hold longer to go very fast" timing. Always
+// steps by 1 HP -- only the rate changes -- so it stays precise right up until release.
+#define HP_SCROLL_INITIAL_DELAY 20 // frames (~1/3s at 60fps) before auto-repeat kicks in
+#define HP_SCROLL_REPEAT_RATE 4 // frames between steps at the normal auto-repeat tier
+#define HP_SCROLL_TURBO_REPEAT_RATE 0 // frames between steps once turbo kicks in -- every tick (60/sec)
+#define HP_SCROLL_TURBO_AFTER_REPEATS 7 // normal-tier repeats (~1/2s) before turbo kicks in
+
+struct SetHPCallbackEnv {
+    struct PartyPokemon *pp;
+    u8 partySlot;
+    int value;
+    int originalHp; // restored into monsDrawState on B-cancel.
+    int maxHp;
+    int lastDrawnValue;
+    int holdTimer; // see HP_SCROLL_INITIAL_DELAY/HP_SCROLL_REPEAT_RATE.
+    int repeatCount; // consecutive auto-repeat steps fired this hold -- ramps into turbo.
+};
+
+static struct SetHPCallbackEnv sSetHPCallbackEnv;
+
+// itemUseCallback shape (int (*)(PartyMenu*)) -- called every frame by PartyMenu's own vanilla
+// PartyMenuApp_Main while *pState == PARTY_MENU_STATE_ITEM_USE_CB. Returning that same state keeps
+// us ticking; returning PARTY_MENU_STATE_1 hands control back to normal party-list browsing.
+static int PartyMenuCallback_SetHP(struct PartyMenu *partyMenu)
+{
+    struct SetHPCallbackEnv *env = &sSetHPCallbackEnv;
+
+    // No "skip the first tick" guard here: unlike the old SysTask-based design, the context menu's
+    // own button-press animation (pokeheartgold src/party_context_menu.c:1169-1224,
+    // PartyMenu_HandleInput_ContextMenu) already spans several real frames between the player's
+    // A-press and this callback's first invocation, so the A bit in gSystem.newKeys is long gone by
+    // then. A guard here was swallowing a real commit press instead, forcing a second one.
+
+    BOOL up = (gSystem.heldKeys & PAD_KEY_UP) != 0;
+    BOOL down = (gSystem.heldKeys & PAD_KEY_DOWN) != 0;
+
+    if (gSystem.newKeys & (PAD_KEY_UP | PAD_KEY_DOWN)) {
+        env->holdTimer = HP_SCROLL_INITIAL_DELAY; // fresh press -- step now, delay before repeating
+        env->repeatCount = 0;
+    } else if (up || down) {
+        if (env->holdTimer > 0) {
+            --env->holdTimer;
+            up = down = FALSE; // still within the initial delay -- not time to step yet
+        } else {
+            BOOL turbo = env->repeatCount >= HP_SCROLL_TURBO_AFTER_REPEATS;
+            env->holdTimer = turbo ? HP_SCROLL_TURBO_REPEAT_RATE : HP_SCROLL_REPEAT_RATE;
+            ++env->repeatCount;
+        }
+    } else {
+        up = down = FALSE;
+    }
+
+    if (up) {
+        if (env->value < env->maxHp) {
+            ++env->value;
+        }
+    } else if (down) {
+        if (env->value > 1) {
+            --env->value;
+        }
+    }
+
+    // sub_0207D5DC redraws the whole panel (nickname/level/HP text/HP bar) straight from
+    // monsDrawState, the same real call the game makes after an item changes a mon's HP -- using it
+    // here too means the HP bar's color/length track the live-edited value in real time, not just
+    // on commit.
+    if (env->value != env->lastDrawnValue) {
+        partyMenu->monsDrawState[env->partySlot].hp = env->value;
+        sub_0207D5DC(partyMenu, env->partySlot);
+        env->lastDrawnValue = env->value;
+    }
+
+    if (gSystem.newKeys & PAD_BUTTON_A) {
+        SetMonData(env->pp, MON_DATA_HP, (u8 *)&env->value);
+        partyMenu->monsDrawState[env->partySlot].hp = env->value;
+        sub_0207D5DC(partyMenu, env->partySlot);
+        return PARTY_MENU_STATE_1;
+    }
+    if (gSystem.newKeys & PAD_BUTTON_B) {
+        partyMenu->monsDrawState[env->partySlot].hp = env->originalHp;
+        sub_0207D5DC(partyMenu, env->partySlot);
+        return PARTY_MENU_STATE_1;
+    }
+
+    return PARTY_MENU_STATE_ITEM_USE_CB;
+}
+
+// Porta-PC-gated HP debug button. Closes the context list and the main-screen dim/highlight blend
+// (same cleanup PartyMonContextMenuAction_QuitToBag uses, just without actually exiting PartyMenu),
+// but deliberately leaves the "Do what with X?" message window (windows[PARTY_MENU_WINDOW_ID_33])
+// up -- then hands off to PartyMenuCallback_SetHP via the real itemUseCallback seam. PartyMenu
+// itself never closes, so there's no window/BG lifecycle to rebuild from scratch.
+void LONG_CALL PartyMonContextMenuAction_SetHP(struct PartyMenu *partyMenu, int *pState)
+{
+    struct PartyPokemon *pp = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
+
+    PartyMenu_DeleteContextMenuAndList(partyMenu);
+    PartyMenu_DisableMainScreenBlend_AfterYesNo();
+
+    sSetHPCallbackEnv.pp = pp;
+    sSetHPCallbackEnv.partySlot = partyMenu->partyMonIndex;
+    sSetHPCallbackEnv.value = GetMonData(pp, MON_DATA_HP, NULL);
+    sSetHPCallbackEnv.originalHp = sSetHPCallbackEnv.value;
+    sSetHPCallbackEnv.maxHp = GetMonData(pp, MON_DATA_MAXHP, NULL);
+    if (sSetHPCallbackEnv.value < 1) {
+        sSetHPCallbackEnv.value = 1;
+    }
+    sSetHPCallbackEnv.lastDrawnValue = -1;
+    sSetHPCallbackEnv.holdTimer = 0;
+    sSetHPCallbackEnv.repeatCount = 0;
+
+    partyMenu->itemUseCallback = PartyMenuCallback_SetHP;
+    *pState = PARTY_MENU_STATE_ITEM_USE_CB;
 }
 
 int LONG_CALL PartyMenu_HandleUseItemOnMon(struct PartyMenu *partyMenu)

@@ -151,6 +151,12 @@ u8 LONG_CALL BattleAI_CalcSpeed(void *bw, struct BattleStruct *sp, int client1, 
     if (sp->side_condition[1] & SIDE_STATUS_STICKY_WEB) {
         stat_stage_spd2 = stat_stage_spd2 - 1;
     }
+    // Electrum: Overdrive Gene. client2 is always a not-yet-switched-in candidate here (client1
+    // is the real on-field mon, whose states[] already reflects any real boost it triggered), so
+    // this predicts the +1 the same way Sticky Web predicts its -1 above.
+    if (hold_effect2 == HOLD_EFFECT_BOOST_SPEED_ON_SWITCH_IN) {
+        stat_stage_spd2 = stat_stage_spd2 + 1;
+    }
 
     // Begin calculating Speed Modifiers
 

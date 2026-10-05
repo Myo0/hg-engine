@@ -125,11 +125,11 @@ a {COLOR 255}Basil{COLOR 0}
 
 
 
-a {COLOR 255}Venonat Fang{COLOR 0}
-a {COLOR 255}Diglett Dirt{COLOR 0}
-a {COLOR 255}Meowth Fur{COLOR 0}
-a {COLOR 255}Psyduck Down{COLOR 0}
-a {COLOR 255}Mankey Fur{COLOR 0}
+a {COLOR 255}Berserk Gene{COLOR 0}
+a {COLOR 255}Juggernaut Gene{COLOR 0}
+a {COLOR 255}Resonance Gene{COLOR 0}
+a {COLOR 255}Catalyst Gene{COLOR 0}
+an {COLOR 255}Overdrive Gene{COLOR 0}
 a {COLOR 255}Growlithe Fur{COLOR 0}
 a {COLOR 255}Slowpoke Claw{COLOR 0}
 a {COLOR 255}Magnemite Screw{COLOR 0}

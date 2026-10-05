@@ -125,11 +125,11 @@
 
 
 
-{COLOR 255}Venonat Fangs{COLOR 0}
-{COLOR 255}bags of Diglett Dirt{COLOR 0}
-{COLOR 255}bags of Meowth Fur{COLOR 0}
-{COLOR 255}bags of Psyduck Down{COLOR 0}
-{COLOR 255}bags of Mankey Fur{COLOR 0}
+{COLOR 255}Berserk Genes{COLOR 0}
+{COLOR 255}Juggernaut Genes{COLOR 0}
+{COLOR 255}Resonance Genes{COLOR 0}
+{COLOR 255}Catalyst Genes{COLOR 0}
+{COLOR 255}Overdrive Genes{COLOR 0}
 {COLOR 255}bags of Growlithe Fur{COLOR 0}
 {COLOR 255}Slowpoke Claws{COLOR 0}
 {COLOR 255}Magnemite Screws{COLOR 0}

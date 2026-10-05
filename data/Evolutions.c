@@ -1443,7 +1443,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
         .entries = {
             { EVO_TRADE_ITEM, ITEM_METAL_COAT, SPECIES_STEELIX },
             { EVO_LEVEL, 42, SPECIES_STEELIX },
-            { EVO_NONE, 0, SPECIES_NONE },
+            { EVO_STONE, ITEM_LINKING_CORD, SPECIES_STEELIX },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
@@ -12271,7 +12271,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
 
     [SPECIES_WIMPOD] = {
         .entries = {
-            { EVO_LEVEL, 60, SPECIES_GOLISOPOD },
+            { EVO_LEVEL, 45, SPECIES_GOLISOPOD },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },

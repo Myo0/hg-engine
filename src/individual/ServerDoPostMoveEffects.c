@@ -77,6 +77,23 @@ void __attribute__((section(".init"))) ServerDoPostMoveEffectsInternal(void *bsy
         debug_printf("in MOVE_PERFORMANCE_VANISH_ON_OFF %d\n", ctx->swoam_seq_no);
 #endif
 
+        // currentMoveSwitchStatus is a shared "a switch just completed" flag written by any
+        // switch-completion event (battle-start send-outs, faint replacements, voluntary
+        // switches, pivot moves), but it's only ever cleared at the END of a move's resolution
+        // (BattleController_MoveEnd.c). If nothing has finished a move yet this battle (e.g. a
+        // trainer's opening send-out on turn 1) it's never been cleared, and a later battler's
+        // U-turn/Volt Switch/Baton Pass/etc. sees a stale DONE left over from that unrelated
+        // switch and silently skips its own switch-out (see Activate_Switch's SWITCH_HIT guard).
+        // Reset it fresh here, at the true start of this move's own post-effect processing, so
+        // it only ever reflects what happens within THIS move.
+#ifdef DEBUG_SWITCH_HIT_LOGS
+        if (ctx->currentMoveSwitchStatus != CURRENT_MOVE_NO_SWITCH) {
+            debug_printf("[SwitchHit] VANISH_ON_OFF clears stale currentMoveSwitchStatus %d -> 0 (attack_client=%d, current_move_index=%d)\n",
+                ctx->currentMoveSwitchStatus, ctx->attack_client, ctx->current_move_index);
+        }
+#endif
+        ctx->currentMoveSwitchStatus = CURRENT_MOVE_NO_SWITCH;
+
         for (ctx->swoak_work = 0; ctx->swoak_work < BattleWorkClientSetMaxGet(bsys); ctx->swoak_work++) {
             if (((ctx->battlemon[ctx->swoak_work].effect_of_moves & (MOVE_EFFECT_FLAG_SEMI_INVULNERABLE)) == 0)
                 && (ctx->battlemon[ctx->swoak_work].effect_of_moves_temp & (MOVE_EFFECT_FLAG_SEMI_INVULNERABLE))) {
@@ -2099,9 +2116,17 @@ int LONG_CALL Activate_Switch(void *bsys UNUSED, struct BattleStruct *ctx)
     int moveEffect = ctx->moveTbl[ctx->current_move_index].effect;
     switch (moveEffect) {
     case MOVE_EFFECT_SWITCH_HIT: // U-Turn, Flip Turn
+#ifdef DEBUG_SWITCH_HIT_LOGS
+        debug_printf("[SwitchHit] attack_client=%d BATTLER_NONE=%d hp=%d currentMoveSwitchStatus=%d (PENDING=%d)\n",
+            ctx->attack_client, BATTLER_NONE, ctx->attack_client != BATTLER_NONE ? ctx->battlemon[ctx->attack_client].hp : -1,
+            ctx->currentMoveSwitchStatus, CURRENT_MOVE_SWITCH_PENDING);
+#endif
         if (ctx->attack_client != BATTLER_NONE
             && ctx->battlemon[ctx->attack_client].hp > 0
             && (ctx->currentMoveSwitchStatus < CURRENT_MOVE_SWITCH_PENDING)) {
+#ifdef DEBUG_SWITCH_HIT_LOGS
+            debug_printf("[SwitchHit] -> switch requested for client %d\n", ctx->attack_client);
+#endif
             ctx->addeffect_type = SIDE_EFFECT_TYPE_MOVE_EFFECT;
             ctx->state_client = ctx->attack_client;
             LoadBattleSubSeqScript(ctx, ARC_BATTLE_SUB_SEQ, BATTLE_SUBSCRIPT_ATTACK_THEN_SWITCH_OUT);
@@ -2109,6 +2134,9 @@ int LONG_CALL Activate_Switch(void *bsys UNUSED, struct BattleStruct *ctx)
             ctx->server_seq_no = CONTROLLER_COMMAND_RUN_SCRIPT;
             return TRUE;
         }
+#ifdef DEBUG_SWITCH_HIT_LOGS
+        debug_printf("[SwitchHit] -> guard failed, no switch requested\n");
+#endif
         break;
     case MOVE_EFFECT_SHED_TAIL:
         if (ctx->attack_client != BATTLER_NONE

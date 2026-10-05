@@ -105,7 +105,7 @@
 
 // UPDATE_OVERWORLD_POISON will remove overworld poison if enabled
 // comment the line out below to retain overworld poison
-// #define UPDATE_OVERWORLD_POISON
+#define UPDATE_OVERWORLD_POISON
 
 // DISABLE_END_OF_TURN_WEATHER_MESSAGE removes the weather messages at the end of the turn.  instead the bottom screen icon can be used
 // uncomment the line out to get this functionality
@@ -171,9 +171,9 @@
 #define DISABLE_ITEMS_IN_TRAINER_BATTLE
 
 // REUSABLE_TMS will make TMs infinite and hide the quantity number.
-#define REUSABLE_TMS
+// #define REUSABLE_TMS
 
-// DELETABLE_HMS allows HMs to be forgotten, this also makes their quantity reduce, but the infinite TMs change prevents this.
+// DELETABLE_HMS allows HMs to be forgotten.
 #define DELETABLE_HMS
 
 // MART_EXPANSION allows for adding and modifying items to the mart inventories
@@ -341,6 +341,6 @@
 // DSPRE, PokeText, or any other external tool keeps its own version of everything hg-engine does not itself change.
 // hg-engine's own text archives and its common and trainer scripts are always built.
 // #define BUILD_DUMPED_EVENTDATA
-#define BUILD_DUMPED_SCR_SEQ
+// #define BUILD_DUMPED_SCR_SEQ
 
 #endif

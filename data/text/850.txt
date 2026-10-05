@@ -125,11 +125,11 @@ N/A
 N/A
 N/A
 N/A
-Material accidentally dropped by\na Pokémon.\nIt can be used to make TMs.
-Material accidentally dropped by\na Pokémon.\nIt can be used to make TMs.
-Material accidentally dropped by\na Pokémon.\nIt can be used to make TMs.
-Material accidentally dropped by\na Pokémon.\nIt can be used to make TMs.
-Material accidentally dropped by\na Pokémon.\nIt can be used to make TMs.
+A gene that floods the body with\naggression. Raises Attack by one\nstage upon entering battle.
+A gene that hardens the body like\narmor. Raises Defense by one stage\nupon entering battle.
+A gene that steadies the nerves.\nRaises Sp. Def by one stage upon\nentering battle.
+A gene that sharpens the mind.\nRaises Sp. Atk by one stage upon\nentering battle.
+A gene that quickens the pulse.\nRaises Speed by one stage upon\nentering battle.
 Material accidentally dropped by\na Pokémon.\nIt can be used to make TMs.
 Material accidentally dropped by\na Pokémon.\nIt can be used to make TMs.
 Material accidentally dropped by\na Pokémon.\nIt can be used to make TMs.

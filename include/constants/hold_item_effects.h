@@ -227,4 +227,11 @@
 #define HOLD_EFFECT_HEARTHFLAME_MASK                   219
 #define HOLD_EFFECT_POWERING_UP_MOVE_ONCE              220
 
+// Electrum: Gene items -- unconditional +1 stat on switch-in, then consumed.
+#define HOLD_EFFECT_BOOST_ATK_ON_SWITCH_IN             221
+#define HOLD_EFFECT_BOOST_DEF_ON_SWITCH_IN             222
+#define HOLD_EFFECT_BOOST_SPDEF_ON_SWITCH_IN           223
+#define HOLD_EFFECT_BOOST_SPATK_ON_SWITCH_IN           224
+#define HOLD_EFFECT_BOOST_SPEED_ON_SWITCH_IN           225
+
 #endif

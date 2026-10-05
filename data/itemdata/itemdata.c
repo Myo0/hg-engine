@@ -10673,7 +10673,7 @@ const ITEMDATA __data[] =
 
 [ITEM_RAZZ_BERRY] =
 {
-    ITEM_PRICE(20),
+    ITEM_PRICE(10),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -10738,7 +10738,7 @@ const ITEMDATA __data[] =
 
 [ITEM_BLUK_BERRY] =
 {
-    ITEM_PRICE(20),
+    ITEM_PRICE(10),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -10803,7 +10803,7 @@ const ITEMDATA __data[] =
 
 [ITEM_NANAB_BERRY] =
 {
-    ITEM_PRICE(20),
+    ITEM_PRICE(10),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -10868,7 +10868,7 @@ const ITEMDATA __data[] =
 
 [ITEM_WEPEAR_BERRY] =
 {
-    ITEM_PRICE(20),
+    ITEM_PRICE(10),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -10933,7 +10933,7 @@ const ITEMDATA __data[] =
 
 [ITEM_PINAP_BERRY] =
 {
-    ITEM_PRICE(20),
+    ITEM_PRICE(10),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -10998,7 +10998,7 @@ const ITEMDATA __data[] =
 
 [ITEM_POMEG_BERRY] =
 {
-    ITEM_PRICE(80),
+    ITEM_PRICE(10),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -11063,7 +11063,7 @@ const ITEMDATA __data[] =
 
 [ITEM_KELPSY_BERRY] =
 {
-    ITEM_PRICE(80),
+    ITEM_PRICE(10),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -11128,7 +11128,7 @@ const ITEMDATA __data[] =
 
 [ITEM_QUALOT_BERRY] =
 {
-    ITEM_PRICE(80),
+    ITEM_PRICE(10),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -11193,7 +11193,7 @@ const ITEMDATA __data[] =
 
 [ITEM_HONDEW_BERRY] =
 {
-    ITEM_PRICE(80),
+    ITEM_PRICE(10),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -11258,7 +11258,7 @@ const ITEMDATA __data[] =
 
 [ITEM_GREPA_BERRY] =
 {
-    ITEM_PRICE(80),
+    ITEM_PRICE(10),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -11323,7 +11323,7 @@ const ITEMDATA __data[] =
 
 [ITEM_TAMATO_BERRY] =
 {
-    ITEM_PRICE(80),
+    ITEM_PRICE(10),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -11388,7 +11388,7 @@ const ITEMDATA __data[] =
 
 [ITEM_CORNN_BERRY] =
 {
-    ITEM_PRICE(20),
+    ITEM_PRICE(10),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -11453,7 +11453,7 @@ const ITEMDATA __data[] =
 
 [ITEM_MAGOST_BERRY] =
 {
-    ITEM_PRICE(20),
+    ITEM_PRICE(10),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -11518,7 +11518,7 @@ const ITEMDATA __data[] =
 
 [ITEM_RABUTA_BERRY] =
 {
-    ITEM_PRICE(20),
+    ITEM_PRICE(10),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -11583,7 +11583,7 @@ const ITEMDATA __data[] =
 
 [ITEM_NOMEL_BERRY] =
 {
-    ITEM_PRICE(20),
+    ITEM_PRICE(10),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -11648,7 +11648,7 @@ const ITEMDATA __data[] =
 
 [ITEM_SPELON_BERRY] =
 {
-    ITEM_PRICE(20),
+    ITEM_PRICE(10),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -11713,7 +11713,7 @@ const ITEMDATA __data[] =
 
 [ITEM_PAMTRE_BERRY] =
 {
-    ITEM_PRICE(20),
+    ITEM_PRICE(10),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -11778,7 +11778,7 @@ const ITEMDATA __data[] =
 
 [ITEM_WATMEL_BERRY] =
 {
-    ITEM_PRICE(20),
+    ITEM_PRICE(10),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -11843,7 +11843,7 @@ const ITEMDATA __data[] =
 
 [ITEM_DURIN_BERRY] =
 {
-    ITEM_PRICE(20),
+    ITEM_PRICE(10),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -11908,7 +11908,7 @@ const ITEMDATA __data[] =
 
 [ITEM_BELUE_BERRY] =
 {
-    ITEM_PRICE(20),
+    ITEM_PRICE(10),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -23803,7 +23803,7 @@ const ITEMDATA __data[] =
 
 [ITEM_TM039] =
 {
-    ITEM_PRICE(12000),
+    ITEM_PRICE(6000),
     .holdEffect = 0,
     .holdEffectParam = 0,
     .pluckEffect = 0,
@@ -44668,14 +44668,14 @@ const ITEMDATA __data[] =
 
 [ITEM_KEE_BERRY] =
 {
-    ITEM_PRICE(80),
+    ITEM_PRICE(10),
     .holdEffect = HOLD_EFFECT_BOOST_DEF_ON_PHYSICAL_HIT,
     .holdEffectParam = 0,
     .pluckEffect = 0,
     .flingEffect = 0,
     .flingPower = 30,
     .naturalGiftPower = (NATURAL_GIFT_POWER_GEN < 6 ? 0 : 100),
-    .naturalGiftType = 31,
+    .naturalGiftType = TYPE_FAIRY,
     .prevent_toss = FALSE,
     .selectable = FALSE,
     .fieldPocket = POCKET_ITEMS,
@@ -44740,7 +44740,7 @@ const ITEMDATA __data[] =
     .flingEffect = 0,
     .flingPower = 30,
     .naturalGiftPower = (NATURAL_GIFT_POWER_GEN < 6 ? 0 : 100),
-    .naturalGiftType = 31,
+    .naturalGiftType = TYPE_DARK,
     .prevent_toss = FALSE,
     .selectable = FALSE,
     .fieldPocket = POCKET_ITEMS,
@@ -127151,10 +127151,14 @@ const ITEMDATA __data[] =
     },
 },
 
-[ITEM_VENONAT_FANG] =
+// Electrum: Gen 2's Berserk Gene, reworked as a switch-in-triggered consumable. Unconditional
+// +1 Attack on switch-in, then consumed (see data/battle_scripts/subscripts/custom/
+// subscript_0526_HANDLE_STAT_GENES.s and SwitchInAbilityCheck.c). Held-only -- never placed in
+// the player's bag, so no bag icon. Repurposed from the unused "Venonat Fang" catch-material slot.
+[ITEM_BERSERK_GENE] =
 {
-    ITEM_PRICE(80),
-    .holdEffect = SOUBI_NONE,
+    ITEM_PRICE(0),
+    .holdEffect = HOLD_EFFECT_BOOST_ATK_ON_SWITCH_IN,
     .holdEffectParam = 0,
     .pluckEffect = TUIBAMU_NONE,
     .flingEffect = FALSE,
@@ -127216,10 +127220,12 @@ const ITEMDATA __data[] =
     },
 },
 
-[ITEM_DIGLETT_DIRT] =
+// Electrum: Juggernaut Gene -- unconditional +1 Defense on switch-in, then consumed.
+// Repurposed from the unused "Diglett Dirt" catch-material slot.
+[ITEM_JUGGERNAUT_GENE] =
 {
-    ITEM_PRICE(80),
-    .holdEffect = SOUBI_NONE,
+    ITEM_PRICE(0),
+    .holdEffect = HOLD_EFFECT_BOOST_DEF_ON_SWITCH_IN,
     .holdEffectParam = 0,
     .pluckEffect = TUIBAMU_NONE,
     .flingEffect = FALSE,
@@ -127281,10 +127287,12 @@ const ITEMDATA __data[] =
     },
 },
 
-[ITEM_MEOWTH_FUR] =
+// Electrum: Resonance Gene -- unconditional +1 Sp. Def on switch-in, then consumed.
+// Repurposed from the unused "Meowth Fur" catch-material slot.
+[ITEM_RESONANCE_GENE] =
 {
-    ITEM_PRICE(80),
-    .holdEffect = SOUBI_NONE,
+    ITEM_PRICE(0),
+    .holdEffect = HOLD_EFFECT_BOOST_SPDEF_ON_SWITCH_IN,
     .holdEffectParam = 0,
     .pluckEffect = TUIBAMU_NONE,
     .flingEffect = FALSE,
@@ -127346,10 +127354,12 @@ const ITEMDATA __data[] =
     },
 },
 
-[ITEM_PSYDUCK_DOWN] =
+// Electrum: Catalyst Gene -- unconditional +1 Sp. Atk on switch-in, then consumed.
+// Repurposed from the unused "Psyduck Down" catch-material slot.
+[ITEM_CATALYST_GENE] =
 {
-    ITEM_PRICE(60),
-    .holdEffect = SOUBI_NONE,
+    ITEM_PRICE(0),
+    .holdEffect = HOLD_EFFECT_BOOST_SPATK_ON_SWITCH_IN,
     .holdEffectParam = 0,
     .pluckEffect = TUIBAMU_NONE,
     .flingEffect = FALSE,
@@ -127411,10 +127421,12 @@ const ITEMDATA __data[] =
     },
 },
 
-[ITEM_MANKEY_FUR] =
+// Electrum: Overdrive Gene -- unconditional +1 Speed on switch-in, then consumed.
+// Repurposed from the unused "Mankey Fur" catch-material slot.
+[ITEM_OVERDRIVE_GENE] =
 {
-    ITEM_PRICE(80),
-    .holdEffect = SOUBI_NONE,
+    ITEM_PRICE(0),
+    .holdEffect = HOLD_EFFECT_BOOST_SPEED_ON_SWITCH_IN,
     .holdEffectParam = 0,
     .pluckEffect = TUIBAMU_NONE,
     .flingEffect = FALSE,

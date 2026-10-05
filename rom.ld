@@ -618,6 +618,7 @@ ov12_0223C4E8 = 0x0223C4E8 | 1;
 sub_0200E398 = 0x0200E398 | 1;
 sub_0200E5D4 = 0x0200E5D4 | 1;
 TextPrinterCheckActive = 0x02020094 | 1;
+RemoveTextPrinter = 0x020200A0 | 1; /*thunk -> DestroyTextPrinterSysTask @ 0x02020021*/
 sub_0200E3D8 = 0x0200E3D8 | 1;
 
 TryAppendMonMove = 0x0207137C | 1;
@@ -871,6 +872,7 @@ sButtonRects = 0x021015EC;
 sButtonWindowTemplates = 0x02101654;
 sButtonWindowIDs = 0x021016B4;
 PartyMenu_DisableMainScreenBlend_AfterYesNo = 0x0207CB90 | 1;
+sub_0207D5DC = 0x0207D5DC | 1; /*redraws a party slot's full panel (nickname/level/HP text/HP bar) from monsDrawState -- pokeheartgold src/party_context_menu.c:606*/
 sBattleBgProfileTable = 0x0226E70C;
 UpdateFriendshipFainted = 0x02248558 | 1;
 
@@ -955,3 +957,20 @@ OS_GetTick =        0x020D34B0;  /* ARM; decoded from overlay-1 blx @ 0x021EFB4E
 OS_SetTick =        0x020D3560;  /* ARM; decoded from overlay-1 blx @ 0x021EFB56 */
 ov115_0225F220 =   0x0225F220 | 1;  /* OVY_115 16-state Gym-Leader VS render machine */
 ov01_021EFCDC =    0x021EFCDC | 1;  /* overlay 1: VS transition task teardown */
+
+/* Party-menu context-menu action-function table (32 entries, u32 each). GetPartyMenuContextMenuActionFunc
+   (0x0207F42C, not itself bound -- not needed) just does `return sPartyContextMenuActionFuncs[index];`;
+   confirmed by direct arm9.bin disassembly at PartyMenu_OpenContextMenu (0x0207D0E4, matches upstream
+   hg-engine's binding) cross-referenced against the matching pret/pokeheartgold decomp source. Index
+   PARTY_MON_CONTEXT_MENU_UNUSED (10) is vanilla-inert (LIST_CANCEL) -- safe slot to repurpose. */
+sPartyContextMenuActionFuncs = 0x02101CB8;
+
+/* FontID_Alloc(FontID fontId, enum HeapID heapID) -- not bound anywhere in upstream hg-engine; found
+   by direct arm9.bin disassembly, anchored off FontID_String_GetCenterAlignmentX (0x020030A0, already
+   bound) and FontID_Alloc's distinctive shape (loads sFontWork, indexes fontDataMan[fontId] at +0x9C,
+   checks NULL, conditionally allocates) confirmed against the matching pret/pokeheartgold
+   src/font.c:52 decomp source. Needed because AddTextPrinterParameterizedWithColor silently hung
+   (not crashed) when called with a never-explicitly-allocated font from a standalone overworld task
+   -- fonts are reference-counted and lazily loaded, party_menu.c's own init calls this before ever
+   printing (FontID_Alloc(4, HEAP_ID_PARTY_MENU)), but nothing else in the overworld does it for us. */
+FontID_Alloc = 0x020030B8 | 1;

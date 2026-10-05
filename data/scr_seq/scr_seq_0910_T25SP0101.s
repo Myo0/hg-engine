@@ -416,15 +416,15 @@ _073C:
 	goto _089E
 
 _07AF:
-	check_badge BADGE_RAINBOW, VAR_SPECIAL_x8007
-	compare VAR_SPECIAL_x8007, 0
-	goto_if_eq _0D75
+	count_badges VAR_SPECIAL_x8007
+	compare VAR_SPECIAL_x8007, 12
+	goto_if_lt _0D75
 	npc_msg 69
 	closemsg
 	npc_msg 60
 	yesno VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	call_if_eq _1058
+	call_if_eq _135D
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _089E
 	compare VAR_SPECIAL_x8004, 0
@@ -435,6 +435,8 @@ _07AF:
 	goto_if_eq _12F7
 	compare VAR_SPECIAL_x8004, 3
 	goto_if_eq _132A
+	compare VAR_SPECIAL_x8004, 4
+	goto_if_eq _rainbow_tier_mew
 	end
 
 _081E:
@@ -1060,6 +1062,17 @@ _132A:
 	scrcmd_208 3, 0
 	buffer_players_name 0
 	buffer_species_name 1, SPECIES_MANAPHY, 0, 0
+	npc_msg 61
+	play_fanfare SEQ_ME_POKEGET
+	wait_fanfare
+	goto _089E
+
+_rainbow_tier_mew:
+	setvar VAR_SPECIAL_x8008, 151
+	give_mon SPECIES_MEW, 20, 0, 0, 0, VAR_SPECIAL_RESULT
+	scrcmd_208 3, 0
+	buffer_players_name 0
+	buffer_species_name 1, SPECIES_MEW, 0, 0
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare

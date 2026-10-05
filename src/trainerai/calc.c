@@ -32,6 +32,28 @@ BOOL LONG_CALL IsPartyPokemonGrounded(struct BattleStruct *sp, struct PartyPokem
     return FALSE;
 }
 
+// Switch-in candidate scoring trace (BattleAI_PostKOSwitchIn_Internal only) -- separate from the
+// blanket per-step damage-calc tracing below so you can see just the switch-in scores without the
+// much noisier CalcBaseDamage step-by-step output. Duplicates debug_printf's real body (rather than
+// delegating to the debug_printf *name*) because that name gets redefined to a no-op a few lines
+// down whenever DEBUG_DAMAGE_CALC_AI is off, which would otherwise silently swallow this too.
+#if defined(DEBUG_SWITCHIN_AI_LOGS) && defined(NOCASH_GBA_PRINT) && !defined(DEBUG_BATTLE_SCENARIOS)
+#define switchin_debug_printf(...)                                    \
+    {                                                                 \
+        sprintf(DebugTextBuf, __VA_ARGS__);                          \
+        *(volatile u32 *)NOCASHGBAPRINTADDR1 = (u32)DebugTextBuf;    \
+    }
+#elif defined(DEBUG_SWITCHIN_AI_LOGS)
+#define switchin_debug_printf(...)                    \
+    {                                                 \
+        u8 buf_assumeunuasedfasdf[128];               \
+        sprintf(buf_assumeunuasedfasdf, __VA_ARGS__); \
+        debugsyscall(buf_assumeunuasedfasdf);         \
+    }
+#else
+#define switchin_debug_printf(...) ((void)0)
+#endif
+
 // Suppress all AI trace prints unless explicitly debugging damage calculations.
 #ifndef DEBUG_DAMAGE_CALC_AI
 #undef debug_printf
@@ -996,6 +1018,18 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
         attacker->states[STAT_SPECIAL_ATTACK] = attacker->states[STAT_SPECIAL_ATTACK] < 0 ? 0 : attacker->states[STAT_SPECIAL_ATTACK];
     }
 
+    // Electrum: Berserk Gene / Catalyst Gene. Unconditional (no terrain gate, unlike Seeds) +1
+    // on switch-in -- predicts the boost for a not-yet-switched-in candidate the same way the
+    // Terrain Seed check below predicts theirs. A real on-field attacker already consumed its
+    // Gene the turn it switched in, so item_held_effect naturally reads as none for it by now --
+    // no double-counting.
+    if (attacker->item_held_effect == HOLD_EFFECT_BOOST_ATK_ON_SWITCH_IN) {
+        attacker->states[STAT_ATTACK] = attacker->states[STAT_ATTACK] + 1;
+    }
+    if (attacker->item_held_effect == HOLD_EFFECT_BOOST_SPATK_ON_SWITCH_IN) {
+        attacker->states[STAT_SPECIAL_ATTACK] = attacker->states[STAT_SPECIAL_ATTACK] + 1;
+    }
+
 #ifdef DEBUG_DAMAGE_CALC_AI
     debug_printf("\n=================\n");
     debug_printf("[CalcBaseDamage] Step 3.3. Critical hit\n");
@@ -1286,6 +1320,15 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
     if (sp->terrainOverlay.numberOfTurnsLeft > 0
         && ((sp->terrainOverlay.type == MISTY_TERRAIN && defender->item_held_effect == HOLD_EFFECT_BOOST_SPDEF_ON_PSYCHIC_TERRAIN)
             || (sp->terrainOverlay.type == PSYCHIC_TERRAIN && defender->item_held_effect == HOLD_EFFECT_BOOST_SPDEF_ON_PSYCHIC_TERRAIN))) {
+        defender->states[STAT_SPECIAL_DEFENSE] = defender->states[STAT_SPECIAL_DEFENSE] + 1;
+    }
+
+    // Electrum: Juggernaut Gene / Resonance Gene. Unconditional +1 on switch-in, mirrors the
+    // Attack-side Gene check above.
+    if (defender->item_held_effect == HOLD_EFFECT_BOOST_DEF_ON_SWITCH_IN) {
+        defender->states[STAT_DEFENSE] = defender->states[STAT_DEFENSE] + 1;
+    }
+    if (defender->item_held_effect == HOLD_EFFECT_BOOST_SPDEF_ON_SWITCH_IN) {
         defender->states[STAT_SPECIAL_DEFENSE] = defender->states[STAT_SPECIAL_DEFENSE] + 1;
     }
 
@@ -2429,20 +2472,208 @@ BOOL BattleAI_AttackerHasOnlyIneffectiveMoves(struct BattleStruct *ctx, u32 atta
     return onlyIneffectiveMoves;
 }
 
+// Scores a single already-selected switch-in candidate against `defender`, using the exact same
+// ladder BattleAI_PostKOSwitchIn_Internal uses to rank its whole party. Factored out so
+// TrainerAI_ImmunitySwitch (pick_command.c) can reuse the identical scoring restricted to just its
+// own immune-qualifying candidates, instead of the general picker's full-party pass.
+int BattleAI_ScoreSwitchInCandidate(struct BattleSystem *bsys, struct BattleStruct *ctx, int attacker, u32 defender, u32 defender2, BOOL isDoublesBattle, BOOL incomingEatsFreeHit, struct PartyPokemon *mon, struct AI_sDamageCalc *defenderMon)
+{
+    struct AI_sDamageCalc attackerMon = { 0 };
+    u8 critical = 0;
+    u16 moveno = 0;
+    u32 monDealsRolledDamage = 0;
+    u32 monHighestDamageMoveno = 0;
+    u32 monReceivingHighestDamageMoveno = 0;
+    u32 monReceivesDamage = 0;
+    u32 monReceivesDamage2 = 0; // representative hit from the second opponent, doubles only
+    int switchInScore = 100;
+
+    attackerMon.species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0);
+    FillDamageStructFromPartyMon(bsys, ctx, &attackerMon, mon);
+
+    u8 speedCalc = BattleAI_CalcSpeed(bsys, ctx, defender, mon, CALCSPEED_FLAG_NO_PRIORITY); // checks actual turn order with field state considered
+
+    BOOL pursuitOHKOs = FALSE;
+    for (u8 j = 0; j < CLIENT_MAX; ++j) {
+        struct AI_damage damages = { 0 };
+        moveno = GetMonData(mon, MON_DATA_MOVE1 + j, NULL);
+        if (moveno != MOVE_NONE) {
+            struct BattleMove attackerMove = ctx->moveTbl[moveno];
+
+            if (attackerMove.split != SPLIT_STATUS && attackerMove.power) {
+                damages.damageRoll = BattleAI_CalcDamage(bsys, ctx, moveno, ctx->side_condition[BATTLER_IS_ENEMY(attacker)], ctx->field_condition, attackerMove.power, attackerMove.type, critical, attacker, defender, &damages, &attackerMon, defenderMon);
+
+                damages.damageRoll = BattleAI_AdjustUnusualMoveDamage(attackerMon.level, attackerMon.hp, defenderMon->hp, damages.damageRoll, attackerMove.effect, attackerMon.ability, attackerMon.item);
+                for (int u = 0; u < 16; u++) {
+                    damages.damageRange[u] = BattleAI_AdjustUnusualMoveDamage(attackerMon.level, attackerMon.hp, defenderMon->hp, damages.damageRange[u], attackerMove.effect, attackerMon.ability, attackerMon.item);
+                }
+
+                if (damages.damageRange[15] > monDealsRolledDamage) {
+                    monHighestDamageMoveno = moveno;
+                    monDealsRolledDamage = damages.damageRange[15];
+                }
+
+                if (attackerMove.effect == MOVE_EFFECT_HIT_BEFORE_SWITCH && damages.damageRange[15] >= defenderMon->hp) {
+                    pursuitOHKOs = TRUE;
+                }
+            }
+            switchin_debug_printf("Dealing with move %d: %d deals [%d-%d], roll %d > def.HP %d\n", j, moveno, damages.damageRange[0], damages.damageRange[15], damages.damageRoll, defenderMon->hp);
+        }
+    }
+
+    BOOL defenderHasStatusMove = FALSE;
+    // Tracks whether ANY of the defender's moves is both priority and lethal on its own --
+    // separate from monReceivesDamage/monReceivingHighestDamageMoveno, which only remember
+    // the single highest-*damage* move. A lower-damage priority move (e.g. Mach Punch) can
+    // still be the real threat even when a stronger non-priority move (e.g. Force Palm) is
+    // what gets tracked as "highest damage" -- speedCalc alone (CALCSPEED_FLAG_NO_PRIORITY)
+    // can't see this, so it has to be checked explicitly per-move here.
+    BOOL playerHasPriorityKill = FALSE;
+    for (int k = 0; k < 4; ++k) {
+        struct AI_damage damages = { 0 };
+        u32 defenderMoveno = ctx->battlemon[defender].move[k];
+        struct BattleMove defenderMove = ctx->moveTbl[defenderMoveno];
+
+        if (defenderMove.effect == MOVE_EFFECT_STATUS_BURN
+            || defenderMove.effect == MOVE_EFFECT_STATUS_POISON
+            || defenderMove.effect == MOVE_EFFECT_STATUS_BADLY_POISON) {
+            defenderHasStatusMove = TRUE;
+        }
+
+        if (defenderMove.split != SPLIT_STATUS && defenderMove.power) {
+            damages.damageRoll = BattleAI_CalcDamage(bsys, ctx, defenderMoveno, ctx->side_condition[BATTLER_IS_ENEMY(defender)], ctx->field_condition, defenderMove.power, defenderMove.type, critical, defender, attacker, &damages, defenderMon, &attackerMon);
+
+            damages.damageRoll = BattleAI_AdjustUnusualMoveDamage(defenderMon->level, defenderMon->hp, attackerMon.hp, damages.damageRoll, defenderMove.effect, defenderMon->ability, defenderMon->item);
+            for (int u = 0; u < 16; u++) {
+                damages.damageRange[u] = BattleAI_AdjustUnusualMoveDamage(defenderMon->level, defenderMon->hp, attackerMon.hp, damages.damageRange[u], defenderMove.effect, defenderMon->ability, defenderMon->item);
+            }
+
+            if (damages.damageRange[15] > monReceivesDamage) {
+                monReceivingHighestDamageMoveno = defenderMoveno;
+                monReceivesDamage = damages.damageRange[15];
+            }
+
+            if (defenderMove.priority > 0
+                && canAttackerOneShotDefender(damages.damageRange[15], defenderMove.split, defenderMoveno, defenderMon, &attackerMon)) {
+                playerHasPriorityKill = TRUE;
+            }
+        }
+        switchin_debug_printf("Receiving from move %d: %d is [%d-%d], roll %d > att.HP %d\n", k, defenderMoveno, damages.damageRange[0], damages.damageRange[15], damages.damageRoll, attackerMon.hp);
+    }
+
+    // Doubles: the OTHER opponent (not the positionally-paired `defender`) can also threaten
+    // this candidate -- an independent priority kill, or contribute to a combined-lethal hit
+    // (checked below). Was previously invisible: this function only ever looked at `defender`.
+    if (isDoublesBattle && defender2 != defender && ctx->battlemon[defender2].hp > 0) {
+        struct AI_sDamageCalc defenderMon2 = { 0 };
+        FillDamageStructFromBattleMon(bsys, ctx, &defenderMon2, defender2);
+
+        for (int k = 0; k < 4; ++k) {
+            struct AI_damage damages = { 0 };
+            u32 defenderMoveno = ctx->battlemon[defender2].move[k];
+            struct BattleMove defenderMove = ctx->moveTbl[defenderMoveno];
+
+            if (defenderMove.effect == MOVE_EFFECT_STATUS_BURN
+                || defenderMove.effect == MOVE_EFFECT_STATUS_POISON
+                || defenderMove.effect == MOVE_EFFECT_STATUS_BADLY_POISON) {
+                defenderHasStatusMove = TRUE;
+            }
+
+            if (defenderMove.split != SPLIT_STATUS && defenderMove.power) {
+                damages.damageRoll = BattleAI_CalcDamage(bsys, ctx, defenderMoveno, ctx->side_condition[BATTLER_IS_ENEMY(defender2)], ctx->field_condition, defenderMove.power, defenderMove.type, critical, defender2, attacker, &damages, &defenderMon2, &attackerMon);
+
+                damages.damageRoll = BattleAI_AdjustUnusualMoveDamage(defenderMon2.level, defenderMon2.hp, attackerMon.hp, damages.damageRoll, defenderMove.effect, defenderMon2.ability, defenderMon2.item);
+                for (int u = 0; u < 16; u++) {
+                    damages.damageRange[u] = BattleAI_AdjustUnusualMoveDamage(defenderMon2.level, defenderMon2.hp, attackerMon.hp, damages.damageRange[u], defenderMove.effect, defenderMon2.ability, defenderMon2.item);
+                }
+
+                if (damages.damageRange[15] > monReceivesDamage2) {
+                    monReceivesDamage2 = damages.damageRange[15];
+                }
+
+                if (defenderMove.priority > 0
+                    && canAttackerOneShotDefender(damages.damageRange[15], defenderMove.split, defenderMoveno, &defenderMon2, &attackerMon)) {
+                    playerHasPriorityKill = TRUE;
+                }
+            }
+            switchin_debug_printf("Receiving from 2nd opponent move %d: %d is [%d-%d], roll %d > att.HP %d\n", k, defenderMoveno, damages.damageRange[0], damages.damageRange[15], damages.damageRoll, attackerMon.hp);
+        }
+    }
+#ifdef DEBUG_DAMAGE_CALC_AI
+    debug_printf("playerHasPriorityKill: %d\n", playerHasPriorityKill);
+#endif
+
+    // TODO stealth rocks, spikes, toxic spikes, etc...
+    u8 aiMonCanOneshotPlayer = canAttackerOneShotDefender(monDealsRolledDamage, ctx->moveTbl[monHighestDamageMoveno].split, monHighestDamageMoveno, &attackerMon, defenderMon);
+    u8 playerCanOneShotAiMon = canAttackerOneShotDefender(monReceivesDamage, ctx->moveTbl[monReceivingHighestDamageMoveno].split, monReceivingHighestDamageMoveno, defenderMon, &attackerMon);
+    // Structural "who out-damages who" comparison (used below only once the OHKO checks above
+    // have already ruled out either side killing this turn) -- normalized against MAX HP, not
+    // current HP, so it judges the fundamental matchup rather than getting inflated by incidental
+    // prior chip damage (hazards, status, an earlier non-lethal hit) on either side.
+    u16 partyMonPercentDamageDealt = (100 * monDealsRolledDamage / defenderMon->maxhp);
+    u16 partyMonPercentDamageReceived = (100 * monReceivesDamage / attackerMon.maxhp);
+
+    // Neither opponent's single hit needs to be lethal alone for the switch-in to die this turn
+    // if both hit it -- sum the two opponents' representative hits. A fresh switch-in in doubles
+    // faces incoming fire from BOTH opposing slots that turn regardless of its own speed, so this
+    // is independent of speedCalc/incomingEatsFreeHit (mirrors how playerHasPriorityKill is used).
+    BOOL combinedOpponentDamageIsLethal = isDoublesBattle && defender2 != defender
+        && ((monReceivesDamage + monReceivesDamage2) >= attackerMon.hp);
+    BOOL playerCanKillThisTurn = playerCanOneShotAiMon || combinedOpponentDamageIsLethal;
+
+    switchin_debug_printf("SwitchScore: SpeedCalc %d. Attacker %d deals %d%% to defender %d. Receives %d%%", speedCalc, attacker, partyMonPercentDamageDealt, defender, partyMonPercentDamageReceived);
+
+    if (attackerMon.species == SPECIES_WYNAUT || attackerMon.species == SPECIES_WOBBUFFET) {
+        if (defenderHasStatusMove || playerCanKillThisTurn) {
+            switchInScore -= 1;
+        } else {
+            switchInScore += 2;
+        }
+    }
+
+    if (speedCalc > 0) {
+        if ((incomingEatsFreeHit && playerCanOneShotAiMon) || playerHasPriorityKill || combinedOpponentDamageIsLethal) {
+            switchInScore -= 2; // KO'd before it can act -- either it ate a free hit this
+            // turn, it's "faster" only because speedCalc ignores priority and the opponent has
+            // a priority move that kills it regardless of that speed edge, or (doubles) it takes
+            // lethal combined fire from both opponents the moment it switches in.
+        } else if (pursuitOHKOs) {
+            switchInScore += 6;
+        } else if (aiMonCanOneshotPlayer) {
+            switchInScore += 5;
+        } else if (partyMonPercentDamageDealt >= partyMonPercentDamageReceived) {
+            switchInScore += 3;
+        } else {
+            switchInScore += 1;
+        }
+
+        if (attackerMon.species == SPECIES_DITTO) {
+            switchInScore += 2;
+        }
+    } else {
+        if (aiMonCanOneshotPlayer && !playerCanKillThisTurn) {
+            switchInScore += 4;
+        } else if (!playerCanKillThisTurn && partyMonPercentDamageDealt > partyMonPercentDamageReceived) {
+            switchInScore += 2;
+        } else if (playerCanKillThisTurn) {
+            switchInScore -= 1;
+        }
+    }
+    switchin_debug_printf(": %d\n", switchInScore);
+
+    return switchInScore;
+}
+
 int LONG_CALL BattleAI_PostKOSwitchIn_Internal(struct BattleSystem *bsys, int attacker, int *score)
 {
-    debug_printf("BattleAI_PostKOSwitchIn_Internal %d\n", attacker);
+    switchin_debug_printf("BattleAI_PostKOSwitchIn_Internal %d\n", attacker);
 
     struct BattleStruct *ctx = bsys->sp;
     int battleType = BattleTypeGet(bsys);
     struct PartyPokemon *mon;
 
-    struct AI_sDamageCalc attackerMon = { 0 };
     struct AI_sDamageCalc defenderMon = { 0 };
 
-    u8 critical = 0;
-
-    u8 speedCalc;
     u32 defender = BATTLER_OPPONENT(attacker); // primary (positionally-paired) opponent -- used for the
     // "what does this candidate deal" side, unchanged by the doubles fix below.
     BOOL isDoublesBattle = (battleType & (BATTLE_TYPE_TAG | BATTLE_TYPE_MULTI | BATTLE_TYPE_DOUBLES)) != 0;
@@ -2456,13 +2687,7 @@ int LONG_CALL BattleAI_PostKOSwitchIn_Internal(struct BattleSystem *bsys, int at
         defender2 = (defender == oppLeft) ? oppRight : oppLeft;
     }
     u8 slot1, slot2;
-    u16 moveno = 0;
-    u32 monDealsRolledDamage[6] = { 0 };
-    u32 monHighestDamageMoveno = 0;
-    u32 monReceivingHighestDamageMoveno = 0;
-    u32 monReceivesDamage[6] = { 0 };
-    u32 monReceivesDamage2[6] = { 0 }; // representative hit from the second opponent, doubles only
-    u16 switchInScore[6] = { 0 };
+    int switchInScore[6] = { 0 };
     int partySize = 0;
     int picked = 6; // in Order
 
@@ -2490,189 +2715,20 @@ int LONG_CALL BattleAI_PostKOSwitchIn_Internal(struct BattleSystem *bsys, int at
     partySize = Battle_GetClientPartySize(bsys, attacker);
     for (int i = 0; i < partySize; i++) {
         mon = Battle_GetClientPartyMon(bsys, attacker, i);
-        attackerMon.species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0);
-        debug_printf("Slot %d:%d hp:%d,\n", i, attackerMon.species, GetMonData(mon, MON_DATA_HP, 0));
-        debug_printf("sel_m1 %d, sel_m2 %d, switchSl1 %d, switchSl1 %d\n", ctx->sel_mons_no[slot1], ctx->sel_mons_no[slot2], ctx->ai_reshuffle_sel_mons_no[slot1], ctx->ai_reshuffle_sel_mons_no[slot2]);
+        u16 species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0);
+        switchin_debug_printf("Slot %d:%d hp:%d,\n", i, species, GetMonData(mon, MON_DATA_HP, 0));
+        switchin_debug_printf("sel_m1 %d, sel_m2 %d, switchSl1 %d, switchSl1 %d\n", ctx->sel_mons_no[slot1], ctx->sel_mons_no[slot2], ctx->ai_reshuffle_sel_mons_no[slot1], ctx->ai_reshuffle_sel_mons_no[slot2]);
 
-        if (attackerMon.species != SPECIES_NONE && attackerMon.species != SPECIES_EGG && GetMonData(mon, MON_DATA_HP, 0)
+        if (species != SPECIES_NONE && species != SPECIES_EGG && GetMonData(mon, MON_DATA_HP, 0)
             && i != ctx->sel_mons_no[slot1]
             && i != ctx->sel_mons_no[slot2]
             && i != ctx->ai_reshuffle_sel_mons_no[slot1]
             && i != ctx->ai_reshuffle_sel_mons_no[slot2]) {
-            switchInScore[i] = 100;
-
-            FillDamageStructFromPartyMon(bsys, ctx, &attackerMon, mon);
-
-            speedCalc = BattleAI_CalcSpeed(bsys, ctx, defender, mon, CALCSPEED_FLAG_NO_PRIORITY); // checks actual turn order with field state considered
-
-            BOOL pursuitOHKOs = FALSE;
-            for (u8 j = 0; j < CLIENT_MAX; ++j) {
-                struct AI_damage damages = { 0 };
-                moveno = GetMonData(mon, MON_DATA_MOVE1 + j, NULL);
-                if (moveno != MOVE_NONE) {
-                    struct BattleMove attackerMove = ctx->moveTbl[moveno];
-
-                    if (attackerMove.split != SPLIT_STATUS && attackerMove.power) {
-                        damages.damageRoll = BattleAI_CalcDamage(bsys, ctx, moveno, ctx->side_condition[BATTLER_IS_ENEMY(attacker)], ctx->field_condition, attackerMove.power, attackerMove.type, critical, attacker, defender, &damages, &attackerMon, &defenderMon);
-
-                        damages.damageRoll = BattleAI_AdjustUnusualMoveDamage(attackerMon.level, attackerMon.hp, defenderMon.hp, damages.damageRoll, attackerMove.effect, attackerMon.ability, attackerMon.item);
-                        for (int u = 0; u < 16; u++) {
-                            damages.damageRange[u] = BattleAI_AdjustUnusualMoveDamage(attackerMon.level, attackerMon.hp, defenderMon.hp, damages.damageRange[u], attackerMove.effect, attackerMon.ability, attackerMon.item);
-                        }
-
-                        if (damages.damageRange[8] > monDealsRolledDamage[i]) {
-                            monHighestDamageMoveno = moveno;
-                            monDealsRolledDamage[i] = damages.damageRange[8];
-                        }
-
-                        if (attackerMove.effect == MOVE_EFFECT_HIT_BEFORE_SWITCH && damages.damageRange[8] >= defenderMon.hp) {
-                            pursuitOHKOs = TRUE;
-                        }
-                    }
-                    debug_printf("Dealing with move %d: %d deals [%d-%d], roll %d > def.HP %d\n", j, moveno, damages.damageRange[0], damages.damageRange[15], damages.damageRoll, defenderMon.hp);
-                }
-            }
-
-            BOOL defenderHasStatusMove = FALSE;
-            // Tracks whether ANY of the defender's moves is both priority and lethal on its own --
-            // separate from monReceivesDamage/monReceivingHighestDamageMoveno, which only remember
-            // the single highest-*damage* move. A lower-damage priority move (e.g. Mach Punch) can
-            // still be the real threat even when a stronger non-priority move (e.g. Force Palm) is
-            // what gets tracked as "highest damage" -- speedCalc alone (CALCSPEED_FLAG_NO_PRIORITY)
-            // can't see this, so it has to be checked explicitly per-move here.
-            BOOL playerHasPriorityKill = FALSE;
-            for (int k = 0; k < 4; ++k) {
-                struct AI_damage damages = { 0 };
-                u32 defenderMoveno = ctx->battlemon[defender].move[k];
-                struct BattleMove defenderMove = ctx->moveTbl[defenderMoveno];
-
-                if (defenderMove.effect == MOVE_EFFECT_STATUS_BURN
-                    || defenderMove.effect == MOVE_EFFECT_STATUS_POISON
-                    || defenderMove.effect == MOVE_EFFECT_STATUS_BADLY_POISON) {
-                    defenderHasStatusMove = TRUE;
-                }
-
-                if (defenderMove.split != SPLIT_STATUS && defenderMove.power) {
-                    damages.damageRoll = BattleAI_CalcDamage(bsys, ctx, defenderMoveno, ctx->side_condition[BATTLER_IS_ENEMY(defender)], ctx->field_condition, defenderMove.power, defenderMove.type, critical, defender, attacker, &damages, &defenderMon, &attackerMon);
-
-                    damages.damageRoll = BattleAI_AdjustUnusualMoveDamage(defenderMon.level, defenderMon.hp, attackerMon.hp, damages.damageRoll, defenderMove.effect, defenderMon.ability, defenderMon.item);
-                    for (int u = 0; u < 16; u++) {
-                        damages.damageRange[u] = BattleAI_AdjustUnusualMoveDamage(defenderMon.level, defenderMon.hp, attackerMon.hp, damages.damageRange[u], defenderMove.effect, defenderMon.ability, defenderMon.item);
-                    }
-
-                    if (damages.damageRange[8] > monReceivesDamage[i]) {
-                        monReceivingHighestDamageMoveno = defenderMoveno;
-                        monReceivesDamage[i] = damages.damageRange[8];
-                    }
-
-                    if (defenderMove.priority > 0
-                        && canAttackerOneShotDefender(damages.damageRange[8], defenderMove.split, defenderMoveno, &defenderMon, &attackerMon)) {
-                        playerHasPriorityKill = TRUE;
-                    }
-                }
-                debug_printf("Receiving from move %d: %d is [%d-%d], roll %d > att.HP %d\n", k, defenderMoveno, damages.damageRange[0], damages.damageRange[15], damages.damageRoll, attackerMon.hp);
-            }
-
-            // Doubles: the OTHER opponent (not the positionally-paired `defender`) can also threaten
-            // this candidate -- an independent priority kill, or contribute to a combined-lethal hit
-            // (checked below). Was previously invisible: this function only ever looked at `defender`.
-            if (isDoublesBattle && defender2 != defender && ctx->battlemon[defender2].hp > 0) {
-                struct AI_sDamageCalc defenderMon2 = { 0 };
-                FillDamageStructFromBattleMon(bsys, ctx, &defenderMon2, defender2);
-
-                for (int k = 0; k < 4; ++k) {
-                    struct AI_damage damages = { 0 };
-                    u32 defenderMoveno = ctx->battlemon[defender2].move[k];
-                    struct BattleMove defenderMove = ctx->moveTbl[defenderMoveno];
-
-                    if (defenderMove.effect == MOVE_EFFECT_STATUS_BURN
-                        || defenderMove.effect == MOVE_EFFECT_STATUS_POISON
-                        || defenderMove.effect == MOVE_EFFECT_STATUS_BADLY_POISON) {
-                        defenderHasStatusMove = TRUE;
-                    }
-
-                    if (defenderMove.split != SPLIT_STATUS && defenderMove.power) {
-                        damages.damageRoll = BattleAI_CalcDamage(bsys, ctx, defenderMoveno, ctx->side_condition[BATTLER_IS_ENEMY(defender2)], ctx->field_condition, defenderMove.power, defenderMove.type, critical, defender2, attacker, &damages, &defenderMon2, &attackerMon);
-
-                        damages.damageRoll = BattleAI_AdjustUnusualMoveDamage(defenderMon2.level, defenderMon2.hp, attackerMon.hp, damages.damageRoll, defenderMove.effect, defenderMon2.ability, defenderMon2.item);
-                        for (int u = 0; u < 16; u++) {
-                            damages.damageRange[u] = BattleAI_AdjustUnusualMoveDamage(defenderMon2.level, defenderMon2.hp, attackerMon.hp, damages.damageRange[u], defenderMove.effect, defenderMon2.ability, defenderMon2.item);
-                        }
-
-                        if (damages.damageRange[8] > monReceivesDamage2[i]) {
-                            monReceivesDamage2[i] = damages.damageRange[8];
-                        }
-
-                        if (defenderMove.priority > 0
-                            && canAttackerOneShotDefender(damages.damageRange[8], defenderMove.split, defenderMoveno, &defenderMon2, &attackerMon)) {
-                            playerHasPriorityKill = TRUE;
-                        }
-                    }
-                    debug_printf("Receiving from 2nd opponent move %d: %d is [%d-%d], roll %d > att.HP %d\n", k, defenderMoveno, damages.damageRange[0], damages.damageRange[15], damages.damageRoll, attackerMon.hp);
-                }
-            }
-#ifdef DEBUG_DAMAGE_CALC_AI
-            debug_printf("playerHasPriorityKill: %d\n", playerHasPriorityKill);
-#endif
-
-            // TODO stealth rocks, spikes, toxic spikes, etc...
-            u8 aiMonCanOneshotPlayer = canAttackerOneShotDefender(monDealsRolledDamage[i], ctx->moveTbl[monHighestDamageMoveno].split, monHighestDamageMoveno, &attackerMon, &defenderMon);
-            u8 playerCanOneShotAiMon = canAttackerOneShotDefender(monReceivesDamage[i], ctx->moveTbl[monReceivingHighestDamageMoveno].split, monReceivingHighestDamageMoveno, &defenderMon, &attackerMon);
-            u16 partyMonPercentDamageDealt = (100 * monDealsRolledDamage[i] / defenderMon.hp);
-            u16 partyMonPercentDamageReceived = (100 * monReceivesDamage[i] / attackerMon.hp);
-
-            // Neither opponent's single hit needs to be lethal alone for the switch-in to die this turn
-            // if both hit it -- sum the two opponents' representative hits. A fresh switch-in in doubles
-            // faces incoming fire from BOTH opposing slots that turn regardless of its own speed, so this
-            // is independent of speedCalc/incomingEatsFreeHit (mirrors how playerHasPriorityKill is used).
-            BOOL combinedOpponentDamageIsLethal = isDoublesBattle && defender2 != defender
-                && ((monReceivesDamage[i] + monReceivesDamage2[i]) >= attackerMon.hp);
-            BOOL playerCanKillThisTurn = playerCanOneShotAiMon || combinedOpponentDamageIsLethal;
-
-            debug_printf("SwitchScore: SpeedCalc %d. Attacker %d deals %d%% to defender %d. Receives %d%%", speedCalc, attacker, (100 * monDealsRolledDamage[i] / defenderMon.hp), defender, (100 * monReceivesDamage[i] / attackerMon.hp));
-
-            if (attackerMon.species == SPECIES_WYNAUT || attackerMon.species == SPECIES_WOBBUFFET) {
-                if (defenderHasStatusMove || playerCanKillThisTurn) {
-                    switchInScore[i] -= 1;
-                } else {
-                    switchInScore[i] += 2;
-                }
-            }
-
-            if (speedCalc > 0) {
-                if ((incomingEatsFreeHit && playerCanOneShotAiMon) || playerHasPriorityKill || combinedOpponentDamageIsLethal) {
-                    switchInScore[i] -= 2; // KO'd before it can act -- either it ate a free hit this
-                    // turn, it's "faster" only because speedCalc ignores priority and the opponent has
-                    // a priority move that kills it regardless of that speed edge, or (doubles) it takes
-                    // lethal combined fire from both opponents the moment it switches in.
-                } else if (pursuitOHKOs) {
-                    switchInScore[i] += 6;
-                } else if (aiMonCanOneshotPlayer) {
-                    switchInScore[i] += 5;
-                } else if (partyMonPercentDamageDealt >= partyMonPercentDamageReceived) {
-                    switchInScore[i] += 3;
-                } else {
-                    switchInScore[i] += 1;
-                }
-
-                if (attackerMon.species == SPECIES_DITTO) {
-                    switchInScore[i] += 2;
-                }
-            } else {
-                if (aiMonCanOneshotPlayer && !playerCanKillThisTurn) {
-                    switchInScore[i] += 4;
-                } else if (!playerCanKillThisTurn && partyMonPercentDamageDealt > partyMonPercentDamageReceived) {
-                    switchInScore[i] += 2;
-                } else if (playerCanKillThisTurn) {
-                    switchInScore[i] -= 1;
-                }
-            }
-            debug_printf(": %d\n", switchInScore[i]);
-            // default += 0;
+            switchInScore[i] = BattleAI_ScoreSwitchInCandidate(bsys, ctx, attacker, defender, defender2, isDoublesBattle, incomingEatsFreeHit, mon, &defenderMon);
         }
     }
 
-    u16 currentScore = switchInScore[0];
+    int currentScore = switchInScore[0];
     for (int i = 0; i < partySize; i++) {
         if (switchInScore[i] > currentScore) {
             picked = i;
@@ -2681,9 +2737,9 @@ int LONG_CALL BattleAI_PostKOSwitchIn_Internal(struct BattleSystem *bsys, int at
         }
     }
     for (int i = 0; i < partySize; i++) {
-        debug_printf("%i ", switchInScore[i]);
+        switchin_debug_printf("%i ", switchInScore[i]);
     }
-    debug_printf("-> picked %i\n", picked);
+    switchin_debug_printf("-> picked %i\n", picked);
 
     return picked;
 }

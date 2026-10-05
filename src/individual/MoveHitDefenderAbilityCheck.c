@@ -358,7 +358,7 @@ BOOL __attribute__((section(".init"))) MoveHitDefenderAbilityCheckInternal(struc
         if ((sp->terrainOverlay.type != GRASSY_TERRAIN)
             && ((sp->oneSelfFlag[sp->defence_client].physical_damage) || (sp->oneSelfFlag[sp->defence_client].special_damage))) {
             sp->addeffect_type = SIDE_EFFECT_TYPE_ABILITY;
-            UpdateTerrainOverlay(sp, sp->defence_client, GRASSY_TERRAIN);
+            UpdateTerrainOverlayPermanent(sp, sp->defence_client, GRASSY_TERRAIN);
             sp->state_client = sp->defence_client;
             sp->battlerIdTemp = sp->defence_client;
             seq_no[0] = BATTLE_SUBSCRIPT_CREATE_TERRAIN_OVERLAY;

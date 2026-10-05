@@ -442,6 +442,26 @@ void LONG_CALL UpdateTerrainOverlay(struct BattleStruct *ctx, u8 client, enum Te
 }
 
 /**
+ *  @brief Electrum: same as UpdateTerrainOverlay, but for a terrain set by an ability (Electric/
+ *  Grassy/Misty/Psychic Surge, Hadron Engine, Seed Sower) -- these are permanent (last until
+ *  replaced), unlike a terrain set by a move (the Electric/Grassy/Misty/Psychic Terrain moves),
+ *  which stays temporary. A separate wrapper function rather than a parameter on
+ *  UpdateTerrainOverlay itself, since that one is also invoked as a scrcmd straight from battle
+ *  scripts (asm/include/battle_commands.inc) with a fixed argument list this must not disturb.
+ *
+ *  @param ctx BattleContext
+ *  @param client which client causes the terrain to update
+ *  @param terrainType TerrainOverlayType
+ */
+void LONG_CALL UpdateTerrainOverlayPermanent(struct BattleStruct *ctx, u8 client, enum TerrainOverlayType terrainType)
+{
+    UpdateTerrainOverlay(ctx, client, terrainType);
+    if (terrainType != TERRAIN_NONE) {
+        ctx->terrainOverlay.numberOfTurnsLeft = TERRAIN_TURNS_INFINITE;
+    }
+}
+
+/**
  *  @brief check if the attacker's ability should queue up a subscript or not.
  *
  *  @param bw battle work structure

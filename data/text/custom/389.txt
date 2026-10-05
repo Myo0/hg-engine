@@ -9,3 +9,17 @@ Play collectively with your Pokémon,\ntrust your Pokémon, and believe in your\
 Charge your energy with friendship!\nGive Aprijuice to your Pokémon!
 Tap tap ding ding!\rWe are in a big hurry!\nJust a little more work before you\fcan come through.\rI hope you are looking forward to it!
 Hey, hey!\nWatch yourself! The construction\fmakes it dangerous around here.\rJust wait a little longer for the\nexciting reveal!\r
+You look like a promising youngster.\nI’ve spent my life learning martial arts\fand giving it to the next generation.\rI would be honored to take you\nand your Pokémon as my pupils.\fWho needs some training?\r
+That one is not suitable for any of\nmy martial arts.\fA shame.\r
+Changed your mind?\nNo worries.\rThis way of life is not for all.\rI’ll be here.\nCome see me again when you\fcould use some more training.\r
+Brick Break
+Ice Punch
+Fire Punch
+Thunder Punch
+Poison Jab
+Shadow Punch
+Mega Punch
+{STRVAR_1 1, 0, 0} is able to learn this move!
+{STRVAR_1 1, 0, 0} can’t learn this move.
+{STRVAR_1 1, 0, 0} already knows this move.
+That one already knows this move.

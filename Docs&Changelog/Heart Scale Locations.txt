@@ -101,6 +101,7 @@ Victreebelite - Bellchime Trail (Can be obtained after morty)
 Pidgeotite - Ruins of Alph (Requires Surf)
 Ampharosite - Olivine Lighthouse (Lantern Room)
 Altarianite - Violet City (Requires Surf)
+Chimechite - Route 38
 
 Salamencite - Cherrygrove City (Requires Surf & Rock Climb)
 

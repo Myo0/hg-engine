@@ -1739,29 +1739,36 @@ struct OVERWORLD_TAG gOWTagToFileNum[] = // skip down a bit to see the parts tha
         BERRY_PLANT_ENTRY(32, 1829) // rindo
         BERRY_PLANT_ENTRY(33, 1830) // yache
         BERRY_PLANT_ENTRY(34, 1831) // chople
-        BERRY_PLANT_ENTRY(35, 1832) // kebia
-        BERRY_PLANT_ENTRY(36, 1833) // shuca
-        BERRY_PLANT_ENTRY(37, 1834) // coba
-        BERRY_PLANT_ENTRY(38, 1835) // payapa
-        BERRY_PLANT_ENTRY(39, 1836) // tanga
-        BERRY_PLANT_ENTRY(40, 1837) // charti
-        BERRY_PLANT_ENTRY(41, 1838) // kasib
-        BERRY_PLANT_ENTRY(42, 1839) // haban
-        BERRY_PLANT_ENTRY(43, 1840) // colbur
-        BERRY_PLANT_ENTRY(44, 1841) // babiri
-        BERRY_PLANT_ENTRY(45, 1842) // chilan
-        BERRY_PLANT_ENTRY(46, 1843) // liechi
-        BERRY_PLANT_ENTRY(47, 1844) // ganlon
-        BERRY_PLANT_ENTRY(48, 1845) // salac
-        BERRY_PLANT_ENTRY(49, 1846) // petaya
-        BERRY_PLANT_ENTRY(50, 1847) // apicot
-        BERRY_PLANT_ENTRY(51, 1848) // lansat
-        BERRY_PLANT_ENTRY(52, 1849) // starf
-        BERRY_PLANT_ENTRY(53, 1850) // enigma
-        BERRY_PLANT_ENTRY(54, 1851) // micle
-        BERRY_PLANT_ENTRY(55, 1852) // custap
-        BERRY_PLANT_ENTRY(56, 1853) // jaboca
-        BERRY_PLANT_ENTRY(57, 1854) // rowap
+        // Electrum: tags 35-57 were originally gfx 1832-1854, which this file's own
+        // MON_FOLLOWER_ENTRY block also hands out to SPECIES_VENUSAUR_OVERWORLD_FEMALE
+        // through SPECIES_SILVALLY_OVERWORLD_PSYCHIC (the "gender difference" + Silvally
+        // type-form species, not Arceus as originally assumed -- there is no Arceus entry
+        // in that range at all). Remapped to SPECIES_GIGANTAMAX_* gfx slots (1690-1712):
+        // Gigantamax never has or needs a follower sprite, same rationale as the Unown/
+        // Silvally slots above. See Docs&Changelog/Berry Plants.md for the full table.
+        BERRY_PLANT_ENTRY(35, 1690) // kebia
+        BERRY_PLANT_ENTRY(36, 1691) // shuca
+        BERRY_PLANT_ENTRY(37, 1692) // coba
+        BERRY_PLANT_ENTRY(38, 1693) // payapa
+        BERRY_PLANT_ENTRY(39, 1694) // tanga
+        BERRY_PLANT_ENTRY(40, 1695) // charti
+        BERRY_PLANT_ENTRY(41, 1696) // kasib
+        BERRY_PLANT_ENTRY(42, 1697) // haban
+        BERRY_PLANT_ENTRY(43, 1698) // colbur
+        BERRY_PLANT_ENTRY(44, 1699) // babiri
+        BERRY_PLANT_ENTRY(45, 1700) // chilan
+        BERRY_PLANT_ENTRY(46, 1701) // liechi
+        BERRY_PLANT_ENTRY(47, 1702) // ganlon
+        BERRY_PLANT_ENTRY(48, 1703) // salac
+        BERRY_PLANT_ENTRY(49, 1704) // petaya
+        BERRY_PLANT_ENTRY(50, 1705) // apicot
+        BERRY_PLANT_ENTRY(51, 1706) // lansat
+        BERRY_PLANT_ENTRY(52, 1707) // starf
+        BERRY_PLANT_ENTRY(53, 1708) // enigma
+        BERRY_PLANT_ENTRY(54, 1709) // micle
+        BERRY_PLANT_ENTRY(55, 1710) // custap
+        BERRY_PLANT_ENTRY(56, 1711) // jaboca
+        BERRY_PLANT_ENTRY(57, 1712) // rowap
 
         // Mega Stone overworld pickups -- cosmetic-only static field items (see
         // Docs&Changelog/Mega Stones.md). Unlike the berries above, these are genuine,

@@ -279,6 +279,16 @@ scr_seq_D22R0101_027:
 	releaseall
 	end
 
+scr_seq_D22R0101_028:
+	lockall
+	play_se SEQ_SE_DP_SELECT
+	hide_person obj_D22R0101_monstarball_2
+	giveitem_no_check ITEM_LINKING_CORD, 1
+	setflag FLAG_HIDE_ITEMBALL_D22R0101_SOOTHE_BELL
+	closemsg
+	releaseall
+	end
+
 _03DB:
 	npc_msg 4
 	wait_button

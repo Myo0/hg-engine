@@ -1954,11 +1954,11 @@ Basil
 
 
 
-Venonat Fang
-Diglett Dirt
-Meowth Fur
-Psyduck Down
-Mankey Fur
+Berserk Gene
+Juggernaut Gene
+Resonance Gene
+Catalyst Gene
+Overdrive Gene
 Growlithe Fur
 Slowpoke Claw
 Magnemite Screw

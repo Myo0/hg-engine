@@ -1959,11 +1959,16 @@
 #define ITEM_NONE_1953                   1953
 #define ITEM_NONE_1954                   1954
 #define ITEM_NONE_1955                   1955
-#define ITEM_VENONAT_FANG                1956
-#define ITEM_DIGLETT_DIRT                1957
-#define ITEM_MEOWTH_FUR                  1958
-#define ITEM_PSYDUCK_DOWN                1959
-#define ITEM_MANKEY_FUR                  1960
+// Electrum: Gen 2's Berserk Gene, reworked as a switch-in-triggered consumable (no manual bag
+// use) plus one variant per other combat stat. Held-only -- the player never obtains these, so
+// no bag icon exists for them (GFX_ITEM_DUMMY_ID covers that case engine-side). Repurposed from
+// 5 unused Let's Go catch-material slots (never referenced anywhere in HGSS) rather than
+// extending past MAX_BASE_ITEM_NUM, which crashed the bag screen.
+#define ITEM_BERSERK_GENE                1956
+#define ITEM_JUGGERNAUT_GENE             1957
+#define ITEM_RESONANCE_GENE              1958
+#define ITEM_CATALYST_GENE               1959
+#define ITEM_OVERDRIVE_GENE              1960
 #define ITEM_GROWLITHE_FUR               1961
 #define ITEM_SLOWPOKE_CLAW               1962
 #define ITEM_MAGNEMITE_SCREW             1963
@@ -2693,6 +2698,8 @@
 
 // define your custom items below like this
 // #define ITEM_CUSTOM_1 (MAX_BASE_ITEM_NUM + 1)
+
+#define IS_ITEM_STAT_GENE(item) ((item) >= ITEM_BERSERK_GENE && (item) <= ITEM_OVERDRIVE_GENE)
 
 #define ITEM_INFINITE_CANDY ITEM_SEED_OF_MASTERY_PLZA
 

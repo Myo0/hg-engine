@@ -26,6 +26,18 @@
 #define MOVE_TUTOR_NPC_FRONTIER_TOP_RIGHT    1
 #define MOVE_TUTOR_NPC_FRONTIER_BOTTOM_RIGHT 2
 #define MOVE_TUTOR_NPC_HEADBUTT              3
+// Electrum: Route 35 Pokéathlon-gate Black Belt (scr_seq_0242_R35R0201 script 003). Free (cost 0).
+// One booth per move: move_tutor_choose_move's own selection UI renders blank/unlabeled option
+// boxes in this hg-engine port regardless of booth (confirmed even with the Special Currency
+// overlay loaded first), so the script builds its own labeled menu instead and uses
+// GetTutorPageQuantity (scrcmd_652) per move purely as a species-eligibility check, not for UI.
+#define MOVE_TUTOR_NPC_BLACK_BELT_BRICK_BREAK    4
+#define MOVE_TUTOR_NPC_BLACK_BELT_ICE_PUNCH      5
+#define MOVE_TUTOR_NPC_BLACK_BELT_FIRE_PUNCH     6
+#define MOVE_TUTOR_NPC_BLACK_BELT_THUNDER_PUNCH  7
+#define MOVE_TUTOR_NPC_BLACK_BELT_POISON_JAB     8
+#define MOVE_TUTOR_NPC_BLACK_BELT_SHADOW_PUNCH   9
+#define MOVE_TUTOR_NPC_BLACK_BELT_MEGA_PUNCH     10
 
 typedef struct TutorMove {
     u16 move;
@@ -86,6 +98,13 @@ TutorMove sTutorMoves[] = {
     { MOVE_BLOCK, 32, MOVE_TUTOR_NPC_FRONTIER_BOTTOM_RIGHT },
     { MOVE_BUG_BITE, 32, MOVE_TUTOR_NPC_FRONTIER_TOP_LEFT },
     { MOVE_HEADBUTT, 0, MOVE_TUTOR_NPC_HEADBUTT },
+    { MOVE_BRICK_BREAK, 0, MOVE_TUTOR_NPC_BLACK_BELT_BRICK_BREAK },
+    { MOVE_ICE_PUNCH, 0, MOVE_TUTOR_NPC_BLACK_BELT_ICE_PUNCH },
+    { MOVE_FIRE_PUNCH, 0, MOVE_TUTOR_NPC_BLACK_BELT_FIRE_PUNCH },
+    { MOVE_THUNDER_PUNCH, 0, MOVE_TUTOR_NPC_BLACK_BELT_THUNDER_PUNCH },
+    { MOVE_POISON_JAB, 0, MOVE_TUTOR_NPC_BLACK_BELT_POISON_JAB },
+    { MOVE_SHADOW_PUNCH, 0, MOVE_TUTOR_NPC_BLACK_BELT_SHADOW_PUNCH },
+    { MOVE_MEGA_PUNCH, 0, MOVE_TUTOR_NPC_BLACK_BELT_MEGA_PUNCH },
 };
 
 u16 LONG_CALL GetLearnableTutorMoves(struct PartyPokemon *mon, u32 moveTutorNpc, u8 dest[])

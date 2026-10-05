@@ -19,7 +19,7 @@ enum AIFlag {
     AI_FLAG_SETUP_FIRST_TURN = 1 << 3,
     AI_FLAG_RISKY = 1 << 4,
     AI_FLAG_DAMAGE_PRIORITY = 1 << 5,
-    AI_FLAG_BATON_PASS = 1 << 6,
+    AI_FLAG_UNUSED_6 = 1 << 6,
     AI_FLAG_TAG_STRATEGY = 1 << 7,
     AI_FLAG_CHECK_HP = 1 << 8,
     AI_FLAG_WEATHER = 1 << 9,

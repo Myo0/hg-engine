@@ -29,6 +29,7 @@
 .equ _EV_scr_seq_D22R0101_025, 25
 .equ _EV_scr_seq_D22R0101_026, 26
 .equ _EV_scr_seq_D22R0101_027, 27
+.equ _EV_scr_seq_D22R0101_028, 28
 
 .equ obj_D22R0101_monstarball, 0
 .equ obj_D22R0101_monstarball_2, 1
