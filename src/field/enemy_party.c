@@ -93,6 +93,43 @@ static u16 ApplyKantoLevelScaling(u16 level, u8 kantoBadgeCount, u8 johtoBadgeCo
     }
     return level;
 }
+
+// Real, user-confirmed level caps (2026-10-11), indexed by GetJohtoBadgeCount() (0-8). Caps are
+// set per-gym as part of each trainer "split" review -- do NOT guess values for the unfilled
+// slots below (Pryce/Clair, indices 6-7) or the final "all 8 Johto badges" slot (index 8); ask
+// before assigning a trainer a level that would depend on one of those.
+static const u8 sJohtoLevelCapTable[9] = {
+    16, // 0 badges -- before Falkner
+    25, // 1 badge -- before Bugsy
+    29, // 2 badges -- before Whitney
+    37, // 3 badges -- before Morty
+    44, // 4 badges -- before Chuck
+    49, // 5 badges -- before Jasmine
+    0,  // 6 badges -- before Pryce, TBD
+    0,  // 7 badges -- before Clair, TBD
+    0,  // 8 badges -- all Johto badges earned, TBD
+};
+
+// F_LEVEL_CAP_RELATIVE support (see trainer_data.h): reinterprets a flagged trainer's raw .level
+// field as an offset below the player's current region-appropriate badge level cap, instead of
+// an absolute level. Currently Johto-only in practice -- the Kanto open-world/postgame design
+// (and its own cap curve) hasn't been built yet, so the Kanto branch below is a placeholder that
+// can't actually be reached by any real trainer yet.
+static u16 ApplyLevelCapRelative(u16 offset, u8 kantoBadgeCount, u8 johtoBadgeCount)
+{
+    u8 cap;
+    if (kantoBadgeCount > 0) {
+        // Kanto cap curve doesn't exist yet -- see project_planning_kanto. Treat as uncapped
+        // until that design lands; unreachable today since Kanto isn't accessible content yet.
+        cap = 100;
+    } else {
+        cap = sJohtoLevelCapTable[johtoBadgeCount];
+    }
+    if (offset >= cap) {
+        return 1; // defensive clamp -- never return 0/underflow if a cap slot isn't filled in yet
+    }
+    return cap - offset;
+}
 #endif // KANTO_LEVEL_SCALING
 
 /**
@@ -183,7 +220,11 @@ void MakeTrainerPokemonParty(struct BATTLE_PARAM *bp, int num, int heapID)
         // level field
         level = buf[offset] | (buf[offset + 1] << 8);
 #ifdef KANTO_LEVEL_SCALING
-        level = ApplyKantoLevelScaling(level, kantoBadgeCount, johtoBadgeCount);
+        if (bp->trainer_data[num].aibit & F_LEVEL_CAP_RELATIVE) {
+            level = ApplyLevelCapRelative(level, kantoBadgeCount, johtoBadgeCount);
+        } else {
+            level = ApplyKantoLevelScaling(level, kantoBadgeCount, johtoBadgeCount);
+        }
 #endif
         gLastPokemonLevelForMoneyCalc = level; // ends up being the last level at the end of the loop that we use for the money calc loop default case
         offset += 2;

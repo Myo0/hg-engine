@@ -1809,6 +1809,16 @@ u8 LONG_CALL GetBoxMonNatureCountMints(struct BoxPokemon *boxMon)
     return personality;
 }
 
+// Full replacement for the native GetBoxMonNature (hooks: arm9 GetBoxMonNature 0206FE04).
+// GetMonNature(mon) is a 4-byte tail-call trampoline straight into this function (box is mon's
+// first field, so &mon->box == mon -- the compiler emits it as a bare branch, no room to hook
+// GetMonNature itself), so this one hook covers both entry points plus any other native code
+// that calls GetBoxMonNature directly (e.g. PC box summary screens).
+u8 LONG_CALL GetBoxMonNature(struct BoxPokemon *boxMon)
+{
+    return GetBoxMonNatureCountMints(boxMon);
+}
+
 /**
  *  @brief grab the encounter slot that should be forced when static/magnet pull proc
  *         needed to fix the crash caused by static and magnet pull

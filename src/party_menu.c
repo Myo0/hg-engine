@@ -42,6 +42,73 @@ u32 LONG_CALL getButtonColorRaised(int selection);
 void PartyMenu_ShowRotomCatalogList(struct PartyMenu *partyMenu);
 void LONG_CALL PartyMonContextMenuAction_SetHP(struct PartyMenu *partyMenu, int *pState);
 
+// Already real, compiled, decompiled functions elsewhere in this repo (src/pokemon.c,
+// src/item.c) but never declared in a header, since nothing has called them until now.
+BOOL GetMonMachineMoveCompat(struct PartyPokemon *pp, u16 machineMoveIndex);
+u16 ItemToMachineMoveIndex(u16 itemId);
+
+// Electrum: Teleport isn't TM/HM-taught in this hack (absent from sMachineMoves[] in
+// src/item.c), so unlike Fly/Dig/Flash there's no compatibility bitfield to check -- this is a
+// fixed species list (vanilla-across-generations Teleport learnset, user-supplied 2026-10-07).
+// Alolan Raichu / Alolan Exeggutor / female Meowstic need species+form resolved together (a live
+// party mon stores species and form as separate fields -- confirmed this session via the save
+// format work in PKCalc's moveset_import.js -- unlike Trainers.c's MON_WITH_FORM(...) authoring
+// macro, which bakes form into a single resolved species id at compile time). Deoxys intentionally
+// checked on raw species alone: all 4 formes share one species id here (form doesn't move it into
+// a different numbered slot the way Alolan/Galarian/Hisuian/Paldean forms do), so "all forms"
+// falls out for free.
+static BOOL CanLearnTeleport(struct PartyPokemon *pp)
+{
+    u32 species = GetMonData(pp, MON_DATA_SPECIES, NULL);
+
+    switch (species) {
+    case SPECIES_ABRA: case SPECIES_KADABRA: case SPECIES_ALAKAZAM:
+    case SPECIES_MEWTWO:
+    case SPECIES_NATU: case SPECIES_XATU:
+    case SPECIES_RALTS: case SPECIES_KIRLIA: case SPECIES_GARDEVOIR: case SPECIES_GALLADE:
+    case SPECIES_CLAYDOL:
+    case SPECIES_DEOXYS:
+    case SPECIES_ELGYEM: case SPECIES_BEHEEYEM:
+    case SPECIES_ESPURR:
+    case SPECIES_MEOWSTIC: // base/male; female is a separate species+form slot, handled below
+    case SPECIES_COSMOG: case SPECIES_COSMOEM: case SPECIES_SOLGALEO: case SPECIES_LUNALA:
+    case SPECIES_BUTTERFREE:
+    case SPECIES_CLEFAIRY: case SPECIES_CLEFABLE:
+    case SPECIES_JIGGLYPUFF: case SPECIES_WIGGLYTUFF:
+    case SPECIES_VENOMOTH:
+    case SPECIES_ARCANINE:
+    case SPECIES_SLOWPOKE: case SPECIES_SLOWBRO:
+    case SPECIES_MAGNEMITE: case SPECIES_MAGNETON:
+    case SPECIES_SHELLDER: case SPECIES_CLOYSTER:
+    case SPECIES_DROWZEE: case SPECIES_HYPNO:
+    case SPECIES_VOLTORB: case SPECIES_ELECTRODE:
+    case SPECIES_EXEGGCUTE: case SPECIES_EXEGGUTOR: // base Exeggutor; Alolan handled below
+    case SPECIES_CHANSEY:
+    case SPECIES_STARYU: case SPECIES_STARMIE:
+    case SPECIES_MR_MIME:
+    case SPECIES_JYNX:
+    case SPECIES_ELECTABUZZ:
+    case SPECIES_MAGMAR:
+    case SPECIES_PORYGON:
+    case SPECIES_MEW:
+        return TRUE;
+    default:
+        break;
+    }
+
+    {
+        u16 form = GetMonData(pp, MON_DATA_FORM, NULL);
+        u32 resolvedSpecies = PokeOtherFormMonsNoGet(species, form);
+        if (resolvedSpecies == SPECIES_RAICHU_ALOLAN
+            || resolvedSpecies == SPECIES_EXEGGUTOR_ALOLAN
+            || resolvedSpecies == SPECIES_MEOWSTIC_FEMALE) {
+            return TRUE;
+        }
+    }
+
+    return FALSE;
+}
+
 u8 LONG_CALL sub_0207B0B0(struct PartyMenu *wk, u8 *buf)
 {
     struct PartyPokemon *pp = Party_GetMonByIndex(wk->args->party, wk->partyMonIndex);
@@ -50,6 +117,13 @@ u8 LONG_CALL sub_0207B0B0(struct PartyMenu *wk, u8 *buf)
     u8 i;
     u8 count = 0;
     u8 fieldEffect;
+    u8 j, k;
+    BOOL alreadyAdded;
+    static const struct { u16 item; u16 move; u8 menuId; } sLearnableMachineFieldMoves[] = {
+        { ITEM_HM02, MOVE_FLY, PARTY_MON_CONTEXT_MENU_FLY },
+        { ITEM_TM028, MOVE_DIG, PARTY_MON_CONTEXT_MENU_DIG },
+        { ITEM_TM070, MOVE_FLASH, PARTY_MON_CONTEXT_MENU_FLASH },
+    };
 
     u8 isEgg = GetMonData(pp, MON_DATA_IS_EGG, NULL);
     u32 item = GetMonData(pp, MON_DATA_HELD_ITEM, NULL);
@@ -80,7 +154,7 @@ u8 LONG_CALL sub_0207B0B0(struct PartyMenu *wk, u8 *buf)
                 ++count;
             }
 
-            for (i = 0; i < MAX_MON_MOVES; ++i) {
+            for (i = 0; i < MAX_MON_MOVES && count < MAX_BUTTONS_IN_PARTY_MENU; ++i) {
                 move = GetMonData(pp, MON_DATA_MOVE1 + i, NULL);
                 if (move == MOVE_NONE) {
                     break;
@@ -91,6 +165,61 @@ u8 LONG_CALL sub_0207B0B0(struct PartyMenu *wk, u8 *buf)
                     buf[count] = fieldEffect;
                     ++count;
                     PartyMenu_ContextMenuAddFieldMove(wk, move, fieldMoveIndex);
+                    ++fieldMoveIndex;
+                }
+            }
+
+            // Electrum: also offer field moves the mon doesn't currently know but whose species
+            // CAN learn -- selecting one runs the exact same real field-move action a mon that
+            // genuinely knows it would (PartyMenuContextMenuAction_FieldMoveCommon only re-checks
+            // field conditions -- badge, terrain, etc. -- never the mon's own moveset again).
+            // Doesn't teach/add the move, just offers the action. See
+            // project_fly_without_knowing_feasibility.md for the research this is built from.
+            //
+            // The on-screen button layout (sButtonRects/sButtonWindowIDs, native vanilla data, not
+            // decompiled here) is a hard-capped MAX_BUTTONS_IN_PARTY_MENU (8) slots -- every
+            // insertion below (and the real-move loop above) is bounds-checked against that so a
+            // mon with several real field moves plus multiple newly-learnable ones can never push
+            // past what the menu can actually render; once full, remaining candidates are simply
+            // not offered rather than overflowing anything.
+            for (j = 0; j < 3 && count < MAX_BUTTONS_IN_PARTY_MENU; ++j) {
+                if (!GetMonMachineMoveCompat(pp, ItemToMachineMoveIndex(sLearnableMachineFieldMoves[j].item))) {
+                    continue;
+                }
+                alreadyAdded = FALSE;
+                for (k = 0; k < count; ++k) {
+                    if (buf[k] == sLearnableMachineFieldMoves[j].menuId) {
+                        alreadyAdded = TRUE;
+                        break;
+                    }
+                }
+                if (!alreadyAdded) {
+                    buf[count] = sLearnableMachineFieldMoves[j].menuId;
+                    ++count;
+                    // Field-move button text is positional, not keyed by menu id -- PartyMenu_
+                    // OpenContextMenu pulls the Nth field-move-range button's label from
+                    // contextMenuStrings[FIELD_MOVES_BEGIN + N] in iteration order, regardless of
+                    // which move it actually is. Without this call that slot is never populated
+                    // and the button renders with blank text (confirmed live 2026-10-07).
+                    // fieldMoveIndex must keep counting on from wherever the real-move loop above
+                    // left off, not restart at 0.
+                    PartyMenu_ContextMenuAddFieldMove(wk, sLearnableMachineFieldMoves[j].move, fieldMoveIndex);
+                    ++fieldMoveIndex;
+                }
+            }
+
+            if (count < MAX_BUTTONS_IN_PARTY_MENU && CanLearnTeleport(pp)) {
+                alreadyAdded = FALSE;
+                for (k = 0; k < count; ++k) {
+                    if (buf[k] == PARTY_MON_CONTEXT_MENU_TELEPORT) {
+                        alreadyAdded = TRUE;
+                        break;
+                    }
+                }
+                if (!alreadyAdded) {
+                    buf[count] = PARTY_MON_CONTEXT_MENU_TELEPORT;
+                    ++count;
+                    PartyMenu_ContextMenuAddFieldMove(wk, MOVE_TELEPORT, fieldMoveIndex);
                     ++fieldMoveIndex;
                 }
             }

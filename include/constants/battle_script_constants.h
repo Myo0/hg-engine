@@ -556,6 +556,12 @@
 #define BATTLE_SUBSCRIPT_HANDLE_SANDSTORM_PERMANENT       (MAX_BASE_SUBSCRIPT_NUM + 14) // 529
 #define BATTLE_SUBSCRIPT_HANDLE_SNOW_PERMANENT            (MAX_BASE_SUBSCRIPT_NUM + 15) // 530
 #define BATTLE_SUBSCRIPT_HANDLE_HAIL_PERMANENT            (MAX_BASE_SUBSCRIPT_NUM + 16) // 531
+// Electrum: overworld heavy rain ("strong rain") sets the same HEAVY_RAIN condition as Primordial Sea, but permanently.
+#define BATTLE_SUBSCRIPT_OVERWORLD_HEAVY_RAIN             (MAX_BASE_SUBSCRIPT_NUM + 17) // 532
+// Electrum: overworld blizzard = permanent Snow + permanent Tailwind on the opposing side.
+#define BATTLE_SUBSCRIPT_OVERWORLD_BLIZZARD               (MAX_BASE_SUBSCRIPT_NUM + 18) // 533
+// Electrum: overworld Stealth Rock preset (ashfall / header 28): sets the hazard with its own animation and waits.
+#define BATTLE_SUBSCRIPT_OVERWORLD_STEALTH_ROCK           (MAX_BASE_SUBSCRIPT_NUM + 19) // 534
 
 // add status effect constants--used in battle effect scripts to queue up a subscript through the table in src/moves.c
 

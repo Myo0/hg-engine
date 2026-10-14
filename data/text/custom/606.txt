@@ -26,3 +26,4 @@ Olivine City Pokémon Gym\rLeader: Jasmine\nCertified Trainer!\f{STRVAR_1 3, 0, 
 Jasmine: Since you have 6 badges\nI can give you this...\r
 Jasmine: With a Mega Ring you can\nMega Evolve Pokémon as long as they are\rholding the appropriate Mega Stone.\nSpeaking of which, have this:\r 
 Jasmine: You can Mega Evolve a Steelix\nif you give it that stone.\r
+Jasmine: I will only challenge\nyou if the highest level Pokémon on\ryour team is equal or below 49.\r

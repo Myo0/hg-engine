@@ -50,6 +50,24 @@ arm9 0203DFF4 8A 02
 # allow for 255 moves in move tutor
 0001 02202C12 FF 29
 
+# overworld weather table (0x022098B0, 0x1C bytes/row) row 7 = sandstorm: sprite set 2, BG2 overlay 1, state size 0xDC
+0001 02209974 02 00 01 00 DC 00 00 00
+
+# overworld weather table row 2 = heavy rain ("strong rain"): sprite set 5 (slanted streaks); BG overlay and state size unchanged
+0001 022098E8 05 00
+
+# overworld weather table row 3 = thunderstorm: sprite set 5 + BG2 lightning-flash overlay 4, state size 0xFC (rain state + flash state)
+0001 02209904 05 00 04 00 FC 00 00 00
+
+# overworld weather table row 6 = blizzard: sprite set 9 (flakes) + BG2 speckle overlay 0, state size 0xDC
+0001 02209958 09 00 00 00 DC 00 00 00
+
+# overworld weather table row 4 = ashfall: sprite set 6 (ash specks) + BG2 ash overlay 3, state size 0xDC
+0001 02209920 06 00 03 00 DC 00 00 00
+
+# overworld weather table row 10 = sun (was Mist 2, a duplicate of Mist 1): no particles, BG2 dim flat overlay 5, state size 0x20
+0001 022099C8 FF FF 05 00 20 00 00 00
+
 # pokewalker species limiters
 0112 021ED63C FF 7F 00 00
 0112 021ED668 FF 7F 00 00
@@ -422,7 +440,7 @@ arm9 08051886 2B
 arm9 080518CA 0B
 
 # sTrainerEncounterMusicParam table range
-arm9 080550D4 2D
+arm9 080550D4 30
 
 #else
 

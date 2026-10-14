@@ -91,7 +91,7 @@ Electric Gem - Victory Road 3F
 
 
 Real Mega Stone Chronological Order (OLD LIST BELOW FOR REFERENCE AND CHANGES):
-Earliest Mega Availability is after Jasmine.
+Mega Ring Availability is after the Team Rocket Executive Ariana tag battle with Lance.
 
 Audinite - Route 35 (Requires Surf)
 Mawilite - Route 36
@@ -102,6 +102,11 @@ Pidgeotite - Ruins of Alph (Requires Surf)
 Ampharosite - Olivine Lighthouse (Lantern Room)
 Altarianite - Violet City (Requires Surf)
 Chimechite - Route 38
+Barbaracite - Route 47 (Requires Waterfall)
+Kangaskhanite - Route 47 (Requires Surf & Rock Climb)
+Scraftinite - Route 48 
+Steelixite - Given by Jasmine upon defeat
+Skarmorite - Mt. Mortar 2F blocked by Bird Keeper Allan
 
 Salamencite - Cherrygrove City (Requires Surf & Rock Climb)
 

@@ -9646,8 +9646,8 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
 
     [SPECIES_FRILLISH] = {
         .entries = {
-            { EVO_STONE_MALE, 84, SPECIES_JELLICENT },
-            { EVO_STONE_FEMALE, 84, MON_WITH_FORM(SPECIES_JELLICENT, 1) },
+            { EVO_STONE, ITEM_WATER_STONE, SPECIES_JELLICENT },
+            { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },

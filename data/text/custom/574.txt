@@ -13,3 +13,4 @@ There is a large winch.\nWill you turn it? {YESNO 0}
 It won’t turn anymore.
 Cianwood City Pokémon Gym
 Cianwood City Pokémon Gym\rLeader: Chuck\nCertified Trainer!\f{STRVAR_1 3, 0, 0}
+Chuck: I will only challenge\nyou if the highest level Pokémon on\ryour team is equal or below 44.\r

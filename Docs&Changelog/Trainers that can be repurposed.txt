@@ -137,6 +137,12 @@ I can tell that you’re a Trainer\nwith considerable skill.\rIf you don’t min
 186 trainer for rocket grunt
 
 
+--- Script stuff for mega ring activation
+SetFlag 2518
+SetVar 0x8004 696
+SetVar 0x8005 1
+CommonScript 2033
+
 Berry Tree Script
 
 Script 10:
@@ -178,6 +184,19 @@ Script 3:
     CloseMessage
     ReleaseAll
 End
+
+	CountPartyBornPokemon 0x800D
+	CountPokemonUnderLevel 0x800C 37
+	CompareVars 0x800C 0x800D
+	JumpIf LESS Function#7
+
+Function 7:
+	Message 12
+	CloseMessage 
+	ReleaseAll 
+End 
+
+Morty: I will only challenge\nyou if the highest level Pokémon on\ryour team is equal or below 37.\r
 
 Cynthia will be one of the final trainers the player faces before Red on Mt. Silver.
 

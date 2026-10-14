@@ -1778,6 +1778,20 @@ u32 LONG_CALL IsLevelAtLevelCap(u32 level);
 u8 LONG_CALL GetBoxMonNatureCountMints(struct BoxPokemon *boxMon);
 
 /**
+ *  @brief full replacement (see hooks: GetBoxMonNature 0206FE04) for the native
+ *  GetBoxMonNature -- the vanilla Summary screen's nature NAME text still calls this directly
+ *  (GetMonNature(mon) is just a 4-byte tail-call trampoline into this exact function), bypassing
+ *  the nature-override system entirely even though the stat +/- colors on the same screen
+ *  already honor it via GetBoxMonNatureCountMints. Hooking this one function fixes every native
+ *  caller at once (Summary screen, PC box summary, anything else that asks "what's this mon's
+ *  nature") since they all funnel through here.
+ *
+ *  @param boxMon BoxPokemon whose nature to grab
+ *  @return nature of the BoxPokemon factoring in nature override
+ */
+u8 LONG_CALL GetBoxMonNature(struct BoxPokemon *boxMon);
+
+/**
  *  @brief perform shiny check given ot id and pid
  *
  *  @param otid original trainer id

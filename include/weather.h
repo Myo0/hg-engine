@@ -139,6 +139,9 @@ void LONG_CALL WeatherBGAlphaDef(int alpha1, int alpha2);
 void LONG_CALL GX_EngineAToggleLayers(int planes, int status);
 BOOL LONG_CALL WeatherMoveMain(WEATHER_SYS_MOVE_WORK *p_work);
 
+void LONG_CALL Weather_StartSE(WEATHER_SYS_WORK *pWork, u32 seq);
+void LONG_CALL Weather_StopSE(WEATHER_SYS_WORK *pWork);
+
 void LONG_CALL addWeatherSnow(WEATHER_SYS_WORK *pWork, int num);
 void LONG_CALL objWeatherSnow(WAETHER_OBJ_DATA *work);
 

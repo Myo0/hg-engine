@@ -193,5 +193,7 @@ struct TrainerMusic sTrainerEncounterMusicParam[] = // cues which music sequence
         { .class = TRAINERCLASS_EXECUTIVE_PETREL, .music1 = SEQ_GS_EYE_ROCKET, .music2 = SEQ_GS_EYE_ROCKET },
         { .class = TRAINERCLASS_SOCIALITE, .music1 = SEQ_GS_EYE_J_SHOUJO, .music2 = SEQ_GS_EYE_J_SHOUJO },
         { .class = TRAINERCLASS_COWGIRL, .music1 = SEQ_GS_EYE_J_SHOUJO, .music2 = SEQ_GS_EYE_J_SHOUJO },
+        { .class = TRAINERCLASS_WAITRESS, .music1 = SEQ_GS_EYE_J_SHOUJO, .music2 = SEQ_GS_EYE_J_SHOUJO },
+        { .class = TRAINERCLASS_PARASOL_LADY, .music1 = SEQ_GS_EYE_J_SHOUJO, .music2 = SEQ_GS_EYE_J_SHOUJO },
     };
 #endif // EXPAND_MUSIC_TABLES

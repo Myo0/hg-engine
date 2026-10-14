@@ -1,0 +1,21 @@
+#include "constants/battle_constants.h"
+.include "asm/include/battle_commands.inc"
+
+.data
+
+_000:
+    CompareVarToValue OPCODE_FLAG_SET, BSCRIPT_VAR_SIDE_CONDITION_TARGET, SIDE_CONDITION_STEALTH_ROCKS, _end
+    UpdateVar OPCODE_FLAG_ON, BSCRIPT_VAR_SIDE_CONDITION_TARGET, SIDE_CONDITION_STEALTH_ROCKS
+    AddEntryHazardToQueue BATTLER_CATEGORY_DEFENDER, HAZARD_IDX_STEALTH_ROCK
+    UpdateVar OPCODE_SET, BSCRIPT_VAR_MSG_MOVE_TEMP, MOVE_STEALTH_ROCK
+    PlayMoveAnimation BATTLER_CATEGORY_MSG_TEMP
+    Wait
+    UpdateVar OPCODE_SET, BSCRIPT_VAR_MOVE_EFFECT_CHANCE, 0
+    UpdateVar OPCODE_FLAG_OFF, BSCRIPT_VAR_BATTLE_STATUS, BATTLE_STATUS_MOVE_ANIMATIONS_OFF
+    // Pointed stones float in the air around your team!
+    PrintMessage 1077, TAG_NONE_SIDE, BATTLER_CATEGORY_ATTACKER_ENEMY
+    Wait
+    WaitButtonABTime 30
+
+_end:
+    End

@@ -2734,6 +2734,12 @@ BOOL btl_scr_cmd_F9_canclearprimalweather(void *bw, struct BattleStruct *sp)
 
     u32 currentPrimalWeather = sp->field_condition & (FIELD_CONDITION_EXTREMELY_HARSH_SUNLIGHT | FIELD_CONDITION_HEAVY_RAIN | FIELD_CONDITION_STRONG_WINDS);
 
+    // Electrum: overworld heavy rain (HEAVY_RAIN together with RAIN_PERMANENT) has no Primordial Sea holder and is permanent
+    if (currentPrimalWeather == FIELD_CONDITION_HEAVY_RAIN && (sp->field_condition & FIELD_CONDITION_RAIN_PERMANENT)) {
+        IncrementBattleScriptPtr(sp, failAddress);
+        return FALSE;
+    }
+
     if (currentPrimalWeather) {
         for (i = 0; i < client_set_max; i++) {
             client_no = sp->turnOrder[i];

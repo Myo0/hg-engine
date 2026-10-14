@@ -55,19 +55,25 @@ int UNUSED SwitchInAbilityCheck(void *bw, struct BattleStruct *sp)
             if (sp->weather_check_flag == 0) {
                 switch (BattleWorkWeatherGet(bw)) {
                 case WEATHER_SYS_RAIN:
-                case WEATHER_SYS_HEAVY_RAIN:
                     scriptnum = BATTLE_SUBSCRIPT_OVERWORLD_RAIN;
                     ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
                     break;
-                case WEATHER_SYS_THUNDER: // Electrum: thunderstorm -> Electric Terrain + permanent-sun preset
+                case WEATHER_SYS_HEAVY_RAIN: // Electrum: strong rain -> permanent heavy rain (same condition Primordial Sea sets)
+                    scriptnum = BATTLE_SUBSCRIPT_OVERWORLD_HEAVY_RAIN;
+                    ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                    break;
+                case WEATHER_SYS_THUNDER: // Electrum: thunderstorm -> Electric Terrain + permanent Rain
                     sp->current_move_index = MOVE_ELECTRIC_TERRAIN;
-                    scriptnum = BATTLE_SUBSCRIPT_OVERWORLD_SUN_TERRAIN;
+                    scriptnum = BATTLE_SUBSCRIPT_OVERWORLD_RAIN_TERRAIN;
                     ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
                     break;
                 case WEATHER_SYS_SNOW:
-                case WEATHER_SYS_SNOWSTORM:
-                    // case WEATHER_SYS_BLIZZARD:
                     scriptnum = BATTLE_SUBSCRIPT_OVERWORLD_HAIL;
+                    ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                    break;
+                case WEATHER_SYS_SNOWSTORM: // Electrum: blizzard -> permanent Snow + permanent Tailwind on the opposing side
+                    sp->tailwindCount[1] = 255;
+                    scriptnum = BATTLE_SUBSCRIPT_OVERWORLD_BLIZZARD;
                     ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
                     break;
                 case WEATHER_SYS_SANDSTORM:
@@ -75,8 +81,11 @@ int UNUSED SwitchInAbilityCheck(void *bw, struct BattleStruct *sp)
                     ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
                     break;
                 case WEATHER_SYS_MIST1:
-                case WEATHER_SYS_MIST2:
                     scriptnum = BATTLE_SUBSCRIPT_OVERWORLD_FOG;
+                    ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                    break;
+                case WEATHER_SYS_MIST2: // Electrum: header weather 10 is the overworld Sun -> permanent harsh sunlight
+                    scriptnum = BATTLE_SUBSCRIPT_OVERWORLD_SUN;
                     ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
                     break;
                 case WEATHER_SYS_HIGH_SUN:
@@ -141,12 +150,12 @@ int UNUSED SwitchInAbilityCheck(void *bw, struct BattleStruct *sp)
                     scriptnum = BATTLE_SUBSCRIPT_AURORA_VEIL;
                     ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
                     break;
-                case 28: // auto Stealth Rock on the player's side
-                    sp->side_condition[0] |= SIDE_STATUS_STEALTH_ROCK;
+                case WEATHER_SYS_STORM: // Electrum: ashfall -> same as 28
+                case 28: // auto Stealth Rock on the player's side (the subscript sets the flag and queues the hazard itself; pre-setting the flag here made it skip both)
                     sp->attack_client = BATTLER_ENEMY;
                     sp->defence_client = BATTLER_PLAYER;
                     sp->current_move_index = MOVE_STEALTH_ROCK;
-                    scriptnum = BATTLE_SUBSCRIPT_SET_STEALTH_ROCK;
+                    scriptnum = BATTLE_SUBSCRIPT_OVERWORLD_STEALTH_ROCK;
                     ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
                     break;
                 }

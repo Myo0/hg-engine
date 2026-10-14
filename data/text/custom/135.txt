@@ -27,8 +27,8 @@ I am sorry, but this can’t be used yet.\nWarden Baoba has a great plan for thi
 Please enjoy the Area Customizer!
 {STRVAR_1 3, 0, 0} turned on\nthe Area Customizer!\r
 It is still under development.
-Hi, I have been waiting for you!\nWhat do you think?\rThis is a brand-new Safari Zone.\nBy the way...\rI just had an idea.\nWould you like to take the Owner\fAptitude Test? {YESNO 0}
-Right on!\nLet me explain how the test works.\fIt’s very easy.\rAll you have to do is to catch one\nGEODUDE at the Safari and show it to me.\rThey are in the grass closest to the\nentrance. It shouldn’t take long\fbefore you catch one.\rGood luck!
+Hi, I have been waiting for you!\nWhat do you think?\rThis is a brand-new Safari Zone.\nBy the way...\rI just had an idea.\nWould you like to become the Owner\fof the Safari Zone? {YESNO 0}
+Right on!\nLet me explain how the Safari Zone works.\fIt’s very easy.\rThere are a maximum of six zones that\nyou can visit in one run.\rBut, there are 12 possible zones.\nYou can swap which zones you want\fbefore any Safari run.\rThe machine next to the desk\nhandles all the zones.\fTalk to the desk to start!\rGood luck!
 Wow, I never thought anyone\nwould decline!\rYou can become the Safari Zone Owner,\ndon’t you see?\rOwner...\nIt’s got a nice ring to it, doesn’t it?\rYou should try the test! {YESNO 0}
 Oh, wonderful!\nYou’ve caught a GEODUDE!\fYou’ve passed the first test.\r..................\rHuh? Didn’t I tell you that there are\ntwo tests?\rThat’s right!\nBecoming an owner is not that easy.\rThe second test is...\nWell, I am still preparing for it.\rI will let you know once it’s ready.\nYou need to wait just a little.\fI will call you with the Pokégear.
 Show me the GEODUDE once you’ve\ncaught one.\rThey are in the grass closest to the\nentrance. It shouldn’t take long.\rGood luck!

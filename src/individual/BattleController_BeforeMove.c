@@ -3611,6 +3611,9 @@ BOOL BattleController_CheckAbilityFailures4_StatusBasedFailures(struct BattleSys
     BOOL hasFlowerVeil = HasType(ctx, defender, TYPE_GRASS) && (MoldBreakerAbilityCheck(ctx, attacker, defender, ABILITY_FLOWER_VEIL) || MoldBreakerAbilityCheck(ctx, attacker, BATTLER_ALLY(defender), ABILITY_FLOWER_VEIL));
     BOOL hasPastelVeil = MoldBreakerAbilityCheck(ctx, attacker, defender, ABILITY_PASTEL_VEIL) || MoldBreakerAbilityCheck(ctx, attacker, BATTLER_ALLY(defender), ABILITY_PASTEL_VEIL);
     BOOL hasSweetVeil = MoldBreakerAbilityCheck(ctx, attacker, defender, ABILITY_SWEET_VEIL) || MoldBreakerAbilityCheck(ctx, attacker, BATTLER_ALLY(defender), ABILITY_SWEET_VEIL);
+    // Leaf Guard only grants status immunity in sunny weather -- MoldBreakerAbilityCheck alone
+    // doesn't know about weather, so it must be gated here explicitly.
+    BOOL hasLeafGuardSun = MoldBreakerAbilityCheck(ctx, attacker, defender, ABILITY_LEAF_GUARD) && (ctx->field_condition & FIELD_CONDITION_SUN_ALL);
 
     if (hasFlowerVeil) {
         switch (moveEffect) {
@@ -3653,7 +3656,7 @@ BOOL BattleController_CheckAbilityFailures4_StatusBasedFailures(struct BattleSys
     }
 
     // Rest : No Stomping Tantrum doubling
-    if (ShieldsDownCanActivate || MoldBreakerAbilityCheck(ctx, attacker, defender, ABILITY_LEAF_GUARD)) {
+    if (ShieldsDownCanActivate || hasLeafGuardSun) {
         if (moveEffect == MOVE_EFFECT_RECOVER_HEALTH_AND_SLEEP) {
             BattleController_ResetGeneralMoveFailureFlags(ctx, ctx->attack_client, FALSE);
             ctx->moveStatusFlagForSpreadMoves[defender] = MOVE_STATUS_FAILED;
@@ -3679,7 +3682,7 @@ BOOL BattleController_CheckAbilityFailures4_StatusBasedFailures(struct BattleSys
     }
 
     if (MoldBreakerAbilityCheck(ctx, attacker, defender, ABILITY_COMATOSE)
-        || MoldBreakerAbilityCheck(ctx, attacker, defender, ABILITY_LEAF_GUARD)
+        || hasLeafGuardSun
         || ShieldsDownCanActivate) {
         doChecking = TRUE;
     }

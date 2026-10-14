@@ -838,8 +838,7 @@ void LONG_CALL BattleBgExpansionLoader(struct BattleSystem *bsys)
         terrainType = ELECTRIC_TERRAIN;
 #endif
         break;
-    case WEATHER_SYS_MIST1:
-    case WEATHER_SYS_MIST2:
+    case WEATHER_SYS_MIST1: // Electrum: MIST2 (header weather 10) is now the overworld Sun, so it no longer sets Misty Terrain
 #ifdef FOG_WEATHER_MISTY_TERRAIN
         terrainType = MISTY_TERRAIN;
 #endif

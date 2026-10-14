@@ -63,6 +63,12 @@ typedef uint32_t u32;
 #define F_ROAMING_MON                (1 << 11)
 #define F_SAFARI_ZONE                (1 << 12)
 #define F_CATCHING_DEMO              (1 << 13)
+// When set, every party mon's .level field in this trainer's Trainers.c entry is NOT an absolute
+// level -- it's an offset BELOW the player's current region-appropriate badge level cap (e.g.
+// .level = 4 means "4 below the current cap"). See MakeTrainerPokemonParty/ApplyLevelCapRelative
+// in src/field/enemy_party.c. Engine auto-picks the Kanto or Johto cap table based on current
+// badge progress, so one flag covers both regions.
+#define F_LEVEL_CAP_RELATIVE         (1 << 14)
 
 // standard flags for expert trainer AI
 #define F_TRAINER_EXPERT_AI (F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS)

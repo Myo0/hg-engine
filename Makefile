@@ -321,6 +321,9 @@ $(BASE)/arm9.bin: $(ROMNAME) $(NDSTOOL) $(VENV_ACTIVATE)
 all: $(OUTPUT) $(OVERLAY_OUTPUTS) $(TOOLS) $(BASE)/arm9.bin
 	@# find and delete macOS and windows files
 	find . \( -name "*.DS_Store" -o -name "*:Zone.Identifier" \) -delete
+# sync_music_table_counts.py is gitignored (local-only) -- only run it if present, so a
+# fresh checkout without it still builds fine (falls back to the bytereplacement file as-is).
+	@if [ -f scripts/sync_music_table_counts.py ]; then $(PYTHON) scripts/sync_music_table_counts.py; fi
 	$(PYTHON) scripts/make.py $(CFLAGS)
 # TODO: find a convenient way to not have this be a separate $(MAKE)
 	$(MAKE) move_narc

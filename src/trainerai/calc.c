@@ -2476,7 +2476,7 @@ BOOL BattleAI_AttackerHasOnlyIneffectiveMoves(struct BattleStruct *ctx, u32 atta
 // ladder BattleAI_PostKOSwitchIn_Internal uses to rank its whole party. Factored out so
 // TrainerAI_ImmunitySwitch (pick_command.c) can reuse the identical scoring restricted to just its
 // own immune-qualifying candidates, instead of the general picker's full-party pass.
-int BattleAI_ScoreSwitchInCandidate(struct BattleSystem *bsys, struct BattleStruct *ctx, int attacker, u32 defender, u32 defender2, BOOL isDoublesBattle, BOOL incomingEatsFreeHit, struct PartyPokemon *mon, struct AI_sDamageCalc *defenderMon)
+int BattleAI_ScoreSwitchInCandidate(struct BattleSystem *bsys, struct BattleStruct *ctx, int attacker, u32 defender, BOOL incomingEatsFreeHit, struct PartyPokemon *mon, struct AI_sDamageCalc *defenderMon)
 {
     struct AI_sDamageCalc attackerMon = { 0 };
     u8 critical = 0;
@@ -2485,7 +2485,6 @@ int BattleAI_ScoreSwitchInCandidate(struct BattleSystem *bsys, struct BattleStru
     u32 monHighestDamageMoveno = 0;
     u32 monReceivingHighestDamageMoveno = 0;
     u32 monReceivesDamage = 0;
-    u32 monReceivesDamage2 = 0; // representative hit from the second opponent, doubles only
     int switchInScore = 100;
 
     attackerMon.species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0);
@@ -2499,8 +2498,14 @@ int BattleAI_ScoreSwitchInCandidate(struct BattleSystem *bsys, struct BattleStru
         moveno = GetMonData(mon, MON_DATA_MOVE1 + j, NULL);
         if (moveno != MOVE_NONE) {
             struct BattleMove attackerMove = ctx->moveTbl[moveno];
+            // Self-destruct moves KO the user regardless of outcome, so this candidate isn't
+            // actually a sustained attacker just because it's packing Explosion -- excluded from
+            // the "what can this candidate deal" calc the same way status moves are (matches the
+            // Damp move-ID group in BattleController_CheckAbilityFailures1).
+            BOOL isSelfDestructMove = moveno == MOVE_SELF_DESTRUCT || moveno == MOVE_EXPLOSION
+                || moveno == MOVE_MIND_BLOWN || moveno == MOVE_MISTY_EXPLOSION;
 
-            if (attackerMove.split != SPLIT_STATUS && attackerMove.power) {
+            if (attackerMove.split != SPLIT_STATUS && attackerMove.power && !isSelfDestructMove) {
                 damages.damageRoll = BattleAI_CalcDamage(bsys, ctx, moveno, ctx->side_condition[BATTLER_IS_ENEMY(attacker)], ctx->field_condition, attackerMove.power, attackerMove.type, critical, attacker, defender, &damages, &attackerMon, defenderMon);
 
                 damages.damageRoll = BattleAI_AdjustUnusualMoveDamage(attackerMon.level, attackerMon.hp, defenderMon->hp, damages.damageRoll, attackerMove.effect, attackerMon.ability, attackerMon.item);
@@ -2561,44 +2566,6 @@ int BattleAI_ScoreSwitchInCandidate(struct BattleSystem *bsys, struct BattleStru
         switchin_debug_printf("Receiving from move %d: %d is [%d-%d], roll %d > att.HP %d\n", k, defenderMoveno, damages.damageRange[0], damages.damageRange[15], damages.damageRoll, attackerMon.hp);
     }
 
-    // Doubles: the OTHER opponent (not the positionally-paired `defender`) can also threaten
-    // this candidate -- an independent priority kill, or contribute to a combined-lethal hit
-    // (checked below). Was previously invisible: this function only ever looked at `defender`.
-    if (isDoublesBattle && defender2 != defender && ctx->battlemon[defender2].hp > 0) {
-        struct AI_sDamageCalc defenderMon2 = { 0 };
-        FillDamageStructFromBattleMon(bsys, ctx, &defenderMon2, defender2);
-
-        for (int k = 0; k < 4; ++k) {
-            struct AI_damage damages = { 0 };
-            u32 defenderMoveno = ctx->battlemon[defender2].move[k];
-            struct BattleMove defenderMove = ctx->moveTbl[defenderMoveno];
-
-            if (defenderMove.effect == MOVE_EFFECT_STATUS_BURN
-                || defenderMove.effect == MOVE_EFFECT_STATUS_POISON
-                || defenderMove.effect == MOVE_EFFECT_STATUS_BADLY_POISON) {
-                defenderHasStatusMove = TRUE;
-            }
-
-            if (defenderMove.split != SPLIT_STATUS && defenderMove.power) {
-                damages.damageRoll = BattleAI_CalcDamage(bsys, ctx, defenderMoveno, ctx->side_condition[BATTLER_IS_ENEMY(defender2)], ctx->field_condition, defenderMove.power, defenderMove.type, critical, defender2, attacker, &damages, &defenderMon2, &attackerMon);
-
-                damages.damageRoll = BattleAI_AdjustUnusualMoveDamage(defenderMon2.level, defenderMon2.hp, attackerMon.hp, damages.damageRoll, defenderMove.effect, defenderMon2.ability, defenderMon2.item);
-                for (int u = 0; u < 16; u++) {
-                    damages.damageRange[u] = BattleAI_AdjustUnusualMoveDamage(defenderMon2.level, defenderMon2.hp, attackerMon.hp, damages.damageRange[u], defenderMove.effect, defenderMon2.ability, defenderMon2.item);
-                }
-
-                if (damages.damageRange[15] > monReceivesDamage2) {
-                    monReceivesDamage2 = damages.damageRange[15];
-                }
-
-                if (defenderMove.priority > 0
-                    && canAttackerOneShotDefender(damages.damageRange[15], defenderMove.split, defenderMoveno, &defenderMon2, &attackerMon)) {
-                    playerHasPriorityKill = TRUE;
-                }
-            }
-            switchin_debug_printf("Receiving from 2nd opponent move %d: %d is [%d-%d], roll %d > att.HP %d\n", k, defenderMoveno, damages.damageRange[0], damages.damageRange[15], damages.damageRoll, attackerMon.hp);
-        }
-    }
 #ifdef DEBUG_DAMAGE_CALC_AI
     debug_printf("playerHasPriorityKill: %d\n", playerHasPriorityKill);
 #endif
@@ -2613,13 +2580,7 @@ int BattleAI_ScoreSwitchInCandidate(struct BattleSystem *bsys, struct BattleStru
     u16 partyMonPercentDamageDealt = (100 * monDealsRolledDamage / defenderMon->maxhp);
     u16 partyMonPercentDamageReceived = (100 * monReceivesDamage / attackerMon.maxhp);
 
-    // Neither opponent's single hit needs to be lethal alone for the switch-in to die this turn
-    // if both hit it -- sum the two opponents' representative hits. A fresh switch-in in doubles
-    // faces incoming fire from BOTH opposing slots that turn regardless of its own speed, so this
-    // is independent of speedCalc/incomingEatsFreeHit (mirrors how playerHasPriorityKill is used).
-    BOOL combinedOpponentDamageIsLethal = isDoublesBattle && defender2 != defender
-        && ((monReceivesDamage + monReceivesDamage2) >= attackerMon.hp);
-    BOOL playerCanKillThisTurn = playerCanOneShotAiMon || combinedOpponentDamageIsLethal;
+    BOOL playerCanKillThisTurn = playerCanOneShotAiMon;
 
     switchin_debug_printf("SwitchScore: SpeedCalc %d. Attacker %d deals %d%% to defender %d. Receives %d%%", speedCalc, attacker, partyMonPercentDamageDealt, defender, partyMonPercentDamageReceived);
 
@@ -2632,11 +2593,10 @@ int BattleAI_ScoreSwitchInCandidate(struct BattleSystem *bsys, struct BattleStru
     }
 
     if (speedCalc > 0) {
-        if ((incomingEatsFreeHit && playerCanOneShotAiMon) || playerHasPriorityKill || combinedOpponentDamageIsLethal) {
+        if ((incomingEatsFreeHit && playerCanOneShotAiMon) || playerHasPriorityKill) {
             switchInScore -= 2; // KO'd before it can act -- either it ate a free hit this
-            // turn, it's "faster" only because speedCalc ignores priority and the opponent has
-            // a priority move that kills it regardless of that speed edge, or (doubles) it takes
-            // lethal combined fire from both opponents the moment it switches in.
+            // turn, or it's "faster" only because speedCalc ignores priority and the opponent has
+            // a priority move that kills it regardless of that speed edge.
         } else if (pursuitOHKOs) {
             switchInScore += 6;
         } else if (aiMonCanOneshotPlayer) {
@@ -2674,18 +2634,10 @@ int LONG_CALL BattleAI_PostKOSwitchIn_Internal(struct BattleSystem *bsys, int at
 
     struct AI_sDamageCalc defenderMon = { 0 };
 
-    u32 defender = BATTLER_OPPONENT(attacker); // primary (positionally-paired) opponent -- used for the
-    // "what does this candidate deal" side, unchanged by the doubles fix below.
-    BOOL isDoublesBattle = (battleType & (BATTLE_TYPE_TAG | BATTLE_TYPE_MULTI | BATTLE_TYPE_DOUBLES)) != 0;
-    // Second opposing slot -- only used to catch threats the fixed `defender` pairing alone can't see:
-    // an independent priority kill from the OTHER opponent, or a hit that combines with `defender`'s
-    // to KO the candidate even though neither hit alone is lethal. Mirrors `defender` (no-op) in singles.
-    u32 defender2 = defender;
-    if (isDoublesBattle) {
-        u32 oppLeft = BATTLER_OPPONENT_SIDE_LEFT(attacker);
-        u32 oppRight = BATTLER_OPPONENT_SIDE_RIGHT(attacker);
-        defender2 = (defender == oppLeft) ? oppRight : oppLeft;
-    }
+    // Positionally-paired opponent (player-left <-> AI-left, player-right <-> AI-right). In doubles,
+    // switch-in scoring only ever looks at this one slot directly across -- symmetric with the
+    // "what can this candidate deal" side, by design.
+    u32 defender = BATTLER_OPPONENT(attacker);
     u8 slot1, slot2;
     int switchInScore[6] = { 0 };
     int partySize = 0;
@@ -2724,7 +2676,7 @@ int LONG_CALL BattleAI_PostKOSwitchIn_Internal(struct BattleSystem *bsys, int at
             && i != ctx->sel_mons_no[slot2]
             && i != ctx->ai_reshuffle_sel_mons_no[slot1]
             && i != ctx->ai_reshuffle_sel_mons_no[slot2]) {
-            switchInScore[i] = BattleAI_ScoreSwitchInCandidate(bsys, ctx, attacker, defender, defender2, isDoublesBattle, incomingEatsFreeHit, mon, &defenderMon);
+            switchInScore[i] = BattleAI_ScoreSwitchInCandidate(bsys, ctx, attacker, defender, incomingEatsFreeHit, mon, &defenderMon);
         }
     }
 

@@ -26,7 +26,7 @@ int BattleAI_AdjustUnusualMoveDamage(u32 attackerLevel, u32 attackerHP, u32 defe
 // Defined in calc.c — scores one switch-in candidate the same way BattleAI_PostKOSwitchIn_Internal
 // ranks its whole party. Shared so TrainerAI_ImmunitySwitch can restrict evaluation to just its own
 // immune-qualifying candidates using the identical ladder.
-int BattleAI_ScoreSwitchInCandidate(struct BattleSystem *bsys, struct BattleStruct *ctx, int attacker, u32 defender, u32 defender2, BOOL isDoublesBattle, BOOL incomingEatsFreeHit, struct PartyPokemon *mon, struct AI_sDamageCalc *defenderMon);
+int BattleAI_ScoreSwitchInCandidate(struct BattleSystem *bsys, struct BattleStruct *ctx, int attacker, u32 defender, BOOL incomingEatsFreeHit, struct PartyPokemon *mon, struct AI_sDamageCalc *defenderMon);
 
 // Written by TrainerAI_ImmunitySwitch when it decides to switch; read by TrainerAI_Main
 // to override PostKO slot selection. -1 means no immunity switch pending.
@@ -239,7 +239,7 @@ static BOOL TrainerAI_ImmunitySwitch(struct BattleSystem *battleSys, int battler
         // move but is a mediocre-or-worse matchup overall (weighed against the opponent's whole
         // kit, not just the trigger move) shouldn't get forced in. Only the "+2 or better" tiers
         // (deals more than it takes, or stronger) clear that bar; +1/-1/-2 do not.
-        int candidateScore = BattleAI_ScoreSwitchInCandidate(battleSys, ctx, battler, defender, defender, FALSE, TRUE, mon, &playerMon);
+        int candidateScore = BattleAI_ScoreSwitchInCandidate(battleSys, ctx, battler, defender, TRUE, mon, &playerMon);
         debug_printf("[ImmSwitch]  cand[%d] switchInScore=%d floor102=%d\n", i, candidateScore, candidateScore >= 102);
         if (candidateScore < 102) {
             continue;
