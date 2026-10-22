@@ -696,6 +696,11 @@ arm9 GF_SndHandleMoveVolume_Hook 02005408 3
 
 arm9 FieldSystem_RestoreMapObjectsFromSave 0203B9F4 1
 
+#ifdef FRONTIER_BRAIN_INTRO
+# Frontier Brain intro: Task_StartBattle (encounter.c) runs the intro app first when the opponent is a Brain trainer class (src/frontier_intro.c)
+arm9 Task_StartBattle_Hook 02050660 1
+#endif
+
 #ifdef TAG_BATTLE_PARTNER_PARTY
 # Tag battle partner panels on the in-battle party screen (src/battle/tag_party.c, asm/battle/battle_hooks.s)
 0012 TagParty_AfterBuild_hook 0225F746 1

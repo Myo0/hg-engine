@@ -103,6 +103,7 @@ scrdef scr_seq_0003_072_repels
 scrdef scr_seq_0003_073_autobattle_testing
 scrdef scr_seq_0003_074
 scrdef scr_seq_0003_075_berry_tree
+scrdef scr_seq_0003_078_frontier_intro_test
 scrdef_end
 
 scr_seq_0003_002:
@@ -2005,3 +2006,14 @@ _berry_tree_full:
     closemsg
     endstd
     end
+// -------------------------------------------------------
+// scr_seq_0003_078_frontier_intro_test  (EventSet_Script(fsys, 2078, NULL); R button when FRONTIER_BRAIN_INTRO_DEBUG_TRIGGER is on)
+// Starts the battle against Argenta (trainer 221, Hall Matron). The Frontier Brain intro plays by itself before every battle against a
+// Brain trainer class (src/frontier_intro.c), no script commands needed.
+// -------------------------------------------------------
+scr_seq_0003_078_frontier_intro_test:
+	lockall
+	trainer_battle 221, 0, 0, 0
+	releaseall
+	endstd
+	end

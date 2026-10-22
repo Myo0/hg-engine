@@ -18,7 +18,10 @@ This rewrites, per brain portrait set:
 Idempotent: pristine members are always 0x20 / 0x02, so a member already at
 0x00 is skipped.  Run every build (base/ is wiped on `make clean`).
 
-Usage: patch_vs_brain_sprites.py <path to NARC a/1/0/9>
+With --revert it undoes the above exactly (verified byte-for-byte against the pristine archive): the native Frontier Brain
+intro (src/field/frontier_intro.c, FRONTIER_BRAIN_INTRO) runs the original 128K-authored art, so the Makefile reverts instead of patches.
+
+Usage: patch_vs_brain_sprites.py [--revert] <path to NARC a/1/0/9>
 """
 import struct
 import sys
@@ -30,7 +33,7 @@ NCGR_MEMBERS = [169, 173, 177, 181, 185]
 NCER_MEMBERS = [171, 175, 179, 183, 187]
 
 
-def main(path):
+def main(path, revert=False):
     d = bytearray(open(path, "rb").read())
     if d[0:4] != b"NARC":
         sys.exit(f"{path}: not a NARC (magic {d[0:4]!r})")
@@ -51,10 +54,13 @@ def main(path):
         if d[o:o + 4] != b"RGCN":
             sys.exit(f"{path}: member {m} is not an NCGR (got {d[o:o+4]!r}) - NARC 109 layout changed?")
         b = d[o + 0x22]
-        if b == 0x20:
+        if revert and b == 0x00:
+            d[o + 0x22] = 0x20
+            changed += 1
+        elif not revert and b == 0x20:
             d[o + 0x22] = 0x00
             changed += 1
-        elif b != 0x00:
+        elif b not in (0x00, 0x20):
             sys.exit(f"{path}: NCGR {m} byte 0x22 unexpected ({b:#x})")
 
     for m in NCER_MEMBERS:
@@ -66,7 +72,19 @@ def main(path):
             sys.exit(f"{path}: NCER {m} has no KBEC chunk")
         map_off = kbec + 0x10
         b = d[map_off]
-        if b == 0x02:
+        if revert and b == 0x00:
+            d[map_off] = 0x02
+            n_cells = struct.unpack_from("<H", d, kbec + 8)[0]
+            cell_arr = kbec + 8 + struct.unpack_from("<I", d, kbec + 0xC)[0]
+            num_oam = struct.unpack_from("<H", d, cell_arr)[0]
+            oam = cell_arr + 16 * n_cells
+            for i in range(num_oam):
+                a2_off = oam + i * 6 + 4
+                a2 = struct.unpack_from("<H", d, a2_off)[0]
+                a2 = (a2 & 0xFC00) | ((a2 & 0x03FF) // 4)
+                struct.pack_into("<H", d, a2_off, a2)
+            changed += 1
+        elif not revert and b == 0x02:
             d[map_off] = 0x00
             n_cells = struct.unpack_from("<H", d, kbec + 8)[0]
             cell_arr = kbec + 8 + struct.unpack_from("<I", d, kbec + 0xC)[0]
@@ -78,17 +96,18 @@ def main(path):
                 a2 = (a2 & 0xFC00) | ((a2 & 0x03FF) * 4 & 0x03FF)
                 struct.pack_into("<H", d, a2_off, a2)
             changed += 1
-        elif b != 0x00:
+        elif b not in (0x00, 0x02):
             sys.exit(f"{path}: NCER {m} mappingType unexpected ({b:#x})")
 
     if changed:
         open(path, "wb").write(d)
-        print(f"patch_vs_brain_sprites: retargeted {changed} member(s) in {path}")
+        print(f"patch_vs_brain_sprites: {'reverted' if revert else 'retargeted'} {changed} member(s) in {path}")
     else:
-        print(f"patch_vs_brain_sprites: {path} already patched")
+        print(f"patch_vs_brain_sprites: {path} already {'pristine' if revert else 'patched'}")
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
+    args = [a for a in sys.argv[1:] if a != "--revert"]
+    if len(args) != 1:
         sys.exit(__doc__)
-    main(sys.argv[1])
+    main(args[0], revert="--revert" in sys.argv[1:])

@@ -124,16 +124,60 @@ void VsScreen_ThortonGetter(void *task, void *taskEnv) { vs_run(task, taskEnv, &
 void VsScreen_DahliaGetter(void *task, void *taskEnv)  { vs_run(task, taskEnv, &sDahliaVsStruct); }
 void VsScreen_DarachGetter(void *task, void *taskEnv)  { vs_run(task, taskEnv, &sDarachVsStruct); }
 
+#ifdef FRONTIER_BRAIN_INTRO
+// Brain classes: no visible transition effect (the native Frontier intro app plays between "leave overworld" and "start battle",
+// src/frontier_intro.c); finishing in the first frame still lets the transition start the Brain battle music at once.
+void FrontierIntro_QueueFromEffect(u32 effectId);
+void *LONG_CALL Heap_Alloc(int heapId, u32 size);
+
+void VsScreen_NullGetter(void *task, void *taskEnv)
+{
+    // Same ending as the Gym Leader effects: the machine writes 1 to the completion word the encounter task waits on (env+0x14) and
+    // ov01_021EFCDC then frees the work block the effect keeps at env+0xC (heap 4), so give it a dummy one.
+    u32 *env = taskEnv;
+    u32 *done = (u32 *)env[0x14 / 4];
+
+    if (env[0x0C / 4] == 0) {
+        env[0x0C / 4] = (u32)Heap_Alloc(4, 16);
+    }
+    FrontierIntro_QueueFromEffect(OV01_TRANSITION_CTL[1]);
+    if (done != (u32 *)0) {
+        *done = 1;
+    }
+    ov01_021EFCDC(taskEnv, task);
+}
+#endif
+
 static VsGetterFn vs_getter_for(u32 effectId)
 {
     switch (effectId) {
     case VS_EFFECT_LYRA:    return VsScreen_LyraGetter;
     case VS_EFFECT_ETHAN:   return VsScreen_EthanGetter;
+#ifdef FRONTIER_BRAIN_INTRO
+    case VS_EFFECT_PALMER: return VsScreen_NullGetter;
+#else
     case VS_EFFECT_PALMER:  return VsScreen_PalmerGetter;
+#endif
+#ifdef FRONTIER_BRAIN_INTRO
+    case VS_EFFECT_ARGENTA: return VsScreen_NullGetter;
+#else
     case VS_EFFECT_ARGENTA: return VsScreen_ArgentaGetter;
+#endif
+#ifdef FRONTIER_BRAIN_INTRO
+    case VS_EFFECT_THORTON: return VsScreen_NullGetter;
+#else
     case VS_EFFECT_THORTON: return VsScreen_ThortonGetter;
+#endif
+#ifdef FRONTIER_BRAIN_INTRO
+    case VS_EFFECT_DAHLIA: return VsScreen_NullGetter;
+#else
     case VS_EFFECT_DAHLIA:  return VsScreen_DahliaGetter;
+#endif
+#ifdef FRONTIER_BRAIN_INTRO
+    case VS_EFFECT_DARACH: return VsScreen_NullGetter;
+#else
     case VS_EFFECT_DARACH:  return VsScreen_DarachGetter;
+#endif
     default:                return (VsGetterFn)0;
     }
 }

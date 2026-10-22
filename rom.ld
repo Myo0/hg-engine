@@ -976,6 +976,42 @@ sPartyContextMenuActionFuncs = 0x02101CB8;
    -- fonts are reference-counted and lazily loaded, party_menu.c's own init calls this before ever
    printing (FontID_Alloc(4, HEAP_ID_PARTY_MENU)), but nothing else in the overworld does it for us. */
 FontID_Alloc = 0x020030B8 | 1;
+/* Frontier Brain intro launcher (src/field/frontier_intro.c). Addresses harvested 2026-10-21 from the vanilla ROM with
+   /home/hgengine/frontier_tools/harvest.py (pret asm names paired with the real bl targets; calibrated against known entries). */
+HBlankInterruptDisable = 0x0201A108 | 1;
+Heap_Create = 0x0201A910 | 1;
+Heap_Destroy = 0x0201A9C4 | 1;
+Heap_Free = 0x0201AB0C | 1;
+PaletteData_Init = 0x020030E8 | 1;
+PaletteData_SetAutoTransparent = 0x02003B50 | 1;
+PaletteData_AllocBuffers = 0x02003120 | 1;
+PaletteData_FreeBuffers = 0x02003150 | 1;
+PaletteData_Free = 0x02003104 | 1;
+GF_CreateVramTransferManager = 0x0202055C | 1;
+GF_DestroyVramTransferManager = 0x020205AC | 1;
+GfGfx_EngineATogglePlanes = 0x02022C60 | 1;
+GfGfx_EngineBTogglePlanes = 0x02022CC8 | 1;
+SysTask_CreateOnMainQueue = 0x0200E320 | 1;
+SpriteSystem_DrawSprites = 0x0200D020 | 1;
+SpriteSystem_UpdateTransfer = 0x0200D03C | 1;
+SpriteSystem_FreeResourcesAndManager = 0x0200D998 | 1;
+SpriteSystem_Free = 0x0200D108 | 1;
+FreeBgTilemapBuffer = 0x0201BB4C | 1;
+ToggleBgLayer = 0x0201BC28 | 1;
+OverlayManager_GetArgs = 0x020072A4 | 1;
+FieldSystem_LaunchApplication = 0x0203DFB4 | 1;
+MIi_CpuClear16 = 0x020D4790;
+/* overlay 80 (Battle Frontier); only valid while overlay 80 is loaded */
+FrontierMap_SetVramBank = 0x02238CD8 | 1;
+FrontierMap_InitSpriteSystem = 0x02239384 | 1; /* ov80_02239384 */
+FrontierMap_VBlank = 0x02238A7C | 1;
+FrontierBrainIntro_Start = 0x0223A00C | 1; /* ov80_0223A00C */
+FontID_Alloc = 0x02002CEC | 1;
+FontID_Release = 0x02002DB4 | 1;
+PaletteData_FillPaletteInBuffer = 0x02003D5C | 1;
+TaskManager_GetStatePtr = 0x02050654 | 1;
+Battle_LaunchApp = 0x0203E3C4 | 1;
+Field_SetEnvironmentSoundState_None_Unk2 = 0x0203E354 | 1;
 /* Tag battle party select (src/field/tag_battle.c) */
 SetupAndStartTrainerBattle = 0x02051370 | 1; /* pokeheartgold encounter.c; found by its BattleSetup_New(11, battleType) + trainerId stores */
 Save_Mailbox_Get = 0x0202B50C | 1;

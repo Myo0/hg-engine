@@ -52,6 +52,12 @@ void SetOverworldRequestFlags(OVERWORLD_REQUEST_FLAGS *req, u16 trg)
  */
 void CheckOverworldRequestFlags(OVERWORLD_REQUEST_FLAGS *req, FieldSystem *fsys)
 {
+#ifdef FRONTIER_BRAIN_INTRO_DEBUG_TRIGGER
+    if (req->OpenPCCheck) { // testing only: R plays the Frontier Brain intro (commonscript 2078) instead of the Porta PC
+        EventSet_Script(fsys, 2078, NULL);
+        return;
+    }
+#endif
     if (req->OpenPCCheck && CheckScriptFlag(398)) {
         if (CheckScriptFlag(397)) {
             EventSet_Script(fsys, 2074, NULL); // set up script 2073 to show a cannot use PC message if flag 397 is set

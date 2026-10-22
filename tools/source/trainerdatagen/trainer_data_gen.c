@@ -147,7 +147,11 @@ static void WriteTrainerNameTextFile(const char *dir, int index, const char *nam
 
     BuildRawTextPath(path, sizeof(path), dir, index);
     file = OpenTextForWrite(path);
-    fputs("{TRNAME}", file);
+    // Vanilla keeps the Battle Frontier Brain names (ids 707-711) plain: the native Frontier Brain intro
+    // (src/field/frontier_intro.c) prints them with the ordinary text renderer, which can't draw the {TRNAME} marker.
+    if (index < 707 || index > 711) {
+        fputs("{TRNAME}", file);
+    }
     fputs(name, file);
     fclose(file);
 }
