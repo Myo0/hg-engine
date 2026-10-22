@@ -5,6 +5,9 @@
 build/*
 base/*
 narc/*
+.script_pull_state.json
+.script_pull_state.json.tmp
+.script_pull_backup/
 waves/*.nwav
 1.txt
 3.txt

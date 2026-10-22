@@ -67,3 +67,21 @@ dump_scripts: check_dump_rom $(VENV_ACTIVATE) $(MSGENC)
 	$(MAKE) dump_prepare DUMP_ROM="$(DUMP_ROM)"
 	$(PYTHON) $(DUMP_SCRIPT_LOCATION)/dump_event_scripts.py "$(DUMP_ROM)" $(DUMP_FLAGS)
 	@echo "Done. Review the diff in data/scr_seq/, data/eventdata/zone_event/, and data/text/ with git."
+
+# Keeps data/scr_seq and data/eventdata/zone_event mirroring the scripts and zone events saved by DSPRE in PULL_ROM.
+# Only the files whose content changed are rewritten (the old versions are saved in .script_pull_backup/).
+#   make pull_scripts                          pull from rom.nds
+#   make pull_scripts PULL_ROM=other.nds       pull from another ROM
+#   make pull_scripts PULL_FLAGS=--dry-run     list what would change, write nothing
+#   make pull_scripts PULL_FLAGS=--force       pull even when nothing looks changed
+# pull_scripts_auto is a prerequisite of `all`: it pulls whenever rom.nds changed since the last pull, and never fails
+# the build - except when BUILD_DUMPED_SCR_SEQ/BUILD_DUMPED_EVENTDATA is on, where it refuses to build over a stale repo
+# (PULL_SKIP_GUARD=1 overrides). See scripts/pull_scripts.py.
+.PHONY: pull_scripts pull_scripts_auto
+PULL_ROM ?= $(ROMNAME)
+
+pull_scripts: $(VENV_ACTIVATE) $(NDSTOOL)
+	$(PYTHON) scripts/pull_scripts.py --rom "$(PULL_ROM)" --ndstool "$(NDSTOOL)" $(PULL_FLAGS)
+
+pull_scripts_auto: $(VENV_ACTIVATE) $(NDSTOOL)
+	@$(PYTHON) scripts/pull_scripts.py --auto --rom "$(PULL_ROM)" --ndstool "$(NDSTOOL)" --scr-seq-built "$(BUILD_DUMPED_SCR_SEQ)" --eventdata-built "$(BUILD_DUMPED_EVENTDATA)"
