@@ -784,3 +784,21 @@ ldr r0, =0x0224DB3C | 1 // Immediately after the switch case. No registers are i
 bx r0
 
 .pool
+
+
+// Tag battle partner panels (src/battle/tag_party.c).  Hooked at overlay 12 0x0225F746 (register 1): the join point of the player's party-list task
+// (0x0225F4E0, state 1) after the party for the screen has been built.  r4 = the task's work.  The 10 bytes overwritten by the hook are replayed here:
+//   ldr r1,[r4,#0] ; ldr r0,[r4,#4] ; str r1,[r0,#8] ; ldr r0,[r4,#4] ; movs r1,#5      then execution resumes at 0x0225F750.
+.global TagParty_AfterBuild_hook
+TagParty_AfterBuild_hook:
+mov r0, r4
+bl TagParty_AfterBuild
+ldr r1, [r4, #0]
+ldr r0, [r4, #4]
+str r1, [r0, #8]
+ldr r0, [r4, #4]
+mov r1, #5
+ldr r2, =0x0225F750 | 1
+bx r2
+
+.pool

@@ -976,3 +976,12 @@ sPartyContextMenuActionFuncs = 0x02101CB8;
    -- fonts are reference-counted and lazily loaded, party_menu.c's own init calls this before ever
    printing (FontID_Alloc(4, HEAP_ID_PARTY_MENU)), but nothing else in the overworld does it for us. */
 FontID_Alloc = 0x020030B8 | 1;
+/* Tag battle party select (src/field/tag_battle.c) */
+SetupAndStartTrainerBattle = 0x02051370 | 1; /* pokeheartgold encounter.c; found by its BattleSetup_New(11, battleType) + trainerId stores */
+Save_Mailbox_Get = 0x0202B50C | 1;
+gOverlayTemplate_PartyMenu = 0x0210159C; /* {PokeListProc init/main/exit, no overlay}; data, not thumb */
+PokemonSummary_CreateArgs = 0x0203E76C | 1; /* pokeheartgold launch_application.c; verified: options/party getters, partySlot at +0x14, menuInputState at fsys+0x10C */
+gOverlayTemplate_PokemonSummary = 0x02103A1C; /* init 0x02088298 (right after sub_02088288/sub_0208828C) */
+/* Tag battle partner panels (src/battle/tag_party.c) */
+BattleSystem_GetBattlerIdPartner = 0x0223AB6C | 1; /* overlay 12: (bsys, battler) -> the partner battler in a double battle, else the battler itself */
+BattlePartyMenu_IsMultiBattle = 0x0221DB04 | 1;    /* overlay 8 */

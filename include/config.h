@@ -217,6 +217,14 @@
 // (the tree index is passed by the object script in VAR_SPECIAL_x8009). No daily regrow.
 #define PLANT_BERRY_TREES
 
+
+// TAG_BATTLE_PARTY_SELECT: "choose N of your party" before a tag battle. new-script-command 0xD0 sub-commands 12 (pick) and 13 (fight)
+// (src/field/tag_battle.c): picker -> battle with only the chosen Pokemon -> the rest are put back untouched. See Docs&Changelog/Tag Battle Party Select.md.
+#define TAG_BATTLE_PARTY_SELECT
+
+// TAG_BATTLE_PARTNER_PARTY: the in-battle "Choose a Pokemon" screen of an AI-partner tag battle also lists the partner's Pokemon (blue, view-only, in the
+// last slots) when the player has at most 3 Pokemon and player + partner fit in 6. See src/battle/tag_party.c and Docs&Changelog/Tag Battle Partner Party.md.
+#define TAG_BATTLE_PARTNER_PARTY
 // BERRY_PLANT_GFX_START: first overworld gfx id used by the berry-PLANT sprites (one
 // specific berry each, see sBerryPlantSprites[] in src/script_new_cmds.c). These sprites
 // live in data/graphics/overworlds/custom/ and are packed with a "9_" filename prefix

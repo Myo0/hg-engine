@@ -20,6 +20,11 @@
 #define SCRIPT_NEW_CMD_GIVE_STATUS        6
 #define SCRIPT_NEW_CMD_PRIME_PARTY_EXP    7
 #define SCRIPT_NEW_CMD_BERRY_TREE         8
+#define SCRIPT_NEW_CMD_CREDITS_OPEN       9
+#define SCRIPT_NEW_CMD_CREDITS_TICK       10
+#define SCRIPT_NEW_CMD_START_MENU_RESTORE 11
+#define SCRIPT_NEW_CMD_TAG_BATTLE_PICK    12
+#define SCRIPT_NEW_CMD_TAG_BATTLE_FIGHT   13
 
 #define SCRIPT_NEW_CMD_MAX 256
 
@@ -110,6 +115,16 @@ static const struct {
     { ITEM_ROWAP_BERRY,    1,  2 }, // 57  rowap
 };
 #endif // PLANT_BERRY_TREES
+
+#ifdef CREDITS_READER
+void CreditsPanel_Open(SCRIPTCONTEXT *ctx);
+BOOL CreditsPanel_Tick(SCRIPTCONTEXT *ctx);
+#endif
+
+#ifdef TAG_BATTLE_PARTY_SELECT
+BOOL TagBattlePick_Start(SCRIPTCONTEXT *ctx, u16 resultVar);
+BOOL TagBattleFight_Start(SCRIPTCONTEXT *ctx, u16 resultVar);
+#endif
 
 BOOL Script_RunNewCmd(SCRIPTCONTEXT *ctx)
 {
@@ -441,6 +456,29 @@ BOOL Script_RunNewCmd(SCRIPTCONTEXT *ctx)
             SetScriptVar(0x800C, 1);
             break;
         }
+#endif
+
+#ifdef CREDITS_READER
+    case SCRIPT_NEW_CMD_CREDITS_OPEN:; // open the credits reader (src/credits_panel.c)
+        CreditsPanel_Open(ctx);
+        break;
+    case SCRIPT_NEW_CMD_CREDITS_TICK:; // one frame of reader input; VAR_SPECIAL_RESULT = 1 once it has closed
+        SetScriptVar(0x800C, CreditsPanel_Tick(ctx) ? 1 : 0);
+        break;
+#endif
+#ifdef TAG_BATTLE_PARTY_SELECT
+    case SCRIPT_NEW_CMD_TAG_BATTLE_PICK:; // "choose N of the party" screen; result var: 0 = backed out, 1 = picked (picks left in x8004..x8009), see src/field/tag_battle.c
+        return TagBattlePick_Start(ctx, arg0);
+    case SCRIPT_NEW_CMD_TAG_BATTLE_FIGHT:; // multi_battle (x8000-x8002) with only the picked Pokemon, the rest put back afterwards; result var: 1 = fought, 0 = refused
+        return TagBattleFight_Start(ctx, arg0);
+#endif
+#ifdef CREDITS_ICON
+    case SCRIPT_NEW_CMD_START_MENU_RESTORE:; // after a script started from the X menu: let the touch menu un-dim and clear its highlight
+        {
+            u8 *startMenuState = (u8 *)ctx->fsys + 0xD2; // low 6 bits = startMenuState; 2 = "menu closed, restore the touch screen"
+            *startMenuState = (*startMenuState & ~0x3F) | 2;
+        }
+        break;
 #endif
 
         return FALSE;

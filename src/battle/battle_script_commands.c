@@ -1866,7 +1866,7 @@ BOOL btl_scr_cmd_7c_beat_up_hit_count(void *bw, struct BattleStruct *sp)
  *  @param sp global battle structure
  *  @return FALSE
  */
-BOOL btl_scr_cmd_87_tryknockoff(void *bw UNUSED, struct BattleStruct *sp)
+BOOL btl_scr_cmd_87_tryknockoff(void *bw, struct BattleStruct *sp)
 {
     IncrementBattleScriptPtr(sp, 1);
 
@@ -1887,6 +1887,8 @@ BOOL btl_scr_cmd_87_tryknockoff(void *bw UNUSED, struct BattleStruct *sp)
         sp->mp.param[1] = CreateNicknameTag(sp, sp->defence_client);
         sp->mp.param[2] = item;
         sp->battlemon[sp->defence_client].item = 0;
+        // the loss is permanent: write the empty slot to the party Pokémon, so the item is gone from the save (not returned to the bag)
+        CopyBattleMonToPartyMon(bw, sp, sp->defence_client);
         // update:  no longer render further items unusable--just set the item to 0 here
         // sp->scw[side].knockoff_item |= No2Bit(sp->sel_mons_no[sp->defence_client]);
     } else {
@@ -4046,7 +4048,7 @@ BOOL BtlCmd_TrySwapItems(void *bw, struct BattleStruct *sp)
  *  @param sp global battle structure
  *  @return FALSE
  */
-BOOL btl_scr_cmd_104_tryincinerate(void *bw UNUSED, struct BattleStruct *sp)
+BOOL btl_scr_cmd_104_tryincinerate(void *bw, struct BattleStruct *sp)
 {
     IncrementBattleScriptPtr(sp, 1);
 
@@ -4070,6 +4072,7 @@ BOOL btl_scr_cmd_104_tryincinerate(void *bw UNUSED, struct BattleStruct *sp)
         sp->mp.param[0] = CreateNicknameTag(sp, sp->defence_client);
         sp->mp.param[1] = item;
         sp->battlemon[sp->defence_client].item = 0; // no recycle
+        CopyBattleMonToPartyMon(bw, sp, sp->defence_client); // permanent: also cleared on the party Pokémon
     } else {
         IncrementBattleScriptPtr(sp, adrs);
     }
@@ -4171,6 +4174,7 @@ BOOL BtlCmd_TryPluck(void *bw, struct BattleStruct *sp)
         sp->mp.param[0] = CreateNicknameTag(sp, sp->attack_client);
         sp->mp.param[1] = item;
         sp->battlemon[sp->defence_client].item = 0; // no recycle
+        CopyBattleMonToPartyMon(bw, sp, sp->defence_client); // permanent: also cleared on the party Pokémon
 
         if (GetItemData(item, ITEM_PARAM_HOLD_EFFECT, 5) != 0) {
             sp->onceOnlyMoveConditionFlags[SanitizeClientForTeamAccess(bw, sp->attack_client)][sp->sel_mons_no[sp->attack_client]].berryEatenAndCanBelch = TRUE;

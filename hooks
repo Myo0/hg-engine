@@ -695,3 +695,9 @@ arm9 GF_SndHandleMoveVolume_Hook 02005408 3
 #0024 BugContest_InitEncounters 02259DF0 2
 
 arm9 FieldSystem_RestoreMapObjectsFromSave 0203B9F4 1
+
+#ifdef TAG_BATTLE_PARTNER_PARTY
+# Tag battle partner panels on the in-battle party screen (src/battle/tag_party.c, asm/battle/battle_hooks.s)
+0012 TagParty_AfterBuild_hook 0225F746 1
+0008 TagParty_IsPartnerMon 0221DB24
+#endif

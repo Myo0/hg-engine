@@ -26,5 +26,7 @@ MURKROW: The password is...\fHail Giovanni.\r
 MURKROW: The password is...\fHail Giovanni.\r
 MURKROW: The password is...\fHail Giovanni.\r
 MURKROW screamed the password,\nmimicking the voice of Petrel.\r..................\rThe voice-recognition system unlocked\nthe door!\r
-Lance: Your party is too large.\nIt has to be three Pokemon or less.\rTalk to me again when you have\nadjusted your party.\r
-You cannot leave this area.\nAdjust your party with the Box Link.\r
+Lance: Ariana and her Grunt are ready\nfor us. We’ll each fight with three\fPokémon.\rAre you ready? {YESNO 0}
+Lance: We’ll each fight with three\nPokémon. Choose the three you want to\fbring.\rTalk to me when you’re ready to pick.\r
+Lance: We need at least three Pokémon that aren’t Eggs to fight together.\rCome back to me when you’re ready.\r
+Lance: Take your time. Get your team\nready, then talk to me.\r

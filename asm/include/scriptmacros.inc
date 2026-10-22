@@ -6779,6 +6779,20 @@ DummyTextTrap \slot, \unk
 RunNewCommand NEW_COMMAND_QUEUE_NEW_REPEL, 0x800C
 .endm
 
+// Tag battle party select (src/field/tag_battle.c, Docs&Changelog/Tag Battle Party Select.md).  Both take the variable that receives the result.
+// TagBattlePick: choose N (x8003, 0 = 3) of the party; 0 = backed out, 1 = picked (picks stay in x8004..x8009 - do not touch those until the fight).
+// TagBattleFight: multi_battle x8001/x8002 with ally x8000 using only the picked Pokemon, the rest restored afterwards; 1 = fought, 0 = refused.
+.equ NEW_COMMAND_TAG_BATTLE_PICK, 12
+.equ NEW_COMMAND_TAG_BATTLE_FIGHT, 13
+
+.macro TagBattlePick,var
+RunNewCommand NEW_COMMAND_TAG_BATTLE_PICK, \var
+.endm
+
+.macro TagBattleFight,var
+RunNewCommand NEW_COMMAND_TAG_BATTLE_FIGHT, \var
+.endm
+
 // Dummy
 .macro DummyTextTreasure,slot,unk
 .hword 209

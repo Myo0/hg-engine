@@ -4286,6 +4286,11 @@ BOOL LONG_CALL CanKnockOffApply(struct BattleStruct *sp, int attacker UNUSED, in
         return FALSE;
     }
 
+    // Knock Off permanently destroys the item, so every Mega Stone is protected (not just the holder's own)
+    if (IS_ITEM_MEGA_STONE(item)) {
+        return FALSE;
+    }
+
     if (item != 0 && CanItemBeRemovedFromClient(species, item, form)) {
         return TRUE;
     }
