@@ -140,6 +140,7 @@ BOOL btl_scr_cmd_127_ActivateHealingWish(void *bsys UNUSED, struct BattleStruct 
 BOOL btl_scr_cmd_128_IsFieldCondition2On(void *bsys UNUSED, struct BattleStruct *ctx);
 BOOL btl_scr_cmd_129_SetFieldCondition2(void *bsys UNUSED, struct BattleStruct *ctx);
 BOOL btl_scr_cmd_12A_GoToIfMoveConditionFlagSet(void *bsys, struct BattleStruct *ctx);
+BOOL btl_scr_cmd_12B_CopycatLastMove(void *bsys, struct BattleStruct *ctx);
 BOOL BtlCmd_GoToMoveScript(struct BattleSystem *bsys, struct BattleStruct *ctx);
 BOOL BtlCmd_WeatherHPRecovery(void *bw, struct BattleStruct *sp);
 BOOL BtlCmd_CalcWeatherBallParams(void *bw, struct BattleStruct *sp);
@@ -483,6 +484,7 @@ const u8 *BattleScrCmdNames[] = {
     "IsFieldCondition2On",
     "SetFieldCondition2",
     "GoToIfMoveConditionFlagSet",
+    "CopycatLastMove",
     // "YourCustomCommand",
 };
 
@@ -490,7 +492,7 @@ u32 cmdAddress = 0;
 #pragma GCC diagnostic pop
 #endif // DEBUG_BATTLE_SCRIPT_COMMANDS
 
-#define BASE_ENGINE_BTL_SCR_CMDS_MAX 0x12B // was stale at 0x125 (5 commands behind); corrected 2026-09-28
+#define BASE_ENGINE_BTL_SCR_CMDS_MAX 0x12C // was stale at 0x125 (5 commands behind); corrected 2026-09-28
 
 // clang-format off
 const btl_scr_cmd_func NewBattleScriptCmdTable[] = {
@@ -568,6 +570,7 @@ const btl_scr_cmd_func NewBattleScriptCmdTable[] = {
     [0x128 - START_OF_NEW_BTL_SCR_CMDS] = btl_scr_cmd_128_IsFieldCondition2On,
     [0x129 - START_OF_NEW_BTL_SCR_CMDS] = btl_scr_cmd_129_SetFieldCondition2,
     [0x12A - START_OF_NEW_BTL_SCR_CMDS] = btl_scr_cmd_12A_GoToIfMoveConditionFlagSet,
+    [0x12B - START_OF_NEW_BTL_SCR_CMDS] = btl_scr_cmd_12B_CopycatLastMove,
     // [BASE_ENGINE_BTL_SCR_CMDS_MAX - START_OF_NEW_BTL_SCR_CMDS + 1] = btl_scr_cmd_custom_01_your_custom_command,
 };
 
@@ -5933,6 +5936,40 @@ BOOL btl_scr_cmd_12A_GoToIfMoveConditionFlagSet(void *bsys, struct BattleStruct 
     default:
         break;
     }
+
+    return FALSE;
+}
+
+/**
+ *  @brief script command to make Copycat use the last move used by anybody in the battle
+ *         (battler-agnostic: sp->waza_no_last is global).  Mirrors BtlCmd_Metronome: once the move is
+ *         chosen it writes it to every field the called-move machinery reads (waza_work, moveNoTemp and
+ *         current_move_index), instead of only waza_work like the vanilla TryCopycat.
+ *
+ *  @param bsys battle work structure
+ *  @param ctx global battle structure
+ *  @return FALSE
+ *
+ *  Args: jump distance taken when there is nothing legal to copy.
+ */
+BOOL btl_scr_cmd_12B_CopycatLastMove(void *bsys, struct BattleStruct *ctx)
+{
+    IncrementBattleScriptPtr(ctx, 1);
+    int adrs = read_battle_script_param(ctx);
+
+    u16 move = (u16)ctx->waza_no_last;
+
+    if (move == MOVE_NONE
+        || move > NUM_OF_MOVES
+        || CheckMoveCallsOtherMove(move)
+        || CheckLegalMetronomeMove(bsys, ctx, ctx->attack_client, move) == FALSE) {
+        IncrementBattleScriptPtr(ctx, adrs);
+        return FALSE;
+    }
+
+    ctx->waza_work = move;
+    ctx->moveNoTemp = move;
+    ctx->current_move_index = move;
 
     return FALSE;
 }
