@@ -103,8 +103,16 @@ MOVEPARTICLES_DEPENDENCIES_DIR := rawdata/move_spa
 MOVEPARTICLES_DEPENDENCIES := $(wildcard $(MOVEPARTICLES_DEPENDENCIES_DIR)/*)
 
 $(MOVEPARTICLES_NARC): $(MOVEPARTICLES_DEPENDENCIES)
+	rm -rf $(MOVEPARTICLES_DIR)
 	$(NARCHIVE) extract $(MOVEPARTICLES_TARGET) -o $(MOVEPARTICLES_DIR) -nf
-	cp -r $(MOVEPARTICLES_DEPENDENCIES_DIR)/. $(MOVEPARTICLES_DIR)
+	# Electrum: the working folder is wiped first (a leftover file in it, such as a 9_544.spa copied by an older rule, would be packed into the archive).
+	# A trailing ".spa" is dropped while copying. A file such as 9_544.spa would otherwise be ADDED as an extra archive member on every build
+	# (the archive is rebuilt from its own previous output), shifting the numbering of any new particle file. New particle files: name them 9_NNN
+	# (no extension). The archive taken from rom.nds can have a different number of members from one rom.nds to the next (it holds copies left
+	# by older builds), so gaps between its last member and the highest 9_NNN override are filled with copies of 9_000: a particle file's index
+	# is then always the number in its name. See hg-engine-anim-studio/docs/PARTICLE-FILES.md
+	for f in $(MOVEPARTICLES_DEPENDENCIES_DIR)/*; do cp "$$f" "$(MOVEPARTICLES_DIR)/$$(basename "$$f" .spa)"; done
+	max=$$(ls $(MOVEPARTICLES_DIR) | sed -n 's/^9_0*\([0-9][0-9]*\)$$/\1/p' | sort -n | tail -1); i=0; while [ $$i -le $$max ]; do n=$$(printf '9_%03d' $$i); [ -f "$(MOVEPARTICLES_DIR)/$$n" ] || cp "$(MOVEPARTICLES_DIR)/9_000" "$(MOVEPARTICLES_DIR)/$$n"; i=$$((i+1)); done
 	$(NARCHIVE) create $@ $(MOVEPARTICLES_DIR) -nf
 
 NARC_FILES += $(MOVEPARTICLES_NARC)

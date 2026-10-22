@@ -480,6 +480,11 @@ ANIM_TARGET_DEFENDER_SIDE equ 20
     .word 0x58, bg, terrain
 .endmacro
 
+// 0x59 (src/battle/anim.c): on = 1 inverts the colours of the battle (background and Pokemon), on = 0 puts them back
+.macro invertpalettes,on
+    .word 0x59, on
+.endmacro
+
 // helpful macros
 
 .macro loadparticlefromspa,num0,file
