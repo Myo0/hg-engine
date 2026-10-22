@@ -217,6 +217,20 @@
 // (the tree index is passed by the object script in VAR_SPECIAL_x8009). No daily regrow.
 #define PLANT_BERRY_TREES
 
+// CREDITS_READER: full-top-screen text reader for the Credits entry on the X menu. new-script-command 0xD0
+// sub-commands 9 (open) and 10 (per-frame tick) draw a list + reading pages on the overworld BG3 panel from the
+// text bank data/text/854.txt (see src/credits_panel.c and Docs&Changelog/Credits.md). Launched from a script
+// (common script 2076).
+#define CREDITS_READER
+// CREDITS_ICON: 8th icon (bottom of the right column) on the X menu that opens the credits reader. Replaces the icon handling
+// of the bottom-screen touch menu (overlay 27) from src/field/touch_menu.c, see Docs&Changelog/Credits Icon.md. Needs CREDITS_READER.
+#define CREDITS_ICON
+// CREDITS_UNLOCK_FLAG: script flag that unlocks the credits icon (Mom's script sets it right after the Options button, see
+// Docs&Changelog/Credits Icon.md). Saves that already finished Mom's scene before this flag existed get the icon too.
+#define CREDITS_UNLOCK_FLAG 2522
+
+// CREDITS_READER_DEBUG_TRIGGER: testing aid, makes the R button open the credits reader instead of the Porta PC. Leave off.
+// #define CREDITS_READER_DEBUG_TRIGGER
 
 // FRONTIER_BRAIN_INTRO: play the native Battle Frontier "Frontier Brain" intro before an overworld trainer battle (src/frontier_intro.c,
 // driven by the music-combo tables; see Docs&Changelog/Frontier Brain Intro.md).

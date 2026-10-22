@@ -89,8 +89,8 @@
       "y": 0
     },
     {
-      "id": "obj_T26GYM0101_workman_2",
-      "graphics_id": "SPRITE_WORKMAN",
+      "id": "obj_T26GYM0101_mount",
+      "graphics_id": "SPRITE_MOUNT",
       "movement_type": 0,
       "trainer_type": 1,
       "hidden_flag": "FLAG_HIDE_OLIVINE_GYM_GIRL",

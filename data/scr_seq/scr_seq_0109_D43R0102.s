@@ -36,7 +36,7 @@ scrdef_end
 
 scr_seq_D43R0102_000:
 	play_se SEQ_SE_GS_RAKKA01
-	apply_movement obj_player, _00A6
+	apply_movement obj_player, _00A8
 	scrcmd_374 obj_player
 	wait_movement
 	screen_shake 0, 1, 1, 8
@@ -61,18 +61,18 @@ scr_seq_D43R0102_002:
 
 scr_seq_D43R0102_003:
 	lockall
-	apply_movement obj_player, _00AE
+	apply_movement obj_player, _00B0
 	wait_movement
 	npc_msg 9
 	closemsg
-	apply_movement obj_player, _00B6
+	apply_movement obj_player, _00B8
 	wait_movement
 	releaseall
 	end
 
 scr_seq_D43R0102_004:
 	lockall
-	apply_movement obj_player, _00AE
+	apply_movement obj_player, _00B0
 	wait_movement
 	clearflag FLAG_UNK_18D
 	setvar VAR_UNK_406F, 2
@@ -84,19 +84,19 @@ scr_seq_D43R0102_004:
 _00A3:
 	end
 
-	.byte 0x00
+	.byte 0x00, 0x00, 0x00
 	.balign 4
-_00A6:
+_00A8:
 
 	step 68, 1
 	step_end
 	.balign 4
-_00AE:
+_00B0:
 
 	step 75, 1
 	step_end
 	.balign 4
-_00B6:
+_00B8:
 
 	step 13, 1
 	step_end

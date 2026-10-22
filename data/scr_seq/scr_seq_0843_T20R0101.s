@@ -70,7 +70,7 @@ scr_seq_T20R0101_000:
 	npc_msg 5
 	wait_button
 	closemsg
-	apply_movement obj_T20R0101_doctor, _11EE
+	apply_movement obj_T20R0101_doctor, _11F0
 	wait_movement
 	goto _07FA
 
@@ -91,12 +91,12 @@ scr_seq_T20R0101_002:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	apply_movement obj_player, _11F6
+	apply_movement obj_player, _11F8
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
 	following_pokemon_movement 48
-	apply_movement obj_T20R0101_policeman, _1202
+	apply_movement obj_T20R0101_policeman, _1204
 	wait_movement
 	npc_msg 23
 	closemsg
@@ -105,12 +105,12 @@ scr_seq_T20R0101_002:
 	show_person obj_T20R0101_var_1
 	wait_se SEQ_SE_DP_KAIDAN2
 	callstd std_play_friend_music
-	apply_movement obj_T20R0101_var_1, _120A
-	apply_movement obj_T20R0101_policeman, _121A
+	apply_movement obj_T20R0101_var_1, _120C
+	apply_movement obj_T20R0101_policeman, _121C
 	wait_movement
 	gender_msgbox 24, 25
 	closemsg
-	apply_movement obj_T20R0101_policeman, _1226
+	apply_movement obj_T20R0101_policeman, _1228
 	wait_movement
 	npc_msg 26
 	closemsg
@@ -122,7 +122,7 @@ scr_seq_T20R0101_002:
 	wait_fade
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0827
-	apply_movement obj_T20R0101_policeman, _1202
+	apply_movement obj_T20R0101_policeman, _1204
 	wait_movement
 	buffer_rivals_name 1
 	npc_msg 27
@@ -134,18 +134,18 @@ scr_seq_T20R0101_002:
 	closemsg
 	npc_msg 28
 	closemsg
-	apply_movement obj_T20R0101_var_1, _1252
-	apply_movement obj_T20R0101_policeman, _126E
+	apply_movement obj_T20R0101_var_1, _1254
+	apply_movement obj_T20R0101_policeman, _1270
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	hide_person obj_T20R0101_policeman
 	wait_se SEQ_SE_DP_KAIDAN2
-	apply_movement obj_T20R0101_var_1, _128E
+	apply_movement obj_T20R0101_var_1, _1290
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox 30, 31
 	closemsg
-	apply_movement obj_T20R0101_var_1, _129E
+	apply_movement obj_T20R0101_var_1, _12A0
 	wait_movement
 	setflag FLAG_HIDE_NEW_BARK_FRIENDS_ROOM_FRIEND
 	play_se SEQ_SE_DP_KAIDAN2
@@ -154,9 +154,9 @@ scr_seq_T20R0101_002:
 	setflag FLAG_HIDE_ELMS_LAB_OFFICER
 	setflag FLAG_HIDE_ELMS_LAB_FRIEND
 	setflag FLAG_UNK_079
-	apply_movement obj_player, _12B2
+	apply_movement obj_player, _12B4
 	wait_movement
-	apply_movement obj_T20R0101_doctor, _12BA
+	apply_movement obj_T20R0101_doctor, _12BC
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox 32, 33
@@ -165,15 +165,15 @@ scr_seq_T20R0101_002:
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
 	takeitem_no_check ITEM_MYSTERY_EGG, 1
-	apply_movement obj_T20R0101_doctor, _12C2
+	apply_movement obj_T20R0101_doctor, _12C4
 	wait_movement
 	npc_msg 35
 	closemsg
-	apply_movement obj_T20R0101_doctor, _12D6
+	apply_movement obj_T20R0101_doctor, _12D8
 	wait_movement
 	gender_msgbox 36, 37
 	closemsg
-	apply_movement obj_T20R0101_doctor, _12DE
+	apply_movement obj_T20R0101_doctor, _12E0
 	wait_movement
 	gender_msgbox 38, 39
 	closemsg
@@ -182,7 +182,7 @@ scr_seq_T20R0101_002:
 	giveitem_no_check ITEM_OLD_ROD, 1
 	npc_msg 107
 	closemsg
-	apply_movement obj_T20R0101_doctor, _12F2
+	apply_movement obj_T20R0101_doctor, _12F4
 	wait_movement
 	setflag FLAG_HIDE_ROUTE_30_BATTLERS
 	clearflag FLAG_HIDE_ROUTE_30_YOUNGSTER_JOEY
@@ -203,7 +203,7 @@ scr_seq_T20R0101_003:
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4000, 3
 	goto_if_ne _09A1
-	apply_movement obj_T20R0101_assistantm, _12FA
+	apply_movement obj_T20R0101_assistantm, _12FC
 	goto _09BC
 
 scr_seq_T20R0101_004:
@@ -273,7 +273,7 @@ scr_seq_T20R0101_011:
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4000, 3
 	goto_if_ne _0A8A
-	apply_movement obj_player, _130A
+	apply_movement obj_player, _130C
 	goto _0AA5
 
 scr_seq_T20R0101_012:
@@ -308,19 +308,19 @@ scr_seq_T20R0101_012:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	apply_movement obj_player, _131A
-	apply_movement obj_T20R0101_doctor, _132A
+	apply_movement obj_player, _131C
+	apply_movement obj_T20R0101_doctor, _132C
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
 	following_pokemon_movement 48
 	npc_msg 10
 	closemsg
-	apply_movement obj_T20R0101_doctor, _1332
+	apply_movement obj_T20R0101_doctor, _1334
 	wait_movement
 	npc_msg 11
 	closemsg
-	apply_movement obj_T20R0101_doctor, _133A
+	apply_movement obj_T20R0101_doctor, _133C
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox 12, 13
@@ -359,9 +359,9 @@ scr_seq_T20R0101_013:
 scr_seq_T20R0101_014:
 	scrcmd_609
 	lockall
-	apply_movement obj_T20R0101_var_1, _1346
+	apply_movement obj_T20R0101_var_1, _1348
 	wait_movement
-	apply_movement obj_T20R0101_var_1, _1352
+	apply_movement obj_T20R0101_var_1, _1354
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox 58, 59
@@ -369,13 +369,13 @@ scr_seq_T20R0101_014:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	apply_movement obj_player, _135E
-	apply_movement obj_T20R0101_var_1, _1366
+	apply_movement obj_player, _1360
+	apply_movement obj_T20R0101_var_1, _1368
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
 	following_pokemon_movement 48
-	apply_movement obj_T20R0101_doctor, _12BA
+	apply_movement obj_T20R0101_doctor, _12BC
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox 60, 61
@@ -390,12 +390,12 @@ scr_seq_T20R0101_014:
 scr_seq_T20R0101_015:
 	scrcmd_609
 	lockall
-	apply_movement obj_T20R0101_assistantm, _137A
+	apply_movement obj_T20R0101_assistantm, _137C
 	wait_movement
 	buffer_players_name 0
 	npc_msg 56
 	closemsg
-	apply_movement obj_T20R0101_assistantm, _1386
+	apply_movement obj_T20R0101_assistantm, _1388
 	wait_movement
 	setvar VAR_UNK_40FC, 3
 	releaseall
@@ -421,7 +421,7 @@ _05A7:
 	npc_msg 5
 	wait_button
 	closemsg
-	apply_movement obj_T20R0101_doctor, _11EE
+	apply_movement obj_T20R0101_doctor, _11F0
 	wait_movement
 	goto _07FA
 
@@ -449,7 +449,7 @@ _0653:
 	npc_msg 5
 	wait_button
 	closemsg
-	apply_movement obj_T20R0101_doctor, _11EE
+	apply_movement obj_T20R0101_doctor, _11F0
 	wait_movement
 	goto _07FA
 
@@ -461,32 +461,32 @@ _069A:
 	compare VAR_UNK_412F, 1
 	goto_if_eq _0C8E
 	call _0CA7
-	apply_movement obj_T20R0101_doctor, _1396
+	apply_movement obj_T20R0101_doctor, _1398
 	wait_movement
 	npc_msg 75
 	closemsg
-	apply_movement obj_T20R0101_doctor, _139E
+	apply_movement obj_T20R0101_doctor, _13A0
 	wait_movement
-	apply_movement obj_partner_poke, _13AE
+	apply_movement obj_partner_poke, _13B0
 	wait_movement
 	npc_msg 76
 	closemsg
-	apply_movement obj_T20R0101_doctor, _1396
+	apply_movement obj_T20R0101_doctor, _1398
 	wait_movement
 	npc_msg 77
 	closemsg
-	apply_movement obj_T20R0101_doctor, _13BE
+	apply_movement obj_T20R0101_doctor, _13C0
 	wait_movement
 	npc_msg 78
 	closemsg
-	apply_movement obj_T20R0101_doctor, _13CA
+	apply_movement obj_T20R0101_doctor, _13CC
 	wait_movement
 	npc_msg 79
 	closemsg
 	get_person_coords 0, VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	compare VAR_SPECIAL_x8006, 4
 	goto_if_ne _0CEB
-	apply_movement obj_T20R0101_doctor, _13DA
+	apply_movement obj_T20R0101_doctor, _13DC
 	goto _0D17
 
 _073F:
@@ -560,7 +560,7 @@ _0827:
 	wait_fade
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0827
-	apply_movement obj_T20R0101_policeman, _1202
+	apply_movement obj_T20R0101_policeman, _1204
 	wait_movement
 	buffer_rivals_name 1
 	npc_msg 27
@@ -572,18 +572,18 @@ _0827:
 	closemsg
 	npc_msg 28
 	closemsg
-	apply_movement obj_T20R0101_var_1, _1252
-	apply_movement obj_T20R0101_policeman, _126E
+	apply_movement obj_T20R0101_var_1, _1254
+	apply_movement obj_T20R0101_policeman, _1270
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	hide_person obj_T20R0101_policeman
 	wait_se SEQ_SE_DP_KAIDAN2
-	apply_movement obj_T20R0101_var_1, _128E
+	apply_movement obj_T20R0101_var_1, _1290
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox 30, 31
 	closemsg
-	apply_movement obj_T20R0101_var_1, _129E
+	apply_movement obj_T20R0101_var_1, _12A0
 	wait_movement
 	setflag FLAG_HIDE_NEW_BARK_FRIENDS_ROOM_FRIEND
 	play_se SEQ_SE_DP_KAIDAN2
@@ -592,9 +592,9 @@ _0827:
 	setflag FLAG_HIDE_ELMS_LAB_OFFICER
 	setflag FLAG_HIDE_ELMS_LAB_FRIEND
 	setflag FLAG_UNK_079
-	apply_movement obj_player, _12B2
+	apply_movement obj_player, _12B4
 	wait_movement
-	apply_movement obj_T20R0101_doctor, _12BA
+	apply_movement obj_T20R0101_doctor, _12BC
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox 32, 33
@@ -603,15 +603,15 @@ _0827:
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
 	takeitem_no_check ITEM_MYSTERY_EGG, 1
-	apply_movement obj_T20R0101_doctor, _12C2
+	apply_movement obj_T20R0101_doctor, _12C4
 	wait_movement
 	npc_msg 35
 	closemsg
-	apply_movement obj_T20R0101_doctor, _12D6
+	apply_movement obj_T20R0101_doctor, _12D8
 	wait_movement
 	gender_msgbox 36, 37
 	closemsg
-	apply_movement obj_T20R0101_doctor, _12DE
+	apply_movement obj_T20R0101_doctor, _12E0
 	wait_movement
 	gender_msgbox 38, 39
 	closemsg
@@ -620,7 +620,7 @@ _0827:
 	giveitem_no_check ITEM_OLD_ROD, 1
 	npc_msg 107
 	closemsg
-	apply_movement obj_T20R0101_doctor, _12F2
+	apply_movement obj_T20R0101_doctor, _12F4
 	wait_movement
 	setflag FLAG_HIDE_ROUTE_30_BATTLERS
 	clearflag FLAG_HIDE_ROUTE_30_YOUNGSTER_JOEY
@@ -643,7 +643,7 @@ _0996:
 _09A1:
 	compare VAR_TEMP_x4000, 4
 	goto_if_ne _0DFA
-	apply_movement obj_T20R0101_assistantm, _13FE
+	apply_movement obj_T20R0101_assistantm, _1400
 	goto _09BC
 
 _09BC:
@@ -660,7 +660,7 @@ _09BC:
 	closemsg
 	compare VAR_TEMP_x4000, 3
 	goto_if_ne _0E1F
-	apply_movement obj_T20R0101_assistantm, _140E
+	apply_movement obj_T20R0101_assistantm, _1410
 	goto _0E3A
 
 _0A1E:
@@ -680,12 +680,12 @@ _0A4F:
 	.byte 0x53, 0x01, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x05, 0x00, 0x03, 0x00, 0x16
 	.byte 0x00, 0xea, 0xff, 0xff, 0xff
 _0A65:
-	apply_movement obj_T20R0101_doctor, _141A
+	apply_movement obj_T20R0101_doctor, _141C
 	wait_movement
 	npc_msg 6
 	closemsg
-	apply_movement obj_T20R0101_doctor, _11EE
-	apply_movement obj_player, _142A
+	apply_movement obj_T20R0101_doctor, _11F0
+	apply_movement obj_player, _142C
 	wait_movement
 	releaseall
 	end
@@ -693,7 +693,7 @@ _0A65:
 _0A8A:
 	compare VAR_TEMP_x4000, 4
 	goto_if_ne _0E7B
-	apply_movement obj_player, _1432
+	apply_movement obj_player, _1434
 	goto _0AA5
 
 _0AA5:
@@ -701,20 +701,20 @@ _0AA5:
 	buffer_players_name 0
 	gender_msgbox 0, 1
 	closemsg
-	apply_movement obj_T20R0101_doctor, _11EE
+	apply_movement obj_T20R0101_doctor, _11F0
 	wait_movement
 	wait 15, VAR_SPECIAL_x8004
 	play_se SEQ_SE_GS_PHONE0
-	apply_movement obj_T20R0101_doctor, _143A
+	apply_movement obj_T20R0101_doctor, _143C
 	wait_movement
 	npc_msg 2
 	npc_msg 3
 	closemsg
-	apply_movement obj_T20R0101_doctor, _144A
+	apply_movement obj_T20R0101_doctor, _144C
 	wait_movement
 	npc_msg 4
 	closemsg
-	apply_movement obj_T20R0101_doctor, _11EE
+	apply_movement obj_T20R0101_doctor, _11F0
 	wait_movement
 	setflag FLAG_ELMS_LAB_PREVENT_PLAYER_ESCAPE
 	releaseall
@@ -763,20 +763,20 @@ _0B6A:
 	buffer_players_name 0
 	gender_msgbox 64, 65
 	closemsg
-	apply_movement obj_T20R0101_var_1, _1452
-	apply_movement obj_player, _145E
+	apply_movement obj_T20R0101_var_1, _1454
+	apply_movement obj_player, _1460
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox 67, 68
 	closemsg
-	apply_movement obj_T20R0101_var_1, _146A
+	apply_movement obj_T20R0101_var_1, _146C
 	wait_movement
 	hide_person obj_T20R0101_var_1
 	setflag FLAG_HIDE_ELMS_LAB_FRIEND
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	apply_movement obj_T20R0101_doctor, _12BA
-	apply_movement obj_player, _147A
+	apply_movement obj_T20R0101_doctor, _12BC
+	apply_movement obj_player, _147C
 	wait_movement
 	npc_msg 69
 	wait_button
@@ -796,20 +796,20 @@ _0BF0:
 	buffer_players_name 0
 	gender_msgbox 64, 65
 	closemsg
-	apply_movement obj_T20R0101_var_1, _1452
-	apply_movement obj_player, _145E
+	apply_movement obj_T20R0101_var_1, _1454
+	apply_movement obj_player, _1460
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox 67, 68
 	closemsg
-	apply_movement obj_T20R0101_var_1, _146A
+	apply_movement obj_T20R0101_var_1, _146C
 	wait_movement
 	hide_person obj_T20R0101_var_1
 	setflag FLAG_HIDE_ELMS_LAB_FRIEND
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	apply_movement obj_T20R0101_doctor, _12BA
-	apply_movement obj_player, _147A
+	apply_movement obj_T20R0101_doctor, _12BC
+	apply_movement obj_player, _147C
 	wait_movement
 	npc_msg 69
 	wait_button
@@ -855,19 +855,19 @@ _0CA7:
 	get_person_coords 0, VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	compare VAR_TEMP_x4005, 0
 	goto_if_ne _0EF1
-	apply_movement obj_player, _1482
+	apply_movement obj_player, _1484
 	wait_movement
-	apply_movement obj_partner_poke, _148E
+	apply_movement obj_partner_poke, _1490
 	goto _0F16
 
 _0CEB:
-	apply_movement obj_T20R0101_doctor, _149E
+	apply_movement obj_T20R0101_doctor, _14A0
 	wait_movement
 	npc_msg 80
 	closemsg
 	compare VAR_SPECIAL_x8006, 4
 	goto_if_ne _0F24
-	apply_movement obj_T20R0101_doctor, _14CA
+	apply_movement obj_T20R0101_doctor, _14CC
 	wait_movement
 	goto _0F49
 
@@ -877,7 +877,7 @@ _0D17:
 	closemsg
 	compare VAR_SPECIAL_x8006, 4
 	goto_if_ne _0F24
-	apply_movement obj_T20R0101_doctor, _14CA
+	apply_movement obj_T20R0101_doctor, _14CC
 	wait_movement
 	goto _0F49
 
@@ -919,7 +919,7 @@ _0D6F:
 	end
 
 _0D7B:
-	apply_movement obj_T20R0101_doctor, _14D2
+	apply_movement obj_T20R0101_doctor, _14D4
 	wait_movement
 	npc_msg 46
 	buffer_players_name 0
@@ -954,7 +954,7 @@ _0DDE:
 _0DFA:
 	compare VAR_TEMP_x4000, 5
 	goto_if_ne _0FBD
-	apply_movement obj_T20R0101_assistantm, _14DE
+	apply_movement obj_T20R0101_assistantm, _14E0
 	goto _09BC
 
 _0E15:
@@ -966,7 +966,7 @@ _0E15:
 _0E1F:
 	compare VAR_TEMP_x4000, 4
 	goto_if_ne _1034
-	apply_movement obj_T20R0101_assistantm, _14EE
+	apply_movement obj_T20R0101_assistantm, _14F0
 	goto _0E3A
 
 _0E3A:
@@ -987,7 +987,7 @@ _0E40:
 _0E7B:
 	compare VAR_TEMP_x4000, 5
 	goto_if_ne _104F
-	apply_movement obj_player, _14FA
+	apply_movement obj_player, _14FC
 	goto _0AA5
 
 _0E96:
@@ -1008,15 +1008,15 @@ _0EAC:
 	call _0CA7
 	gender_msgbox 86, 87
 	closemsg
-	apply_movement obj_T20R0101_doctor, _13BE
+	apply_movement obj_T20R0101_doctor, _13C0
 	wait_movement
 	npc_msg 88
 	closemsg
-	apply_movement obj_T20R0101_doctor, _139E
+	apply_movement obj_T20R0101_doctor, _13A0
 	wait_movement
 	npc_msg 89
 	closemsg
-	apply_movement obj_T20R0101_doctor, _13CA
+	apply_movement obj_T20R0101_doctor, _13CC
 	wait_movement
 	npc_msg 90
 	wait_button
@@ -1028,9 +1028,9 @@ _0EAC:
 _0EF1:
 	compare VAR_TEMP_x4005, 3
 	goto_if_ne _10B6
-	apply_movement obj_player, _150A
+	apply_movement obj_player, _150C
 	wait_movement
-	apply_movement obj_partner_poke, _151A
+	apply_movement obj_partner_poke, _151C
 	goto _0F16
 
 _0F16:
@@ -1041,7 +1041,7 @@ _0F16:
 	return
 
 _0F24:
-	apply_movement obj_T20R0101_doctor, _152E
+	apply_movement obj_T20R0101_doctor, _1530
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox 81, 82
@@ -1092,7 +1092,7 @@ _0FA7:
 _0FBD:
 	compare VAR_TEMP_x4000, 6
 	goto_if_ne _09BC
-	apply_movement obj_T20R0101_assistantm, _153E
+	apply_movement obj_T20R0101_assistantm, _1540
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox 19, 20
@@ -1106,37 +1106,37 @@ _0FBD:
 	closemsg
 	compare VAR_TEMP_x4000, 3
 	goto_if_ne _0E1F
-	apply_movement obj_T20R0101_assistantm, _140E
+	apply_movement obj_T20R0101_assistantm, _1410
 	goto _0E3A
 
 _1034:
 	compare VAR_TEMP_x4000, 5
 	goto_if_ne _1183
-	apply_movement obj_T20R0101_assistantm, _154E
+	apply_movement obj_T20R0101_assistantm, _1550
 	goto _0E3A
 
 _104F:
 	compare VAR_TEMP_x4000, 6
 	goto_if_ne _0AA5
-	apply_movement obj_player, _155A
+	apply_movement obj_player, _155C
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox 0, 1
 	closemsg
-	apply_movement obj_T20R0101_doctor, _11EE
+	apply_movement obj_T20R0101_doctor, _11F0
 	wait_movement
 	wait 15, VAR_SPECIAL_x8004
 	play_se SEQ_SE_GS_PHONE0
-	apply_movement obj_T20R0101_doctor, _143A
+	apply_movement obj_T20R0101_doctor, _143C
 	wait_movement
 	npc_msg 2
 	npc_msg 3
 	closemsg
-	apply_movement obj_T20R0101_doctor, _144A
+	apply_movement obj_T20R0101_doctor, _144C
 	wait_movement
 	npc_msg 4
 	closemsg
-	apply_movement obj_T20R0101_doctor, _11EE
+	apply_movement obj_T20R0101_doctor, _11F0
 	wait_movement
 	setflag FLAG_ELMS_LAB_PREVENT_PLAYER_ESCAPE
 	releaseall
@@ -1145,9 +1145,9 @@ _104F:
 _10B6:
 	compare VAR_TEMP_x4005, 2
 	goto_if_ne _119E
-	apply_movement obj_player, _156A
+	apply_movement obj_player, _156C
 	wait_movement
-	apply_movement obj_partner_poke, _157A
+	apply_movement obj_partner_poke, _157C
 	goto _0F16
 
 _10DB:
@@ -1197,7 +1197,7 @@ _1178:
 _1183:
 	compare VAR_TEMP_x4000, 6
 	goto_if_ne _0E3A
-	apply_movement obj_T20R0101_assistantm, _1582
+	apply_movement obj_T20R0101_assistantm, _1584
 	wait_movement
 	releaseall
 	end
@@ -1205,9 +1205,9 @@ _1183:
 _119E:
 	compare VAR_SPECIAL_x8006, 4
 	goto_if_ne _11CD
-	apply_movement obj_player, _158E
+	apply_movement obj_player, _1590
 	wait_movement
-	apply_movement obj_partner_poke, _157A
+	apply_movement obj_partner_poke, _157C
 	goto _0F16
 
 _11C3:
@@ -1217,47 +1217,47 @@ _11C3:
 	end
 
 _11CD:
-	apply_movement obj_player, _15A2
+	apply_movement obj_player, _15A4
 	wait_movement
-	apply_movement obj_partner_poke, _151A
+	apply_movement obj_partner_poke, _151C
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
 	following_pokemon_movement 48
 	return
 
-	.byte 0x00
+	.byte 0x00, 0x00, 0x00
 	.balign 4
-_11EE:
+_11F0:
 
 	step 3, 1
 	step_end
 	.balign 4
-_11F6:
+_11F8:
 
 	step 76, 8
 	step 2, 1
 	step_end
 	.balign 4
-_1202:
+_1204:
 
 	step 35, 1
 	step_end
 	.balign 4
-_120A:
+_120C:
 
 	step 16, 6
 	step 18, 1
 	step 48, 2
 	step_end
 	.balign 4
-_121A:
+_121C:
 
 	step 63, 4
 	step 33, 1
 	step_end
 	.balign 4
-_1226:
+_1228:
 
 	step 75, 1
 	step 60, 1
@@ -1271,7 +1271,7 @@ _1226:
 	step 63, 2
 	step_end
 	.balign 4
-_1252:
+_1254:
 
 	step 2, 1
 	step 71, 1
@@ -1281,7 +1281,7 @@ _1252:
 	step 1, 1
 	step_end
 	.balign 4
-_126E:
+_1270:
 
 	step 1, 1
 	step 62, 1
@@ -1292,14 +1292,14 @@ _126E:
 	step 13, 2
 	step_end
 	.balign 4
-_128E:
+_1290:
 
 	step 14, 1
 	step 12, 2
 	step 35, 1
 	step_end
 	.balign 4
-_129E:
+_12A0:
 
 	step 1, 1
 	step 13, 6
@@ -1307,17 +1307,17 @@ _129E:
 	step 13, 2
 	step_end
 	.balign 4
-_12B2:
+_12B4:
 
 	step 0, 1
 	step_end
 	.balign 4
-_12BA:
+_12BC:
 
 	step 33, 1
 	step_end
 	.balign 4
-_12C2:
+_12C4:
 
 	step 49, 1
 	step 71, 1
@@ -1325,12 +1325,12 @@ _12C2:
 	step 72, 1
 	step_end
 	.balign 4
-_12D6:
+_12D8:
 
 	step 77, 1
 	step_end
 	.balign 4
-_12DE:
+_12E0:
 
 	step 0, 1
 	step 8, 1
@@ -1338,66 +1338,66 @@ _12DE:
 	step 1, 1
 	step_end
 	.balign 4
-_12F2:
+_12F4:
 
 	step 77, 1
 	step_end
 	.balign 4
-_12FA:
+_12FC:
 
 	step 75, 1
 	step 78, 6
 	step 32, 1
 	step_end
 	.balign 4
-_130A:
+_130C:
 
 	step 12, 2
 	step 15, 1
 	step 12, 1
 	step_end
 	.balign 4
-_131A:
+_131C:
 
 	step 13, 2
 	step 14, 4
 	step 32, 1
 	step_end
 	.balign 4
-_132A:
+_132C:
 
 	step 33, 1
 	step_end
 	.balign 4
-_1332:
+_1334:
 
 	step 32, 1
 	step_end
 	.balign 4
-_133A:
+_133C:
 
 	step 65, 1
 	step 33, 1
 	step_end
 	.balign 4
-_1346:
+_1348:
 
 	step 2, 1
 	step 75, 1
 	step_end
 	.balign 4
-_1352:
+_1354:
 
 	step 78, 3
 	step 33, 1
 	step_end
 	.balign 4
-_135E:
+_1360:
 
 	step 12, 7
 	step_end
 	.balign 4
-_1366:
+_1368:
 
 	step 12, 5
 	step 15, 1
@@ -1405,52 +1405,52 @@ _1366:
 	step 34, 1
 	step_end
 	.balign 4
-_137A:
+_137C:
 
 	step 14, 5
 	step 13, 1
 	step_end
 	.balign 4
-_1386:
+_1388:
 
 	step 12, 1
 	step 15, 5
 	step 33, 1
 	step_end
 	.balign 4
-_1396:
+_1398:
 
 	step 33, 1
 	step_end
 	.balign 4
-_139E:
+_13A0:
 
 	step 13, 1
 	step 15, 1
 	step 33, 1
 	step_end
 	.balign 4
-_13AE:
+_13B0:
 
 	step 49, 1
 	step 65, 1
 	step 48, 1
 	step_end
 	.balign 4
-_13BE:
+_13C0:
 
 	step 75, 1
 	step 63, 1
 	step_end
 	.balign 4
-_13CA:
+_13CC:
 
 	step 12, 1
 	step 14, 1
 	step 33, 1
 	step_end
 	.balign 4
-_13DA:
+_13DC:
 
 	step 12, 1
 	step 63, 2
@@ -1462,86 +1462,86 @@ _13DA:
 	step 63, 2
 	step_end
 	.balign 4
-_13FE:
+_1400:
 
 	step 75, 1
 	step 78, 5
 	step 32, 1
 	step_end
 	.balign 4
-_140E:
+_1410:
 
 	step 79, 6
 	step 34, 1
 	step_end
 	.balign 4
-_141A:
+_141C:
 
 	step 1, 1
 	step 75, 1
 	step 33, 2
 	step_end
 	.balign 4
-_142A:
+_142C:
 
 	step 12, 1
 	step_end
 	.balign 4
-_1432:
+_1434:
 
 	step 12, 3
 	step_end
 	.balign 4
-_143A:
+_143C:
 
 	step 75, 1
 	step 12, 1
 	step 65, 1
 	step_end
 	.balign 4
-_144A:
+_144C:
 
 	step 13, 1
 	step_end
 	.balign 4
-_1452:
+_1454:
 
 	step 13, 1
 	step 34, 1
 	step_end
 	.balign 4
-_145E:
+_1460:
 
 	step 63, 1
 	step 35, 1
 	step_end
 	.balign 4
-_146A:
+_146C:
 
 	step 77, 3
 	step 78, 1
 	step 77, 4
 	step_end
 	.balign 4
-_147A:
+_147C:
 
 	step 32, 1
 	step_end
 	.balign 4
-_1482:
+_1484:
 
 	step 13, 1
 	step 32, 1
 	step_end
 	.balign 4
-_148E:
+_1490:
 
 	step 15, 1
 	step 13, 1
 	step 32, 1
 	step_end
 	.balign 4
-_149E:
+_14A0:
 
 	step 12, 1
 	step 14, 2
@@ -1555,45 +1555,45 @@ _149E:
 	step 63, 2
 	step_end
 	.balign 4
-_14CA:
+_14CC:
 
 	step 13, 1
 	step_end
 	.balign 4
-_14D2:
+_14D4:
 
 	step 75, 1
 	step 62, 1
 	step_end
 	.balign 4
-_14DE:
+_14E0:
 
 	step 75, 1
 	step 78, 4
 	step 32, 1
 	step_end
 	.balign 4
-_14EE:
+_14F0:
 
 	step 79, 5
 	step 34, 1
 	step_end
 	.balign 4
-_14FA:
+_14FC:
 
 	step 12, 2
 	step 14, 1
 	step 12, 1
 	step_end
 	.balign 4
-_150A:
+_150C:
 
 	step 13, 2
 	step 15, 1
 	step 32, 1
 	step_end
 	.balign 4
-_151A:
+_151C:
 
 	step 13, 1
 	step 15, 2
@@ -1601,52 +1601,52 @@ _151A:
 	step 32, 1
 	step_end
 	.balign 4
-_152E:
+_1530:
 
 	step 13, 1
 	step 15, 2
 	step 33, 1
 	step_end
 	.balign 4
-_153E:
+_1540:
 
 	step 75, 1
 	step 78, 3
 	step 32, 1
 	step_end
 	.balign 4
-_154E:
+_1550:
 
 	step 79, 4
 	step 34, 1
 	step_end
 	.balign 4
-_155A:
+_155C:
 
 	step 12, 2
 	step 14, 2
 	step 12, 1
 	step_end
 	.balign 4
-_156A:
+_156C:
 
 	step 13, 2
 	step 14, 1
 	step 32, 1
 	step_end
 	.balign 4
-_157A:
+_157C:
 
 	step 32, 1
 	step_end
 	.balign 4
-_1582:
+_1584:
 
 	step 79, 3
 	step 34, 1
 	step_end
 	.balign 4
-_158E:
+_1590:
 
 	step 15, 1
 	step 13, 3
@@ -1654,7 +1654,7 @@ _158E:
 	step 32, 1
 	step_end
 	.balign 4
-_15A2:
+_15A4:
 
 	step 14, 1
 	step 13, 3

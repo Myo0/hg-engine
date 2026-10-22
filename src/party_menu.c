@@ -109,6 +109,15 @@ static BOOL CanLearnTeleport(struct PartyPokemon *pp)
     return FALSE;
 }
 
+// Flag 397 SET = Porta PC disabled (gauntlets, caves, anywhere the Box Link has lost connection).
+// Fly / Dig / Teleport are all ways to leave the area, so they follow the same gate and are not
+// offered while it is set. Hiding the button (rather than failing after selection) keeps the
+// positional field-move label bookkeeping in sync because we skip AddFieldMove together with it.
+static BOOL IsAreaLeaveMenuId(u8 menuId)
+{
+    return menuId == PARTY_MON_CONTEXT_MENU_FLY || menuId == PARTY_MON_CONTEXT_MENU_DIG || menuId == PARTY_MON_CONTEXT_MENU_TELEPORT;
+}
+
 u8 LONG_CALL sub_0207B0B0(struct PartyMenu *wk, u8 *buf)
 {
     struct PartyPokemon *pp = Party_GetMonByIndex(wk->args->party, wk->partyMonIndex);
@@ -154,6 +163,8 @@ u8 LONG_CALL sub_0207B0B0(struct PartyMenu *wk, u8 *buf)
                 ++count;
             }
 
+            BOOL leaveAreaBlocked = CheckScriptFlag(397) == TRUE;
+
             for (i = 0; i < MAX_MON_MOVES && count < MAX_BUTTONS_IN_PARTY_MENU; ++i) {
                 move = GetMonData(pp, MON_DATA_MOVE1 + i, NULL);
                 if (move == MOVE_NONE) {
@@ -161,7 +172,7 @@ u8 LONG_CALL sub_0207B0B0(struct PartyMenu *wk, u8 *buf)
                 }
 
                 fieldEffect = MoveId_GetFieldEffectId(move);
-                if (fieldEffect != 0xFF) {
+                if (fieldEffect != 0xFF && !(leaveAreaBlocked && IsAreaLeaveMenuId(fieldEffect))) {
                     buf[count] = fieldEffect;
                     ++count;
                     PartyMenu_ContextMenuAddFieldMove(wk, move, fieldMoveIndex);
@@ -186,6 +197,9 @@ u8 LONG_CALL sub_0207B0B0(struct PartyMenu *wk, u8 *buf)
                 if (!GetMonMachineMoveCompat(pp, ItemToMachineMoveIndex(sLearnableMachineFieldMoves[j].item))) {
                     continue;
                 }
+                if (leaveAreaBlocked && IsAreaLeaveMenuId(sLearnableMachineFieldMoves[j].menuId)) {
+                    continue;
+                }
                 alreadyAdded = FALSE;
                 for (k = 0; k < count; ++k) {
                     if (buf[k] == sLearnableMachineFieldMoves[j].menuId) {
@@ -208,7 +222,7 @@ u8 LONG_CALL sub_0207B0B0(struct PartyMenu *wk, u8 *buf)
                 }
             }
 
-            if (count < MAX_BUTTONS_IN_PARTY_MENU && CanLearnTeleport(pp)) {
+            if (!leaveAreaBlocked && count < MAX_BUTTONS_IN_PARTY_MENU && CanLearnTeleport(pp)) {
                 alreadyAdded = FALSE;
                 for (k = 0; k < count; ++k) {
                     if (buf[k] == PARTY_MON_CONTEXT_MENU_TELEPORT) {

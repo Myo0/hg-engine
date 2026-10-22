@@ -70,7 +70,7 @@ scr_seq_D23R0106_001:
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4000, 7
 	goto_if_ne _00CF
-	apply_movement obj_D23R0106_gsgentleman, _03F2
+	apply_movement obj_D23R0106_gsgentleman, _03F4
 	goto _00FB
 
 _00C7:
@@ -84,7 +84,7 @@ _00C9:
 _00CF:
 	compare VAR_TEMP_x4000, 8
 	goto_if_ne _0147
-	apply_movement obj_D23R0106_gsgentleman, _040E
+	apply_movement obj_D23R0106_gsgentleman, _0410
 	scrcmd_729 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	call_if_eq _01A8
@@ -94,7 +94,7 @@ _00FB:
 	wait_movement
 	compare VAR_TEMP_x4000, 8
 	goto_if_ne _01CD
-	apply_movement obj_player, _042A
+	apply_movement obj_player, _042C
 	wait_movement
 	npc_msg 2
 	get_game_version VAR_SPECIAL_RESULT
@@ -109,11 +109,11 @@ _00FB:
 _0147:
 	compare VAR_TEMP_x4000, 9
 	goto_if_ne _00FB
-	apply_movement obj_D23R0106_gsgentleman, _0432
+	apply_movement obj_D23R0106_gsgentleman, _0434
 	wait_movement
 	compare VAR_TEMP_x4000, 8
 	goto_if_ne _01CD
-	apply_movement obj_player, _042A
+	apply_movement obj_player, _042C
 	wait_movement
 	npc_msg 2
 	get_game_version VAR_SPECIAL_RESULT
@@ -130,7 +130,7 @@ _01A8:
 	compare VAR_SPECIAL_x8004, 7
 	goto_if_ne _0251
 	wait 112, VAR_SPECIAL_RESULT
-	apply_movement obj_partner_poke, _044E
+	apply_movement obj_partner_poke, _0450
 	return
 
 _01CD:
@@ -152,13 +152,13 @@ _0202:
 	closemsg
 	compare VAR_TEMP_x4000, 7
 	goto_if_ne _0253
-	apply_movement obj_D23R0106_gsgentleman, _045E
+	apply_movement obj_D23R0106_gsgentleman, _0460
 	goto _026E
 
 _0236:
 	compare VAR_TEMP_x4000, 7
 	goto_if_ne _0253
-	apply_movement obj_D23R0106_gsgentleman, _045E
+	apply_movement obj_D23R0106_gsgentleman, _0460
 	goto _026E
 
 _0251:
@@ -167,14 +167,14 @@ _0251:
 _0253:
 	compare VAR_TEMP_x4000, 8
 	goto_if_ne _029E
-	apply_movement obj_D23R0106_gsgentleman, _046E
+	apply_movement obj_D23R0106_gsgentleman, _0470
 	goto _026E
 
 _026E:
 	wait_movement
-	apply_movement obj_D23R0106_gsgentleman, _047E
+	apply_movement obj_D23R0106_gsgentleman, _0480
 	wait_movement
-	apply_movement obj_player, _042A
+	apply_movement obj_player, _042C
 	wait_movement
 	get_game_version VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 7
@@ -185,11 +185,11 @@ _026E:
 _029E:
 	compare VAR_TEMP_x4000, 9
 	goto_if_ne _026E
-	apply_movement obj_D23R0106_gsgentleman, _0486
+	apply_movement obj_D23R0106_gsgentleman, _0488
 	wait_movement
-	apply_movement obj_D23R0106_gsgentleman, _047E
+	apply_movement obj_D23R0106_gsgentleman, _0480
 	wait_movement
-	apply_movement obj_player, _042A
+	apply_movement obj_player, _042C
 	wait_movement
 	get_game_version VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 7
@@ -200,11 +200,11 @@ _029E:
 _02E3:
 	npc_msg 8
 	closemsg
-	apply_movement obj_D23R0106_gsgentleman, _0496
+	apply_movement obj_D23R0106_gsgentleman, _0498
 	wait_movement
 	npc_msg 9
 	closemsg
-	apply_movement obj_D23R0106_gsgentleman, _04AE
+	apply_movement obj_D23R0106_gsgentleman, _04B0
 	wait_movement
 	play_se SEQ_SE_DP_DOOR10
 	wait_se SEQ_SE_DP_DOOR10
@@ -230,11 +230,11 @@ _02E3:
 
 _035E:
 	closemsg
-	apply_movement obj_D23R0106_gsgentleman, _0496
+	apply_movement obj_D23R0106_gsgentleman, _0498
 	wait_movement
 	npc_msg 9
 	closemsg
-	apply_movement obj_D23R0106_gsgentleman, _04AE
+	apply_movement obj_D23R0106_gsgentleman, _04B0
 	wait_movement
 	play_se SEQ_SE_DP_DOOR10
 	wait_se SEQ_SE_DP_DOOR10
@@ -267,8 +267,9 @@ _03D6:
 	setflag FLAG_UNK_97D
 	end
 
+	.byte 0x00, 0x00
 	.balign 4
-_03F2:
+_03F4:
 
 	step 13, 1
 	step 14, 4
@@ -278,7 +279,7 @@ _03F2:
 	step 34, 1
 	step_end
 	.balign 4
-_040E:
+_0410:
 
 	step 13, 1
 	step 14, 4
@@ -288,12 +289,12 @@ _040E:
 	step 35, 1
 	step_end
 	.balign 4
-_042A:
+_042C:
 
 	step 34, 1
 	step_end
 	.balign 4
-_0432:
+_0434:
 
 	step 13, 1
 	step 14, 4
@@ -303,40 +304,40 @@ _0432:
 	step 35, 1
 	step_end
 	.balign 4
-_044E:
+_0450:
 
 	step 12, 1
 	step 15, 1
 	step 33, 1
 	step_end
 	.balign 4
-_045E:
+_0460:
 
 	step 13, 3
 	step 14, 4
 	step 75, 1
 	step_end
 	.balign 4
-_046E:
+_0470:
 
 	step 13, 2
 	step 14, 3
 	step 75, 1
 	step_end
 	.balign 4
-_047E:
+_0480:
 
 	step 15, 1
 	step_end
 	.balign 4
-_0486:
+_0488:
 
 	step 13, 3
 	step 14, 4
 	step 75, 1
 	step_end
 	.balign 4
-_0496:
+_0498:
 
 	step 14, 1
 	step 13, 1
@@ -345,7 +346,7 @@ _0496:
 	step 32, 1
 	step_end
 	.balign 4
-_04AE:
+_04B0:
 
 	step 13, 6
 	step 15, 4

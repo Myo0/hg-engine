@@ -1,0 +1,31 @@
+CREDITS
+A: Read   L/R: Jump   B: Close
+Up/Down: Page   A: Next   B: Back
+◆ THE ENGINE
+hg-engine contributors\nhg-engine is built by a community of\ncontributors. Thank you to:\nAero, agathaGengar, BluRose, Brioche,\nBusyBidoof, Charliexox, DavveDP, Dog-\nBroad, Drayano, FrozenMetroid, hzla,\nKoekenpann, kumakuma1, lhearachel,\nmaxchristy, Mixone, mozzydippers,\nPandaPanda-Panda, Pixelstyx,\rplayer_null_name, TixoRebel, TurtleIsaac,\nXiaoFuDieZZZ, YGlitzer, Zedakae\r
+Bubble791\nStrong basis for where hg-engine\ncame from.\r
+XLuma\nHelped get the engine buildable\ninitially.\r
+AdAstra\nThe debugsyscall implementation, and\nthe music tables (trainer class battle,\nmain tables combo and Pokémon battle).\r
+Mikelan98\nInitial graphics compilation, the BDHCAM\nroutine, and the music tables (trainer\nclass battle, main tables combo and\nPokémon battle).\r
+Senate\nPrize money, and the music tables\n(trainer class battle, main tables combo\nand Pokémon battle).\r
+Sauceyatta\nCustom AI to build on, and the streamed\ncustom music (NWAV) hg-engine port.\r
+BagBoy\nDex entries, SEQ_EYE and prize money.\r
+Chritchy\nSprite translation errors bug fix.\r
+Shy\nThe platinum Battle BG insertion\ntutorial.\r
+Adcroc1\nHelped significantly with sprite\nformatting.\r
+◆ TOOLS
+Kingcom\narmips\r
+FroggestSpirit\nSDATTool\r
+Barro\nswav2swar\r
+TheGameratorT\nNitroWAV-Player: the NWAV streamed audio\nformat and player core.\r
+◆ GRAPHICS
+Overworld sprites\nOverworld sprites by:\nHamsterSkull, wolfang62, nintendoplz,\nKyle-Dove, 2and2makes5, PokeGirl4Ever,\nFernandojl, Silver-Skie, TyranitarDark,\nGetsuei-H, Milomilotic11, Kyt66, kdiamo11,\nChocoSrawloid, StyleDude, Gallanty,\nGizamimi-Pichu, Kid1513, princess-phoenix,\nEzerart, DarkusShadow, Anarlaurendil,\rLasse00, Boonzeet on deviantart\r
+Pokémon sprites\nPokémon sprites by:\nSmogon Sprite Project, TraviS, LennyBitao,\nMyMarshlands, DarkusShadow, CarmaNekko,\nkiriaura, Gnomowladny, Krune, n-kin,\nJaegerLucciano23, joshr691, Jefelin,\nMultiDiegoDani, onigin_pixelart,\nProdigal96, zerudez, leparagon, arinoelle,\ndiegotoon20, gardow, greyenna, conyjams,\rkingofthe-x-roads, RayquazaFlygon,\nmetalflygon08 on DeviantArt, and MaMe,\nmaple, Layell, SelenaFF, Sopita Yorita,\nzlolxd\r
+MaMe and maple\nA lot of mega sprites touched up.\r
+◆ AUDIO
+Dr. Seuss, Zeak6464\nPokémon cries from generation 8.\r
+RH-Hideout Team\nPokémon cries from generation 9.\r
+WesleyFG, The Sounds Resource\nPokémon cries from generations 5\nthrough 7.\r
+◆ SPECIAL THANKS
+pret\nThe pokeheartgold and pokeplatinum\ndecompilation projects, used as the\nreference for much of this work.\r
+Game Freak\nAmazing Pokémon games from way back\nwhen.\r

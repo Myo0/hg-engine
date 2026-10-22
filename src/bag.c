@@ -16,6 +16,12 @@
 
 // file is directly from pokeheartgold but without the bag_cursor stuff + sPocketCounts right here
 
+#ifdef ITEM_POCKET_EXPANSION
+_Static_assert(NUM_BAG_ITEMS + NUM_BAG_MEDICINE + NUM_BAG_BALLS + NUM_BAG_TMS_HMS + NUM_BAG_BERRIES + NUM_BAG_HELD_ITEMS
+                   + NUM_BAG_MEGA_STONES + NUM_BAG_KEY_ITEMS + NUM_BAG_LAYOUT_SLOTS == NUM_BAG_TOTAL_SLOTS,
+               "bag pockets must total 610 slots (the save size is fixed)");
+#endif
+
 // straight from src/item.c in pokeheartgold
 const u16 sPocketCounts[8] = {
     NUM_BAG_ITEMS,
@@ -23,8 +29,8 @@ const u16 sPocketCounts[8] = {
     NUM_BAG_BALLS,
     NUM_BAG_TMS_HMS,
     NUM_BAG_BERRIES,
-    NUM_BAG_MAIL,
-    NUM_BAG_BATTLE_ITEMS,
+    NUM_BAG_HELD_ITEMS,
+    NUM_BAG_MEGA_STONES,
     NUM_BAG_KEY_ITEMS,
 };
 
@@ -34,10 +40,100 @@ const u8 sPocketCountBytes[8] = {
     NUM_BAG_BALLS,
     NUM_BAG_TMS_HMS,
     NUM_BAG_BERRIES,
-    NUM_BAG_MAIL,
-    NUM_BAG_BATTLE_ITEMS,
+    NUM_BAG_HELD_ITEMS,
+    NUM_BAG_MEGA_STONES,
     NUM_BAG_KEY_ITEMS,
 };
+
+#ifdef ITEM_POCKET_EXPANSION
+/*
+ * Bag layout migration (Docs&Changelog/Bag Pockets.md)
+ *
+ * The bag used to be items[245] key[92] tm[101] mail[12] medicine[40] berries[64] balls[26] battle[30]
+ * registered[2]. The reworked bag has the same total size (so the rest of the save does not move) but
+ * different pockets, with a marker slot just before registeredItems. A bag whose marker is missing is
+ * in the old layout: it is rebuilt once, in place, the first time anything touches it. New bags get the
+ * marker from Sav2_Bag_init. The marker overlays the last old Battle Items slot, which can only hold 0 or
+ * a real item id, never BAG_LAYOUT_MARKER_ID, so the two layouts cannot be confused.
+ */
+typedef struct LegacyBagData {
+    ITEM_SLOT items[245];
+    ITEM_SLOT keyItems[92];
+    ITEM_SLOT TMsHMs[101];
+    ITEM_SLOT mail[12];
+    ITEM_SLOT medicine[40];
+    ITEM_SLOT berries[64];
+    ITEM_SLOT balls[26];
+    ITEM_SLOT battleItems[30];
+    u16 registeredItems[2];
+} LEGACY_BAG_DATA;
+
+_Static_assert(sizeof(LEGACY_BAG_DATA) == sizeof(BAG_DATA), "the reworked bag must be exactly as big as the old one");
+
+// Last resort when a stack does not fit its own pocket: any free slot anywhere, so nothing is lost.
+static void Bag_SpillSlot(BAG_DATA *bag, const ITEM_SLOT *slot)
+{
+    ITEM_SLOT *pockets[] = { bag->items, bag->held, bag->megaStones, bag->medicine, bag->balls, bag->berries, bag->TMsHMs, bag->keyItems };
+    const u16 counts[] = { NUM_BAG_ITEMS, NUM_BAG_HELD_ITEMS, NUM_BAG_MEGA_STONES, NUM_BAG_MEDICINE, NUM_BAG_BALLS, NUM_BAG_BERRIES, NUM_BAG_TMS_HMS, NUM_BAG_KEY_ITEMS };
+    u32 p, i;
+
+    for (p = 0; p < NELEMS(pockets); p++) {
+        for (i = 0; i < counts[p]; i++) {
+            if (pockets[p][i].id == ITEM_NONE && pockets[p][i].quantity == 0) {
+                pockets[p][i] = *slot;
+                return;
+            }
+        }
+    }
+}
+
+static void Bag_MigrateLegacyPocket(BAG_DATA *bag, const ITEM_SLOT *old, u32 count)
+{
+    u32 i;
+
+    for (i = 0; i < count; i++) {
+        if (old[i].id == ITEM_NONE || old[i].quantity == 0) {
+            continue;
+        }
+        if (!Bag_AddItem(bag, old[i].id, old[i].quantity, HEAPID_DEFAULT)) {
+            Bag_SpillSlot(bag, &old[i]);
+        }
+    }
+}
+
+void Bag_MigrateLegacyLayout(BAG_DATA *bag)
+{
+    LEGACY_BAG_DATA *old = (LEGACY_BAG_DATA *)sys_AllocMemory(HEAPID_DEFAULT, sizeof(LEGACY_BAG_DATA));
+
+    memcpy(old, bag, sizeof(LEGACY_BAG_DATA));
+    memset(bag, 0, sizeof(BAG_DATA));
+    bag->layout.id = BAG_LAYOUT_MARKER_ID; // set first: Bag_AddItem below must not recurse into this function
+    bag->layout.quantity = BAG_LAYOUT_VERSION;
+    bag->registeredItems[0] = old->registeredItems[0];
+    bag->registeredItems[1] = old->registeredItems[1];
+
+    // every stack goes to the pocket its item data now says it belongs to
+    Bag_MigrateLegacyPocket(bag, old->keyItems, NELEMS(old->keyItems));
+    Bag_MigrateLegacyPocket(bag, old->TMsHMs, NELEMS(old->TMsHMs));
+    Bag_MigrateLegacyPocket(bag, old->medicine, NELEMS(old->medicine));
+    Bag_MigrateLegacyPocket(bag, old->berries, NELEMS(old->berries));
+    Bag_MigrateLegacyPocket(bag, old->balls, NELEMS(old->balls));
+    Bag_MigrateLegacyPocket(bag, old->items, NELEMS(old->items));
+    Bag_MigrateLegacyPocket(bag, old->mail, NELEMS(old->mail));
+    Bag_MigrateLegacyPocket(bag, old->battleItems, NELEMS(old->battleItems));
+
+    sys_FreeMemoryEz(old);
+}
+
+#define BAG_ENSURE_LAYOUT(bag)                                  \
+    do {                                                        \
+        if ((bag)->layout.id != BAG_LAYOUT_MARKER_ID) {         \
+            Bag_MigrateLegacyLayout(bag);                       \
+        }                                                       \
+    } while (0)
+#else
+#define BAG_ENSURE_LAYOUT(bag) ((void)0)
+#endif // ITEM_POCKET_EXPANSION
 
 void SortPocket(ITEM_SLOT *slots, u32 count);
 void SortTMHMPocket(ITEM_SLOT *slots, u32 count);
@@ -66,6 +162,10 @@ void Sav2_Bag_init(BAG_DATA *bag)
 {
     // MI_CpuClear16(bag, sizeof(BAG_DATA));
     memset(bag, 0, sizeof(BAG_DATA));
+#ifdef ITEM_POCKET_EXPANSION
+    bag->layout.id = BAG_LAYOUT_MARKER_ID;
+    bag->layout.quantity = BAG_LAYOUT_VERSION;
+#endif
 }
 
 void Sav2_Bag_copy(BAG_DATA *src, BAG_DATA *dst)
@@ -114,6 +214,7 @@ void Bag_UnregisterItem(BAG_DATA *bag, u16 itemId)
 
 u32 Bag_GetItemPocket(BAG_DATA *bag, u16 itemId, ITEM_SLOT **ppSlots, u32 *pCount, int heap_id)
 {
+    BAG_ENSURE_LAYOUT(bag);
     u32 pocket = GetItemData(itemId, ITEM_PARAM_FIELD_POCKET, heap_id);
     switch (pocket) {
     case POCKET_KEY_ITEMS:
@@ -136,13 +237,13 @@ u32 Bag_GetItemPocket(BAG_DATA *bag, u16 itemId, ITEM_SLOT **ppSlots, u32 *pCoun
         *ppSlots = bag->balls;
         *pCount = NUM_BAG_BALLS;
         break;
-    case POCKET_BATTLE_ITEMS:
-        *ppSlots = bag->battleItems;
-        *pCount = NUM_BAG_BATTLE_ITEMS;
+    case POCKET_MEGA_STONES:
+        *ppSlots = bag->megaStones;
+        *pCount = NUM_BAG_MEGA_STONES;
         break;
-    case POCKET_MAIL:
-        *ppSlots = bag->mail;
-        *pCount = NUM_BAG_MAIL;
+    case POCKET_HELD_ITEMS:
+        *ppSlots = bag->held;
+        *pCount = NUM_BAG_HELD_ITEMS;
         break;
     case POCKET_TMHMS:
         *ppSlots = bag->TMsHMs;
@@ -291,6 +392,7 @@ BOOL Bag_HasItem(BAG_DATA *bag, u16 itemId, u16 quantity, int heap_id)
 
 BOOL Bag_PocketNotEmpty(BAG_DATA *bag, int pocket)
 {
+    BAG_ENSURE_LAYOUT(bag);
     ITEM_SLOT *slots;
     u32 count;
     u32 i;
@@ -316,13 +418,13 @@ BOOL Bag_PocketNotEmpty(BAG_DATA *bag, int pocket)
         slots = bag->balls;
         count = NUM_BAG_BALLS;
         break;
-    case POCKET_BATTLE_ITEMS:
-        slots = bag->battleItems;
-        count = NUM_BAG_BATTLE_ITEMS;
+    case POCKET_MEGA_STONES:
+        slots = bag->megaStones;
+        count = NUM_BAG_MEGA_STONES;
         break;
-    case POCKET_MAIL:
-        slots = bag->mail;
-        count = NUM_BAG_MAIL;
+    case POCKET_HELD_ITEMS:
+        slots = bag->held;
+        count = NUM_BAG_HELD_ITEMS;
         break;
     case POCKET_TMHMS:
         slots = bag->TMsHMs;
@@ -417,6 +519,7 @@ void SortTMHMPocket(ITEM_SLOT *slots, u32 count)
 // returns a BAG_VIEW but we don't have to care about that
 void *CreateBagView(BAG_DATA *bag, const u8 *pockets, int heap_id)
 {
+    BAG_ENSURE_LAYOUT(bag);
     int i;
     void *ret = BagView_New(heap_id);
     for (i = 0; pockets[i] != 0xFF; i++) {
@@ -436,11 +539,11 @@ void *CreateBagView(BAG_DATA *bag, const u8 *pockets, int heap_id)
         case POCKET_BALLS:
             BagView_SetItem(ret, bag->balls, POCKET_BALLS, i);
             break;
-        case POCKET_BATTLE_ITEMS:
-            BagView_SetItem(ret, bag->battleItems, POCKET_BATTLE_ITEMS, i);
+        case POCKET_MEGA_STONES:
+            BagView_SetItem(ret, bag->megaStones, POCKET_MEGA_STONES, i);
             break;
-        case POCKET_MAIL:
-            BagView_SetItem(ret, bag->mail, POCKET_MAIL, i);
+        case POCKET_HELD_ITEMS:
+            BagView_SetItem(ret, bag->held, POCKET_HELD_ITEMS, i);
             break;
         case POCKET_TMHMS:
             BagView_SetItem(ret, bag->TMsHMs, POCKET_TMHMS, i);
@@ -452,6 +555,7 @@ void *CreateBagView(BAG_DATA *bag, const u8 *pockets, int heap_id)
 
 ITEM_SLOT *Bag_GetPocketSlotN(BAG_DATA *bag, u8 pocket, int n)
 {
+    BAG_ENSURE_LAYOUT(bag);
     ITEM_SLOT *slots;
     int count;
 
@@ -476,13 +580,13 @@ ITEM_SLOT *Bag_GetPocketSlotN(BAG_DATA *bag, u8 pocket, int n)
         slots = bag->balls;
         count = NUM_BAG_BALLS;
         break;
-    case POCKET_BATTLE_ITEMS:
-        slots = bag->battleItems;
-        count = NUM_BAG_BATTLE_ITEMS;
+    case POCKET_MEGA_STONES:
+        slots = bag->megaStones;
+        count = NUM_BAG_MEGA_STONES;
         break;
-    case POCKET_MAIL:
-        slots = bag->mail;
-        count = NUM_BAG_MAIL;
+    case POCKET_HELD_ITEMS:
+        slots = bag->held;
+        count = NUM_BAG_HELD_ITEMS;
         break;
     case POCKET_TMHMS:
         slots = bag->TMsHMs;

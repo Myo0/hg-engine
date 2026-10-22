@@ -64,7 +64,7 @@ scr_seq_R46_003:
 	lockall
 	clearflag FLAG_UNK_18D
 	setvar VAR_UNK_406A, 0
-	apply_movement obj_player, _0086
+	apply_movement obj_player, _0088
 	wait_movement
 	npc_msg 4
 	closemsg
@@ -78,8 +78,9 @@ _007B:
 	releaseall
 	end
 
+	.byte 0x00, 0x00
 	.balign 4
-_0086:
+_0088:
 
 	step 75, 1
 	step_end

@@ -103,6 +103,7 @@ scrdef scr_seq_0003_072_repels
 scrdef scr_seq_0003_073_autobattle_testing
 scrdef scr_seq_0003_074
 scrdef scr_seq_0003_075_berry_tree
+scrdef scr_seq_0003_076_credits
 scrdef scr_seq_0003_077_pc_services
 scrdef scr_seq_0003_078_frontier_intro_test
 scrdef_end
@@ -2007,6 +2008,25 @@ _berry_tree_full:
     closemsg
     endstd
     end
+
+// -------------------------------------------------------
+// scr_seq_0003_076_credits  (callstd 2076 / EventSet_Script(fsys, 2076, NULL))
+// Credits reader. Opens the full-top-screen list in src/credits_panel.c and runs it one frame at a time until
+// the player closes it with B. All content is in text bank 854 (data/text/854.txt); see Docs&Changelog/Credits.md.
+// -------------------------------------------------------
+scr_seq_0003_076_credits:
+    lockall
+    DummyTextTrap 9, 0
+_credits_wait:
+    wait 1, VAR_SPECIAL_x800A
+    DummyTextTrap 10, 0
+    compare VAR_SPECIAL_RESULT, 0
+    goto_if_eq _credits_wait
+    releaseall
+    DummyTextTrap 11, 0 // X menu: restore the touch screen (see src/field/script_new_cmds.c)
+    endstd
+    end
+
 // -------------------------------------------------------
 // scr_seq_0003_077_pc_services  (callstd 2077 / EventSet_Script(fsys, 2077, NULL))
 // Pokemon Center services NPC (the maid beside Nurse Joy): 1 Heart Scale = max one IV, 3 Heart Scales = change Nature,

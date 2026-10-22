@@ -20,7 +20,7 @@
 .equ obj_T26_gsboy1, 1
 .equ obj_T26_seaman_2_2, 2
 .equ obj_T26_gsrivel, 3
-.equ obj_T26_monstarball, 4
+.equ obj_T26_3916, 4
 .equ obj_T26_seaman_2_3, 5
 .equ obj_T26_gswoman2, 6
 .equ obj_T26_gsmiddleman1, 7

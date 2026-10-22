@@ -18,7 +18,7 @@
 .equ obj_R39_follower_mon_static_miltank_4, 7
 .equ obj_R39_gsgentleman, 8
 .equ obj_R39_bonguri, 9
-.equ obj_R39_monstarball, 10
+.equ obj_R39_3916, 10
 .equ obj_R39_gsmiddleman1, 11
 .equ obj_R39_gsleader9, 12
 .equ obj_R39_cowgirl, 0

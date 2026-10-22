@@ -47,7 +47,7 @@ scr_seq_D26R0103_000:
 scr_seq_D26R0103_001:
 	lockall
 	play_se SEQ_SE_DP_SELECT
-	hide_person obj_D26R0103_monstarball
+	hide_person obj_D26R0103_3916
 	giveitem_no_check ITEM_TM209, 1
 	setflag FLAG_HIDE_ITEMBALL_D26R0103_TM18
 	closemsg

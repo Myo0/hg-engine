@@ -46,8 +46,8 @@ scr_seq_T27PC0101_001:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	apply_movement obj_T27PC0101_masaki, _06A2
-	apply_movement obj_player, _06BE
+	apply_movement obj_T27PC0101_masaki, _06A4
+	apply_movement obj_player, _06C0
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -56,8 +56,8 @@ scr_seq_T27PC0101_001:
 	npc_msg 0
 	npc_msg 1
 	closemsg
-	apply_movement obj_T27PC0101_masaki, _06CA
-	apply_movement obj_player, _06DE
+	apply_movement obj_T27PC0101_masaki, _06CC
+	apply_movement obj_player, _06E0
 	wait_movement
 	hide_person obj_T27PC0101_masaki
 	setflag FLAG_UNK_1C5
@@ -392,9 +392,9 @@ _0698:
 	releaseall
 	end
 
-	.byte 0x00
+	.byte 0x00, 0x00, 0x00
 	.balign 4
-_06A2:
+_06A4:
 
 	step 13, 4
 	step 15, 6
@@ -404,13 +404,13 @@ _06A2:
 	step 62, 4
 	step_end
 	.balign 4
-_06BE:
+_06C0:
 
 	step 62, 20
 	step 12, 4
 	step_end
 	.balign 4
-_06CA:
+_06CC:
 
 	step 15, 1
 	step 13, 4
@@ -418,7 +418,7 @@ _06CA:
 	step 13, 2
 	step_end
 	.balign 4
-_06DE:
+_06E0:
 
 	step 62, 6
 	step 1, 1

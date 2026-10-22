@@ -57,18 +57,18 @@ scr_seq_T26_001:
 	scrcmd_308 77
 	clearflag FLAG_HIDE_OLIVINE_RIVAL
 	show_person obj_T26_gsrivel
-	apply_movement obj_T26_gsrivel, _05B2
+	apply_movement obj_T26_gsrivel, _05B4
 	wait_movement
 	scrcmd_311 77
 	scrcmd_308 77
 	scrcmd_309 77
-	apply_movement obj_player, _05BE
+	apply_movement obj_player, _05C0
 	wait_movement
 	callstd std_play_rival_intro_music
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 239
 	goto_if_ne _0242
-	apply_movement obj_T26_gsrivel, _05CA
+	apply_movement obj_T26_gsrivel, _05CC
 	goto _025D
 
 scr_seq_T26_002:
@@ -163,8 +163,8 @@ scr_seq_T26_011:
 	get_player_facing VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _02D8
-	apply_movement obj_player, _05DA
-	apply_movement obj_T26_gsmiddleman1, _05F2
+	apply_movement obj_player, _05DC
+	apply_movement obj_T26_gsmiddleman1, _05F4
 	goto _02F3
 
 scr_seq_T26_012:
@@ -176,7 +176,7 @@ scr_seq_T26_013:
 	lockall
 	npc_msg 9
 	closemsg
-	apply_movement obj_player, _075A
+	apply_movement obj_player, _075C
 	wait_movement
 	releaseall
 	end
@@ -184,7 +184,7 @@ scr_seq_T26_013:
 _0242:
 	compare VAR_TEMP_x4001, 240
 	goto_if_ne _036F
-	apply_movement obj_T26_gsrivel, _05FE
+	apply_movement obj_T26_gsrivel, _0600
 	goto _025D
 
 _025D:
@@ -194,9 +194,9 @@ _025D:
 	closemsg
 	compare VAR_TEMP_x4001, 239
 	goto_if_ne _038A
-	apply_movement obj_T26_gsrivel, _0612
-	apply_movement obj_player, _0622
-	apply_movement obj_partner_poke, _0646
+	apply_movement obj_T26_gsrivel, _0614
+	apply_movement obj_player, _0624
+	apply_movement obj_partner_poke, _0648
 	goto _03B5
 
 _0292:
@@ -226,7 +226,7 @@ _02C4:
 _02D8:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _03CD
-	apply_movement obj_player, _0662
+	apply_movement obj_player, _0664
 	goto _02F3
 
 _02F3:
@@ -237,7 +237,7 @@ _02F3:
 	scrcmd_729 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _03F0
-	apply_movement obj_partner_poke, _066E
+	apply_movement obj_partner_poke, _0670
 	wait_movement
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -264,15 +264,15 @@ _0354:
 _036F:
 	compare VAR_TEMP_x4001, 241
 	goto_if_ne _0443
-	apply_movement obj_T26_gsrivel, _067E
+	apply_movement obj_T26_gsrivel, _0680
 	goto _025D
 
 _038A:
 	compare VAR_TEMP_x4001, 240
 	goto_if_ne _045E
-	apply_movement obj_T26_gsrivel, _0692
-	apply_movement obj_player, _0622
-	apply_movement obj_partner_poke, _0646
+	apply_movement obj_T26_gsrivel, _0694
+	apply_movement obj_player, _0624
+	apply_movement obj_partner_poke, _0648
 	goto _03B5
 
 _03B5:
@@ -287,8 +287,8 @@ _03B5:
 _03CD:
 	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _0489
-	apply_movement obj_player, _06A2
-	apply_movement obj_T26_gsmiddleman1, _05F2
+	apply_movement obj_player, _06A4
+	apply_movement obj_T26_gsmiddleman1, _05F4
 	goto _02F3
 
 _03F0:
@@ -319,20 +319,20 @@ _0441:
 _0443:
 	compare VAR_TEMP_x4001, 242
 	goto_if_ne _0500
-	apply_movement obj_T26_gsrivel, _06B6
+	apply_movement obj_T26_gsrivel, _06B8
 	goto _025D
 
 _045E:
 	compare VAR_TEMP_x4001, 241
 	goto_if_ne _054A
-	apply_movement obj_T26_gsrivel, _06CA
-	apply_movement obj_player, _0622
-	apply_movement obj_partner_poke, _0646
+	apply_movement obj_T26_gsrivel, _06CC
+	apply_movement obj_player, _0624
+	apply_movement obj_partner_poke, _0648
 	goto _03B5
 
 _0489:
-	apply_movement obj_player, _06DA
-	apply_movement obj_T26_gsmiddleman1, _05F2
+	apply_movement obj_player, _06DC
+	apply_movement obj_T26_gsmiddleman1, _05F4
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -340,7 +340,7 @@ _0489:
 	scrcmd_729 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _03F0
-	apply_movement obj_partner_poke, _066E
+	apply_movement obj_partner_poke, _0670
 	wait_movement
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -364,32 +364,32 @@ _04FA:
 _0500:
 	compare VAR_TEMP_x4001, 243
 	goto_if_ne _025D
-	apply_movement obj_T26_gsrivel, _06EE
+	apply_movement obj_T26_gsrivel, _06F0
 	wait_movement
 	buffer_rivals_name 0
 	npc_msg 0
 	closemsg
 	compare VAR_TEMP_x4001, 239
 	goto_if_ne _038A
-	apply_movement obj_T26_gsrivel, _0612
-	apply_movement obj_player, _0622
-	apply_movement obj_partner_poke, _0646
+	apply_movement obj_T26_gsrivel, _0614
+	apply_movement obj_player, _0624
+	apply_movement obj_partner_poke, _0648
 	goto _03B5
 
 _054A:
 	compare VAR_TEMP_x4001, 242
 	goto_if_ne _0575
-	apply_movement obj_T26_gsrivel, _0702
-	apply_movement obj_player, _0622
-	apply_movement obj_partner_poke, _0646
+	apply_movement obj_T26_gsrivel, _0704
+	apply_movement obj_player, _0624
+	apply_movement obj_partner_poke, _0648
 	goto _03B5
 
 _0575:
 	compare VAR_TEMP_x4001, 243
 	goto_if_ne _03B5
-	apply_movement obj_T26_gsrivel, _0712
-	apply_movement obj_player, _0722
-	apply_movement obj_partner_poke, _0746
+	apply_movement obj_T26_gsrivel, _0714
+	apply_movement obj_player, _0724
+	apply_movement obj_partner_poke, _0748
 	wait_movement
 	setvar VAR_UNK_4078, 1
 	hide_person obj_T26_gsrivel
@@ -398,27 +398,28 @@ _0575:
 	releaseall
 	end
 
+	.byte 0x00, 0x00
 	.balign 4
-_05B2:
+_05B4:
 
 	step 13, 1
 	step 64, 1
 	step_end
 	.balign 4
-_05BE:
+_05C0:
 
 	step 75, 1
 	step 63, 1
 	step_end
 	.balign 4
-_05CA:
+_05CC:
 
 	step 1, 2
 	step 15, 2
 	step 64, 1
 	step_end
 	.balign 4
-_05DA:
+_05DC:
 
 	step 15, 1
 	step 12, 2
@@ -427,13 +428,13 @@ _05DA:
 	step 33, 1
 	step_end
 	.balign 4
-_05F2:
+_05F4:
 
 	step 63, 1
 	step 32, 1
 	step_end
 	.balign 4
-_05FE:
+_0600:
 
 	step 13, 1
 	step 1, 2
@@ -441,14 +442,14 @@ _05FE:
 	step 64, 1
 	step_end
 	.balign 4
-_0612:
+_0614:
 
 	step 15, 6
 	step 0, 2
 	step 12, 10
 	step_end
 	.balign 4
-_0622:
+_0624:
 
 	step 0, 2
 	step 71, 1
@@ -460,7 +461,7 @@ _0622:
 	step 32, 1
 	step_end
 	.balign 4
-_0646:
+_0648:
 
 	step 0, 2
 	step 71, 1
@@ -470,20 +471,20 @@ _0646:
 	step 34, 1
 	step_end
 	.balign 4
-_0662:
+_0664:
 
 	step 12, 3
 	step 33, 1
 	step_end
 	.balign 4
-_066E:
+_0670:
 
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
 	.balign 4
-_067E:
+_0680:
 
 	step 13, 2
 	step 1, 2
@@ -491,14 +492,14 @@ _067E:
 	step 64, 1
 	step_end
 	.balign 4
-_0692:
+_0694:
 
 	step 15, 6
 	step 0, 2
 	step 12, 11
 	step_end
 	.balign 4
-_06A2:
+_06A4:
 
 	step 12, 1
 	step 15, 1
@@ -506,7 +507,7 @@ _06A2:
 	step 33, 1
 	step_end
 	.balign 4
-_06B6:
+_06B8:
 
 	step 13, 3
 	step 1, 2
@@ -514,14 +515,14 @@ _06B6:
 	step 64, 1
 	step_end
 	.balign 4
-_06CA:
+_06CC:
 
 	step 15, 6
 	step 0, 2
 	step 12, 12
 	step_end
 	.balign 4
-_06DA:
+_06DC:
 
 	step 12, 1
 	step 14, 1
@@ -529,7 +530,7 @@ _06DA:
 	step 33, 1
 	step_end
 	.balign 4
-_06EE:
+_06F0:
 
 	step 13, 4
 	step 1, 2
@@ -537,21 +538,21 @@ _06EE:
 	step 64, 1
 	step_end
 	.balign 4
-_0702:
+_0704:
 
 	step 15, 6
 	step 0, 2
 	step 12, 13
 	step_end
 	.balign 4
-_0712:
+_0714:
 
 	step 15, 6
 	step 0, 2
 	step 12, 14
 	step_end
 	.balign 4
-_0722:
+_0724:
 
 	step 1, 2
 	step 71, 1
@@ -563,7 +564,7 @@ _0722:
 	step 32, 1
 	step_end
 	.balign 4
-_0746:
+_0748:
 
 	step 1, 2
 	step 71, 1
@@ -571,7 +572,7 @@ _0746:
 	step 72, 1
 	step_end
 	.balign 4
-_075A:
+_075C:
 
 	step 15, 1
 	step_end

@@ -34,6 +34,7 @@
 .equ _EV_scr_seq_D35R0102_030, 30
 .equ _EV_scr_seq_D35R0102_031, 31
 .equ _EV_scr_seq_D35R0102_032, 32
+.equ _EV_scr_seq_D35R0102_033, 33
 
 .equ obj_D35R0102_aji_peru, 0
 .equ obj_D35R0102_rocketm, 1

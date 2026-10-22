@@ -86,3 +86,7 @@ Docs&Changelog/mega_priority.png
 
 scripts/sync_music_table_counts.py
 scripts/port_platinum_anim_timing.py
+data/graphics/bag_tabs/glyph_held.txt
+data/graphics/bag_tabs/glyph_mega.txt
+data/graphics/bag_tabs/held.txt
+data/graphics/bag_tabs/mega.txt

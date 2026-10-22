@@ -39,3 +39,4 @@ A squeaky-clean sink!\nMom loves having it clean.
 What’s in the fridge...?\rLots of drinking water and\nsweeeet lemonade!
 Another thing to save you some\ntime...\r
 The Level Cap has been set to 13.\r
+Here’s something to celebrate everyone\nwho made this possible.\r

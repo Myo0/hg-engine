@@ -42,11 +42,14 @@ typedef struct BagData {
     ITEM_SLOT items[NUM_BAG_ITEMS]; // General items
     ITEM_SLOT keyItems[NUM_BAG_KEY_ITEMS]; // Key items
     ITEM_SLOT TMsHMs[NUM_BAG_TMS_HMS]; // Move machines
-    ITEM_SLOT mail[NUM_BAG_MAIL]; // Mail items
+    ITEM_SLOT held[NUM_BAG_HELD_ITEMS]; // Held items (was Mail)
     ITEM_SLOT medicine[NUM_BAG_MEDICINE]; // Healing items
     ITEM_SLOT berries[NUM_BAG_BERRIES]; // Berries
     ITEM_SLOT balls[NUM_BAG_BALLS]; // Balls
-    ITEM_SLOT battleItems[NUM_BAG_BATTLE_ITEMS]; // Battle-only items
+    ITEM_SLOT megaStones[NUM_BAG_MEGA_STONES]; // Mega Stones (was Battle Items)
+#ifdef ITEM_POCKET_EXPANSION
+    ITEM_SLOT layout; // id == BAG_LAYOUT_MARKER_ID once the bag uses the reworked pocket layout; see Bag_MigrateLegacyLayout
+#endif
     u16 registeredItems[2]; // IDs of registered key items
 } BAG_DATA;
 

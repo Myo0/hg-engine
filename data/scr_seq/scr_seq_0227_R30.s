@@ -46,15 +46,15 @@ scr_seq_R30_000:
 	lockall
 	npc_msg 0
 	closemsg
-	apply_movement obj_R30_follower_mon_static_rattata, _030E
+	apply_movement obj_R30_follower_mon_static_rattata, _0310
 	wait_movement
-	apply_movement obj_R30_follower_mon_static_pidgey, _0316
+	apply_movement obj_R30_follower_mon_static_pidgey, _0318
 	wait_movement
 	play_se SEQ_SE_DP_SELECT
 	faceplayer
 	npc_msg 1
 	closemsg
-	apply_movement obj_R30_gsboy2_3, _031E
+	apply_movement obj_R30_gsboy2_3, _0320
 	wait_movement
 	releaseall
 	end
@@ -76,12 +76,12 @@ scr_seq_R30_002:
 	scrcmd_308 77
 	clearflag FLAG_HIDE_ROUTE_30_APRICORN_MAN
 	show_person obj_R30_gsmiddleman1
-	apply_movement obj_R30_gsmiddleman1, _0326
+	apply_movement obj_R30_gsmiddleman1, _0328
 	wait_movement
 	scrcmd_311 77
 	scrcmd_308 77
 	scrcmd_309 77
-	apply_movement obj_R30_gsmiddleman1, _032E
+	apply_movement obj_R30_gsmiddleman1, _0330
 	wait_movement
 	npc_msg 5
 	closemsg
@@ -91,7 +91,7 @@ scr_seq_R30_002:
 	following_pokemon_movement 55
 	compare VAR_TEMP_x4000, 558
 	goto_if_ne _01EC
-	apply_movement obj_player, _0336
+	apply_movement obj_player, _0338
 	goto _0207
 
 scr_seq_R30_003:
@@ -154,7 +154,7 @@ scr_seq_R30_010:
 scr_seq_R30_011:
 	scrcmd_609
 	lockall
-	apply_movement obj_player, _039A
+	apply_movement obj_player, _039C
 	wait_movement
 	npc_msg 14
 	closemsg
@@ -168,7 +168,7 @@ scr_seq_R30_011:
 _01EC:
 	compare VAR_TEMP_x4000, 559
 	goto_if_ne _0282
-	apply_movement obj_player, _034A
+	apply_movement obj_player, _034C
 	goto _0207
 
 _0207:
@@ -180,12 +180,12 @@ _0207:
 	giveitem_no_check ITEM_APRICORN_BOX, 1
 	npc_msg 8
 	closemsg
-	apply_movement obj_R30_gsmiddleman1, _035E
+	apply_movement obj_R30_gsmiddleman1, _0360
 	wait_movement
 	scrcmd_307 17, 11, 11, 3, 77
 	scrcmd_310 77
 	scrcmd_308 77
-	apply_movement obj_R30_gsmiddleman1, _0366
+	apply_movement obj_R30_gsmiddleman1, _0368
 	wait_movement
 	scrcmd_311 77
 	scrcmd_308 77
@@ -204,11 +204,11 @@ _026F:
 _0282:
 	compare VAR_TEMP_x4000, 560
 	goto_if_ne _029D
-	apply_movement obj_player, _0372
+	apply_movement obj_player, _0374
 	goto _0207
 
 _029D:
-	apply_movement obj_player, _0386
+	apply_movement obj_player, _0388
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -217,12 +217,12 @@ _029D:
 	giveitem_no_check ITEM_APRICORN_BOX, 1
 	npc_msg 8
 	closemsg
-	apply_movement obj_R30_gsmiddleman1, _035E
+	apply_movement obj_R30_gsmiddleman1, _0360
 	wait_movement
 	scrcmd_307 17, 11, 11, 3, 77
 	scrcmd_310 77
 	scrcmd_308 77
-	apply_movement obj_R30_gsmiddleman1, _0366
+	apply_movement obj_R30_gsmiddleman1, _0368
 	wait_movement
 	scrcmd_311 77
 	scrcmd_308 77
@@ -234,34 +234,34 @@ _029D:
 	setvar VAR_SCENE_ROUTE_30_OW, 1
 	end
 
-	.byte 0x00
+	.byte 0x00, 0x00, 0x00
 	.balign 4
-_030E:
+_0310:
 
 	step 48, 3
 	step_end
 	.balign 4
-_0316:
+_0318:
 
 	step 49, 2
 	step_end
 	.balign 4
-_031E:
+_0320:
 
 	step 32, 1
 	step_end
 	.balign 4
-_0326:
+_0328:
 
 	step 13, 1
 	step_end
 	.balign 4
-_032E:
+_0330:
 
 	step 35, 1
 	step_end
 	.balign 4
-_0336:
+_0338:
 
 	step 13, 2
 	step 34, 1
@@ -269,7 +269,7 @@ _0336:
 	step 14, 2
 	step_end
 	.balign 4
-_034A:
+_034C:
 
 	step 13, 2
 	step 34, 1
@@ -277,18 +277,18 @@ _034A:
 	step 14, 3
 	step_end
 	.balign 4
-_035E:
+_0360:
 
 	step 32, 1
 	step_end
 	.balign 4
-_0366:
+_0368:
 
 	step 12, 1
 	step 69, 1
 	step_end
 	.balign 4
-_0372:
+_0374:
 
 	step 13, 2
 	step 34, 1
@@ -296,7 +296,7 @@ _0372:
 	step 14, 4
 	step_end
 	.balign 4
-_0386:
+_0388:
 
 	step 13, 2
 	step 34, 1
@@ -304,7 +304,7 @@ _0386:
 	step 14, 5
 	step_end
 	.balign 4
-_039A:
+_039C:
 
 	step 75, 1
 	step_end

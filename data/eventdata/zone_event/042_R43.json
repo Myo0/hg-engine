@@ -129,6 +129,23 @@
       "x": 532,
       "z": 138,
       "y": 0
+    },
+    {
+      "id": "obj_R43_farmer",
+      "graphics_id": "SPRITE_FARMER",
+      "movement_type": 16,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "TRAINER_POKE_MANIAC_RON - 1 + _std_npc_trainer",
+      "initial_dir": 2,
+      "param0": 8,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 540,
+      "z": 130,
+      "y": 0
     }
   ],
   "warp_events": [

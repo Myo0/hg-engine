@@ -45,7 +45,7 @@ _0024:
 	holdmsg
 	setvar VAR_SPECIAL_x8004, 11
 	callstd std_special_mart
-	apply_movement obj_T24R0501_sunglasses, _00C2
+	apply_movement obj_T24R0501_sunglasses, _00C4
 	wait_movement
 	clearflag FLAG_SPECIAL_MART_PHARMACY
 	releaseall
@@ -66,7 +66,7 @@ _0051:
 	npc_msg 2
 	wait_ab_press
 	closemsg
-	apply_movement obj_T24R0501_sunglasses, _00C2
+	apply_movement obj_T24R0501_sunglasses, _00C4
 	wait_movement
 	releaseall
 	end
@@ -83,8 +83,9 @@ _00B8:
 	releaseall
 	end
 
+	.byte 0x00, 0x00
 	.balign 4
-_00C2:
+_00C4:
 
 	step 0, 1
 	step_end

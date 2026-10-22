@@ -66,17 +66,17 @@ scr_seq_R43R0201_003:
 	end
 
 _009D:
-	apply_movement obj_R43R0201_rocketm, _01E4
-	apply_movement obj_R43R0201_rocketm_2, _01F8
+	apply_movement obj_R43R0201_rocketm, _01FA
+	apply_movement obj_R43R0201_rocketm_2, _020E
 	wait_movement
 	npc_msg 7
 	closemsg
 	trainer_battle TRAINER_BEAUTY_MICKEY_2, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x8008
 	case 0, _0174
-	apply_movement obj_R43R0201_rocketm, _0204
+	apply_movement obj_R43R0201_rocketm, _021A
 	wait_movement
-	apply_movement obj_R43R0201_rocketm_2, _0214
+	apply_movement obj_R43R0201_rocketm_2, _022A
 	wait_movement
 	npc_msg 8
 	closemsg
@@ -93,16 +93,16 @@ _009D:
 	goto _0183
 
 _0128:
-	apply_movement obj_R43R0201_rocketm, _0224
-	apply_movement obj_R43R0201_rocketm_2, _0240
+	apply_movement obj_R43R0201_rocketm, _023A
+	apply_movement obj_R43R0201_rocketm_2, _0256
 	wait_movement
 	npc_msg 0
 	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 1000
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0199
+	goto_if_eq _01AF
 	npc_msg 1
 	closemsg
-	goto _01A4
+	goto _01BA
 
 _015D:
 	end
@@ -131,19 +131,23 @@ _0178:
 
 _0183:
 	submoneyimmediate 1000
-	apply_movement obj_R43R0201_rocketm_2, _0254
-	wait_movement
-	goto _01D0
+	fade_screen 6, 1, 0, RGB_BLACK
+	wait_fade
+	hide_person obj_R43R0201_rocketm
+	hide_person obj_R43R0201_rocketm_2
+	fade_screen 6, 1, 1, RGB_BLACK
+	wait_fade
+	goto _01E6
 
-_0199:
+_01AF:
 	npc_msg 2
 	closemsg
-	goto _01A4
+	goto _01BA
 
-_01A4:
+_01BA:
 	submoneyimmediate 1000
-	apply_movement obj_R43R0201_rocketm, _0260
-	apply_movement obj_R43R0201_rocketm_2, _0270
+	apply_movement obj_R43R0201_rocketm, _0276
+	apply_movement obj_R43R0201_rocketm_2, _0286
 	wait_movement
 	stop_bgm SEQ_GS_EYE_ROCKET
 	play_bgm SEQ_GS_R_7_42
@@ -151,7 +155,7 @@ _01A4:
 	setflag FLAG_HIDE_ROUTE_43_GATE_ROCKETS
 	end
 
-_01D0:
+_01E6:
 	stop_bgm SEQ_GS_EYE_ROCKET
 	play_bgm SEQ_GS_R_7_42
 	setvar VAR_UNK_410F, 1
@@ -159,7 +163,7 @@ _01D0:
 	end
 
 	.balign 4
-_01E4:
+_01FA:
 
 	step 75, 1
 	step 21, 3
@@ -167,27 +171,27 @@ _01E4:
 	step 1, 1
 	step_end
 	.balign 4
-_01F8:
+_020E:
 
 	step 1, 1
 	step 75, 1
 	step_end
 	.balign 4
-_0204:
+_021A:
 
 	step 22, 2
 	step 20, 3
 	step 1, 1
 	step_end
 	.balign 4
-_0214:
+_022A:
 
 	step 21, 3
 	step 22, 2
 	step 1, 1
 	step_end
 	.balign 4
-_0224:
+_023A:
 
 	step 63, 6
 	step 0, 1
@@ -197,28 +201,24 @@ _0224:
 	step 0, 1
 	step_end
 	.balign 4
-_0240:
+_0256:
 
 	step 75, 1
 	step 20, 4
 	step 22, 2
 	step 0, 1
 	step_end
+	.byte 0x17, 0x00, 0x02, 0x00, 0x14, 0x00
+	.byte 0x03, 0x00, 0xfe, 0x00, 0x00, 0x00
 	.balign 4
-_0254:
-
-	step 23, 2
-	step 20, 3
-	step_end
-	.balign 4
-_0260:
+_0276:
 
 	step 62, 3
 	step 22, 1
 	step 21, 4
 	step_end
 	.balign 4
-_0270:
+_0286:
 
 	step 23, 2
 	step 21, 4

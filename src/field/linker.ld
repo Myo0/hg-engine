@@ -1,9 +1,11 @@
 /* Overlay 131 */
+/* LENGTH is 0x10000, not 0x18000: overlay 129 (the main code) sits at 0x023D8000, 0x10000 bytes above this overlay base,
+   so a larger overlay 131 would silently overwrite it. Keep the two numbers in step. */
 OUTPUT_ARCH(arm)
 MEMORY {
 
-        rom     : ORIGIN = 0x023C8000, LENGTH = 0x18000
-        ewram   : ORIGIN = 0x023C8000, LENGTH = 0x18000
+        rom     : ORIGIN = 0x023C8000, LENGTH = 0x10000
+        ewram   : ORIGIN = 0x023C8000, LENGTH = 0x10000
 }
 
 SECTIONS {

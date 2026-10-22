@@ -7,6 +7,7 @@
 .equ _EV_scr_seq_R38_003, 3
 .equ _EV_scr_seq_R38_004, 4
 .equ _EV_scr_seq_R38_005, 5
+.equ _EV_scr_seq_R38_006, 6
 
 .equ obj_R38_gsman3, 0
 .equ obj_R38_gsman2, 1

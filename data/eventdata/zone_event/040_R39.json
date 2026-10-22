@@ -197,8 +197,8 @@
       "y": 0
     },
     {
-      "id": "obj_R39_monstarball",
-      "graphics_id": "SPRITE_MONSTARBALL",
+      "id": "obj_R39_3916",
+      "graphics_id": 3916,
       "movement_type": 0,
       "trainer_type": 0,
       "hidden_flag": "FLAG_HIDE_ITEMBALL_R39_TM60",

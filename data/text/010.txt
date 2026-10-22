@@ -123,7 +123,7 @@ Medicine Pocket\nFor items to regain your Pokémon’s\nHP and PP.
 Poké Ball Pocket\nFor all different types of Poké Balls.
 TMs & HMs Pocket\nFor all different types of TMs and HMs.
 Berry Pocket\nFor sorting and storing different\nBerries.
-Mail Pocket\nFor sorting and storing vibrant\nstationery.
-Battle Items Pocket\nFor items that are useful during battle.
+Held Items Pocket\nFor items your Pokémon can hold\nand carry into battle.
+Mega Stones Pocket\nFor Mega Stones that let Pokémon\nMega Evolve.
 Key Items Pocket\nFor items that are indispensable for\nyour adventure.
 STOP

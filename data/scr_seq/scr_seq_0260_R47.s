@@ -32,6 +32,7 @@ scrdef scr_seq_R47_001
 scrdef scr_seq_R47_002
 scrdef scr_seq_R47_003
 scrdef scr_seq_R47_004
+scrdef scr_seq_R47_005
 scrdef_end
 
 scr_seq_R47_000:
@@ -39,87 +40,17 @@ scr_seq_R47_000:
 	setflag FLAG_UNK_9C9
 	get_game_version VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 7
-	goto_if_ne _004F
+	goto_if_ne _0180
 	move_warp 4, 87, 385
 	move_warp 5, 87, 389
 	move_warp 6, 87, 385
-	goto _0067
-
-_004F:
-	move_warp 4, 87, 389
-	move_warp 5, 87, 385
-	move_warp 6, 87, 385
-_0067:
-	compare VAR_SCENE_EMBEDDED_TOWER, 2
-	goto_if_eq _00E6
-	compare VAR_SCENE_EMBEDDED_TOWER, 3
-	goto_if_eq _00E6
-	compare VAR_SCENE_EMBEDDED_TOWER, 5
-	goto_if_ge _00EC
-	goto_if_unset FLAG_UNK_189, _009F
-	clearflag FLAG_UNK_189
-	end
-
-_009F:
-	goto_if_set FLAG_GAME_CLEAR, _00B2
-	goto _00E6
-
-	.byte 0x02, 0x00
-_00B2:
-	get_phone_book_rematch PHONE_CONTACT_CHUCK, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 0
-	goto_if_ne _00E6
-	get_weekday VAR_TEMP_x4002
-	compare VAR_TEMP_x4002, 0
-	goto_if_ne _00E0
-	clearflag FLAG_UNK_304
-	goto _00E4
-
-_00E0:
-	setflag FLAG_UNK_304
-_00E4:
-	end
-
-_00E6:
-	setflag FLAG_UNK_304
-	end
-
-_00EC:
-	move_warp 4, 87, 385
-	move_warp 5, 87, 385
-	move_warp 6, 87, 389
-	goto _00E6
-
-	.byte 0x02, 0x00
-scr_seq_R47_002:
-	compare VAR_SCENE_EMBEDDED_TOWER, 5
-	goto_if_ge _0162
-	get_game_version VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 7
-	goto_if_ne _0148
-	move_warp 4, 87, 385
-	move_warp 5, 87, 389
-	move_warp 6, 87, 385
-	goto _0160
-
-_0148:
-	move_warp 4, 87, 389
-	move_warp 5, 87, 385
-	move_warp 6, 87, 385
-_0160:
-	end
-
-_0162:
-	move_warp 4, 87, 385
-	move_warp 5, 87, 385
-	move_warp 6, 87, 389
-	end
+	goto _01D0
 
 scr_seq_R47_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_MET_ROUTE_47_EMBEDDED_TOWER_HIKER, _019E
+	goto_if_set FLAG_MET_ROUTE_47_EMBEDDED_TOWER_HIKER, _0208
 	npc_msg 0
 	wait_button
 	closemsg
@@ -127,69 +58,32 @@ scr_seq_R47_001:
 	releaseall
 	end
 
-_019E:
-	npc_msg 1
-	wait_button
-	closemsg
-	releaseall
-	end
+scr_seq_R47_002:
+	compare VAR_SCENE_EMBEDDED_TOWER, 5
+	goto_if_ge _0213
+	get_game_version VAR_TEMP_x4000
+	compare VAR_TEMP_x4000, 7
+	goto_if_ne _022D
+	move_warp 4, 87, 385
+	move_warp 5, 87, 389
+	move_warp 6, 87, 385
+	goto _0247
 
 scr_seq_R47_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_157, _0210
+	goto_if_set FLAG_UNK_157, _0249
 	npc_msg 2
-	apply_movement obj_R47_leader3, _022C
+	apply_movement obj_R47_leader3, _0340
 	wait_movement
 	npc_msg 3
 	get_player_facing VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _01EB
-	apply_movement obj_R47_leader3, _0234
-	goto _020E
+	goto_if_ne _0263
+	apply_movement obj_R47_leader3, _0348
+	goto _027E
 
-_01EB:
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_ne _0206
-	apply_movement obj_R47_leader3, _023C
-	goto _020E
-
-_0206:
-	apply_movement obj_R47_leader3, _0244
-_020E:
-	wait_movement
-_0210:
-	buffer_players_name 0
-	npc_msg 4
-	closemsg
-	apply_movement obj_R47_leader3, _022C
-	wait_movement
-	setflag FLAG_UNK_157
-	releaseall
-	end
-
-	.byte 0x00, 0x00
-	.balign 4
-_022C:
-
-	step 32, 1
-	step_end
-	.balign 4
-_0234:
-
-	step 33, 1
-	step_end
-	.balign 4
-_023C:
-
-	step 34, 1
-	step_end
-	.balign 4
-_0244:
-
-	step 35, 1
-	step_end
 scr_seq_R47_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -199,10 +93,10 @@ scr_seq_R47_004:
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _02B5
+	goto_if_eq _029A
 	photo_album_is_full VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _02C0
+	goto_if_eq _02A5
 	npc_msg 6
 	closemsg
 	setflag FLAG_UNK_189
@@ -220,17 +114,166 @@ scr_seq_R47_004:
 	releaseall
 	end
 
-_02B5:
+scr_seq_R47_005:
+	lockall
+	play_se SEQ_SE_DP_SELECT
+	hide_person obj_R47_3959
+	giveitem_no_check ITEM_BARBARACITE, 1
+	setflag FLAG_HIDE_ITEMBALL_R47_WHITE_FLUTE
+	closemsg
+	releaseall
+	end
+
+_0180:
+	move_warp 4, 87, 389
+	move_warp 5, 87, 385
+	move_warp 6, 87, 385
+	compare VAR_SCENE_EMBEDDED_TOWER, 2
+	goto_if_eq _02B0
+	compare VAR_SCENE_EMBEDDED_TOWER, 3
+	goto_if_eq _02B0
+	compare VAR_SCENE_EMBEDDED_TOWER, 5
+	goto_if_ge _02B6
+	goto_if_unset FLAG_UNK_189, _02D4
+	clearflag FLAG_UNK_189
+	end
+
+_01D0:
+	compare VAR_SCENE_EMBEDDED_TOWER, 2
+	goto_if_eq _02B0
+	compare VAR_SCENE_EMBEDDED_TOWER, 3
+	goto_if_eq _02B0
+	compare VAR_SCENE_EMBEDDED_TOWER, 5
+	goto_if_ge _02B6
+	goto_if_unset FLAG_UNK_189, _02D4
+	clearflag FLAG_UNK_189
+	end
+
+_0208:
+	npc_msg 1
+	wait_button
+	closemsg
+	releaseall
+	end
+
+_0213:
+	move_warp 4, 87, 385
+	move_warp 5, 87, 385
+	move_warp 6, 87, 389
+	end
+
+_022D:
+	move_warp 4, 87, 389
+	move_warp 5, 87, 385
+	move_warp 6, 87, 385
+	end
+
+_0247:
+	end
+
+_0249:
+	buffer_players_name 0
+	npc_msg 4
+	closemsg
+	apply_movement obj_R47_leader3, _0340
+	wait_movement
+	setflag FLAG_UNK_157
+	releaseall
+	end
+
+_0263:
+	compare VAR_SPECIAL_RESULT, 3
+	goto_if_ne _02E5
+	apply_movement obj_R47_leader3, _0350
+	goto _027E
+
+_027E:
+	wait_movement
+	buffer_players_name 0
+	npc_msg 4
+	closemsg
+	apply_movement obj_R47_leader3, _0340
+	wait_movement
+	setflag FLAG_UNK_157
+	releaseall
+	end
+
+_029A:
 	npc_msg 8
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_02C0:
+_02A5:
 	npc_msg 9
 	wait_button
 	closemsg
 	releaseall
 	end
+
+_02B0:
+	setflag FLAG_UNK_304
+	end
+
+_02B6:
+	move_warp 4, 87, 385
+	move_warp 5, 87, 385
+	move_warp 6, 87, 389
+	goto _02B0
+
+_02D4:
+	goto_if_set FLAG_GAME_CLEAR, _0309
+	goto _02B0
+
+_02E5:
+	apply_movement obj_R47_leader3, _0358
+	wait_movement
+	buffer_players_name 0
+	npc_msg 4
+	closemsg
+	apply_movement obj_R47_leader3, _0340
+	wait_movement
+	setflag FLAG_UNK_157
+	releaseall
+	end
+
+_0309:
+	get_phone_book_rematch PHONE_CONTACT_CHUCK, VAR_TEMP_x4001
+	compare VAR_TEMP_x4001, 0
+	goto_if_ne _02B0
+	get_weekday VAR_TEMP_x4002
+	compare VAR_TEMP_x4002, 0
+	goto_if_ne _0337
+	clearflag FLAG_UNK_304
+	goto _033D
+
+_0337:
+	setflag FLAG_UNK_304
+	end
+
+_033D:
+	end
+
+	.byte 0x00
+	.balign 4
+_0340:
+
+	step 32, 1
+	step_end
+	.balign 4
+_0348:
+
+	step 33, 1
+	step_end
+	.balign 4
+_0350:
+
+	step 34, 1
+	step_end
+	.balign 4
+_0358:
+
+	step 35, 1
+	step_end
 	.balign 4

@@ -74,15 +74,15 @@ scr_seq_T25GYM0101_000:
 scr_seq_T25GYM0101_001:
 	scrcmd_609
 	lockall
-	apply_movement obj_T25GYM0101_gsgirl1, _0352
+	apply_movement obj_T25GYM0101_gsgirl1, _0354
 	wait_movement
 	npc_msg 9
 	closemsg
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	apply_movement obj_T25GYM0101_gsgirl1, _035E
-	apply_movement obj_player, _036A
+	apply_movement obj_T25GYM0101_gsgirl1, _0360
+	apply_movement obj_player, _036C
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -276,21 +276,21 @@ _0345:
 _034B:
 	goto _026F
 
-	.byte 0x00
+	.byte 0x00, 0x00, 0x00
 	.balign 4
-_0352:
+_0354:
 
 	step 75, 1
 	step 12, 3
 	step_end
 	.balign 4
-_035E:
+_0360:
 
 	step 13, 3
 	step 32, 1
 	step_end
 	.balign 4
-_036A:
+_036C:
 
 	step 63, 1
 	step 12, 1

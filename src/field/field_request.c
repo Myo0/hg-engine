@@ -1,3 +1,4 @@
+#include "../../include/config.h"
 #include "../../include/types.h"
 #include "../../include/pokemon.h"
 #include "../../include/map_events_internal.h"
@@ -52,6 +53,12 @@ void SetOverworldRequestFlags(OVERWORLD_REQUEST_FLAGS *req, u16 trg)
  */
 void CheckOverworldRequestFlags(OVERWORLD_REQUEST_FLAGS *req, FieldSystem *fsys)
 {
+#ifdef CREDITS_READER_DEBUG_TRIGGER
+    if (req->OpenPCCheck) { // testing only: R opens the credits reader instead of the Porta PC
+        EventSet_Script(fsys, 2076, NULL);
+        return;
+    }
+#endif
 #ifdef FRONTIER_BRAIN_INTRO_DEBUG_TRIGGER
     if (req->OpenPCCheck) { // testing only: R plays the Frontier Brain intro (commonscript 2078) instead of the Porta PC
         EventSet_Script(fsys, 2078, NULL);

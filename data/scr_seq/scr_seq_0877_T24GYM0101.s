@@ -38,16 +38,20 @@ scr_seq_T24GYM0101_000:
 	lockall
 	faceplayer
 	compare VAR_TEMP_x4000, 0
-	goto_if_eq _00FC
+	goto_if_eq _0113
 	check_badge BADGE_STORM, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0107
+	goto_if_eq _011E
+	party_count_not_egg VAR_SPECIAL_LAST_TALKED
+	party_count_mons_at_or_below_level VAR_SPECIAL_RESULT, 44
+	compare VAR_SPECIAL_RESULT, VAR_SPECIAL_LAST_TALKED
+	goto_if_lt _01D3
 	npc_msg 0
 	closemsg
 	trainer_battle TRAINER_LEADER_CHUCK_CHUCK, 0, 0, 0
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _011D
+	goto_if_eq _0134
 	npc_msg 3
 	settrainerflag TRAINER_BLACK_BELT_YOSHI
 	settrainerflag TRAINER_BLACK_BELT_LAO
@@ -63,10 +67,10 @@ scr_seq_T24GYM0101_000:
 	add_special_game_stat 22
 	setvar VAR_UNK_4116, 1
 	compare VAR_MIDGAME_BADGES, 3
-	goto_if_ne _0123
+	goto_if_ne _013A
 	setvar VAR_SCENE_ROCKET_TAKEOVER, 1
 	npc_msg 5
-	goto _012C
+	goto _0143
 
 scr_seq_T24GYM0101_001:
 	cianwood_gym_init
@@ -78,7 +82,7 @@ scr_seq_T24GYM0101_002:
 	lockall
 	faceplayer
 	compare VAR_TEMP_x4000, 0
-	goto_if_eq _0160
+	goto_if_eq _0177
 	npc_msg 12
 	wait_button
 	closemsg
@@ -92,36 +96,36 @@ scr_seq_T24GYM0101_003:
 	check_badge BADGE_STORM, VAR_SPECIAL_RESULT
 	buffer_players_name 0
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _017E
+	goto_if_ne _0195
 	npc_msg 13
-	goto _0189
+	goto _01A0
 
-_00FC:
+_0113:
 	npc_msg 9
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_0107:
-	goto_if_unset FLAG_GOT_TM01_FROM_CHUCK, _012C
+_011E:
+	goto_if_unset FLAG_GOT_TM01_FROM_CHUCK, _0143
 	npc_msg 8
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_011D:
+_0134:
 	white_out
 	releaseall
 	end
 
-_0123:
+_013A:
 	npc_msg 5
-	goto _012C
+	goto _0143
 
-_012C:
-	goto_if_no_item_space ITEM_TM001, 1, _0191
+_0143:
+	goto_if_no_item_space ITEM_TM001, 1, _01A8
 	callstd std_give_item_verbose
 	setflag FLAG_GOT_TM01_FROM_CHUCK
 	npc_msg 6
@@ -130,38 +134,38 @@ _012C:
 	releaseall
 	end
 
-_0160:
+_0177:
 	npc_msg 10
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _019C
+	goto_if_eq _01B3
 	closemsg
 	releaseall
 	end
 
-_017E:
+_0195:
 	npc_msg 14
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_0189:
+_01A0:
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_0191:
+_01A8:
 	npc_msg 7
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_019C:
+_01B3:
 	buffer_players_name 0
 	npc_msg 11
 	closemsg
@@ -170,6 +174,12 @@ _019C:
 	play_se SEQ_SE_DP_SHIP03
 	play_se SEQ_SE_GS_TAKI2
 	cianwood_gym_turn_winch VAR_TEMP_x4000
+	releaseall
+	end
+
+_01D3:
+	npc_msg 15
+	closemsg
 	releaseall
 	end
 	.balign 4

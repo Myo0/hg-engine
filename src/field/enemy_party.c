@@ -96,8 +96,8 @@ static u16 ApplyKantoLevelScaling(u16 level, u8 kantoBadgeCount, u8 johtoBadgeCo
 
 // Real, user-confirmed level caps (2026-10-11), indexed by GetJohtoBadgeCount() (0-8). Caps are
 // set per-gym as part of each trainer "split" review -- do NOT guess values for the unfilled
-// slots below (Pryce/Clair, indices 6-7) or the final "all 8 Johto badges" slot (index 8); ask
-// before assigning a trainer a level that would depend on one of those.
+// slots below (Clair, index 7) or the final "all 8 Johto badges" slot (index 8); ask before
+// assigning a trainer a level that would depend on one of those.
 static const u8 sJohtoLevelCapTable[9] = {
     16, // 0 badges -- before Falkner
     25, // 1 badge -- before Bugsy
@@ -105,25 +105,48 @@ static const u8 sJohtoLevelCapTable[9] = {
     37, // 3 badges -- before Morty
     44, // 4 badges -- before Chuck
     49, // 5 badges -- before Jasmine
-    0,  // 6 badges -- before Pryce, TBD
+    57, // 6 badges -- before Pryce
     0,  // 7 badges -- before Clair, TBD
     0,  // 8 badges -- all Johto badges earned, TBD
 };
 
+// Level caps once the Johto Champion has been beaten (the game-clear flag, set once at the end of
+// the first Hall of Fame sequence) -- indexed by the number of KANTO badges held (0-8). Slot 0 is
+// the cap for the player's first Kanto gym (they have the 8 Johto badges and no Kanto badge yet),
+// slot 1 the cap for the next one, and so on. 0 = not decided yet (the user fills these in).
+static const u8 sKantoLevelCapTable[9] = {
+    0, // 0 Kanto badges -- first Kanto gym, TBD
+    0, // 1 Kanto badge, TBD
+    0, // 2 Kanto badges, TBD
+    0, // 3 Kanto badges, TBD
+    0, // 4 Kanto badges, TBD
+    0, // 5 Kanto badges, TBD
+    0, // 6 Kanto badges, TBD
+    0, // 7 Kanto badges -- before Blue, TBD
+    0, // 8 Kanto badges -- everything cleared, TBD
+};
+
+// Has the player beaten the Johto Champion / cleared the game (first Hall of Fame)? The profile bit
+// and FLAG_GAME_CLEAR are both set together by the game-clear task and never cleared.
+static BOOL HasClearedGame(void)
+{
+    struct PlayerProfile *profile = Sav2_PlayerData_GetProfileAddr(SaveBlock2_get());
+    return profile->gameClear ? TRUE : FALSE;
+}
+
 // F_LEVEL_CAP_RELATIVE support (see trainer_data.h): reinterprets a flagged trainer's raw .level
-// field as an offset below the player's current region-appropriate badge level cap, instead of
-// an absolute level. Currently Johto-only in practice -- the Kanto open-world/postgame design
-// (and its own cap curve) hasn't been built yet, so the Kanto branch below is a placeholder that
-// can't actually be reached by any real trainer yet.
-static u16 ApplyLevelCapRelative(u16 offset, u8 kantoBadgeCount, u8 johtoBadgeCount)
+// field as an offset below the player's current badge level cap, instead of an absolute level.
+//   - Johto Champion not beaten yet: sJohtoLevelCapTable[Johto badges held]; slot 8 is the
+//     Victory Road / Elite Four / Champion cap.
+//   - Champion beaten (or any Kanto badge held): sKantoLevelCapTable[Kanto badges held], slot 0
+//     being the first Kanto gym the player picks.
+static u16 ApplyLevelCapRelative(u16 offset, u8 kantoBadgeCount, u8 johtoBadgeCount, BOOL gameCleared)
 {
     u8 cap;
-    if (kantoBadgeCount > 0) {
-        // Kanto cap curve doesn't exist yet -- see project_planning_kanto. Treat as uncapped
-        // until that design lands; unreachable today since Kanto isn't accessible content yet.
-        cap = 100;
+    if (gameCleared || kantoBadgeCount > 0) {
+        cap = sKantoLevelCapTable[kantoBadgeCount > 8 ? 8 : kantoBadgeCount];
     } else {
-        cap = sJohtoLevelCapTable[johtoBadgeCount];
+        cap = sJohtoLevelCapTable[johtoBadgeCount > 8 ? 8 : johtoBadgeCount];
     }
     if (offset >= cap) {
         return 1; // defensive clamp -- never return 0/underflow if a cap slot isn't filled in yet
@@ -179,6 +202,7 @@ void MakeTrainerPokemonParty(struct BATTLE_PARAM *bp, int num, int heapID)
 #ifdef KANTO_LEVEL_SCALING
     u8 kantoBadgeCount = GetKantoBadgeCount();
     u8 johtoBadgeCount = GetJohtoBadgeCount();
+    BOOL gameCleared = HasClearedGame();
 #endif
 
     int partyOrder[pokecount];
@@ -221,7 +245,7 @@ void MakeTrainerPokemonParty(struct BATTLE_PARAM *bp, int num, int heapID)
         level = buf[offset] | (buf[offset + 1] << 8);
 #ifdef KANTO_LEVEL_SCALING
         if (bp->trainer_data[num].aibit & F_LEVEL_CAP_RELATIVE) {
-            level = ApplyLevelCapRelative(level, kantoBadgeCount, johtoBadgeCount);
+            level = ApplyLevelCapRelative(level, kantoBadgeCount, johtoBadgeCount, gameCleared);
         } else {
             level = ApplyKantoLevelScaling(level, kantoBadgeCount, johtoBadgeCount);
         }

@@ -30,25 +30,10 @@
 scrdef scr_seq_R48_000
 scrdef scr_seq_R48_001
 scrdef scr_seq_R48_002
+scrdef scr_seq_R48_003
+scrdef scr_seq_R48_004
+scrdef scr_seq_R48_005
 scrdef_end
-
-scr_seq_R48_001:
-	goto_if_unset FLAG_UNK_189, _001F
-	clearflag FLAG_UNK_189
-	end
-
-_001F:
-	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 5
-	goto_if_eq _0043
-	compare VAR_TEMP_x4000, 0
-	goto_if_eq _0043
-	setflag FLAG_HIDE_CAMERON
-	end
-
-_0043:
-	clearflag FLAG_HIDE_CAMERON
-	end
 
 scr_seq_R48_000:
 	play_se SEQ_SE_DP_SELECT
@@ -60,10 +45,10 @@ scr_seq_R48_000:
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _014E
+	goto_if_eq _0147
 	photo_album_is_full VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0162
+	goto_if_eq _015B
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 1
 	closemsg
@@ -72,31 +57,94 @@ scr_seq_R48_000:
 	following_pokemon_movement 55
 	get_player_facing VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _00C2
-	apply_movement obj_player, _0178
-	apply_movement obj_R48_gsmiddleman1, _01B0
-	goto _00ED
+	goto_if_ne _016F
+	apply_movement obj_player, _02C0
+	apply_movement obj_R48_gsmiddleman1, _02D8
+	goto _018A
 
-_00C2:
+scr_seq_R48_001:
+	goto_if_unset FLAG_UNK_189, _01EB
+	clearflag FLAG_UNK_189
+	end
+
+scr_seq_R48_002:
+	direction_signpost 0, 1, 13, VAR_SPECIAL_RESULT
+	scrcmd_057 3
+	scrcmd_058
+	scrcmd_060 VAR_SPECIAL_RESULT
+	callstd std_signpost
+	end
+
+scr_seq_R48_003:
+	lockall
+	play_se SEQ_SE_DP_SELECT
+	hide_person obj_R48_3946
+	giveitem_no_check ITEM_SCOLIPITE, 1
+	setflag FLAG_HIDE_ITEMBALL_R48_NUGGET
+	closemsg
+	releaseall
+	end
+
+scr_seq_R48_004:
+	lockall
+	faceplayer
+	setvar VAR_SPECIAL_x8009, 8
+	setvar VAR_SPECIAL_x8008, 15
+	callstd 2075
+	fade_screen 6, 1, 0, RGB_BLACK
+	wait_fade
+	hide_person obj_R48_4069
+	fade_screen 6, 1, 1, RGB_BLACK
+	wait_fade
+	releaseall
+	end
+
+scr_seq_R48_005:
+	lockall
+	faceplayer
+	setvar VAR_SPECIAL_x8009, 7
+	setvar VAR_SPECIAL_x8008, 16
+	callstd 2075
+	fade_screen 6, 1, 0, RGB_BLACK
+	wait_fade
+	hide_person obj_R48_4068
+	fade_screen 6, 1, 1, RGB_BLACK
+	wait_fade
+	releaseall
+	end
+
+_0147:
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 5
+	wait_button
+	closemsg
+	releaseall
+	end
+
+_015B:
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 3
+	wait_button
+	closemsg
+	releaseall
+	end
+
+_016F:
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _00DD
-	apply_movement obj_player, _0190
-	goto _00ED
+	goto_if_ne _020F
+	apply_movement obj_player, _02E4
+	goto _018A
 
-_00DD:
-	apply_movement obj_player, _019C
-	apply_movement obj_R48_gsmiddleman1, _01B0
-_00ED:
+_018A:
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
 	following_pokemon_movement 48
 	scrcmd_729 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _0114
-	apply_movement obj_partner_poke, _01BC
+	goto_if_ne _0280
+	apply_movement obj_partner_poke, _02F0
 	wait_movement
-_0114:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -112,25 +160,64 @@ _0114:
 	releaseall
 	end
 
-_014E:
+_01EB:
+	get_weekday VAR_TEMP_x4000
+	compare VAR_TEMP_x4000, 5
+	goto_if_eq _02BA
+	compare VAR_TEMP_x4000, 0
+	goto_if_eq _02BA
+	setflag FLAG_HIDE_CAMERON
+	end
+
+_020F:
+	apply_movement obj_player, _0300
+	apply_movement obj_R48_gsmiddleman1, _02D8
+	wait_movement
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
+	scrcmd_729 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
+	goto_if_ne _0280
+	apply_movement obj_partner_poke, _02F0
+	wait_movement
+	setflag FLAG_UNK_189
+	fade_screen 6, 1, 0, RGB_BLACK
+	wait_fade
+	cameron_photo 37
+	lockall
+	fade_screen 6, 1, 1, RGB_BLACK
+	wait_fade
+	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 5
+	msgbox_extern VAR_SPECIAL_RESULT, 2
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_0162:
+_0280:
+	setflag FLAG_UNK_189
+	fade_screen 6, 1, 0, RGB_BLACK
+	wait_fade
+	cameron_photo 37
+	lockall
+	fade_screen 6, 1, 1, RGB_BLACK
+	wait_fade
+	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 3
+	msgbox_extern VAR_SPECIAL_RESULT, 2
 	wait_button
 	closemsg
 	releaseall
 	end
 
-	.byte 0x00, 0x00
+_02BA:
+	clearflag FLAG_HIDE_CAMERON
+	end
+
 	.balign 4
-_0178:
+_02C0:
 
 	step 15, 1
 	step 12, 2
@@ -139,37 +226,30 @@ _0178:
 	step 33, 1
 	step_end
 	.balign 4
-_0190:
+_02D8:
+
+	step 63, 1
+	step 32, 1
+	step_end
+	.balign 4
+_02E4:
 
 	step 12, 3
 	step 33, 1
 	step_end
 	.balign 4
-_019C:
+_02F0:
+
+	step 15, 1
+	step 12, 1
+	step 1, 1
+	step_end
+	.balign 4
+_0300:
 
 	step 12, 1
 	step 14, 1
 	step 12, 3
 	step 33, 1
 	step_end
-	.balign 4
-_01B0:
-
-	step 63, 1
-	step 32, 1
-	step_end
-	.balign 4
-_01BC:
-
-	step 15, 1
-	step 12, 1
-	step 1, 1
-	step_end
-scr_seq_R48_002:
-	direction_signpost 0, 1, 13, VAR_SPECIAL_RESULT
-	scrcmd_057 3
-	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_RESULT
-	callstd std_signpost
-	end
 	.balign 4

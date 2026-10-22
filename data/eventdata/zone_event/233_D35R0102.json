@@ -179,7 +179,7 @@
       "movement_type": 0,
       "trainer_type": 0,
       "hidden_flag": "FLAG_HIDE_ITEMBALL_D35R0102_GUARD_SPEC_",
-      "script": 7644,
+      "script": "_EV_scr_seq_D35R0102_033 + 1",
       "initial_dir": 0,
       "param0": 0,
       "param1": 0,
@@ -234,46 +234,6 @@
       "y": 0,
       "value": 0,
       "var": "VAR_UNK_40AD"
-    },
-    {
-      "script": "_EV_scr_seq_D35R0102_005 + 1",
-      "x": 18,
-      "z": 4,
-      "width": 1,
-      "length": 2,
-      "y": 0,
-      "value": 0,
-      "var": "VAR_UNK_40AE"
-    },
-    {
-      "script": "_EV_scr_seq_D35R0102_006 + 1",
-      "x": 44,
-      "z": 11,
-      "width": 1,
-      "length": 2,
-      "y": 0,
-      "value": 0,
-      "var": "VAR_UNK_40AF"
-    },
-    {
-      "script": "_EV_scr_seq_D35R0102_007 + 1",
-      "x": 44,
-      "z": 29,
-      "width": 1,
-      "length": 2,
-      "y": 0,
-      "value": 0,
-      "var": "VAR_UNK_40B0"
-    },
-    {
-      "script": "_EV_scr_seq_D35R0102_008 + 1",
-      "x": 18,
-      "z": 29,
-      "width": 1,
-      "length": 2,
-      "y": 0,
-      "value": 0,
-      "var": "VAR_UNK_40B1"
     },
     {
       "script": "_EV_scr_seq_D35R0102_013 + 1",

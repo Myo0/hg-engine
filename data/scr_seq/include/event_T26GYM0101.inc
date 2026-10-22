@@ -14,6 +14,6 @@
 .equ obj_T26GYM0101_workman, 1
 .equ obj_T26GYM0101_assistantm, 2
 .equ obj_T26GYM0101_sunglasses, 3
-.equ obj_T26GYM0101_workman_2, 4
+.equ obj_T26GYM0101_mount, 4
 
 .endif //SCR_SEQ_T26GYM0101_H_

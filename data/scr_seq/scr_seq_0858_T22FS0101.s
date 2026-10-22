@@ -107,7 +107,7 @@ scr_seq_T22FS0101_002:
 	get_player_facing VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _02B2
-	apply_movement obj_T22FS0101_assistantm, _03E2
+	apply_movement obj_T22FS0101_assistantm, _03E4
 	goto _02E4
 
 scr_seq_T22FS0101_003:
@@ -197,7 +197,7 @@ _029C:
 	return
 
 _02B2:
-	apply_movement obj_T22FS0101_assistantm, _03F2
+	apply_movement obj_T22FS0101_assistantm, _03F4
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	hide_person obj_T22FS0101_assistantm
@@ -259,19 +259,19 @@ _030E:
 	get_player_facing VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _02B2
-	apply_movement obj_T22FS0101_assistantm, _03E2
+	apply_movement obj_T22FS0101_assistantm, _03E4
 	goto _02E4
 
-	.byte 0x00
+	.byte 0x00, 0x00, 0x00
 	.balign 4
-_03E2:
+_03E4:
 
 	step 13, 2
 	step 14, 2
 	step 13, 1
 	step_end
 	.balign 4
-_03F2:
+_03F4:
 
 	step 14, 2
 	step 13, 3

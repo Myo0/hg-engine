@@ -333,6 +333,14 @@ all: pull_scripts_auto $(OUTPUT) $(OVERLAY_OUTPUTS) $(TOOLS) $(BASE)/arm9.bin
 	@if [ -d waves ] && ls waves/*.nwav >/dev/null 2>&1; then mkdir -p $(FILESYS)/waves && cp -f waves/*.nwav $(FILESYS)/waves/; fi
 	@# Frontier Brain VS busts: the native Frontier intro (FRONTIER_BRAIN_INTRO) needs the original art; the Gym-Leader-style screen (src/vs_screen.c) needs it retargeted
 	$(PYTHON) scripts/patch_vs_brain_sprites.py $(if $(shell grep -c '^\#define FRONTIER_BRAIN_INTRO$$' include/config.h | grep -v '^0'),--revert,) $(FILESYS)/a/1/0/9
+	@# paint the Held Items / Mega Stones pocket tab icons (data/graphics/bag_tabs)
+	$(PYTHON) scripts/patch_bag_tabs.py $(FILESYS)/a/0/1/5
+	@# redraw the Held Items / Mega Stones inline message glyphs (data/graphics/bag_tabs/glyph_*.txt)
+	$(PYTHON) scripts/patch_pocket_glyphs.py $(FILESYS)/a/0/1/6
+	@# add the credits button art (X menu 8th icon, src/field/touch_menu.c)
+	$(PYTHON) scripts/patch_touch_icon.py $(FILESYS)/a/0/1/4
+	@# credits reader text bank limits (src/field/credits_panel.c)
+	$(PYTHON) scripts/check_credits_text.py
 	@echo "Making ROM..."
 	$(NDSTOOL) -c $(BUILDROM) -9 $(BASE)/arm9.bin -7 $(BASE)/arm7.bin -y9 $(BASE)/overarm9.bin -y7 $(BASE)/overarm7.bin -d $(FILESYS) -y $(BASE)/overlay -t $(BASE)/banner.bin -h $(BASE)/header.bin
 	@echo "Done.  See output $(BUILDROM)."

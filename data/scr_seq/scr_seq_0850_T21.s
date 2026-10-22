@@ -45,19 +45,19 @@ scr_seq_T21_000:
 
 scr_seq_T21_001:
 	lock obj_T21_gsoldman1
-	apply_movement obj_T21_gsoldman1, _0AE2
+	apply_movement obj_T21_gsoldman1, _0AE4
 	wait_movement
 	callstd std_play_follow_music
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 397
 	goto_if_ne _022C
-	apply_movement obj_T21_gsoldman1, _0AEA
+	apply_movement obj_T21_gsoldman1, _0AEC
 	goto _0247
 
 scr_seq_T21_002:
 	scrcmd_609
 	lockall
-	apply_movement obj_player, _0AF2
+	apply_movement obj_player, _0AF4
 	wait_movement
 	callstd std_play_follow_music
 	clearflag FLAG_HIDE_CHERRYGROVE_GUIDE_GENT
@@ -67,19 +67,19 @@ scr_seq_T21_002:
 	move_person_facing obj_T21_gsoldman1, VAR_TEMP_x4000, 1, 394, DIR_NORTH
 	compare VAR_TEMP_x4000, 549
 	goto_if_ne _0288
-	apply_movement obj_T21_gsoldman1, _0AFE
+	apply_movement obj_T21_gsoldman1, _0B00
 	goto _02A3
 
 scr_seq_T21_003:
 	scrcmd_609
 	lockall
 	fade_out_bgm 0, 3
-	apply_movement obj_player, _0AE2
+	apply_movement obj_player, _0AE4
 	wait_movement
 	callstd std_play_rival_intro_music
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	move_person_facing obj_T21_gsrivel, 583, 0, VAR_TEMP_x4001, DIR_WEST
-	apply_movement obj_T21_gsrivel, _0B0E
+	apply_movement obj_T21_gsrivel, _0B10
 	wait_movement
 	npc_msg 13
 	closemsg
@@ -151,8 +151,8 @@ scr_seq_T21_009:
 	get_player_facing VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0355
-	apply_movement obj_player, _0B16
-	apply_movement obj_T21_gsmiddleman1, _0B2E
+	apply_movement obj_player, _0B18
+	apply_movement obj_T21_gsmiddleman1, _0B30
 	goto _0370
 
 scr_seq_T21_010:
@@ -163,11 +163,11 @@ scr_seq_T21_010:
 _022C:
 	compare VAR_TEMP_x4001, 398
 	goto_if_ne _0415
-	apply_movement obj_T21_gsoldman1, _0B3A
+	apply_movement obj_T21_gsoldman1, _0B3C
 	goto _0247
 
 _0247:
-	apply_movement obj_player, _0B42
+	apply_movement obj_player, _0B44
 	wait_movement
 	npc_msg 0
 	give_running_shoes
@@ -176,7 +176,7 @@ _0247:
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
 	closemsg
-	apply_movement obj_T21_gsoldman1, _0B4A
+	apply_movement obj_T21_gsoldman1, _0B4C
 	wait_movement
 	release obj_T21_gsoldman1
 	hide_person obj_T21_gsoldman1
@@ -189,14 +189,14 @@ _0247:
 _0288:
 	compare VAR_TEMP_x4000, 550
 	goto_if_ne _0430
-	apply_movement obj_T21_gsoldman1, _0AFE
+	apply_movement obj_T21_gsoldman1, _0B00
 	goto _02A3
 
 _02A3:
 	wait_movement
 	compare VAR_TEMP_x4000, 549
 	goto_if_ne _0455
-	apply_movement obj_player, _0B66
+	apply_movement obj_player, _0B68
 	goto _0470
 
 _02C0:
@@ -217,7 +217,7 @@ _02DB:
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	compare VAR_SPECIAL_x8005, 398
 	goto_if_ne _04F4
-	apply_movement obj_player, _0B6E
+	apply_movement obj_player, _0B70
 	goto _0523
 
 _0317:
@@ -253,7 +253,7 @@ _0341:
 _0355:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _054A
-	apply_movement obj_player, _0B82
+	apply_movement obj_player, _0B84
 	goto _0370
 
 _0370:
@@ -264,7 +264,7 @@ _0370:
 	scrcmd_729 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _056D
-	apply_movement obj_partner_poke, _0B8E
+	apply_movement obj_partner_poke, _0B90
 	wait_movement
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -298,21 +298,21 @@ _03D1:
 _0415:
 	compare VAR_TEMP_x4001, 399
 	goto_if_ne _05B3
-	apply_movement obj_T21_gsoldman1, _0B9E
+	apply_movement obj_T21_gsoldman1, _0BA0
 	goto _0247
 
 _0430:
-	apply_movement obj_T21_gsoldman1, _0BA6
+	apply_movement obj_T21_gsoldman1, _0BA8
 	wait_movement
 	compare VAR_TEMP_x4000, 549
 	goto_if_ne _0455
-	apply_movement obj_player, _0B66
+	apply_movement obj_player, _0B68
 	goto _0470
 
 _0455:
 	compare VAR_TEMP_x4000, 550
 	goto_if_ne _05FB
-	apply_movement obj_player, _0B66
+	apply_movement obj_player, _0B68
 	goto _0470
 
 _0470:
@@ -325,7 +325,7 @@ _0470:
 	npc_msg 11
 	npc_msg 12
 	closemsg
-	apply_movement obj_T21_gsoldman1, _0BB6
+	apply_movement obj_T21_gsoldman1, _0BB8
 	wait_movement
 	callstd std_fade_end_mom_music
 	release obj_T21_gsoldman1
@@ -349,18 +349,18 @@ _04B0:
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	compare VAR_SPECIAL_x8005, 398
 	goto_if_ne _04F4
-	apply_movement obj_player, _0B6E
+	apply_movement obj_player, _0B70
 	goto _0523
 
 _04F4:
-	apply_movement obj_player, _0BBE
+	apply_movement obj_player, _0BC0
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
 	following_pokemon_movement 48
 	compare VAR_SPECIAL_x8005, 398
 	goto_if_ne _0643
-	apply_movement obj_T21_gsrivel, _0BD2
+	apply_movement obj_T21_gsrivel, _0BD4
 	goto _067D
 
 _0523:
@@ -370,14 +370,14 @@ _0523:
 	following_pokemon_movement 48
 	compare VAR_SPECIAL_x8005, 398
 	goto_if_ne _0643
-	apply_movement obj_T21_gsrivel, _0BD2
+	apply_movement obj_T21_gsrivel, _0BD4
 	goto _067D
 
 _054A:
 	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _06AF
-	apply_movement obj_player, _0C06
-	apply_movement obj_T21_gsmiddleman1, _0B2E
+	apply_movement obj_player, _0C08
+	apply_movement obj_T21_gsmiddleman1, _0B30
 	goto _0370
 
 _056D:
@@ -407,8 +407,8 @@ _05AD:
 _05B3:
 	compare VAR_TEMP_x4001, 400
 	goto_if_ne _0247
-	apply_movement obj_T21_gsoldman1, _0C22
-	apply_movement obj_player, _0B42
+	apply_movement obj_T21_gsoldman1, _0C24
+	apply_movement obj_player, _0B44
 	wait_movement
 	npc_msg 0
 	closemsg
@@ -416,11 +416,11 @@ _05B3:
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 397
 	goto_if_ne _0720
-	apply_movement obj_T21_gsoldman1, _0B4A
+	apply_movement obj_T21_gsoldman1, _0B4C
 	goto _073B
 
 _05FB:
-	apply_movement obj_player, _0C2A
+	apply_movement obj_player, _0C2C
 	wait_movement
 	npc_msg 9
 	buffer_players_name 0
@@ -430,7 +430,7 @@ _05FB:
 	npc_msg 11
 	npc_msg 12
 	closemsg
-	apply_movement obj_T21_gsoldman1, _0BB6
+	apply_movement obj_T21_gsoldman1, _0BB8
 	wait_movement
 	callstd std_fade_end_mom_music
 	release obj_T21_gsoldman1
@@ -442,15 +442,15 @@ _05FB:
 	end
 
 _0643:
-	apply_movement obj_T21_gsrivel, _0C32
+	apply_movement obj_T21_gsrivel, _0C34
 	wait_movement
 	npc_msg 15
 	closemsg
 	get_person_coords 4, VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	compare VAR_SPECIAL_x8005, 401
 	goto_if_ne _0779
-	apply_movement obj_T21_gsrivel, _0C66
-	apply_movement obj_player, _0C76
+	apply_movement obj_T21_gsrivel, _0C68
+	apply_movement obj_player, _0C78
 	goto _07A5
 
 _067D:
@@ -460,13 +460,13 @@ _067D:
 	get_person_coords 4, VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	compare VAR_SPECIAL_x8005, 401
 	goto_if_ne _0779
-	apply_movement obj_T21_gsrivel, _0C66
-	apply_movement obj_player, _0C76
+	apply_movement obj_T21_gsrivel, _0C68
+	apply_movement obj_player, _0C78
 	goto _07A5
 
 _06AF:
-	apply_movement obj_player, _0C82
-	apply_movement obj_T21_gsmiddleman1, _0B2E
+	apply_movement obj_player, _0C84
+	apply_movement obj_T21_gsmiddleman1, _0B30
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -474,7 +474,7 @@ _06AF:
 	scrcmd_729 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _056D
-	apply_movement obj_partner_poke, _0B8E
+	apply_movement obj_partner_poke, _0B90
 	wait_movement
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -494,12 +494,12 @@ _06AF:
 _0720:
 	compare VAR_TEMP_x4001, 398
 	goto_if_ne _07C1
-	apply_movement obj_T21_gsoldman1, _0C96
+	apply_movement obj_T21_gsoldman1, _0C98
 	goto _073B
 
 _073B:
 	wait_movement
-	apply_movement obj_player, _0B66
+	apply_movement obj_player, _0B68
 	wait_movement
 	npc_msg 1
 	closemsg
@@ -508,13 +508,13 @@ _073B:
 	following_pokemon_movement 55
 	compare VAR_TEMP_x4001, 397
 	goto_if_ne _07DC
-	apply_movement obj_T21_gsoldman1, _0CBA
-	apply_movement obj_player, _0CD2
+	apply_movement obj_T21_gsoldman1, _0CBC
+	apply_movement obj_player, _0CD4
 	goto _07FF
 
 _0779:
-	apply_movement obj_T21_gsrivel, _0CE2
-	apply_movement obj_player, _0C76
+	apply_movement obj_T21_gsrivel, _0CE4
+	apply_movement obj_player, _0C78
 	wait_movement
 	hide_person obj_T21_gsrivel
 	setflag FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -537,14 +537,14 @@ _07A5:
 _07C1:
 	compare VAR_TEMP_x4001, 399
 	goto_if_ne _0927
-	apply_movement obj_T21_gsoldman1, _0CEA
+	apply_movement obj_T21_gsoldman1, _0CEC
 	goto _073B
 
 _07DC:
 	compare VAR_TEMP_x4001, 398
 	goto_if_ne _097A
-	apply_movement obj_T21_gsoldman1, _0D0E
-	apply_movement obj_player, _0D26
+	apply_movement obj_T21_gsoldman1, _0D10
+	apply_movement obj_player, _0D28
 	goto _07FF
 
 _07FF:
@@ -557,8 +557,8 @@ _07FF:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	apply_movement obj_T21_gsoldman1, _0D36
-	apply_movement obj_player, _0D4A
+	apply_movement obj_T21_gsoldman1, _0D38
+	apply_movement obj_player, _0D4C
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -568,8 +568,8 @@ _07FF:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	apply_movement obj_T21_gsoldman1, _0D5E
-	apply_movement obj_player, _0D7A
+	apply_movement obj_T21_gsoldman1, _0D60
+	apply_movement obj_player, _0D7C
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -579,8 +579,8 @@ _07FF:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	apply_movement obj_T21_gsoldman1, _0D8A
-	apply_movement obj_player, _0DAA
+	apply_movement obj_T21_gsoldman1, _0D8C
+	apply_movement obj_player, _0DAC
 	wait_movement
 	play_se SEQ_SE_GS_N_UMIBE
 	wait_following_pokemon_movement
@@ -592,8 +592,8 @@ _07FF:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	apply_movement obj_T21_gsoldman1, _0DCA
-	apply_movement obj_player, _0DE6
+	apply_movement obj_T21_gsoldman1, _0DCC
+	apply_movement obj_player, _0DE8
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -606,12 +606,12 @@ _07FF:
 	wait_fanfare
 	npc_msg 8
 	closemsg
-	apply_movement obj_T21_gsoldman1, _0DFE
+	apply_movement obj_T21_gsoldman1, _0E00
 	wait_movement
 	scrcmd_307 17, 12, 14, 17, 77
 	scrcmd_310 77
 	scrcmd_308 77
-	apply_movement obj_T21_gsoldman1, _0DFE
+	apply_movement obj_T21_gsoldman1, _0E00
 	wait_movement
 	release obj_T21_gsoldman1
 	release obj_partner_poke
@@ -629,9 +629,9 @@ _07FF:
 _0927:
 	compare VAR_TEMP_x4001, 400
 	goto_if_ne _073B
-	apply_movement obj_T21_gsoldman1, _0E06
+	apply_movement obj_T21_gsoldman1, _0E08
 	wait_movement
-	apply_movement obj_player, _0B66
+	apply_movement obj_player, _0B68
 	wait_movement
 	npc_msg 1
 	closemsg
@@ -640,22 +640,22 @@ _0927:
 	following_pokemon_movement 55
 	compare VAR_TEMP_x4001, 397
 	goto_if_ne _07DC
-	apply_movement obj_T21_gsoldman1, _0CBA
-	apply_movement obj_player, _0CD2
+	apply_movement obj_T21_gsoldman1, _0CBC
+	apply_movement obj_player, _0CD4
 	goto _07FF
 
 _097A:
 	compare VAR_TEMP_x4001, 399
 	goto_if_ne _099D
-	apply_movement obj_T21_gsoldman1, _0E2A
-	apply_movement obj_player, _0E42
+	apply_movement obj_T21_gsoldman1, _0E2C
+	apply_movement obj_player, _0E44
 	goto _07FF
 
 _099D:
 	compare VAR_TEMP_x4001, 400
 	goto_if_ne _07FF
-	apply_movement obj_T21_gsoldman1, _0E52
-	apply_movement obj_player, _0E6A
+	apply_movement obj_T21_gsoldman1, _0E54
+	apply_movement obj_player, _0E6C
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -665,8 +665,8 @@ _099D:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	apply_movement obj_T21_gsoldman1, _0D36
-	apply_movement obj_player, _0D4A
+	apply_movement obj_T21_gsoldman1, _0D38
+	apply_movement obj_player, _0D4C
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -676,8 +676,8 @@ _099D:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	apply_movement obj_T21_gsoldman1, _0D5E
-	apply_movement obj_player, _0D7A
+	apply_movement obj_T21_gsoldman1, _0D60
+	apply_movement obj_player, _0D7C
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -687,8 +687,8 @@ _099D:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	apply_movement obj_T21_gsoldman1, _0D8A
-	apply_movement obj_player, _0DAA
+	apply_movement obj_T21_gsoldman1, _0D8C
+	apply_movement obj_player, _0DAC
 	wait_movement
 	play_se SEQ_SE_GS_N_UMIBE
 	wait_following_pokemon_movement
@@ -700,8 +700,8 @@ _099D:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	apply_movement obj_T21_gsoldman1, _0DCA
-	apply_movement obj_player, _0DE6
+	apply_movement obj_T21_gsoldman1, _0DCC
+	apply_movement obj_player, _0DE8
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -714,12 +714,12 @@ _099D:
 	wait_fanfare
 	npc_msg 8
 	closemsg
-	apply_movement obj_T21_gsoldman1, _0DFE
+	apply_movement obj_T21_gsoldman1, _0E00
 	wait_movement
 	scrcmd_307 17, 12, 14, 17, 77
 	scrcmd_310 77
 	scrcmd_308 77
-	apply_movement obj_T21_gsoldman1, _0DFE
+	apply_movement obj_T21_gsoldman1, _0E00
 	wait_movement
 	release obj_T21_gsoldman1
 	release obj_partner_poke
@@ -734,36 +734,37 @@ _099D:
 	setvar VAR_SCENE_CHERRYGROVE_CITY_OW, 1
 	end
 
+	.byte 0x00, 0x00
 	.balign 4
-_0AE2:
+_0AE4:
 
 	step 75, 1
 	step_end
 	.balign 4
-_0AEA:
+_0AEC:
 
 	step 62, 1
 	step_end
 	.balign 4
-_0AF2:
+_0AF4:
 
 	step 75, 1
 	step 37, 1
 	step_end
 	.balign 4
-_0AFE:
+_0B00:
 
 	step 18, 1
 	step 16, 9
 	step 35, 1
 	step_end
 	.balign 4
-_0B0E:
+_0B10:
 
 	step 14, 7
 	step_end
 	.balign 4
-_0B16:
+_0B18:
 
 	step 15, 1
 	step 12, 2
@@ -772,23 +773,23 @@ _0B16:
 	step 33, 1
 	step_end
 	.balign 4
-_0B2E:
+_0B30:
 
 	step 63, 1
 	step 32, 1
 	step_end
 	.balign 4
-_0B3A:
+_0B3C:
 
 	step 13, 1
 	step_end
 	.balign 4
-_0B42:
+_0B44:
 
 	step 32, 1
 	step_end
 	.balign 4
-_0B4A:
+_0B4C:
 
 	step 18, 2
 	step 16, 2
@@ -798,12 +799,12 @@ _0B4A:
 	step 19, 1
 	step_end
 	.balign 4
-_0B66:
+_0B68:
 
 	step 34, 1
 	step_end
 	.balign 4
-_0B6E:
+_0B70:
 
 	step 0, 1
 	step 71, 1
@@ -811,37 +812,37 @@ _0B6E:
 	step 72, 1
 	step_end
 	.balign 4
-_0B82:
+_0B84:
 
 	step 12, 3
 	step 33, 1
 	step_end
 	.balign 4
-_0B8E:
+_0B90:
 
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
 	.balign 4
-_0B9E:
+_0BA0:
 
 	step 13, 2
 	step_end
 	.balign 4
-_0BA6:
+_0BA8:
 
 	step 19, 1
 	step 16, 9
 	step 34, 1
 	step_end
 	.balign 4
-_0BB6:
+_0BB8:
 
 	step 17, 9
 	step_end
 	.balign 4
-_0BBE:
+_0BC0:
 
 	step 1, 1
 	step 71, 1
@@ -849,7 +850,7 @@ _0BBE:
 	step 72, 1
 	step_end
 	.balign 4
-_0BD2:
+_0BD4:
 
 	step 14, 6
 	step 75, 1
@@ -865,7 +866,7 @@ _0BD2:
 	step 33, 1
 	step_end
 	.balign 4
-_0C06:
+_0C08:
 
 	step 13, 1
 	step 15, 2
@@ -875,17 +876,17 @@ _0C06:
 	step 33, 1
 	step_end
 	.balign 4
-_0C22:
+_0C24:
 
 	step 13, 3
 	step_end
 	.balign 4
-_0C2A:
+_0C2C:
 
 	step 35, 1
 	step_end
 	.balign 4
-_0C32:
+_0C34:
 
 	step 14, 6
 	step 75, 1
@@ -901,20 +902,20 @@ _0C32:
 	step 32, 1
 	step_end
 	.balign 4
-_0C66:
+_0C68:
 
 	step 14, 5
 	step 12, 1
 	step 14, 6
 	step_end
 	.balign 4
-_0C76:
+_0C78:
 
 	step 63, 2
 	step 34, 1
 	step_end
 	.balign 4
-_0C82:
+_0C84:
 
 	step 12, 1
 	step 14, 1
@@ -922,7 +923,7 @@ _0C82:
 	step 33, 1
 	step_end
 	.balign 4
-_0C96:
+_0C98:
 
 	step 18, 2
 	step 16, 3
@@ -934,7 +935,7 @@ _0C96:
 	step 19, 1
 	step_end
 	.balign 4
-_0CBA:
+_0CBC:
 
 	step 18, 1
 	step 16, 3
@@ -943,19 +944,19 @@ _0CBA:
 	step 36, 1
 	step_end
 	.balign 4
-_0CD2:
+_0CD4:
 
 	step 14, 2
 	step 12, 2
 	step 63, 1
 	step_end
 	.balign 4
-_0CE2:
+_0CE4:
 
 	step 14, 11
 	step_end
 	.balign 4
-_0CEA:
+_0CEC:
 
 	step 18, 2
 	step 16, 4
@@ -967,7 +968,7 @@ _0CEA:
 	step 19, 1
 	step_end
 	.balign 4
-_0D0E:
+_0D10:
 
 	step 18, 1
 	step 16, 4
@@ -976,14 +977,14 @@ _0D0E:
 	step 36, 1
 	step_end
 	.balign 4
-_0D26:
+_0D28:
 
 	step 14, 2
 	step 12, 3
 	step 63, 1
 	step_end
 	.balign 4
-_0D36:
+_0D38:
 
 	step 18, 9
 	step 39, 1
@@ -991,7 +992,7 @@ _0D36:
 	step 36, 1
 	step_end
 	.balign 4
-_0D4A:
+_0D4C:
 
 	step 12, 1
 	step 14, 8
@@ -999,7 +1000,7 @@ _0D4A:
 	step 32, 1
 	step_end
 	.balign 4
-_0D5E:
+_0D60:
 
 	step 18, 6
 	step 16, 2
@@ -1009,14 +1010,14 @@ _0D5E:
 	step 36, 1
 	step_end
 	.balign 4
-_0D7A:
+_0D7C:
 
 	step 14, 7
 	step 12, 2
 	step 63, 1
 	step_end
 	.balign 4
-_0D8A:
+_0D8C:
 
 	step 17, 2
 	step 18, 6
@@ -1027,7 +1028,7 @@ _0D8A:
 	step 38, 1
 	step_end
 	.balign 4
-_0DAA:
+_0DAC:
 
 	step 14, 1
 	step 13, 2
@@ -1038,7 +1039,7 @@ _0DAA:
 	step 34, 1
 	step_end
 	.balign 4
-_0DCA:
+_0DCC:
 
 	step 19, 16
 	step 38, 1
@@ -1048,7 +1049,7 @@ _0DCA:
 	step 38, 1
 	step_end
 	.balign 4
-_0DE6:
+_0DE8:
 
 	step 62, 1
 	step 13, 1
@@ -1057,12 +1058,12 @@ _0DE6:
 	step 15, 5
 	step_end
 	.balign 4
-_0DFE:
+_0E00:
 
 	step 12, 2
 	step_end
 	.balign 4
-_0E06:
+_0E08:
 
 	step 18, 2
 	step 16, 4
@@ -1074,7 +1075,7 @@ _0E06:
 	step 19, 1
 	step_end
 	.balign 4
-_0E2A:
+_0E2C:
 
 	step 18, 1
 	step 16, 5
@@ -1083,14 +1084,14 @@ _0E2A:
 	step 36, 1
 	step_end
 	.balign 4
-_0E42:
+_0E44:
 
 	step 14, 2
 	step 12, 4
 	step 63, 1
 	step_end
 	.balign 4
-_0E52:
+_0E54:
 
 	step 18, 1
 	step 16, 6
@@ -1099,7 +1100,7 @@ _0E52:
 	step 36, 1
 	step_end
 	.balign 4
-_0E6A:
+_0E6C:
 
 	step 14, 2
 	step 12, 5

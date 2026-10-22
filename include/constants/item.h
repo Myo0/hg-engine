@@ -2791,8 +2791,8 @@ enum ItemGeneration {
 #define POCKET_BALLS        2
 #define POCKET_TMHMS        3
 #define POCKET_BERRIES      4
-#define POCKET_MAIL         5
-#define POCKET_BATTLE_ITEMS 6
+#define POCKET_HELD_ITEMS   5 // was Mail (see Docs&Changelog/Bag Pockets.md)
+#define POCKET_MEGA_STONES  6 // was Battle Items
 #define POCKET_KEY_ITEMS    7
 #define POCKETS_COUNT       8
 
@@ -2874,26 +2874,39 @@ enum ItemGeneration {
 
 #ifdef ITEM_POCKET_EXPANSION
 
-// pixie plate + megas
-#define NUM_BAG_ITEMS        165 + 32 + NUM_MEGA_STONES
-#define NUM_BAG_MEDICINE     40
-#define NUM_BAG_BALLS        24 + 2
-#define NUM_BAG_TMS_HMS      101
-#define NUM_BAG_BERRIES      64
-#define NUM_BAG_MAIL         12
-#define NUM_BAG_BATTLE_ITEMS 30
-#define NUM_BAG_KEY_ITEMS    50 + 42
+// Bag pocket layout (Bag Pockets rework). The total MUST stay 610 slots: the bag sits inside the
+// general save block, which is already at its page limit, so growing it would break every save.
+// To resize a pocket, take the slots from another one and keep the sum at NUM_BAG_TOTAL_SLOTS.
+// Every pocket must also be <= 165 (BagApp.itemNames[165]) and fit a u8 in the overlay 15 capacity
+// tables (sPocketCapacities / sListPocketCapacities, patched in bytereplacement).
+// The sum is checked at compile time in src/bag.c (this header is also read by the assembler).
+#define NUM_BAG_ITEMS       (126)
+#define NUM_BAG_MEDICINE    (40)
+#define NUM_BAG_BALLS       (26)
+#define NUM_BAG_TMS_HMS     (101)
+#define NUM_BAG_BERRIES     (64)
+#define NUM_BAG_HELD_ITEMS  (117)
+#define NUM_BAG_MEGA_STONES (96)
+#define NUM_BAG_KEY_ITEMS   (39)
+
+// One extra slot-sized field in the bag holds the layout marker (see BAG_LAYOUT_MARKER_ID). It takes
+// the place of one Key Items slot, so the sizes below add up to 609 pocket slots + 1 marker slot.
+#define NUM_BAG_LAYOUT_SLOTS (1)
+#define BAG_LAYOUT_MARKER_ID 0xB46A // never a valid item id; an old-layout bag has a real item (or 0) here
+#define BAG_LAYOUT_VERSION   2
+
+#define NUM_BAG_TOTAL_SLOTS (610)
 
 #else
 
-#define NUM_BAG_ITEMS        165
-#define NUM_BAG_MEDICINE     40
-#define NUM_BAG_BALLS        24
-#define NUM_BAG_TMS_HMS      101
-#define NUM_BAG_BERRIES      64
-#define NUM_BAG_MAIL         12
-#define NUM_BAG_BATTLE_ITEMS 30
-#define NUM_BAG_KEY_ITEMS    50
+#define NUM_BAG_ITEMS       (165)
+#define NUM_BAG_MEDICINE    (40)
+#define NUM_BAG_BALLS       (24)
+#define NUM_BAG_TMS_HMS     (101)
+#define NUM_BAG_BERRIES     (64)
+#define NUM_BAG_HELD_ITEMS  (12)
+#define NUM_BAG_MEGA_STONES (30)
+#define NUM_BAG_KEY_ITEMS   (50)
 
 #endif
 

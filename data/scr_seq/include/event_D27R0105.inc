@@ -3,6 +3,6 @@
 
 .equ _EV_scr_seq_D27R0105_000, 0
 
-.equ obj_D27R0105_monstarball, 2
+.equ obj_D27R0105_3916, 2
 
 .endif //SCR_SEQ_D27R0105_H_

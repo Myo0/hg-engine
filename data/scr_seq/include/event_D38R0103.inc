@@ -12,13 +12,14 @@
 .equ _EV_scr_seq_EVERYWHERE_008, 8
 .equ _EV_scr_seq_EVERYWHERE_009, 9
 .equ _EV_scr_seq_EVERYWHERE_010, 10
+.equ _EV_scr_seq_EVERYWHERE_011, 11
 
 .equ obj_EVERYWHERE_monstarball, 0
 .equ obj_EVERYWHERE_monstarball_2, 1
-.equ obj_EVERYWHERE_monstarball_3, 2
-.equ obj_EVERYWHERE_monstarball_4, 3
-.equ obj_EVERYWHERE_monstarball_5, 4
-.equ obj_EVERYWHERE_monstarball_6, 5
+.equ obj_EVERYWHERE_3916, 2
+.equ obj_EVERYWHERE_monstarball_3, 3
+.equ obj_EVERYWHERE_monstarball_4, 4
+.equ obj_EVERYWHERE_monstarball_5, 5
 .equ obj_EVERYWHERE_gsassistantm, 6
 
 .endif //SCR_SEQ_EVERYWHERE_H_

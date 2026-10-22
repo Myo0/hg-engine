@@ -15,7 +15,7 @@ Mystic Water - Route 41 at the furthest north island (Second one is available in
 Dragon Fang - Route 47
 Black Belt - Mt. Mortar back room just before the first gauntlet.
 Never-Melt Ice - Mt. Mortar B1F, central most Poke Ball.
-Pixie Plate - Team Rocket HQ B1F
+Fairy Feather - Team Rocket HQ B1F
 Twisted Spoon - Team Rocket HQ B3F
 Spell Tag - Goldenrod Department Store B1F
 
@@ -57,7 +57,7 @@ Heavy-Duty Boots - Union Cave Lapras Floor
 Shed Shell - Mt. Mortar
 Iron Ball - Mt. Mortar
 Sticky Barb - Mt. Mortar
-Life Orb - Ruins of Alph Ho-oh Chamber
+Utility Umbrella - Lake of Rage
 Smoke Ball - Goldenrod Tunnel B2F
 Flame Orb - Goldenrod Department Store B1F
 Focus Band - Whirl Islands B2F
@@ -97,6 +97,7 @@ Audinite - Route 35 (Requires Surf)
 Mawilite - Route 36
 Manectite - Route 34 (Requires Surf)
 Houndoominite - Burned Tower 1F (REPLACE HOUNDOOM ON THE MEGA STONE ROUTE TRAINER LATER)
+Scraftinite - Burned Tower B1F
 Victreebelite - Bellchime Trail (Can be obtained after morty)
 Pidgeotite - Ruins of Alph (Requires Surf)
 Ampharosite - Olivine Lighthouse (Lantern Room)
@@ -104,9 +105,12 @@ Altarianite - Violet City (Requires Surf)
 Chimechite - Route 38
 Barbaracite - Route 47 (Requires Waterfall)
 Kangaskhanite - Route 47 (Requires Surf & Rock Climb)
-Scraftinite - Route 48 
+Scolipite - Route 48 
 Steelixite - Given by Jasmine upon defeat
 Skarmorite - Mt. Mortar 2F blocked by Bird Keeper Allan
+Cameruptite - Route 42 (REPLACE ON MEGA STONE ROUTE)
+Gyaradosite - Lake of Rage (REPLACE ON MEGA STONE ROUTE)
+Banettite - Rocket Hideout B3F
 
 Salamencite - Cherrygrove City (Requires Surf & Rock Climb)
 

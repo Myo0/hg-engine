@@ -294,14 +294,14 @@
   ],
   "warp_events": [
     {
-      "x": 87,
+      "x": 88,
       "z": 293,
       "dest_header_id": "MAP_D47R0101",
       "dest_warp_id": 0,
       "y": 0
     },
     {
-      "x": 88,
+      "x": 89,
       "z": 293,
       "dest_header_id": "MAP_D47R0101",
       "dest_warp_id": 0,

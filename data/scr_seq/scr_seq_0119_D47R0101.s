@@ -47,35 +47,35 @@ scr_seq_D47R0101_000:
 	lockall
 	faceplayer
 	compare VAR_UNK_4057, 6
-	goto_if_lt _05DB
+	goto_if_lt _05EF
 	npc_msg 15
-	goto _0614
+	goto _0628
 
 scr_seq_D47R0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	compare VAR_UNK_4057, 7
-	goto_if_eq _064A
+	goto_if_eq _065E
 	compare VAR_UNK_4057, 6
-	goto_if_lt _0660
+	goto_if_lt _0674
 	setvar VAR_SPECIAL_RESULT, 500
 	buffer_int 1, VAR_SPECIAL_RESULT
 	npc_msg 1
-	goto _077E
+	goto _0792
 
 scr_seq_D47R0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	compare VAR_UNK_4057, 0
-	goto_if_eq _088E
+	goto_if_eq _08A2
 	compare VAR_UNK_4057, 1
-	goto_if_eq _088E
+	goto_if_eq _08A2
 	compare VAR_UNK_4057, 2
-	goto_if_eq _088E
+	goto_if_eq _08A2
 	compare VAR_UNK_4057, 3
-	goto_if_eq _088E
+	goto_if_eq _08A2
 	npc_msg 19
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
@@ -87,58 +87,58 @@ scr_seq_D47R0101_002:
 	menu_item_add 462, 255, 5
 	menu_exec
 	switch VAR_SPECIAL_RESULT
-	case 0, _0899
-	case 1, _08A2
-	case 2, _08AB
-	case 3, _08B4
-	case 4, _08BD
-	goto _08C6
+	case 0, _08AD
+	case 1, _08B6
+	case 2, _08BF
+	case 3, _08C8
+	case 4, _08D1
+	goto _08DA
 
 scr_seq_D47R0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	compare VAR_UNK_4057, 7
-	goto_if_eq _08D3
+	goto_if_eq _08E7
 	scrcmd_247
 	nat_dex_flag_action 2, VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
-	goto_if_eq _08E9
+	goto_if_eq _08FD
 	compare VAR_UNK_4057, 6
-	goto_if_lt _08F4
+	goto_if_lt _0908
 	npc_msg 65
-	goto _0929
+	goto _093D
 
 scr_seq_D47R0101_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	compare VAR_UNK_4057, 7
-	goto_if_eq _095B
+	goto_if_eq _096F
 	scrcmd_247
 	nat_dex_flag_action 2, VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
-	goto_if_eq _08E9
+	goto_if_eq _08FD
 	scrcmd_824 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
-	goto_if_eq _0971
+	goto_if_eq _0985
 	setvar VAR_TEMP_x4000, 0
 	scrcmd_823 VAR_TEMP_x4000
 	npc_msg 54
-	goto _097C
+	goto _0990
 
 scr_seq_D47R0101_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	compare VAR_UNK_4057, 0
-	goto_if_eq _0A8C
+	goto_if_eq _0AA0
 	compare VAR_UNK_4057, 1
-	goto_if_eq _0A8C
+	goto_if_eq _0AA0
 	compare VAR_UNK_4057, 2
-	goto_if_eq _0A8C
+	goto_if_eq _0AA0
 	compare VAR_UNK_4057, 3
-	goto_if_eq _0A8C
+	goto_if_eq _0AA0
 	buffer_players_name 0
 	npc_msg 27
 	closemsg
@@ -149,27 +149,27 @@ scr_seq_D47R0101_005:
 	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	goto_if_set FLAG_UNK_99D, _0A97
+	goto_if_set FLAG_UNK_99D, _0AAB
 	releaseall
 	end
 
 scr_seq_D47R0101_006:
 	scrcmd_609
 	lockall
-	apply_movement obj_D47R0101_counterm_3, _18B4
-	apply_movement obj_D47R0101_counterm_5, _18B4
+	apply_movement obj_D47R0101_counterm_3, _18C8
+	apply_movement obj_D47R0101_counterm_5, _18C8
 	wait_movement
 	npc_msg 7
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _0AB0
+	goto_if_ne _0AC4
 	safari_zone_action 1, 0
 	touchscreen_menu_show
 	closemsg
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0B0B
-	apply_movement obj_player, _18BC
+	goto_if_eq _0B1F
+	apply_movement obj_player, _18D0
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -179,7 +179,7 @@ scr_seq_D47R0101_006:
 	wait_fade
 	lock obj_partner_poke
 	scrcmd_606
-	apply_movement obj_partner_poke, _18C4
+	apply_movement obj_partner_poke, _18D8
 	wait_movement
 	release obj_partner_poke
 	releaseall
@@ -188,14 +188,14 @@ scr_seq_D47R0101_006:
 scr_seq_D47R0101_007:
 	scrcmd_609
 	lockall
-	apply_movement obj_player, _18CC
+	apply_movement obj_player, _18E0
 	wait_movement
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4000, 5
-	goto_if_ne _0B30
+	goto_if_ne _0B44
 	setvar VAR_TEMP_x4002, 5
 	setvar VAR_TEMP_x4003, 5
-	goto _0B70
+	goto _0B84
 
 scr_seq_D47R0101_008:
 	scrcmd_609
@@ -203,10 +203,10 @@ scr_seq_D47R0101_008:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	apply_movement obj_D47R0101_gsgentleman, _18D4
-	apply_movement obj_D47R0101_seven1, _18E8
-	apply_movement obj_D47R0101_gsleader6, _18F0
-	apply_movement obj_player, _1904
+	apply_movement obj_D47R0101_gsgentleman, _18E8
+	apply_movement obj_D47R0101_seven1, _18FC
+	apply_movement obj_D47R0101_gsleader6, _1904
+	apply_movement obj_player, _1918
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -216,58 +216,60 @@ scr_seq_D47R0101_008:
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0BA4
+	goto_if_eq _0BB8
 	npc_msg 30
 	wait_button
+	setflag FLAG_UNK_183
+	setvar VAR_UNK_4057, 5
 	closemsg
-	apply_movement obj_D47R0101_gsgentleman, _1914
+	apply_movement obj_D47R0101_gsgentleman, _1928
 	wait_movement
 	npc_msg 97
 	closemsg
-	apply_movement obj_D47R0101_gsleader6, _1920
+	apply_movement obj_D47R0101_gsleader6, _1934
 	wait_movement
 	npc_msg 98
 	closemsg
-	apply_movement obj_D47R0101_gsleader6, _18B4
+	apply_movement obj_D47R0101_gsleader6, _18C8
 	npc_msg 99
 	closemsg
-	apply_movement obj_D47R0101_seven1, _1930
+	apply_movement obj_D47R0101_seven1, _1944
 	npc_msg 100
 	closemsg
-	apply_movement obj_D47R0101_gsleader6, _1944
-	apply_movement obj_D47R0101_seven1, _1950
+	apply_movement obj_D47R0101_gsleader6, _1958
+	apply_movement obj_D47R0101_seven1, _1964
 	wait_movement
 	npc_msg 101
 	closemsg
-	apply_movement obj_D47R0101_seven1, _196C
+	apply_movement obj_D47R0101_seven1, _1980
 	wait_movement
 	npc_msg 102
 	closemsg
-	apply_movement obj_D47R0101_seven1, _1978
+	apply_movement obj_D47R0101_seven1, _198C
 	wait_movement
 	npc_msg 103
 	closemsg
-	apply_movement obj_D47R0101_seven1, _1984
+	apply_movement obj_D47R0101_seven1, _1998
 	wait_movement
-	apply_movement obj_D47R0101_seven1, _1978
+	apply_movement obj_D47R0101_seven1, _198C
 	wait_movement
 	npc_msg 104
 	closemsg
 	trainer_battle TRAINER_CAMPER_MICKEY, 0, 0, 0
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0BC2
-	apply_movement obj_D47R0101_gsleader6, _18E8
-	apply_movement obj_D47R0101_seven1, _1990
+	goto_if_eq _0BD6
+	apply_movement obj_D47R0101_gsleader6, _18FC
+	apply_movement obj_D47R0101_seven1, _19A4
 	npc_msg 105
 	closemsg
 	npc_msg 106
-	apply_movement obj_D47R0101_seven1, _1990
+	apply_movement obj_D47R0101_seven1, _19A4
 	closemsg
 	buffer_players_name 0
 	npc_msg 107
 	closemsg
-	apply_movement obj_D47R0101_seven1, _1984
+	apply_movement obj_D47R0101_seven1, _1998
 	wait_movement
 	npc_msg 110
 	closemsg
@@ -275,15 +277,15 @@ scr_seq_D47R0101_008:
 	closemsg
 	npc_msg 111
 	closemsg
-	apply_movement obj_D47R0101_seven1, _1998
-	apply_movement obj_D47R0101_gsleader6, _19A8
+	apply_movement obj_D47R0101_seven1, _19AC
+	apply_movement obj_D47R0101_gsleader6, _19BC
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	hide_person obj_D47R0101_seven1
 	wait_se SEQ_SE_DP_KAIDAN2
 	npc_msg 109
 	closemsg
-	apply_movement obj_D47R0101_gsleader6, _1998
+	apply_movement obj_D47R0101_gsleader6, _19AC
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	hide_person obj_D47R0101_gsleader6
@@ -291,7 +293,7 @@ scr_seq_D47R0101_008:
 	clearflag FLAG_HIDE_JASMINE_IN_GYM
 	clearflag FLAG_HIDE_OLIVINE_GYM_GENTLEMAN
 	clearflag FLAG_HIDE_OLIVINE_GYM_GIRL
-	setvar VAR_UNK_4057, 2
+	setvar VAR_UNK_4057, 6
 	releaseall
 	end
 
@@ -301,8 +303,8 @@ scr_seq_D47R0101_009:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	apply_movement obj_D47R0101_gsgentleman, _18D4
-	apply_movement obj_player, _1904
+	apply_movement obj_D47R0101_gsgentleman, _18E8
+	apply_movement obj_player, _1918
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -312,8 +314,8 @@ scr_seq_D47R0101_009:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	apply_movement obj_D47R0101_gsgentleman, _19B4
-	apply_movement obj_player, _19C4
+	apply_movement obj_D47R0101_gsgentleman, _19C8
+	apply_movement obj_player, _19D8
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -323,8 +325,8 @@ scr_seq_D47R0101_009:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	apply_movement obj_D47R0101_gsgentleman, _19D4
-	apply_movement obj_player, _19EC
+	apply_movement obj_D47R0101_gsgentleman, _19E8
+	apply_movement obj_player, _1A00
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -341,19 +343,20 @@ scr_seq_D47R0101_010:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_183, _0BC6
+	setflag FLAG_UNK_183
+	goto_if_set FLAG_UNK_183, _0BDA
 	compare VAR_UNK_4057, 2
-	goto_if_eq _0C78
+	goto_if_eq _0C8C
 	compare VAR_UNK_4057, 3
-	goto_if_eq _0C93
+	goto_if_eq _0CA7
 	compare VAR_UNK_4057, 5
-	goto_if_eq _0C9C
+	goto_if_eq _0CB0
 	compare VAR_UNK_4057, 6
-	goto_if_eq _0CE6
+	goto_if_eq _0CFA
 	compare VAR_UNK_4057, 7
-	goto_if_eq _0CEF
+	goto_if_eq _0D03
 	npc_msg 42
-	goto _0DAB
+	goto _0DBF
 
 scr_seq_D47R0101_011:
 	play_se SEQ_SE_DP_SELECT
@@ -362,29 +365,30 @@ scr_seq_D47R0101_011:
 	scrcmd_247
 	nat_dex_flag_action 2, VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
-	goto_if_eq _0DB3
+	goto_if_eq _0DC7
 	compare VAR_UNK_4057, 6
-	goto_if_lt _0DBE
+	goto_if_lt _0DD2
 	npc_msg 93
-	goto _0DE1
+	goto _0DF5
 
 scr_seq_D47R0101_012:
 	lockall
 	npc_msg 112
 	closemsg
+	setvar VAR_UNK_4057, 6
 	check_badge BADGE_RISING, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0E01
+	goto_if_eq _0E15
 	releaseall
 	end
 
-_05DB:
+_05EF:
 	npc_msg 14
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0EAA
+	goto_if_eq _0EBE
 	setvar VAR_SPECIAL_x8004, 30
 	buffer_int 1, VAR_SPECIAL_x8004
 	setvar VAR_SPECIAL_x8005, 1000
@@ -395,12 +399,12 @@ _05DB:
 	releaseall
 	end
 
-_0614:
+_0628:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0EAA
+	goto_if_eq _0EBE
 	setvar VAR_SPECIAL_x8004, 30
 	buffer_int 1, VAR_SPECIAL_x8004
 	setvar VAR_SPECIAL_x8005, 1000
@@ -411,15 +415,15 @@ _0614:
 	releaseall
 	end
 
-_064A:
-	goto_if_set FLAG_UNK_183, _0EB5
+_065E:
+	goto_if_set FLAG_UNK_183, _0EC9
 	npc_msg 18
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_0660:
+_0674:
 	setvar VAR_SPECIAL_RESULT, 500
 	buffer_int 1, VAR_SPECIAL_RESULT
 	npc_msg 0
@@ -428,16 +432,16 @@ _0660:
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0ED6
+	goto_if_eq _0EEA
 	count_pc_empty_space VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _0EE3
+	goto_if_ne _0EF7
 	get_party_count VAR_SPECIAL_x8004
 	compare VAR_SPECIAL_x8004, 6
-	goto_if_eq _0FB6
+	goto_if_eq _0FCA
 	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 500
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0FCE
+	goto_if_eq _0FE2
 	setvar VAR_SPECIAL_RESULT, 500
 	buffer_int 1, VAR_SPECIAL_RESULT
 	npc_msg 2
@@ -455,13 +459,13 @@ _0660:
 	closemsg
 	hide_money_box
 	scrcmd_600
-	apply_movement obj_player, _19F4
+	apply_movement obj_player, _1A08
 	wait_movement
 	scrcmd_307 0, 0, 5, 5, 77
-	call _0FE6
-	apply_movement obj_player, _1A00
+	call _0FFA
+	apply_movement obj_player, _1A14
 	wait_movement
-	call _0FEE
+	call _1002
 	setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 1
 	safari_zone_action 0, 0
 	set_dynamic_warp MAP_D47R0101, 1, 5, 2, 1
@@ -473,28 +477,28 @@ _0660:
 	wait_fade
 	lock obj_partner_poke
 	scrcmd_606
-	apply_movement obj_partner_poke, _18C4
+	apply_movement obj_partner_poke, _18D8
 	wait_movement
 	release obj_partner_poke
 	releaseall
 	end
 
-_077E:
+_0792:
 	show_money_box 20, 2
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0ED6
+	goto_if_eq _0EEA
 	count_pc_empty_space VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _0EE3
+	goto_if_ne _0EF7
 	get_party_count VAR_SPECIAL_x8004
 	compare VAR_SPECIAL_x8004, 6
-	goto_if_eq _0FB6
+	goto_if_eq _0FCA
 	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 500
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0FCE
+	goto_if_eq _0FE2
 	setvar VAR_SPECIAL_RESULT, 500
 	buffer_int 1, VAR_SPECIAL_RESULT
 	npc_msg 2
@@ -512,13 +516,13 @@ _077E:
 	closemsg
 	hide_money_box
 	scrcmd_600
-	apply_movement obj_player, _19F4
+	apply_movement obj_player, _1A08
 	wait_movement
 	scrcmd_307 0, 0, 5, 5, 77
-	call _0FE6
-	apply_movement obj_player, _1A00
+	call _0FFA
+	apply_movement obj_player, _1A14
 	wait_movement
-	call _0FEE
+	call _1002
 	setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 1
 	safari_zone_action 0, 0
 	set_dynamic_warp MAP_D47R0101, 1, 5, 2, 1
@@ -530,40 +534,40 @@ _077E:
 	wait_fade
 	lock obj_partner_poke
 	scrcmd_606
-	apply_movement obj_partner_poke, _18C4
+	apply_movement obj_partner_poke, _18D8
 	wait_movement
 	release obj_partner_poke
 	releaseall
 	end
 
-_088E:
+_08A2:
 	npc_msg 25
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_0899:
+_08AD:
 	npc_msg 20
-	goto _0FF9
+	goto _100D
 
-_08A2:
+_08B6:
 	npc_msg 21
-	goto _0FF9
+	goto _100D
 
-_08AB:
+_08BF:
 	npc_msg 22
-	goto _0FF9
+	goto _100D
 
-_08B4:
+_08C8:
 	npc_msg 23
-	goto _0FF9
+	goto _100D
 
-_08BD:
+_08D1:
 	npc_msg 24
-	goto _0FF9
+	goto _100D
 
-_08C6:
+_08DA:
 	touchscreen_menu_show
 	npc_msg 26
 	wait_button
@@ -571,77 +575,77 @@ _08C6:
 	releaseall
 	end
 
-_08D3:
-	goto_if_set FLAG_UNK_183, _1080
+_08E7:
+	goto_if_set FLAG_UNK_183, _1094
 	npc_msg 18
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_08E9:
+_08FD:
 	npc_msg 84
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_08F4:
+_0908:
 	npc_msg 66
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	closemsg
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _10AA
+	goto_if_eq _10BE
 	callstd std_prompt_save
 	copyvar VAR_SPECIAL_RESULT, VAR_TEMP_x4000
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _10B7
-	goto _1104
+	goto_if_eq _10CB
+	goto _1118
 
-_0929:
+_093D:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	closemsg
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _10AA
+	goto_if_eq _10BE
 	callstd std_prompt_save
 	copyvar VAR_SPECIAL_RESULT, VAR_TEMP_x4000
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _10B7
-	goto _1104
+	goto_if_eq _10CB
+	goto _1118
 
-_095B:
-	goto_if_set FLAG_UNK_183, _110F
+_096F:
+	goto_if_set FLAG_UNK_183, _1123
 	npc_msg 18
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_0971:
+_0985:
 	npc_msg 60
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_097C:
+_0990:
 	show_money_box 20, 2
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _1147
+	goto_if_eq _115B
 	count_pc_empty_space VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _1154
+	goto_if_ne _1168
 	get_party_count VAR_SPECIAL_x8004
 	compare VAR_SPECIAL_x8004, 6
-	goto_if_eq _1227
+	goto_if_eq _123B
 	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 500
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _123F
+	goto_if_eq _1253
 	setvar VAR_SPECIAL_RESULT, 500
 	buffer_int 1, VAR_SPECIAL_RESULT
 	npc_msg 55
@@ -659,13 +663,13 @@ _097C:
 	closemsg
 	hide_money_box
 	scrcmd_600
-	apply_movement obj_player, _19F4
+	apply_movement obj_player, _1A08
 	wait_movement
 	scrcmd_307 0, 0, 19, 5, 77
-	call _0FE6
-	apply_movement obj_player, _1A00
+	call _0FFA
+	apply_movement obj_player, _1A14
 	wait_movement
-	call _0FEE
+	call _1002
 	setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 3
 	safari_zone_action 0, 1
 	set_dynamic_warp MAP_D47R0101, 2, 19, 2, 1
@@ -677,20 +681,20 @@ _097C:
 	wait_fade
 	lock obj_partner_poke
 	scrcmd_606
-	apply_movement obj_partner_poke, _18C4
+	apply_movement obj_partner_poke, _18D8
 	wait_movement
 	release obj_partner_poke
 	releaseall
 	end
 
-_0A8C:
+_0AA0:
 	npc_msg 28
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_0A97:
+_0AAB:
 	screen_shake 0, 2, 10, 6
 	play_se SEQ_SE_DP_KI_GASYAN
 	npc_msg 91
@@ -699,12 +703,12 @@ _0A97:
 	releaseall
 	end
 
-_0AB0:
+_0AC4:
 	touchscreen_menu_show
 	closemsg
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0B0B
-	apply_movement obj_player, _18BC
+	goto_if_eq _0B1F
+	apply_movement obj_player, _18D0
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -714,28 +718,28 @@ _0AB0:
 	wait_fade
 	lock obj_partner_poke
 	scrcmd_606
-	apply_movement obj_partner_poke, _18C4
+	apply_movement obj_partner_poke, _18D8
 	wait_movement
 	release obj_partner_poke
 	releaseall
 	end
 
-_0B0B:
+_0B1F:
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4000, 5
-	goto_if_ne _1257
+	goto_if_ne _126B
 	setvar VAR_TEMP_x4002, 5
 	setvar VAR_TEMP_x4003, 5
-	goto _12B4
+	goto _12C8
 
-_0B30:
+_0B44:
 	setvar VAR_TEMP_x4002, 19
 	setvar VAR_TEMP_x4003, 5
 	scrcmd_307 0, 0, VAR_TEMP_x4002, VAR_TEMP_x4003, 77
-	call _0FE6
-	apply_movement obj_player, _1A08
+	call _0FFA
+	apply_movement obj_player, _1A1C
 	wait_movement
-	call _0FEE
+	call _1002
 	setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 0
 	npc_msg 9
 	wait_button
@@ -744,12 +748,12 @@ _0B30:
 	releaseall
 	end
 
-_0B70:
+_0B84:
 	scrcmd_307 0, 0, VAR_TEMP_x4002, VAR_TEMP_x4003, 77
-	call _0FE6
-	apply_movement obj_player, _1A08
+	call _0FFA
+	apply_movement obj_player, _1A1C
 	wait_movement
-	call _0FEE
+	call _1002
 	setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 0
 	npc_msg 9
 	wait_button
@@ -758,25 +762,25 @@ _0B70:
 	releaseall
 	end
 
-_0BA4:
+_0BB8:
 	npc_msg 31
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _0BA4
-	goto _1305
+	goto_if_eq _0BB8
+	goto _1319
 
-_0BC2:
+_0BD6:
 	white_out
 	end
 
-_0BC6:
+_0BDA:
 	npc_msg 45
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _1417
+	goto_if_eq _142B
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 463, 255, 0
 	menu_item_add 464, 255, 1
@@ -787,29 +791,29 @@ _0BC6:
 	menu_item_add 469, 255, 6
 	menu_exec
 	switch VAR_SPECIAL_RESULT
-	case 0, _1424
-	case 1, _142D
-	case 2, _1436
-	case 3, _143F
-	case 4, _1448
-	case 5, _1451
-	goto _1417
+	case 0, _1438
+	case 1, _1441
+	case 2, _144A
+	case 3, _1453
+	case 4, _145C
+	case 5, _1465
+	goto _142B
 
-_0C78:
+_0C8C:
 	scrcmd_791 0, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _145A
+	goto_if_ne _146E
 	npc_msg 33
-	goto _146B
+	goto _147F
 
-_0C93:
+_0CA7:
 	npc_msg 42
-	goto _0DAB
+	goto _0DBF
 
-_0C9C:
+_0CB0:
 	scrcmd_791 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _1471
+	goto_if_eq _1485
 	npc_msg 37
 	closemsg
 	toggle_following_pokemon_movement 0
@@ -817,17 +821,17 @@ _0C9C:
 	following_pokemon_movement 55
 	get_player_facing VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _147A
-	apply_movement obj_D47R0101_gsgentleman, _1A18
-	apply_movement obj_player, _1A2C
+	goto_if_ne _148E
+	apply_movement obj_D47R0101_gsgentleman, _1A2C
+	apply_movement obj_player, _1A40
 	wait_movement
-	goto _149F
+	goto _14B3
 
-_0CE6:
+_0CFA:
 	npc_msg 40
-	goto _0DAB
+	goto _0DBF
 
-_0CEF:
+_0D03:
 	setflag FLAG_UNK_183
 	npc_msg 43
 	npc_msg 44
@@ -835,7 +839,7 @@ _0CEF:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _1417
+	goto_if_eq _142B
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 463, 255, 0
 	menu_item_add 464, 255, 1
@@ -846,57 +850,57 @@ _0CEF:
 	menu_item_add 469, 255, 6
 	menu_exec
 	switch VAR_SPECIAL_RESULT
-	case 0, _1424
-	case 1, _142D
-	case 2, _1436
-	case 3, _143F
-	case 4, _1448
-	case 5, _1451
-	goto _1417
+	case 0, _1438
+	case 1, _1441
+	case 2, _144A
+	case 3, _1453
+	case 4, _145C
+	case 5, _1465
+	goto _142B
 
-_0DAB:
+_0DBF:
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_0DB3:
+_0DC7:
 	npc_msg 92
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_0DBE:
+_0DD2:
 	npc_msg 94
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _14D1
+	goto_if_eq _14E5
 	npc_msg 95
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_0DE1:
+_0DF5:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _14D1
+	goto_if_eq _14E5
 	npc_msg 95
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_0E01:
-	goto_if_set FLAG_UNK_A64, _14DC
+_0E15:
+	goto_if_set FLAG_UNK_A64, _14F0
 	npc_msg 114
 	closemsg
-	apply_movement obj_player, _18E8
+	apply_movement obj_player, _18FC
 	wait_movement
 	npc_msg 113
 	closemsg
@@ -904,45 +908,45 @@ _0E01:
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _14E5
+	goto_if_ne _14F9
 	npc_msg 117
 	closemsg
 	party_count_not_egg VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 6
-	goto_if_eq _14EE
+	goto_if_eq _1502
 	npc_msg 119
 	closemsg
 	random VAR_SPECIAL_x8006, 7
 	compare VAR_SPECIAL_x8006, 0
-	goto_if_eq _14F7
+	goto_if_eq _150B
 	compare VAR_SPECIAL_x8006, 1
-	goto_if_eq _1526
+	goto_if_eq _153A
 	compare VAR_SPECIAL_x8006, 2
-	goto_if_eq _1555
+	goto_if_eq _1569
 	compare VAR_SPECIAL_x8006, 3
-	goto_if_eq _1584
+	goto_if_eq _1598
 	compare VAR_SPECIAL_x8006, 4
-	goto_if_eq _15B3
+	goto_if_eq _15C7
 	compare VAR_SPECIAL_x8006, 5
-	goto_if_eq _15E2
-	goto _1611
+	goto_if_eq _15F6
+	goto _1625
 
-_0EAA:
+_0EBE:
 	npc_msg 17
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_0EB5:
+_0EC9:
 	compare VAR_UNK_4057, 6
-	goto_if_lt _0660
+	goto_if_lt _0674
 	setvar VAR_SPECIAL_RESULT, 500
 	buffer_int 1, VAR_SPECIAL_RESULT
 	npc_msg 1
-	goto _077E
+	goto _0792
 
-_0ED6:
+_0EEA:
 	hide_money_box
 	npc_msg 3
 	wait_button
@@ -950,10 +954,10 @@ _0ED6:
 	releaseall
 	end
 
-_0EE3:
+_0EF7:
 	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 500
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0FCE
+	goto_if_eq _0FE2
 	setvar VAR_SPECIAL_RESULT, 500
 	buffer_int 1, VAR_SPECIAL_RESULT
 	npc_msg 2
@@ -971,13 +975,13 @@ _0EE3:
 	closemsg
 	hide_money_box
 	scrcmd_600
-	apply_movement obj_player, _19F4
+	apply_movement obj_player, _1A08
 	wait_movement
 	scrcmd_307 0, 0, 5, 5, 77
-	call _0FE6
-	apply_movement obj_player, _1A00
+	call _0FFA
+	apply_movement obj_player, _1A14
 	wait_movement
-	call _0FEE
+	call _1002
 	setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 1
 	safari_zone_action 0, 0
 	set_dynamic_warp MAP_D47R0101, 1, 5, 2, 1
@@ -989,38 +993,38 @@ _0EE3:
 	wait_fade
 	lock obj_partner_poke
 	scrcmd_606
-	apply_movement obj_partner_poke, _18C4
+	apply_movement obj_partner_poke, _18D8
 	wait_movement
 	release obj_partner_poke
 	releaseall
 	end
 
-_0FB6:
+_0FCA:
 	hide_money_box
 	compare VAR_UNK_4057, 6
-	goto_if_lt _1640
+	goto_if_lt _1654
 	npc_msg 13
-	goto _164B
+	goto _165F
 
-_0FCE:
+_0FE2:
 	hide_money_box
 	compare VAR_UNK_4057, 6
-	goto_if_lt _1653
+	goto_if_lt _1667
 	npc_msg 11
-	goto _165E
+	goto _1672
 
-_0FE6:
+_0FFA:
 	scrcmd_310 77
 	scrcmd_308 77
 	return
 
-_0FEE:
+_1002:
 	scrcmd_311 77
 	scrcmd_308 77
 	scrcmd_309 77
 	return
 
-_0FF9:
+_100D:
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 457, 255, 0
 	menu_item_add 458, 255, 1
@@ -1030,24 +1034,24 @@ _0FF9:
 	menu_item_add 462, 255, 5
 	menu_exec
 	switch VAR_SPECIAL_RESULT
-	case 0, _0899
-	case 1, _08A2
-	case 2, _08AB
-	case 3, _08B4
-	case 4, _08BD
-	goto _08C6
+	case 0, _08AD
+	case 1, _08B6
+	case 2, _08BF
+	case 3, _08C8
+	case 4, _08D1
+	goto _08DA
 
-_1080:
+_1094:
 	scrcmd_247
 	nat_dex_flag_action 2, VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
-	goto_if_eq _08E9
+	goto_if_eq _08FD
 	compare VAR_UNK_4057, 6
-	goto_if_lt _08F4
+	goto_if_lt _0908
 	npc_msg 65
-	goto _0929
+	goto _093D
 
-_10AA:
+_10BE:
 	npc_msg 85
 	wait_button
 	closemsg
@@ -1055,7 +1059,7 @@ _10AA:
 	releaseall
 	end
 
-_10B7:
+_10CB:
 	touchscreen_menu_hide
 	npc_msg 71
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
@@ -1064,31 +1068,31 @@ _10B7:
 	menu_item_add 5, 255, 2
 	menu_exec
 	switch VAR_SPECIAL_RESULT
-	case 0, _1666
-	case 1, _16BD
-	goto _10AA
+	case 0, _167A
+	case 1, _16D1
+	goto _10BE
 
-_1104:
+_1118:
 	npc_msg 85
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_110F:
+_1123:
 	scrcmd_247
 	nat_dex_flag_action 2, VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
-	goto_if_eq _08E9
+	goto_if_eq _08FD
 	scrcmd_824 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
-	goto_if_eq _0971
+	goto_if_eq _0985
 	setvar VAR_TEMP_x4000, 0
 	scrcmd_823 VAR_TEMP_x4000
 	npc_msg 54
-	goto _097C
+	goto _0990
 
-_1147:
+_115B:
 	hide_money_box
 	npc_msg 3
 	wait_button
@@ -1096,10 +1100,10 @@ _1147:
 	releaseall
 	end
 
-_1154:
+_1168:
 	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 500
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _123F
+	goto_if_eq _1253
 	setvar VAR_SPECIAL_RESULT, 500
 	buffer_int 1, VAR_SPECIAL_RESULT
 	npc_msg 55
@@ -1117,13 +1121,13 @@ _1154:
 	closemsg
 	hide_money_box
 	scrcmd_600
-	apply_movement obj_player, _19F4
+	apply_movement obj_player, _1A08
 	wait_movement
 	scrcmd_307 0, 0, 19, 5, 77
-	call _0FE6
-	apply_movement obj_player, _1A00
+	call _0FFA
+	apply_movement obj_player, _1A14
 	wait_movement
-	call _0FEE
+	call _1002
 	setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 3
 	safari_zone_action 0, 1
 	set_dynamic_warp MAP_D47R0101, 2, 19, 2, 1
@@ -1135,38 +1139,38 @@ _1154:
 	wait_fade
 	lock obj_partner_poke
 	scrcmd_606
-	apply_movement obj_partner_poke, _18C4
+	apply_movement obj_partner_poke, _18D8
 	wait_movement
 	release obj_partner_poke
 	releaseall
 	end
 
-_1227:
+_123B:
 	hide_money_box
 	compare VAR_UNK_4057, 6
-	goto_if_lt _1714
+	goto_if_lt _1728
 	npc_msg 13
-	goto _171F
+	goto _1733
 
-_123F:
+_1253:
 	hide_money_box
 	compare VAR_UNK_4057, 6
-	goto_if_lt _1727
+	goto_if_lt _173B
 	npc_msg 11
-	goto _1732
+	goto _1746
 
-_1257:
+_126B:
 	setvar VAR_TEMP_x4002, 19
 	setvar VAR_TEMP_x4003, 5
-	apply_movement obj_player, _1A44
+	apply_movement obj_player, _1A58
 	wait_movement
 	scrcmd_307 0, 0, VAR_TEMP_x4002, VAR_TEMP_x4003, 77
-	call _0FE6
-	apply_movement obj_player, _1A08
-	apply_movement obj_D47R0101_counterm_3, _1A4C
-	apply_movement obj_D47R0101_counterm_5, _1A4C
+	call _0FFA
+	apply_movement obj_player, _1A1C
+	apply_movement obj_D47R0101_counterm_3, _1A60
+	apply_movement obj_D47R0101_counterm_5, _1A60
 	wait_movement
-	call _0FEE
+	call _1002
 	setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 0
 	npc_msg 8
 	npc_msg 9
@@ -1176,16 +1180,16 @@ _1257:
 	releaseall
 	end
 
-_12B4:
-	apply_movement obj_player, _1A44
+_12C8:
+	apply_movement obj_player, _1A58
 	wait_movement
 	scrcmd_307 0, 0, VAR_TEMP_x4002, VAR_TEMP_x4003, 77
-	call _0FE6
-	apply_movement obj_player, _1A08
-	apply_movement obj_D47R0101_counterm_3, _1A4C
-	apply_movement obj_D47R0101_counterm_5, _1A4C
+	call _0FFA
+	apply_movement obj_player, _1A1C
+	apply_movement obj_D47R0101_counterm_3, _1A60
+	apply_movement obj_D47R0101_counterm_5, _1A60
 	wait_movement
-	call _0FEE
+	call _1002
 	setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 0
 	npc_msg 8
 	npc_msg 9
@@ -1195,66 +1199,66 @@ _12B4:
 	releaseall
 	end
 
-_1305:
+_1319:
 	npc_msg 30
 	wait_button
 	closemsg
 	npc_msg 97
 	closemsg
-	apply_movement obj_D47R0101_gsleader6, _1920
+	apply_movement obj_D47R0101_gsleader6, _1934
 	wait_movement
 	npc_msg 98
 	closemsg
-	apply_movement obj_D47R0101_gsleader6, _18B4
+	apply_movement obj_D47R0101_gsleader6, _18C8
 	npc_msg 99
 	closemsg
-	apply_movement obj_D47R0101_seven1, _1930
+	apply_movement obj_D47R0101_seven1, _1944
 	npc_msg 100
 	closemsg
-	apply_movement obj_D47R0101_gsleader6, _1944
-	apply_movement obj_D47R0101_seven1, _1950
+	apply_movement obj_D47R0101_gsleader6, _1958
+	apply_movement obj_D47R0101_seven1, _1964
 	wait_movement
 	npc_msg 101
 	closemsg
-	apply_movement obj_D47R0101_seven1, _196C
+	apply_movement obj_D47R0101_seven1, _1980
 	wait_movement
 	npc_msg 102
 	closemsg
-	apply_movement obj_D47R0101_seven1, _1978
+	apply_movement obj_D47R0101_seven1, _198C
 	wait_movement
 	npc_msg 103
 	closemsg
-	apply_movement obj_D47R0101_seven1, _18C4
+	apply_movement obj_D47R0101_seven1, _18D8
 	wait_movement
-	apply_movement obj_D47R0101_seven1, _1978
+	apply_movement obj_D47R0101_seven1, _198C
 	wait_movement
 	npc_msg 104
 	closemsg
 	trainer_battle TRAINER_CAMPER_MICKEY, 0, 0, 0
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0BC2
-	apply_movement obj_D47R0101_gsleader6, _18E8
-	apply_movement obj_D47R0101_seven1, _1990
+	goto_if_eq _0BD6
+	apply_movement obj_D47R0101_gsleader6, _18FC
+	apply_movement obj_D47R0101_seven1, _19A4
 	npc_msg 105
 	closemsg
 	npc_msg 106
-	apply_movement obj_D47R0101_seven1, _1990
+	apply_movement obj_D47R0101_seven1, _19A4
 	closemsg
 	buffer_players_name 0
 	npc_msg 107
 	closemsg
 	npc_msg 108
 	closemsg
-	apply_movement obj_D47R0101_seven1, _1998
-	apply_movement obj_D47R0101_gsleader6, _19A8
+	apply_movement obj_D47R0101_seven1, _19AC
+	apply_movement obj_D47R0101_gsleader6, _19BC
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	hide_person obj_D47R0101_seven1
 	wait_se SEQ_SE_DP_KAIDAN2
 	npc_msg 109
 	closemsg
-	apply_movement obj_D47R0101_gsleader6, _19A8
+	apply_movement obj_D47R0101_gsleader6, _19BC
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	hide_person obj_D47R0101_gsleader6
@@ -1264,7 +1268,7 @@ _1305:
 	releaseall
 	end
 
-_1417:
+_142B:
 	touchscreen_menu_show
 	npc_msg 53
 	wait_button
@@ -1272,56 +1276,56 @@ _1417:
 	releaseall
 	end
 
-_1424:
+_1438:
 	npc_msg 47
-	goto _173A
+	goto _174E
 
-_142D:
+_1441:
 	npc_msg 48
-	goto _173A
+	goto _174E
 
-_1436:
+_144A:
 	npc_msg 49
-	goto _173A
+	goto _174E
 
-_143F:
+_1453:
 	npc_msg 50
-	goto _173A
+	goto _174E
 
-_1448:
+_145C:
 	npc_msg 51
-	goto _173A
+	goto _174E
 
-_1451:
+_1465:
 	npc_msg 52
-	goto _173A
+	goto _174E
 
-_145A:
+_146E:
 	npc_msg 32
 	setvar VAR_UNK_4057, 3
 	scrcmd_792
-	goto _0DAB
+	goto _0DBF
 
-_146B:
-	goto _0DAB
+_147F:
+	goto _0DBF
 
-_1471:
+_1485:
 	npc_msg 41
-	goto _0DAB
+	goto _0DBF
 
-_147A:
+_148E:
 	compare VAR_SPECIAL_RESULT, 3
-	goto_if_ne _17D6
-	apply_movement obj_D47R0101_gsgentleman, _1A58
-	apply_movement obj_player, _1A68
+	goto_if_ne _17EA
+	apply_movement obj_D47R0101_gsgentleman, _1A6C
+	apply_movement obj_player, _1A7C
 	wait_movement
-	goto _149F
+	goto _14B3
 
-_149F:
+_14B3:
 	npc_msg 38
 	closemsg
-	apply_movement obj_D47R0101_gsgentleman, _1A74
-	apply_movement obj_player, _1A88
+	apply_movement obj_D47R0101_gsgentleman, _1A88
+	apply_movement obj_player, _1A9C
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -1329,38 +1333,38 @@ _149F:
 	npc_msg 39
 	setvar VAR_UNK_4057, 6
 	scrcmd_792
-	goto _0DAB
+	goto _0DBF
 
-_14D1:
+_14E5:
 	npc_msg 96
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_14DC:
+_14F0:
 	npc_msg 115
 	closemsg
 	releaseall
 	end
 
-_14E5:
+_14F9:
 	npc_msg 116
 	closemsg
 	releaseall
 	end
 
-_14EE:
+_1502:
 	npc_msg 118
 	closemsg
 	releaseall
 	end
 
-_14F7:
+_150B:
 	rocket_trap_battle SPECIES_RAIKOU, 70
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0BC2
+	goto_if_eq _0BD6
 	npc_msg 120
 	closemsg
 	setflag FLAG_UNK_A64
@@ -1369,11 +1373,11 @@ _14F7:
 	releaseall
 	end
 
-_1526:
+_153A:
 	rocket_trap_battle SPECIES_ENTEI, 70
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0BC2
+	goto_if_eq _0BD6
 	npc_msg 120
 	closemsg
 	setflag FLAG_UNK_A64
@@ -1382,11 +1386,11 @@ _1526:
 	releaseall
 	end
 
-_1555:
+_1569:
 	rocket_trap_battle SPECIES_TORNADUS, 70
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0BC2
+	goto_if_eq _0BD6
 	npc_msg 120
 	closemsg
 	setflag FLAG_UNK_A64
@@ -1395,11 +1399,11 @@ _1555:
 	releaseall
 	end
 
-_1584:
+_1598:
 	rocket_trap_battle SPECIES_CRESSELIA, 70
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0BC2
+	goto_if_eq _0BD6
 	npc_msg 120
 	closemsg
 	setflag FLAG_UNK_A64
@@ -1408,11 +1412,11 @@ _1584:
 	releaseall
 	end
 
-_15B3:
+_15C7:
 	rocket_trap_battle SPECIES_THUNDURUS, 70
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0BC2
+	goto_if_eq _0BD6
 	npc_msg 120
 	closemsg
 	setflag FLAG_UNK_A64
@@ -1421,11 +1425,11 @@ _15B3:
 	releaseall
 	end
 
-_15E2:
+_15F6:
 	rocket_trap_battle SPECIES_REGIELEKI, 70
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0BC2
+	goto_if_eq _0BD6
 	npc_msg 120
 	closemsg
 	setflag FLAG_UNK_A64
@@ -1434,11 +1438,11 @@ _15E2:
 	releaseall
 	end
 
-_1611:
+_1625:
 	rocket_trap_battle SPECIES_LANDORUS, 70
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0BC2
+	goto_if_eq _0BD6
 	npc_msg 120
 	closemsg
 	setflag FLAG_UNK_A64
@@ -1447,91 +1451,91 @@ _1611:
 	releaseall
 	end
 
-_1640:
+_1654:
 	npc_msg 12
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_164B:
+_165F:
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_1653:
+_1667:
 	npc_msg 10
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_165E:
+_1672:
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_1666:
+_167A:
 	npc_msg 86
 	getmenuchoice VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _10B7
+	goto_if_eq _10CB
 	setvar VAR_SPECIAL_x8004, 39
 	setvar VAR_SPECIAL_x8005, 0
 	scrcmd_226 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _181A
+	goto_if_eq _182E
 	compare VAR_SPECIAL_RESULT, 3
-	goto_if_eq _1824
+	goto_if_eq _1838
 	compare VAR_SPECIAL_RESULT, 4
-	goto_if_eq _1833
-	goto _1842
+	goto_if_eq _1847
+	goto _1856
 
-_16BD:
+_16D1:
 	npc_msg 86
 	getmenuchoice VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _10B7
+	goto_if_eq _10CB
 	setvar VAR_SPECIAL_x8004, 39
 	setvar VAR_SPECIAL_x8005, 0
 	scrcmd_227 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _188C
+	goto_if_eq _18A0
 	compare VAR_SPECIAL_RESULT, 3
-	goto_if_eq _1896
+	goto_if_eq _18AA
 	compare VAR_SPECIAL_RESULT, 4
-	goto_if_eq _18A5
-	goto _1842
+	goto_if_eq _18B9
+	goto _1856
 
-_1714:
+_1728:
 	npc_msg 12
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_171F:
+_1733:
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_1727:
+_173B:
 	npc_msg 10
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_1732:
+_1746:
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_173A:
+_174E:
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 463, 255, 0
 	menu_item_add 464, 255, 1
@@ -1542,22 +1546,22 @@ _173A:
 	menu_item_add 469, 255, 6
 	menu_exec
 	switch VAR_SPECIAL_RESULT
-	case 0, _1424
-	case 1, _142D
-	case 2, _1436
-	case 3, _143F
-	case 4, _1448
-	case 5, _1451
-	goto _1417
+	case 0, _1438
+	case 1, _1441
+	case 2, _144A
+	case 3, _1453
+	case 4, _145C
+	case 5, _1465
+	goto _142B
 
-_17D6:
-	apply_movement obj_D47R0101_gsgentleman, _1A58
-	apply_movement obj_player, _1A94
+_17EA:
+	apply_movement obj_D47R0101_gsgentleman, _1A6C
+	apply_movement obj_player, _1AA8
 	wait_movement
 	npc_msg 38
 	closemsg
-	apply_movement obj_D47R0101_gsgentleman, _1A74
-	apply_movement obj_player, _1A88
+	apply_movement obj_D47R0101_gsgentleman, _1A88
+	apply_movement obj_player, _1A9C
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -1565,14 +1569,14 @@ _17D6:
 	npc_msg 39
 	setvar VAR_UNK_4057, 6
 	scrcmd_792
-	goto _0DAB
+	goto _0DBF
 
-_181A:
+_182E:
 	scrcmd_283
 	touchscreen_menu_hide
-	goto _10B7
+	goto _10CB
 
-_1824:
+_1838:
 	scrcmd_283
 	touchscreen_menu_show
 	npc_msg 87
@@ -1581,7 +1585,7 @@ _1824:
 	releaseall
 	end
 
-_1833:
+_1847:
 	scrcmd_283
 	npc_msg 85
 	wait_button
@@ -1590,7 +1594,7 @@ _1833:
 	releaseall
 	end
 
-_1842:
+_1856:
 	setvar VAR_UNK_4133, 1
 	npc_msg 81
 	scrcmd_257 96
@@ -1615,12 +1619,12 @@ _1842:
 	releaseall
 	end
 
-_188C:
+_18A0:
 	scrcmd_283
 	touchscreen_menu_hide
-	goto _10B7
+	goto _10CB
 
-_1896:
+_18AA:
 	scrcmd_283
 	npc_msg 87
 	wait_button
@@ -1629,7 +1633,7 @@ _1896:
 	releaseall
 	end
 
-_18A5:
+_18B9:
 	scrcmd_283
 	npc_msg 85
 	wait_button
@@ -1639,27 +1643,27 @@ _18A5:
 	end
 
 	.balign 4
-_18B4:
+_18C8:
 
 	step 3, 1
 	step_end
 	.balign 4
-_18BC:
+_18D0:
 
 	step 12, 1
 	step_end
 	.balign 4
-_18C4:
+_18D8:
 
 	step 0, 1
 	step_end
 	.balign 4
-_18CC:
+_18E0:
 
 	step 13, 2
 	step_end
 	.balign 4
-_18D4:
+_18E8:
 
 	step 1, 1
 	step 75, 1
@@ -1667,12 +1671,12 @@ _18D4:
 	step 14, 1
 	step_end
 	.balign 4
-_18E8:
+_18FC:
 
 	step 75, 1
 	step_end
 	.balign 4
-_18F0:
+_1904:
 
 	step 75, 1
 	step 1, 1
@@ -1680,27 +1684,27 @@ _18F0:
 	step 2, 1
 	step_end
 	.balign 4
-_1904:
+_1918:
 
 	step 65, 1
 	step 12, 3
 	step 3, 1
 	step_end
 	.balign 4
-_1914:
+_1928:
 
 	step 12, 1
 	step 1, 1
 	step_end
 	.balign 4
-_1920:
+_1934:
 
 	step 14, 2
 	step 12, 2
 	step 2, 1
 	step_end
 	.balign 4
-_1930:
+_1944:
 
 	step 71, 1
 	step 75, 1
@@ -1708,13 +1712,13 @@ _1930:
 	step 72, 1
 	step_end
 	.balign 4
-_1944:
+_1958:
 
 	step 12, 1
 	step 1, 1
 	step_end
 	.balign 4
-_1950:
+_1964:
 
 	step 13, 1
 	step 14, 4
@@ -1724,57 +1728,57 @@ _1950:
 	step 2, 1
 	step_end
 	.balign 4
-_196C:
+_1980:
 
 	step 1, 1
 	step 33, 1
 	step_end
 	.balign 4
-_1978:
+_198C:
 
 	step 2, 1
 	step 34, 2
 	step_end
 	.balign 4
-_1984:
+_1998:
 
 	step 0, 1
 	step 32, 1
 	step_end
 	.balign 4
-_1990:
+_19A4:
 
 	step 34, 1
 	step_end
 	.balign 4
-_1998:
+_19AC:
 
 	step 13, 2
 	step 14, 1
 	step 13, 1
 	step_end
 	.balign 4
-_19A8:
+_19BC:
 
 	step 13, 1
 	step 2, 1
 	step_end
 	.balign 4
-_19B4:
+_19C8:
 
 	step 12, 2
 	step 15, 3
 	step 12, 1
 	step_end
 	.balign 4
-_19C4:
+_19D8:
 
 	step 12, 2
 	step 15, 4
 	step 12, 1
 	step_end
 	.balign 4
-_19D4:
+_19E8:
 
 	step 13, 2
 	step 14, 2
@@ -1783,30 +1787,30 @@ _19D4:
 	step 0, 1
 	step_end
 	.balign 4
-_19EC:
+_1A00:
 
 	step 1, 1
 	step_end
 	.balign 4
-_19F4:
+_1A08:
 
 	step 15, 1
 	step 0, 1
 	step_end
 	.balign 4
-_1A00:
+_1A14:
 
 	step 12, 4
 	step_end
 	.balign 4
-_1A08:
+_1A1C:
 
 	step 13, 2
 	step 14, 1
 	step 32, 1
 	step_end
 	.balign 4
-_1A18:
+_1A2C:
 
 	step 14, 2
 	step 12, 4
@@ -1814,7 +1818,7 @@ _1A18:
 	step 1, 1
 	step_end
 	.balign 4
-_1A2C:
+_1A40:
 
 	step 65, 1
 	step 0, 1
@@ -1823,31 +1827,31 @@ _1A2C:
 	step 0, 1
 	step_end
 	.balign 4
-_1A44:
+_1A58:
 
 	step 13, 1
 	step_end
 	.balign 4
-_1A4C:
+_1A60:
 
 	step 63, 1
 	step 1, 1
 	step_end
 	.balign 4
-_1A58:
+_1A6C:
 
 	step 12, 4
 	step 15, 2
 	step 1, 1
 	step_end
 	.balign 4
-_1A68:
+_1A7C:
 
 	step 15, 1
 	step 0, 1
 	step_end
 	.balign 4
-_1A74:
+_1A88:
 
 	step 13, 2
 	step 15, 1
@@ -1855,13 +1859,13 @@ _1A74:
 	step 2, 1
 	step_end
 	.balign 4
-_1A88:
+_1A9C:
 
 	step 65, 3
 	step 3, 1
 	step_end
 	.balign 4
-_1A94:
+_1AA8:
 
 	step 12, 1
 	step_end

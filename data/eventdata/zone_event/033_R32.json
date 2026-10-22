@@ -325,8 +325,8 @@
       "y": 0
     },
     {
-      "id": "obj_R32_monstarball_3",
-      "graphics_id": "SPRITE_MONSTARBALL",
+      "id": "obj_R32_3916",
+      "graphics_id": 3916,
       "movement_type": 0,
       "trainer_type": 0,
       "hidden_flag": "FLAG_HIDE_ITEMBALL_R32_TM09",
@@ -342,7 +342,7 @@
       "y": 0
     },
     {
-      "id": "obj_R32_monstarball_4",
+      "id": "obj_R32_monstarball_3",
       "graphics_id": "SPRITE_MONSTARBALL",
       "movement_type": 0,
       "trainer_type": 0,

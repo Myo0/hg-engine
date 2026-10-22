@@ -55,7 +55,7 @@ scr_seq_D27R0106_000:
 	get_player_facing VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _00C8
-	apply_movement obj_player, _01FE
+	apply_movement obj_player, _0200
 	goto _0139
 
 scr_seq_D27R0106_001:
@@ -88,8 +88,8 @@ _00B4:
 	end
 
 _00C8:
-	apply_movement obj_player, _020A
-	apply_movement obj_D27R0106_gsmiddleman1, _021E
+	apply_movement obj_player, _020C
+	apply_movement obj_D27R0106_gsmiddleman1, _0220
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -97,7 +97,7 @@ _00C8:
 	scrcmd_729 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _01BE
-	apply_movement obj_partner_poke, _022A
+	apply_movement obj_partner_poke, _022C
 	wait_movement
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -122,7 +122,7 @@ _0139:
 	scrcmd_729 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _01BE
-	apply_movement obj_partner_poke, _022A
+	apply_movement obj_partner_poke, _022C
 	wait_movement
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -168,14 +168,15 @@ _01F8:
 	clearflag FLAG_HIDE_CAMERON
 	end
 
+	.byte 0x00, 0x00
 	.balign 4
-_01FE:
+_0200:
 
 	step 12, 3
 	step 33, 1
 	step_end
 	.balign 4
-_020A:
+_020C:
 
 	step 12, 1
 	step 14, 1
@@ -183,13 +184,13 @@ _020A:
 	step 33, 1
 	step_end
 	.balign 4
-_021E:
+_0220:
 
 	step 63, 1
 	step 32, 1
 	step_end
 	.balign 4
-_022A:
+_022C:
 
 	step 15, 1
 	step 12, 1

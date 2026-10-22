@@ -114,8 +114,8 @@
       "y": 0
     },
     {
-      "id": "obj_R35_monstarball",
-      "graphics_id": "SPRITE_MONSTARBALL",
+      "id": "obj_R35_3916",
+      "graphics_id": 3916,
       "movement_type": 0,
       "trainer_type": 0,
       "hidden_flag": "FLAG_HIDE_ITEMBALL_R35_TM66",
@@ -199,7 +199,7 @@
       "y": 0
     },
     {
-      "id": "obj_R35_monstarball_2",
+      "id": "obj_R35_monstarball",
       "graphics_id": "SPRITE_MONSTARBALL",
       "movement_type": 0,
       "trainer_type": 0,

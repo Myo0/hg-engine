@@ -13,12 +13,12 @@
 .equ obj_R35_seaman, 6
 .equ obj_R35_gsman2, 7
 .equ obj_R35_policeman, 8
-.equ obj_R35_monstarball, 9
+.equ obj_R35_3916, 9
 .equ obj_R35_tree, 10
 .equ obj_R35_bonguri, 11
 .equ obj_R35_gsmiddleman1, 12
 .equ obj_R35_fire, 13
-.equ obj_R35_monstarball_2, 14
+.equ obj_R35_monstarball, 14
 .equ obj_R35_follower_mon_static_pidgey, 15
 .equ obj_R35_3622, 0
 .equ obj_R35_gsfighter, 1

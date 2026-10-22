@@ -50,7 +50,7 @@ scrdef scr_seq_T29_019
 scrdef_end
 
 scr_seq_T29_000:
-	goto_if_set FLAG_GOT_RED_SCALE, _03E8
+	goto_if_set FLAG_GOT_RED_SCALE, _0342
 	setflag FLAG_UNK_1FC
 	setflag FLAG_UNK_1FE
 	setflag FLAG_MAPTEMP_011
@@ -75,38 +75,37 @@ scr_seq_T29_001:
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _03EE
+	goto_if_eq _0348
 	get_static_encounter_outcome VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 3
-	goto_if_eq _03F4
+	goto_if_eq _034E
 	compare VAR_TEMP_x4002, 4
-	call_if_eq _03F8
-	goto_if_set FLAG_GOT_RED_SCALE, _03FE
-	openmsg
-	goto_if_no_item_space ITEM_RED_SCALE, 1, _040E
-	callstd std_give_item_verbose
+	call_if_eq _0352
+	goto_if_set FLAG_GOT_RED_SCALE, _0358
 	setflag FLAG_GOT_RED_SCALE
 	clearflag FLAG_HIDE_LAKE_OF_RAGE_ACE_TRAINER_LOIS
-	closemsg
 	releaseall
 	end
 
 scr_seq_T29_002:
-	goto_if_set FLAG_ENGAGING_STATIC_POKEMON, _0418
+	goto_if_set FLAG_ENGAGING_STATIC_POKEMON, _0368
 	end
 
 scr_seq_T29_003:
-	goto_if_set FLAG_UNK_0C3, _0436
+	goto_if_set FLAG_UNK_0C3, _0386
 	play_se SEQ_SE_DP_SELECT
 	lockall
+	call _03AC
+	compare VAR_SPECIAL_RESULT, 0
+	goto_if_eq _044E
 	npc_msg 2
 	faceplayer
 	buffer_players_name 0
 	gender_msgbox 3, 4
 	closemsg
-	apply_movement obj_T29_brains2, _08E8
+	apply_movement obj_T29_brains2, _0922
 	wait_movement
-	apply_movement obj_player, _08F4
+	apply_movement obj_player, _092E
 	wait_movement
 	npc_msg 37
 	wait_button
@@ -114,47 +113,29 @@ scr_seq_T29_003:
 	trainer_battle TRAINER_TEAM_ROCKET_MICKEY_3, 0, 0, 0
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0465
+	goto_if_eq _0458
 	setvar VAR_UNK_416F, 61
 	npc_msg 39
 	closemsg
 	setvar VAR_SPECIAL_x8004, 661
 	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
-	call_if_eq _0469
-	callstd std_give_item_verbose
-	apply_movement obj_player, _08FC
+	call _045C
+	apply_movement obj_player, _0936
 	wait_movement
+	call _0477
 	npc_msg 38
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0471
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _04D6
-	buffer_players_name 0
-	gender_msgbox 5, 6
-	wait_button
-	closemsg
-	apply_movement obj_T29_follower_mon_static_dragonite, _0904
-	wait_movement
-	apply_movement obj_T29_wataru, _0910
-	wait_movement
-	scrcmd_775 8, 10
-	setflag FLAG_HIDE_LAKE_OF_RAGE_LANCE
-	hide_person obj_T29_wataru
-	hide_person obj_T29_follower_mon_static_dragonite
-	clearflag FLAG_HIDE_MAHOGANY_SHOP_LANCE
-	setvar VAR_UNK_40A8, 1
-	releaseall
-	end
+	goto_if_eq _04AC
+	goto _0511
 
 scr_seq_T29_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_RED_GYARADOS_MEET, _04E5
+	goto_if_set FLAG_RED_GYARADOS_MEET, _0520
 	npc_msg 9
 	wait_button
 	closemsg
@@ -162,26 +143,7 @@ scr_seq_T29_004:
 	end
 
 scr_seq_T29_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	get_party_lead_alive VAR_SPECIAL_x8002
-	mon_has_ribbon VAR_SPECIAL_RESULT, VAR_SPECIAL_x8002, RIBBON_DOWNCAST
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _04F0
-	goto_if_set FLAG_DAILY_GOT_SHOCK_RIBBON, _0504
-	compare VAR_NUM_MET_WEEKDAY_SIBLINGS, 7
-	goto_if_eq _0518
-	goto_if_set FLAG_GOT_BLACK_BELT_FROM_WESLEY, _053B
-	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_eq _054F
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 11
-	goto _059E
-
-scr_seq_T29_006:
-	goto_if_set FLAG_UNK_139, _05A6
+	goto_if_set FLAG_UNK_139, _052B
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -189,7 +151,7 @@ scr_seq_T29_006:
 	callstd std_signpost
 	end
 
-scr_seq_T29_007:
+scr_seq_T29_006:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -197,65 +159,65 @@ scr_seq_T29_007:
 	callstd std_signpost
 	end
 
-scr_seq_T29_008:
+scr_seq_T29_007:
 	simple_npc_msg 12
 	end
 
-scr_seq_T29_009:
+scr_seq_T29_008:
 	simple_npc_msg 11
 	end
 
-scr_seq_T29_010:
+scr_seq_T29_009:
 	simple_npc_msg 18
 	end
 
-scr_seq_T29_011:
+scr_seq_T29_010:
 	simple_npc_msg 21
 	end
 
-scr_seq_T29_012:
+scr_seq_T29_011:
 	simple_npc_msg 24
 	end
 
-scr_seq_T29_013:
+scr_seq_T29_012:
 	simple_npc_msg 27
 	end
 
-scr_seq_T29_014:
+scr_seq_T29_013:
 	setvar VAR_TEMP_x4001, 1
 	setvar VAR_SPECIAL_x8008, 27
 	setvar VAR_SPECIAL_x8009, 1
-	goto _05DC
+	goto _0561
 
-scr_seq_T29_015:
+scr_seq_T29_014:
 	setvar VAR_TEMP_x4001, 2
 	setvar VAR_SPECIAL_x8008, 29
 	setvar VAR_SPECIAL_x8009, 1
-	goto _05DC
+	goto _0561
 
-scr_seq_T29_016:
+scr_seq_T29_015:
 	setvar VAR_TEMP_x4001, 3
 	setvar VAR_SPECIAL_x8008, 23
 	setvar VAR_SPECIAL_x8009, 1
-	goto _05DC
+	goto _0561
 
-scr_seq_T29_017:
+scr_seq_T29_016:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	compare VAR_TEMP_x4004, 1
-	goto_if_ge _0618
+	goto_if_ge _059D
 	npc_msg 13
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0621
+	goto_if_eq _05A6
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ge _0664
+	goto_if_ge _05E9
 	end
 
-scr_seq_T29_018:
+scr_seq_T29_017:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -266,7 +228,7 @@ scr_seq_T29_018:
 	releaseall
 	end
 
-scr_seq_T29_019:
+scr_seq_T29_018:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -275,36 +237,40 @@ scr_seq_T29_019:
 	releaseall
 	end
 
-_03E8:
-	goto _0675
+scr_seq_T29_019:
+	lockall
+	play_se SEQ_SE_DP_SELECT
+	hide_person obj_T29_monstarball
+	giveitem_no_check ITEM_UTILITY_UMBRELLA, 1
+	setflag FLAG_HIDE_ITEMBALL_T29_CHOICE_SPECS
+	closemsg
+	releaseall
+	end
 
-_03EE:
+_0342:
+	goto _05FA
+
+_0348:
 	white_out
 	releaseall
 	end
 
-_03F4:
+_034E:
 	releaseall
 	end
 
-_03F8:
+_0352:
 	setflag FLAG_CAUGHT_RED_GYARADOS
 	return
 
-_03FE:
+_0358:
 	clearflag FLAG_HIDE_LAKE_OF_RAGE_LANCE
 	hide_person obj_T29_wataru
 	hide_person obj_T29_follower_mon_static_dragonite
 	releaseall
 	end
 
-_040E:
-	callstd std_bag_is_full
-	closemsg
-	releaseall
-	end
-
-_0418:
+_0368:
 	setflag FLAG_HIDE_LAKE_OF_RAGE_RED_GYARADOS
 	hide_person obj_T29_rgyaradosu
 	clearflag FLAG_HIDE_LAKE_OF_RAGE_LANCE
@@ -314,7 +280,7 @@ _0418:
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	end
 
-_0436:
+_0386:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -323,30 +289,73 @@ _0436:
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0471
-	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _04D6
+	goto_if_eq _04AC
+	goto _0511
+
+_03AC:
+	goto_if_no_item_space ITEM_BLASTOISINITE, 1, _061E
+	goto_if_set FLAG_MEGA_EVOLUTION_ENABLED, _0626
+	setvar VAR_SPECIAL_x8004, 696
+	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
+	goto_if_eq _061E
+	get_starter_choice VAR_SPECIAL_RESULT
+	setvar VAR_SPECIAL_x8004, 0
+	compare VAR_SPECIAL_RESULT, 258
+	call_if_eq _062E
+	compare VAR_SPECIAL_RESULT, 703
+	call_if_eq _0636
+	compare VAR_SPECIAL_RESULT, 152
+	call_if_eq _063E
+	compare VAR_SPECIAL_x8004, 0
+	goto_if_eq _0626
+	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
+	goto_if_eq _061E
+	setvar VAR_SPECIAL_RESULT, 1
+	return
+
+_044E:
+	callstd std_bag_is_full
+	closemsg
+	releaseall
 	end
 
-_0465:
+_0458:
 	white_out
 	end
 
-_0469:
-	callstd std_bag_is_full
-	closemsg
+_045C:
+	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
+	goto_if_eq _0646
+	callstd std_give_item_verbose
 	return
 
-_0471:
+_0477:
+	goto_if_set FLAG_MEGA_EVOLUTION_ENABLED, _064E
+	buffer_players_name 0
+	npc_msg 41
+	npc_msg 42
+	touchscreen_menu_hide
+	getmenuchoice VAR_SPECIAL_RESULT
+	touchscreen_menu_show
+	compare VAR_SPECIAL_RESULT, 0
+	goto_if_eq _0650
+	npc_msg 43
+	npc_msg 44
+	goto _06A1
+
+_04AC:
 	buffer_players_name 0
 	gender_msgbox 5, 6
 	wait_button
 	closemsg
-	apply_movement obj_T29_follower_mon_static_dragonite, _0904
+	apply_movement obj_T29_follower_mon_static_dragonite, _093E
 	wait_movement
-	apply_movement obj_T29_wataru, _0910
+	apply_movement obj_T29_wataru, _094A
 	wait_movement
-	apply_movement obj_T29_brains2, _0904
+	apply_movement obj_T29_brains2, _093E
 	wait_movement
 	scrcmd_775 8, 10
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -362,7 +371,7 @@ _0471:
 	releaseall
 	end
 
-_04D6:
+_0511:
 	setflag FLAG_UNK_0C3
 	npc_msg 7
 	wait_button
@@ -370,66 +379,14 @@ _04D6:
 	releaseall
 	end
 
-_04E5:
+_0520:
 	npc_msg 10
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_04F0:
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 37
-	wait_button
-	closemsg
-	releaseall
-	end
-
-_0504:
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 39
-	wait_button
-	closemsg
-	releaseall
-	end
-
-_0518:
-	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 3
-	goto_if_eq _0699
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 11
-	goto _059E
-
-_053B:
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 10
-	wait_button
-	closemsg
-	releaseall
-	end
-
-_054F:
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 8
-	goto_if_no_item_space ITEM_BLACK_BELT, 1, _06C8
-	callstd std_give_item_verbose
-	setflag FLAG_GOT_BLACK_BELT_FROM_WESLEY
-	addvar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 9
-	wait_button
-	closemsg
-	releaseall
-	end
-
-_059E:
-	wait_button
-	closemsg
-	releaseall
-	end
-
-_05A6:
+_052B:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -447,7 +404,7 @@ _05A6:
 	releaseall
 	end
 
-_05DC:
+_0561:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -456,16 +413,16 @@ _05DC:
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x8009
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _06D2
+	goto_if_eq _06C2
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _06F1
+	goto_if_eq _06E1
 	end
 
-_0618:
+_059D:
 	npc_msg 17
-	goto _0707
+	goto _06F7
 
-_0621:
+_05A6:
 	buffer_players_name 0
 	npc_msg 14
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
@@ -485,7 +442,7 @@ _0621:
 	releaseall
 	end
 
-_0664:
+_05E9:
 	setvar VAR_TEMP_x4004, 1
 	npc_msg 16
 	wait_button
@@ -493,76 +450,132 @@ _0664:
 	releaseall
 	end
 
-_0675:
+_05FA:
 	check_registered_phone_number PHONE_CONTACT_PRYCE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
-	goto_if_eq _072B
-	goto_if_set FLAG_GAME_CLEAR, _0735
-	goto _072B
+	goto_if_eq _071B
+	goto_if_set FLAG_GAME_CLEAR, _0725
+	goto _071B
 
-_0699:
-	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 36
-	buffer_mon_species_name 0, VAR_SPECIAL_x8002
-	msgbox_extern VAR_SPECIAL_RESULT, 38
-	give_ribbon VAR_SPECIAL_x8002, RIBBON_DOWNCAST
-	play_fanfare SEQ_ME_ITEM
-	wait_fanfare
-	setflag FLAG_DAILY_GOT_SHOCK_RIBBON
-	wait_button
-	closemsg
-	releaseall
-	end
+_061E:
+	setvar VAR_SPECIAL_RESULT, 0
+	return
 
-_06C8:
+_0626:
+	setvar VAR_SPECIAL_RESULT, 1
+	return
+
+_062E:
+	setvar VAR_SPECIAL_x8004, 752
+	return
+
+_0636:
+	setvar VAR_SPECIAL_x8004, 2576
+	return
+
+_063E:
+	setvar VAR_SPECIAL_x8004, 2563
+	return
+
+_0646:
 	callstd std_bag_is_full
 	closemsg
-	releaseall
-	end
+	return
 
-_06D2:
-	callstd std_hidden_item_fanfare
-	hide_person VAR_SPECIAL_LAST_TALKED
-	compare VAR_TEMP_x4001, 1
-	goto_if_ne _0750
-	setflag FLAG_UNK_146
-	goto _0767
+_064E:
+	return
 
-_06F1:
-	buffer_item_name 0, VAR_SPECIAL_x8004
-	npc_msg 35
-	wait_button
-	setvar VAR_SPECIAL_RESULT, 0
-	goto _07A0
+_0650:
+	npc_msg 45
+	closemsg
+	setvar VAR_SPECIAL_x8004, 696
+	setvar VAR_SPECIAL_x8005, 1
+	call _045C
+	setflag FLAG_MEGA_EVOLUTION_ENABLED
+	npc_msg 46
+	get_starter_choice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 258
+	goto_if_eq _0740
+	compare VAR_SPECIAL_RESULT, 703
+	goto_if_eq _0751
+	compare VAR_SPECIAL_RESULT, 152
+	goto_if_eq _0762
+	closemsg
+	goto _064E
 
-_0707:
+_06A1:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0621
+	goto_if_eq _0650
+	npc_msg 43
+	npc_msg 44
+	goto _06A1
+
+_06C2:
+	callstd std_hidden_item_fanfare
+	hide_person VAR_SPECIAL_LAST_TALKED
+	compare VAR_TEMP_x4001, 1
+	goto_if_ne _077B
+	setflag FLAG_UNK_146
+	goto _0792
+
+_06E1:
+	buffer_item_name 0, VAR_SPECIAL_x8004
+	npc_msg 35
+	wait_button
+	setvar VAR_SPECIAL_RESULT, 0
+	goto _07CB
+
+_06F7:
+	touchscreen_menu_hide
+	getmenuchoice VAR_SPECIAL_RESULT
+	touchscreen_menu_show
+	compare VAR_SPECIAL_RESULT, 0
+	goto_if_eq _05A6
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ge _0664
+	goto_if_ge _05E9
 	end
 
-_072B:
+_071B:
 	setflag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
-	goto _07A6
+	goto _07D1
 
-_0735:
+_0725:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 6
-	goto_if_ne _07DD
+	goto_if_ne _0808
 	clearflag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
-	goto _07F4
+	goto _081F
 
-_0750:
+_0740:
+	npc_msg 47
+	closemsg
+	setvar VAR_SPECIAL_x8004, 752
+	goto _0825
+
+_0751:
+	npc_msg 48
+	closemsg
+	setvar VAR_SPECIAL_x8004, 2576
+	goto _0825
+
+_0762:
+	npc_msg 49
+	closemsg
+	setvar VAR_SPECIAL_x8004, 2563
+	setvar VAR_SPECIAL_x8005, 1
+	call _045C
+	return
+
+_077B:
 	compare VAR_TEMP_x4001, 2
-	goto_if_ne _07FA
+	goto_if_ne _0833
 	setflag FLAG_UNK_147
-	goto _0767
+	goto _0792
 
-_0767:
+_0792:
 	giveitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
 	buffer_players_name 0
 	buffer_item_name 1, VAR_SPECIAL_x8004
@@ -579,14 +592,14 @@ _0767:
 	releaseall
 	end
 
-_07A0:
+_07CB:
 	closemsg
 	releaseall
 	end
 
-_07A6:
+_07D1:
 	compare VAR_UNK_4037, 61993
-	goto_if_eq _0837
+	goto_if_eq _0870
 	setflag FLAG_UNK_1FC
 	setflag FLAG_UNK_1FE
 	clearflag FLAG_HIDE_LAKE_OF_RAGE_FISHERMEN
@@ -599,16 +612,21 @@ _07A6:
 	setflag FLAG_UNK_28C
 	end
 
-_07DD:
+_0808:
 	compare VAR_TEMP_x4000, 7
-	goto_if_ne _0860
+	goto_if_ne _0899
 	clearflag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
-	goto _07F4
+	goto _081F
 
-_07F4:
-	goto _07A6
+_081F:
+	goto _07D1
 
-_07FA:
+_0825:
+	setvar VAR_SPECIAL_x8005, 1
+	call _045C
+	return
+
+_0833:
 	setflag FLAG_UNK_148
 	giveitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
 	buffer_players_name 0
@@ -626,80 +644,81 @@ _07FA:
 	releaseall
 	end
 
-_0837:
+_0870:
 	clearflag FLAG_UNK_1FC
 	clearflag FLAG_UNK_1FE
 	setflag FLAG_HIDE_LAKE_OF_RAGE_FISHERMEN
 	clearflag FLAG_UNK_289
 	clearflag FLAG_UNK_28B
 	clearflag FLAG_UNK_28C
-	goto_if_set FLAG_UNK_146, _0877
-	goto _088C
+	goto_if_set FLAG_UNK_146, _08B0
+	goto _08C5
 
-_0860:
+_0899:
 	compare VAR_TEMP_x4000, 8
-	goto_if_ne _089D
+	goto_if_ne _08D6
 	clearflag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
-	goto _07F4
+	goto _081F
 
-_0877:
+_08B0:
 	setflag FLAG_UNK_289
-	goto_if_set FLAG_UNK_147, _08B4
-	goto _08C9
+	goto_if_set FLAG_UNK_147, _08ED
+	goto _0902
 
-_088C:
-	goto_if_set FLAG_UNK_147, _08B4
-	goto _08C9
+_08C5:
+	goto_if_set FLAG_UNK_147, _08ED
+	goto _0902
 
-_089D:
+_08D6:
 	compare VAR_TEMP_x4000, 9
-	goto_if_ne _08DA
+	goto_if_ne _0913
 	clearflag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
-	goto _07F4
+	goto _081F
 
-_08B4:
+_08ED:
 	setflag FLAG_UNK_28B
-	goto_if_set FLAG_UNK_148, _08E0
-	goto _08E6
+	goto_if_set FLAG_UNK_148, _0919
+	goto _091F
 
-_08C9:
-	goto_if_set FLAG_UNK_148, _08E0
-	goto _08E6
+_0902:
+	goto_if_set FLAG_UNK_148, _0919
+	goto _091F
 
-_08DA:
-	goto _072B
+_0913:
+	goto _071B
 
-_08E0:
+_0919:
 	setflag FLAG_UNK_28C
 	end
 
-_08E6:
+_091F:
 	end
 
+	.byte 0x00
 	.balign 4
-_08E8:
+_0922:
 
 	step 15, 1
 	step 0, 1
 	step_end
 	.balign 4
-_08F4:
+_092E:
 
 	step 1, 1
 	step_end
 	.balign 4
-_08FC:
+_0936:
 
 	step 2, 1
 	step_end
 	.balign 4
-_0904:
+_093E:
 
 	step 34, 1
 	step 50, 2
 	step_end
 	.balign 4
-_0910:
+_094A:
 
 	step 33, 1
 	step_end

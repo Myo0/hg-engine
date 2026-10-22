@@ -21,5 +21,6 @@
 .equ obj_W41_gsswimmerw_2, 6
 .equ obj_W41_gsswimmerw_3, 8
 .equ obj_W41_monstarball, 10
+.equ obj_W41_gsswimmerm_5, 3
 
 .endif //SCR_SEQ_W41_H_

@@ -194,3 +194,6 @@ Sitrus Berry (Route 38) Flag 2687 0x8008 - 13
 Sitrus Berry (Route 38) Flag 2686 0x8008 - 14
 Lum Berry (Route 48) Flag 2685 0x8008 - 15
 Persim Berry (Route 48) Flag 2684 0x8008 - 16
+Sitrus Berry (Route 42) Flag 2683 0x8008 - 17
+Lansat Berry (Route 42) Flag 2682 0x8008 - 18
+Starf Berry (Route 42) Flag 2681 0x8008 - 19

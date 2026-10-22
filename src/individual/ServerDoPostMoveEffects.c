@@ -92,7 +92,12 @@ void __attribute__((section(".init"))) ServerDoPostMoveEffectsInternal(void *bsy
                 ctx->currentMoveSwitchStatus, ctx->attack_client, ctx->current_move_index);
         }
 #endif
-        ctx->currentMoveSwitchStatus = CURRENT_MOVE_NO_SWITCH;
+        // A PENDING switch must survive this reset: Baton Pass's effect script runs *before* the post-move
+        // effects and sets PENDING itself; STEP_29 (RESOLVE_PENDING_SWITCH) is what sends the replacement in.
+        // Clearing it here deleted the user's mon without ever opening the party list / sending a replacement.
+        if (ctx->currentMoveSwitchStatus != CURRENT_MOVE_SWITCH_PENDING) {
+            ctx->currentMoveSwitchStatus = CURRENT_MOVE_NO_SWITCH;
+        }
 
         for (ctx->swoak_work = 0; ctx->swoak_work < BattleWorkClientSetMaxGet(bsys); ctx->swoak_work++) {
             if (((ctx->battlemon[ctx->swoak_work].effect_of_moves & (MOVE_EFFECT_FLAG_SEMI_INVULNERABLE)) == 0)

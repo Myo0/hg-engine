@@ -2177,7 +2177,7 @@ const MoveSourceEntry sMoveSource[NUM_OF_MOVES + 1] = {
             .effectChance = 10,
         },
         .battle = {
-            .target = RANGE_RANDOM_OPPONENT,
+            .target = RANGE_SINGLE_TARGET,
             .priority = 0,
             .flags = FLAG_MIRROR_MOVE | FLAG_PROTECT | FLAG_CONTACT,
         },

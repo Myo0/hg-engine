@@ -20,6 +20,19 @@ arm9 020784B0 60 B4 C0 46
 #endif
 #endif
 
+#ifdef ITEM_POCKET_EXPANSION
+# Bag pocket rework (see Docs&Changelog/Bag Pockets.md). Capacities per pocket id, in id order:
+# Items 126, Medicine 40, Balls 26, TM/HM 101, Berries 64, Held Items 117, Mega Stones 96, Key Items 39 (+1 slot for the layout marker).
+# Must match NUM_BAG_* in include/constants/item.h (total 610 slots).
+# sPocketCapacities (overlay 15): how many slots the bag UI loads per pocket
+0015 022008B0 7E 28 1A 65 40 75 60 27
+# sListPocketCapacities (overlay 15): how many slots the bag UI list draws per pocket
+0015 022008C8 7E 28 1A 65 40 75 60 27
+# sPCBoxBagPockets (overlay 14): pockets shown in the PC box "give item" bag. Was 00 01 02 03 04 06 07 FF;
+# now Items, Medicine, Balls, TM/HM, Berries, Held Items, Mega Stones (Key Items cannot be held)
+0014 021F7D14 00 01 02 03 04 05 06 FF
+#endif
+
 # CanUseItemOnMonInParty hook setup because it's not even 0x1C bytes long
 arm9 020902B8 60 B4 C0 46
 
@@ -582,3 +595,14 @@ arm9 020701AC 08 E0
 
 # sub_02070854 always call GetMonPicHeightBySpeciesGenderForm
 arm9 020708B0 06 E0
+
+#ifdef CREDITS_ICON
+# StartMenu_BuildActionLists (0x0203C220): the RUNNING_SHOES insertion passed position -1 (SUBS r0,#0x41 with r0=0x40); make it
+# position 9 (MOVS r0,#9) so the credits action sits at menu index 9 (selectionToAction[9]); entry count stays 10
+arm9 0203C356 09 20
+# StartMenu_HandleKeyInput (0x0203C508) and StartMenu_HandleTouchInput (0x0203C5A4) accept a selection only if menuIndex < numActiveButtons
+# (LDR r0,[rX,#0x2C]; CMP r1,r0). Menu index 9 (credits) is beyond the count whenever fewer than 7 icons are unlocked (start of the game),
+# so the press was ignored. Use the constant 10 (MOVS r0,#10) instead: the touch menu only ever selects shown icons, whose indices are valid.
+arm9 0203C516 0A 20
+arm9 0203C610 0A 20
+#endif

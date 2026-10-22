@@ -43,7 +43,7 @@ scr_seq_T25SP0101_000:
 	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02B3
-	apply_movement obj_T25SP0101_suit, _1888
+	apply_movement obj_T25SP0101_suit, _18C8
 	wait_movement
 	npc_msg 40
 	closemsg
@@ -129,17 +129,17 @@ scr_seq_T25SP0101_005:
 	scrcmd_071
 	switch VAR_SPECIAL_RESULT
 	case 0, _0472
-	case 1, _04D8
+	case 1, _0597
 	case 2, _0531
-	case 3, _0597
+	case 3, _04D8
 	case 4, _05FD
 	case 5, _0663
 	case 6, _06D6
 	case 7, _073C
 	case 8, _07AF
-	case 9, _081E
-	case 10, _089E
-	goto _089E
+	case 9, _0829
+	case 10, _08A9
+	goto _08A9
 
 scr_seq_T25SP0101_006:
 	play_se SEQ_SE_DP_SELECT
@@ -156,53 +156,53 @@ scr_seq_T25SP0101_006:
 	scrcmd_066 45, 2
 	scrcmd_067
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _08A7
+	goto_if_eq _08B2
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _08BC
+	goto_if_eq _08C7
 	compare VAR_SPECIAL_RESULT, 2
-	goto_if_eq _08D1
-	goto _08D1
+	goto_if_eq _08DC
+	goto _08DC
 
 _02B3:
 	npc_msg 38
-	apply_movement obj_T25SP0101_suit, _1888
+	apply_movement obj_T25SP0101_suit, _18C8
 	wait_movement
 	npc_msg 39
-	goto _08E4
+	goto _08EF
 
 _02C9:
-	apply_movement obj_T25SP0101_suit, _1888
+	apply_movement obj_T25SP0101_suit, _18C8
 	wait_movement
 	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _08EC
+	goto_if_eq _08F7
 	npc_msg 41
-	goto _08E4
+	goto _08EF
 
 _02F1:
 	get_player_coords VAR_TEMP_x4002, VAR_TEMP_x4003
 	compare VAR_TEMP_x4002, 6
-	goto_if_ne _08F7
-	apply_movement obj_T25SP0101_suit, _1890
-	goto _0901
+	goto_if_ne _0902
+	apply_movement obj_T25SP0101_suit, _18D0
+	goto _090C
 
 _0312:
 	wait_movement
 	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _08EC
+	goto_if_eq _08F7
 	npc_msg 41
-	goto _08E4
+	goto _08EF
 
 _0332:
 	compare VAR_TEMP_x4001, 0
-	goto_if_ne _0903
+	goto_if_ne _090E
 	npc_msg 28
-	goto _093D
+	goto _0948
 
 _0348:
 	compare VAR_TEMP_x4001, 1
-	goto_if_ne _0974
+	goto_if_ne _097F
 	npc_msg 35
 	goto _035E
 
@@ -223,22 +223,22 @@ _0366:
 	menu_item_add 11, 255, 6
 	menu_exec
 	switch VAR_TEMP_x4000
-	case 0, _097F
-	case 1, _0A08
-	case 2, _0A91
-	case 3, _0B1A
-	case 4, _0BA3
-	case 5, _0C2C
-	goto _0CB5
+	case 0, _098A
+	case 1, _0A13
+	case 2, _0A9C
+	case 3, _0B25
+	case 4, _0BAE
+	case 5, _0C37
+	goto _0CC0
 
 _0402:
 	npc_msg 1
 	wait_button
 	closemsg
-	goto _0CE8
+	goto _0CF3
 
 _040F:
-	goto _0CF4
+	goto _0CFF
 
 _0415:
 	menu_init 1, 1, 0, 1, VAR_TEMP_x4000
@@ -248,242 +248,242 @@ _0415:
 	menu_item_add 11, 255, 3
 	menu_exec
 	switch VAR_TEMP_x4000
-	case 0, _0D51
-	case 1, _0D5D
-	case 2, _0D69
+	case 0, _0D5C
+	case 1, _0D68
+	case 2, _0D74
 	goto _0402
 
 _0472:
 	check_badge BADGE_ZEPHYR, VAR_SPECIAL_x8007
 	compare VAR_SPECIAL_x8007, 0
-	goto_if_eq _0D75
+	goto_if_eq _0D80
 	npc_msg 59
 	closemsg
 	npc_msg 60
 	yesno VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	call_if_eq _0D7E
+	call_if_eq _0D89
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _089E
+	goto_if_eq _08A9
 	compare VAR_SPECIAL_x8004, 0
-	goto_if_eq _0D86
+	goto_if_eq _0D91
 	compare VAR_SPECIAL_x8004, 1
-	goto_if_eq _0DB9
+	goto_if_eq _0DC4
 	compare VAR_SPECIAL_x8004, 2
-	goto_if_eq _0DEC
-	goto _089E
+	goto_if_eq _0DF7
+	goto _08A9
 
 _04D8:
-	check_badge BADGE_HIVE, VAR_SPECIAL_x8007
+	check_badge BADGE_FOG, VAR_SPECIAL_x8007
 	compare VAR_SPECIAL_x8007, 0
-	goto_if_eq _0D75
+	goto_if_eq _0D80
 	npc_msg 62
 	closemsg
 	npc_msg 60
 	yesno VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	call_if_eq _0E1F
+	call_if_eq _0E2A
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _089E
+	goto_if_eq _08A9
 	compare VAR_SPECIAL_x8004, 0
-	goto_if_eq _0E27
+	goto_if_eq _0E32
 	compare VAR_SPECIAL_x8004, 1
-	goto_if_eq _0E5A
-	goto _089E
+	goto_if_eq _0E65
+	goto _08A9
 
 _0531:
 	check_badge BADGE_PLAIN, VAR_SPECIAL_x8007
 	compare VAR_SPECIAL_x8007, 0
-	goto_if_eq _0D75
+	goto_if_eq _0D80
 	npc_msg 64
 	closemsg
 	npc_msg 60
 	yesno VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	call_if_eq _0D7E
+	call_if_eq _0D89
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _089E
+	goto_if_eq _08A9
 	compare VAR_SPECIAL_x8004, 0
-	goto_if_eq _0E8D
+	goto_if_eq _0E98
 	compare VAR_SPECIAL_x8004, 1
-	goto_if_eq _0EC0
+	goto_if_eq _0ECB
 	compare VAR_SPECIAL_x8004, 2
-	goto_if_eq _0EF3
-	goto _089E
+	goto_if_eq _0EFE
+	goto _08A9
 
 _0597:
-	check_badge BADGE_FOG, VAR_SPECIAL_x8007
+	check_badge BADGE_HIVE, VAR_SPECIAL_x8007
 	compare VAR_SPECIAL_x8007, 0
-	goto_if_eq _0D75
+	goto_if_eq _0D80
 	npc_msg 65
 	closemsg
 	npc_msg 60
 	yesno VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	call_if_eq _0D7E
+	call_if_eq _0D89
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _089E
+	goto_if_eq _08A9
 	compare VAR_SPECIAL_x8004, 0
-	goto_if_eq _0F26
+	goto_if_eq _0F31
 	compare VAR_SPECIAL_x8004, 1
-	goto_if_eq _0F59
+	goto_if_eq _0F64
 	compare VAR_SPECIAL_x8004, 2
-	goto_if_eq _0F8C
-	goto _089E
+	goto_if_eq _0F97
+	goto _08A9
 
 _05FD:
 	check_badge BADGE_STORM, VAR_SPECIAL_x8007
 	compare VAR_SPECIAL_x8007, 0
-	goto_if_eq _0D75
+	goto_if_eq _0D80
 	npc_msg 66
 	closemsg
 	npc_msg 60
 	yesno VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	call_if_eq _0D7E
+	call_if_eq _0D89
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _089E
+	goto_if_eq _08A9
 	compare VAR_SPECIAL_x8004, 0
-	goto_if_eq _0FBF
+	goto_if_eq _0FCA
 	compare VAR_SPECIAL_x8004, 1
-	goto_if_eq _0FF2
+	goto_if_eq _0FFD
 	compare VAR_SPECIAL_x8004, 2
-	goto_if_eq _1025
-	goto _089E
+	goto_if_eq _1030
+	goto _08A9
 
 _0663:
 	check_badge BADGE_MINERAL, VAR_SPECIAL_x8007
 	compare VAR_SPECIAL_x8007, 0
-	goto_if_eq _0D75
+	goto_if_eq _0D80
 	npc_msg 67
 	closemsg
 	npc_msg 60
 	yesno VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	call_if_eq _1058
+	call_if_eq _1063
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _089E
+	goto_if_eq _08A9
 	compare VAR_SPECIAL_x8004, 0
-	goto_if_eq _1060
+	goto_if_eq _106B
 	compare VAR_SPECIAL_x8004, 1
-	goto_if_eq _1093
+	goto_if_eq _109E
 	compare VAR_SPECIAL_x8004, 2
-	goto_if_eq _10C6
+	goto_if_eq _10D1
 	compare VAR_SPECIAL_x8004, 3
-	goto_if_eq _10F9
-	goto _089E
+	goto_if_eq _1104
+	goto _08A9
 
 _06D6:
 	check_badge BADGE_GLACIER, VAR_SPECIAL_x8007
 	compare VAR_SPECIAL_x8007, 0
-	goto_if_eq _0D75
+	goto_if_eq _0D80
 	npc_msg 68
 	closemsg
 	npc_msg 60
 	yesno VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	call_if_eq _0D7E
+	call_if_eq _0D89
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _089E
+	goto_if_eq _08A9
 	compare VAR_SPECIAL_x8004, 0
-	goto_if_eq _112C
+	goto_if_eq _1137
 	compare VAR_SPECIAL_x8004, 1
-	goto_if_eq _115F
+	goto_if_eq _116A
 	compare VAR_SPECIAL_x8004, 2
-	goto_if_eq _1192
-	goto _089E
+	goto_if_eq _119D
+	goto _08A9
 
 _073C:
 	check_badge BADGE_RISING, VAR_SPECIAL_x8007
 	compare VAR_SPECIAL_x8007, 0
-	goto_if_eq _0D75
+	goto_if_eq _0D80
 	npc_msg 73
 	closemsg
 	npc_msg 60
 	yesno VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	call_if_eq _1058
+	call_if_eq _1063
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _089E
+	goto_if_eq _08A9
 	compare VAR_SPECIAL_x8004, 0
-	goto_if_eq _11C5
+	goto_if_eq _11D0
 	compare VAR_SPECIAL_x8004, 1
-	goto_if_eq _11F8
+	goto_if_eq _1203
 	compare VAR_SPECIAL_x8004, 2
-	goto_if_eq _122B
+	goto_if_eq _1236
 	compare VAR_SPECIAL_x8004, 3
-	goto_if_eq _125E
-	goto _089E
+	goto_if_eq _1269
+	goto _08A9
 
 _07AF:
 	count_badges VAR_SPECIAL_x8007
 	compare VAR_SPECIAL_x8007, 12
-	goto_if_lt _0D75
+	goto_if_lt _0D80
 	npc_msg 69
 	closemsg
 	npc_msg 60
 	yesno VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	call_if_eq _135D
+	call_if_eq _139B
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _089E
+	goto_if_eq _08A9
 	compare VAR_SPECIAL_x8004, 0
-	goto_if_eq _1291
+	goto_if_eq _129C
 	compare VAR_SPECIAL_x8004, 1
-	goto_if_eq _12C4
+	goto_if_eq _12CF
 	compare VAR_SPECIAL_x8004, 2
-	goto_if_eq _12F7
+	goto_if_eq _1302
 	compare VAR_SPECIAL_x8004, 3
-	goto_if_eq _132A
+	goto_if_eq _1335
 	compare VAR_SPECIAL_x8004, 4
-	goto_if_eq _rainbow_tier_mew
+	goto_if_eq _1368
 	end
 
-_081E:
+_0829:
 	check_badge BADGE_EARTH, VAR_SPECIAL_x8007
 	compare VAR_SPECIAL_x8007, 0
-	goto_if_eq _0D75
+	goto_if_eq _0D80
 	npc_msg 72
 	closemsg
 	npc_msg 60
 	yesno VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	call_if_eq _135D
+	call_if_eq _139B
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _089E
+	goto_if_eq _08A9
 	compare VAR_SPECIAL_x8004, 0
-	goto_if_eq _1365
+	goto_if_eq _13A3
 	compare VAR_SPECIAL_x8004, 1
-	goto_if_eq _1398
+	goto_if_eq _13D6
 	compare VAR_SPECIAL_x8004, 2
-	goto_if_eq _13CB
+	goto_if_eq _1409
 	compare VAR_SPECIAL_x8004, 3
-	goto_if_eq _13FE
+	goto_if_eq _143C
 	compare VAR_SPECIAL_x8004, 4
-	goto_if_eq _1431
-	goto _089E
+	goto_if_eq _146F
+	goto _08A9
 
-_089E:
+_08A9:
 	npc_msg 48
 	closemsg
 	releaseall
 	end
 
-_08A7:
+_08B2:
 	give_coins 500
 	submoneyimmediate 1000
 	scrcmd_118 0
 	update_money_box
-	goto _1464
+	goto _14A2
 
-_08BC:
+_08C7:
 	give_coins 1000
 	submoneyimmediate 2000
 	scrcmd_118 0
 	update_money_box
-	goto _1464
+	goto _14A2
 
-_08D1:
+_08DC:
 	hide_money_box
 	scrcmd_117
 	touchscreen_menu_show
@@ -493,71 +493,71 @@ _08D1:
 	releaseall
 	end
 
-_08E4:
-	wait_button
-	closemsg
-	releaseall
-	end
-
-_08EC:
-	npc_msg 39
+_08EF:
 	wait_button
 	closemsg
 	releaseall
 	end
 
 _08F7:
-	apply_movement obj_T25SP0101_suit, _1898
+	npc_msg 39
+	wait_button
+	closemsg
+	releaseall
+	end
+
+_0902:
+	apply_movement obj_T25SP0101_suit, _18D8
 	return
 
-_0901:
+_090C:
 	return
 
-_0903:
+_090E:
 	npc_msg 37
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _1477
+	goto_if_eq _14B5
 	npc_msg 31
 	setvar VAR_TEMP_x4001, 1
 	giveitem_no_check ITEM_COIN_CASE, 1
 	npc_msg 32
-	goto _08E4
+	goto _08EF
 
-_093D:
+_0948:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_eq _1477
+	goto_if_eq _14B5
 	npc_msg 31
 	setvar VAR_TEMP_x4001, 1
 	giveitem_no_check ITEM_COIN_CASE, 1
 	npc_msg 32
-	goto _08E4
+	goto _08EF
 
-_0974:
+_097F:
 	npc_msg 36
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_097F:
-	goto_if_no_item_space ITEM_TM077, 1, _1486
+_098A:
+	goto_if_no_item_space ITEM_TM077, 1, _14C4
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg 3
 	getmenuchoice VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _149E
+	goto_if_eq _14DC
 	closemsg
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0366
 	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 1000
-	goto_if_lt _14DE
+	goto_if_lt _151C
 	npc_msg 4
 	play_se SEQ_SE_DP_REGI
 	take_coins 1000
@@ -569,19 +569,19 @@ _097F:
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0366
 
-_0A08:
-	goto_if_no_item_space ITEM_TM080, 1, _1486
+_0A13:
+	goto_if_no_item_space ITEM_TM080, 1, _14C4
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg 3
 	getmenuchoice VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _14E7
+	goto_if_eq _1525
 	closemsg
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0366
 	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 1000
-	goto_if_lt _14DE
+	goto_if_lt _151C
 	npc_msg 4
 	play_se SEQ_SE_DP_REGI
 	take_coins 1000
@@ -593,19 +593,19 @@ _0A08:
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0366
 
-_0A91:
-	goto_if_no_item_space ITEM_TM176, 1, _1486
+_0A9C:
+	goto_if_no_item_space ITEM_TM176, 1, _14C4
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg 3
 	getmenuchoice VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _1527
+	goto_if_eq _1565
 	closemsg
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0366
 	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 1000
-	goto_if_lt _14DE
+	goto_if_lt _151C
 	npc_msg 4
 	play_se SEQ_SE_DP_REGI
 	take_coins 1000
@@ -617,19 +617,19 @@ _0A91:
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0366
 
-_0B1A:
-	goto_if_no_item_space ITEM_TM006, 1, _1486
+_0B25:
+	goto_if_no_item_space ITEM_TM006, 1, _14C4
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg 3
 	getmenuchoice VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _1567
+	goto_if_eq _15A5
 	closemsg
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0366
 	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 1000
-	goto_if_lt _14DE
+	goto_if_lt _151C
 	npc_msg 4
 	play_se SEQ_SE_DP_REGI
 	take_coins 1000
@@ -641,19 +641,19 @@ _0B1A:
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0366
 
-_0BA3:
-	goto_if_no_item_space ITEM_TM061, 1, _1486
+_0BAE:
+	goto_if_no_item_space ITEM_TM061, 1, _14C4
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg 3
 	getmenuchoice VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _15A7
+	goto_if_eq _15E5
 	closemsg
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0366
 	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 1000
-	goto_if_lt _14DE
+	goto_if_lt _151C
 	npc_msg 4
 	play_se SEQ_SE_DP_REGI
 	take_coins 1000
@@ -665,19 +665,19 @@ _0BA3:
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0366
 
-_0C2C:
-	goto_if_no_item_space ITEM_TM073, 1, _1486
+_0C37:
+	goto_if_no_item_space ITEM_TM073, 1, _14C4
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg 3
 	getmenuchoice VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _15E7
+	goto_if_eq _1625
 	closemsg
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0366
 	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 1000
-	goto_if_lt _14DE
+	goto_if_lt _151C
 	npc_msg 4
 	play_se SEQ_SE_DP_REGI
 	take_coins 1000
@@ -689,7 +689,7 @@ _0C2C:
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0366
 
-_0CB5:
+_0CC0:
 	menu_init 1, 1, 0, 1, VAR_TEMP_x4000
 	menu_item_add 12, 255, 0
 	menu_item_add 11, 255, 1
@@ -698,14 +698,14 @@ _0CB5:
 	case 0, _0366
 	goto _0402
 
-_0CE8:
+_0CF3:
 	scrcmd_117
 	touchscreen_menu_show
 	script_overlay_cmd 3, 1
 	releaseall
 	end
 
-_0CF4:
+_0CFF:
 	menu_init 1, 1, 0, 1, VAR_TEMP_x4000
 	menu_item_add 24, 255, 0
 	menu_item_add 27, 255, 1
@@ -713,34 +713,34 @@ _0CF4:
 	menu_item_add 11, 255, 3
 	menu_exec
 	switch VAR_TEMP_x4000
-	case 0, _0D51
-	case 1, _1627
-	case 2, _0D69
+	case 0, _0D5C
+	case 1, _1665
+	case 2, _0D74
 	goto _0402
 
-_0D51:
+_0D5C:
 	setorcopyvar VAR_TEMP_x4002, 63
-	goto _1633
+	goto _1671
 
-_0D5D:
+_0D68:
 	setorcopyvar VAR_TEMP_x4002, 23
-	goto _1633
+	goto _1671
 
-_0D69:
+_0D74:
 	setorcopyvar VAR_TEMP_x4002, 147
-	goto _1633
+	goto _1671
 
-_0D75:
+_0D80:
 	npc_msg 58
 	closemsg
 	releaseall
 	end
 
-_0D7E:
+_0D89:
 	random VAR_SPECIAL_x8004, 3
 	return
 
-_0D86:
+_0D91:
 	setvar VAR_SPECIAL_x8008, 172
 	give_mon SPECIES_PICHU, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -749,9 +749,9 @@ _0D86:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_0DB9:
+_0DC4:
 	setvar VAR_SPECIAL_x8008, 677
 	give_mon SPECIES_RUFFLET, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -760,9 +760,9 @@ _0DB9:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_0DEC:
+_0DF7:
 	setvar VAR_SPECIAL_x8008, 598
 	give_mon SPECIES_PETILIL, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -771,13 +771,13 @@ _0DEC:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_0E1F:
+_0E2A:
 	random VAR_SPECIAL_x8004, 2
 	return
 
-_0E27:
+_0E32:
 	setvar VAR_SPECIAL_x8008, 127
 	give_mon SPECIES_PINSIR, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -786,9 +786,9 @@ _0E27:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_0E5A:
+_0E65:
 	setvar VAR_SPECIAL_x8008, 214
 	give_mon SPECIES_HERACROSS, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -797,9 +797,9 @@ _0E5A:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_0E8D:
+_0E98:
 	setvar VAR_SPECIAL_x8008, 609
 	give_mon SPECIES_SCRAGGY, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -808,9 +808,9 @@ _0E8D:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_0EC0:
+_0ECB:
 	setvar VAR_SPECIAL_x8008, 674
 	give_mon SPECIES_PAWNIARD, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -819,9 +819,9 @@ _0EC0:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_0EF3:
+_0EFE:
 	setvar VAR_SPECIAL_x8008, 359
 	give_mon SPECIES_ABSOL, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -830,9 +830,9 @@ _0EF3:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_0F26:
+_0F31:
 	setvar VAR_SPECIAL_x8008, 280
 	give_mon SPECIES_RALTS, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -841,9 +841,9 @@ _0F26:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_0F59:
+_0F64:
 	setvar VAR_SPECIAL_x8008, 203
 	give_mon SPECIES_GIRAFARIG, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -852,9 +852,9 @@ _0F59:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_0F8C:
+_0F97:
 	setvar VAR_SPECIAL_x8008, 175
 	give_mon SPECIES_TOGEPI, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -863,9 +863,9 @@ _0F8C:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_0FBF:
+_0FCA:
 	setvar VAR_SPECIAL_x8008, 1326
 	give_mon 1326, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -874,9 +874,9 @@ _0FBF:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_0FF2:
+_0FFD:
 	setvar VAR_SPECIAL_x8008, 1332
 	give_mon 1332, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -885,9 +885,9 @@ _0FF2:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_1025:
+_1030:
 	setvar VAR_SPECIAL_x8008, 1335
 	give_mon 1335, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -896,13 +896,13 @@ _1025:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_1058:
+_1063:
 	random VAR_SPECIAL_x8004, 4
 	return
 
-_1060:
+_106B:
 	setvar VAR_SPECIAL_x8008, 985
 	give_mon SPECIES_CHARCADET, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -911,9 +911,9 @@ _1060:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_1093:
+_109E:
 	setvar VAR_SPECIAL_x8008, 216
 	give_mon SPECIES_TEDDIURSA, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -922,9 +922,9 @@ _1093:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_10C6:
+_10D1:
 	setvar VAR_SPECIAL_x8008, 147
 	give_mon SPECIES_DRATINI, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -933,9 +933,9 @@ _10C6:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_10F9:
+_1104:
 	setvar VAR_SPECIAL_x8008, 246
 	give_mon SPECIES_LARVITAR, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -944,9 +944,9 @@ _10F9:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_112C:
+_1137:
 	setvar VAR_SPECIAL_x8008, 374
 	give_mon SPECIES_BELDUM, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -955,9 +955,9 @@ _112C:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_115F:
+_116A:
 	setvar VAR_SPECIAL_x8008, 371
 	give_mon SPECIES_BAGON, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -966,9 +966,9 @@ _115F:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_1192:
+_119D:
 	setvar VAR_SPECIAL_x8008, 832
 	give_mon SPECIES_JANGMO_O, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -977,9 +977,9 @@ _1192:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_11C5:
+_11D0:
 	setvar VAR_SPECIAL_x8008, 443
 	give_mon SPECIES_GIBLE, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -988,9 +988,9 @@ _11C5:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_11F8:
+_1203:
 	setvar VAR_SPECIAL_x8008, 1046
 	give_mon SPECIES_FRIGIBAX, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -999,9 +999,9 @@ _11F8:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_122B:
+_1236:
 	setvar VAR_SPECIAL_x8008, 754
 	give_mon SPECIES_GOOMY, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -1010,9 +1010,9 @@ _122B:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_125E:
+_1269:
 	setvar VAR_SPECIAL_x8008, 935
 	give_mon SPECIES_DREEPY, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -1021,9 +1021,9 @@ _125E:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_1291:
+_129C:
 	setvar VAR_SPECIAL_x8008, 251
 	give_mon SPECIES_CELEBI, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -1032,9 +1032,9 @@ _1291:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_12C4:
+_12CF:
 	setvar VAR_SPECIAL_x8008, 385
 	give_mon SPECIES_JIRACHI, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -1043,9 +1043,9 @@ _12C4:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_12F7:
+_1302:
 	setvar VAR_SPECIAL_x8008, 544
 	give_mon SPECIES_VICTINI, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -1054,9 +1054,9 @@ _12F7:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_132A:
+_1335:
 	setvar VAR_SPECIAL_x8008, 490
 	give_mon SPECIES_MANAPHY, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -1065,9 +1065,9 @@ _132A:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_rainbow_tier_mew:
+_1368:
 	setvar VAR_SPECIAL_x8008, 151
 	give_mon SPECIES_MEW, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -1076,13 +1076,13 @@ _rainbow_tier_mew:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_135D:
+_139B:
 	random VAR_SPECIAL_x8004, 5
 	return
 
-_1365:
+_13A3:
 	setvar VAR_SPECIAL_x8008, 852
 	give_mon SPECIES_MARSHADOW, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -1091,9 +1091,9 @@ _1365:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_1398:
+_13D6:
 	setvar VAR_SPECIAL_x8008, 857
 	give_mon SPECIES_ZERAORA, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -1102,9 +1102,9 @@ _1398:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_13CB:
+_1409:
 	setvar VAR_SPECIAL_x8008, 492
 	give_mon SPECIES_SHAYMIN, 20, 466, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -1113,9 +1113,9 @@ _13CB:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_13FE:
+_143C:
 	setvar VAR_SPECIAL_x8008, 698
 	give_mon SPECIES_MELOETTA, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -1124,9 +1124,9 @@ _13FE:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_1431:
+_146F:
 	setvar VAR_SPECIAL_x8008, 858
 	give_mon SPECIES_MELTAN, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_208 3, 0
@@ -1135,9 +1135,9 @@ _1431:
 	npc_msg 61
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	goto _089E
+	goto _08A9
 
-_1464:
+_14A2:
 	npc_msg 47
 	closemsg
 	hide_money_box
@@ -1147,22 +1147,22 @@ _1464:
 	releaseall
 	end
 
-_1477:
+_14B5:
 	setvar VAR_TEMP_x4001, 1
 	npc_msg 33
-	goto _08E4
+	goto _08EF
 
-_1486:
+_14C4:
 	npc_msg 5
 	closemsg
 	compare VAR_SPECIAL_x8004, 417
-	goto_if_ne _1651
+	goto_if_ne _168F
 	goto _0366
 
-_149E:
+_14DC:
 	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 1000
-	goto_if_lt _14DE
+	goto_if_lt _151C
 	npc_msg 4
 	play_se SEQ_SE_DP_REGI
 	take_coins 2000
@@ -1174,14 +1174,14 @@ _149E:
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0366
 
-_14DE:
+_151C:
 	npc_msg 2
-	goto _1664
+	goto _16A2
 
-_14E7:
+_1525:
 	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 1000
-	goto_if_lt _14DE
+	goto_if_lt _151C
 	npc_msg 4
 	play_se SEQ_SE_DP_REGI
 	take_coins 4000
@@ -1193,10 +1193,10 @@ _14E7:
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0366
 
-_1527:
+_1565:
 	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 1000
-	goto_if_lt _14DE
+	goto_if_lt _151C
 	npc_msg 4
 	play_se SEQ_SE_DP_REGI
 	take_coins 6000
@@ -1208,10 +1208,10 @@ _1527:
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0366
 
-_1567:
+_15A5:
 	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 1000
-	goto_if_lt _14DE
+	goto_if_lt _151C
 	npc_msg 4
 	play_se SEQ_SE_DP_REGI
 	take_coins 10000
@@ -1223,10 +1223,10 @@ _1567:
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0366
 
-_15A7:
+_15E5:
 	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 1000
-	goto_if_lt _14DE
+	goto_if_lt _151C
 	npc_msg 4
 	play_se SEQ_SE_DP_REGI
 	take_coins 10000
@@ -1238,10 +1238,10 @@ _15A7:
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0366
 
-_15E7:
+_1625:
 	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 1000
-	goto_if_lt _14DE
+	goto_if_lt _151C
 	npc_msg 4
 	play_se SEQ_SE_DP_REGI
 	take_coins 10000
@@ -1253,78 +1253,78 @@ _15E7:
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0366
 
-_1627:
+_1665:
 	setorcopyvar VAR_TEMP_x4002, 27
-	goto _1633
+	goto _1671
 
-_1633:
+_1671:
 	get_party_count VAR_SPECIAL_x8005
 	compare VAR_SPECIAL_x8005, 6
-	goto_if_ne _1677
+	goto_if_ne _16B5
 	npc_msg 6
 	wait_button
 	closemsg
-	goto _0CE8
+	goto _0CF3
 
-_1651:
+_168F:
 	compare VAR_SPECIAL_x8004, 402
-	goto_if_ne _16AC
+	goto_if_ne _16EA
 	goto _0366
 
-_1664:
+_16A2:
 	compare VAR_SPECIAL_x8004, 417
-	goto_if_ne _1651
+	goto_if_ne _168F
 	goto _0366
 
-_1677:
+_16B5:
 	buffer_species_name 1, VAR_TEMP_x4002, 0, 0
 	npc_msg 7
 	getmenuchoice VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _16BF
+	goto_if_eq _16FD
 	closemsg
 	get_game_version VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 7
-	goto_if_ne _16E3
+	goto_if_ne _1721
 	goto _0415
 
-_16AC:
+_16EA:
 	compare VAR_SPECIAL_x8004, 371
-	goto_if_ne _16E9
+	goto_if_ne _1727
 	goto _0366
 
-_16BF:
+_16FD:
 	compare VAR_TEMP_x4002, 63
-	goto_if_ne _16FC
+	goto_if_ne _173A
 	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 200
-	goto_if_lt _1720
-	goto _173A
+	goto_if_lt _175E
+	goto _1778
 
-_16E3:
-	goto _0CF4
+_1721:
+	goto _0CFF
 
-_16E9:
+_1727:
 	compare VAR_SPECIAL_x8004, 362
-	goto_if_ne _1774
+	goto_if_ne _17B2
 	goto _0366
 
-_16FC:
+_173A:
 	compare VAR_TEMP_x4002, 23
-	goto_if_ne _1787
+	goto_if_ne _17C5
 	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 700
-	goto_if_lt _1720
-	goto _173A
+	goto_if_lt _175E
+	goto _1778
 
-_1720:
+_175E:
 	npc_msg 2
 	get_game_version VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 7
-	goto_if_ne _17AB
+	goto_if_ne _17E9
 	goto _0415
 
-_173A:
+_1778:
 	npc_msg 4
 	play_se SEQ_SE_DP_REGI
 	give_mon VAR_TEMP_x4002, 15, 0, 0, 0, VAR_SPECIAL_RESULT
@@ -1332,48 +1332,48 @@ _173A:
 	buffer_species_name 1, VAR_TEMP_x4002, 0, 0
 	npc_msg 8
 	compare VAR_TEMP_x4002, 63
-	goto_if_ne _17B1
+	goto_if_ne _17EF
 	take_coins 200
-	goto _17C8
+	goto _1806
 
-_1774:
+_17B2:
 	compare VAR_SPECIAL_x8004, 340
-	goto_if_ne _17E2
+	goto_if_ne _1820
 	goto _0366
 
-_1787:
+_17C5:
 	compare VAR_TEMP_x4002, 27
-	goto_if_ne _17F5
+	goto_if_ne _1833
 	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 700
-	goto_if_lt _1720
-	goto _173A
+	goto_if_lt _175E
+	goto _1778
 
-_17AB:
-	goto _0CF4
+_17E9:
+	goto _0CFF
 
-_17B1:
+_17EF:
 	compare VAR_TEMP_x4002, 23
-	goto_if_ne _1840
+	goto_if_ne _187E
 	take_coins 700
-	goto _17C8
+	goto _1806
 
-_17C8:
+_1806:
 	scrcmd_118 0
 	get_game_version VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 7
-	goto_if_ne _1857
+	goto_if_ne _1895
 	goto _0415
 
-_17E2:
+_1820:
 	compare VAR_SPECIAL_x8004, 351
-	goto_if_ne _185D
+	goto_if_ne _189B
 	goto _0366
 
-_17F5:
+_1833:
 	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 2100
-	goto_if_lt _1720
+	goto_if_lt _175E
 	npc_msg 4
 	play_se SEQ_SE_DP_REGI
 	give_mon VAR_TEMP_x4002, 15, 0, 0, 0, VAR_SPECIAL_RESULT
@@ -1381,46 +1381,46 @@ _17F5:
 	buffer_species_name 1, VAR_TEMP_x4002, 0, 0
 	npc_msg 8
 	compare VAR_TEMP_x4002, 63
-	goto_if_ne _17B1
+	goto_if_ne _17EF
 	take_coins 200
-	goto _17C8
+	goto _1806
 
-_1840:
+_187E:
 	compare VAR_TEMP_x4002, 27
-	goto_if_ne _1863
+	goto_if_ne _18A1
 	take_coins 700
-	goto _17C8
+	goto _1806
 
-_1857:
-	goto _0CF4
+_1895:
+	goto _0CFF
 
-_185D:
-	goto _1881
+_189B:
+	goto _18BF
 
-_1863:
+_18A1:
 	take_coins 2100
 	scrcmd_118 0
 	get_game_version VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 7
-	goto_if_ne _1857
+	goto_if_ne _1895
 	goto _0415
 
-_1881:
-	goto _089E
+_18BF:
+	goto _08A9
 
-	.byte 0x00
+	.byte 0x00, 0x00, 0x00
 	.balign 4
-_1888:
+_18C8:
 
 	step 1, 1
 	step_end
 	.balign 4
-_1890:
+_18D0:
 
 	step 2, 1
 	step_end
 	.balign 4
-_1898:
+_18D8:
 
 	step 3, 1
 	step_end

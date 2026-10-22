@@ -41,20 +41,20 @@ scr_seq_D15R0103_001:
 	scrcmd_609
 	lockall
 	setvar VAR_UNK_40A4, 1
-	apply_movement obj_player, _0126
+	apply_movement obj_player, _0128
 	wait_movement
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_102 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	apply_movement 241, _0132
+	apply_movement 241, _0134
 	wait_movement
-	apply_movement obj_D15R0103_chourou, _013A
+	apply_movement obj_D15R0103_chourou, _013C
 	wait_movement
 	npc_msg 0
 	closemsg
 	wait 15, VAR_SPECIAL_RESULT
 	callstd std_play_rival_outro_music
 	buffer_rivals_name 0
-	apply_movement obj_D15R0103_gsrivel, _0142
+	apply_movement obj_D15R0103_gsrivel, _0144
 	wait_movement
 	npc_msg 1
 	closemsg
@@ -64,12 +64,12 @@ scr_seq_D15R0103_001:
 	wait_ab_press
 	closemsg
 	play_se SEQ_SE_DP_KAIDAN2
-	apply_movement obj_D15R0103_gsrivel, _014A
+	apply_movement obj_D15R0103_gsrivel, _014C
 	wait_movement
 	hide_person obj_D15R0103_gsrivel
 	setflag FLAG_UNK_078
 	callstd std_fade_end_rival_outro_music
-	apply_movement 241, _01A6
+	apply_movement 241, _01A8
 	wait_movement
 	scrcmd_103
 	releaseall
@@ -114,29 +114,30 @@ _0120:
 	releaseall
 	end
 
+	.byte 0x00, 0x00
 	.balign 4
-_0126:
+_0128:
 
 	step 75, 1
 	step 63, 1
 	step_end
 	.balign 4
-_0132:
+_0134:
 
 	step 12, 5
 	step_end
 	.balign 4
-_013A:
+_013C:
 
 	step 33, 2
 	step_end
 	.balign 4
-_0142:
+_0144:
 
 	step 13, 1
 	step_end
 	.balign 4
-_014A:
+_014C:
 
 	step 2, 4
 	step 0, 4
@@ -162,7 +163,7 @@ _014A:
 	step 0, 1
 	step_end
 	.balign 4
-_01A6:
+_01A8:
 
 	step 13, 5
 	step_end

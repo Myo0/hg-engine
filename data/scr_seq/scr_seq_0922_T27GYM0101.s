@@ -85,7 +85,7 @@ scr_seq_T27GYM0101_002:
 	scrcmd_609
 	lockall
 	play_se SEQ_SE_DP_GYURU
-	apply_movement obj_player, _029A
+	apply_movement obj_player, _029C
 	wait_movement
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -111,12 +111,12 @@ scr_seq_T27GYM0101_003:
 scr_seq_T27GYM0101_004:
 	scrcmd_609
 	lockall
-	apply_movement obj_T27GYM0101_gsoldman1, _02E2
+	apply_movement obj_T27GYM0101_gsoldman1, _02E4
 	wait_movement
 	npc_msg 9
 	closemsg
-	apply_movement obj_T27GYM0101_gsoldman1, _02F2
-	apply_movement obj_player, _0302
+	apply_movement obj_T27GYM0101_gsoldman1, _02F4
+	apply_movement obj_player, _0304
 	wait_movement
 	setvar VAR_UNK_4079, 1
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -229,8 +229,9 @@ _0291:
 	releaseall
 	end
 
+	.byte 0x00, 0x00
 	.balign 4
-_029A:
+_029C:
 
 	step 1, 2
 	step 2, 2
@@ -251,21 +252,21 @@ _029A:
 	step 69, 0
 	step_end
 	.balign 4
-_02E2:
+_02E4:
 
 	step 75, 1
 	step 13, 3
 	step 63, 1
 	step_end
 	.balign 4
-_02F2:
+_02F4:
 
 	step 9, 1
 	step 71, 1
 	step 12, 1
 	step_end
 	.balign 4
-_0302:
+_0304:
 
 	step 63, 1
 	step 13, 1

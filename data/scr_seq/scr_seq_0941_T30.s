@@ -192,15 +192,15 @@ scr_seq_T30_016:
 	get_player_facing VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0438
-	apply_movement obj_player, _0606
-	apply_movement obj_T30_gsmiddleman1, _061E
+	apply_movement obj_player, _0608
+	apply_movement obj_T30_gsmiddleman1, _0620
 	goto _0453
 
 scr_seq_T30_017:
 	lockall
 	clearflag FLAG_UNK_18D
 	setvar VAR_UNK_406A, 0
-	apply_movement obj_player, _062A
+	apply_movement obj_player, _062C
 	wait_movement
 	npc_msg 15
 	closemsg
@@ -339,7 +339,7 @@ _0424:
 _0438:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _051F
-	apply_movement obj_player, _0632
+	apply_movement obj_player, _0634
 	goto _0453
 
 _0453:
@@ -350,7 +350,7 @@ _0453:
 	scrcmd_729 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0590
-	apply_movement obj_partner_poke, _063E
+	apply_movement obj_partner_poke, _0640
 	wait_movement
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -401,8 +401,8 @@ _0515:
 	end
 
 _051F:
-	apply_movement obj_player, _064E
-	apply_movement obj_T30_gsmiddleman1, _061E
+	apply_movement obj_player, _0650
+	apply_movement obj_T30_gsmiddleman1, _0620
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -410,7 +410,7 @@ _051F:
 	scrcmd_729 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0590
-	apply_movement obj_partner_poke, _063E
+	apply_movement obj_partner_poke, _0640
 	wait_movement
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -469,9 +469,9 @@ _05FA:
 	releaseall
 	end
 
-	.byte 0x00
+	.byte 0x00, 0x00, 0x00
 	.balign 4
-_0606:
+_0608:
 
 	step 14, 1
 	step 12, 2
@@ -480,31 +480,31 @@ _0606:
 	step 33, 1
 	step_end
 	.balign 4
-_061E:
+_0620:
 
 	step 63, 1
 	step 32, 1
 	step_end
 	.balign 4
-_062A:
+_062C:
 
 	step 75, 1
 	step_end
 	.balign 4
-_0632:
+_0634:
 
 	step 12, 3
 	step 33, 1
 	step_end
 	.balign 4
-_063E:
+_0640:
 
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
 	.balign 4
-_064E:
+_0650:
 
 	step 12, 1
 	step 15, 1

@@ -29,12 +29,12 @@
 .equ obj_T29_wataru, 8
 .equ obj_T29_gsman1_2, 9
 .equ obj_T29_follower_mon_static_dragonite, 10
-.equ obj_T29_monstarball, 14
-.equ obj_T29_monstarball_2, 15
+.equ obj_T29_3916, 14
+.equ obj_T29_3587, 15
 .equ obj_T29_tree, 16
 .equ obj_T29_tree_2, 17
 .equ obj_T29_tree_3, 18
-.equ obj_T29_monstarball_3, 19
+.equ obj_T29_monstarball, 19
 .equ obj_T29_gsleader7, 20
 .equ obj_T29_brains2, 21
 

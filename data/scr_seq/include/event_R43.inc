@@ -12,5 +12,6 @@
 .equ obj_R43_badman, 3
 .equ obj_R43_bonguri, 6
 .equ obj_R43_monstarball, 7
+.equ obj_R43_farmer, 4
 
 .endif //SCR_SEQ_R43_H_

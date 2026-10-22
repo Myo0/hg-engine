@@ -390,6 +390,17 @@ const struct ItemUseFuncDat sNewItemFieldUseFuncs[] = {
 
 extern const struct ItemUseFuncDat sItemFieldUseFuncs[NUM_VANILLA_FIELD_USE_FUNCS];
 
+// Flag 397 SET = Porta PC disabled (gauntlets etc.). Escape Rope is a way to leave the area, so it
+// follows the same gate as the party-menu Fly/Dig/Teleport buttons: 0xFFFFFFFF is
+// ITEMUSEERROR_OAKSWORDS, the stock "there is a time and place for everything" refusal.
+static u32 EscapeRopeCheckGated(const struct ItemCheckUseData *data)
+{
+    if (CheckScriptFlag(397) == TRUE) {
+        return 0xFFFFFFFF;
+    }
+    return ItemCheckUseFunc_EscapeRope(data);
+}
+
 void *LONG_CALL GetItemFieldUseFunc(int funcType, u16 itemType)
 {
     const struct ItemUseFuncDat *useFunc;
@@ -407,6 +418,9 @@ void *LONG_CALL GetItemFieldUseFunc(int funcType, u16 itemType)
     } else if (funcType == USE_ITEM_TASK_FIELD) {
         return useFunc->field;
     } else {
+        if (useFunc->check == ItemCheckUseFunc_EscapeRope) {
+            return EscapeRopeCheckGated;
+        }
         return useFunc->check;
     }
 }

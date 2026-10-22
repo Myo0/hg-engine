@@ -4,7 +4,7 @@ That red GYARADOS wasn’t acting right.\nAs I feared, somebody must have forced
 Did you come here because of the\nwild tales?\rYou’re {STRVAR_1 3, 0, 0}?\nI’m Lance, a Trainer like you.\rI heard some rumblings, so I came to\ninvestigate...\rI saw the way you battled earlier,\n{STRVAR_1 3, 0, 0}.\rYou’re strong.\nJust to make sure though...\rBattle my friend here, Argenta.\nShe works at the Battle Frontier.\rShe is a worthy opponent.\r
 Did you come here because of the\nwild tales?\rYou’re {STRVAR_1 3, 0, 0}?\nI’m Lance, a Trainer like you.\rI heard some rumblings, so I came to\ninvestigate...\rI saw the way you battled earlier,\n{STRVAR_1 3, 0, 0}.\rYou’re strong.\nJust to make sure though...\rBattle my friend here, Argenta.\nShe works at the Battle Frontier.\rShe is a worthy opponent.\r
 Lance: Excellent!\rIt seems that the Lake of Rage’s\nMAGIKARP are being forced to evolve.\rA mysterious radio broadcast coming\nfrom Mahogany is probably the cause.\rAnd that suspicious souvenir shop...\rI’ll be waiting for you in Mahogany,\n{STRVAR_1 3, 0, 0}.
-Lance: Excellent!\rIt seems that the Lake of Rage’s\nMAGIKARP are being forced\fto evolve.\rA mysterious radio broadcast coming\nfrom Mahogany is the cause.\rI’ll be waiting for you, {STRVAR_1 3, 0, 0}.
+Lance: Excellent!\rIt seems that the Lake of Rage’s\nMAGIKARP are being forced to evolve.\rA mysterious radio broadcast coming\nfrom Mahogany is probably the cause.\rAnd that suspicious souvenir shop...\rI’ll be waiting for you in Mahogany,\n{STRVAR_1 3, 0, 0}.
 Oh... Well, if you change your mind,\nplease help me.
 Lance: What do you think?\nAre you going to help me? {YESNO 0}
 The GYARADOS are angry!\nIt’s a bad omen!
@@ -39,3 +39,12 @@ Argenta: Pleased to make your\nacquaintance. Shall we?
 Lance: I can tell that you’re a Trainer\nwith considerable skill.\rIf you don’t mind, could you help me\ninvestigate? {YESNO 0}
 Argenta: I recognize that you are\na strong Trainer.\rTake this as a reminder.\r
 {STRVAR_1 3, 0, 0} obtained\nthe {COLOR 2}{STRVAR_1 8, 1, 0}{COLOR 0}!
+Lance: A magnificent battle, {STRVAR_1 3, 0, 0}.\nIt seems you do not have a Mega Ring.\r
+Lance: Allow me to fix that. Would you\nlike a Mega Ring? {YESNO 0}
+Lance: Hm? I’m afraid I must insist.\rBeing able to Mega Evolve is crucial\nfor any Trainer aiming to be Champion.\rMany opponents you will face in\nthe future will have mastered it.\fI recommend you do too.\r
+Lance: So, will you accept the Mega\nRing? {YESNO 0}
+Lance: Wise choice. Take this Ring.\r
+Lance: With that, a Pokémon holding its\nMega Stone can Mega Evolve in battle.\rOnly one Pokémon per battle can, so\nchoose your Mega wisely.\r
+Lance: And one more thing.\rYou began your journey with MUDKIP,\ndid you not?\rTake this Swampertite. Your SWAMPERT\ncan use it to Mega Evolve.\r
+Lance: And one more thing.\rYou began your journey with FENNEKIN,\ndid you not?\rTake this Delphoxite. Your DELPHOX\ncan use it to Mega Evolve.\r
+Lance: And one more thing.\rYou began your journey with\nCHIKORITA, did you not?\rTake this Meganiumite. Your MEGANIUM\ncan use it to Mega Evolve.\r

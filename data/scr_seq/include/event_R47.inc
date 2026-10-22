@@ -6,11 +6,12 @@
 .equ _EV_scr_seq_R47_002, 2
 .equ _EV_scr_seq_R47_003, 3
 .equ _EV_scr_seq_R47_004, 4
+.equ _EV_scr_seq_R47_005, 5
 
 .equ obj_R47_monstarball, 0
 .equ obj_R47_monstarball_2, 1
-.equ obj_R47_monstarball_3, 2
-.equ obj_R47_monstarball_4, 3
+.equ obj_R47_3585, 2
+.equ obj_R47_3959, 3
 .equ obj_R47_mount_2, 4
 .equ obj_R47_leader3, 5
 .equ obj_R47_gsman3, 6
@@ -21,5 +22,6 @@
 .equ obj_R47_gsleader5, 12
 .equ obj_R47_mount_2_2, 13
 .equ obj_R47_gsman3_2, 16
+.equ obj_R47_mania, 11
 
 .endif //SCR_SEQ_R47_H_

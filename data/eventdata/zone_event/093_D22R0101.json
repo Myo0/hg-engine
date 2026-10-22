@@ -45,8 +45,8 @@
   ],
   "object_events": [
     {
-      "id": "obj_D22R0101_monstarball",
-      "graphics_id": "SPRITE_MONSTARBALL",
+      "id": "obj_D22R0101_3916",
+      "graphics_id": 3916,
       "movement_type": 0,
       "trainer_type": 0,
       "hidden_flag": "FLAG_HIDE_ITEMBALL_D22R0101_TM28",
@@ -62,7 +62,7 @@
       "y": 0
     },
     {
-      "id": "obj_D22R0101_monstarball_2",
+      "id": "obj_D22R0101_monstarball",
       "graphics_id": "SPRITE_MONSTARBALL",
       "movement_type": 0,
       "trainer_type": 0,

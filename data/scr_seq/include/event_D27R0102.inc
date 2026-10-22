@@ -12,6 +12,7 @@
 .equ _EV_scr_seq_EVERYWHERE_008, 8
 .equ _EV_scr_seq_EVERYWHERE_009, 9
 .equ _EV_scr_seq_EVERYWHERE_010, 10
+.equ _EV_scr_seq_EVERYWHERE_011, 11
 
 .equ obj_EVERYWHERE_gsgentleman, 0
 

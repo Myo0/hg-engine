@@ -31,8 +31,8 @@
 .equ _EV_scr_seq_D22R0101_027, 27
 .equ _EV_scr_seq_D22R0101_028, 28
 
-.equ obj_D22R0101_monstarball, 0
-.equ obj_D22R0101_monstarball_2, 1
+.equ obj_D22R0101_3916, 0
+.equ obj_D22R0101_monstarball, 1
 .equ obj_D22R0101_gsgirl1, 2
 .equ obj_D22R0101_middlewoman1_2, 3
 .equ obj_D22R0101_gsboy1, 4

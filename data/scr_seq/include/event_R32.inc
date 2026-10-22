@@ -30,8 +30,8 @@
 .equ obj_R32_monstarball_2, 13
 .equ obj_R32_gsgirl1, 14
 .equ obj_R32_breakrock, 15
-.equ obj_R32_monstarball_3, 16
-.equ obj_R32_monstarball_4, 17
+.equ obj_R32_3916, 16
+.equ obj_R32_monstarball_3, 17
 .equ obj_R32_gsmiddleman1_2, 18
 .equ obj_R32_4068, 19
 .equ obj_R32_4064, 20

@@ -976,6 +976,60 @@ sPartyContextMenuActionFuncs = 0x02101CB8;
    -- fonts are reference-counted and lazily loaded, party_menu.c's own init calls this before ever
    printing (FontID_Alloc(4, HEAP_ID_PARTY_MENU)), but nothing else in the overworld does it for us. */
 FontID_Alloc = 0x020030B8 | 1;
+
+/* PutWindowTilemap(Window *) -- directly after ScheduleWindowCopyToVram (0x0201D5C8) in decomp order
+   (CopyWindowToVram, ScheduleWindowCopyToVram, PutWindowTilemap, ClearWindowTilemap); same bgs[mode] dispatch shape;
+   verified working in-game (credits reader). */
+PutWindowTilemap = 0x0201D618 | 1;
+
+/* ---- Credits icon (src/field/touch_menu.c): bindings found by matching pret asm/overlay_27.s against the ROM ----
+   (thumb functions carry |1; GXS_LoadOBJPltt is ARM code) */
+GXS_LoadOBJPltt = 0x020CFD70;
+TouchscreenHitbox_FindRectAtTouchNew = 0x02025225;
+PlayerAvatar_GetPlayerMoveState = 0x0205C6D5;
+IsPaletteFadeFinished = 0x0200FB5D;
+Save_Bag_Get = 0x0207879D;
+Bag_GetRegisteredItem1 = 0x020781C5;
+Bag_GetRegisteredItem2 = 0x020781D1;
+Sprite_SetAnimCtrlSeq = 0x020248F1;
+Sprite_SetOamMode = 0x02024B79;
+Sprite_CreateAffine = 0x02024625;
+Sprite_SetAnimActiveFlag = 0x0202484D;
+Sprite_SetPriority = 0x02024A05;
+Sprite_SetAffineOverwriteMode = 0x0202487D;
+FieldSystem_ShouldDrawStartMenuIcon = 0x0203C3CD;
+AddCharResObjFromNarc = 0x0200A1D9;
+AddPlttResObjFromNarc = 0x0200A235;
+SpriteTransfer_CreateCharTransferTask_AllocAtEnd = 0x0200ADA5;
+SpriteTransfer_CreatePlttTransferTask = 0x0200B00D;
+GF2DGfxResObj_FreeData = 0x0200A741;
+GetItemIndexMapping = 0x02077C19;
+FieldSystem_BugContest_Get = 0x0206DB29;
+GetMonIconPlttNaix = 0x02074491;
+Pokemon_GetIconNaix = 0x020741B1;
+BufferPlayersName = 0x0200BE49;
+Save_PlayerData_GetProfile = 0x02028E9D;
+ReadMsgData_ExpandPlaceholders = 0x0200BC4D;
+FontID_String_GetWidth = 0x02002F31;
+Comm_GetLocalNetId = 0x0203769D;
+CommClubLink_IsWalkingInRoom = 0x02058741;
+CommClubLink_CardExchangeFinished = 0x02058259;
+CommPlayerManager_IsInitialized = 0x02056EE1;
+CommPlayerManager_IsLocalPlayerConnected = 0x02057A0D;
+CommPlayerManager_GetMoveTimer = 0x02057F19;
+Comm_IsSendingMoveKeys = 0x02037959;
+/* overlay 27 functions that are called but not replaced */
+TouchscreenMenu_GetBallItem = 0x0225AE8C | 1;
+TouchscreenMenu_LayoutHasRegisteredItems = 0x0225BDAC | 1;
+TouchscreenMenu_HasRunningShoes = 0x0225BDC8 | 1;
+TouchscreenMenu_SetButtonsActive = 0x0225A690 | 1;
+TouchscreenMenu_GetActionType = 0x0225A594 | 1;
+TouchscreenMenu_PrintActionLabel = 0x0225A61C | 1;
+/* start menu (ARM9, static functions) */
+TaskManager_GetFieldSystem = 0x0205064C | 1;
+TaskManager_GetEnvironment = 0x02050650 | 1;
+StartMenu_RemoveCursorAndIcons = 0x0203C38C | 1;
+StartScriptFromMenu = 0x0203FF0C | 1;
 /* Frontier Brain intro launcher (src/field/frontier_intro.c). Addresses harvested 2026-10-21 from the vanilla ROM with
    /home/hgengine/frontier_tools/harvest.py (pret asm names paired with the real bl targets; calibrated against known entries). */
 HBlankInterruptDisable = 0x0201A108 | 1;

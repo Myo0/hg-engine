@@ -696,6 +696,28 @@ arm9 GF_SndHandleMoveVolume_Hook 02005408 3
 
 arm9 FieldSystem_RestoreMapObjectsFromSave 0203B9F4 1
 
+#ifdef CREDITS_ICON
+# Credits icon: replacement of the icon handling of the bottom-screen touch menu (overlay 27; src/field/touch_menu.c).
+# Addresses are pret asm/overlay_27.s labels (ov27_<address>); total function replacements, see scripts/make.py Hook().
+0027 TouchMenu_InitIconFlags 0225C10C
+0027 TouchMenu_GetMenuIndex 0225C170
+0027 TouchMenu_GetSlotFromMenuIndex 0225C1AC
+0027 TouchMenu_ValidateSelection 0225C1EC
+0027 TouchMenu_HighlightIcon 0225B398
+0027 TouchMenu_HighlightSelectionAndDisable 0225A7DC
+0027 TouchMenu_RestoreAfterStartMenu 0225A86C
+0027 TouchMenu_SetIconsTranslucent 0225B4AC
+0027 TouchMenu_HandleDpadInput 0225B404
+0027 TouchMenu_HandleTouchInput 0225B4D8
+0027 TouchMenu_ShowIcons 0225AA7C
+0027 TouchMenu_ShowNewIcons 0225AAD4
+0027 TouchMenu_LoadIconResources 0225AEA8
+0027 TouchMenu_LoadStrings 0225BB6C
+0027 TouchMenu_FreeStrings 0225BC34
+0027 TouchMenu_PrintIconLabels 0225BCE8
+0027 TouchMenu_CopyIconLabelsToVram 0225BC84
+#endif
+
 #ifdef FRONTIER_BRAIN_INTRO
 # Frontier Brain intro: Task_StartBattle (encounter.c) runs the intro app first when the opponent is a Brain trainer class (src/frontier_intro.c)
 arm9 Task_StartBattle_Hook 02050660 1

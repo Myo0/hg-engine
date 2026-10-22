@@ -79,7 +79,7 @@ scr_seq_R31_006:
 	lockall
 	clearflag FLAG_UNK_18D
 	setvar VAR_UNK_406A, 0
-	apply_movement obj_player, _050A
+	apply_movement obj_player, _050C
 	wait_movement
 	npc_msg 16
 	closemsg
@@ -177,7 +177,7 @@ _019F:
 	get_player_facing VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0347
-	apply_movement obj_player, _0512
+	apply_movement obj_player, _0514
 	goto _0362
 
 _0250:
@@ -259,7 +259,7 @@ _032E:
 _0347:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _046B
-	apply_movement obj_player, _051A
+	apply_movement obj_player, _051C
 	goto _0362
 
 _0362:
@@ -329,7 +329,7 @@ _0415:
 _046B:
 	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _049D
-	apply_movement obj_player, _0522
+	apply_movement obj_player, _0524
 	goto _0362
 
 _0486:
@@ -344,7 +344,7 @@ _0491:
 	goto _019F
 
 _049D:
-	apply_movement obj_player, _052A
+	apply_movement obj_player, _052C
 	wait_movement
 	buffer_players_name 0
 	npc_msg 5
@@ -362,29 +362,29 @@ _049D:
 	setvar VAR_LOAN_SPEAROW, 3
 	goto _040A
 
-	.byte 0x00
+	.byte 0x00, 0x00, 0x00
 	.balign 4
-_050A:
+_050C:
 
 	step 75, 1
 	step_end
 	.balign 4
-_0512:
+_0514:
 
 	step 32, 1
 	step_end
 	.balign 4
-_051A:
+_051C:
 
 	step 33, 1
 	step_end
 	.balign 4
-_0522:
+_0524:
 
 	step 34, 1
 	step_end
 	.balign 4
-_052A:
+_052C:
 
 	step 35, 1
 	step_end

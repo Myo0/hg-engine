@@ -4089,7 +4089,9 @@ int ExpertFlag(struct BattleSystem *bsys, int attacker, int i, struct AIContext 
                 }
             }
             if (hasBoost) {
-                moveScore += 14;
+                // Capped so Baton Pass's whole contribution tops out at +11 (this +10 plus the Regenerator +1
+                // above): a fast KO on the player must still outscore passing.
+                moveScore += 10;
             }
             // else: alive target but nothing to pass — no bonus, no penalty
         }

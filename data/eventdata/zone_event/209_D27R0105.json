@@ -3,8 +3,8 @@
   "eventId": "209",
   "object_events": [
     {
-      "id": "obj_D27R0105_monstarball",
-      "graphics_id": "SPRITE_MONSTARBALL",
+      "id": "obj_D27R0105_3916",
+      "graphics_id": 3916,
       "movement_type": 0,
       "trainer_type": 0,
       "hidden_flag": "FLAG_HIDE_ITEMBALL_D27R0105_TM87",

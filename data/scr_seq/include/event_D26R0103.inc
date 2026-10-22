@@ -5,6 +5,6 @@
 .equ _EV_scr_seq_D26R0103_001, 1
 
 .equ obj_D26R0103_gsassistantm, 0
-.equ obj_D26R0103_monstarball, 1
+.equ obj_D26R0103_3916, 1
 
 .endif //SCR_SEQ_D26R0103_H_

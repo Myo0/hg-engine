@@ -16051,7 +16051,7 @@
       },
       {
         "Level": 32,
-        "Move": "MOVE_BODY_PRESS"
+        "Move": "MOVE_SAND_TOMB"
       },
       {
         "Level": 36,
@@ -16059,7 +16059,7 @@
       },
       {
         "Level": 39,
-        "Move": "MOVE_SAND_TOMB"
+        "Move": "MOVE_SCREECH"
       },
       {
         "Level": 42,
@@ -22059,6 +22059,10 @@
       {
         "Level": 55,
         "Move": "MOVE_LIQUIDATION"
+      },
+      {
+        "Level": 57,
+        "Move": "MOVE_CRUNCH"
       },
       {
         "Level": 59,
@@ -35877,7 +35881,7 @@
       },
       {
         "Level": 32,
-        "Move": "MOVE_BODY_PRESS"
+        "Move": "MOVE_SAND_TOMB"
       },
       {
         "Level": 36,
@@ -35885,7 +35889,7 @@
       },
       {
         "Level": 39,
-        "Move": "MOVE_SAND_TOMB"
+        "Move": "MOVE_SCREECH"
       },
       {
         "Level": 42,

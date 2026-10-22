@@ -20,3 +20,6 @@ arm9 Script_RunNewCmd 080FB040
 0001 WeatherAshfall_Task 02209938
 # overworld weather table row 10 (sun) handler pointer: 0x022098B0 + 10*0x1C + 0x18
 0001 WeatherSun_Task 022099E0
+
+# Credits icon (src/field/touch_menu.c): sStartMenuActions[START_MENU_ACTION_RUNNING_SHOES].func (0x020FA0F4 + 6*8 + 4) was STARTMENUTASKFUNC_CANCEL; now the credits action
+arm9 TouchMenu_CreditsAction 080FA128

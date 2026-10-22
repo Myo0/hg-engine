@@ -119,7 +119,7 @@
       "movement_type": 0,
       "trainer_type": 0,
       "hidden_flag": "FLAG_HIDE_ITEMBALL_R38_LAX_INCENSE",
-      "script": 0,
+      "script": "_EV_scr_seq_R38_006 + 1",
       "initial_dir": 0,
       "param0": 0,
       "param1": 0,

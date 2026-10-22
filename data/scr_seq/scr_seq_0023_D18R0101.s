@@ -37,7 +37,7 @@ scr_seq_D18R0101_000:
 	scrcmd_609
 	lockall
 	callstd std_play_eusine_music
-	apply_movement obj_D18R0101_minaki, _0176
+	apply_movement obj_D18R0101_minaki, _0178
 	wait_movement
 	buffer_players_name 0
 	npc_msg 2
@@ -60,7 +60,7 @@ scr_seq_D18R0101_003:
 	scrcmd_609
 	lockall
 	callstd std_play_rival_intro_music
-	apply_movement obj_D18R0101_gsrivel, _0186
+	apply_movement obj_D18R0101_gsrivel, _0188
 	wait_movement
 	buffer_rivals_name 0
 	npc_msg 0
@@ -88,8 +88,8 @@ _00B6:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 56
-	apply_movement obj_player, _019E
-	apply_movement obj_D18R0101_gsrivel, _01AE
+	apply_movement obj_player, _01A0
+	apply_movement obj_D18R0101_gsrivel, _01B0
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -113,8 +113,8 @@ _010F:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 56
-	apply_movement obj_player, _019E
-	apply_movement obj_D18R0101_gsrivel, _01AE
+	apply_movement obj_player, _01A0
+	apply_movement obj_D18R0101_gsrivel, _01B0
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -131,15 +131,16 @@ _0170:
 	releaseall
 	end
 
+	.byte 0x00, 0x00
 	.balign 4
-_0176:
+_0178:
 
 	step 2, 1
 	step 75, 1
 	step 14, 3
 	step_end
 	.balign 4
-_0186:
+_0188:
 
 	step 1, 1
 	step 75, 1
@@ -148,14 +149,14 @@ _0186:
 	step 1, 1
 	step_end
 	.balign 4
-_019E:
+_01A0:
 
 	step 13, 2
 	step 15, 1
 	step 2, 1
 	step_end
 	.balign 4
-_01AE:
+_01B0:
 
 	step 13, 3
 	step 14, 1

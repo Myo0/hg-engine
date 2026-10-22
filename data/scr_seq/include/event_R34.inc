@@ -29,9 +29,9 @@
 .equ obj_R34_gsoldman1, 10
 .equ obj_R34_var_1, 11
 .equ obj_R34_2684, 12
-.equ obj_R34_monstarball, 14
+.equ obj_R34_3916, 14
 .equ obj_R34_gsmiddleman1, 15
-.equ obj_R34_monstarball_2, 1
+.equ obj_R34_monstarball, 1
 .equ obj_R34_4070, 9
 .equ obj_R34_4067, 16
 .equ obj_R34_4065, 17

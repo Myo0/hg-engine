@@ -14,9 +14,8 @@
 
 .equ obj_W40_gsswimmerm, 2
 .equ obj_W40_gsswimmerw, 3
-.equ obj_W40_gswoman1, 4
 .equ obj_W40_gsmiddleman1, 5
-.equ obj_W40_monstarball, 6
-.equ obj_W40_monstarball_2, 7
+.equ obj_W40_3916, 6
+.equ obj_W40_monstarball, 7
 
 .endif //SCR_SEQ_W40_H_

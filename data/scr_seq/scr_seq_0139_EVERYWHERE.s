@@ -38,13 +38,14 @@ scrdef scr_seq_EVERYWHERE_007
 scrdef scr_seq_EVERYWHERE_008
 scrdef scr_seq_EVERYWHERE_009
 scrdef scr_seq_EVERYWHERE_010
+scrdef scr_seq_EVERYWHERE_011
 scrdef_end
 
 scr_seq_EVERYWHERE_000:
 	lockall
 	setflag FLAG_UNK_18D
 	setvar VAR_OBJ_8, 1
-	apply_movement obj_player, _02DA
+	apply_movement obj_player, _0304
 	wait_movement
 	npc_msg 12
 	closemsg
@@ -55,7 +56,7 @@ scr_seq_EVERYWHERE_001:
 	lockall
 	clearflag FLAG_UNK_18D
 	setvar VAR_OBJ_8, 2
-	apply_movement obj_player, _02DA
+	apply_movement obj_player, _0304
 	wait_movement
 	npc_msg 13
 	closemsg
@@ -66,7 +67,7 @@ scr_seq_EVERYWHERE_002:
 	lockall
 	setflag FLAG_UNK_18D
 	setvar VAR_OBJ_9, 1
-	apply_movement obj_player, _02DA
+	apply_movement obj_player, _0304
 	wait_movement
 	npc_msg 12
 	closemsg
@@ -77,7 +78,7 @@ scr_seq_EVERYWHERE_003:
 	lockall
 	clearflag FLAG_UNK_18D
 	setvar VAR_OBJ_9, 2
-	apply_movement obj_player, _02DA
+	apply_movement obj_player, _0304
 	wait_movement
 	npc_msg 13
 	closemsg
@@ -88,7 +89,7 @@ scr_seq_EVERYWHERE_004:
 	lockall
 	setflag FLAG_UNK_18D
 	setvar VAR_UNK_406A, 1
-	apply_movement obj_player, _02DA
+	apply_movement obj_player, _0304
 	wait_movement
 	npc_msg 12
 	closemsg
@@ -107,7 +108,7 @@ scr_seq_EVERYWHERE_006:
 	lockall
 	clearflag FLAG_UNK_18D
 	setvar VAR_UNK_406A, 0
-	apply_movement obj_player, _02DA
+	apply_movement obj_player, _0304
 	wait_movement
 	npc_msg 13
 	closemsg
@@ -117,36 +118,36 @@ scr_seq_EVERYWHERE_006:
 scr_seq_EVERYWHERE_007:
 	lockall
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	apply_movement obj_player, _02DA
+	apply_movement obj_player, _0304
 	wait_movement
 	compare VAR_SPECIAL_x8004, 14
-	call_if_ne _02B6
+	call_if_ne _02DE
 	npc_msg 2
 	closemsg
-	apply_movement 6, _02DA
-	apply_movement 7, _02DA
+	apply_movement 6, _0304
+	apply_movement 7, _0304
 	wait_movement
-	apply_movement 6, _02E2
-	apply_movement 7, _02E2
+	apply_movement 6, _030C
+	apply_movement 7, _030C
 	wait_movement
 	npc_msg 3
 	closemsg
-	apply_movement 6, _02EA
-	apply_movement 7, _02F2
+	apply_movement 6, _0314
+	apply_movement 7, _031C
 	wait_movement
 	npc_msg 4
 	closemsg
-	apply_movement 6, _02E2
-	apply_movement 7, _02E2
+	apply_movement 6, _030C
+	apply_movement 7, _030C
 	wait_movement
 	trainer_battle TRAINER_GENTLEMAN_MICKEY, 0, 0, 0
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _02C2
-	apply_movement 6, _02FA
-	apply_movement 7, _02F2
+	goto_if_eq _02EA
+	apply_movement 6, _0324
+	apply_movement 7, _031C
 	wait_movement
-	apply_movement 7, _02E2
+	apply_movement 7, _030C
 	wait_movement
 	npc_msg 5
 	closemsg
@@ -169,11 +170,11 @@ scr_seq_EVERYWHERE_008:
 	lockall
 	play_cry SPECIES_CROBAT, 0
 	wait_cry
-	apply_movement obj_player, _02DA
+	apply_movement obj_player, _0304
 	wait_movement
 	play_cry SPECIES_CROBAT, 0
 	wait_cry
-	apply_movement obj_player, _0302
+	apply_movement obj_player, _032C
 	wait_movement
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -184,7 +185,7 @@ scr_seq_EVERYWHERE_008:
 	wait_fade
 	setflag FLAG_UNK_18D
 	setvar VAR_UNK_406E, 1
-	apply_movement obj_player, _02DA
+	apply_movement obj_player, _0304
 	wait_movement
 	npc_msg 6
 	closemsg
@@ -193,9 +194,9 @@ scr_seq_EVERYWHERE_008:
 
 scr_seq_EVERYWHERE_009:
 	lockall
-	apply_movement obj_player, _02DA
+	apply_movement obj_player, _0304
 	wait_movement
-	goto_if_not_defeated TRAINER_BEAUTY_MICKEY_8, _02C6
+	goto_if_not_defeated TRAINER_BEAUTY_MICKEY_8, _02EE
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	play_cry SPECIES_CROBAT, 0
@@ -220,51 +221,61 @@ scr_seq_EVERYWHERE_010:
 	releaseall
 	end
 
-_02B6:
-	apply_movement obj_player, _0316
+scr_seq_EVERYWHERE_011:
+	lockall
+	play_se SEQ_SE_DP_SELECT
+	hide_person 2
+	giveitem_no_check ITEM_TM102, 1
+	setflag FLAG_HIDE_ITEMBALL_D38R0103_TM40
+	closemsg
+	releaseall
+	end
+
+_02DE:
+	apply_movement obj_player, _0340
 	wait_movement
 	return
 
-_02C2:
+_02EA:
 	white_out
 	end
 
-_02C6:
+_02EE:
 	npc_msg 8
 	closemsg
-	apply_movement obj_player, _031E
+	apply_movement obj_player, _0348
 	wait_movement
 	releaseall
 	end
 
-	.byte 0x00
+	.byte 0x00, 0x00, 0x00
 	.balign 4
-_02DA:
+_0304:
 
 	step 75, 1
 	step_end
 	.balign 4
-_02E2:
+_030C:
 
 	step 1, 1
 	step_end
 	.balign 4
-_02EA:
+_0314:
 
 	step 3, 1
 	step_end
 	.balign 4
-_02F2:
+_031C:
 
 	step 2, 1
 	step_end
 	.balign 4
-_02FA:
+_0324:
 
 	step 33, 2
 	step_end
 	.balign 4
-_0302:
+_032C:
 
 	step 30, 1
 	step 31, 1
@@ -272,12 +283,12 @@ _0302:
 	step 75, 1
 	step_end
 	.balign 4
-_0316:
+_0340:
 
 	step 0, 1
 	step_end
 	.balign 4
-_031E:
+_0348:
 
 	step 12, 1
 	step_end

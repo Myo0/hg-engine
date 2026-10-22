@@ -96,7 +96,7 @@ scr_seq_D23R0104_007:
 	get_player_facing VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 2
 	goto_if_ne _0184
-	apply_movement obj_D23R0104_rocketw, _024A
+	apply_movement obj_D23R0104_rocketw, _024C
 	goto _01BB
 
 scr_seq_D23R0104_008:
@@ -143,7 +143,7 @@ _0171:
 	end
 
 _0184:
-	apply_movement obj_D23R0104_rocketw, _0256
+	apply_movement obj_D23R0104_rocketw, _0258
 	wait_movement
 	npc_msg 13
 	closemsg
@@ -207,14 +207,15 @@ _023F:
 	releaseall
 	end
 
+	.byte 0x00, 0x00
 	.balign 4
-_024A:
+_024C:
 
 	step 75, 1
 	step 35, 1
 	step_end
 	.balign 4
-_0256:
+_0258:
 
 	step 75, 1
 	step 33, 1

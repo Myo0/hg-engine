@@ -62,7 +62,7 @@ scr_seq_D44R0103_003:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	apply_movement obj_player, _0FB2
+	apply_movement obj_player, _0FB4
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -135,24 +135,24 @@ scr_seq_D44R0103_003:
 	play_se SEQ_SE_DP_DOOR
 	wait 5, VAR_SPECIAL_x8004
 	callstd std_play_clair_music
-	apply_movement obj_player, _0FBA
-	apply_movement obj_D44R0103_gsleader8, _0FD2
+	apply_movement obj_player, _0FBC
+	apply_movement obj_D44R0103_gsleader8, _0FD4
 	wait_movement
 	npc_msg 10
-	apply_movement obj_D44R0103_gsleader8, _0FEA
+	apply_movement obj_D44R0103_gsleader8, _0FEC
 	wait_movement
 	npc_msg 11
-	apply_movement obj_D44R0103_gsleader8, _0FFA
+	apply_movement obj_D44R0103_gsleader8, _0FFC
 	wait_movement
 	npc_msg 12
-	apply_movement obj_D44R0103_chourou, _1006
+	apply_movement obj_D44R0103_chourou, _1008
 	wait_movement
 	npc_msg 13
-	apply_movement obj_D44R0103_gsleader8, _1016
+	apply_movement obj_D44R0103_gsleader8, _1018
 	wait_movement
 	npc_msg 14
-	apply_movement obj_D44R0103_gsleader8, _101E
-	apply_movement obj_D44R0103_chourou, _1026
+	apply_movement obj_D44R0103_gsleader8, _1020
+	apply_movement obj_D44R0103_chourou, _1028
 	wait_movement
 	npc_msg 15
 	buffer_players_name 0
@@ -168,21 +168,21 @@ scr_seq_D44R0103_003:
 	npc_msg 33
 	closemsg
 	giveitem_no_check ITEM_CHARIZARDITE_X, 1
-	apply_movement obj_D44R0103_chourou, _1032
-	apply_movement obj_player, _1042
-	apply_movement obj_D44R0103_gsleader8, _104E
+	apply_movement obj_D44R0103_chourou, _1034
+	apply_movement obj_player, _1044
+	apply_movement obj_D44R0103_gsleader8, _1050
 	wait_movement
 	npc_msg 18
 	closemsg
 	wait 15, VAR_SPECIAL_x8005
 	npc_msg 19
 	closemsg
-	apply_movement obj_D44R0103_gsleader8, _105E
+	apply_movement obj_D44R0103_gsleader8, _1060
 	wait_movement
 	hide_person obj_D44R0103_gsleader8
 	callstd std_fade_end_clair_music
 	wait_fanfare
-	apply_movement obj_D44R0103_chourou, _107A
+	apply_movement obj_D44R0103_chourou, _107C
 	wait_movement
 	get_game_version VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 7
@@ -218,8 +218,8 @@ scr_seq_D44R0103_005:
 	get_player_facing VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _04E2
-	apply_movement obj_player, _1082
-	apply_movement obj_D44R0103_gsmiddleman1, _109A
+	apply_movement obj_player, _1084
+	apply_movement obj_D44R0103_gsmiddleman1, _109C
 	goto _04FD
 
 _0388:
@@ -260,10 +260,10 @@ _03CA:
 
 _03D2:
 	setflag FLAG_FAILED_DRAGONS_DEN_QUIZ
-	apply_movement obj_D44R0103_chourou, _10A6
+	apply_movement obj_D44R0103_chourou, _10A8
 	wait_movement
 	npc_msg 7
-	apply_movement obj_D44R0103_chourou, _10B6
+	apply_movement obj_D44R0103_chourou, _10B8
 	wait_movement
 	npc_msg 8
 	wait_ab_press
@@ -330,7 +330,7 @@ _04CE:
 _04E2:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0E73
-	apply_movement obj_player, _10BE
+	apply_movement obj_player, _10C0
 	goto _04FD
 
 _04FD:
@@ -341,7 +341,7 @@ _04FD:
 	scrcmd_729 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0E96
-	apply_movement obj_partner_poke, _10CA
+	apply_movement obj_partner_poke, _10CC
 	wait_movement
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -449,24 +449,24 @@ _05B4:
 	play_se SEQ_SE_DP_DOOR
 	wait 5, VAR_SPECIAL_x8004
 	callstd std_play_clair_music
-	apply_movement obj_player, _0FBA
-	apply_movement obj_D44R0103_gsleader8, _0FD2
+	apply_movement obj_player, _0FBC
+	apply_movement obj_D44R0103_gsleader8, _0FD4
 	wait_movement
 	npc_msg 10
-	apply_movement obj_D44R0103_gsleader8, _0FEA
+	apply_movement obj_D44R0103_gsleader8, _0FEC
 	wait_movement
 	npc_msg 11
-	apply_movement obj_D44R0103_gsleader8, _0FFA
+	apply_movement obj_D44R0103_gsleader8, _0FFC
 	wait_movement
 	npc_msg 12
-	apply_movement obj_D44R0103_chourou, _1006
+	apply_movement obj_D44R0103_chourou, _1008
 	wait_movement
 	npc_msg 13
-	apply_movement obj_D44R0103_gsleader8, _1016
+	apply_movement obj_D44R0103_gsleader8, _1018
 	wait_movement
 	npc_msg 14
-	apply_movement obj_D44R0103_gsleader8, _101E
-	apply_movement obj_D44R0103_chourou, _1026
+	apply_movement obj_D44R0103_gsleader8, _1020
+	apply_movement obj_D44R0103_chourou, _1028
 	wait_movement
 	npc_msg 15
 	buffer_players_name 0
@@ -475,21 +475,21 @@ _05B4:
 	wait_fanfare
 	give_badge BADGE_RISING
 	npc_msg 17
-	apply_movement obj_D44R0103_chourou, _1032
-	apply_movement obj_player, _1042
-	apply_movement obj_D44R0103_gsleader8, _104E
+	apply_movement obj_D44R0103_chourou, _1034
+	apply_movement obj_player, _1044
+	apply_movement obj_D44R0103_gsleader8, _1050
 	wait_movement
 	npc_msg 18
 	closemsg
 	wait 15, VAR_SPECIAL_x8005
 	npc_msg 19
 	closemsg
-	apply_movement obj_D44R0103_gsleader8, _105E
+	apply_movement obj_D44R0103_gsleader8, _1060
 	wait_movement
 	hide_person obj_D44R0103_gsleader8
 	callstd std_fade_end_clair_music
 	wait_fanfare
-	apply_movement obj_D44R0103_chourou, _107A
+	apply_movement obj_D44R0103_chourou, _107C
 	wait_movement
 	get_game_version VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 7
@@ -553,24 +553,24 @@ _07E7:
 	play_se SEQ_SE_DP_DOOR
 	wait 5, VAR_SPECIAL_x8004
 	callstd std_play_clair_music
-	apply_movement obj_player, _0FBA
-	apply_movement obj_D44R0103_gsleader8, _0FD2
+	apply_movement obj_player, _0FBC
+	apply_movement obj_D44R0103_gsleader8, _0FD4
 	wait_movement
 	npc_msg 10
-	apply_movement obj_D44R0103_gsleader8, _0FEA
+	apply_movement obj_D44R0103_gsleader8, _0FEC
 	wait_movement
 	npc_msg 11
-	apply_movement obj_D44R0103_gsleader8, _0FFA
+	apply_movement obj_D44R0103_gsleader8, _0FFC
 	wait_movement
 	npc_msg 12
-	apply_movement obj_D44R0103_chourou, _1006
+	apply_movement obj_D44R0103_chourou, _1008
 	wait_movement
 	npc_msg 13
-	apply_movement obj_D44R0103_gsleader8, _1016
+	apply_movement obj_D44R0103_gsleader8, _1018
 	wait_movement
 	npc_msg 14
-	apply_movement obj_D44R0103_gsleader8, _101E
-	apply_movement obj_D44R0103_chourou, _1026
+	apply_movement obj_D44R0103_gsleader8, _1020
+	apply_movement obj_D44R0103_chourou, _1028
 	wait_movement
 	npc_msg 15
 	buffer_players_name 0
@@ -579,21 +579,21 @@ _07E7:
 	wait_fanfare
 	give_badge BADGE_RISING
 	npc_msg 17
-	apply_movement obj_D44R0103_chourou, _1032
-	apply_movement obj_player, _1042
-	apply_movement obj_D44R0103_gsleader8, _104E
+	apply_movement obj_D44R0103_chourou, _1034
+	apply_movement obj_player, _1044
+	apply_movement obj_D44R0103_gsleader8, _1050
 	wait_movement
 	npc_msg 18
 	closemsg
 	wait 15, VAR_SPECIAL_x8005
 	npc_msg 19
 	closemsg
-	apply_movement obj_D44R0103_gsleader8, _105E
+	apply_movement obj_D44R0103_gsleader8, _1060
 	wait_movement
 	hide_person obj_D44R0103_gsleader8
 	callstd std_fade_end_clair_music
 	wait_fanfare
-	apply_movement obj_D44R0103_chourou, _107A
+	apply_movement obj_D44R0103_chourou, _107C
 	wait_movement
 	get_game_version VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 7
@@ -645,24 +645,24 @@ _09DB:
 	play_se SEQ_SE_DP_DOOR
 	wait 5, VAR_SPECIAL_x8004
 	callstd std_play_clair_music
-	apply_movement obj_player, _0FBA
-	apply_movement obj_D44R0103_gsleader8, _0FD2
+	apply_movement obj_player, _0FBC
+	apply_movement obj_D44R0103_gsleader8, _0FD4
 	wait_movement
 	npc_msg 10
-	apply_movement obj_D44R0103_gsleader8, _0FEA
+	apply_movement obj_D44R0103_gsleader8, _0FEC
 	wait_movement
 	npc_msg 11
-	apply_movement obj_D44R0103_gsleader8, _0FFA
+	apply_movement obj_D44R0103_gsleader8, _0FFC
 	wait_movement
 	npc_msg 12
-	apply_movement obj_D44R0103_chourou, _1006
+	apply_movement obj_D44R0103_chourou, _1008
 	wait_movement
 	npc_msg 13
-	apply_movement obj_D44R0103_gsleader8, _1016
+	apply_movement obj_D44R0103_gsleader8, _1018
 	wait_movement
 	npc_msg 14
-	apply_movement obj_D44R0103_gsleader8, _101E
-	apply_movement obj_D44R0103_chourou, _1026
+	apply_movement obj_D44R0103_gsleader8, _1020
+	apply_movement obj_D44R0103_chourou, _1028
 	wait_movement
 	npc_msg 15
 	buffer_players_name 0
@@ -671,21 +671,21 @@ _09DB:
 	wait_fanfare
 	give_badge BADGE_RISING
 	npc_msg 17
-	apply_movement obj_D44R0103_chourou, _1032
-	apply_movement obj_player, _1042
-	apply_movement obj_D44R0103_gsleader8, _104E
+	apply_movement obj_D44R0103_chourou, _1034
+	apply_movement obj_player, _1044
+	apply_movement obj_D44R0103_gsleader8, _1050
 	wait_movement
 	npc_msg 18
 	closemsg
 	wait 15, VAR_SPECIAL_x8005
 	npc_msg 19
 	closemsg
-	apply_movement obj_D44R0103_gsleader8, _105E
+	apply_movement obj_D44R0103_gsleader8, _1060
 	wait_movement
 	hide_person obj_D44R0103_gsleader8
 	callstd std_fade_end_clair_music
 	wait_fanfare
-	apply_movement obj_D44R0103_chourou, _107A
+	apply_movement obj_D44R0103_chourou, _107C
 	wait_movement
 	get_game_version VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 7
@@ -725,24 +725,24 @@ _0B90:
 	play_se SEQ_SE_DP_DOOR
 	wait 5, VAR_SPECIAL_x8004
 	callstd std_play_clair_music
-	apply_movement obj_player, _0FBA
-	apply_movement obj_D44R0103_gsleader8, _0FD2
+	apply_movement obj_player, _0FBC
+	apply_movement obj_D44R0103_gsleader8, _0FD4
 	wait_movement
 	npc_msg 10
-	apply_movement obj_D44R0103_gsleader8, _0FEA
+	apply_movement obj_D44R0103_gsleader8, _0FEC
 	wait_movement
 	npc_msg 11
-	apply_movement obj_D44R0103_gsleader8, _0FFA
+	apply_movement obj_D44R0103_gsleader8, _0FFC
 	wait_movement
 	npc_msg 12
-	apply_movement obj_D44R0103_chourou, _1006
+	apply_movement obj_D44R0103_chourou, _1008
 	wait_movement
 	npc_msg 13
-	apply_movement obj_D44R0103_gsleader8, _1016
+	apply_movement obj_D44R0103_gsleader8, _1018
 	wait_movement
 	npc_msg 14
-	apply_movement obj_D44R0103_gsleader8, _101E
-	apply_movement obj_D44R0103_chourou, _1026
+	apply_movement obj_D44R0103_gsleader8, _1020
+	apply_movement obj_D44R0103_chourou, _1028
 	wait_movement
 	npc_msg 15
 	buffer_players_name 0
@@ -752,21 +752,21 @@ _0B90:
 	give_badge BADGE_RISING
 	setflag FLAG_UNK_A12
 	npc_msg 17
-	apply_movement obj_D44R0103_chourou, _1032
-	apply_movement obj_player, _1042
-	apply_movement obj_D44R0103_gsleader8, _104E
+	apply_movement obj_D44R0103_chourou, _1034
+	apply_movement obj_player, _1044
+	apply_movement obj_D44R0103_gsleader8, _1050
 	wait_movement
 	npc_msg 18
 	closemsg
 	wait 15, VAR_SPECIAL_x8005
 	npc_msg 19
 	closemsg
-	apply_movement obj_D44R0103_gsleader8, _105E
+	apply_movement obj_D44R0103_gsleader8, _1060
 	wait_movement
 	hide_person obj_D44R0103_gsleader8
 	callstd std_fade_end_clair_music
 	wait_fanfare
-	apply_movement obj_D44R0103_chourou, _107A
+	apply_movement obj_D44R0103_chourou, _107C
 	wait_movement
 	get_game_version VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 7
@@ -794,24 +794,24 @@ _0D0A:
 	play_se SEQ_SE_DP_DOOR
 	wait 5, VAR_SPECIAL_x8004
 	callstd std_play_clair_music
-	apply_movement obj_player, _0FBA
-	apply_movement obj_D44R0103_gsleader8, _0FD2
+	apply_movement obj_player, _0FBC
+	apply_movement obj_D44R0103_gsleader8, _0FD4
 	wait_movement
 	npc_msg 10
-	apply_movement obj_D44R0103_gsleader8, _0FEA
+	apply_movement obj_D44R0103_gsleader8, _0FEC
 	wait_movement
 	npc_msg 11
-	apply_movement obj_D44R0103_gsleader8, _0FFA
+	apply_movement obj_D44R0103_gsleader8, _0FFC
 	wait_movement
 	npc_msg 12
-	apply_movement obj_D44R0103_chourou, _1006
+	apply_movement obj_D44R0103_chourou, _1008
 	wait_movement
 	npc_msg 13
-	apply_movement obj_D44R0103_gsleader8, _1016
+	apply_movement obj_D44R0103_gsleader8, _1018
 	wait_movement
 	npc_msg 14
-	apply_movement obj_D44R0103_gsleader8, _101E
-	apply_movement obj_D44R0103_chourou, _1026
+	apply_movement obj_D44R0103_gsleader8, _1020
+	apply_movement obj_D44R0103_chourou, _1028
 	wait_movement
 	npc_msg 15
 	buffer_players_name 0
@@ -820,21 +820,21 @@ _0D0A:
 	wait_fanfare
 	give_badge BADGE_RISING
 	npc_msg 17
-	apply_movement obj_D44R0103_chourou, _1032
-	apply_movement obj_player, _1042
-	apply_movement obj_D44R0103_gsleader8, _104E
+	apply_movement obj_D44R0103_chourou, _1034
+	apply_movement obj_player, _1044
+	apply_movement obj_D44R0103_gsleader8, _1050
 	wait_movement
 	npc_msg 18
 	closemsg
 	wait 15, VAR_SPECIAL_x8005
 	npc_msg 19
 	closemsg
-	apply_movement obj_D44R0103_gsleader8, _105E
+	apply_movement obj_D44R0103_gsleader8, _1060
 	wait_movement
 	hide_person obj_D44R0103_gsleader8
 	callstd std_fade_end_clair_music
 	wait_fanfare
-	apply_movement obj_D44R0103_chourou, _107A
+	apply_movement obj_D44R0103_chourou, _107C
 	wait_movement
 	get_game_version VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 7
@@ -858,8 +858,8 @@ _0E69:
 _0E73:
 	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _0F3B
-	apply_movement obj_player, _10DA
-	apply_movement obj_D44R0103_gsmiddleman1, _109A
+	apply_movement obj_player, _10DC
+	apply_movement obj_D44R0103_gsmiddleman1, _109C
 	goto _04FD
 
 _0E96:
@@ -911,8 +911,8 @@ _0F2E:
 	end
 
 _0F3B:
-	apply_movement obj_player, _10EE
-	apply_movement obj_D44R0103_gsmiddleman1, _109A
+	apply_movement obj_player, _10F0
+	apply_movement obj_D44R0103_gsmiddleman1, _109C
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -920,7 +920,7 @@ _0F3B:
 	scrcmd_729 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0E96
-	apply_movement obj_partner_poke, _10CA
+	apply_movement obj_partner_poke, _10CC
 	wait_movement
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -941,13 +941,14 @@ _0FAC:
 	setflag FLAG_GOT_DRATINI_FROM_MASTER_LONG_AGO
 	end
 
+	.byte 0x00, 0x00
 	.balign 4
-_0FB2:
+_0FB4:
 
 	step 12, 8
 	step_end
 	.balign 4
-_0FBA:
+_0FBC:
 
 	step 63, 1
 	step 75, 1
@@ -956,7 +957,7 @@ _0FBA:
 	step 2, 1
 	step_end
 	.balign 4
-_0FD2:
+_0FD4:
 
 	step 63, 4
 	step 12, 8
@@ -965,63 +966,63 @@ _0FD2:
 	step 3, 1
 	step_end
 	.balign 4
-_0FEA:
+_0FEC:
 
 	step 63, 1
 	step 71, 1
 	step 18, 1
 	step_end
 	.balign 4
-_0FFA:
+_0FFC:
 
 	step 63, 1
 	step 10, 1
 	step_end
 	.balign 4
-_1006:
+_1008:
 
 	step 63, 1
 	step 9, 1
 	step 10, 1
 	step_end
 	.balign 4
-_1016:
+_1018:
 
 	step 75, 1
 	step_end
 	.balign 4
-_101E:
+_1020:
 
 	step 15, 2
 	step_end
 	.balign 4
-_1026:
+_1028:
 
 	step 63, 2
 	step 3, 1
 	step_end
 	.balign 4
-_1032:
+_1034:
 
 	step 8, 1
 	step 11, 1
 	step 1, 1
 	step_end
 	.balign 4
-_1042:
+_1044:
 
 	step 65, 2
 	step 0, 1
 	step_end
 	.balign 4
-_104E:
+_1050:
 
 	step 72, 1
 	step 65, 2
 	step 0, 1
 	step_end
 	.balign 4
-_105E:
+_1060:
 
 	step 71, 1
 	step 13, 1
@@ -1031,12 +1032,12 @@ _105E:
 	step 21, 4
 	step_end
 	.balign 4
-_107A:
+_107C:
 
 	step 33, 1
 	step_end
 	.balign 4
-_1082:
+_1084:
 
 	step 15, 1
 	step 12, 2
@@ -1045,38 +1046,38 @@ _1082:
 	step 33, 1
 	step_end
 	.balign 4
-_109A:
+_109C:
 
 	step 63, 1
 	step 32, 1
 	step_end
 	.balign 4
-_10A6:
+_10A8:
 
 	step 63, 2
 	step 3, 1
 	step 63, 2
 	step_end
 	.balign 4
-_10B6:
+_10B8:
 
 	step 1, 1
 	step_end
 	.balign 4
-_10BE:
+_10C0:
 
 	step 12, 3
 	step 33, 1
 	step_end
 	.balign 4
-_10CA:
+_10CC:
 
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
 	.balign 4
-_10DA:
+_10DC:
 
 	step 12, 1
 	step 15, 1
@@ -1084,7 +1085,7 @@ _10DA:
 	step 33, 1
 	step_end
 	.balign 4
-_10EE:
+_10F0:
 
 	step 12, 1
 	step 14, 1
