@@ -11,5 +11,6 @@
 .equ obj_T04PC0101_pcwoman2_3, 3
 .equ obj_T04PC0101_gsman1, 4
 .equ obj_T04PC0101_gsbigman, 5
+.equ obj_T04PC0101_maid, 6
 
 .endif //SCR_SEQ_T04PC0101_H_

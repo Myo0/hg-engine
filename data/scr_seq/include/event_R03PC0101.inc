@@ -11,5 +11,6 @@
 .equ obj_R03PC0101_pcwoman2_3, 3
 .equ obj_R03PC0101_mount_2, 4
 .equ obj_R03PC0101_campboy_2, 5
+.equ obj_R03PC0101_maid, 6
 
 .endif //SCR_SEQ_R03PC0101_H_

@@ -13,5 +13,6 @@
 .equ obj_T30PC0101_pcwoman2, 4
 .equ obj_T30PC0101_pcwoman2_2, 5
 .equ obj_T30PC0101_pcwoman2_3, 6
+.equ obj_T30PC0101_maid, 7
 
 .endif //SCR_SEQ_T30PC0101_H_

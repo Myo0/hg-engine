@@ -103,6 +103,7 @@ scrdef scr_seq_0003_072_repels
 scrdef scr_seq_0003_073_autobattle_testing
 scrdef scr_seq_0003_074
 scrdef scr_seq_0003_075_berry_tree
+scrdef scr_seq_0003_077_pc_services
 scrdef scr_seq_0003_078_frontier_intro_test
 scrdef_end
 
@@ -2006,6 +2007,326 @@ _berry_tree_full:
     closemsg
     endstd
     end
+// -------------------------------------------------------
+// scr_seq_0003_077_pc_services  (callstd 2077 / EventSet_Script(fsys, 2077, NULL))
+// Pokemon Center services NPC (the maid beside Nurse Joy): 1 Heart Scale = max one IV, 3 Heart Scales = change Nature,
+// free Move Deleter, 1 Heart Scale = Move Relearner. One shared copy for every Pokemon Center (Johto, Kanto, League);
+// the map objects just point at script 2077. Messages live in data/text/040.txt, indices 141-170.
+// Menu labels for the Nature list are text ids 224-249 of the standard menu bank (same as the old per-map copies).
+// -------------------------------------------------------
+scr_seq_0003_077_pc_services:
+    play_se SEQ_SE_DP_SELECT
+    lockall
+    faceplayer
+    npc_msg 141
+    goto _pcsvc_00B8
+
+_pcsvc_00B8:
+	setvar VAR_UNK_416C, 0
+	scrcmd_065 19, 1, 0, 1, VAR_SPECIAL_RESULT
+	scrcmd_066 142, 0
+	scrcmd_066 143, 1
+	scrcmd_066 144, 2
+	scrcmd_066 145, 3
+	scrcmd_067
+	copyvar VAR_SPECIAL_x8009, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_x8009, 0
+	goto_if_eq _pcsvc_011B
+	compare VAR_SPECIAL_x8009, 1
+	goto_if_eq _pcsvc_0232
+	compare VAR_SPECIAL_x8009, 2
+	goto_if_eq _pcsvc_04E2
+	compare VAR_SPECIAL_x8009, 3
+	goto_if_eq _pcsvc_05C2
+	npc_msg 146
+	closemsg
+	releaseall
+	end
+
+_pcsvc_011B:
+	npc_msg 162
+	hasitem ITEM_HEART_SCALE, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
+	goto_if_eq _pcsvc_0676
+	scrcmd_065 19, 1, 0, 1, VAR_SPECIAL_RESULT
+	scrcmd_066 147, 0
+	scrcmd_066 148, 1
+	scrcmd_066 149, 2
+	scrcmd_066 150, 3
+	scrcmd_066 151, 4
+	scrcmd_066 152, 5
+	scrcmd_066 153, 6
+	scrcmd_067
+	copyvar VAR_SPECIAL_x8009, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_x8009, 0
+	goto_if_eq _pcsvc_01C0
+	compare VAR_SPECIAL_x8009, 1
+	goto_if_eq _pcsvc_01C0
+	compare VAR_SPECIAL_x8009, 2
+	goto_if_eq _pcsvc_01C0
+	compare VAR_SPECIAL_x8009, 3
+	goto_if_eq _pcsvc_01C0
+	compare VAR_SPECIAL_x8009, 4
+	goto_if_eq _pcsvc_01C0
+	compare VAR_SPECIAL_x8009, 5
+	goto_if_eq _pcsvc_01C0
+	compare VAR_SPECIAL_x8009, 6
+	goto_if_eq _pcsvc_021E
+	goto _pcsvc_021E
+
+_pcsvc_01C0:
+	fade_screen 6, 1, 0, RGB_BLACK
+	wait_fade
+	party_select_ui
+	get_party_selection VAR_SPECIAL_x8008
+	restore_overworld
+	fade_screen 6, 1, 1, RGB_BLACK
+	wait_fade
+	case 255, _pcsvc_021E
+	get_partymon_species VAR_SPECIAL_x8008, VAR_SPECIAL_x8001
+	compare VAR_SPECIAL_x8001, 0
+	goto_if_eq _pcsvc_0227
+	scrcmd_208 1, 0
+	npc_msg 154
+	closemsg
+	takeitem ITEM_HEART_SCALE, 1, VAR_SPECIAL_RESULT
+	buffer_players_name 3
+	npc_msg 169
+	closemsg
+	releaseall
+	end
+
+_pcsvc_021E:
+	npc_msg 146
+	closemsg
+	releaseall
+	end
+
+_pcsvc_0227:
+	npc_msg 155
+	wait_button
+	closemsg
+	releaseall
+	end
+
+_pcsvc_0232:
+	npc_msg 164
+	closemsg
+	hasitem ITEM_HEART_SCALE, 3, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
+	goto_if_eq _pcsvc_0676
+	scrcmd_068 10, 1, 0, 1, VAR_SPECIAL_RESULT
+	scrcmd_070 224, 20, 0
+	scrcmd_070 225, 20, 1
+	scrcmd_070 226, 20, 2
+	scrcmd_070 227, 20, 3
+	scrcmd_070 228, 20, 4
+	scrcmd_070 229, 20, 5
+	scrcmd_070 230, 20, 6
+	scrcmd_070 231, 20, 7
+	scrcmd_070 232, 20, 8
+	scrcmd_070 233, 20, 9
+	scrcmd_070 234, 20, 10
+	scrcmd_070 235, 20, 11
+	scrcmd_070 236, 20, 12
+	scrcmd_070 237, 20, 13
+	scrcmd_070 238, 20, 14
+	scrcmd_070 239, 20, 15
+	scrcmd_070 240, 20, 16
+	scrcmd_070 241, 20, 17
+	scrcmd_070 242, 20, 18
+	scrcmd_070 243, 20, 19
+	scrcmd_070 244, 20, 20
+	scrcmd_070 245, 20, 21
+	scrcmd_070 246, 20, 22
+	scrcmd_070 247, 20, 23
+	scrcmd_070 248, 20, 24
+	scrcmd_070 249, 20, 25
+	scrcmd_071
+	copyvar VAR_SPECIAL_x8009, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_x8009, 0
+	goto_if_eq _pcsvc_0484
+	compare VAR_SPECIAL_x8009, 1
+	goto_if_eq _pcsvc_0484
+	compare VAR_SPECIAL_x8009, 2
+	goto_if_eq _pcsvc_0484
+	compare VAR_SPECIAL_x8009, 3
+	goto_if_eq _pcsvc_0484
+	compare VAR_SPECIAL_x8009, 4
+	goto_if_eq _pcsvc_0484
+	compare VAR_SPECIAL_x8009, 5
+	goto_if_eq _pcsvc_0484
+	compare VAR_SPECIAL_x8009, 6
+	goto_if_eq _pcsvc_0484
+	compare VAR_SPECIAL_x8009, 7
+	goto_if_eq _pcsvc_0484
+	compare VAR_SPECIAL_x8009, 8
+	goto_if_eq _pcsvc_0484
+	compare VAR_SPECIAL_x8009, 9
+	goto_if_eq _pcsvc_0484
+	compare VAR_SPECIAL_x8009, 10
+	goto_if_eq _pcsvc_0484
+	compare VAR_SPECIAL_x8009, 11
+	goto_if_eq _pcsvc_0484
+	compare VAR_SPECIAL_x8009, 12
+	goto_if_eq _pcsvc_0484
+	compare VAR_SPECIAL_x8009, 13
+	goto_if_eq _pcsvc_0484
+	compare VAR_SPECIAL_x8009, 14
+	goto_if_eq _pcsvc_0484
+	compare VAR_SPECIAL_x8009, 15
+	goto_if_eq _pcsvc_0484
+	compare VAR_SPECIAL_x8009, 16
+	goto_if_eq _pcsvc_0484
+	compare VAR_SPECIAL_x8009, 17
+	goto_if_eq _pcsvc_0484
+	compare VAR_SPECIAL_x8009, 18
+	goto_if_eq _pcsvc_0484
+	compare VAR_SPECIAL_x8009, 19
+	goto_if_eq _pcsvc_0484
+	compare VAR_SPECIAL_x8009, 20
+	goto_if_eq _pcsvc_0484
+	compare VAR_SPECIAL_x8009, 21
+	goto_if_eq _pcsvc_0484
+	compare VAR_SPECIAL_x8009, 22
+	goto_if_eq _pcsvc_0484
+	compare VAR_SPECIAL_x8009, 23
+	goto_if_eq _pcsvc_0484
+	compare VAR_SPECIAL_x8009, 24
+	goto_if_eq _pcsvc_0484
+	compare VAR_SPECIAL_x8009, 25
+	goto_if_eq _pcsvc_021E
+	goto _pcsvc_021E
+
+_pcsvc_0484:
+	fade_screen 6, 1, 0, RGB_BLACK
+	wait_fade
+	party_select_ui
+	get_party_selection VAR_SPECIAL_x8008
+	restore_overworld
+	fade_screen 6, 1, 1, RGB_BLACK
+	wait_fade
+	case 255, _pcsvc_021E
+	get_partymon_species VAR_SPECIAL_x8008, VAR_SPECIAL_x8001
+	compare VAR_SPECIAL_x8001, 0
+	goto_if_eq _pcsvc_0227
+	scrcmd_208 2, 0
+	npc_msg 156
+	closemsg
+	takeitem ITEM_HEART_SCALE, 3, VAR_SPECIAL_RESULT
+	buffer_players_name 3
+	npc_msg 170
+	closemsg
+	releaseall
+	end
+
+_pcsvc_04E2:
+	npc_msg 157
+	wait_button
+	closemsg
+	fade_screen 6, 1, 0, RGB_BLACK
+	wait_fade
+	party_select_ui
+	get_party_selection VAR_SPECIAL_x8002
+	restore_overworld
+	fade_screen 6, 1, 1, RGB_BLACK
+	wait_fade
+	compare VAR_SPECIAL_x8002, 255
+	goto_if_eq _pcsvc_021E
+	get_partymon_species VAR_SPECIAL_x8002, VAR_SPECIAL_x8001
+	compare VAR_SPECIAL_x8001, 0
+	goto_if_eq _pcsvc_0227
+	count_mon_moves VAR_SPECIAL_RESULT, VAR_SPECIAL_x8002
+	compare VAR_SPECIAL_RESULT, 1
+	goto_if_eq _pcsvc_05A0
+	npc_msg 159
+	wait_button
+	closemsg
+	fade_screen 6, 1, 0, RGB_BLACK
+	wait_fade
+	scrcmd_394 VAR_SPECIAL_x8002
+	scrcmd_395 VAR_SPECIAL_x8001
+	restore_overworld
+	fade_screen 6, 1, 1, RGB_BLACK
+	wait_fade
+	compare VAR_SPECIAL_x8001, 255
+	goto_if_eq _pcsvc_021E
+	buffer_party_mon_move_name 0, VAR_SPECIAL_x8002, VAR_SPECIAL_x8001
+	npc_msg 160
+	touchscreen_menu_hide
+	getmenuchoice VAR_SPECIAL_RESULT
+	touchscreen_menu_show
+	compare VAR_SPECIAL_RESULT, 0
+	goto_if_eq _pcsvc_05AB
+	compare VAR_SPECIAL_RESULT, 1
+	goto_if_eq _pcsvc_05A0
+	end
+
+_pcsvc_05A0:
+	npc_msg 158
+	closemsg
+	goto _pcsvc_04E2
+
+_pcsvc_05AB:
+	mon_forget_move VAR_SPECIAL_x8002, VAR_SPECIAL_x8001
+	play_fanfare SEQ_ME_WASURE
+	wait_fanfare
+	npc_msg 161
+	wait_button
+	closemsg
+	releaseall
+	end
+
+_pcsvc_05C2:
+	npc_msg 165
+	hasitem ITEM_HEART_SCALE, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
+	goto_if_eq _pcsvc_0676
+	npc_msg 166
+	closemsg
+	fade_screen 6, 1, 0, RGB_BLACK
+	wait_fade
+	party_select_ui
+	get_party_selection VAR_SPECIAL_x8005
+	restore_overworld
+	fade_screen 6, 1, 1, RGB_BLACK
+	wait_fade
+	compare VAR_SPECIAL_x8005, 255
+	goto_if_eq _pcsvc_021E
+	get_partymon_species VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
+	goto_if_eq _pcsvc_0227
+	scrcmd_466 VAR_SPECIAL_RESULT, VAR_SPECIAL_x8005
+	compare VAR_SPECIAL_RESULT, 0
+	goto_if_eq _pcsvc_067F
+	npc_msg 168
+	closemsg
+	fade_screen 6, 1, 0, RGB_BLACK
+	wait_fade
+	move_relearner_init VAR_SPECIAL_x8005
+	move_relearner_get_result VAR_SPECIAL_RESULT
+	restore_overworld
+	fade_screen 6, 1, 1, RGB_BLACK
+	wait_fade
+	compare VAR_SPECIAL_RESULT, 255
+	goto_if_eq _pcsvc_021E
+	takeitem ITEM_HEART_SCALE, 1, VAR_SPECIAL_RESULT
+	buffer_players_name 3
+	npc_msg 169
+	end
+
+_pcsvc_0676:
+	npc_msg 163
+	closemsg
+	releaseall
+	end
+
+_pcsvc_067F:
+	npc_msg 167
+	closemsg
+	releaseall
+	end
+
 // -------------------------------------------------------
 // scr_seq_0003_078_frontier_intro_test  (EventSet_Script(fsys, 2078, NULL); R button when FRONTIER_BRAIN_INTRO_DEBUG_TRIGGER is on)
 // Starts the battle against Argenta (trainer 221, Hall Matron). The Frontier Brain intro plays by itself before every battle against a

@@ -13,5 +13,6 @@
 .equ obj_R10PC0101_gsgentleman, 4
 .equ obj_R10PC0101_gswoman3, 5
 .equ obj_R10PC0101_gsassistantm, 6
+.equ obj_R10PC0101_maid, 7
 
 .endif //SCR_SEQ_R10PC0101_H_

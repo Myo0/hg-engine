@@ -20,5 +20,6 @@
 .equ obj_T10R0101_pcwoman2, 6
 .equ obj_T10R0101_pcwoman2_2, 7
 .equ obj_T10R0101_counterm, 8
+.equ obj_T10R0101_maid, 9
 
 .endif //SCR_SEQ_T10R0101_H_

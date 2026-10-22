@@ -8,5 +8,6 @@
 .equ obj_T31PC0101_pcwoman2, 1
 .equ obj_T31PC0101_pcwoman2_2, 2
 .equ obj_T31PC0101_pcwoman2_3, 3
+.equ obj_T31PC0101_maid, 4
 
 .endif //SCR_SEQ_T31PC0101_H_

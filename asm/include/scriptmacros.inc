@@ -185,6 +185,7 @@
 .equ std_obtain_item_verbose, 2008
 .equ std_bag_is_full, 2009
 .equ std_pokecenter_pc, 2010
+.equ std_pc_services, 2077
 .equ std_frontier_intro_test, 2078
 .equ std_mart_intro, 2011
 .equ std_whited_out_to_mom, 2012

@@ -14,5 +14,6 @@
 .equ obj_D32PC0101_gsfighter, 4
 .equ obj_D32PC0101_gsbabygirl1, 5
 .equ obj_D32PC0101_gsoldwoman1, 6
+.equ obj_D32PC0101_maid, 7
 
 .endif //SCR_SEQ_D32PC0101_H_

@@ -13,5 +13,6 @@
 .equ obj_T07PC0101_gsgentleman, 4
 .equ obj_T07PC0101_sunglasses, 5
 .equ obj_T07PC0101_gswoman3, 6
+.equ obj_T07PC0101_maid, 7
 
 .endif //SCR_SEQ_T07PC0101_H_

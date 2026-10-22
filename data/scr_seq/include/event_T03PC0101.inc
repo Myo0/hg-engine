@@ -15,5 +15,6 @@
 .equ obj_T03PC0101_follower_mon_static_jigglypuff, 5
 .equ obj_T03PC0101_gsmiddleman1, 6
 .equ obj_T03PC0101_gswoman1, 7
+.equ obj_T03PC0101_maid, 8
 
 .endif //SCR_SEQ_T03PC0101_H_

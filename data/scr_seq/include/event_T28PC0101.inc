@@ -13,5 +13,6 @@
 .equ obj_T28PC0101_pcwoman2_2, 4
 .equ obj_T28PC0101_pcwoman2_3, 5
 .equ obj_T28PC0101_gsmiddleman1, 6
+.equ obj_T28PC0101_maid, 7
 
 .endif //SCR_SEQ_T28PC0101_H_

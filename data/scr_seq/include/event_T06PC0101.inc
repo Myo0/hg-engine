@@ -13,5 +13,6 @@
 .equ obj_T06PC0101_fishing_2, 4
 .equ obj_T06PC0101_seaman_2, 5
 .equ obj_T06PC0101_gsbabyboy1, 6
+.equ obj_T06PC0101_maid, 7
 
 .endif //SCR_SEQ_T06PC0101_H_

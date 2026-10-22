@@ -13,5 +13,6 @@
 .equ obj_T02PC0101_gsbabyboy1, 4
 .equ obj_T02PC0101_gswoman3, 5
 .equ obj_T02PC0101_gsman3, 6
+.equ obj_T02PC0101_maid, 7
 
 .endif //SCR_SEQ_T02PC0101_H_
