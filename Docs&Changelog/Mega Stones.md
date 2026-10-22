@@ -10,18 +10,24 @@ berry type is repeatable).
 
 ## How it works
 
-- **Source art**: each stone's icon is resized to 16x16 -- matching the vanilla ground item-ball
-  sprite's real on-screen footprint (`data/graphics/overworlds/0094.png`, "monstarball": a fully
-  opaque 16x16 with zero frame padding), so a mega stone reads as the same size as any other
-  ground pickup -- then centered horizontally and **bottom-aligned** (flush with the frame's
-  bottom edge, not vertically centered -- ground objects are drawn anchored at that "ground
-  contact" line; the first pass centered vertically too and visibly floated above the ground)
-  into a static 32x32 frame, duplicated across all 8 follower animation frames
-  (`data/graphics/sprites/mega_<name>/overworld.png`, 32x256, 8bpp-indexed, <=16 colours +
-  transparent index 0). Both `overworld-tsure_poke0.pal` / `overworld-tsure_poke1.pal` are
-  identical -- there's no real "shiny" variant for an item icon, just the format's usual
-  two-palette requirement. `overworld.json` is untouched -- it's the generic per-species template
-  already scaffolded for every species in the repo, needs no edits.
+- **Every stone is an exact format clone of the vanilla Poke Ball ground item (changed 2026-10-16).**
+  The ground ball (`data/graphics/overworlds/0094.png`/`0094.json`, "monstarball") is drawn with
+  a different *billboard model* than the 32x32 follower/NPC/tree sprites, and that model is what
+  makes it sit flush on the ground. An object picks its billboard model through the top 6 bits of
+  its `callback_params` (index 1 = the item-ball model, index 0 = the generic 32x32 model the
+  stones used to ride, which made them hover). So each stone now has:
+  - `data/graphics/sprites/mega_<name>/overworld.png`: **16x16, single frame**, palette index 0
+    transparent + at most 7 colours, the 10x10 icon centered horizontally with a 1px margin at
+    the bottom (the ball's own layout; the icon is quantized to 7 colours if the source had
+    more);
+  - `overworld.json`: a verbatim copy of `0094.json` (single `monstarball` frame, coordTrans 16,
+    16x16) -- **do not restore the old 8-frame `tsure_poke` json**;
+  - `overworld-monstarball.pal`: 8-entry JASC palette, CRLF (replaces the old
+    `overworld-tsure_poke0/1.pal`).
+  The compiled texture is then byte-for-byte the same size/structure as the real ball's
+  (308 bytes, identical header); only pixel and palette data differ. Converter + batch driver
+  (not repo-tracked): `/home/hgengine/stone_tools/convert_stone_to_ball.py` and
+  `batch_convert.py`; originals backed up in `~/backups/stone_ball_clone/`.
 - **Unlike the berries, no build-output override hack is needed.** Every Mega species already
   has a normal, wired build rule (`data/graphics/pokegra.mk`: `build/pokemonow/3_<species>.btx0:
   data/graphics/sprites/mega_<name>/overworld.png`), so editing the source PNG directly is the
@@ -29,10 +35,11 @@ berry type is repeatable).
   `MON_FOLLOWER_ENTRY()` references to any `SPECIES_MEGA_*`/`SPECIES_PRIMAL_*` constant before
   adding these.
 - **Wiring**: `src/field/overworld_table.c`'s `gOWTagToFileNum[]`, one
-  `MON_FOLLOWER_ENTRY(SPECIES_MEGA_X, 0x0020)` line per stone (added right after the berry-plant
-  block). `0x0020` = the same static/no-idle-hop callback value the berry-plant fix established
-  (`SPRITE_TREE`'s graphics-info value) -- a property of the table entry, not the art, so it
-  applies identically here.
+  `MON_FOLLOWER_ENTRY(SPECIES_MEGA_X, 0x0420)` line per stone (added right after the berry-plant
+  block). `0x0420` = the vanilla item ball's exact `callback_params`: low bits `0x20` = the same
+  static/no-idle-hop draw callback the berries use, plus billboard-info index 1 (the item-ball
+  model, see above). The berries stay on `0x0020` (index 0) on purpose: they are 32x32 bushes
+  drawn like the vanilla cuttable tree, which uses that same model.
 - **No synthetic tag range**: because these slots were never claimed by anything before, each
   Entry ID is just the macro's ordinary `MON_OVERWORLD_TAG_START(2500) + species` value -- not a
   `BERRY_PLANT_TAG_START`-style block like the berries needed.
