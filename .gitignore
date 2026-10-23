@@ -4,6 +4,7 @@
 *.mch
 build/*
 base/*
+base_dsrom/*
 narc/*
 .script_pull_state.json
 .script_pull_state.json.tmp
@@ -46,6 +47,7 @@ dumpitem.py
 /tools/speciesdatagen*
 /tools/trainerdatagen*
 /tools/swav2swar.exe*
+/tools/dsrom*
 
 *.o
 *.d
@@ -90,3 +92,8 @@ data/graphics/bag_tabs/glyph_held.txt
 data/graphics/bag_tabs/glyph_mega.txt
 data/graphics/bag_tabs/held.txt
 data/graphics/bag_tabs/mega.txt
+
+/scripts/data/*
+/scripts/fixed/moves-updated.s
+
+/hg-engine.wiki/

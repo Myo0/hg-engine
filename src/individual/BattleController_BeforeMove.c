@@ -161,11 +161,6 @@ BOOL LONG_CALL AbilityDisabledByNeutralizingGas(int ability);
 /// @return `TRUE` or `FALSE`
 BOOL LONG_CALL AbilityFailRolePlay(int ability);
 
-/// @brief Check if ability causes Receiver and Power of Alchemy to fail
-/// @param ability
-/// @return `TRUE` or `FALSE`
-BOOL LONG_CALL AbilityNoReceiver(int ability);
-
 /// @brief Check if ability causes Entrainment to fail
 /// @param ability
 /// @return `TRUE` or `FALSE`
@@ -1938,7 +1933,8 @@ BOOL BattleController_CheckMoveFailures1(struct BattleSystem *bsys, struct Battl
         // Clangorous Soul when user lacks HP to execute the move
         || ((currentMoveIndex == MOVE_CLANGOROUS_SOUL) && (attackClient.hp < (s32)(attackClient.maxhp / 3)))
         // Fake Out / First Impression / Mat Block after user has already performed an action
-        || ((currentMoveIndex == MOVE_FAKE_OUT || currentMoveIndex == MOVE_FIRST_IMPRESSION || currentMoveIndex == MOVE_MAT_BLOCK) && attackClient.moveeffect.fakeOutCount != ctx->total_turn)
+        || ((currentMoveIndex == MOVE_FAKE_OUT || currentMoveIndex == MOVE_FIRST_IMPRESSION || currentMoveIndex == MOVE_MAT_BLOCK)
+            && !BattlerFirstTurnOut(ctx, ctx->attack_client))
         // Follow Me / Rage Powder in singles
         || ((currentMoveIndex == MOVE_FOLLOW_ME || currentMoveIndex == MOVE_RAGE_POWDER) && !(BattleTypeGet(bsys) & (BATTLE_TYPE_MULTI | BATTLE_TYPE_DOUBLES)))
         // Future Sight / Doom Desire into target that already has future attack
@@ -2017,8 +2013,9 @@ BOOL BattleController_CheckMoveFailures1(struct BattleSystem *bsys, struct Battl
         }
         break;
     case MOVE_METAL_BURST:
-        sideB = IsClientEnemy(bsys, ctx->oneTurnFlag[ctx->attack_client].last_damage);
-        if (!(ctx->oneTurnFlag[ctx->attack_client].last_damage && sideA != sideB && ctx->battlemon[ctx->oneTurnFlag[ctx->attack_client].last_damager].hp)) {
+        battlerId = ctx->oneTurnFlag[ctx->attack_client].last_damager;
+        sideB = IsClientEnemy(bsys, battlerId);
+        if (!(ctx->oneTurnFlag[ctx->attack_client].last_damage && sideA != sideB && ctx->battlemon[battlerId].hp)) {
             flag = TRUE;
         }
         break;
@@ -2450,7 +2447,7 @@ BOOL BattleController_CheckStolenBySnatch(struct BattleSystem *bw UNUSED, struct
                 sp->moveProtect[sp->attack_client] = 0;
                 sp->waza_no_old[sp->attack_client] = sp->moveNoTemp;
                 sp->lastClientMoveType[sp->attack_client] = GetAdjustedMoveType(sp, sp->attack_client, sp->moveNoTemp);
-                sp->waza_no_last = sp->moveNoTemp;
+                sp->lastSuccessfulMove = sp->moveNoTemp;
                 sp->server_status_flag |= (BATTLE_STATUS_NO_MOVE_SET);
             }
             LoadBattleSubSeqScript(sp, 1, BATTLE_SUBSCRIPT_SNATCH);
@@ -2533,14 +2530,9 @@ BOOL BattleController_CheckSemiInvulnerability(struct BattleSystem *bsys UNUSED,
 
 BOOL CanHitThroughProtect(struct BattleStruct *ctx, int attacker, int defender)
 {
-    u32 moveEffect = ctx->moveTbl[ctx->current_move_index].effect;
+    u32 moveHasProtectFlag = (ctx->moveTbl[ctx->current_move_index].flag & FLAG_PROTECT) != 0;
     u32 ability = GetBattlerAbility(ctx, attacker);
-    if (moveEffect == MOVE_EFFECT_REMOVE_PROTECT
-        || moveEffect == MOVE_EFFECT_SHADOW_FORCE
-        || moveEffect == MOVE_EFFECT_IGNORE_PROTECT
-        // Electrum: Shadow/Phantom Force are single-turn attacks now but still ignore Protect
-        || ctx->current_move_index == MOVE_SHADOW_FORCE
-        || ctx->current_move_index == MOVE_PHANTOM_FORCE
+    if (!moveHasProtectFlag
         || (ctx->current_move_index == MOVE_CURSE && HasType(ctx, attacker, TYPE_GHOST))
         || ((ability == ABILITY_UNSEEN_FIST
                 || ability == ABILITY_PIERCING_DRILL)
@@ -3692,7 +3684,7 @@ BOOL BattleController_CheckAbilityFailures4_StatusBasedFailures(struct BattleSys
         doesNotAffect = TRUE;
     }
 
-    if ((MoldBreakerAbilityCheck(ctx, attacker, defender, ABILITY_INSOMNIA))
+    if ((MoldBreakerAbilityCheck(ctx, attacker, defender, ABILITY_INSOMNIA) || (MoldBreakerAbilityCheck(ctx, attacker, defender, ABILITY_VITAL_SPIRIT)))
         && (moveEffect == MOVE_EFFECT_STATUS_SLEEP || moveEffect == MOVE_EFFECT_STATUS_SLEEP_NEXT_TURN || moveEffect == MOVE_EFFECT_RECOVER_HEALTH_AND_SLEEP)) {
         doesNotAffect = TRUE;
     }
@@ -3783,6 +3775,19 @@ BOOL BattleController_CheckMoveAccuracy(struct BattleSystem *bsys, struct Battle
         return FALSE;
     }
 
+    // OHKO move did not hit
+    if (ctx->waza_status_flag & MOVE_STATUS_ONE_HIT_KO_FAILED) {
+        BattleController_ResetGeneralMoveFailureFlags(ctx, ctx->attack_client, TRUE);
+
+        ctx->waza_status_flag = 0;
+        ctx->moveStatusFlagForSpreadMoves[defender] = MOVE_STATUS_ONE_HIT_KO_FAILED;
+        ctx->battlerIdTemp = defender;
+        LoadBattleSubSeqScript(ctx, ARC_BATTLE_SUB_SEQ, BATTLE_SUBSCRIPT_MOVE_FAIL_MISSED); //{} avoided the attack
+        ctx->next_server_seq_no = ctx->server_seq_no;
+        ctx->server_seq_no = CONTROLLER_COMMAND_RUN_SCRIPT;
+        return TRUE;
+    }
+
     // Apply accuracy / evasion modifiers
     if (!(ctx->waza_out_check_on_off & 0x20)
         && defender != BATTLER_NONE
@@ -3794,7 +3799,6 @@ BOOL BattleController_CheckMoveAccuracy(struct BattleSystem *bsys, struct Battle
     // a multi-hit move is always single target
     if (ctx->loop_flag && (ctx->waza_status_flag & MOVE_STATUS_MISSED)) {
         BattleController_ResetGeneralMoveFailureFlags(ctx, ctx->attack_client, TRUE);
-        RemoveItemOnFlingFailure(ctx);
 
         ctx->waza_status_flag &= ~MOVE_STATUS_MISSED;
         ctx->waza_status_flag |= MOVE_STATUS_MULTI_HIT_DISRUPTED;
@@ -4508,11 +4512,11 @@ BOOL BattleController_CheckMoveFailures4_SingleTarget(struct BattleSystem *bsys 
         if (attackerItem == ITEM_NONE
             || defenderItem != ITEM_NONE // THIS IS A PROBLEM FOR SOME REASON
             || IS_ITEM_MAIL(attackerItem)
-            || IS_ITEM_MEGA_STONE(attackerItem)
             || IS_ITEM_Z_CRYSTAL(attackerItem)
             || ((attackerSpecies == SPECIES_KYOGRE || defenderSpecies == SPECIES_KYOGRE) && attackerItem == ITEM_BLUE_ORB)
             || ((attackerSpecies == SPECIES_GROUDON || defenderSpecies == SPECIES_GROUDON) && attackerItem == ITEM_RED_ORB)
             || (CheckMegaData(attackerSpecies, attackerItem, attackerForm) || CheckMegaData(defenderSpecies, attackerItem, defenderForm))
+            || (IsMegaSpecies(attackerSpecies, attackerForm) || IsMegaSpecies(defenderSpecies, defenderForm))
             || ((attackerSpecies == SPECIES_GIRATINA || defenderSpecies == SPECIES_GIRATINA) && attackerItem == ITEM_GRISEOUS_CORE)
             || ((attackerSpecies == SPECIES_ARCEUS || defenderSpecies == SPECIES_ARCEUS) && IS_ITEM_ARCEUS_PLATE(attackerItem))
             || ((attackerSpecies == SPECIES_GENESECT || defenderSpecies == SPECIES_GENESECT) && IS_ITEM_GENESECT_DRIVE(attackerItem))
@@ -5067,14 +5071,6 @@ BOOL LONG_CALL AbilityFailRolePlay(int ability)
     return GetAbilityFlags(ability).failsRolePlay;
 }
 
-/// @brief Check if ability causes Receiver and Power of Alchemy to fail
-/// @param ability
-/// @return `TRUE` or `FALSE`
-BOOL LONG_CALL AbilityNoReceiver(int ability)
-{
-    return GetAbilityFlags(ability).failsReceiver;
-}
-
 /// @brief Check if ability causes Entrainment to fail
 /// @param ability
 /// @return `TRUE` or `FALSE`
@@ -5172,5 +5168,6 @@ void RemoveItemOnFlingFailure(struct BattleStruct *ctx)
     if (ctx->current_move_index == MOVE_FLING) {
         ctx->recycle_item[ctx->attack_client] = ctx->battlemon[ctx->attack_client].item;
         ctx->battlemon[ctx->attack_client].item = ITEM_NONE;
+        ctx->battlemon[ctx->attack_client].moveeffect.knockOffFlag = TRUE;
     }
 }

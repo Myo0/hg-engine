@@ -4634,7 +4634,7 @@ u16 GetNaturePowerResultMove(struct BattleSystem *bsys)
 }
 
 /*What move Copycat actually becomes right now: the real last move used anywhere in the battle
-  (ctx->waza_no_last -- a genuine, already-determined fact, not a prediction), validated with the
+  (ctx->lastSuccessfulMove -- a genuine, already-determined fact, not a prediction), validated with the
   same legality the real engine itself uses (BtlCmd_TryCopycat: CheckMoveCallsOtherMove +
   CheckLegalMetronomeMove), further restricted to damaging moves only per design. Returns MOVE_NONE
   if nothing has been used yet, the last move isn't legal to copy, or it's a status move -- callers
@@ -4642,7 +4642,7 @@ u16 GetNaturePowerResultMove(struct BattleSystem *bsys)
 u16 GetCopycatResultMove(struct BattleSystem *bsys, u32 attacker)
 {
     struct BattleStruct *ctx = bsys->sp;
-    u16 lastMove = ctx->waza_no_last;
+    u16 lastMove = ctx->lastSuccessfulMove;
 
     if (lastMove == MOVE_NONE
         || CheckMoveCallsOtherMove(lastMove)

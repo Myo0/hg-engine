@@ -355,6 +355,7 @@ int UNUSED SwitchInAbilityCheck(void *bw, struct BattleStruct *sp)
                         && (sp->battlemon[client_no].item != ITEM_GRISEOUS_ORB)
                         && (sp->battlemon[sp->defence_client_work].hp)
                         && (GetBattlerAbility(sp, client_no) == ABILITY_TRACE)) {
+                        sp->switch_in_check_seq_no = 0; // reset to activate all abilities
                         sp->battlerIdTemp = client_no;
                         scriptnum = BATTLE_SUBSCRIPT_TRACE;
                         ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
@@ -481,7 +482,7 @@ int UNUSED SwitchInAbilityCheck(void *bw, struct BattleStruct *sp)
                                 } else {
                                     sp->addeffect_param = MOVE_SUBSCRIPT_PTR_ATTACK_UP_1_STAGE;
                                 }
-                                sp->addeffect_type = ADD_STATUS_ABILITY;
+                                sp->addeffect_type = SIDE_EFFECT_TYPE_ABILITY;
                                 sp->state_client = client_no;
                                 scriptnum = BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE;
                                 ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
@@ -793,7 +794,7 @@ int UNUSED SwitchInAbilityCheck(void *bw, struct BattleStruct *sp)
                         && (GetBattlerAbility(sp, client_no) == ABILITY_INTREPID_SWORD)) {
                         sp->onceOnlyAbilityFlags[SanitizeClientForTeamAccess(bw, client_no)][sp->sel_mons_no[client_no]].intrepidSwordFlag = TRUE;
                         sp->addeffect_param = MOVE_SUBSCRIPT_PTR_ATTACK_UP_1_STAGE;
-                        sp->addeffect_type = ADD_STATUS_ABILITY;
+                        sp->addeffect_type = SIDE_EFFECT_TYPE_ABILITY;
                         sp->state_client = client_no;
                         scriptnum = BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE;
                         ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
@@ -808,7 +809,7 @@ int UNUSED SwitchInAbilityCheck(void *bw, struct BattleStruct *sp)
                         && (GetBattlerAbility(sp, client_no) == ABILITY_DAUNTLESS_SHIELD)) {
                         sp->onceOnlyAbilityFlags[SanitizeClientForTeamAccess(bw, client_no)][sp->sel_mons_no[client_no]].dauntlessShieldFlag = TRUE;
                         sp->addeffect_param = MOVE_SUBSCRIPT_PTR_DEFENSE_UP_1_STAGE;
-                        sp->addeffect_type = ADD_STATUS_ABILITY;
+                        sp->addeffect_type = SIDE_EFFECT_TYPE_ABILITY;
                         sp->state_client = client_no;
                         scriptnum = BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE;
                         ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
@@ -846,7 +847,7 @@ int UNUSED SwitchInAbilityCheck(void *bw, struct BattleStruct *sp)
                         && (sp->battlemon[client_no].ability_activated_flag == 0)) {
                         sp->battlemon[client_no].ability_activated_flag = TRUE; // make sure to reset when clearing tailwind
                         sp->addeffect_param = MOVE_SUBSCRIPT_PTR_ATTACK_UP_1_STAGE;
-                        sp->addeffect_type = ADD_STATUS_ABILITY;
+                        sp->addeffect_type = SIDE_EFFECT_TYPE_ABILITY;
                         sp->state_client = client_no;
                         sp->battlerIdTemp = client_no;
                         sp->current_move_index = MOVE_TAILWIND;
@@ -1178,14 +1179,20 @@ int UNUSED SwitchInAbilityCheck(void *bw, struct BattleStruct *sp)
             debug_printf("faintClient %d, switchClient %d\n", sp->fainting_client, sp->reshuffle_client);
 #endif
             // only one eject pack can activate
-            sp->switch_in_check_seq_no++;
-            /* for (i = 0; i < client_set_max; i++) {
+            // sp->switch_in_check_seq_no++;
+            for (i = 0; i < client_set_max; i++) {
                 client_no = sp->turnOrder[i];
 
                 if (HeldItemHoldEffectGet(sp, client_no) == HOLD_EFFECT_SWITCH_OUT_ON_STAT_DROP
-                    && sp->currentMoveSwitchStatus < CURRENT_MOVE_SWITCH_PENDING) {
-                    if (sp->moveConditionsFlags[client_no].anyStatLoweredThisTurn) {
-                        sp->addeffect_type = ADD_EFFECT_STICKY_WEB;
+                    && !sp->ejectPackActivated
+                    && (sp->currentMoveSwitchStatus < CURRENT_MOVE_SWITCH_PENDING)
+                    && CanSwitchMon(bw, sp, client_no)) {
+                    if (sp->moveConditionsFlags[client_no].ejectPackFlag) {
+                        for (int k = 0; k < client_set_max; k++) {
+                            sp->moveConditionsFlags[k].ejectPackFlag = 0;
+                        }
+                        sp->ejectPackActivated = TRUE;
+                        sp->addeffect_type = SIDE_EFFECT_TYPE_STICKY_WEB; // to trigger switch-in immediately
                         sp->battlerIdTemp = client_no;
                         sp->state_client = client_no;
                         scriptnum = BATTLE_SUBSCRIPT_HANDLE_SWITCHING_ITEMS;
@@ -1196,10 +1203,10 @@ int UNUSED SwitchInAbilityCheck(void *bw, struct BattleStruct *sp)
             }
 
             if (ret == SWITCH_IN_CHECK_MOVE_SCRIPT) {
-                sp->switch_in_check_seq_no = 0;
+                sp->switch_in_check_seq_no++;
                 break;
             }
-           */
+
             FALLTHROUGH;
         }
         case SWITCH_IN_CHECK_END:

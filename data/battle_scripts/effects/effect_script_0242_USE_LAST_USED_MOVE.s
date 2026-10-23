@@ -4,24 +4,23 @@
 .data
 
 _000:
-    SetPsychicTerrainMoveUsedFlag
-    PrintAttackMessage
-    Wait
+    SetPsychicTerrainMoveUsedFlag 
+    PrintAttackMessage 
+    Wait 
+    TryCopycat _011
     PlayMoveAnimation BATTLER_CATEGORY_ATTACKER
-    Wait
-    // picks the last move used by anybody and writes it to waza_work, moveNoTemp and current_move_index (like Metronome does)
-    CopycatLastMove _016
-    GotoIfCurrentMoveIsValidForParentalBond _019
+    Wait 
+    GotoIfCurrentMoveIsValidForParentalBond _016
 
-_012:
+_009:
     GoBackToBeforeMove
     GoToMoveScript FALSE
     End
 
-_016:
+_011:
     UpdateVar OPCODE_FLAG_ON, BSCRIPT_VAR_MOVE_STATUS_FLAGS, MOVE_STATUS_FAILED
-    End
+    End 
 
-_019:
+_016:
     Call BATTLE_SUBSCRIPT_HANDLE_PARENTAL_BOND
-    GoTo _012
+    GoTo _009

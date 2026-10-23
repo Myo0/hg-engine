@@ -284,7 +284,7 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
         }
         break;
     case MOVE_HEX:
-        if (DefendingMon.condition & STATUS_ALL) {
+        if (DefendingMon.condition & STATUS_ALL || MoldBreakerAbilityCheck(sp, defender, defender, ABILITY_COMATOSE)) { // not affected by Mold Breaker
             movepower *= 2;
         }
         break;
@@ -309,7 +309,7 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
         }
         break;
     case MOVE_WAKE_UP_SLAP:
-        if (CheckSubstitute(sp, defender) == FALSE && (DefendingMon.condition & STATUS_SLEEP || MoldBreakerAbilityCheck(sp, defender, defender, ABILITY_COMATOSE))) {
+        if (CheckSubstitute(sp, defender) == FALSE && (DefendingMon.condition & STATUS_SLEEP || MoldBreakerAbilityCheck(sp, defender, defender, ABILITY_COMATOSE))) { // not affected by Mold Breaker
             movepower *= 2;
         }
         break;

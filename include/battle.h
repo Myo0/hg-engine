@@ -539,7 +539,7 @@ struct __attribute__((packed)) side_condition_work {
 
     u32 followMeFlag : 1;
     u32 battlerIdFollowMe : 2;
-    u32 knockoff_item : 6;
+    u32 knockoff_item : 6; // unused
     u32 oikaze_count : 3;
 
     u32 spikesLayers : 2;
@@ -797,7 +797,10 @@ typedef struct MoveConditionsFlags {
     u8 dragonDartsStatus : 3;
     u8 grounded : 1;
     u8 mindBlownOrSteelBeam : 1;
-    u8 padding : 3;
+    u8 ejectPackFlag : 1;
+    u8 firstTurnOut : 2;
+
+    // new var
 } MoveConditionsFlags;
 
 typedef struct MovePerformanceContext {
@@ -991,7 +994,7 @@ struct BattleStruct {
     /*0x3044*/ u32 current_move_index;
     // u8 unk_bytes4[0x74];
 
-    /*0x3048*/ u32 waza_no_last; // The most recently used move in the battle (other than the current one).
+    /*0x3048*/ u32 lastSuccessfulMove; // The most recently used move in the battle (other than the current one).
     /*0x304C*/ u32 waza_no_keep[CLIENT_MAX];
 
     /*0x305C*/ u16 moveProtect[CLIENT_MAX];
@@ -1092,7 +1095,8 @@ struct BattleStruct {
     u8 futureSightHitTurn : 1;
     u8 futureSightNoAttacker : 1;
     u8 futureSightSTAB : 1;
-    u8 gemBoostingMovePadding : 4;
+    u8 ejectPackActivated : 1;
+    u8 gemBoostingMovePadding : 3;
 
     int currentMoveSwitchStatus;
 
@@ -1106,6 +1110,8 @@ struct BattleStruct {
     HealingWishQueue healingWishQueue;
     int field_condition2; // gen5+ field conditions
     int magicRoomCounter;
+
+    int recoilDamage;
 };
 
 enum {
@@ -1994,6 +2000,12 @@ u8 LONG_CALL IsClientEnemy(void *bw, int client);
  *  @return adjusted damage value.  also store move flags in flag
  */
 int LONG_CALL TypeCalc(void *bw, struct BattleStruct *sp, int movenum, int movetype, int attacker, int defender, int damage, u32 *flag);
+
+/**
+ *  @brief used to calculate effectiveness of Stealth Rock during switch-in
+ *
+ */
+int LONG_CALL CalculateTypeEffectiveness(u8 typeMove, u8 typeMon1, u8 typeMon2);
 
 /**
  *  @brief sees if anticipation will automatially log a certain move (i.e. OHKO moves)
@@ -3134,6 +3146,7 @@ BOOL LONG_CALL CanUndergoPrimalReversion(struct BattleStruct *sp, u8 client_no);
 
 // defined in mega.c
 BOOL LONG_CALL CheckMegaData(u32 mon, u32 item, u32 form);
+BOOL LONG_CALL IsMegaSpecies(u32 mon, u32 form);
 
 /**
  *  @brief grab mega form of a specific species with specific item
@@ -3820,5 +3833,20 @@ PokepicManager LONG_CALL *BattleSystem_GetPokepicManager(struct BattleSystem *ba
 BOOL LONG_CALL sub_02017068(void *animManager, int battlerId);
 void LONG_CALL *ov12_0223B750(struct BattleSystem *battleSystem);
 void LONG_CALL ov12_022600F0(SysTask *task, void *data); // Task_PlayFaintingSequence
+
+/// @brief Check if ability causes Receiver and Power of Alchemy to fail
+/// @param ability
+/// @return `TRUE` or `FALSE`
+BOOL LONG_CALL AbilityNoReceiver(int ability);
+
+BOOL LONG_CALL IsBattlerOnField(struct BattleStruct *ctx, int battlerId);
+
+BOOL LONG_CALL AnyPendingSwitches(struct BattleSystem *bsys, struct BattleStruct *ctx);
+BOOL LONG_CALL BattlerFirstTurnOut(struct BattleStruct *ctx, int battlerId);
+
+BOOL LONG_CALL CanSwitchMon(struct BattleSystem *bsys, struct BattleStruct *ctx, int battlerId);
+
+void LONG_CALL InitSwitchWork(struct BattleSystem *bsys, struct BattleStruct *ctx, int battlerId);
+void LONG_CALL ov12_02256F78(struct BattleSystem *bsys, struct BattleStruct *ctx, int battlerId, u8 selectedMonIndex);
 
 #endif // BATTLE_H
