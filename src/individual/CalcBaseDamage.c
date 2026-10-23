@@ -321,7 +321,7 @@ int UNUSED CalcBaseDamageInternal(struct BattleSystem *bw, struct BattleStruct *
                 movepower *= 2;
             }
         } else if ((weather & FIELD_CONDITION_WEATHER)
-            && !(weather & (FIELD_CONDITION_STRONG_WINDS | FIELD_CONDITION_SNOW_ALL))) {
+            && !(weather & FIELD_CONDITION_STRONG_WINDS)) {
             movepower *= 2;
         }
         break;

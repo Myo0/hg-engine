@@ -9,5 +9,7 @@
 .equ obj_T28GYM0101_ice_2, 2
 .equ obj_T28GYM0101_boarder, 4
 .equ obj_T28GYM0101_ice_3, 5
+.equ obj_T28GYM0101_ice_4, 3
+.equ obj_T28GYM0101_ice_5, 6
 
 .endif //SCR_SEQ_T28GYM0101_H_

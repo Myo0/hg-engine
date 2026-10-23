@@ -87,6 +87,23 @@
       "x": 6,
       "z": 4,
       "y": 0
+    },
+    {
+      "id": "obj_T28GYM0103_boarder",
+      "graphics_id": "SPRITE_BOARDER",
+      "movement_type": 0,
+      "trainer_type": 1,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": "TRAINER_BOARDER_DEANDRE - 1 + _std_npc_trainer",
+      "initial_dir": 3,
+      "param0": 3,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 1,
+      "z": 13,
+      "y": 0
     }
   ],
   "warp_events": [

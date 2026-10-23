@@ -485,7 +485,7 @@ int LONG_CALL BattleAI_CalcBaseDamage(void *bw, struct BattleStruct *sp, int mov
             && !CheckSideAbility(bw, sp, CHECK_ABILITY_ALL_HP, attackerSlot, ABILITY_AIR_LOCK)
             && attacker->item_held_effect != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN) {
             if ((sp->field_condition & FIELD_CONDITION_WEATHER)
-                && !(sp->field_condition & (FIELD_CONDITION_STRONG_WINDS | FIELD_CONDITION_SNOW_ALL))) {
+                && !(sp->field_condition & FIELD_CONDITION_STRONG_WINDS)) {
                 movepower *= 2;
             }
         }

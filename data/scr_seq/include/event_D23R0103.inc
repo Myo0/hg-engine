@@ -9,6 +9,8 @@
 .equ _EV_scr_seq_D23R0103_005, 5
 .equ _EV_scr_seq_D23R0103_006, 6
 .equ _EV_scr_seq_D23R0103_007, 7
+.equ _EV_scr_seq_D23R0103_008, 8
+.equ _EV_scr_seq_D23R0103_009, 9
 
 .equ obj_D23R0103_rocketw, 1
 .equ obj_D23R0103_assistantm, 2
@@ -18,5 +20,6 @@
 .equ obj_D23R0103_rocketm, 6
 .equ obj_D23R0103_babyboy1_9, 7
 .equ obj_D23R0103_babyboy1_9_2, 8
+.equ obj_D23R0103_rocketm_2, 0
 
 .endif //SCR_SEQ_D23R0103_H_

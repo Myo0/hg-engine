@@ -86,6 +86,40 @@
       "x": 9,
       "z": 16,
       "y": 0
+    },
+    {
+      "id": "obj_T28GYM0101_ice_4",
+      "graphics_id": "SPRITE_ICE",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": 0,
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 3,
+      "z": 9,
+      "y": 0
+    },
+    {
+      "id": "obj_T28GYM0101_ice_5",
+      "graphics_id": "SPRITE_ICE",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_NOTHING",
+      "script": 0,
+      "initial_dir": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 9,
+      "z": 12,
+      "y": 0
     }
   ],
   "warp_events": [

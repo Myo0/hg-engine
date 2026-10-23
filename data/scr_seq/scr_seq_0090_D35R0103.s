@@ -21,9 +21,11 @@
 
 .include "data/scr_seq/include/event_D35R0103.inc"
 
+
 // text archive to grab from: 113.txt
 
 .data
+
 
 scrdef scr_seq_D35R0103_000
 scrdef scr_seq_D35R0103_001
@@ -49,7 +51,7 @@ scr_seq_D35R0103_000:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	apply_movement obj_player, _0DF8
+	apply_movement obj_player, _0B40
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -68,8 +70,8 @@ scr_seq_D35R0103_000:
 	buffer_players_name 0
 	gender_msgbox 1, 2
 	closemsg
-	apply_movement obj_D35R0103_wataru, _0E04
-	apply_movement obj_D35R0103_follower_mon_static_dragonite, _0E0C
+	apply_movement obj_D35R0103_wataru, _0B4C
+	apply_movement obj_D35R0103_follower_mon_static_dragonite, _0B54
 	wait_movement
 	hide_person obj_D35R0103_wataru
 	hide_person obj_D35R0103_follower_mon_static_dragonite
@@ -80,17 +82,17 @@ scr_seq_D35R0103_000:
 
 scr_seq_D35R0103_001:
 	compare VAR_UNK_40AC, 8
-	goto_if_ge _0623
+	goto_if_ge _049D
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_unset FLAG_UNK_0D3, _0625
+	goto_if_unset FLAG_UNK_0D3, _049F
 	buffer_players_name 0
 	npc_msg 21
 	closemsg
 	play_se SEQ_SE_DP_DOOR10
-	apply_movement obj_D35R0103_babyboy1_9, _0E18
-	apply_movement obj_D35R0103_babyboy1_9_2, _0E20
+	apply_movement obj_D35R0103_babyboy1_9, _0B60
+	apply_movement obj_D35R0103_babyboy1_9_2, _0B68
 	wait_movement
 	releaseall
 	end
@@ -98,17 +100,17 @@ scr_seq_D35R0103_001:
 scr_seq_D35R0103_002:
 	scrcmd_710
 	compare VAR_UNK_40AC, 8
-	call_if_eq _ariana_standby
+	call_if_eq _0881
 	compare VAR_UNK_40A9, 3
-	goto_if_ge _0630
+	goto_if_ge _04AA
 	end
 
 scr_seq_D35R0103_003:
-	goto_if_unset FLAG_UNK_1E5, _ariana_scene_played
+	goto_if_unset FLAG_UNK_1E5, _081B
 	scrcmd_609
 	lockall
 	npc_msg 3
-	apply_movement obj_player, _0E2C
+	apply_movement obj_player, _0B74
 	wait_movement
 	closemsg
 	clearflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_ARIANA
@@ -123,9 +125,9 @@ scr_seq_D35R0103_003:
 	following_pokemon_movement 55
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4000, 30
-	goto_if_ne _0664
-	apply_movement obj_player, _0E34
-	goto _0873
+	goto_if_ne _04DE
+	apply_movement obj_player, _0B7C
+	goto _04FE
 
 scr_seq_D35R0103_004:
 	play_se SEQ_SE_DP_SELECT
@@ -137,14 +139,14 @@ scr_seq_D35R0103_004:
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0A7A
+	goto_if_eq _074C
 	static_wild_won_or_caught VAR_TEMP_x4000, 0
 	compare VAR_TEMP_x4000, 1
-	goto_if_eq _0A80
+	goto_if_eq _0752
 	setflag FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_1
-	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_2, _0A80
-	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_3, _0A80
-	goto _0A84
+	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_2, _0752
+	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_3, _0752
+	goto _0756
 
 scr_seq_D35R0103_005:
 	play_se SEQ_SE_DP_SELECT
@@ -156,14 +158,14 @@ scr_seq_D35R0103_005:
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0A7A
+	goto_if_eq _074C
 	static_wild_won_or_caught VAR_TEMP_x4000, 0
 	compare VAR_TEMP_x4000, 1
-	goto_if_eq _0AAF
+	goto_if_eq _0781
 	setflag FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_2
-	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_1, _0AAF
-	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_3, _0AAF
-	goto _0A84
+	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_1, _0781
+	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_3, _0781
+	goto _0756
 
 scr_seq_D35R0103_006:
 	play_se SEQ_SE_DP_SELECT
@@ -176,17 +178,17 @@ scr_seq_D35R0103_006:
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0A7A
+	goto_if_eq _074C
 	static_wild_won_or_caught VAR_TEMP_x4000, 0
 	compare VAR_TEMP_x4000, 1
-	goto_if_eq _0AB3
+	goto_if_eq _0785
 	setflag FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_3
-	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_1, _0AB3
-	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_2, _0AB3
-	goto _0A84
+	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_1, _0785
+	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_2, _0785
+	goto _0756
 
 scr_seq_D35R0103_007:
-	goto_if_set FLAG_ENGAGING_STATIC_POKEMON, _0AB7
+	goto_if_set FLAG_ENGAGING_STATIC_POKEMON, _0789
 	end
 
 scr_seq_D35R0103_008:
@@ -197,7 +199,7 @@ scr_seq_D35R0103_008:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	apply_movement obj_player, _0E40
+	apply_movement obj_player, _0B88
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -208,14 +210,14 @@ scr_seq_D35R0103_008:
 scr_seq_D35R0103_009:
 	scrcmd_609
 	lockall
-	apply_movement obj_D35R0103_wataru, _0E48
+	apply_movement obj_D35R0103_wataru, _0B90
 	wait_movement
 	npc_msg 14
 	closemsg
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	apply_movement obj_player, _0E40
+	apply_movement obj_player, _0B88
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -225,9 +227,9 @@ scr_seq_D35R0103_009:
 
 scr_seq_D35R0103_010:
 	releaseall
-	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_1, _0AEC
-	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_2, _0AEC
-	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_3, _0AEC
+	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_1, _07BE
+	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_2, _07BE
+	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_3, _07BE
 	npc_msg 23
 	closemsg
 	releaseall
@@ -236,21 +238,21 @@ scr_seq_D35R0103_010:
 scr_seq_D35R0103_011:
 	scrcmd_609
 	lockall
-	apply_movement obj_D35R0103_follower_mon_static_murkrow_3, _0E54
+	apply_movement obj_D35R0103_follower_mon_static_murkrow_3, _0B9C
 	wait_movement
 	npc_msg 26
 	closemsg
 	npc_msg 27
 	closemsg
 	play_se SEQ_SE_DP_DOOR10
-	apply_movement obj_D35R0103_babyboy1_9, _0E18
-	apply_movement obj_D35R0103_babyboy1_9_2, _0E20
+	apply_movement obj_D35R0103_babyboy1_9, _0B60
+	apply_movement obj_D35R0103_babyboy1_9_2, _0B68
 	wait_movement
 	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	compare VAR_SPECIAL_x8001, 24
-	goto_if_ne _0AF5
-	apply_movement obj_D35R0103_follower_mon_static_murkrow_3, _0E5C
-	goto _0B23
+	goto_if_ne _07C7
+	apply_movement obj_D35R0103_follower_mon_static_murkrow_3, _0BA4
+	goto _07F5
 
 scr_seq_D35R0103_012:
 	goto scr_seq_D35R0103_011
@@ -258,14 +260,14 @@ scr_seq_D35R0103_012:
 scr_seq_D35R0103_013:
 	scrcmd_609
 	lockall
-	apply_movement obj_D35R0103_follower_mon_static_murkrow, _0E7C
+	apply_movement obj_D35R0103_follower_mon_static_murkrow, _0BC4
 	wait_movement
 	npc_msg 24
 	closemsg
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	apply_movement obj_D35R0103_follower_mon_static_murkrow, _0E84
+	apply_movement obj_D35R0103_follower_mon_static_murkrow, _0BCC
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -280,11 +282,11 @@ scr_seq_D35R0103_013:
 scr_seq_D35R0103_014:
 	scrcmd_609
 	lockall
-	apply_movement obj_D35R0103_follower_mon_static_murkrow_2, _0E94
+	apply_movement obj_D35R0103_follower_mon_static_murkrow_2, _0BDC
 	wait_movement
 	npc_msg 25
 	closemsg
-	apply_movement obj_D35R0103_follower_mon_static_murkrow_2, _0E9C
+	apply_movement obj_D35R0103_follower_mon_static_murkrow_2, _0BE4
 	wait_movement
 	setvar VAR_UNK_40AC, 7
 	hide_person obj_D35R0103_follower_mon_static_murkrow_2
@@ -299,62 +301,62 @@ scr_seq_D35R0103_015:
 	lockall
 	faceplayer
 	compare VAR_UNK_40AC, 9
-	goto_if_ge _ariana_lance_after
+	goto_if_ge _0838
 	party_count_not_egg VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 3
-	goto_if_lt _ariana_need_three
+	goto_if_lt _082F
 	npc_msg 28
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_ne _ariana_declined
+	goto_if_ne _0826
 	closemsg
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 26
-	call_if_eq _ariana_walk_from_south
+	call_if_eq _0841
 	compare VAR_TEMP_x4001, 25
-	call_if_eq _ariana_walk_from_east
-	apply_movement obj_D35R0103_wataru, _0EAC
-	apply_movement obj_player, _0EAC
+	call_if_eq _0861
+	apply_movement obj_D35R0103_wataru, _0BF4
+	apply_movement obj_player, _0BF4
 	wait_movement
-	goto _ariana_pick
+	goto _058F
 
-_0623:
+_049D:
 	end
 
-_0625:
+_049F:
 	npc_msg 20
 	wait_button
 	closemsg
 	releaseall
 	end
 
-_0630:
+_04AA:
 	move_person_facing obj_D35R0103_babyboy1_9, 29, 0, 22, DIR_NORTH
 	move_person_facing obj_D35R0103_babyboy1_9_2, 29, 0, 22, DIR_NORTH
 	compare VAR_UNK_40AC, 10
-	goto_if_ge _0B84
+	goto_if_ge _08CC
 	compare VAR_UNK_40A9, 4
-	goto_if_ge _0B86
+	goto_if_ge _08CE
 	end
 
-_0664:
-	apply_movement obj_player, _0FAC
-	apply_movement obj_D35R0103_rkanbuw, _0FC0
-	apply_movement obj_D35R0103_rocketm_3, _0FD0
+_04DE:
+	apply_movement obj_player, _0CF4
+	apply_movement obj_D35R0103_rkanbuw, _0D08
+	apply_movement obj_D35R0103_rocketm_3, _0D18
 	wait_movement
-	goto _ariana_arrive
+	goto _0510
 
-_0873:
-	apply_movement obj_D35R0103_rkanbuw, _0FC0
-	apply_movement obj_D35R0103_rocketm_3, _0FD0
+_04FE:
+	apply_movement obj_D35R0103_rkanbuw, _0D08
+	apply_movement obj_D35R0103_rocketm_3, _0D18
 	wait_movement
-_ariana_arrive:
+_0510:
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
 	following_pokemon_movement 48
-	apply_movement obj_D35R0103_rkanbuw, _0FDC
+	apply_movement obj_D35R0103_rkanbuw, _0D24
 	wait_movement
 	npc_msg 4
 	closemsg
@@ -363,44 +365,43 @@ _ariana_arrive:
 	show_person obj_D35R0103_follower_mon_static_dragonite
 	move_person_facing obj_D35R0103_wataru, 20, 1, 25, DIR_EAST
 	move_person_facing obj_D35R0103_follower_mon_static_dragonite, 19, 1, 25, DIR_NORTH
-	apply_movement obj_D35R0103_wataru, _0FE4
-	apply_movement obj_D35R0103_follower_mon_static_dragonite, _0FEC
+	apply_movement obj_D35R0103_wataru, _0D2C
+	apply_movement obj_D35R0103_follower_mon_static_dragonite, _0D34
 	wait_movement
 	npc_msg 5
 	closemsg
-	apply_movement obj_D35R0103_follower_mon_static_dragonite, _0FF8
+	apply_movement obj_D35R0103_follower_mon_static_dragonite, _0D40
 	play_cry SPECIES_DRAGONITE, 0
 	wait_cry
-	apply_movement obj_D35R0103_rkanbuw, _0FDC
+	apply_movement obj_D35R0103_rkanbuw, _0D24
 	wait_movement
 	party_count_not_egg VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 3
-	goto_if_lt _ariana_need_three
-_ariana_pick:
-	setvar VAR_SPECIAL_x8000, TRAINER_PKMN_TRAINER_LANCE_LANCE
-	setvar VAR_SPECIAL_x8001, TRAINER_EXECUTIVE_ARIANA_ARIANA_2
-	setvar VAR_SPECIAL_x8002, TRAINER_TEAM_ROCKET_GRUNT_25
+	goto_if_lt _082F
+_058F:
+	setvar VAR_SPECIAL_x8000, 675
+	setvar VAR_SPECIAL_x8001, 479
+	setvar VAR_SPECIAL_x8002, 499
 	setvar VAR_SPECIAL_x8003, 3
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	TagBattlePick VAR_SPECIAL_RESULT
+	scrcmd_208 12, VAR_SPECIAL_RESULT
 	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _ariana_pick_cancelled
+	goto_if_ne _081D
 	npc_msg 6
 	closemsg
-	apply_movement obj_D35R0103_rkanbuw, _0EB4
-	apply_movement obj_D35R0103_rocketm_3, _0EBC
+	apply_movement obj_D35R0103_rkanbuw, _0BFC
+	apply_movement obj_D35R0103_rocketm_3, _0C04
 	wait_movement
-	TagBattleFight VAR_SPECIAL_RESULT
+	scrcmd_208 13, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
-	goto_if_ne _ariana_declined
+	goto_if_ne _0826
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
-	goto_if_eq _0B76
-
+	goto_if_eq _08BE
 	setvar VAR_UNK_416F, 63
 	npc_msg 8
 	closemsg
@@ -411,7 +412,7 @@ _ariana_pick:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	apply_movement obj_player, _0EC4
+	apply_movement obj_player, _0C0C
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -426,8 +427,8 @@ _ariana_pick:
 	setflag FLAG_UNK_1E8
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	apply_movement obj_D35R0103_wataru, _0ED8
-	apply_movement obj_D35R0103_follower_mon_static_dragonite, _0EE0
+	apply_movement obj_D35R0103_wataru, _0C20
+	apply_movement obj_D35R0103_follower_mon_static_dragonite, _0C28
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox 10, 11
@@ -435,17 +436,17 @@ _ariana_pick:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	apply_movement obj_player, _0EEC
-	apply_movement obj_D35R0103_wataru, _0EF8
-	apply_movement obj_D35R0103_follower_mon_static_dragonite, _0F24
+	apply_movement obj_player, _0C34
+	apply_movement obj_D35R0103_wataru, _0C40
+	apply_movement obj_D35R0103_follower_mon_static_dragonite, _0C6C
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
 	following_pokemon_movement 48
 	play_cry SPECIES_DRAGONITE, 0
 	wait_cry
-	apply_movement obj_D35R0103_wataru, _0F44
-	apply_movement obj_D35R0103_follower_mon_static_dragonite, _0F54
+	apply_movement obj_D35R0103_wataru, _0C8C
+	apply_movement obj_D35R0103_follower_mon_static_dragonite, _0C9C
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox 12, 13
@@ -453,9 +454,9 @@ _ariana_pick:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	apply_movement obj_player, _0F60
-	apply_movement obj_D35R0103_wataru, _0F74
-	apply_movement obj_D35R0103_follower_mon_static_dragonite, _0F7C
+	apply_movement obj_player, _0CA8
+	apply_movement obj_D35R0103_wataru, _0CBC
+	apply_movement obj_D35R0103_follower_mon_static_dragonite, _0CC4
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
@@ -468,53 +469,53 @@ _ariana_pick:
 	setflag FLAG_UNK_998
 	end
 
-_0A7A:
+_074C:
 	white_out
 	releaseall
 	end
 
-_0A80:
+_0752:
 	releaseall
 	end
 
-_0A84:
+_0756:
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
 	compare VAR_TEMP_x4001, 16
-	goto_if_ne _0BB3
-	apply_movement obj_player, _1000
-	goto _0BCE
+	goto_if_ne _08FB
+	apply_movement obj_player, _0D48
+	goto _0916
 
-_0AAF:
+_0781:
 	releaseall
 	end
 
-_0AB3:
+_0785:
 	releaseall
 	end
 
-_0AB7:
+_0789:
 	static_wild_won_or_caught VAR_TEMP_x4000, 1
 	compare VAR_TEMP_x4000, 1
-	goto_if_eq _0CBE
+	goto_if_eq _0A06
 	compare VAR_TEMP_x400A, 1
-	goto_if_ne _0CC4
+	goto_if_ne _0A0C
 	setflag FLAG_UNK_96B
 	hide_person obj_D35R0103_follower_mon_static_electrode
 	hide_person obj_D35R0103_follower_mon_static_electrode_4
 	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_ELECTRODE_1_AND_4
-	goto _0CBE
+	goto _0A06
 
-_0AEC:
+_07BE:
 	npc_msg 22
 	closemsg
 	releaseall
 	end
 
-_0AF5:
-	apply_movement obj_D35R0103_follower_mon_static_murkrow_3, _100C
+_07C7:
+	apply_movement obj_D35R0103_follower_mon_static_murkrow_3, _0D54
 	wait_movement
 	setvar VAR_UNK_40AC, 8
 	hide_person obj_D35R0103_follower_mon_static_murkrow_3
@@ -526,7 +527,7 @@ _0AF5:
 	releaseall
 	end
 
-_0B23:
+_07F5:
 	wait_movement
 	setvar VAR_UNK_40AC, 8
 	hide_person obj_D35R0103_follower_mon_static_murkrow_3
@@ -538,108 +539,107 @@ _0B23:
 	releaseall
 	end
 
-_ariana_scene_played:
+_081B:
 	end
 
-_ariana_pick_cancelled:
+_081D:
 	npc_msg 29
 	closemsg
 	releaseall
 	end
 
-_ariana_declined:
+_0826:
 	npc_msg 31
 	closemsg
 	releaseall
 	end
 
-_ariana_need_three:
+_082F:
 	npc_msg 30
 	closemsg
 	releaseall
 	end
 
-_ariana_lance_after:
+_0838:
 	npc_msg 14
 	closemsg
 	releaseall
 	end
 
-_ariana_walk_from_south:
+_0841:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	apply_movement obj_player, _ariana_move_from_south
+	apply_movement obj_player, _0DE0
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
 	following_pokemon_movement 48
 	return
 
-_ariana_walk_from_east:
+_0861:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	apply_movement obj_player, _1028
+	apply_movement obj_player, _0D70
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
 	following_pokemon_movement 48
 	return
 
-// Map load while the Ariana fight is pending (the scene has played, the battle has not): put everyone back at the battle spot.
-_ariana_standby:
-	goto_if_set FLAG_UNK_1E5, _ariana_standby_end
+_0881:
+	goto_if_set FLAG_UNK_1E5, _08BC
 	move_person_facing obj_D35R0103_wataru, 30, 1, 25, DIR_EAST
 	move_person_facing obj_D35R0103_follower_mon_static_dragonite, 29, 1, 25, DIR_EAST
 	move_person_facing obj_D35R0103_rkanbuw, 32, 1, 24, DIR_WEST
 	move_person_facing obj_D35R0103_rocketm_3, 30, 1, 27, DIR_NORTH
-_ariana_standby_end:
+_08BC:
 	return
 
-_0B76:
+_08BE:
 	white_out
 	setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_ARIANA
 	setflag FLAG_UNK_1E5
 	releaseall
 	end
 
-_0B84:
+_08CC:
 	end
 
-_0B86:
+_08CE:
 	compare VAR_TEMP_x4007, 0
-	goto_if_ne _0B84
+	goto_if_ne _08CC
 	setvar VAR_TEMP_x4007, 77
 	move_person_facing obj_D35R0103_wataru, 39, 0, 18, DIR_NORTH
 	move_person_facing obj_D35R0103_follower_mon_static_dragonite, 40, 0, 18, DIR_NORTH
 	end
 
-_0BB3:
+_08FB:
 	compare VAR_TEMP_x4001, 14
-	goto_if_ne _0CE7
-	apply_movement obj_player, _1044
-	goto _0BCE
+	goto_if_ne _0A2F
+	apply_movement obj_player, _0D8C
+	goto _0916
 
-_0BCE:
+_0916:
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
 	following_pokemon_movement 48
-	apply_movement obj_D35R0103_wataru, _1050
-	apply_movement obj_D35R0103_follower_mon_static_dragonite, _1058
+	apply_movement obj_D35R0103_wataru, _0D98
+	apply_movement obj_D35R0103_follower_mon_static_dragonite, _0DA0
 	wait_movement
 	npc_msg 15
 	giveitem_no_check ITEM_HM05, 1
 	npc_msg 17
 	closemsg
-	apply_movement obj_D35R0103_wataru, _1064
+	apply_movement obj_D35R0103_wataru, _0DAC
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox 18, 19
 	closemsg
-	apply_movement obj_D35R0103_wataru, _106C
-	apply_movement obj_D35R0103_follower_mon_static_dragonite, _1078
+	apply_movement obj_D35R0103_wataru, _0DB4
+	apply_movement obj_D35R0103_follower_mon_static_dragonite, _0DC0
 	wait_movement
 	hide_person obj_D35R0103_wataru
 	hide_person obj_D35R0103_follower_mon_static_dragonite
@@ -671,39 +671,39 @@ _0BCE:
 	setvar VAR_ROCKET_TRAP_GEODUDE_5, 1
 	end
 
-_0CBE:
+_0A06:
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	end
 
-_0CC4:
+_0A0C:
 	compare VAR_TEMP_x400A, 2
-	goto_if_ne _0DDF
+	goto_if_ne _0B27
 	setflag FLAG_UNK_96C
 	hide_person obj_D35R0103_follower_mon_static_electrode_2
 	hide_person obj_D35R0103_follower_mon_static_electrode_5
 	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_ELECTRODE_2_AND_5
-	goto _0CBE
+	goto _0A06
 
-_0CE7:
-	apply_movement obj_player, _108C
+_0A2F:
+	apply_movement obj_player, _0DD4
 	wait_movement
 	wait_following_pokemon_movement
 	toggle_following_pokemon_movement 1
 	following_pokemon_movement 48
-	apply_movement obj_D35R0103_wataru, _1050
-	apply_movement obj_D35R0103_follower_mon_static_dragonite, _1058
+	apply_movement obj_D35R0103_wataru, _0D98
+	apply_movement obj_D35R0103_follower_mon_static_dragonite, _0DA0
 	wait_movement
 	npc_msg 15
 	giveitem_no_check ITEM_HM05, 1
 	npc_msg 17
 	closemsg
-	apply_movement obj_D35R0103_wataru, _1064
+	apply_movement obj_D35R0103_wataru, _0DAC
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox 18, 19
 	closemsg
-	apply_movement obj_D35R0103_wataru, _106C
-	apply_movement obj_D35R0103_follower_mon_static_dragonite, _1078
+	apply_movement obj_D35R0103_wataru, _0DB4
+	apply_movement obj_D35R0103_follower_mon_static_dragonite, _0DC0
 	wait_movement
 	hide_person obj_D35R0103_wataru
 	hide_person obj_D35R0103_follower_mon_static_dragonite
@@ -735,7 +735,7 @@ _0CE7:
 	setvar VAR_ROCKET_TRAP_GEODUDE_5, 1
 	end
 
-_0DDF:
+_0B27:
 	setflag FLAG_UNK_96D
 	hide_person obj_D35R0103_follower_mon_static_electrode_3
 	hide_person obj_D35R0103_follower_mon_static_electrode_6
@@ -745,62 +745,62 @@ _0DDF:
 
 	.byte 0x00, 0x00, 0x00
 	.balign 4
-_0DF8:
+_0B40:
 
 	step 15, 5
 	step 12, 4
 	step_end
 	.balign 4
-_0E04:
+_0B4C:
 
 	step 15, 11
 	step_end
 	.balign 4
-_0E0C:
+_0B54:
 
 	step 61, 1
 	step 15, 11
 	step_end
 	.balign 4
-_0E18:
+_0B60:
 
 	step 14, 2
 	step_end
 	.balign 4
-_0E20:
+_0B68:
 
 	step 63, 1
 	step 14, 1
 	step_end
 	.balign 4
-_0E2C:
+_0B74:
 
 	step 75, 1
 	step_end
 	.balign 4
-_0E34:
+_0B7C:
 
 	step 13, 5
 	step 35, 1
 	step_end
 	.balign 4
-_0E40:
+_0B88:
 
 	step 14, 1
 	step_end
 	.balign 4
-_0E48:
+_0B90:
 
 	step 75, 1
 	step 34, 1
 	step_end
 	.balign 4
-_0E54:
+_0B9C:
 
 	step 48, 2
 	step_end
 	.balign 4
-_0E5C:
+_0BA4:
 
 	step 48, 2
 	step 2, 1
@@ -811,46 +811,46 @@ _0E5C:
 	step 18, 10
 	step_end
 	.balign 4
-_0E7C:
+_0BC4:
 
 	step 50, 2
 	step_end
 	.balign 4
-_0E84:
+_0BCC:
 
 	step 3, 1
 	step 51, 1
 	step 19, 5
 	step_end
 	.balign 4
-_0E94:
+_0BDC:
 
 	step 51, 2
 	step_end
 	.balign 4
-_0E9C:
+_0BE4:
 
 	step 2, 1
 	step 50, 1
 	step 18, 10
 	step_end
 	.balign 4
-_0EAC:
+_0BF4:
 
 	step 3, 1
 	step_end
 	.balign 4
-_0EB4:
+_0BFC:
 
 	step 18, 1
 	step_end
 	.balign 4
-_0EBC:
+_0C04:
 
 	step 16, 1
 	step_end
 	.balign 4
-_0EC4:
+_0C0C:
 
 	step 16, 2
 	step 19, 1
@@ -858,24 +858,24 @@ _0EC4:
 	step 2, 1
 	step_end
 	.balign 4
-_0ED8:
+_0C20:
 
 	step 15, 2
 	step_end
 	.balign 4
-_0EE0:
+_0C28:
 
 	step 61, 1
 	step 15, 2
 	step_end
 	.balign 4
-_0EEC:
+_0C34:
 
 	step 63, 4
 	step 12, 5
 	step_end
 	.balign 4
-_0EF8:
+_0C40:
 
 	step 12, 6
 	step 63, 2
@@ -889,7 +889,7 @@ _0EF8:
 	step 35, 1
 	step_end
 	.balign 4
-_0F24:
+_0C6C:
 
 	step 61, 1
 	step 15, 1
@@ -900,20 +900,20 @@ _0F24:
 	step 14, 4
 	step_end
 	.balign 4
-_0F44:
+_0C8C:
 
 	step 14, 2
 	step 33, 1
 	step 33, 1
 	step_end
 	.balign 4
-_0F54:
+_0C9C:
 
 	step 62, 1
 	step 14, 2
 	step_end
 	.balign 4
-_0F60:
+_0CA8:
 
 	step 61, 1
 	step 63, 1
@@ -921,39 +921,22 @@ _0F60:
 	step 14, 5
 	step_end
 	.balign 4
-_0F74:
+_0CBC:
 
 	step 15, 6
 	step_end
 	.balign 4
-_0F7C:
+_0CC4:
 
 	step 61, 1
 	step 14, 1
 	step 15, 5
 	step_end
+	.byte 0x4b, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00, 0x0f, 0x00, 0x01, 0x00
+	.byte 0xfe, 0x00, 0x00, 0x00, 0x0e, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00, 0x0d, 0x00, 0x01, 0x00
+	.byte 0xfe, 0x00, 0x00, 0x00
 	.balign 4
-_0F8C:
-
-	step 75, 1
-	step_end
-	.balign 4
-_0F94:
-
-	step 15, 1
-	step_end
-	.balign 4
-_0F9C:
-
-	step 14, 1
-	step_end
-	.balign 4
-_0FA4:
-
-	step 13, 1
-	step_end
-	.balign 4
-_0FAC:
+_0CF4:
 
 	step 13, 2
 	step 14, 1
@@ -961,101 +944,92 @@ _0FAC:
 	step 35, 1
 	step_end
 	.balign 4
-_0FC0:
+_0D08:
 
 	step 63, 1
 	step 16, 6
 	step 34, 1
 	step_end
 	.balign 4
-_0FD0:
+_0D18:
 
 	step 63, 2
 	step 16, 3
 	step_end
 	.balign 4
-_0FDC:
+_0D24:
 
 	step 34, 1
 	step_end
 	.balign 4
-_0FE4:
+_0D2C:
 
 	step 19, 10
 	step_end
 	.balign 4
-_0FEC:
+_0D34:
 
 	step 62, 1
 	step 19, 10
 	step_end
 	.balign 4
-_0FF8:
+_0D40:
 
 	step 51, 1
 	step_end
 	.balign 4
-_1000:
+_0D48:
 
 	step 13, 2
 	step 15, 10
 	step_end
 	.balign 4
-_100C:
+_0D54:
 
 	step 48, 2
 	step 2, 1
 	step 63, 1
 	step 18, 12
 	step_end
+	.byte 0x00, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 	.balign 4
-_1020:
-
-	step 0, 1
-	step_end
-	.balign 4
-_1028:
+_0D70:
 
 	step 12, 1
 	step 14, 1
 	step_end
+	.byte 0x0f, 0x00, 0x01, 0x00
+	.byte 0x0c, 0x00, 0x01, 0x00, 0x0e, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 	.balign 4
-_1034:
-
-	step 15, 1
-	step 12, 1
-	step 14, 1
-	step_end
-	.balign 4
-_1044:
+_0D8C:
 
 	step 13, 4
 	step 15, 10
 	step_end
 	.balign 4
-_1050:
+_0D98:
 
 	step 14, 8
 	step_end
 	.balign 4
-_1058:
+_0DA0:
 
 	step 61, 1
 	step 14, 8
 	step_end
 	.balign 4
-_1064:
+_0DAC:
 
 	step 33, 1
 	step_end
 	.balign 4
-_106C:
+_0DB4:
 
 	step 17, 6
 	step 18, 12
 	step_end
 	.balign 4
-_1078:
+_0DC0:
 
 	step 62, 1
 	step 18, 1
@@ -1063,16 +1037,16 @@ _1078:
 	step 18, 12
 	step_end
 	.balign 4
-_108C:
+_0DD4:
 
 	step 13, 6
 	step 15, 10
 	step_end
 	.balign 4
-	.balign 4
-_ariana_move_from_south:
+_0DE0:
 
 	step 15, 1
 	step 12, 2
 	step 14, 1
 	step_end
+	.balign 4

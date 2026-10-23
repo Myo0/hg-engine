@@ -5106,7 +5106,7 @@ void SetupStateVariables(struct BattleSystem *bsys, int attacker, u32 defender, 
                     moveTypeForCalc = TYPE_FIRE;
                 } else if (ctx->field_condition & FIELD_CONDITION_SANDSTORM_ALL) {
                     moveTypeForCalc = TYPE_ROCK;
-                } else if (ctx->field_condition & FIELD_CONDITION_HAIL_ALL) {
+                } else if (ctx->field_condition & (FIELD_CONDITION_HAIL_ALL | FIELD_CONDITION_SNOW_ALL)) {
                     moveTypeForCalc = TYPE_ICE;
                 } else {
                     moveTypeForCalc = attackerMove.type;

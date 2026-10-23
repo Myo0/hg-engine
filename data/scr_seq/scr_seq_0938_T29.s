@@ -103,9 +103,9 @@ scr_seq_T29_003:
 	buffer_players_name 0
 	gender_msgbox 3, 4
 	closemsg
-	apply_movement obj_T29_brains2, _0922
+	apply_movement obj_T29_brains2, _0924
 	wait_movement
-	apply_movement obj_player, _092E
+	apply_movement obj_player, _0930
 	wait_movement
 	npc_msg 37
 	wait_button
@@ -120,7 +120,7 @@ scr_seq_T29_003:
 	setvar VAR_SPECIAL_x8004, 661
 	setvar VAR_SPECIAL_x8005, 1
 	call _045C
-	apply_movement obj_player, _0936
+	apply_movement obj_player, _0938
 	wait_movement
 	call _0477
 	npc_msg 38
@@ -351,11 +351,11 @@ _04AC:
 	gender_msgbox 5, 6
 	wait_button
 	closemsg
-	apply_movement obj_T29_follower_mon_static_dragonite, _093E
+	apply_movement obj_T29_follower_mon_static_dragonite, _0940
 	wait_movement
-	apply_movement obj_T29_wataru, _094A
+	apply_movement obj_T29_wataru, _094C
 	wait_movement
-	apply_movement obj_T29_brains2, _093E
+	apply_movement obj_T29_brains2, _0940
 	wait_movement
 	scrcmd_775 8, 10
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -694,31 +694,31 @@ _0919:
 _091F:
 	end
 
-	.byte 0x00
+	.byte 0x00, 0x00, 0x00
 	.balign 4
-_0922:
+_0924:
 
 	step 15, 1
 	step 0, 1
 	step_end
 	.balign 4
-_092E:
+_0930:
 
 	step 1, 1
 	step_end
 	.balign 4
-_0936:
+_0938:
 
 	step 2, 1
 	step_end
 	.balign 4
-_093E:
+_0940:
 
 	step 34, 1
 	step 50, 2
 	step_end
 	.balign 4
-_094A:
+_094C:
 
 	step 33, 1
 	step_end

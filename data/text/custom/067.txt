@@ -15,3 +15,8 @@ You should be able to unlock the door\nwith the Card Key!
 It’s the Card Key slot.
 3F Personnel
 Pokémon Music with host: DJ Ben
+They are so locked in to the\nscreen that they ignore you.\r
+Hah!\nThought you could slip by just because\fI was ignoring you?\rThink again kid!\r
+Unbelievable...\nI need a new team!\r
+I really didn’t expect you to win.\nYou must be weak after that battle!\r
+How did my team lose after\nyou were weakened?!\r

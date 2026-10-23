@@ -66,17 +66,17 @@ scr_seq_R43R0201_003:
 	end
 
 _009D:
-	apply_movement obj_R43R0201_rocketm, _01FA
-	apply_movement obj_R43R0201_rocketm_2, _020E
+	apply_movement obj_R43R0201_rocketm, _01FC
+	apply_movement obj_R43R0201_rocketm_2, _0210
 	wait_movement
 	npc_msg 7
 	closemsg
 	trainer_battle TRAINER_BEAUTY_MICKEY_2, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x8008
 	case 0, _0174
-	apply_movement obj_R43R0201_rocketm, _021A
+	apply_movement obj_R43R0201_rocketm, _021C
 	wait_movement
-	apply_movement obj_R43R0201_rocketm_2, _022A
+	apply_movement obj_R43R0201_rocketm_2, _022C
 	wait_movement
 	npc_msg 8
 	closemsg
@@ -93,8 +93,8 @@ _009D:
 	goto _0183
 
 _0128:
-	apply_movement obj_R43R0201_rocketm, _023A
-	apply_movement obj_R43R0201_rocketm_2, _0256
+	apply_movement obj_R43R0201_rocketm, _023C
+	apply_movement obj_R43R0201_rocketm_2, _0258
 	wait_movement
 	npc_msg 0
 	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 1000
@@ -146,8 +146,8 @@ _01AF:
 
 _01BA:
 	submoneyimmediate 1000
-	apply_movement obj_R43R0201_rocketm, _0276
-	apply_movement obj_R43R0201_rocketm_2, _0286
+	apply_movement obj_R43R0201_rocketm, _0278
+	apply_movement obj_R43R0201_rocketm_2, _0288
 	wait_movement
 	stop_bgm SEQ_GS_EYE_ROCKET
 	play_bgm SEQ_GS_R_7_42
@@ -162,8 +162,9 @@ _01E6:
 	setflag FLAG_HIDE_ROUTE_43_GATE_ROCKETS
 	end
 
+	.byte 0x00, 0x00
 	.balign 4
-_01FA:
+_01FC:
 
 	step 75, 1
 	step 21, 3
@@ -171,27 +172,27 @@ _01FA:
 	step 1, 1
 	step_end
 	.balign 4
-_020E:
+_0210:
 
 	step 1, 1
 	step 75, 1
 	step_end
 	.balign 4
-_021A:
+_021C:
 
 	step 22, 2
 	step 20, 3
 	step 1, 1
 	step_end
 	.balign 4
-_022A:
+_022C:
 
 	step 21, 3
 	step 22, 2
 	step 1, 1
 	step_end
 	.balign 4
-_023A:
+_023C:
 
 	step 63, 6
 	step 0, 1
@@ -201,24 +202,24 @@ _023A:
 	step 0, 1
 	step_end
 	.balign 4
-_0256:
+_0258:
 
 	step 75, 1
 	step 20, 4
 	step 22, 2
 	step 0, 1
 	step_end
-	.byte 0x17, 0x00, 0x02, 0x00, 0x14, 0x00
-	.byte 0x03, 0x00, 0xfe, 0x00, 0x00, 0x00
+	.byte 0x17, 0x00, 0x02, 0x00
+	.byte 0x14, 0x00, 0x03, 0x00, 0xfe, 0x00, 0x00, 0x00
 	.balign 4
-_0276:
+_0278:
 
 	step 62, 3
 	step 22, 1
 	step 21, 4
 	step_end
 	.balign 4
-_0286:
+_0288:
 
 	step 23, 2
 	step 21, 4

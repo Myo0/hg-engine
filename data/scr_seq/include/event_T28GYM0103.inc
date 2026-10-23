@@ -8,5 +8,6 @@
 .equ obj_T28GYM0103_ice_2, 1
 .equ obj_T28GYM0103_sunglasses, 2
 .equ obj_T28GYM0103_skierw, 3
+.equ obj_T28GYM0103_boarder, 4
 
 .endif //SCR_SEQ_T28GYM0103_H_

@@ -3376,10 +3376,8 @@ BOOL BtlCmd_CalcWeatherBallParams(void *bw, struct BattleStruct *sp)
             : sp->moveTbl[sp->current_move_index].power;
     } else if ((weather & FIELD_CONDITION_WEATHER) && !(weather & FIELD_CONDITION_STRONG_WINDS)
         && (HeldItemHoldEffectGet(sp, attacker) != HOLD_EFFECT_UNAFFECTED_BY_RAIN_OR_SUN)) {
-        // Snow changes Weather Ball's type same as Hail, but (like Gen 9) doesn't double its power.
-        sp->damage_power = (weather & FIELD_CONDITION_SNOW_ALL)
-            ? sp->moveTbl[sp->current_move_index].power
-            : sp->moveTbl[sp->current_move_index].power * 2;
+        // Electrum: Snow works like Hail here -- Ice type and doubled power (100 BP).
+        sp->damage_power = sp->moveTbl[sp->current_move_index].power * 2;
         if (weather & FIELD_CONDITION_RAIN_ALL) {
             sp->move_type = TYPE_WATER;
         }
