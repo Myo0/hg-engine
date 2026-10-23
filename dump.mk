@@ -86,8 +86,8 @@ dump_scripts: check_dump_rom $(VENV_ACTIVATE) $(MSGENC)
 .PHONY: pull_scripts pull_scripts_auto
 PULL_ROM ?= $(ROMNAME)
 
-pull_scripts: $(VENV_ACTIVATE) $(NDSTOOL)
-	$(PYTHON) scripts/pull_scripts.py --rom "$(PULL_ROM)" --ndstool "$(NDSTOOL)" $(PULL_FLAGS)
+pull_scripts: $(VENV_ACTIVATE)
+	$(PYTHON) scripts/pull_scripts.py --rom "$(PULL_ROM)" $(PULL_FLAGS)
 
-pull_scripts_auto: $(VENV_ACTIVATE) $(NDSTOOL)
-	@$(PYTHON) scripts/pull_scripts.py --auto --rom "$(PULL_ROM)" --ndstool "$(NDSTOOL)" --scr-seq-built "$(BUILD_DUMPED_SCR_SEQ)" --eventdata-built "$(BUILD_DUMPED_EVENTDATA)"
+pull_scripts_auto: $(VENV_ACTIVATE)
+	@$(PYTHON) scripts/pull_scripts.py --auto --rom "$(PULL_ROM)" --scr-seq-built "$(BUILD_DUMPED_SCR_SEQ)" --eventdata-built "$(BUILD_DUMPED_EVENTDATA)"

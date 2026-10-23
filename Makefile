@@ -115,8 +115,13 @@ O2NARC := tools/o2narc
 SDATTOOL := $(PYTHON) tools/SDATTool.py
 JSONPROC := tools/jsonproc
 
-# Electrum: stay on ndstool until the ds-rom migration is done (see Docs&Changelog); override with ROM_TOOL=tools/dsrom
-ROM_TOOL ?= $(NDSTOOL)
+# Electrum: ds-rom is the default ROM tool (see Docs&Changelog/ROM Tool ds-rom.md); build with `make ROM_TOOL=tools/ndstool` to use ndstool instead
+ROM_TOOL ?= $(DSROM)
+# Remember which tool extracted base/: switching ROM_TOOL must re-extract (the two tools lay base/ out differently). The stamp file is only
+# rewritten when the tool name changes, so base/arm9.bin (which depends on it) is rebuilt exactly once per switch.
+ROM_TOOL_NAME := $(notdir $(ROM_TOOL))
+ROM_TOOL_STAMP := .rom_tool_stamp
+$(shell echo '$(ROM_TOOL_NAME)' | cmp -s - $(ROM_TOOL_STAMP) || echo '$(ROM_TOOL_NAME)' > $(ROM_TOOL_STAMP))
 
 # Compiler/Assembler/Linker settings
 LDFLAGS = rom.ld -T $(C_SUBDIR)/linker.ld
@@ -339,17 +344,20 @@ $(OUTPUT):$(LINK)
 
 # only reextract from the rom if the romname is newer than the extracted arm9.bin
 ifeq ($(ROM_TOOL),$(DSROM))
-$(BASE)/arm9.bin: $(ROMNAME) $(DSROM) $(VENV_ACTIVATE) scripts/dsrom_bridge.py
+$(BASE)/arm9.bin: $(ROMNAME) $(DSROM) $(VENV_ACTIVATE) scripts/dsrom_bridge.py $(ROM_TOOL_STAMP)
+	@$(PYTHON) -c "import yaml" 2>/dev/null || { echo "ds-rom needs PyYAML in the build venv: run '. .venv/bin/activate; pip install PyYAML' (or build with ROM_TOOL=tools/ndstool)"; exit 1; }
 	rm -rf $(BASE) $(BASE)_dsrom
 	@mkdir -p $(REQUIRED_DIRECTORIES)
 	$(DSROM_BRIDGE) extract --rom $(ROMNAME)
+	@echo dsrom > $(BASE)/.rom_tool
 	$(NARCHIVE) extract $(FILESYS)/a/0/2/8 -o $(BUILD)/a028/ -nf
 else
-$(BASE)/arm9.bin: $(ROMNAME) $(NDSTOOL) $(VENV_ACTIVATE)
-	rm -rf $(BASE)
+$(BASE)/arm9.bin: $(ROMNAME) $(NDSTOOL) $(VENV_ACTIVATE) $(ROM_TOOL_STAMP)
+	rm -rf $(BASE) $(BASE)_dsrom
 	@mkdir -p $(REQUIRED_DIRECTORIES)
 	$(NDSTOOL) -x $(ROMNAME) -9 $(BASE)/arm9.bin -7 $(BASE)/arm7.bin -y9 $(BASE)/overarm9.bin -y7 $(BASE)/overarm7.bin -d $(FILESYS) -y $(BASE)/overlay -t $(BASE)/banner.bin -h $(BASE)/header.bin
 	$(NARCHIVE) extract $(FILESYS)/a/0/2/8 -o $(BUILD)/a028/ -nf
+	@echo ndstool > $(BASE)/.rom_tool
 endif
 
 all: pull_scripts_auto $(OUTPUT) $(OVERLAY_OUTPUTS) $(TOOLS) $(BASE)/arm9.bin

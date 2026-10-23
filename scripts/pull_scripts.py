@@ -157,9 +157,13 @@ def build_scratch(scratch, rom, rom_path, ndstool):
     os.makedirs(mapname_dir)
     with open(os.path.join(mapname_dir, "mapname.bin"), "wb") as fp:
         fp.write(bytes(rom.getFileByName(MAPNAME_FILE)))
-    res = subprocess.run([ndstool, "-x", rom_path, "-9", os.path.join(scratch, "base", "arm9.bin")], capture_output=True, text=True)
-    if res.returncode != 0 or not os.path.exists(os.path.join(scratch, "base", "arm9.bin")):
-        raise RuntimeError(f"ndstool could not extract arm9 from {rom_path}: {res.stderr.strip() or res.stdout.strip()}")
+    # arm9 straight from the ROM with ndspy: no ROM tool needed, and it reads ROMs packed by ndstool, ds-rom or DSPRE alike
+    import ndspy.codeCompression
+    arm9 = bytes(rom.arm9)
+    if len(arm9) < 0xBC000:  # a still-compressed vanilla arm9 (same test scripts/make.py uses)
+        arm9 = bytes(ndspy.codeCompression.decompress(arm9))
+    with open(os.path.join(scratch, "base", "arm9.bin"), "wb") as fp:
+        fp.write(arm9)
 
 
 def run_dump(scratch, rom_path):

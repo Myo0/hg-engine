@@ -291,6 +291,16 @@ def TryProcessConditionalCompilation(line: str, definesDict: dict, conditionals:
 OVERLAY_PATCH_VERIFIED_SAFE_EXCEPTIONS = {24}
 
 
+def overlays_are_plain():
+    # base/.rom_tool is written by the Makefile's extract recipe. ds-rom hands over every overlay it marks compressed as PLAIN data and
+    # recompresses it when it packs the ROM, so byte patches are safe on any overlay; with ndstool the files are the raw compressed blobs.
+    try:
+        with open("base/.rom_tool", "r") as marker:
+            return marker.read().strip() == "dsrom"
+    except OSError:
+        return False
+
+
 def open_overlay_for_patching(openbin):
     # Refuse to open a still-compressed overlay for a raw byte-level patch (bytereplacement/
     # hooks/armhooks/routinepointers/repoints all funnel through here). base/overlay/overlay_<n>.bin
@@ -298,7 +308,7 @@ def open_overlay_for_patching(openbin):
     # point in the build, so a byte patch here would land inside the compressed bitstream instead
     # of the intended decompiled instruction -- corrupting it silently (builds clean, crashes at
     # runtime when the overlay is later decompressed). Returns None if the overlay is off-limits.
-    if int(openbin) not in OVERLAYS_TO_DECOMPRESS and int(openbin) not in OVERLAY_PATCH_VERIFIED_SAFE_EXCEPTIONS:
+    if not overlays_are_plain() and int(openbin) not in OVERLAYS_TO_DECOMPRESS and int(openbin) not in OVERLAY_PATCH_VERIFIED_SAFE_EXCEPTIONS:
         print("ERROR: patch targets overlay " + openbin + ", which is NOT in OVERLAYS_TO_DECOMPRESS and stays compressed on this fork. Applying this patch would corrupt the compressed data. Skipping it -- if this overlay genuinely needs a byte patch, either add it to OVERLAYS_TO_DECOMPRESS (verify why it was excluded first) or find another way to apply this change.")
         return None
     return open("base/overlay/overlay_" + openbin + ".bin", 'rb+')

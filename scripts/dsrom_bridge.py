@@ -65,10 +65,50 @@ def copy_asset_tree(source, destination):
                 shutil.copyfile(entry.path, target)
 
 
+def normalize_overlay_sizes(rom):
+    """Electrum: hg-engine's anti-piracy patch (armips/asm/antipiracy.s) writes overlay 123's table
+    entry with ramSize = its COMPRESSED file size. ds-rom trusts that field and truncates the decompressed overlay
+    (then the DSProt re-encryption fails). Repair, in a temporary copy of the ROM, every compressed overlay whose
+    recorded ramSize differs from its real decompressed length. Returns the path ds-rom should extract."""
+    import ndspy.codeCompression
+    import ndspy.rom
+    with open(rom, "rb") as f:
+        data = bytearray(f.read())
+    ovt_off, ovt_size = struct.unpack_from("<II", data, 0x50)
+    fat_off = struct.unpack_from("<I", data, 0x48)[0]
+    fixed = []
+    for i in range(ovt_size // OVERLAY_ENTRY_SIZE):
+        off = ovt_off + i * OVERLAY_ENTRY_SIZE
+        oid, addr, ram_size, bss, cs, ce, file_id, flags = struct.unpack_from("<8I", data, off)
+        if not (flags & COMPRESSED_BIT):
+            continue
+        start, end = struct.unpack_from("<II", data, fat_off + file_id * 8)
+        try:
+            real = len(ndspy.codeCompression.decompress(bytes(data[start:end])))
+        except Exception:
+            continue
+        if real != ram_size:
+            struct.pack_into("<I", data, off + 8, real)
+            fixed.append((oid, ram_size, real))
+    if not fixed:
+        return rom, False
+    tmp = rom + ".dsrom-normalized"
+    with open(tmp, "wb") as f:
+        f.write(data)
+    for oid, a, b in fixed:
+        print(f"dsrom_bridge: overlay {oid}: table ramSize {a:#x} -> {b:#x} (decompressed length) before extraction")
+    return tmp, True
+
+
 def extract(dsrom_bin, rom, dsrom_dir, base, filesys):
     if os.path.isdir(dsrom_dir):
         shutil.rmtree(dsrom_dir)
-    subprocess.run([resolve_bin(dsrom_bin), "extract", "-r", rom, "-o", dsrom_dir], check=True)
+    src_rom, is_tmp = normalize_overlay_sizes(rom)
+    try:
+        subprocess.run([resolve_bin(dsrom_bin), "extract", "-r", src_rom, "-o", dsrom_dir], check=True)
+    finally:
+        if is_tmp and os.path.exists(src_rom):
+            os.remove(src_rom)
 
     os.makedirs(base, exist_ok=True)
     os.makedirs(os.path.join(base, "overlay"), exist_ok=True)

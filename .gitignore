@@ -97,3 +97,6 @@ data/graphics/bag_tabs/mega.txt
 /scripts/fixed/moves-updated.s
 
 /hg-engine.wiki/
+.rom_tool_stamp
+Docs&Changelog/ROM Tool ds-rom.md
+scripts/dsrom_bridge.py
